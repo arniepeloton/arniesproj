@@ -1,0 +1,191 @@
+﻿*
+{
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+}
+#divWrap
+{
+    padding: 0 30px 3px;
+}
+#tableMain
+{
+    margin: auto 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    background-image: inherit;
+}
+#tableMain table td, #tableMain table th, #tableMain td, #tableMain th
+{
+    border: none;
+}
+#divMainHeader
+{
+    padding: 3px;
+    margin: 3px 0;
+}
+#divMainHeader table
+{
+    background-image: inherit;
+}
+#divMainHeader table td, #divMainHeader table th
+{
+    border: none;
+}
+#divMainHeadTop
+{
+    text-align: right;
+}
+#divMainSearch
+{
+    float: right;
+    padding: 6px 0 0 0;
+}
+#divMainSearch input
+{
+    width: 100px;
+}
+#divMainBar
+{
+    height: 30px;
+    vertical-align: middle;
+}
+#divMainBar a
+{
+    display: block;
+    float: left;
+    background-color: White;
+    height: 100%;
+    line-height: 28px;
+    padding: 0 10px;
+}
+#divMainBar a:hover
+{
+    background-color: #ddddee;
+}
+#tableMain #tdMainTop
+{
+    /*text-align:center;*/
+}
+#tableMain #tdMainLeft
+{
+    width: 0px;
+}
+#tableMain #tdMainRight
+{
+    width: 150px;
+}
+#tableMain #tdMainBottom
+{
+    text-align: center;
+}
+#divMainFooterLinks
+{
+    /*margin: 10px auto;*/
+}
+#divMainFooterLinks a
+{
+    font-weight: bold;
+}
+.divBorder
+{
+    border: 1px solid #EEEEEE;
+    padding: 3px;
+    margin: 3px;
+}
+/* no left margin */
+.divBorderLeft
+{
+    padding: 3px; /*margin: 3px 3px 3px 0px;*/
+}
+/* no right margin */
+.divBorderRight
+{
+    padding: 3px;
+    margin: 3px 0px 3px 3px;
+}
+/* no left nor right margin */
+.divBorderBoth
+{
+    padding: 3px;
+    margin: 3px 0px 3px 0px;
+}
+#divIP
+{
+    text-align: center;
+    font-size: 16pt;
+}
+#divDummy
+{
+    margin-top: 100px;
+    border-top: 1px solid #aaaaaa;
+}
+
+/* login form of the right */
+#divLogin
+{
+    padding: 0px 3px 3px 3px;
+}
+#divLogin input, #divLogin button
+{
+    margin-bottom: 7px;
+}
+#divLogin input.textbox
+{
+    width: 120px;
+}
+#divLogin label
+{
+    display: block;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+.CheckLabel
+{
+    display: block;
+    float: left;
+    line-height: 20px;
+}
+.clear
+{
+    clear: both;
+}
+.LoginButtons a span{ background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #f7f7f7 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f7f7f7)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* IE10+ */
+    background: linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 ); /* IE6-9 */}
+
+#watermark{position:absolute;
+           width:449px;
+           height:350px;
+           background-color:Black;
+           -moz-opacity: 0.50;
+           opacity: 0.50;
+           border-right:5px solid #000;
+           z-index:0;}
+#watermark-content{position:absolute;
+                   width:449px;
+                   height:350px;
+                   z-index:1;
+                   padding-top:20px;}
+#watermark-content span{color:White;
+                        font-family:Arial;
+                        font-size:40pt;
+                        padding-left:30px;}
+#watermark-content p{padding-left:20px;
+                     color:White;
+                     font-family:Arial;
+                     font-size:11pt;}
+/* Branch Dashboard Design */
+#bd-content{min-width:900px;
+            max-width:1024px;
+            min-height:10em;
+            border:1px solid #CCC; 
+            margin:auto;}
+

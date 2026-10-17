@@ -1,0 +1,133 @@
+/* Header Design
+--------------------------------------------------------------------------------*/
+#BankLogo{border:1px solid #CCC;
+      width:100px;
+      height:100px;
+      margin:10px;
+      margin-top:15px;}
+header{height:140px;}
+#main-title{padding-top:5px;}
+#main-title .main-title-style
+{
+    font-family:Arial Black;
+    font-size:24px;
+    font-weight:bold;
+    font-style:inherit;
+}
+#main-title .sub-title-style
+{
+    font-family:Arial;
+    font-size:14px;
+    font-weight:bold;
+    margin-left:10px;
+}
+#main-title .user-title
+{
+    font-family:Arial;
+    font-size:14px;
+    font-weight:bold;
+    margin-left:10px;
+}
+
+#dialog-message{display:none;}
+.hide-dialog-box{display:none;}
+#tpt-pos-deposit-amount{text-align:right;
+                        font-size:18px;
+                        font-weight:bold;}
+
+/*======================================================================================================
+Login Page
+======================================================================================================*/
+.tpt-pos-logout a{margin-left:10px;}
+#main-body{width:100%;
+           height: 100%;}
+
+#login-content{width:300px;
+               margin: 0 auto;
+               padding: 20px 25px 15px;
+               margin-top: 10%;
+               background: #F1F1F1;
+               border: 1px solid #E5E5E5;
+               min-height:200px;}
+
+.login-h2{margin-bottom:20px;}
+
+.login-label{font: arial, helvetica, sans-serif;
+             font-size:18px;
+             font-weight:bold;
+             padding:5px;}
+.login-input input{width:280px;
+                   margin-bottom:10px;
+                   font: arial, helvetica, sans-serif;
+                   font-size: 16px;
+                   height:25px;
+                   padding:10px;}
+.login-hr {margin:5px;}
+.login-label-title{font: arial, helvetica, sans-serif;
+                   font-size:12px;
+                   font-weight:bold;
+                   padding-left:10px;}
+
+#content input[type="password"], #content input.password{width: 280px;
+                                                         margin-bottom:20px;}
+                                                         
+                                                         
+/*======================================================================================================
+Deposit Entry Design
+======================================================================================================*/
+.clear{clear:both;}
+#pos-deposit-registry-reason{ height: 170px;
+                              width: 340px;}
+#deposit-entry-main-design-left{border:1px solid #CCC;
+                           padding:20px;
+                           float:left;}
+#deposit-entry-main-design h3{font-size:12px;
+                              font-family:arial, helvetica, sans-serif;
+                              font-weight:bold;
+                              color:#000;}
+#deposit-entry-main-design hr{margin-top:0px;}
+
+/* Currency Side */
+#deposit-entry-main-design-currency{border:1px solid #CCC;
+                                    min-width:200px;
+                                    max-width: 250px;
+                                    padding:20px;
+                                    float:left;
+                                    height:60px;}
+#deposit-entry-main-design-currency h2{font-size:12px;
+                                       font-family:arial, helvetica, sans-serif;
+                                       padding-bottom:10px;}
+#deposit-entry-main-design-currency hr{margin:0;}
+#deposit-entry-main-design-currency-style span{margin-right:30px;}
+#deposit-entry-main-design-currency-style1 span{margin-right:30px;}
+
+/* Type of Account */
+#deposit-entry-main-design-typeofaccount{border-right:1px solid #CCC;
+                                         border-bottom:1px solid #CCC;
+                                         border-Top:1px solid #CCC;
+                                         min-width:200px;
+                                         max-width: 330px;
+                                         padding:20px;
+                                         float:left;
+                                         height:60px;}
+#deposit-entry-main-design-typeofaccount h2{font-size:12px;
+                                       font-family:arial, helvetica, sans-serif;
+                                       padding-bottom:10px;}
+#deposit-entry-main-design-typeofaccount-style span{margin-right:44px;}
+#deposit-entry-main-design-typeofaccount-style1 span{margin-right:30px;}
+
+/* Denomination */
+#deposit-entry-main-design-denomination{border-collapse:collapse;
+                                        border:1px solid #CCC;
+                                        padding:20px;
+                                        float:left;
+                                        width:520px;}
+
+
+
+/* POS Machine Number Entry Form */
+#pos-machine-number-entry-form #pos-machine-number-entry-form-branches-select{width:300px;}
+#pos-machine-number-entry-form #pos-machine-number-entry-form-pos-machine-select{width:300px;}
+
+/* POS Entry Form */
+#obdr-form-dialog{}

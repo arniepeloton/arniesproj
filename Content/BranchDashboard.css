@@ -1,0 +1,67 @@
+﻿/* Main CSS */
+#bd-main{margin:0 auto;padding-top:20px;min-width:900px;}
+#bd-title-header{font-family:Arial Black;font-weight:bolder;}
+hr{margin-bottom:0;padding:0;}
+
+table.jqplot-table-legend{border:none;}
+#bd-loading img, #bd-loading-1 img{height:15px;}
+
+
+.bd-table{min-height: 300px; width:100%;}
+.bd-table th {padding: 6px 6px;}
+#widget-title{font-size: 14px;font-weight:bolder;}
+/*#content div.selector{width:200px;}*/
+
+.obdr-legend{margin-left:20px;}
+#ducDojoDashboardLabel{text-align:Left;
+                       margin-top:5px;
+                       margin-bottom:5px;
+                       font-size:24px;
+                       font-weight:bold;
+                       float:left;}
+
+/* Variance Design */
+.clear{clear:both;}
+#branch-list{float:left;
+             width:250px;
+             border:1px solid #000;}
+#branch-list ul{margin:0;
+                padding:0;
+                list-style:none;}
+#branch-list ul li{margin:0;
+                   padding:0;
+                   border-bottom:1px solid #000;
+                   width:250px;}
+#branch-list ul li:hover{background-color:Black;}
+
+/* Navigational Menu Design */
+#duc-nav-menu{min-width:1024px;}
+#duc-nav-menu ul{margin:0;padding:0;}
+#duc-nav-menu ul li{list-style:none;
+                    display:inline-block;
+                    padding-top:10px;}
+#bd-main hr{margin:0;padding:0;}
+
+.onTransmit tr{background-color:GREEN !important;}
+.afterTenMinutesTransmit tr{background-color:RED !important;}
+
+#ducDojoMenuBar ul{margin:0;
+                   padding:0;}
+#ducDojoMenuBar ul li{display:inline-table;
+                      list-style:none;
+                      border:1px solid #000;}
+/*#sales:hover, #sku:hover, #deposit:hover{box-shadow: 0px 0px 5px orange;
+                                         cursor:pointer;}*/
+.highlightHover{background-color:#FFB93F;}
+
+
+/* 
+    User Interface: Filter By
+*/
+#ui-filter-by-main{width:500px;
+                   min-height:10px;}
+#ui-filter-by{padding:10px;}
+#ui-filter-choice, #ui-display, #ui-date-range{padding-left:10px;}
+#ui-date-range{padding-bottom:10px;}
+.textInput{font-size:14px;
+           height:20px;}

@@ -1,0 +1,617 @@
+﻿body {
+    overflow: hidden;
+    font-family: 'Outfit', sans-serif;
+}
+
+div[data-role="page"]:first-child {
+    background-color: #f9f9f9;
+}
+
+.productcontainer {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 80px 1fr 100px;
+}
+
+.productcontainer-body {
+    flex: 1;
+    overflow: auto;
+}
+
+.divAds {
+    width: 350px;
+    height: 100%;
+}
+
+body > div[data-role="page"]:first-child {
+    background-color: #f9f9f9;
+}
+
+.product_container, .product_cart,
+.product_itemadded {
+    transform: translateY(100%);
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 0;
+}
+
+.product_container.show,
+.product_cart.show,
+.product_itemadded.show {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.idle {
+    background-color: white;
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+.selectedSku {
+    border: 3px solid #188750 /*#55883B;*/ !important;
+    color: #EE7804 !important;
+}
+
+.selectedSkuCart {
+    border-left: 5px solid #188750 /*#55883B;*/ !important;
+    color: #EE7804 !important;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.listInstructions {
+    font-size: 20px;
+}
+
+    .listInstructions li {
+        margin: 20px 0px;
+    }
+
+    .listInstructions button {
+        padding: 5px;
+        border: 1px solid #188750 /*#55883B;*/;
+        background-color: #fff;
+        border-radius: 5px;
+        color: #188750 /*#55883B;*/;
+        font-weight: bold;
+    }
+
+.form-control-plaintext::placeholder {
+    white-space: pre-line;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #fff;
+}
+
+/*.btnUom {
+    border: 3px solid #343a40 !important;
+    color: #343a40 !important;
+}*/
+
+.btnUom span::before {
+    content: "\eb0d";
+    font-family: 'boostrapicon' !important;
+}
+
+.btnUom.active {
+    color: #188750 /*#55883B;*/ !important;
+    background-color: #dff8d3 !important;
+}
+
+.btnUom.active span::before {
+    content: "\eb0e";
+    font-family: 'boostrapicon' !important;
+}
+
+.fit-text {
+    width: 100%; /* Set the desired width */
+    height: 100%; /* Set the desired height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    overflow: hidden;
+    font-size: 20px; /* Initial font size */
+    padding: 20px;
+}
+
+.imgguides {
+    position: relative;
+}
+
+.imgguides > div {
+    position: absolute;
+    /*background: #188750 /*#55883B; /*rgb(0 0 0 / 25%)*/
+    transform: translateX(50%);
+    right: 50%;
+    text-align: left;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.imgguides .header {
+    top: 30px;
+    /*width: 90%;*/
+    max-height: 200px;
+}
+
+.imgguides .footer {
+    bottom: 0px;
+    width: 100%;
+}
+
+#listofskus .row:last-child {
+    margin-bottom: 0px !important;
+}
+
+.scroll-indicator {
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    margin-top:auto;
+    background: radial-gradient(ellipse at 50% 100%, rgb(178, 178, 178, 1) 0%, rgba(252, 252, 252, 0) 50%)
+}
+
+/**::-webkit-scrollbar {
+    height: 20px;
+    width: 20px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #DFE9EB;
+}
+
+    *::-webkit-scrollbar-track:hover {
+        background-color: #B8C0C2;
+    }
+
+    *::-webkit-scrollbar-track:active {
+        background-color: #B8C0C2;
+    }
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #188750 #55883B;
+    border: 3px solid #FFFFFF;
+}
+
+    *::-webkit-scrollbar-thumb:hover {
+        background-color: #62A34B;
+    }
+
+    *::-webkit-scrollbar-thumb:active {
+        background-color: #62A34B;
+    }*/
+
+@keyframes flash {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.flashing-text {
+    color: #fff; /* Red color */
+    animation: flash 2s infinite; /* 1-second duration, repeats infinitely */
+}
+
+@keyframes blink-itemno {
+    0% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: orange;
+        background-color: white;
+        color: #188750 /*#55883B;*/;
+    }
+
+    100% {
+        border-color: transparent;
+    }
+}
+
+/* Apply the animation to an element */
+.blink-itemno {
+    border: 4px solid transparent !important; /* Start with no visible border */
+    animation: blink-itemno 2s infinite; /* Apply the animation */
+    padding: 0px;
+}
+
+@keyframes blink-actionbtn {
+    0% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: blue;
+        border-width: 4px;
+        color: blue;
+    }
+
+    100% {
+        border-color: transparent;
+    }
+}
+
+.light-beam {
+    position: relative;
+    display: inline-table;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+.light-beam.navbtn-light::before,
+.light-beam.navbtn-dark::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: 1;
+    animation: light-beam 2s linear infinite;
+}
+
+.light-beam.navbtn-light::before {
+    /*background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(9,9,121,0) 100%);*/
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+}
+
+.light-beam.navbtn-dark::before {
+    /*background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(9,9,121,0) 100%);*/
+    background: linear-gradient(90deg, rgba(85, 136, 59, 0.5), rgba(255, 255, 255, 1));
+}
+
+.light-beam > span {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes light-beam {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.arrow-bounce {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+}
+
+/* Arrow shape (triangle) */
+.arrow-bounce.up::before,
+.arrow-bounce.down::before {
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 15px;
+    height: 15px;
+    border-top: 5px solid #188750 /*#55883B;*/;
+    border-left: 5px solid #188750 /*#55883B;*/;
+    background: transparent;
+}
+
+.arrow-bounce.up::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.arrow-bounce.down::before {
+    transform: translate(-50%, -100%) rotate(223deg);
+}
+
+/* Animation */
+.arrow-bounce {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.three-columns {
+    column-count: 3;
+    column-gap: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.three-columns li {
+    break-inside: avoid;
+    margin-bottom:25px;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: transform 1s ease;
+    height: 100%;
+}
+
+.slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    height: 100%;
+}
+
+.slide img,
+.slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Wrapper to center content */
+.gradient-wrapper {
+    position: relative;
+}
+
+/* Gradient border animation */
+.gradient-border {
+    border: 3px solid transparent; /* Transparent border for gradient visibility */
+    outline: none;
+    background-image: linear-gradient(white, white), linear-gradient(90deg, #188750 /*#55883B;*/, #fff, #188750 /*#55883B;*/, #fff, #188750 /*#55883B;*/);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    animation: border-animation 3s linear infinite;
+    background-size: 200% 200%; /* Extend gradient size for smooth animation */
+}
+
+/* Placeholder text styling */
+.gradient-border::placeholder {
+    color: #aaa;
+}
+
+/* Animation for gradient movement */
+@keyframes border-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.bordervm-primary {
+    border: 1px solid #343a40;
+}
+
+.bgvm-primary-base {
+    background-color: #f4faf5;
+}
+
+.flying-particle {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    /* Ensure the particle image is small but visible */
+    width: 50px;
+    border-radius: 0.75rem !important;
+    height: auto; /* Maintain aspect ratio */
+    /* The "pop out" effect before flying */
+    animation: throwImage 2.0s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes throwImage {
+    0% {
+        transform: translate(0, 0) scale(3) rotate(0deg);
+        opacity: 1;
+    }
+
+    15% {
+        /* Optional: A quick "pop" effect before flying */
+        transform: translate(0, -20px) scale(2.1) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0.1) rotate(0deg);
+        opacity: 0.1;
+    }
+}
+
+.nav-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 12px;
+    scroll-behavior: smooth; /* Smooth sliding animation */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-wrapper::before,
+.nav-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    z-index: 5;
+    pointer-events: none; /* Allows clicking through the shadow */
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Hidden by default */
+}
+
+/* Left Shadow - only visible when scrolled right */
+.nav-wrapper::before {
+    left: 40px; /* Aligns with start of scroll area */
+    background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+}
+
+/* Right Shadow - visible when more items exist on the right */
+.nav-wrapper::after {
+    right: 40px; /* Aligns with end of scroll area */
+    background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
+}
+
+/* Classes to toggle visibility */
+.nav-wrapper.show-left::before {
+    opacity: 1;
+}
+
+.nav-wrapper.show-right::after {
+    opacity: 1;
+}
+
+/* Light theme card container */
+.passcode-card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 100%;
+}
+/* Custom styles for light keypad buttons */
+.key-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    color: #212529;
+    height: 40px;
+    border-radius: 12px;
+    transition: all 0.15s ease-in-out;
+}
+/* Visual decoy / passive active ring style */
+.key-btn.decoy-style {
+    border-color: #188750 /*#55883B;*/ !important;
+    background-color: #f7fff3;
+}
+/* Uniform active and hover states when interacted with */
+.key-btn:hover, .key-btn:focus {
+    border-color: #188750 /*#55883B;*/ !important;
+    background-color: #e9ecef;
+    color: #188750 /*#55883B;*/;
+    outline: none;
+    box-shadow: none;
+}
+
+.key-btn:active {
+    transform: scale(0.96);
+}
+/* Custom styles for light indicator dots */
+.dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #dee2e6;
+    transition: all 0.2s ease;
+}
+
+    .dot.filled {
+        background-color: #0d6efd;
+        box-shadow: 0 0 8px rgba(13, 110, 253, 0.5);
+    }
+
+.timer-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 2px solid rgba(10, 67, 44, 0.1);
+}
+
+/* SVG Countdown Circle */
+.timer-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.timer-svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.timer-bg {
+    fill: none;
+    stroke: rgba(10, 67, 44, 0.1);
+    stroke-width: 12;
+}
+
+.timer-progress {
+    fill: none;
+    stroke: #188750;
+    stroke-width: 12;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s linear;
+    /* Circumference = 2 * π * r (2 * 3.14159 * 85 = ~534) */
+    stroke-dasharray: 534;
+    stroke-dashoffset: 0;
+}
+
+.timer-text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.time-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.timer-label {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 2px;
+}

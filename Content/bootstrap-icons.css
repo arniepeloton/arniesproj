@@ -1,0 +1,135 @@
+﻿@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('bootstrap/fonts/glyphicons-halflings-regular.eot');
+  src: url('bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('bootstrap/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-asterisk:before {
+  content: "\2a";
+}
+.glyphicon-plus:before {
+  content: "\002b";
+}
+.glyphicon-remove:before {
+  content: "\e014";
+}
+.glyphicon-ok:before {
+  content: "\e013";
+}
+.glyphicon-pencil:before {
+  content: "\270f";
+}
+.glyphicon-floppy-save:before {
+  content: "\e175";
+}
+.glyphicon-send:before {
+  content: "\e171";
+}
+.glyphicon-barcode:before {
+  content: "\e040";
+}
+.glyphicon-floppy-disk:before {
+  content: "\e172";
+}
+.glyphicon-ok-circle:before {
+  content: "\e089";
+}
+.glyphicon-ban-circle:before {
+  content: "\e090";
+}
+.glyphicon-remove-circle:before {
+  content: "\e088";
+}
+.glyphicon-record:before {
+  content: "\e165";
+}
+.glyphicon-minus:before {
+  content: "\2212";
+}
+.glyphicon-search:before {
+  content: "\e003";
+}
+.glyphicon-chevron-left:before {
+    content: "\e079";
+}
+.glyphicon-chevron-right:before {
+    content: "\e080";
+}
+.glyphicon-chevron-up:before {
+    content: "\e113";
+}
+.glyphicon-chevron-down:before {
+    content: "\e114";
+}
+.glyphicon-refresh:before {
+    content: "\e031";
+}
+.glyphicon-erase:before {
+    content: "\e221";
+}
+.glyphicon-th-list:before {
+    content: "\e012";
+}
+.glyphicon-cog:before {
+    content: "\e019";
+}
+.glyphicon-upload:before {
+    content: "\e027";
+}
+.glyphicon-download:before {
+    content: "\e026";
+}
+.glyphicon-th-list:before {
+    content: "\e012";
+}
+.glyphicon-menu-hamburger:before {
+    content: "\e236";
+}
+.glyphicon-option-vertical:before {
+    content: "\e235";
+}
+.glyphicon-picture:before {
+    content: "\e060";
+}
+.glyphicon-trash:before {
+    content: "\e020";
+}
+.glyphicon-star:before {
+    content: "\e006";
+}
+.glyphicon-eye-open:before {
+    content: "\e105";
+}
+.glyphicon-link:before {
+    content: "\e144";
+}
+.glyphicon-import:before {
+    content: "\e169";
+}
+.glyphicon-paperclip:before {
+    content: "\e142";
+}
+.glyphicon-info-sign:before {
+    content: "\e086";
+}
+.glyphicon-arrow-left:before {
+    content: "\e091";
+}
+.glyphicon-arrow-right:before {
+    content: "\e092";
+}
+.glyphicon-time:before {
+    content: "\e023";
+}

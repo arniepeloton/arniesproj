@@ -1,0 +1,285 @@
+
+a
+{
+    color: #2e6e9e;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+table
+{
+    margin-bottom: 0;
+}
+table td
+{
+    vertical-align: top;
+}
+
+li
+{
+    margin-left: 15px;
+}
+.ButtonLeave
+{
+    background-color: #518ee2;
+    border: 1px solid #427ec7;
+    color: white;
+    padding: 3px;
+    cursor: pointer;
+}
+.ButtonEnter
+{
+    background-color: #427ec7;
+    text-decoration: underline;
+    display: block;
+}
+.Textbox
+{
+    border: 1px solid #427ec7;
+    padding: 2px;
+    background-image: url('/content/images/textbox_bg.jpg');
+}
+
+.Shadow
+{
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+}
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.error-validation-error
+{
+    color: #ff0000;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+    border-color: #ff0000 !important;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* styles of tab */
+/* http://www.sohtanaka.com/web-design/simple-tabs-w-css-jquery/ */
+ul.tabs
+{
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 34px; /*--Set height of tabs--*/
+    border-bottom: 1px solid #999;
+    border-left: 1px solid #999;
+    width: 100%;
+}
+ul.tabs li
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+    height: 33px; /*--Subtract 1px from the height of the unordered list--*/
+    border: 1px solid #999;
+    border-left: none;
+    margin-bottom: -1px; /*--Pull the list item down 1px--*/
+    overflow: hidden;
+    position: relative;
+    background-color: #D8DFEA;
+}
+
+ul.tabs li a
+{
+    background-color: #D8DFEA;
+    color: #3B5998;
+    text-decoration: none;
+    display: block;
+    padding: 7px 20px 50px 20px;
+    border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+    border-bottom: 0px;
+    outline: none;
+    text-align: center;
+}
+
+
+ul.tabs li a:hover
+{
+    background-color: #3B5998;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+html ul.tabs li.active, html ul.tabs li.active a:hover /*--Makes sure that the active tab does not listen to the hover properties--*/, ul.tabs li.active a.active, ul.tabs li.active a:hover.active
+{
+    background-color: #FFFFFF;
+    color: #3B5998;
+    border-bottom: 1px solid #FFFFFF; /*--Makes the active tab look like it's connected with its content--*/
+}
+
+.tab_container
+{
+    border: 1px solid #999;
+    border-top: none;
+    overflow: hidden;
+    clear: both;
+    float: left;
+    width: 100%;
+    background: #fff;
+}
+.tab_content
+{
+    padding: 20px;
+    font-size: 1.2em;
+}
+.DataCell, .VirtualCell
+{
+    border: 1px solid #aaaaaa;
+}
+.DataCellDiv
+{
+    padding: 3px;
+    overflow: hidden;
+    background-color: transparent;
+}
+.HighlightDiv /* dependent on jQueryUI theme this div should also have the following classes: ui-widget ui-corner-all and 1 of the 2 classes: ui-state-highlight ui-state-error */
+{
+    padding: 15px 7px;
+}
+
+
+/********** styles for form ******************/
+.TableForm
+{
+}
+.TableForm td
+{
+    vertical-align: top;
+    padding: 3px;
+}
+.TableForm td.label
+{
+    padding-top: 8px;
+}
+.TableForm td input.full, .TableForm td textarea.full
+{
+    width: 485px;
+}
+.TableForm td input.checkbox
+{
+    float: left;
+}
+.TableForm td label.label
+{
+    display: block;
+    margin: -1px 0 5px 16px;
+}
+.Required
+{
+    color: Red;
+    top: -.5em;
+    margin-left: 3px;
+}
+.TableForm table.inner
+{
+    margin-left: 3px;
+}
+.TableForm table.inner td
+{
+    padding: 2px 0 0 0;
+    vertical-align: middle;
+}
+.TableForm table.inner label.label
+{
+    margin: 0 0 0 2px;
+}
+.tdField
+{
+    text-align: right;
+    white-space: nowrap;
+}
+.tdValue
+{
+    width: 100%;
+}
+/********** END styles for form ******************/
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder
+{
+    color: #aaaaaa;
+    font-style: italic;
+}
+input:-moz-placeholder, textarea:-moz-placeholder
+{
+    color: #aaaaaa;
+    font-style: italic;
+}
+.NoClose .ui-dialog-titlebar-close
+{
+    display: none;
+}
+.SearchBox 
+{
+    position:relative;
+    display:inline-block;
+}
+.SearchBox .text
+{
+    padding-right: 30px;
+}
+.SearchBox button 
+{
+    background-image: url("/Content/images/magnifying_glass.png");
+    background-position: 0 50%;
+    margin-top: 1px;
+    padding: 9px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+b 
+{
+    font-weight:bold;
+}
+div.selector span 
+{
+    overflow:hidden;
+}
+input 
+{
+    vertical-align:top;
+}
+.divInnerBlocker 
+{
+    font-size: 16pt;
+    padding:20px;
+}
+.divInnerBlocker div
+{
+    background-image: url("/Content/WhiteLabel/light/images/loading.gif");
+    background-repeat:no-repeat;
+    padding-left: 30px;
+}

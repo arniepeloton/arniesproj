@@ -1,0 +1,93 @@
+﻿body {
+    display: block !important;
+}
+
+.body-content{
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.eProducts{
+    border: 1px solid inherit;
+    padding:10px 0px;
+}
+
+.eProducts a > .productInfo{
+    margin-top: 10px;
+}
+
+.eProducts a{
+    color:#0083C1 !important;
+    text-shadow:none !important;
+}
+
+.eProducts:hover{
+    border: 1px solid #28a745;
+    cursor:pointer;
+}
+
+.eProducts:hover a,
+.eProducts:hover .price{
+    color:#FFF !important;
+    text-shadow:none !important;
+}
+
+.top-bar .cnt-account ul.dropdown-menu > li {
+    display: block !important;
+}
+
+.qtyintervallist {
+    display:none;
+    position:absolute;
+    max-width: 100%;
+    box-shadow: 0px 5px 28px #CCC;
+    overflow-y:auto;
+    max-height:130px;
+    left:0;
+    right:0;
+    z-index:1000;
+}
+
+.basket-item-count {
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    height: 25px;
+    width: 25px;
+    background: #fdd922;
+    color: #0083C1;
+    text-align: center;
+    line-height: 25px;
+    display:inherit;
+    font-size:14px;
+}
+
+.productname {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 40px;
+}
+
+.hidetab{
+    display:none !important;
+}
+
+.addedtocart{
+    animation: mymove 1s;
+}
+
+@keyframes mymove {
+  0%, 100% {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  50% {
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+}
