@@ -1,0 +1,1417 @@
+﻿private.TransInvoice.InvoiceTypeCode 
+	- varchar(30) 
+	- Sept 12, 2015
+	- UI in C:\dev\debug\Mobiz\WebErp\Scripts3\SalesMenuOrderTaker.js
+	- used only if org is MobizDUC
+	- replicated to wholesale.TransSalesOrder.DefaultInvoiceTypeID (converted from varchar to guid)
+
+private.TransInvoice.ApprovedDate
+	- datetime2
+	- Sept 12, 2015
+	- read by C:\dev\debug\MobizFulfillmentCenter\Controllers\BrowserController.vb
+	- set by C:\dev\debug\DotNet\SRM\Business\TransSalesOrder.vb
+		- only if no "for approval reason"
+
+private.TransInvoice.DucInvoiceNum
+	- int
+	- Sept 14, 2015
+	- set if MobizDUC invoice was replicated from wholesale invoice
+
+private.TransInvoice.DucInvoiceType
+	- varchar
+	- Sept 15, 2015
+	- data: CHI, DR, TR, CHI-CAS
+
+private.TransInvoice.DucInvoiceID
+	- guid
+	- Sept 15, 2015
+
+private.TransInvoice.SalesOrderMobizInvoiceID
+	- guid
+	- Sept 15, 2015
+
+private.TransReceiving.NetSuiteNum
+	- varchar
+	- expects integer
+	- Feb 2016
+
+private.TransReceiving.ProcessedForNetSuite
+	- datetime
+	- Feb 27, 2016
+
+private.TransInvoice.SopaApprovedByID
+	- guid
+	- expects MobizLibraryPeople.ID
+	- if null, dont show in MobizFC -> Pick Products
+	- SOPA = Sales Order Processing & Analytics (MobizCR -> Dashboard)
+	- Mar 14, 2016
+	
+private.TransInvoiceItemsPickingFowsts
+	- table
+	- contains info about where to withdraw invoice products
+	- Mar 16, 2016
+
+private.TransBackOrderProducts.ServingOrderID
+	- guid
+	- if not null, the backorder for that product already has a sales order (not the original sales order)
+	- Mar 23, 2016
+	
+private.TransReceiving.DontServeBackOrder
+	- bit
+	- the receiving trans cannot serve a back order in the future
+	- Mar 29, 2016
+
+public.LibraryOrganizationFOWST.DefaultPosView
+	- varchar
+	- Sept 30, 2016
+	- Retail View
+	  Table View
+	  Hot Buttons View
+	  FMCG View (Modern Look)
+	  FMCG View (DOS Look)
+
+private.LibraryDevice.UuidDisplay
+	- varchar(50)
+	- Oct 6, 2016
+	- "Serial Number to Display on Receipt"
+
+
+-- 2017_06_05__13_34_02_6332
+ALTER TABLE dbo.TransCustomerPayment
+ADD ConsumedUnappliedPayment money NULL
+
+GO
+
+
+
+-- 2017_06_08__11_14_04_4029
+ALTER TABLE dbo.TransInvoice
+ADD CancelledByID uniqueidentifier NULL
+
+GO
+
+
+
+-- 2017_06_08__11_14_57_4871
+ALTER TABLE dbo.TransInvoice
+ADD DateCancelled datetime2(7) NULL
+
+GO
+
+
+
+-- 2017_06_20__09_43_25_3653 from arnie
+ALTER TABLE Mobiz.dbo.LibraryOrganizationFOWST ADD IsActive bit NULL
+
+GO
+
+
+
+-- 2017_07_11__10_30_41_4405
+ALTER TABLE dbo.TransInvoice
+ADD CanvassID uniqueidentifier NULL
+
+GO
+
+
+
+-- 2017_07_13__15_50_25_3904
+ALTER TABLE dbo.LibraryPriceCanvassItems
+ALTER COLUMN Qty decimal(18, 6)
+
+GO
+
+
+
+-- 2017_07_13__16_32_05_6341
+CREATE TABLE dbo.LibraryVendorPrices (
+  ID uniqueidentifier DEFAULT newid() ROWGUIDCOL NOT NULL,
+  ProductID uniqueidentifier NOT NULL,
+  VendorID uniqueidentifier NOT NULL,
+  Price money NOT NULL,
+  LastUpdated datetime2(7) NOT NULL,
+  PRIMARY KEY CLUSTERED (ID)
+)
+
+GO
+
+
+
+-- 2017_07_17__11_00_51_1546
+ALTER TABLE dbo.LibraryVendorPrices
+ADD CONSTRAINT LibraryVendorPrices_uq 
+UNIQUE NONCLUSTERED (ProductID, VendorID)
+WITH (
+  PAD_INDEX = OFF,
+  IGNORE_DUP_KEY = OFF,
+  STATISTICS_NORECOMPUTE = OFF,
+  ALLOW_ROW_LOCKS = ON,
+  ALLOW_PAGE_LOCKS = ON)
+
+GO
+
+
+
+-- 2017_07_20__18_35_13_8486
+ALTER TABLE dbo.TransInvoice
+ADD ItemCount int NULL
+
+GO
+
+
+
+-- 2017_07_25__16_05_27_2455
+ALTER TABLE dbo.LibraryOrganizationSupplier
+ADD CreditTermsID uniqueidentifier NULL
+
+GO
+
+
+
+
+ALTER TABLE dbo.LibraryOrganizationSupplier
+ADD CreditLimit float NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryOrganizationSupplier
+ADD CreditBegBalance money NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryOrganizationSupplier
+ADD CreditBalanceAsOf date NULL
+
+GO
+
+
+
+-- 2017_08_02__13_29_43_7225 
+-- 2017_08_11__13_41_03_6068 deployed to prod
+CREATE TABLE dbo.CacheReceivings (
+  ID uniqueidentifier NOT NULL,
+  SupplierID uniqueidentifier NOT NULL,
+  GrossInvoiceAmount money NOT NULL,
+  InvoiceDate datetime NULL,
+  LastUpdated datetime NOT NULL,
+  ReceivingNumber int NOT NULL,
+  InvoiceNumber varchar(95) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  CashAmount money NULL,
+  CheckPaymentAmount money NULL,
+  CreditCardAmount money NULL,
+  DebitCardAmount money NULL,
+  SRVAmount money NULL,
+  OtherTypeAmount money NULL,
+  TotalPayment money NULL,
+  UpdatedByName varchar(153) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  CreditTerms int NULL,
+  InvoiceDueDate datetime NULL,
+  NetInvoiceBalance money NULL,
+  NetInvoiceAmount money NULL,
+  AdjustmentAmount money NULL,
+  DebitMemo money NULL,
+  CreditMemo money NULL,
+  IsPrinted bit NULL,
+  Remarks varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+GO
+
+
+
+CREATE TABLE dbo.TransReceivingPayment (
+  ID uniqueidentifier ROWGUIDCOL NOT NULL,
+  SupplierID uniqueidentifier NOT NULL,
+  FowstID uniqueidentifier NOT NULL,
+  DeviceID uniqueidentifier NOT NULL,
+  PaymentNum int NOT NULL,
+  PaymentDate datetime2(7) NOT NULL,
+  UserID uniqueidentifier NOT NULL,
+  LastUpdated datetime2(7) NOT NULL,
+  CashAmount money NOT NULL,
+  ChecksAmount money NOT NULL,
+  Remarks varchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  ManualReceiptNumber varchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  IsActive bit NOT NULL,
+  UnappliedPayment money NULL,
+  PRIMARY KEY CLUSTERED (ID)
+    WITH (
+      PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF,
+      ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+
+
+
+
+CREATE TABLE dbo.TransReceivingPaymentReceivings (
+  ID uniqueidentifier ROWGUIDCOL NOT NULL,
+  PaymentID uniqueidentifier NOT NULL,
+  ReceivingID uniqueidentifier NOT NULL,
+  AmountPaid money NOT NULL,
+  Remarks varchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  PRIMARY KEY CLUSTERED (ID)
+    WITH (
+      PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF,
+      ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON),
+  CONSTRAINT TransReceivingPaymentReceivings_fk FOREIGN KEY (PaymentID) 
+  REFERENCES dbo.TransReceivingPayment (ID) 
+  ON UPDATE NO ACTION
+  ON DELETE NO ACTION,
+  CONSTRAINT TransReceivingPaymentReceivings_fk2 FOREIGN KEY (ReceivingID) 
+  REFERENCES dbo.TransReceiving (ID) 
+  ON UPDATE NO ACTION
+  ON DELETE NO ACTION
+)
+
+GO
+
+
+
+CREATE TABLE dbo.TransReceivingPaymentChecks (
+  ID uniqueidentifier ROWGUIDCOL NOT NULL,
+  PaymentID uniqueidentifier NOT NULL,
+  BankID uniqueidentifier NOT NULL,
+  BankName varchar(150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  BankBranchID uniqueidentifier NULL,
+  BankBranchName varchar(150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  IsBankFromOrg bit DEFAULT 0 NOT NULL,
+  AccountName varchar(150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  AccountNumber varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  CheckNumber varchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  CheckDate datetime NOT NULL,
+  CheckAmount money NOT NULL,
+  PRIMARY KEY CLUSTERED (ID)
+    WITH (
+      PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF,
+      ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON),
+  CONSTRAINT TransReceivingPaymentChecks_fk FOREIGN KEY (PaymentID) 
+  REFERENCES dbo.TransReceivingPayment (ID) 
+  ON UPDATE NO ACTION
+  ON DELETE NO ACTION
+)
+
+GO
+
+
+
+CREATE TABLE dbo.TransReceivingPaymentCheckAmount (
+  ID uniqueidentifier ROWGUIDCOL NOT NULL,
+  PaymentID uniqueidentifier NOT NULL,
+  PaymentCheckID uniqueidentifier NOT NULL,
+  ReceivingID uniqueidentifier NOT NULL,
+  AmountPaid money DEFAULT 0 NOT NULL,
+  Overpayment money DEFAULT 0 NOT NULL,
+  PRIMARY KEY CLUSTERED (ID)
+    WITH (
+      PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF,
+      ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+
+
+
+-- 2017_08_07__13_41_03_3747
+CREATE TABLE dbo.TransReceivingPaymentCreditCard (
+  ID uniqueidentifier DEFAULT newid() ROWGUIDCOL NOT NULL,
+  CustomerPaymentID uniqueidentifier NOT NULL,
+  CreditCardType varchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  CreditCardBankID uniqueidentifier NULL,
+  CreditCardBankName varchar(150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  IsBankFromOrg bit CONSTRAINT DF_TransReceivingPaymentCreditCard_IsBankFromOrg_1 DEFAULT 0 NOT NULL,
+  BankCountryID uniqueidentifier NULL,
+  HolderLastName varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  HolderFirstName varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  HolderMiddleName varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  HolderGenerationalSuffix varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  CreditCardNumber varchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  CreditCardIssuanceDate date NULL,
+  CreditCardExpirationDate datetime NULL,
+  ApprovalNo varchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  NoOfInstallmentPayments numeric(18, 0) NULL,
+  CreditCardSurcharge float CONSTRAINT DF_TransReceivingPaymentCreditCard_CreditCardSurcharge DEFAULT 0 NOT NULL,
+  CreditCardAmount money DEFAULT 0 NOT NULL,
+  CreditCardTypeOthers varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+ON [PRIMARY]
+
+GO
+
+
+
+
+CREATE UNIQUE CLUSTERED INDEX PK_TransReceivingPaymentCreditCard ON dbo.TransReceivingPaymentCreditCard
+  (ID)
+WITH (
+  PAD_INDEX = OFF,
+  IGNORE_DUP_KEY = OFF,
+  DROP_EXISTING = OFF,
+  STATISTICS_NORECOMPUTE = OFF,
+  SORT_IN_TEMPDB = OFF,
+  ONLINE = OFF,
+  ALLOW_ROW_LOCKS = ON,
+  ALLOW_PAGE_LOCKS = ON)
+ON [PRIMARY]
+
+GO
+
+
+
+CREATE TABLE dbo.TransReceivingPaymentDebitCard (
+  ID uniqueidentifier ROWGUIDCOL NOT NULL,
+  CustomerPaymentID uniqueidentifier NOT NULL,
+  DebitCardType varchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  DebitCardBankID uniqueidentifier NULL,
+  DebitCardBankName varchar(150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  IsBankFromOrg bit CONSTRAINT DF_TransReceivingPaymentDebitCard_IsBankFromOrg_1 DEFAULT 0 NOT NULL,
+  BankCountryID uniqueidentifier NULL,
+  HolderLastName varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  HolderFirstName varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  HolderMiddleName varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  HolderGenerationalSuffix varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  DebitCardNumber varchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  DebitCardIssuanceDate date NULL,
+  DebitCardExpirationDate datetime NULL,
+  ApprovalNo varchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  NoOfInstallmentPayments numeric(18, 0) NULL,
+  DebitCardSurcharge float CONSTRAINT DF_TransReceivingPaymentDebitCard_DebitCardSurcharge DEFAULT 0 NOT NULL,
+  DebitCardAmount money CONSTRAINT DF_TransReceivingPaymentDebitCard_DebitCardAmount DEFAULT 0 NOT NULL,
+  CONSTRAINT PK_TransReceivingPaymentDebitCard PRIMARY KEY CLUSTERED (ID)
+    WITH (
+      PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF,
+      ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+
+
+
+-- 2017_08_08__13_17_51_1746
+ALTER TABLE dbo.LibraryOrganizationPIMPriceBreak
+ADD DiscountType tinyint NULL
+
+GO
+
+
+
+
+EXEC sp_addextendedproperty 'MS_Description', N'0 or null = percent
+1 = peso value', N'schema', N'dbo', N'table', N'LibraryOrganizationPIMPriceBreak', N'column', N'DiscountType'
+
+GO
+
+
+
+-- 2017_08_11__13_53_21_4934 deployed to production
+
+
+-- 2017_08_14__14_08_45_7520
+-- public database
+ALTER TABLE dbo.LibraryOrganizationFOWST
+ADD IsMainAddress bit NULL
+
+GO
+
+
+
+-- 2017_08_22__13_12_46_0041
+ALTER TABLE dbo.TransCustomerPayment
+ADD CashDepositStatus tinyint NULL
+
+GO
+
+
+
+-- 2017_08_22__13_12_56_0386
+EXEC sp_addextendedproperty 'MS_Description', N'0 or null = not deposited/returned
+1 = deposited
+2 = returned from bank', N'schema', N'dbo', N'table', N'TransCustomerPayment', N'column', N'CashDepositStatus'
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentChecks
+ADD DepositStatus tinyint NULL
+
+GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description', N'0 or null = not deposited/returned
+1 = deposited
+2 = returned from bank', N'schema', N'dbo', N'table', N'TransCustomerPaymentChecks', N'column', N'DepositStatus'
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentCreditCard
+ADD DepositStatus tinyint NULL
+
+GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description', N'0 or null = not deposited/returned
+1 = deposited
+2 = returned from bank', N'schema', N'dbo', N'table', N'TransCustomerPaymentCreditCard', N'column', N'DepositStatus'
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentDebitCard
+ADD DepositStatus tinyint NULL
+
+GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description', N'0 or null = not deposited/returned
+1 = deposited
+2 = returned from bank', N'schema', N'dbo', N'table', N'TransCustomerPaymentDebitCard', N'column', N'DepositStatus'
+
+GO
+
+
+
+-- 2017_08_24__12_12_57_2268 deployed to DSME 
+
+-- 2017_08_28__13_34_00_2773
+DROP INDEX TransInvoice_uq ON dbo.TransInvoice
+
+GO
+
+
+
+
+CREATE UNIQUE NONCLUSTERED INDEX TransInvoice_uq ON dbo.TransInvoice
+  (InvoiceNumber, FowstID, DeviceID, SubNumber, SubTypeID, DocumentNameID)
+WHERE ([invoicenumber]<>(0) )
+WITH (
+  PAD_INDEX = OFF,
+  IGNORE_DUP_KEY = OFF,
+  DROP_EXISTING = OFF,
+  STATISTICS_NORECOMPUTE = OFF,
+  SORT_IN_TEMPDB = OFF,
+  ONLINE = OFF,
+  ALLOW_ROW_LOCKS = ON,
+  ALLOW_PAGE_LOCKS = ON)
+
+GO
+
+
+
+-- 2017_08_28__13_49_57_9525
+ALTER TABLE dbo.TransCustomerPayment
+ADD CashDepositDate datetime2(7) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentChecks
+ADD DepositsDepositDate datetime2(7) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentCreditCard
+ADD DepositsDepositDate datetime2(7) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentDebitCard
+ADD DepositsDepositDate datetime2(7) NULL
+
+GO
+
+
+
+-- 2017_08_29__14_03_53_6666
+ALTER TABLE dbo.TransCustomerPayment
+ADD CashDepositGroupID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentChecks
+ADD DepositGroupID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentCreditCard
+ADD DepositGroupID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentDebitCard
+ADD DepositGroupID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPayment
+ADD DepositoryBankID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPayment
+ADD DepositoryBankBranch varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPayment
+ADD DepositoryAccountName varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPayment
+ADD DepositoryAccountNumber varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentChecks
+ADD DepositoryBankID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentChecks
+ADD DepositoryBankBranch varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentChecks
+ADD DepositoryAccountName varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentChecks
+ADD DepositoryAccountNumber varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentCreditCard
+ADD DepositoryBankID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentCreditCard
+ADD DepositoryBankBranch varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentCreditCard
+ADD DepositoryAccountName varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentCreditCard
+ADD DepositoryAccountNumber varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentDebitCard
+ADD DepositoryBankID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentDebitCard
+ADD DepositoryBankBranch varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentDebitCard
+ADD DepositoryAccountName varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransCustomerPaymentDebitCard
+ADD DepositoryAccountNumber varchar(100) NULL
+
+GO
+
+
+
+-- deployed to DSME 2017_08_30__13_53_46_6169
+
+-- 2017_08_30__14_07_23_7704
+CREATE TABLE dbo.LibraryDepositAccounts (
+  ID uniqueidentifier NOT NULL,
+  AccountName varchar(100) NOT NULL,
+  AccountNumber varchar(100) NOT NULL,
+  UserID uniqueidentifier NOT NULL,
+  LastUpdated datetime2(7) NOT NULL,
+  PRIMARY KEY CLUSTERED (ID)
+)
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryDepositAccounts
+ADD CONSTRAINT LibraryDepositAccounts_uq 
+UNIQUE NONCLUSTERED (AccountName, AccountNumber)
+WITH (
+  PAD_INDEX = OFF,
+  IGNORE_DUP_KEY = OFF,
+  STATISTICS_NORECOMPUTE = OFF,
+  ALLOW_ROW_LOCKS = ON,
+  ALLOW_PAGE_LOCKS = ON)
+
+GO
+
+
+
+-- 2017_09_01__09_51_59_4587 deployed to production
+-- 2017_09_01__12_48_50_9824 deployed to DSME
+
+-- 2017_09_07__10_53_52_6662
+-- public database
+CREATE UNIQUE NONCLUSTERED INDEX LibraryOrganizationFOWST_uq ON dbo.LibraryOrganizationFOWST
+  (OrganizationID, FOWSTNo)
+WHERE fowstno is not null
+
+GO
+
+
+
+-- deployed to production
+
+-- 2017_09_07__13_45_15_0471
+ALTER TABLE dbo.TransMemoSalesReturn
+ADD QuantityBad numeric(18, 6) NULL
+
+GO
+
+
+
+-- 2017_09_08__14_01_16_8914 deployed to production 
+-- 2017_09_13__12_24_47_9195 deployed to DSME
+
+-- 2017_09_13__14_27_43_2052
+CREATE TABLE dbo.LibraryPimCategoryGpm (
+  Category varchar(1000) NOT NULL,
+  Gpm money NOT NULL,
+  UNIQUE (Category)
+)
+
+GO
+
+
+
+-- 2017_09_14__09_54_21_2087 deployed to production 
+
+-- 2017_09_15__14_58_03_1717
+ALTER TABLE dbo.CacheInvoices
+ADD CheckPaymentAmountPdc money NULL
+
+GO
+
+
+
+-- 2017_09_16__10_14_06_2361 deployed to DSME
+-- 2017_09_19__09_21_37_2513 deployed to production
+
+-- 2017_09_22__15_50_51_7707 from Arnie
+ALTER TABLE dbo.LibraryItemModifiers
+ADD IsActive bit DEFAULT 1 NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransInvoiceItemsModifier
+ADD InputQty numeric(18, 6) NULL
+
+GO
+
+
+
+-- 2017_09_30__10_04_31_3207
+-- public database
+CREATE NONCLUSTERED INDEX LibraryOrganizationFOWST_idx ON dbo.LibraryOrganizationFOWST
+  (OrganizationID)
+WHERE IsMainAddress = 1
+
+GO
+
+
+
+-- 2017_10_14__12_17_25_3319 deployed to DSME
+
+-- 2017_10_17__14_41_43_9433
+CREATE TABLE dbo.LibraryRepeatingTransactions (
+  ID uniqueidentifier ROWGUIDCOL NOT NULL,
+  RepeatingInterval varchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  IntervalRepeatFrequency int NULL,
+  EnableOnMondays bit DEFAULT 1 NOT NULL,
+  EnableOnTuesdays bit DEFAULT 1 NOT NULL,
+  EnableOnWednesdays bit DEFAULT 1 NOT NULL,
+  EnableOnThursdays bit DEFAULT 1 NOT NULL,
+  EnableOnFridays bit DEFAULT 1 NOT NULL,
+  EnableOnSaturdays bit DEFAULT 1 NOT NULL,
+  EnableOnSundays bit DEFAULT 1 NOT NULL,
+  DateOfMonth int NULL,
+  DateOfYear date NULL,
+  DateStart date NOT NULL,
+  DateEnd date NULL,
+  SourceTransRentableAssetID uniqueidentifier NULL,
+  IsActive bit NULL,
+  LastRunDate datetime NOT NULL,
+  NextRunDate datetime NOT NULL,
+  PRIMARY KEY CLUSTERED (ID)
+    WITH (
+      PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF,
+      ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON),
+  CONSTRAINT LibraryRepeatingTransactions_fk FOREIGN KEY (SourceTransRentableAssetID) 
+  REFERENCES dbo.TransRentableAssets (ID) 
+  ON UPDATE NO ACTION
+  ON DELETE NO ACTION
+)
+ON [PRIMARY]
+
+GO
+
+
+
+-- 2017_10_19__14_22_51_6786
+ALTER TABLE dbo.TransInvoice
+ADD RepeatingTransactionID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransInvoice
+ADD CONSTRAINT TransInvoice_fk FOREIGN KEY (RepeatingTransactionID) 
+  REFERENCES dbo.LibraryRepeatingTransactions (ID) 
+  ON UPDATE NO ACTION
+  ON DELETE NO ACTION
+
+GO
+
+
+
+-- 2017_10_26__13_03_48_1462 deployed to prod
+
+-- 2017_10_27__09_06_19_5083
+-- public
+ALTER TABLE dbo.LibraryOrganization
+ADD BusinessIndustryText varchar(1000) NULL
+
+GO
+
+
+
+-- 2017_10_27__10_01_12_3772 deployed to prod
+-- 2017_11_10__10_44_35_3027 deployed to DSME
+
+
+
+-- 2017_11_24__13_57_00_4557
+-- public
+ALTER TABLE dbo.LibraryOrganization
+ADD BankRank int NULL
+
+GO
+
+
+
+-- 2017_11_27__10_01_58_0883 deployed to prod
+-- deployed to DSME
+
+-- 2017_11_29__14_08_02_3392
+ALTER TABLE dbo.CacheInvoices
+ADD PurchaseOrderText varchar(max) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.CacheInvoices
+ADD PurchaseOrderDate date NULL
+
+GO
+
+
+
+-- 2017_12_01__17_39_54_0101
+-- public
+ALTER TABLE dbo.LibraryOrganizationFOWST
+ADD ConsolidateOrderSlipPrinting bit NULL
+
+GO
+
+
+
+-- 2017_12_04__13_46_07_3110 deployed to prod
+-- deployed to DSME
+
+
+-- 2017_12_18__15_40_01_0700
+ALTER TABLE dbo.TransInvoice
+ADD EncodingFowstID uniqueidentifier NULL
+
+GO
+
+
+
+-- 2017_12_20__08_54_14_7119 deployed to prod
+-- 2018_01_23__11_09_04_6118 deployed to DSME
+
+-- 2018_01_23__11_09_04_6118
+ALTER TABLE dbo.LibraryOrganizationCustomer
+ADD ThirdPartyID varchar(100) NULL
+
+GO
+
+
+
+-- 2018_01_26__15_20_24_8078
+ALTER TABLE dbo.LibraryPimGroupPims
+ADD OrderNo int NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryPimGroups
+ADD OrderNo int NULL
+
+GO
+
+
+
+-- 2018_01_26__16_36_25_4995 deployed to prod
+
+-- 2018_02_02__09_26_51_8800
+ALTER TABLE dbo.LibraryOrganizationCustomer
+ADD ThirdPartyPlatform varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+
+GO
+
+
+
+-- 2018_02_02__11_03_32_7500 deployed to prod
+
+
+-- 2018_02_15__09_20_25_2987
+ALTER TABLE dbo.TransInvoice
+ADD UneditedBackorder bit NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransInvoiceItems
+ADD ServedQtyIsEdited bit NULL
+
+GO
+
+
+
+
+ALTER TABLE dbo.TransInvoice
+ADD BackorderSourceInvoiceID uniqueidentifier NULL
+
+GO
+
+
+
+-- 2018_02_23__17_44_03_1024
+ALTER TABLE dbo.LibraryOrganizationCustomer
+ADD ThirdPartyBegBalance money NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryOrganizationCustomer
+ADD ThirdPartyBegBalanceAsOf datetime NULL
+
+GO
+
+
+
+-- 2018_03_09__09_14_47_7888
+ALTER TABLE dbo.LibraryDocumentControl
+ADD SeriesType tinyint NULL
+
+GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description', N'null/0 = fowst-device;
+1 = fowst', N'schema', N'dbo', N'table', N'LibraryDocumentControl', N'column', N'SeriesType'
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryDocumentControl
+ADD SeriesStartingNum int NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransInvoice
+ADD FowstWideInvoiceNumber int NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryDocumentControl
+ADD PermitNum varchar(100) NULL
+
+GO
+
+
+
+--- 2018_03_14__15_02_16_1220 deployed to prod
+--- 2018_03_22__14_23_46_1664 deployed to DSME
+
+-- 2018_03_28__16_32_48_1063
+ALTER TABLE dbo.TransReceiving
+ADD DateCancelled datetime2(7) NULL
+
+GO
+
+
+
+-- 2018_04_05__09_04_54_1839 deployed to prod
+
+
+-- 2018_04_12__08_37_59_6973
+ALTER TABLE dbo.LibraryTableTableInfo
+ADD ParentID uniqueidentifier NULL
+
+GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description', N'ID of table that was cloned during split bill', N'schema', N'dbo', N'table', N'LibraryTableTableInfo', N'column', N'ParentID'
+
+GO
+
+
+
+-- 2018_04_13__13_57_16_0212 deployed to prod
+
+-- 2018_05_21__11_25_15_8762
+ALTER TABLE dbo.LibraryOrganizationSupplier
+ADD ThirdPartyPlatform varchar(100) NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryOrganizationSupplier
+ADD ThirdPartyID varchar(100) NULL
+
+GO
+
+
+
+-- 2018_05_22__14_03_34_6956 deployed to prod
+
+
+-- 2018_05_26__16_57_47_9493
+ALTER TABLE dbo.TransInventoryLedger
+ADD TransactionDate datetime NULL
+
+GO
+
+
+
+-- 2018_05_31__10_03_03_3983 deployed to prod
+-- 2018_06_06__13_50_37_3968 deployed to DSME
+
+-- 2018_06_07__09_16_21_7078
+LibraryEcommerceCustomers
+
+-- 2018_06_18__08_32_18_0392 deployed to prod
+
+
+-- 2018_07_27__15_49_27_9960
+ALTER TABLE dbo.TransSalesInvoiceAndRebatesCache
+ALTER COLUMN Customer varchar(max) NOT NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransSalesInvoiceAndRebatesCache
+ALTER COLUMN CashierName varchar(max) NOT NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransSalesInvoiceAndRebatesCache
+ALTER COLUMN ProductNo varchar(max) NOT NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransSalesInvoiceAndRebatesCache
+ALTER COLUMN UnitMeasure varchar(max) NOT NULL
+
+GO
+
+
+
+-- 2018_07_27__15_53_40_8067 deployed to DSME
+
+-- 2018_08_08__13_12_17_6004
+ALTER TABLE dbo.TransReceiving
+ADD AccountsPayableID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransReceiving
+ADD CONSTRAINT TransReceiving_fk2 FOREIGN KEY (AccountsPayableID) 
+  REFERENCES dbo.TransInvoice (ID) 
+  ON UPDATE NO ACTION
+  ON DELETE NO ACTION
+
+GO
+
+
+
+ALTER TABLE dbo.TransReceivingPayment
+ADD CreditCardAmount money NULL
+
+GO
+
+
+
+UPDATE TransReceivingPayment
+SET CreditCardAmount = 0
+WHERE CreditCardAmount IS NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransReceivingPayment
+ALTER COLUMN CreditCardAmount money NOT NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransReceivingPayment
+ADD DebitCardAmount money NULL
+
+GO
+
+
+
+UPDATE TransReceivingPayment
+SET DebitCardAmount = 0
+WHERE DebitCardAmount IS NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransReceivingPayment
+ALTER COLUMN DebitCardAmount money NOT NULL
+
+GO
+
+
+
+-- 2018_08_13__10_58_56_8479
+ALTER TABLE dbo.TransInvoice
+ADD AccountsPayableNum int NULL
+
+GO
+
+
+
+-- 2018_08_13__13_59_52_1957 deployed to DSME
+
+
+-- 2018_08_14__08_32_20_0763
+ALTER TABLE dbo.TransInvoiceItems
+ADD QuantityBad numeric(18, 6) NULL
+
+GO
+
+
+
+-- 2018_08_14__10_45_14_4923 deployed to DSME
+-- 2018_08_14__10_48_44_1855 deployed to prod
+
+
+-- 2018_08_27__08_54_14_0984
+ALTER TABLE dbo.TransInvoice
+ADD ParentOrderID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransInvoice
+ADD CONSTRAINT TransInvoice_fk3 FOREIGN KEY (ParentOrderID) 
+  REFERENCES dbo.TransInvoice (ID) 
+  ON UPDATE NO ACTION
+  ON DELETE NO ACTION
+
+GO
+
+
+
+ALTER TABLE dbo.TransInvoice
+ALTER COLUMN DeliveryMethod varchar(100)
+
+GO
+
+
+
+ALTER TABLE dbo.TransZReadCache
+ADD OtherTypeAmount money NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransInvoice
+ADD OrderedByID uniqueidentifier NULL
+
+GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description', N'MobizLibraryPeople.ID', N'schema', N'dbo', N'table', N'TransInvoice', N'column', N'OrderedByID'
+
+GO
+
+
+
+-- 2018_09_06__10_46_07_3145
+ALTER TABLE dbo.TransInvoice
+ADD InvoiceFowstID uniqueidentifier NULL
+
+GO
+
+
+
+-- 2018_09_11__09_32_04_3879 deployed to DSME
+-- 2018_09_11__10_13_07_0569 deployed to prod
+
+ALTER TABLE dbo.TransZReadCache
+ADD OtherTypeAmount money NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransZReadCache
+ADD PresentationPrevGrossSales money NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransZReadCache
+ADD PresentationCurrGrossSales money NULL
+
+GO
+
+
+
+-- 2018_09_11__09_32_04_3879 deployed to DSME
+-- 2018_09_11__10_13_07_0569 deployed to prod
+
+ALTER TABLE dbo.LibraryRepeatingTransactions
+ADD IsPrepaid bit NULL
+
+GO
+
+
+
+-- 2018_10_02__11_16_23_9080
+CREATE TABLE dbo.TransRentableAssetOtherCharges (
+  ID uniqueidentifier ROWGUIDCOL NULL,
+  TransRentableAssetID uniqueidentifier NULL,
+  OtherChargesID uniqueidentifier NULL,
+  Qty decimal(18, 0) NULL
+)
+ON [PRIMARY]
+
+GO
+
+
+
+CREATE TABLE dbo.LibraryAssetOtherCharges (
+  ID uniqueidentifier ROWGUIDCOL NOT NULL,
+  ProductID uniqueidentifier NULL,
+  Qty decimal(18, 0) NULL,
+  InvoicingType varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  UomID uniqueidentifier NULL,
+  PriceLevelID uniqueidentifier NULL,
+  IsRequired bit NULL,
+  IsActive bit NULL,
+  LastUpdated datetime NULL,
+  UserID uniqueidentifier NULL
+)
+ON [PRIMARY]
+
+GO
+
+
+
+ALTER TABLE dbo.TransRentableAssets
+ADD TransferDate datetime NULL
+
+GO
+
+
+
+ALTER TABLE dbo.TransRentableAssets
+ADD TransferFromID uniqueidentifier NULL
+
+GO
+
+
+
+-- 2018_09_11__10_13_07_0569 deployed to prod
+
+-- 2018_10_12__11_13_55_2450
+CREATE TABLE dbo.CacheProductSearch (
+  ProductID uniqueidentifier NOT NULL,
+  SearchPhrase varchar(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  CONSTRAINT CacheProductSearch_uq UNIQUE (ProductID, SearchPhrase)
+    WITH (
+      PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF,
+      ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+ON [PRIMARY]
+
+GO
+
+
+
+-- 2018_10_22__13_12_52_8284
+ALTER TABLE dbo.LibraryOrganizationFinancialDetails
+ADD DeactivatedByID uniqueidentifier NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryOrganizationFinancialDetails
+ADD DeactivatedDate datetime NULL
+
+GO
+
+
+
+-- 2018_10_23__11_23_32_5443
+ALTER TABLE dbo.LibraryOrganizationFinancialDetails
+ADD UpdatedByID uniqueidentifier NULL
+
+GO
+
+
+
+UPDATE LibraryOrganizationFinancialDetails
+SET UpdatedByID = NEWID()
+WHERE UpdatedByID IS NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryOrganizationFinancialDetails
+ALTER COLUMN UpdatedByID uniqueidentifier NOT NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryOrganizationFinancialDetails
+ADD UpdatedDate datetime NULL
+
+GO
+
+
+
+UPDATE LibraryOrganizationFinancialDetails
+SET UpdatedDate = GETDATE()
+WHERE UpdatedDate IS NULL
+
+GO
+
+
+
+ALTER TABLE dbo.LibraryOrganizationFinancialDetails
+ALTER COLUMN UpdatedDate datetime NOT NULL
+
+GO
+
+
+
+-- 2018_10_30__12_36_03_9111
+ALTER TABLE dbo.TransInvoiceAdjustments
+ADD UnappliedCredits money NULL
+
+GO
+
+
+
+-- 2018_11_07__09_28_07_0611 deployed to prod

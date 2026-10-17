@@ -1,0 +1,813 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="SqlException" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="SqlException">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Number" type="xs:int" minOccurs="0" />
+                <xs:element name="Class" type="xs:int" minOccurs="0" />
+                <xs:element name="Sql" type="xs:string" minOccurs="0" />
+                <xs:element name="Message" type="xs:string" minOccurs="0" />
+                <xs:element name="Rolledback" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <SqlException>
+    <Number>208</Number>
+    <Class>16</Class>
+    <Sql>UPDATE LibraryOrganization SET CompanyName='[CASH PAYMENT]'
+,OfficeAddressBuildingNo='123'
+,OfficeAddressStreet='7th Ave'
+,Island=''
+,OfficeAddressCityID='Please Select City'
+,OfficeAddressCountryID='Please Select Country'
+,Region=''
+,Background=''
+,Mission=''
+,Vision=''
+,FoundingDate=''
+,IsActive=1
+,IndustryClassID=NULL
+,UserID='210cb269-b208-4774-a003-b9e669b3b3ff'
+,LastUpdated='10/14/2016 10:14:00 AM'
+,NoOfEmployees=0
+,RevenuePerYear='NULL'
+,ScopeOfOperations=''
+,NoOfFactory=0
+,NoOfOffice=0
+,NoOfWarehouse=0
+,NoOfStore=0
+,NoOfTruck=0
+ WHERE  ID = 'cd71a0f7-08a9-4601-876e-5f13c064f873'</Sql>
+    <Message>Invalid object name 'LibraryOrganization'.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>8169</Number>
+    <Class>16</Class>
+    <Sql>UPDATE MobizLibraryOrganization SET CompanyName='[CASH PAYMENT]'
+,OfficeAddressBuildingNo='123'
+,OfficeAddressStreet='7th Ave'
+,Island=''
+,OfficeAddressCityID='Please Select City'
+,OfficeAddressCountryID='Please Select Country'
+,Region=''
+,Background=''
+,Mission=''
+,Vision=''
+,FoundingDate=''
+,IsActive=1
+,IndustryClassID=NULL
+,UserID='210cb269-b208-4774-a003-b9e669b3b3ff'
+,LastUpdated='10/14/2016 10:15:00 AM'
+,NoOfEmployees=0
+,RevenuePerYear='NULL'
+,ScopeOfOperations=''
+,NoOfFactory=0
+,NoOfOffice=0
+,NoOfWarehouse=0
+,NoOfStore=0
+,NoOfTruck=0
+ WHERE  ID = 'cd71a0f7-08a9-4601-876e-5f13c064f873'</Sql>
+    <Message>Conversion failed when converting from a character string to uniqueidentifier.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>207</Number>
+    <Class>16</Class>
+    <Sql>UPDATE LibraryOrganizationCustomer SET OrganizationID='cd71a0f7-08a9-4601-876e-5f13c064f873'
+,ActivationDate=GetDate()
+,DeActivated=0
+,IsBan='0'
+,LastUpdated=GetDate()
+,SalesRepID=''
+,PriceLevelID=''
+,CreditTermsID=''
+,CreditLimit=''
+,CreditBalance=''
+,CreditBalAsOf='10/14/2016 2:34:57 PM'
+ WHERE  ID = ''</Sql>
+    <Message>Invalid column name 'CreditBalance'.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>515</Number>
+    <Class>16</Class>
+    <Sql>INSERT INTO MobizLibraryOrganizationAffiliates(ID,AffiliatesID,OrganizationID,UserID,LastUpdated) VALUES ('8fea0fec-ef38-4bcc-a453-bf8cfda1be2d','ba5ef053-166f-4025-8023-42f034fa6e1f','0955d04b-a8fa-41b4-b4c0-42048a84bc8b','c530bdf3-ea03-4dd3-95cd-a384374aa570','10/17/2016 5:53:00 PM')</Sql>
+    <Message>Cannot insert the value NULL into column 'Remarks', table 'Mobiz.dbo.LibraryOrganizationAffiliates'; column does not allow nulls. INSERT fails.
+The statement has been terminated.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>241</Number>
+    <Class>16</Class>
+    <Sql>UPDATE MobizLibraryPeople SET FirstName='Brylle'
+,MiddleName='Cuares'
+,Surname='Cuares'
+,DateOfBirth='Set Date'
+,Position=''
+,PositionDescription=''
+,IsFromOrg='0'
+,IsActive=1
+,UserID='210cb269-b208-4774-a003-b9e669b3b3ff'
+,LastUpdated='10/18/2016 9:58:00 AM'
+ WHERE  ID = '5a83d49a-bd68-4aae-a249-97659d5ba73a'</Sql>
+    <Message>Conversion failed when converting date and/or time from character string.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>6115</Number>
+    <Class>16</Class>
+    <Sql>kill 57</Sql>
+    <Message>KILL command cannot be used inside user transactions.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>-2</Number>
+    <Class>11</Class>
+    <Sql>SELECT TOP 1 Balance
+ FROM TransInventoryLedger
+ WHERE ProductID = '7a6acbaa-e003-4518-8209-a62ceee61bb7'
+ AND FowstID = 'fe639d1f-cd83-4b3e-8b0a-586731f479cb'
+ AND BinID = 'b9bda453-888d-44ef-8fa9-b2aab11d0d4f'
+ AND ExpirationDate IS NULL
+ ORDER BY LastUpdated DESC</Sql>
+    <Message>Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>206</Number>
+    <Class>16</Class>
+    <Sql>INSERT INTO TransCRM(ID,ClientID,TicketNumber,TicketType,IssueStatus,ContactPersonID,AddressToService,TimeFrom,TimeTo,Notes,ActionName,IssueAssignedTo,TicketDueDate,RecommendedAction,DaysOfService,LastUpdated) VALUES ('00000000-0000-0000-0000-000000000000',0,15825,0,'open','asd','asd','1:00 AM','2:00 AM','asdasd','Ticket','456b5945-a6c4-4837-b041-daee76a6c67e','Nov 22, 2016','Call Back','mon,sat,','11/22/2016 3:50:00 PM')</Sql>
+    <Message>Operand type clash: int is incompatible with uniqueidentifier</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>102</Number>
+    <Class>15</Class>
+    <Sql>INSERT INTO TransCRM(ID,ClientID,TicketType,OtherTicketType,IssueStatus,ContactPersonName,ContactPersonID,AddressToService,TimeFrom,TimeTo,Notes,ActionName,IssueAssignedTo,IssueAssignedToName,TicketDueDate,RecommendedAction,OtherRecommendedAction,DaysOfService,CreatedBy,LastUpdated,TicketNumber,TicketOpenDate,OriginalCreatedBy) VALUES ('dc1a0104-6fbd-4201-9d27-d2502cee35e9','ba5ef053-166f-4025-8023-42f034fa6e1f','Bug Report','','Unresolved','',NULL,'',,,'','Ticket','c245aec4-5145-40be-9d1d-4d96e4fac05f','ALBANO, MARICRIS LIPONGO','Dec 31, 2016','For check-up/repair, then pick up by client','','Monday, ','c530bdf3-ea03-4dd3-95cd-a384374aa570','12/2/2016 3:04:00 PM',6,'12/2/2016 3:04:00 PM','c530bdf3-ea03-4dd3-95cd-a384374aa570')</Sql>
+    <Message>Incorrect syntax near ','.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>257</Number>
+    <Class>16</Class>
+    <Sql>INSERT INTO LibraryPriceCanvassItems(ID,CanvassID,Description,Qty,UnitOfMeasure) VALUES ('de263b0e-cd27-40b5-bd9b-15e3d5936305','ee885cf7-71db-4929-b076-ecf829af7796','Beef','1','1fd3949f-cf24-4ba3-978c-fb53485f1bcd')</Sql>
+    <Message>Implicit conversion from data type varchar to varbinary(max) is not allowed. Use the CONVERT function to run this query.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>168</Number>
+    <Class>15</Class>
+    <Sql>INSERT INTO LibraryPriceCanvassVendor(ID,CanvassID,VendorID) VALUES ('45662365-ce1d-46ff-a0a2-71d24fcd2acb','a76ecdf9-4793-454b-b0d0-2cbf81245e3c',1e2366b3-9b02-4696-9b23-afc2a5362075)</Sql>
+    <Message>The floating point value '1e2366' is out of the range of computer representation (8 bytes).
+Incorrect syntax near 'b3'.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>547</Number>
+    <Class>16</Class>
+    <Sql>INSERT INTO TransInventoryLedger(ID,ProductID,FowstID,TransactionID,TransactionType,BinID,Qty,Balance,UserID,Value,Reason,SubtransactionType,ParentID) VALUES ('9d0b4f0a-b5ac-4c04-98de-d245d6bec0c2','5b676560-9f33-4cdd-8a03-15c46ffa00dc','a4e7cb37-afb2-4405-a359-3f71b5bdd794','9b7c89f8-32ae-402d-a422-d2bfa2702b30','Invoice','41da1c4b-9d8a-43b7-bd82-7a5503f8522d',4.000000,0.000000,'c530bdf3-ea03-4dd3-95cd-a384374aa570',252.0000000000,'','Production','122c0aa6-eb8e-4c41-bde4-6e868ba78752')</Sql>
+    <Message>The INSERT statement conflicted with the FOREIGN KEY SAME TABLE constraint "TransInventoryLedger_fk". The conflict occurred in database "MobizABC", table "dbo.TransInventoryLedger", column 'ID'.
+The statement has been terminated.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>64</Number>
+    <Class>20</Class>
+    <Sql>Select top 0 * from LibraryOrganizationCustomerFowstBinProduct</Sql>
+    <Message>A transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - The specified network name is no longer available.)</Message>
+  </SqlException>
+  <SqlException>
+    <Number>2601</Number>
+    <Class>14</Class>
+    <Sql>INSERT INTO TransKnowledgeManagement(ID,SolutionID,Steps,OrderNo) VALUES ('e14242d8-c5f1-444c-b4b6-ed9d6415313f','57133cbd-c66c-4808-8ead-bf118ae14fab','&amp;#49;','1')</Sql>
+    <Message>Cannot insert duplicate key row in object 'dbo.TransKnowledgeManagement' with unique index 'PK_TransProblemSolution'.
+The statement has been terminated.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>10054</Number>
+    <Class>20</Class>
+    <Sql>SELECT Price,DeactivateDiscount FROM MobizLibraryPIMProductPriceLevel WHERE ProductID = '9268863e-796b-472b-b99c-8fb5a6abae45' AND PriceLevelID = '{01000012-0003-0000-0000-000000000000}' AND Price &gt; 0</Sql>
+    <Message>A transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - An existing connection was forcibly closed by the remote host.)</Message>
+  </SqlException>
+  <SqlException>
+    <Number>8120</Number>
+    <Class>16</Class>
+    <Sql>SELECT ProductID
+ ,ProductNo
+ ,ProductName
+ ,FowstID
+ ,Fowst
+ ,SUM(Balance) AS Balance
+ ,MAX(LastUpdated) AS LastUpdated
+ ,ISNULL(SUM(Balance) * MAX(COGS),0) AS COGS
+ ,ISNULL(SUM(Balance) * MAX(SRP),0) AS SRP
+ ,ISNULL(UnitMeasure,'') AS UnitMeasure
+ ,InventoryCountApproval
+ ,IsDeactivated
+ FROM #t2
+ GROUP BY ProductID
+ ,ProductNo
+ ,ProductName
+ ,FowstID
+ ,Fowst
+ ,UnitMeasure
+ ,InventoryCountApproval
+ ORDER BY ProductName
+,Fowst </Sql>
+    <Message>Column '#t2.IsDeactivated' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>156</Number>
+    <Class>15</Class>
+    <Sql>DELETE FROM LibraryKnowledgeManagementArticleTopics WHERE ProblemID = '''dd44d91b-7518-4ea4-a5c6-5c147b91f7c2'''
+ AND NOT IN ('0a4d6382-fba0-41b7-b1cc-86bbea16b99b')</Sql>
+    <Message>Incorrect syntax near the keyword 'IN'.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>2627</Number>
+    <Class>14</Class>
+    <Sql>INSERT INTO SystemDefaults(ID,Description,DefaultValue,LastUpdated) VALUES ('d8b22e51-0d85-48bb-a6d6-084805abd73b','CheckOutTimeDefault','12:00 PM',getdate())</Sql>
+    <Message>Violation of UNIQUE KEY constraint 'IX_SystemDefaults_1'. Cannot insert duplicate key in object 'dbo.SystemDefaults'.
+The statement has been terminated.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>8114</Number>
+    <Class>16</Class>
+    <Sql>UPDATE LibrarySurveyQuestionFields SET QuestionID='1f047c7e-5770-40e8-afd1-548e8f59c4a5'
+,Label='Other (please specify)'
+,AsType='answer'
+,Score=''
+,IsOther=1
+ WHERE  ID = 'dd408b66-639e-45a3-9d49-1d7f9cf3c702'</Sql>
+    <Message>Error converting data type varchar to numeric.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>8115</Number>
+    <Class>16</Class>
+    <Sql>INSERT INTO LibraryOrganization(ID,CompanyName,LastUpdated) VALUES ('43f00c4a-43d3-489d-9b5f-e5df99a1483b','Respondent 10242017-040414',10242017-040414)</Sql>
+    <Message>Arithmetic overflow error converting expression to data type datetime.
+The statement has been terminated.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>242</Number>
+    <Class>16</Class>
+    <Sql>SELECT ID FROM TransRentableAssets 
+ WHERE ('Nov 20, 2017 00:00 AM 01:05 PM' BETWEEN ReservedFrom AND ReservedUntil 
+ OR 'Nov 30, 2017 12:00 PM' BETWEEN ReservedFrom AND ReservedUntil) AND IsDone = 0 
+ AND AssetID = '29496964-44b8-44fd-ac92-01476415f4e0'</Sql>
+    <Message>The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>8152</Number>
+    <Class>16</Class>
+    <Sql>UPDATE LibraryProjectBudget SET OrgID='cfe39df6-8809-4973-9515-810df75aed12'
+,FOWSTID='f1b661b1-bc9c-47dc-9dbe-cef8b621820d'
+,ItemNumber='1'
+,RowNumber='0'
+,IsParent='1'
+,IsMaterial='False'
+,ParentID=''
+,LineDescription='asdsdsd'
+,AssociateSKUID=NULL
+,DMUnitOfMeasure=''
+,ProjectedDMQty=''
+,ProjectedDMUnitCost=0
+,DMVendorOrgPeopleID=NULL
+,ProjectedDMAmount='Please select1 - asdsdsd1.1 - asdasdasdd1.1.1 - assss1.1.1.1 - a1.1.1.2 - b1.1.1.3 - c1.1.1.4 - d1.1.1.5 - e1.1.1.6 - f1.1.2 - asddd1.1.3 - sdswer1.1.3.1 - dfsdfdf1.1.3.2 - sdfd1.1.3.3 - dfdf1.1.4 - asdasdsddss1.1.4.1 - aaaaaasd1.1.4.2 - qweeeeee1.1.5 - ssssssss1.1.5.1 - aaaaaaaaaaaaas1.2 - sdgasdgsad1.3 - asdasdvgasdnsd1.4 - asdgasdjasdgsd'
+,ProjectedDLUnitCost=0
+,DLVendorOrgPeopleID=NULL
+,ProjectedDLAmount=0
+,ProjectedTotalUnitCost=0
+,ProjectedTotalAmount=0
+,Status='Active'
+,IsMarkAsCompleted=1
+,LastUpdated=getdate()
+,ActualDuration=''
+,DateStarted=NULL
+,DateCompleted=NULL
+,Importance='5'
+,Urgency='3'
+ WHERE  ID = 'f3c29d51-815f-4e62-be81-83b94c60b2b2'</Sql>
+    <Message>String or binary data would be truncated.
+The statement has been terminated.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>0</Number>
+    <Class>11</Class>
+    <Sql>SELECT TransInvoice.ID AS InvoiceID
+ , (CASE MobizLibraryOrganization.IsOrganization      WHEN 1 THEN  MobizLibraryOrganization.CompanyName      ELSE           ISNULL(NULLIF(LTRIM(RTRIM(MobizLibraryPeoplePreNominalSuffix.Code)) + ' ', ' '), '') +          ISNULL(NULLIF(LTRIM(RTRIM(MobizLibraryOrganization.PersonSurname)) + ', ',', '), '') +          ISNULL(NULLIF(LTRIM(RTRIM(MobizLibraryOrganization.PersonFirstName)) + ' ',' '), '') +          ISNULL(NULLIF(LTRIM(RTRIM(MobizLibraryOrganization.PersonMiddleName)) + ' ',' '), '') +          ISNULL(NULLIF(', ' + LTRIM(RTRIM(MobizLibraryOrganization.PersonSuffixName)),', '), '')  END) AS CustomerName
+,LibraryPaymentTerms.Days AS CreditTerms
+,TransInvoice.PaymentTerm
+,DATEADD(DAY, ISNULL(TransInvoice.PaymentTerm, 0), TransInvoice.InvoiceDate) AS DueDate
+,TransInvoice.PaymentTermsText
+ ,MobizLibraryOrganization.TinNumber
+ ,MobizLibraryOrganizationRepresentatives.LastName + ', ' + MobizLibraryOrganizationRepresentatives.FirstName + ' ' + MobizLibraryOrganizationRepresentatives.MiddleName AS Representative
+ --,RIGHT('0000000' + CONVERT(varchar, TransInvoice.InvoiceNumber), 7) AS InvoiceNumber
+ ,TransInvoice.InvoiceNumber
+ ,TransInvoice.FowstWideInvoiceNumber
+ ,TransInvoice.InvoiceDate
+ ,TransInvoice.DeliveryDate
+ ,TransInvoice.Remarks
+ ,TransInvoice.CustomerID
+ ,TransInvoice.RefInvoiceNum
+ ,TransInvoice.LastUpdated
+ ,TransInvoice.UserID
+, ISNULL(NULLIF(LTRIM(RTRIM(tblUpdater.Surname)) + ', ',', '), '') +
+  ISNULL(NULLIF(LTRIM(RTRIM(tblUpdater.FirstName)) + ' ',' '), '') +
+  ISNULL(NULLIF(LTRIM(RTRIM(tblUpdater.MiddleName)) + ' ',' '), '') AS Updater 
+ ,TransInvoice.FowstID
+ ,TransInvoice.RefNum
+ ,TransInvoice.ReasonForReconstructingData
+ ,TransInvoice.DeviceID
+ ,TransInvoice.SalesOrderDate
+ ,TransInvoice.SalesOrderNo
+ ,TransInvoice.SalesOrderUserID
+ ,TransInvoice.BillingAddressID
+ ,TransInvoice.DeliveryAddressID
+ ,TransInvoice.SalesOrderID
+ ,TransInvoice.TotalAmount
+ ,TransInvoice.Vatable
+ ,TransInvoice.DiscountAmount
+ ,TransInvoice.NetSuiteNum
+ ,TransInvoice.IsCancelled
+,CONVERT(varchar, SoFowst.FOWSTNo) + '-' + CONVERT(varchar, SoDevice.DeviceNo) AS SoMIN
+ ,tblSalesOrder.SalesOrderNo AS RefSalesOrderNo
+ ,tblSalesOrder.SalesOrderDate AS RefSalesOrderDate
+,tblDelivery.Name AS DeliveryFowstName
+ ,TransInvoice.DucInvoiceNum
+ ,MobizLibraryPeople.DUCNumericID
+ ,TransInvoice.InvoiceTypeCode
+ ,TransInvoice.TransType
+ ,TransInvoice.DocumentNameID
+ ,LibraryDocumentControl.DocumentName
+ ,LibraryDocumentControl.PermitNum
+ ,TransInvoice.QuotationID
+ ,TransInvoice.QuotationNo
+ ,TransInvoice.QuotationNumText
+ ,TransInvoice.QuotationDate
+ ,TransInvoice.PurchaseOrderNo
+ ,TransInvoice.PurchaseOrderText
+ ,TransInvoice.PurchaseOrderDate
+ ,TransInvoice.AccountsPayableNum
+ ,TransInvoice.CanvassID
+ ,LibraryPriceCanvass.CanvassNumber
+ ,tblQuote.QuotationNo AS RefQuotationNo
+ ,tblQuote.QuotationDate AS RefQuotationDate
+,Mobiz.dbo.ContactInfo(TransInvoice.DeliveryAddressID) AS DeliveryContactInfo
+,Mobiz.dbo.ContactInfo(TransInvoice.BillingAddressID) AS BillingContactInfo
+ ,ISNULL(tblOrgFowst.StreetNumber, '')
+ + ',' + ISNULL(tblOrgFowst.Street, '')
+ + ',' + ISNULL(tblOrgCity.Name, '') AS OrgFowst
+,tblOrgFowst.Name AS OrgFowstName
+,TransInvoice.EncodingFowstID
+,ISNULL(tblEncodingFowst.Name, InvFowst.Name) AS EncodingFowstName
+,ISNULL(tblDelivery.StreetNumber, '')
+ + ',' + ISNULL(tblDelivery.Street, '')
+ + ',' + ISNULL(tblDeliveryCity.Name, '')
+ + ',' + ISNULL(tblDeliveryCountry.Name, '') AS DeliveryAddress
+ ,ISNULL(tblBilling.StreetNumber, '')
+  + ',' + ISNULL(tblBilling.Street, '')
+  + ',' + ISNULL(tblBillingCity.Name, '')
+  + ',' + ISNULL(tblBillingCountry.Name, '') AS BillingAddress
+,TransInvoice.SopaApprovedByID
+, ISNULL(NULLIF(LTRIM(RTRIM(SopaApprover.Surname)) + ', ',', '), '') +
+  ISNULL(NULLIF(LTRIM(RTRIM(SopaApprover.FirstName)) + ' ',' '), '') +
+  ISNULL(NULLIF(LTRIM(RTRIM(SopaApprover.MiddleName)) + ' ',' '), '') AS SopaApproverName 
+,TransInvoice.SalesPartnerOrgID
+, (CASE tblSalesPartner.IsOrganization      WHEN 1 THEN  tblSalesPartner.CompanyName      ELSE           ISNULL(NULLIF(LTRIM(RTRIM(tblSalesPartnerPerNominalSuffix.Code)) + ' ', ' '), '') +          ISNULL(NULLIF(LTRIM(RTRIM(tblSalesPartner.PersonSurname)) + ', ',', '), '') +          ISNULL(NULLIF(LTRIM(RTRIM(tblSalesPartner.PersonFirstName)) + ' ',' '), '') +          ISNULL(NULLIF(LTRIM(RTRIM(tblSalesPartner.PersonMiddleName)) + ' ',' '), '') +          ISNULL(NULLIF(', ' + LTRIM(RTRIM(tblSalesPartner.PersonSuffixName)),', '), '')  END) AS SalesPartner
+,TransInvoice.SalesRepText
+,TransInvoice.SalesRepPeopleID
+,ISNULL(NULLIF(LTRIM(RTRIM(SalesRepNominalSuffix.Code)) + ' ', ' '), '') + ISNULL(NULLIF(LTRIM(RTRIM(tblSalesRep.Surname)) + ', ',', '), '') + ISNULL(NULLIF(LTRIM(RTRIM(tblSalesRep.FirstName)) + ' ',' '), '') + ISNULL(NULLIF(LTRIM(RTRIM(tblSalesRep.MiddleName)) + ' ',' '), '') + ISNULL(NULLIF(', ' + LTRIM(RTRIM(tblSalesRep.PersonalSuffixName)),', '), '') + ISNULL(NULLIF(' ' + LTRIM(RTRIM(dbo.PeoplePostSuffixName(tblSalesRep.ID))),' '), '') AS SalesRep
+,TransInvoice.DateNeeded
+,TransInvoice.CustomerFowstID
+,TransInvoice.CustomerBinID
+,tblFowstCustomer.Name AS CustomerFowst
+,tblBinCustomer.Name AS CustomerBin
+,COALESCE(CONVERT(varchar, TransInvoice.FowstWideInvoiceNumber), CONVERT(varchar, InvFowst.FOWSTNo) + '-' + CONVERT(varchar, LibraryDevice.DeviceNo) + '-' + CONVERT(varchar, TransInvoice.InvoiceNumber)) AS PrintedInvoiceNumber
+,CONVERT(varchar, InvFowst.FOWSTNo) + '-' + CONVERT(varchar, LibraryDevice.DeviceNo) AS MIN
+,MobizLibraryIndustryClass.Class AS IndustryClass
+,COALESCE(MobizLibraryOrganization.BusinessIndustryText, MobizLibraryIndustryClass.Class) AS BusinessIndustryDisplay
+  FROM TransInvoice 
+  JOIN MobizLibraryOrganization ON TransInvoice.CustomerID = MobizLibraryOrganization.ID 
+ JOIN LibraryDevice ON TransInvoice.DeviceID = LibraryDevice.ID
+ LEFT JOIN MobizLibraryOrganizationFOWST tblEncodingFowst ON TransInvoice.EncodingFowstID = tblEncodingFowst.ID
+ JOIN MobizLibraryOrganizationFOWST InvFowst ON TransInvoice.FowstID = InvFowst.ID
+ LEFT JOIN MobizLibraryPeoplePreNominalSuffix MobizLibraryPeoplePreNominalSuffix ON MobizLibraryOrganization.PersonTitleID = MobizLibraryPeoplePreNominalSuffix.ID
+
+  LEFT JOIN MobizLibraryOrganizationRepresentatives ON TransInvoice.CusRepresentativeID = MobizLibraryOrganizationRepresentatives.ID 
+ LEFT JOIN MobizLibraryPeople ON MobizLibraryPeople.ID = TransInvoice.UserID
+  LEFT JOIN MobizLibraryOrganizationFOWST ON MobizLibraryOrganizationFOWST.ID = TransInvoice.BillingAddressID
+  LEFT JOIN MobizLibraryCities ON MobizLibraryCities.ID = MobizLibraryOrganizationFOWST.FowstCityID 
+  LEFT JOIN MobizLibraryCountries ON MobizLibraryCountries.ID = MobizLibraryOrganizationFOWST.FowstCountryID 
+  LEFT JOIN LibraryDocumentControl ON LibraryDocumentControl.ID = TransInvoice.DocumentNameID 
+ LEFT JOIN MobizLibraryOrganizationFOWST tblOrgFowst ON tblOrgFowst.ID = TransInvoice.FowstID
+ LEFT JOIN MobizLibraryCities tblOrgCity ON tblOrgCity.ID = tblOrgFowst.FowstCityID
+ LEFT JOIN MobizLibraryOrganizationFOWST tblDelivery ON tblDelivery.ID = TransInvoice.DeliveryAddressID
+ LEFT JOIN MobizLibraryCities tblDeliveryCity ON tblDeliveryCity.ID = tblDelivery.FowstCityID
+ LEFT JOIN MobizLibraryCountries tblDeliveryCountry ON tblDeliveryCountry.ID = tblDelivery.FowstCountryID
+  LEFT JOIN MobizLibraryOrganizationFOWST tblBilling ON tblBilling.ID = TransInvoice.BillingAddressID
+  LEFT JOIN MobizLibraryCities tblBillingCity ON tblBillingCity.ID = tblBilling.FowstCityID
+  LEFT JOIN MobizLibraryCountries tblBillingCountry ON tblBillingCountry.ID = tblBilling.FowstCountryID 
+ LEFT JOIN MobizLibraryPeople SopaApprover ON SopaApprover.ID = TransInvoice.SopaApprovedByID
+ LEFT JOIN MobizLibraryPeople tblUpdater ON tblUpdater.ID = TransInvoice.UserID
+ LEFT JOIN MobizLibraryPeople tblSalesRep ON tblSalesRep.ID = TransInvoice.SalesRepPeopleID
+ LEFT JOIN MobizLibraryPeoplePreNominalSuffix SalesRepNominalSuffix ON tblSalesRep.TitleID = SalesRepNominalSuffix.ID
+ LEFT JOIN MobizLibraryOrganization tblSalesPartner ON tblSalesPartner.ID = TransInvoice.SalesPartnerOrgID
+ LEFT JOIN MobizLibraryPeoplePreNominalSuffix tblSalesPartnerPerNominalSuffix ON tblSalesPartner.PersonTitleID = tblSalesPartnerPerNominalSuffix.ID
+ LEFT JOIN LibraryOrganizationCustomer ON LibraryOrganizationCustomer.OrganizationID = TransInvoice.CustomerID
+ LEFT JOIN LibraryPaymentTerms ON LibraryPaymentTerms.ID = LibraryOrganizationCustomer.CreditTermsID
+ LEFT JOIN TransInvoice tblSalesOrder ON tblSalesOrder.ID = TransInvoice.SalesOrderID
+ LEFT JOIN LibraryDevice SoDevice ON tblSalesOrder.DeviceID = SoDevice.ID
+ LEFT JOIN MobizLibraryOrganizationFOWST SoFowst ON tblSalesOrder.FowstID = SoFowst.ID
+ LEFT JOIN TransInvoice tblQuote ON tblQuote.ID = TransInvoice.QuotationID
+  LEFT JOIN MobizLibraryOrganizationFOWST tblFowstCustomer ON tblFowstCustomer.ID = TransInvoice.CustomerFowstID
+  LEFT JOIN LibraryFowstBin tblBinCustomer ON tblBinCustomer.ID = TransInvoice.CustomerBinID
+ LEFT JOIN LibraryPriceCanvass ON LibraryPriceCanvass.ID = TransInvoice.CanvassID
+ LEFT JOIN MobizLibraryIndustryClass ON MobizLibraryIndustryClass.ID = MobizLibraryOrganization.IndustryClassID
+  
+ WHERE TransInvoice.ID = 'b0f1fa63-3bc4-4b81-82b6-8eb2c592acf6'
+  ORDER BY TransInvoice.InvoiceNumber
+ 
+</Sql>
+    <Message>A severe error occurred on the current command.  The results, if any, should be discarded.
+A severe error occurred on the current command.  The results, if any, should be discarded.</Message>
+  </SqlException>
+  <SqlException>
+    <Number>174</Number>
+    <Class>15</Class>
+    <Sql>SELECT ISNULL(convert(varchar(MAX), SkuID)) as SkuID FROM LibraryPriceCanvassItems WHERE ID = 'b58e9718-d17a-49fd-934e-87374a426c3d'</Sql>
+    <Message>The isnull function requires 2 argument(s).</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>245</Number>
+    <Class>16</Class>
+    <Sql>INSERT INTO TransRentableAssets(ID,CreatedBy,LastUpdated,ClientID,AssetID,NoOfAdults,NoOfChild,NoOfGuestCards,PriceLevelID,CheckedInUsedOn,CheckedOutReturnedOn,IsDone,CreatedDate) VALUES ('945f04ef-84d2-4c70-9df4-172cd96c5489','c530bdf3-ea03-4dd3-95cd-a384374aa570',getdate(),'4c39d071-f50d-4cff-a307-00f4cdacea45','c73d87d6-7f5c-4a19-bf6d-3f1129ef19f7','10','','System.Collections.Generic.Dictionary`2[System.String,System.Object]','58e34b48-1191-46cf-b85f-5a897dfbcea6','Mar 26, 2019 10:22 AM','Mar 27, 2019 12:00 PM','False',getdate())</Sql>
+    <Message>Conversion failed when converting the varchar value 'System.Collections.Generic.Dictionary`2[System.String,System.Object]' to data type int.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>2812</Number>
+    <Class>16</Class>
+    <Sql>False</Sql>
+    <Message>Could not find stored procedure 'False'.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>110</Number>
+    <Class>15</Class>
+    <Sql>INSERT INTO TransInvoiceItems(ID,InvoiceID,ProductID,Quantity,OrderedQuantity,LineCost,ActualQuantity,UnitMeasure,UnitPrice,OriginalUnitPrice,SubTotal,Cost,PriceLevelID,VATExemptSale,ZeroRatedSale,NonVATSale,VATableSale,TradeDiscountLess,NetDiscountFactor,NetDiscountRate,UnitGP,UnitGPM,LineGP,LineGPM,TaxPercent,TaxAmount,TaxSales) VALUES ('0e823f54-bcd4-438e-80e9-b4d430ce9b37','0EC79CF8-24DF-4256-A0C9-F5E576E75917','FCE01835-C507-4100-A1E3-C0227293003E',0,1,50.0000,1,'Order',80.20,80.20,0.00,50.0000,'01000012-0005-0000-0000-000000000000',0,0,0,0.00,12,2,86.24,13.76,0,0,0,0,12,0.00,0)</Sql>
+    <Message>There are fewer columns in the INSERT statement than values specified in the VALUES clause. The number of values in the VALUES clause must match the number of columns specified in the INSERT statement.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>121</Number>
+    <Class>20</Class>
+    <Sql>DELETE t 
+ FROM TransInvoiceItemSalesReps t
+ JOIN TransInvoiceItems ON TransInvoiceItems.ID = t.InvoiceItemID
+ WHERE TransInvoiceItems.InvoiceID = '0EC79CF8-24DF-4256-A0C9-F5E576E75917'
+ AND TransInvoiceItems.ProductID = 'FCE01835-C507-4100-A1E3-C0227293003E'
+ AND TransInvoiceItems.ActualQuantity = 1
+</Sql>
+    <Message>A transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - The semaphore timeout period has expired.)</Message>
+  </SqlException>
+  <SqlException>
+    <Number>195</Number>
+    <Class>15</Class>
+    <Sql>SELECT ISNUL(convert(varchar(max), ID), '') as ID, ISNULL(Name, '') as Name FROM MobizLibraryOrganizationFOWST WHERE NetSuiteID = '8521' AND OrganizationID = 'CFE39DF6-8809-4973-9515-810DF75AED12'</Sql>
+    <Message>'ISNUL' is not a recognized built-in function name.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>4145</Number>
+    <Class>15</Class>
+    <Sql>UPDATE LibraryExpensesTicketMakers SET UserID='c530bdf3-ea03-4dd3-95cd-a384374aa570'
+ WHERE False</Sql>
+    <Message>An expression of non-boolean type specified in a context where a condition is expected, near 'False'.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>50000</Number>
+    <Class>16</Class>
+    <Sql>UPDATE TransInvoice SET FowstID='fe639d1f-cd83-4b3e-8b0a-586731f479cb'
+,InvoiceNumber=7
+,CustomerID='cd71a0f7-08a9-4601-876e-5f13c064f873'
+,BillingAddressID='937008e4-8f65-408f-9342-2c2680988274'
+,DeliveryAddressID='086f784e-c32a-4cd8-97d2-db6b8bcc616e'
+,TotalAmount=0
+,VAT=0
+,UserID='c530bdf3-ea03-4dd3-95cd-a384374aa570'
+,LastUpdated=GETDATE()
+,GP=0
+,GPM=0
+,IsForGovReport=0
+,IsNoneVATSale=0
+,DeviceID='270bed57-73d8-47d2-be91-81ffb2316353'
+,IsTestOnly=0
+,SupplierFowstID='fe639d1f-cd83-4b3e-8b0a-586731f479cb'
+,Vatable=0
+,VATExempt=0
+,ForegoneVAT=0
+,SCDiscount=0
+,TotalNonSCDiscount=0
+,AmountDueBeforeCharges=0
+,AmountDueNetofCharges=0
+,DepositAmount=0
+,DateNeeded='5/21/2021 3:23:00 PM'
+,PaymentTerm=0
+,InvoiceFowstID='fe639d1f-cd83-4b3e-8b0a-586731f479cb'
+,FinalizedForApproval=0
+,InvoiceDate='5/21/2021 3:24:20 PM'
+ WHERE ID = '40dee359-617e-4956-a1bf-48b641db8853'</Sql>
+    <Message>Cannot change TransInvoice if old InvoiceNumber &lt;&gt; 0
+The transaction ended in the trigger. The batch has been aborted.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>3726</Number>
+    <Class>16</Class>
+    <Sql>DROP TABLE LibraryItemModifiers</Sql>
+    <Message>Could not drop object 'LibraryItemModifiers' because it is referenced by a FOREIGN KEY constraint.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>213</Number>
+    <Class>16</Class>
+    <Sql>INSERT INTO LibraryOrganizationPIM SELECT * FROM MobizABC.dbo.LibraryOrganizationPIM</Sql>
+    <Message>Column name or number of supplied values does not match table definition.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>3701</Number>
+    <Class>11</Class>
+    <Sql>IF EXISTS(SELECT [name] FROM tempdb.sys.tables WHERE [name] like '#temppimmenu%') 
+ BEGIN DROP TABLE #temppimmenu; END 
+ SELECT * INTO #temppimmenu 
+ FROM MobizABC.dbo.LibraryPimMenu
+ UPDATE #temppimmenu SET UserID = 'caa33dcf-b024-4b15-8421-882afac1d8fa'
+</Sql>
+    <Message>Cannot drop the table '#temppimmenu', because it does not exist or you do not have permission.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>5074</Number>
+    <Class>16</Class>
+    <Sql> ALTER TABLE dbo.TransInvoice
+ DROP COLUMN Remarks_old</Sql>
+    <Message>The object 'DF__TransInvo__Remar__7B5F4AFE' is dependent on column 'Remarks_old'.
+ALTER TABLE DROP COLUMN Remarks_old failed because one or more objects access this column.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>4104</Number>
+    <Class>16</Class>
+    <Sql>UPDATE MobizLibraryPIMProductContents SET Quantity = #tempbom_fae6abf4_1176_4f98_a705_898aeaa8a59b.Quantity, UnitMeasureID = #tempbom_fae6abf4_1176_4f98_a705_898aeaa8a59b.UnitMeasureID 
+ WHERE ParentProductID = #tempbom_fae6abf4_1176_4f98_a705_898aeaa8a59b.ParentProductID 
+ AND ChildProductID = #tempbom_fae6abf4_1176_4f98_a705_898aeaa8a59b.ChildProductID 
+ AND OrganizationID = #tempbom_fae6abf4_1176_4f98_a705_898aeaa8a59b.OrganizationID 
+</Sql>
+    <Message>The multi-part identifier "#tempbom_fae6abf4_1176_4f98_a705_898aeaa8a59b.ParentProductID" could not be bound.
+The multi-part identifier "#tempbom_fae6abf4_1176_4f98_a705_898aeaa8a59b.ChildProductID" could not be bound.
+The multi-part identifier "#tempbom_fae6abf4_1176_4f98_a705_898aeaa8a59b.OrganizationID" could not be bound.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>209</Number>
+    <Class>16</Class>
+    <Sql>SELECT ProductID, MobizLibraryPIMProduct.ProductName 
+ FROM MobizLibraryPIMProductVariableFeatures001
+ INNER JOIN MobizLibraryPIMProduct ON MobizLibraryPIMProduct.ID = MobizLibraryPIMProductVariableFeatures001.ProductID 
+ INNER JOIN LibraryOrganizationPIM ON LibraryOrganizationPIM.ProductID = MobizLibraryPIMProductVariableFeatures001.ProductID 
+ WHERE C0020 = 'uncategorized' AND LibraryOrganizationPIM.IsDeactivated = 0 </Sql>
+    <Message>Ambiguous column name 'ProductID'.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>1946</Number>
+    <Class>16</Class>
+    <Sql>INSERT INTO SystemDefaults(DefaultValue,LastUpdated,Description) VALUES ('- This is your latest billing statement and reflects the latest information such as open balances/debit and credit memos on your account. Please disregard previous statement.
+- (*) DENOTES THAT THE INVOICE CAME FROM A PREVIOUS STATEMENT.
+- For any discrepancy, please call our credit and collection department for clarification and verification.
+- Please disregard this notice if payment has been made.
+- Please inform our credit and collections department or assigned sales representative if payment is to be made upon delivery of your goods (Cash/Check on Delivery) so that a Provisional Receipt can be 
+executed and forwarded to your end. Always ask for your Provicional Receipt every time you will make payment. Original Receipt (OR) will be issued to you after your payment has been cleared.
+- All amount(s) unpaid beyond due date shall be charged a built-in interest of 2% per month based on open overdue balances. Please settle your overdue account(s) five(5) days within receipt of this notice. Consistent failure to act promptly on your delinquent/overdue accounts shall be endorsed to our legal department for proper legal action(s).
+- Computation of interest charges are based on the 1st day account is overdue up to the date of this statement. Interest charges are frozen after statement date. Failure to settle overdue account(s) promptly 
+within 5 days after statement date shall merit additional interest charges from beginning date of overdue up to the next statement date.',GetDate(),'SOAFootnote')</Sql>
+    <Message>Operation failed. The index entry of length 1508 bytes for the index 'IX_SystemDefaults' exceeds the maximum length of 900 bytes.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>3728</Number>
+    <Class>16</Class>
+    <Sql> ALTER TABLE [dbo].[SystemDefaults] DROP CONSTRAINT [DF__SystemDef__Defau__383A4359] 
+ DROP INDEX SystemDefaults.IX_SystemDefaults </Sql>
+    <Message>'DF__SystemDef__Defau__383A4359' is not a constraint.
+Could not drop constraint. See previous errors.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>1205</Number>
+    <Class>13</Class>
+    <Sql>SELECT ProductID FROM LibraryRentableAssets WHERE ProductID = '9fc8c354-4f9a-4bf6-b781-eb672adc1524'</Sql>
+    <Message>Transaction (Process ID 56) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>802</Number>
+    <Class>17</Class>
+    <Sql>Select top 0 * from LibraryDiscountSettings</Sql>
+    <Message>There is insufficient memory available in the buffer pool.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>271</Number>
+    <Class>16</Class>
+    <Sql>UPDATE TransInvoice
+ SET FowstID='823ac004-2c6f-45cd-b2c6-4f2cc9c77d89'
+,InvoiceNumber=5
+,CustomerID='cd71a0f7-08a9-4601-876e-5f13c064f873'
+,DeliveryMethod='PickUp'
+,OrderMethod='Walk In'
+,CustomerDemographicGender='NA'
+,CustomerDemographicAge='Mixed Ages/ NA'
+,BillingAddressID='{835C2038-6A44-4E9C-B432-FDEDCE6B49D7}'
+,DeliveryAddressID='{835C2038-6A44-4E9C-B432-FDEDCE6B49D7}'
+,Remarks=''
+,TotalAmount=70
+,VAT=0.535714
+,UserID='c530bdf3-ea03-4dd3-95cd-a384374aa570'
+,LastUpdated='9/09/2024 9:14:55 am'
+,GP=0
+,GPM=0
+,IsForGovReport=0
+,IsNoneVATSale=0
+,DeviceID='a07f4eec-839a-462f-8f6a-c41fce6ec1e7'
+,IsTestOnly=0
+,TotalNumberOfCustomer=1
+,FranchiseeOrgID='823ac004-2c6f-45cd-b2c6-4f2cc9c77d89'
+,Vatable=4.46429
+,VATExempt=58.0357
+,ForegoneVAT=6.96429
+,SCDiscount=11.6071
+,SCDiscountExempt=5
+,TotalNonSCDiscount=0
+,AmountDueBeforeCharges=63.0357
+,AmountDueNetofCharges=63.0357
+,DepositAmount=0
+,PrintCount=1
+,IsPrinted=1
+,FinalizedForApproval=0
+,DontAutoInvoice=0
+,ErrorCorrectAmount=0
+,ErrorCorrectCount=0
+,WaybillNumber=''
+,ShipDate=NULL
+,PackageQuantity=''
+,GrossWeight=''
+,GrossVolume=''
+,Freight=0
+,Handling=0
+,Arrastre=0
+,OtherCharges=0
+,FreightAndHandling=0
+,InvoiceDate='9/09/2024 9:14:55 am'
+ WHERE ID = '52e9fd89-859b-4903-b7a3-a89420132b7b'</Sql>
+    <Message>The column "SCDiscountExempt" cannot be modified because it is either a computed column or is the result of a UNION operator.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>233</Number>
+    <Class>20</Class>
+    <Sql>UPDATE TransImports
+ SET ProcessEnd=GETDATE()
+,Result='error'
+,Success=1
+ WHERE Filename = '2024_10_29__10_33_03_8722'</Sql>
+    <Message>A transport-level error has occurred when sending the request to the server. (provider: Shared Memory Provider, error: 0 - No process is on the other end of the pipe.)</Message>
+  </SqlException>
+  <SqlException>
+    <Number>2714</Number>
+    <Class>16</Class>
+    <Sql>SELECT DISTINCT  invlgr.TransactionID as ID  	,fowst.Name as FOWST  	,dev.PhoneName as DeviceName  	,prd.ProductNo  	,prd.ProductName  	,fbin.[Name] as Bin 	,ISNULL(invitem.TransactionType, invlgr.TransactionType) AS TransactionType 	,inv.InvoiceNumber as TransactionNo  	,inv.InvoiceDate as TransactionDate  	,ISNULL(cust.CompanyName,'') + ' ' + ISNULL(PersonSurname,'') + ' ' + ISNULL(PersonFirstName,'') + ' ' + ISNULL(PersonMiddleName,'') as Customer 	,cust.TinNumber  	,(CASE inv.DeliveryMethod  		WHEN 'Pickup' THEN ''   		ELSE ISNULL(NULLIF(LTRIM(RTRIM(custbill.StreetNumber)), ''), '') +   			 ISNULL(NULLIF(', ' + LTRIM(RTRIM(custbill.Street)),', '), '') +   			 ISNULL(NULLIF(', ' + LTRIM(RTRIM(custbillcty.Name)),', '), '') +   			 ISNULL(NULLIF(', ' + LTRIM(RTRIM(custbillctry.Name)),', '), '')   	END) as Billingaddress  	,(CASE inv.DeliveryMethod   		WHEN 'Pickup' THEN ''   		ELSE ISNULL(NULLIF(LTRIM(RTRIM(custdel.StreetNumber)), ''), '') +   			 ISNULL(NULLIF(', ' + LTRIM(RTRIM(custdel.Street)),', '), '') +   			 ISNULL(NULLIF(', ' + LTRIM(RTRIM(custdelcty.Name)),', '), '') +   			 ISNULL(NULLIF(', ' + LTRIM(RTRIM(custdelctry.Name)),', '), '')   	END) as DeliveryAddress  	,ISNULL(inv.DeliveryMethod,'PickUp') as DeliveryMethod  	,inv.DeliveryDate  	,plvl.PriceLevel  	,invitem.Quantity  	,invitem.UnitMeasure  	,invitem.UnitPrice  	,invitem.SubTotal  	,invitem.DiscountAmount  	,invitem.DiscountedUnitPrice  	,invitem.Quantity * invitem.DiscountedUnitPrice as DiscountedSubTotal  	,invitem.TaxPercent as VATPercent  	,invitem.TaxSales - invitem.DiscountSales as VATableSales  	,invitem.TaxAmount - invitem.DiscountTax as VATAmount  	,invitem.Cost  	,invitem.COGS  	,invitem.UnitGP  	,invitem.UnitGPM  	,invitem.LineGP  	,invitem.LineGPM  	,invitem.LineCost  	,ISNULL(invitem.GrossSalesNetOfVATExemptions, 0) as GrossSalesNetOfVATExemptions  	,inv.IsForGovReport  	,inv.SalesOrderNo  	,inv.RefNum as RefNo  	,inv.ReasonForReconstructingData  	,ISNULL(NULLIF(LTRIM(RTRIM(cshr.SurName)) + ', ',', '), '') +   	 ISNULL(NULLIF(LTRIM(RTRIM(cshr.FirstName)) + ' ',' '), '') +   	 ISNULL(NULLIF(LTRIM(RTRIM(cshr.MiddleName)) + ' ',' '), '') as CashierName  	,(SELECT DISTINCT STUFF((SELECT ','+ ISNULL(CASE WHEN MobizLibraryPeople.SurName = '' THEN 'N/A' ELSE MobizLibraryPeople.FirstName + ' ' + MobizLibraryPeople.SurName END,'N/A')FROM TransInvoiceItemSalesReps LEFT join MobizLibraryPeople on MobizLibraryPeople.ID = TransInvoiceItemSalesReps.PeopleID WHERE TransInvoiceItemSalesReps.InvoiceItemID = invitem.ID and TransInvoiceItemSalesReps.InvoiceID =inv.ID   FOR XML PATH('')), 1, 1,'')FROM TransInvoiceItemSalesReps) as SalesRepresentative 	,prd.ProductGroupNo  	,prd.Brand  	,prd.DivisionDescription  	,prd.SRP  	,prd.MarketingText  	,prd.Warranty  	,prd.ModelNo  	,prd.CustomClassification    , custpay.CashAmount    , custpay.CheckPaymentAmount    , custpay.DebitCardAmount    , custpay.CreditCardAmount    , custpay.SRVAmount    , custpay.OnCreditAmount    , OtherPayment.[Discount Voucher / On Line Deals]    , OtherPayment.[E-Plus]    , OtherPayment.[FoodPanda]    , OtherPayment.[GCash]    , OtherPayment.[GrabFood]    , OtherPayment.[SMAC]    , OtherPayment.[V-Plus]    , custpay.OtherTypeAmount    , custpay.CustomerChangeCash    , custpay.RewardsCardNum ,prd001.C0015 as [Product Dimension Length],prd001.C0020 as [Category *],prd001.C0025 as [Product Dimension Width Unit],prd001.C0030 as [Product Dimension Height Unit],prd001.C0040 as [Product Dimension Length Unit],prd001.C0044 as [Product Weight],prd001.C0045 as [Product Dimension Height],prd001.C0046 as [Product Weight Unit],prd001.C0050 as [Product Dimension Width],prd001.C0065 as [Packing Size Unit *],prd001.C0066 as [Packing Size Qty *],prd001.C0071 as [Product No *],prd001.C0073 as [Short Name *],prd001.C0074 as [Content Unit],prd001.C0075 as [Content Qty],prd001.C0076 as [Landed Cost *],prd001.C0077 as [Cost From Vendor *],prd001.C0078 as [Shipping Cost],prd001.C0090 as [Receipt Name],prd001.C0091 as [Purchasing Name] INTO #tbl1 
+ FROM TransInventoryLedger invlgr   LEFT JOIN LibraryFowstBin fbin ON (fbin.ID = invlgr.BinID)  INNER JOIN MobizLibraryOrganizationFOWST fowst ON (fowst.ID = invlgr.FOWSTID) 
+ JOIN (
+           SELECT TransInvoiceItems.ID
+,TransInvoiceItems.InvoiceID
+           ,TransInvoiceItemsRebates.ProductID
+           ,TransInvoiceItems.PriceLevelID
+           ,TransInvoiceItemsRebates.Quantity * TransInvoiceItems.Quantity AS Quantity
+           ,TransInvoiceItemsRebates.UnitMeasure
+           ,TransInvoiceItemsRebates.Amount * -1 AS UnitPrice
+           ,TransInvoiceItemsRebates.Amount * TransInvoiceItemsRebates.Quantity * TransInvoiceItems.Quantity * -1 AS SubTotal
+           ,0 AS DiscountAmount
+           ,TransInvoiceItemsRebates.Amount * -1 AS DiscountedUnitPrice
+           ,0 AS TaxPercent
+           ,0 AS TaxSales
+           ,0 AS DiscountSales
+           ,0 AS TaxAmount
+           ,0 AS DiscountTax
+           ,0 AS Cost
+           ,0 AS COGS
+           ,0 AS UnitGP
+           ,0 AS UnitGPM
+           ,0 AS LineGP
+           ,0 AS LineGPM
+           ,0 AS LineCost
+           ,0 AS GrossSalesNetOfVATExemptions
+,'Returned for Rebate' AS TransactionType
+ 	        FROM TransInvoiceItems
+            JOIN TransInvoiceItemsRebates ON TransInvoiceItemsRebates.ModifierGroupID = TransInvoiceItems.ModifierGroupID
+            UNION
+ 		  SELECT TransInvoiceItems.ID
+,TransInvoiceItems.InvoiceID
+        	  ,TransInvoiceItems.ProductID
+           ,TransInvoiceItems.PriceLevelID
+           ,TransInvoiceItems.Quantity
+           ,TransInvoiceItems.UnitMeasure
+           ,TransInvoiceItems.UnitPrice
+           ,TransInvoiceItems.SubTotal
+           ,TransInvoiceItems.DiscountAmount
+           ,TransInvoiceItems.DiscountedUnitPrice
+           ,TransInvoiceItems.TaxPercent
+           ,TransInvoiceItems.TaxSales
+           ,TransInvoiceItems.DiscountSales
+           ,TransInvoiceItems.TaxAmount
+           ,TransInvoiceItems.DiscountTax
+           ,TransInvoiceItems.Cost
+           ,TransInvoiceItems.COGS
+           ,TransInvoiceItems.UnitGP
+           ,TransInvoiceItems.UnitGPM
+           ,TransInvoiceItems.LineGP
+           ,TransInvoiceItems.LineGPM
+           ,TransInvoiceItems.LineCost
+           ,TransInvoiceItems.GrossSalesNetOfVATExemptions
+,NULL AS TransactionType
+ 		  FROM TransInvoiceItems
+        )invitem ON invitem.InvoiceID = invlgr.TransactionID
+        AND invitem.ProductID = invlgr.ProductID
+ INNER JOIN TransInvoice inv ON (invitem.InvoiceID = inv.ID)  INNER JOIN MobizLibraryOrganization cust ON (cust.ID = inv.CustomerID)  LEFT JOIN TransCustomerPaymentInvoices custpayinv ON (custpayinv.InvoiceID = inv.ID)  CROSS APPLY (SELECT   
+ SUM(CashAmount) as CashAmount 
+, SUM(CheckPaymentAmount) as CheckPaymentAmount 
+, SUM(DebitCardAmount) as DebitCardAmount 
+, SUM(CreditCardAmount) as CreditCardAmount 
+, SUM(SRVAmount) as SRVAmount 
+, SUM(OnCreditAmount) as OnCreditAmount 
+, SUM(OtherTypeAmount) as OtherTypeAmount 
+, SUM(CustomerChangeCash) as CustomerChangeCash 
+, RewardsCardNum 
+, UserID 
+ FROM TransCustomerPayment 
+ INNER JOIN TransCustomerPaymentInvoices on  
+ TransCustomerPaymentInvoices.CustomerPaymentID = TransCustomerPayment.ID 
+ AND TransCustomerPaymentInvoices.InvoiceID = inv.ID 
+ GROUP BY RewardsCardNum, UserID) custpay 
+CROSS APPLY (  
+SELECT * FROM    
+(SELECT PaymentType, Amount 
+FROM TransCustomerPaymentOther  
+RIGHT JOIN TransCustomerPaymentInvoices on  TransCustomerPaymentInvoices.CustomerPaymentID = TransCustomerPaymentOther.CustomerPaymentID  
+AND TransCustomerPaymentInvoices.InvoiceID = inv.ID ) t  
+PIVOT(SUM(Amount) 
+FOR PaymentType in ( 
+[Discount Voucher / On Line Deals], [E-Plus], [FoodPanda], [GCash], [GrabFood], [SMAC], [V-Plus])) as OtherPayment) as OtherPayment 
+ LEFT JOIN MobizLibraryOrganizationFOWST custbill ON (custbill.ID = inv.BillingAddressID)  LEFT JOIN MobizLibraryCities custbillcty ON (custbill.FowstCityID = custbillcty.ID)   LEFT JOIN MobizLibraryCountries custbillctry ON (custbill.FowstCountryID = custbillctry.ID)   LEFT JOIN MobizLibraryOrganizationFOWST custdel ON (custdel.ID = inv.DeliveryAddressID)  LEFT JOIN MobizLibraryCities custdelcty ON (custdel.FowstCityID = custdelcty.ID)   LEFT JOIN MobizLibraryCountries custdelctry ON (custdel.FowstCountryID = custdelctry.ID)   INNER JOIN LibraryDevice dev ON (dev.ID = inv.DeviceID)  LEFT JOIN MobizLibraryPeople cshr ON (cshr.ID = custpay.UserID)  INNER JOIN MobizLibraryPIMProduct prd ON (prd.ID = invlgr.ProductID)  LEFT JOIN MobizLibraryPIMProductVariableFeatures001 prd001 ON (prd.ID = prd001.ProductID)  LEFT JOIN MobizLibraryPIMProductVariableFeatures002 prd002 ON (prd.ID = prd002.ProductID)  LEFT JOIN MobizLibraryPIMPriceLevel plvl ON (plvl.ID = invitem.PriceLevelID)  WHERE invlgr.TransactionType = 'Invoice'  AND invlgr.FowstID = '823ac004-2c6f-45cd-b2c6-4f2cc9c77d89' AND CONVERT(date,inv.InvoiceDate) BETWEEN '02/01/2026' AND '02/28/2026'</Sql>
+    <Message>There is already an object named '#tbl1' in the database.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>205</Number>
+    <Class>16</Class>
+    <Sql>SELECT * FROM #tbl1
+ UNION
+ SELECT * FROM #tbl2
+ ORDER BY TransactionDate</Sql>
+    <Message>All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.</Message>
+    <Rolledback>false</Rolledback>
+  </SqlException>
+  <SqlException>
+    <Number>701</Number>
+    <Class>17</Class>
+    <Sql>Select top 0 * from LibraryPimGroupPims</Sql>
+    <Message>There is insufficient system memory in resource pool 'internal' to run this query.</Message>
+    <Rolledback>true</Rolledback>
+  </SqlException>
+</NewDataSet>

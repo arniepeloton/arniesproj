@@ -1,0 +1,13 @@
+SCC = This is a Source Code Control file
+
+[Mobiz.sln]
+SCC_Aux_Path = "\\philhr\source safe\Mobiz"
+SCC_Project_Name = "$/WebErp", HAAAAAAA
+
+[Mobiz.vbproj]
+SCC_Aux_Path = "\\DEVSERVER\source safe\EAS"
+SCC_Project_Name = "$/", AAAAAAAA
+
+[MobizApplication.vbproj]
+SCC_Aux_Path = "\\DEVSERVER\source safe\EAS"
+SCC_Project_Name = "$/", AAAAAAAA

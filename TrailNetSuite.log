@@ -1,0 +1,32 @@
+[06/25/2016 10:05:32 AM]    at System.Environment.get_StackTrace()
+   at ProPack.Utility.GetStackTrace(Boolean vWithSourceOnly, Exception vException) in C:\Arnie\Mobiz\DotNet\ProPack\Misc\UtilityCommon.vb:line 752
+   at WebProj.TrailNetSuite.Start() in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\TrailNetSuite.vb:line 111
+   at WebProj.ImportDataClass._Closure$__27._Lambda$__71() in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\ImportDataClass.vb:line 304
+   at WebProj.ImportDataClass._Closure$__27._Lambda$__70(Object a0) in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\ImportDataClass.vb:line 298
+   at System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.ThreadHelper.ThreadStart(Object obj)
+
+Exception: Thread was being aborted.
+   at WebProj.TrailNetSuite.ExportReceivingsToNetSuite() in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\TrailNetSuite.vb:line 305
+   at WebProj.TrailNetSuite.Start() in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\TrailNetSuite.vb:line 108
+
+
+[09/27/2016 02:42:38 PM]    at System.Environment.get_StackTrace()
+   at ProPack.Utility.GetStackTrace(Boolean vWithSourceOnly, Exception vException) in C:\Arnie\Mobiz\DotNet\ProPack\Misc\UtilityCommon.vb:line 757
+   at WebProj.TrailNetSuite.Start() in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\TrailNetSuite.vb:line 114
+   at WebProj.ImportDataClass._Closure$__32._Lambda$__81() in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\ImportDataClass.vb:line 304
+   at WebProj.ImportDataClass._Closure$__32._Lambda$__80(Object a0) in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\ImportDataClass.vb:line 298
+   at System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.ThreadHelper.ThreadStart(Object obj)
+
+Exception: Thread was being aborted.
+   at WebProj.TrailNetSuite.ExportReceivingsToNetSuite() in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\TrailNetSuite.vb:line 454
+   at WebProj.TrailNetSuite.Start() in C:\Arnie\Mobiz\Mobiz\WebERP\vb\data\TrailNetSuite.vb:line 111
+
+
