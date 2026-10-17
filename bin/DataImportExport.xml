@@ -1,0 +1,92 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+DataImportExport
+</name>
+</assembly>
+<members>
+<member name="T:DataImportExport.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:DataImportExport.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:DataImportExport.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:DataImportExport.DataExport.#ctor(System.String)">
+ <summary>
+ zip filename
+ </summary>
+ <param name="vOutputFilename"></param>
+ <remarks></remarks>
+</member>
+<member name="M:DataImportExport.DataExport.EndAdd">
+ <summary>
+ returns true if at least 1 row has been exported
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:DataImportExport.DataImport.InputFilename">
+ <summary>
+ zip file with xml/json datatables
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:DataImportExport.DataImport.NoDataTag">
+ <summary>
+ the source data do not have data tag (e.g. from Json). so dont manage tags
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:DataImportExport.DataImport.FileExtension">
+ <summary>
+ file extensions (excluding dot) of files inside the zipfile. Examples: xml, json
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:DataImportExport.DataImport.OutputFilename">
+ <summary>
+ zip file to contain the import results
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:DataImportExport.DataImport.PrimaryKeys">
+ <summary>
+ if not added here, primary key defaults to "ID"
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="T:DataImportExport.MobizDataImportInvoiceToPos">
+ <summary>
+ Mobiz private invoice to wholesale POS
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:DataImportExport.MobizDataImport.MobizClient">
+ <summary>
+ this is the destination
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:DataImportExport.MobizTags.InvoiceToPos">
+ <summary>
+ Mobiz private invoice to wholesale POS
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

@@ -1,0 +1,563 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ProPack
+</name>
+</assembly>
+<members>
+<member name="T:ProPack.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:ProPack.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:ProPack.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="F:ProPack.cGlobal.AppPath">
+ <summary>
+ Path of the client EXE 
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.cGlobal.FormatDateTimeSql">
+ <summary>
+ language-neutral date-time format excluding milliseconds. Can be stored to datetime and datetime2 fields
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.cGlobal.FormatDateSql">
+ <summary>
+ language-neutral date-time format including milliseconds. Can be stored to datetime and datetime2 fields
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.cGlobal.ZipInfoName">
+ <summary>
+ During import/export, an xml file with this name will be created inside the zip file to serve as a guide
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:ProPack.ProReport.AutoFillHeader">
+ <summary>
+ If True (default), retrieve data from database.
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProReport.SetHeaders">
+ <summary>
+ set all headers' PrintOnAllPages to false. Better setting for Excel exports
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProReport.ExportXmlFile">
+ <summary>
+ Export the data as "C:\Stimulsoft XML Data.xml". Used only for designing reports
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:ProPack.DataDeleter.Table(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vName">this is case sensitive because of XML</param>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.DbBackup.Filename">
+ <summary>
+ destination filename of the backup file
+ </summary>
+ <remarks></remarks>
+ 
+</member>
+<member name="F:ProPack.DbBackup.CompressedFilename">
+ <summary>
+ destination filename of the compressed zip file.
+ If not set, Filename will not be compressed
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.DbBackup.Execute">
+ <summary>
+ async
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.DbRestore.FileList">
+ <summary>
+ Optional. If nothing, will be created
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.DbRestore.Execute">
+ <summary>
+ async
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.Finder.SqlGroup">
+ <summary>
+ must include the "GROUP BY" phrase
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.Finder.SqlOrder">
+ <summary>
+ include the "ORDER BY" phrase
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Finder.CreateSql(ProPack.Finder.eSortMode,System.String@,System.String@,System.String@)">
+ <summary>
+ Creates an SQL based on the textbox text and the combobox field
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Finder.CreateWhere">
+ <summary>
+ will not prepend WHERE. Creates WHERE clause based on searchable fields and SearchString
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.FinderField.Expression">
+ <summary>
+ If this is not blank, ProFind will use this property instead of FieldName
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.FinderField.mMDT">
+ <summary>
+ Major data type
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.FinderField.Searchable">
+ <summary>
+ Determines if to be shown on the field combobox
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.FinderField.NoAlias">
+ <summary>
+ useful when adding * field
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.FinderField.ExcludeFromSelect">
+ <summary>
+ Use when you want this field to be searched. But dont want it in the SELECT. Useful in DISTINCT
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.ExecuteSQL(System.String,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vSQL"></param>
+ <param name="vUseRowCount">If true, will use "SELECT @@ROWCOUNT" to determine the affected records</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.ExecuteReader(System.String)">
+ <summary>
+ returns a forward-only SqlDataReader
+ </summary>
+ <param name="vSql"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.InsertRow(System.String)">
+ <summary>
+ Executes a INSERT statement and returns the uniqueidentifier
+ </summary>
+ <param name="vInsertSql"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.GetDate">
+ <summary>
+ Returns the server date and time
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.StartServer(System.String,System.String@,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vName">MSSQLSERVER</param>
+ <param name="oError"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.ProductLevel">
+ <summary>
+ returns the service pack level of the current sql server instance
+ </summary>
+ <returns>
+ RTM = no service pack
+ SP4 = service pack 4
+ </returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.mConn_InfoMessage(System.Object,System.Data.SqlClient.SqlInfoMessageEventArgs)">
+ <summary>
+ useful only when mConn.FireInfoMessageEventOnUserErrors = True
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.IsLocal">
+ <summary>
+ returns true if this instance of ProData is connected to a local instance of SQL Server
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.CloseBlockingConnections">
+ <summary>
+ returns affected connections
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProData.CompareLocalTimeAndSqlServerTime(System.String@)">
+ <summary>
+ return true if ok
+ </summary>
+ <param name="oError"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProDataSqlException.LogTrans">
+ <summary>
+ If an SqlException occurs and TransDepth > 0, log the error details, include @@TRANCOUNT, to a file.
+ Only 1 error per Number in log.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProDataSqlException.CreateLogTransTable">
+ <summary>
+ Called only by LogTrans
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.Synonyms.Prefix">
+ <summary>
+ Optional. If blank, SourceDatabase is used
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.Synonyms.SourceDatabaseName">
+ <summary>
+ Optional. If blank, SourceDatabase is used
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.VerifyType.ParseData(System.String,System.String,System.Data.SqlDbType,System.Boolean,System.String@,System.String@,System.Boolean,System.Int32,System.Boolean,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="vIn"></param>
+ <param name="vName"></param>
+ <param name="vDataType"></param>
+ <param name="vAllowNull"></param>
+ <param name="oOut"></param>
+ <param name="oError"></param>
+ <param name="vResolveBlankAsNull"></param>
+ <param name="vMaxDecimals">Max number of decimals allowed if type is numeric. </param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.CsvWriter.MaxLength">
+ <summary>
+ If zero = unlimited
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.ProZip.AddFileRename(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vSourceFilename"></param>
+ <param name="vDestinationFilename">relative path + filename</param>
+ <remarks></remarks>
+</member>
+<member name="T:ProPack.Utility">
+ <summary>
+ this class can be used by Winforms (this class is part of ProWin), Webforms, and Silverlight projects
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.LeanString(System.String)">
+ <summary>
+ removes crlf, double spaces, and trim
+ </summary>
+ <param name="vStr"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.AppendTable(System.Data.DataTable@,System.Data.DataTable)">
+ <summary>
+ Better than DataTable.Merge.
+ Will only append existing columns.
+ Avoids column data type mismatch (present when using DataTable.Merge)
+ </summary>
+</member>
+<member name="M:ProPack.Utility.MergeTable(System.Data.DataTable,System.Data.DataTable@,System.String[],System.String[])">
+ <summary>
+ 
+ </summary>
+ <param name="vSource"></param>
+ <param name="rDestination"></param>
+ <param name="vKeys">list of column names to which data to compare</param>
+ <param name="vData">list of column names from which data to copy</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.FormatTime(System.Int32,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vSeconds"></param>
+ <param name="vCompact">If True, display only the needed component (e.g. dont display minutes if less a minute has passed)</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.ExtractDuration(System.String,System.String[])">
+ <summary>
+ returns the duration in seconds
+ </summary>
+ <param name="vText">in the form of 0:0:0 or 0:0 or 0 or 00:00:00</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.TruncateLeft(System.String,System.Int32)">
+ <summary>
+ truncate the beginning of the string to fit in vLenght
+ </summary>
+ <param name="vStr"></param>
+ <param name="vLength"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.RoundOffTable(System.Data.DataTable@,System.Int32,System.Collections.Generic.IList{System.String})">
+ <summary>
+ 
+ </summary>
+ <param name="rDT"></param>
+ <param name="vDecimals"></param>
+ <param name="vFieldNames">if nothing, auto detect all columns w/ numerical data types</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.RpDate">
+ <summary>
+ SQL string
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.Utility.CrossColumn.DestinationColumnNameExpression">
+ <summary>
+ example: GPM - {PriceLevelName}
+ where PriceLevelName will be internally replaced by values in column "PriceLevelName"
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.Utility.CrossColumn.DestinationColumnNames">
+ <summary>
+ to be used internally by CreateCrossTab
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.Utility.CrossColumn.SourceColumnNames">
+ <summary>
+ to be used internally by CreateCrossTab
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.Utility.CrossColumn.GeneratedColumns">
+ <summary>
+ this is an output. This will contain the columns that are now in the output table
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.Utility.CrossColumn.SumColumnName">
+ <summary>
+ if set by the calling method, a DataColumn of this name will be added. 
+ It's rows will contain the sum of this row
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.CreateCrossTab(System.Data.DataTable,System.String[],ProPack.Utility.CrossColumn[])">
+ <summary>
+ version 2
+ </summary>
+ <param name="vDT"></param>
+ <param name="vFixedColumns"></param>
+ <param name="vColumns"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.CheckParts(System.String,System.String@)">
+ <summary>
+ returns the error
+ </summary>
+ <param name="vFilename"></param>
+ <returns>Error</returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.DirectoryToTable(System.String,System.String[],System.String[],System.String[],System.String[],System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean)">
+ <summary>
+ Stores file info to a table
+ </summary>
+ <param name="vFolder">Full path of the folder containing the files and folders to list. This folder itself will not be listed</param>
+ <param name="vIncludeFilePattern">array of wildcards of the file path to list. The default value of nothing will include all files to list</param>
+ <param name="vExcludeFilePattern">array of wildcards of the file path to exlcude from the list. The default value of nothing will exclude nothing</param>
+ <param name="vMinDate">Minimum filedate to list. The default value of nothing = Date.MinDate</param>
+ <param name="vMaxDate">Maximum filedate to list. The default value of nothing = Date.MaxDate</param>
+ <param name="vIncludeSubDirectories"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.ColRef(System.String)">
+ <summary>
+ excel helper
+ </summary>
+ <param name="Col">example: A, B, AA, AZ</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.GetDateRanges(System.DateTime,System.DateTime,ProPack.Utility.eDurationType,System.Boolean)">
+ <summary>
+ Returns a list of date ranges for the specified period
+ </summary>
+ <param name="vDateFrom">time is ignored if vAdjustBoundary is true</param>
+ <param name="vDateTo">time is ignored if vAdjustBoundary is true</param>
+ <param name="vDurationType"></param>
+ <param name="vAdjustBoundary">if true, the first returned item will be adjusted to the start of the specified duration. 
+ And the last returned item's DateTo will be adjusted to the end of the specified duration.</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.TimedThread(System.Threading.ParameterizedThreadStart,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="vStart"></param>
+ <param name="vTimeout">in milliseconds</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.AppendToDebug(System.String,System.Boolean,System.Exception,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vString"></param>
+ <param name="vForce">By default (False), append to debug only when the command, DebugLogEnabled, is True or 1</param>
+ <param name="vException">set this to grab stacktrace of the exception.</param>
+ <param name="vFullStack">if false, logs the 4th line of the stack trace. if true, logs the whole stack trace.</param>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.Stop2">
+ <summary>
+ Executes Stop statement when build is DEBUG
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.ParseEmails(System.String,System.String@)">
+ <summary>
+ parses vText which contains email addresses (delimited by space, comma, colon, semicolon, slash, or backslash).
+ And returns a string with valid email addresses delimited by comma and space.
+ </summary>
+ <param name="vText"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.DateTimeStamp(System.Boolean,System.Boolean)">
+ <summary>
+ output can be used as a filename
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.GetNextDate(System.DayOfWeek,System.DateTime,System.DateTime)">
+ <summary>
+ returns sa nearest next date with specified weekday and time
+ </summary>
+ <param name="vWeekday"></param>
+ <param name="vTime"></param>
+ <param name="vNow"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.WeekRange(System.DateTime)">
+ <summary>
+ get the Sunday and Saturday 11:59:59 PM of the week of the specified date
+ </summary>
+ <param name="vDate"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.Utility.CleanGroupItem(System.String,System.String,System.Boolean)">
+ <summary>
+ for use only by SplitGroup
+ </summary>
+ <param name="vText"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="T:ProPack.UtilityRedundant">
+ <summary>
+ Needed by the core (win and web) app and ProWin
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:ProPack.UtilityRedundant.AppDataFolder">
+ <summary>
+ C:\Documents and Settings\ArvinBoggs\Application Data
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.UtilityRedundant.SendMail(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.Boolean,System.IO.Stream,System.String,System.String,System.Boolean,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vFrom"></param>
+ <param name="vTo"></param>
+ <param name="vSubject"></param>
+ <param name="vBody"></param>
+ <param name="vServer"></param>
+ <param name="vPort">587 for GMail; 25 for other server</param>
+ <param name="vUsername"></param>
+ <param name="vPassword"></param>
+ <param name="vBCC">Blind Carbon Copy</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:ProPack.UtilityRedundant.CreateFolder(System.String)">
+ <summary>
+ creates a folder (if it doesn't exist) for a given filename. Useful when creating SQL Server backups
+ </summary>
+ <param name="vFilename"></param>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

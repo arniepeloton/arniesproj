@@ -1,0 +1,1737 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+WebProj
+</name>
+</assembly>
+<members>
+<member name="T:WebProj.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:WebProj.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:WebProj.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:WebProj.WebProj.ERPController.DownloadInvoicesPdfs">
+ <summary>
+ obsolete 2023_03_21__17_24_44_0542
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:WebProj.WebProj.DeviceMDMConfigController.Encrypt(System.String,System.String)">
+ <summary>
+ Encrypts plaintext using AES 128bit key and a Chain Block Cipher and returns a base64 encoded string
+ </summary>
+ <param name="plainText">Plain text to encrypt</param>
+ <param name="key">Secret key</param>
+ <returns>Base64 encoded string</returns>
+</member>
+<member name="M:WebProj.WebProj.DeviceMDMConfigController.Decrypt(System.String,System.String)">
+ <summary>
+ Decrypts a base64 encoded string using the given key (AES 128bit key and a Chain Block Cipher)
+ </summary>
+ <param name="encryptedText">Base64 Encoded String</param>
+ <param name="key">Secret Key</param>
+ <returns>Decrypted String</returns>
+</member>
+<member name="F:WebProj.WebProj.MobizExportController.mTableSavingDuration">
+ <summary>
+ in milliseconds. 0 = unlimited
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.WebProj.TriggersController.PIMBrandOwner">
+ <summary>
+ '''''''''''
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.WebProj.TriggersController.ProductNumber">
+ <summary>
+ '''''''''''''''''''
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.WebProj.TriggersController.StartTrigger">
+ <summary>
+ ''''''''''''
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.WebProj.Data.FranchiseeDataExporter.ForceFranchiseeDatabase">
+ <summary>
+ optional. if present, use this as the source of data
+ </summary>
+</member>
+<member name="F:WebProj.WebProj.Data.FranchiseeDataExporter.ForceFranchisorDatabase">
+ <summary>
+ optional. if present, use this as the destination of data
+ </summary>
+</member>
+<member name="M:WebProj.WebProj.Data.FranchiseeDataExporter.StartCopy(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ return the total number of records copied
+ </summary>
+ <param name="vFranchiseeOrgID"></param>
+ <param name="vFranchiseeDatabase"></param>
+ <param name="vFranchiseeFowstID"></param>
+ <param name="vFranchisorOrgID"></param>
+ <param name="vFranchisorDatabase"></param>
+ <param name="vFranchisorFowstID"></param>
+ <returns></returns>
+</member>
+<member name="M:WebProj.CaptchaController.Index(System.String)">
+ <summary>
+ get image captcha
+ </summary>
+ <param name="vKey"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.OfflineDataController.SqliteSchemaExporter.DatabaseName">
+ <summary>
+ ProData will point to this database. This will also be used as a folder name inside the zip file. 
+ If nothing or blank string, zipped json file will reside in the root folder inside the zip file
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.OfflineDataController.SqliteSchemaExporter.DestinationDatabaseName">
+ <summary>
+ optional, if set null, will follow DatabaseName
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.DownloadController.Index(System.String)">
+ <summary>
+ allows the user to download files from restricted location
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.RetailDashboardController.GetBranches">
+ <summary>
+ get branches that have sales for the last 2 calendar years
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.RetailDashboardController.DownloadByCategory">
+ <summary>
+ returns JSON
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SalesMenuController.VerifyCounter">
+ <summary>
+ this function is for offline devices only
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SalesMenuController.GetAndIncrementPrintCount">
+ <summary>
+ called by on-premise print server
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SalesMenuController.PrintPdf">
+ <summary>
+ this should be running in on-premise server
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.StockController.UpdateItemModifier(System.String,System.Decimal,WebProj.StockController.UpdatePosLiteInput.ItemModifierClass)">
+ <summary>
+ return total modifier amount for that TransInvoiceItems row
+ </summary>
+ <param name="vItemID"></param>
+ <param name="vProductQty"></param>
+ <param name="vItemModifier"></param>
+ <returns></returns>
+</member>
+<member name="M:WebProj.SalesReturnsController.GetByInvoiceID(System.String,System.String,System.String,System.String,System.String,System.Boolean)">
+ <summary>
+ get invoice products and returned and remaining qty
+ </summary>
+ <param name="vInvoiceID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SalesReturnsController.GetMemoByInvoiceID(System.String,System.String)">
+ <summary>
+ returns the latest sales return memo that contains item from the specified invoice only.
+ </summary>
+ <param name="vInvoiceID"></param>
+ <param name="vMemoID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TestController.CreateOrdersFromBackOrders">
+ <summary>
+ include in production. apr 1, 2016
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TestController.ImportFowstFromNetSuiteExcel">
+ <summary>
+ this is still useful. function TrailNetSuiteImportLibraryFromExcel does not make this function obsolete
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.Subscribe.GetOrganizationInfo">
+ <summary>
+ '''''''''''''''
+ </summary>
+ <param name="strID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.RepeatingTasks.TaskBase.Interval">
+ <summary>
+ in milliseconds
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesOrderLegacy.StockSummary(System.DateTime,System.DateTime,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <param name="vMaxLeadTime">If less than zero, lead times will be ignored</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesOrderLegacy.IsPerfectlySorted(System.String,System.Int32@,System.Int32@)">
+ <summary>
+ compares items from sales order and it's corresponding uninvoiced sorting list.
+ Returns true if sorted qty is the same with ordered qty and has no backorder nor alternative
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesOrderLegacy.InvoiceableOrders(System.Boolean,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vExcludeSetPerfectlySorted">only records with TransSalesOrder.PerfectlySorted null</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesOrderLegacy.GetGroupItems(System.String)">
+ <summary>
+ used to save summary (CacheStockSalesDaily)
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransFlushingReport.SaveTransImport(System.String,System.String,System.String,System.Boolean)">
+ <summary>
+ requires current organization
+ </summary>
+ <param name="vDeviceID"></param>
+ <param name="vFilename">fileonly, no path, no extension</param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryPrinters.GetByDevicePrinterFowstID(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vID">LibraryDevicePrinterFowst.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryPrinters.GetAllCategories(System.String)">
+ <summary>
+ all PIM categories and included by printer
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryOrganizationFOWST.CreateByStoreID(System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vOrgID"></param>
+ <param name="vStoreID">this will also set the NetSuiteID</param>
+ <param name="vName"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryOrganizationFOWST.CreateFromExcel(System.String,System.String)">
+ <summary>
+ Darlington-Trail NetSuite format
+ </summary>
+ <param name="vOrgID"></param>
+ <param name="vFilename"></param>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.LibraryOrganizationFOWST.ExcelRow.ExcelRowNumber">
+ <summary>
+ 1-based
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransBackOrders.CreateOrders">
+ <summary>
+ this function is safe even for non-DUC
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransBackOrders.CreateOrder(System.String,System.String,System.String,System.Data.DataTable@)">
+ <summary>
+ returns the count of line items
+ </summary>
+ <param name="vBackOrderID">TransBackOrders.ID</param>
+ <param name="vOriginalSalesOrderID">TransInvoice.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryRepeatingTransactions.SaveRunDate(System.Data.DataRow,System.DateTime,System.String,System.Nullable{System.DateTime})">
+ <summary>
+ call this after creating an invoice
+ </summary>
+ <param name="vDrInvoiceableDefinition"></param>
+ <param name="vCurrentDate"></param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryRepeatingTransactions.DeriveOtherCharges(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vTransID">TransRentableAssets.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransReceivingPayment.SavePaymentJson.ConsumedAmount">
+ <summary>
+ total amount paid to invoices
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransReceivingPayment.GetOtherPayments(System.String)">
+ <summary>
+ TransReceivingPayment.ID
+ </summary>
+ <param name="vPaymentID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransReceivingPayment.CreateForm2307(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vPaymentID"></param>
+ <param name="vMode">AP or AR (default)</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransCustomerPayment.SavePaymentJson.ConsumedAmount">
+ <summary>
+ total amount paid to invoices
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoiceLegacy.NextInvoiceNumber(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vDefaultId"></param>
+ <param name="vExtention">InvoiceNoExtension</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoiceLegacy.GetSummaryPerSupplierAndBranch(System.DateTime,System.DateTime,System.String,System.Boolean,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <param name="vSupplierID">if nothing, include all suppliers</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoiceLegacy.GetInvoiceType(System.String,System.String@,System.String@)">
+ <summary>
+ returns true if a record was found
+ </summary>
+ <param name="vInvoiceDefaultID">MainInvoiceDefaults.ID</param>
+ <param name="oTransactionType">output MainInvoiceDefaults.TransactionType</param>
+ <param name="oAbbrevation">output MainInvoiceDefaults.Abbrevation</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoiceLegacy.UpdatePaymentDate(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vID"></param>
+ <returns>number of updated records</returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryDevice.GetDesktop">
+ <summary>
+ get a device with blank UUID
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryDevice.CreateDesktop">
+ <summary>
+ creates a device with blank UUID
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryDevice.GetOrAddByHddSerial(System.String)">
+ <summary>
+ HDD = hard disk drive
+ </summary>
+ <param name="vSerial"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryPeople.Validate(System.String,System.String,System.String,System.String,System.String,System.String,System.String@,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+ <summary>
+ requires HandleOrganization
+ </summary>
+ <param name="vPeopleID"></param>
+ <param name="vOrgID"></param>
+ <param name="vFowstID"></param>
+ <param name="vDeviceID"></param>
+ <param name="vDeviceUuid"></param>
+ <param name="oError"></param>
+ <param name="vDontVerifyFowst">if true, vFowstID is ignored</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryPeople.ValidateOrganizationEmployee(System.String,System.String@)">
+ <summary>
+ requires HandleOrganization
+ </summary>
+</member>
+<member name="M:WebProj.LibraryPeople.CreateTempTableAllowedViewRequestFowsts(System.String,System.Boolean,System.Boolean,System.Boolean,System.String)">
+ <summary>
+ creates #tmpAllowedFowsts.
+ requires HandleOrganization.
+ requires transactions.
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryPeople.DucToMobizExporter.CopyFromHrToMobiz(System.String)">
+ <summary>
+ this requires a private database
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryPeople.DucToMobizExporter.GetFromHrToolkitButNotInMobiz(System.String,System.String)">
+ <summary>
+ this requires a private database
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryPeople.GetDeviceByUuid(System.String)">
+ <summary>
+ this should be in LibraryDevice
+ </summary>
+ <param name="vUuid"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryBranches.GetSchedules(System.Boolean,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vCurrent">True = current, False = previous</param>
+ <param name="vDcBranchID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryBranches.GetAll(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vDcBranchID">This must be an integer</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryBranches.GetByCpo(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vID">LibraryBranches.ID of the CPO</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryBranches.GetWithoutSchedule(System.String)">
+ <summary>
+ </summary>
+ <param name="vDcBranchID">This must be an integer</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryBranches.CopyBranches(System.String,System.String,System.String,System.String,System.Double,System.Double,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Decimal,System.Decimal)">
+ <summary>
+ Copy branches from DavaoUnifiedPayroll.LibraryBranch to Wholesale.LibraryBranches (if not already exisiting)
+ </summary>
+ <returns>number of rows copied</returns>
+</member>
+<member name="M:WebProj.LibraryBranches.GetByCustomerAddressID(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vCustomerAddressID">LibraryCustomersAddresses.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.GetContactPerson(System.String)">
+ <summary>
+ LibraryOrganizationRepresentatives
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.CreateContactPerson(System.String)">
+ <summary>
+ return LibraryOrganizationEmployee.ID
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.GetMinimumProfit(System.String,System.Double@,System.Double@)">
+ <summary>
+ wholesale database
+ </summary>
+ <param name="vCustomerID"></param>
+ <param name="oGPM"></param>
+ <param name="oTotalGPM"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.TotalAmountPurchaseLastDays(System.String,System.Int64)">
+ <summary>
+ wholesale database
+ </summary>
+ <param name="vCustomerID"></param>
+ <param name="vDays"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.MinimumTotalGPM(System.String)">
+ <summary>
+ wholesale database
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.MinimumLineGPM(System.String)">
+ <summary>
+ wholesale database
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.GetInvoices(System.String,System.Boolean)">
+ <summary>
+ Gets all unpaid (or optionally, all) invoices by a customer
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.GetByFowstID(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vFowstID">MobizLibraryOrganizationFOWST.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.LegacyCreateContactPerson(System.String)">
+ <summary>
+ return LibraryCustomersRepresentatives.ID
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.DailyCustomerInvoice">
+ <summary>
+ requires private database
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.SaveDailyCustomerInvoice">
+ <summary>
+ requires private database
+ </summary>
+</member>
+<member name="M:WebProj.LibraryCustomers.MonthlyCustomerInvoice">
+ <summary>
+ requires private database
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryCustomers.SaveMonthlyCustomerInvoice">
+ <summary>
+ requires private database
+ </summary>
+</member>
+<member name="M:WebProj.LibraryCustomers.CreateBilling(System.String,System.Nullable{System.DateTime})">
+ <summary>
+ returns the base filename of the created PDF file
+ </summary>
+ <param name="vOrgID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryOrganization.GetOrAddByCompanyName(System.String,System.String,System.Boolean,System.Boolean,System.String)">
+ <summary>
+ get Darlington NetSuite Excel import
+ </summary>
+ <param name="vCompanyName"></param>
+ <param name="vNetSuiteID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryOrganization.LevenshteinDistance(System.String,System.String)">
+ <summary>
+ Compute LevenshteinDistance.
+ </summary>
+</member>
+<member name="M:WebProj.LibraryShippers.GetRoutes(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vID">ShipperID. If blank, get all routes</param>
+ <param name="vCity1ID">if this is set, vCity2ID must also be set</param>
+ <param name="vCity2ID">if this is set, vCity1ID must also be set</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetPrice(System.String,System.String,System.String,System.Nullable{System.DateTime}@,System.String)">
+ <summary>
+ returns -1 if not found
+ </summary>
+ <param name="vStockID"></param>
+ <param name="vPriceLevelText"> from SystemDefaults
+ Eg. "Landed Cost ID", "Factory Price ID"</param>
+ <param name="vPriceLevelID">the default value from SystemDefaults </param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.PriceTable(System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vId"></param>
+ <param name="vCustomerID"></param>
+ <param name="vLowestPriceOnly">display only the lowest priced price level per unit qty</param>
+ <param name="vIncludeLastPriceRequest">If true, includes 2 additional columns: CustomerLastInvoicePrice, CustomerLastInvoiceDate</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.ByIds(System.String,System.Data.DataTable,System.Boolean,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vIds"></param>
+ <param name="vDtPriceLevels">ID = LibraryPriceLevels.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetIDsByBarcode(System.String)">
+ <summary>
+ also search by stock number
+ </summary>
+ <param name="vBarcode"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetSales(System.String,System.DateTime,System.DateTime)">
+ <summary>
+ summary for ucLibraryStockSales
+ </summary>
+ <param name="vID"></param>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetSalesBackOrder(System.String,System.DateTime,System.DateTime)">
+ <summary>
+ summary for ucLibraryStockSales
+ </summary>
+ <param name="vID"></param>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetPurchaseHistory(System.String,System.DateTime,System.DateTime)">
+ <summary>
+ summary for ucLibraryStockPurchaseLedger
+ </summary>
+ <param name="vID"></param>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetUnits(System.Data.DataTable)">
+ <summary>
+ primary key = StockId
+ </summary>
+ <param name="vDtStockId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetDemandTotal(System.String,System.DateTime,System.DateTime)">
+ <summary>
+ orders (active) and backorders (active and cancelled)
+ </summary>
+ <param name="vID"></param>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetDemand(System.DateTime,System.DateTime,System.Boolean,System.String)">
+ <summary>
+ orders (active) and backorders (active and cancelled)
+ </summary>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetStatus(System.String,System.Int32)">
+ <summary>
+ Output fields: StockDescription, StocksOnHand, QtyCommited (wrong spelling),
+ OrderQty, BackOrderQty 
+ </summary>
+ <param name="vID"></param>
+ <param name="vBranchID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetAllowDecimal(System.String)">
+ <summary>
+ requires the current organization
+ </summary>
+ <param name="vProductID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.UpdateParentProductPrice(System.String,System.String,System.Collections.Generic.List{System.String})">
+ <summary>
+ return parent product IDs
+ </summary>
+ <param name="vChildProductID"></param>
+ <param name="vOrgID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.RecursiveContents.GetFutureIssues(System.String,System.String,System.String)">
+ <summary>
+ use this to test issues before saving the child product.
+ used in StockController/SaveBomPageData
+ </summary>
+ <param name="vParentProductID"></param>
+ <param name="vChildParentID"></param>
+ <param name="vOrganizationID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.RecursiveContents.GetIssues(System.String)">
+ <summary>
+ use this overload to find issues that already exist in the database.
+ this will detect issues on all organizations
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.RecursiveContents.GetOrganizationIssues(System.String,System.Data.DataTable)">
+ <summary>
+ 
+ </summary>
+ <param name="vOrgID"></param>
+ <param name="vDT">filtered to contain only rows from that org</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.AddPim(System.String,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.String)">
+ <summary>
+ proper entry point
+ </summary>
+ <param name="vPublishedByID"></param>
+ <param name="vProductNumber"></param>
+ <param name="vProductName"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.GetOrCreatePimID(System.String,System.String,System.String,System.String)">
+ <summary>
+ this will set IsActive = 1. update LastUpdated and UserID
+ </summary>
+ <param name="vPublishedByID"></param>
+ <param name="vProductNumber"></param>
+ <param name="vProductName"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStock.FillDeduplicatedProductNumbers(System.Data.DataTable)">
+ <summary>
+ 
+ </summary>
+ <param name="vDT">output from DuplicateProductNumbers</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibrarySuppliers.GetAddresses(System.String)">
+ <summary>
+ for the "address" grid of "Supplier" library
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibrarySuppliers.AddRandomStreet">
+ <summary>
+ add random street to supplier addresses if they dont have 1
+ </summary>
+ <returns>The number of added/updated records</returns>
+ <remarks>for debugging purposes only</remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.GetPrice(System.String,System.String,System.String,System.DateTime@)">
+ <summary>
+ returns -1 if not found
+ </summary>
+ <param name="vStockID"></param>
+ <param name="vPriceLevelText"> from SystemDefaults
+ Eg. "Landed Cost ID", "Factory Price ID"</param>
+ <param name="vPriceLevelID">the default value from SystemDefaults </param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.PriceTable(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vId"></param>
+ <param name="vCustomerID"></param>
+ <param name="vLowestPriceOnly">display only the lowest priced price level per unit qty</param>
+ <param name="vIncludeLastPriceRequest">If true, includes 2 additional columns: CustomerLastInvoicePrice, CustomerLastInvoiceDate</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.ByIds(System.String,System.Data.DataTable)">
+ <summary>
+ 
+ </summary>
+ <param name="vIds"></param>
+ <param name="vDtPriceLevels">ID = LibraryPriceLevels.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.GetIDsByBarcode(System.String)">
+ <summary>
+ also search by stock number
+ </summary>
+ <param name="vBarcode"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.GetSales(System.String,System.DateTime,System.DateTime)">
+ <summary>
+ summary for ucLibraryStockSales
+ </summary>
+ <param name="vID"></param>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.GetSalesBackOrder(System.String,System.DateTime,System.DateTime)">
+ <summary>
+ summary for ucLibraryStockSales
+ </summary>
+ <param name="vID"></param>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.GetPurchaseHistory(System.String,System.DateTime,System.DateTime)">
+ <summary>
+ summary for ucLibraryStockPurchaseLedger
+ </summary>
+ <param name="vID"></param>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.GetUnits(System.Data.DataTable)">
+ <summary>
+ primary key = StockId
+ </summary>
+ <param name="vDtStockId"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.GetDemandTotal(System.String,System.DateTime,System.DateTime)">
+ <summary>
+ orders (active) and backorders (active and cancelled)
+ </summary>
+ <param name="vID"></param>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.GetDemand(System.DateTime,System.DateTime,System.Boolean,System.String)">
+ <summary>
+ orders (active) and backorders (active and cancelled)
+ </summary>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.LibraryStockLegacy.GetStatus(System.String,System.Int32)">
+ <summary>
+ Output fields: StockDescription, StocksOnHand, QtyCommited (wrong spelling),
+ OrderQty, BackOrderQty 
+ </summary>
+ <param name="vID"></param>
+ <param name="vBranchID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SystemDefaults.InvoiceTypeForBranchAutoInvoice(System.String@,System.String@,System.String@)">
+ <summary>
+ 
+ </summary>
+ <param name="oInvoiceDefaultID">MainInvoiceDefaults.ID</param>
+ <param name="oInvoiceType">MainInvoiceDefaults.Abbrevation</param>
+ <param name="oError"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SystemDefaults.InvoiceTypeForCustomerAutoInvoice(System.String@,System.String@,System.String@)">
+ <summary>
+ 
+ </summary>
+ <param name="oInvoiceDefaultID">MainInvoiceDefaults.ID</param>
+ <param name="oInvoiceType">MainInvoiceDefaults.Abbrevation</param>
+ <param name="oError"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SystemDefaults.GetPicturesPath">
+ <summary>
+ This is the path used by pictures of stock viewer
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SystemDefaults.GetPosBranch">
+<summary>
+ for in-store transactions
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SystemDefaults.GetOrAddDefaultBin(System.String,System.String)">
+ <summary>
+ return LibraryCustomersBin.ID
+ </summary>
+ <param name="vCustomerAddressID">LibraryCustomersAddresses.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SystemDefaults.UpdateTableLastUpdated(System.String)">
+ <summary>
+ Updates private.TablesLastUpdated with specified vTableName. 
+ If the specified vTableName does not exist, it will be created
+ </summary>
+ <param name="vTableName"></param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SystemDefaults.GetPriceLevelName(System.String)">
+ <summary>
+ this function must be moved to another class
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="P:WebProj.SystemDefaults.AutoCreateInvoiceTypeID">
+ <summary>
+ LibraryDocumentControl.ID
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInventoryLedger.Add(System.String,System.String,System.String,WebProj.TransInventoryLedger.eTransType,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.DateTime},System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.Decimal})">
+ <summary>
+ returns the created TransInventoryLedger.ID
+ </summary>
+ <param name="vStockID"></param>
+ <param name="vFowstID"></param>
+ <param name="vTransactionID"></param>
+ <param name="vTransactionType"></param>
+ <param name="vUserID"></param>
+ <param name="vQty"></param>
+ <param name="vBalance"></param>
+ <param name="vBinID"></param>
+ <param name="vExpirationDate"></param>
+ <param name="vBadCount"></param>
+ <param name="vBadCountReason"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInventoryLedger.CreateTempTables(System.Boolean)">
+ <summary>
+ this must be wrapped in transaction and error handler
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:WebProj.TransInventoryLedger.TransClass.TransactionType">
+ <summary>
+ saved to TransInventoryLedger.TransactionType
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.NextInvoiceNumber(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vDefaultId"></param>
+ <param name="vExtention">InvoiceNoExtension</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.IsSavedAsFinal(System.Data.DataRow,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vDR">from ByID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.SaveProfitability(System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vID"></param>
+ <param name="vQuantityField"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransInvoice.Creator.InvoiceType">
+ <summary>
+ MainInvoiceDefaults.Abbrevation
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransInvoice.Creator.SupplierFowstID">
+ <summary>
+ Populated only when user choose FOWST from own org
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.GetSummaryPerSupplierAndBranch(System.DateTime,System.DateTime,System.String,System.Boolean,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <param name="vSupplierID">if nothing, include all suppliers</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.GetInvoiceType(System.String,System.String@,System.String@)">
+ <summary>
+ returns true if a record was found
+ </summary>
+ <param name="vInvoiceDefaultID">MainInvoiceDefaults.ID</param>
+ <param name="oTransactionType">output MainInvoiceDefaults.TransactionType</param>
+ <param name="oAbbrevation">output MainInvoiceDefaults.Abbrevation</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.DeleteOrderStock(System.String,System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vInvoiceID"></param>
+ <param name="vProductID"></param>
+ <param name="vUnitMeasure">if numeric, will be compared to ActualQuantity</param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.UpdatePaymentDate(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vID"></param>
+ <returns>number of updated records</returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.CreateDevAlertsSkipNumberAll(System.DateTime)">
+ <summary>
+ for all databases
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.SkippedInvoiceNumbers(System.DateTime)">
+ <summary>
+ for current private database only
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.FinalizePickList(System.String,System.String,System.String)">
+ <summary>
+ ProData.BeginTransaction must be called before calling this function
+ </summary>
+ <param name="vID"></param>
+ <param name="vPeopleID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="T:WebProj.TransInvoice.InvoiceInfo">
+ <summary>
+ not used for now
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.ModifyInvoiceNumbers">
+ <summary>
+ this function does not contain pure data-related functions
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.AddDependencyData(System.String,ProPack.ProData)">
+ <summary>
+ copy library data from 1st instance (vSourceProData) to 2nd instance (mProData)
+ </summary>
+ <param name="vInvoiceID"></param>
+ <param name="vSourceProData">ProData of 1st instance</param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.CacheInvoicesWithCredit(System.String,System.String,System.Int32,ProPack.ProData,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+ <summary>
+ 
+ </summary>
+ <param name="vInvoiceID"></param>
+ <param name="vCustomerID"></param>
+ <param name="vMaxAgeInDays"></param>
+ <param name="v1stInstance">fill up if importing data to 2nd instance</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.CacheWeightedAverageDaysOverdue(System.String,System.Data.DataView)">
+ <summary>
+ 
+ </summary>
+ <param name="vCustomerID"></param>
+ <param name="vDvInvoices">from GetInvoicesWithCreditFromCache</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.GetAgingOfAr(System.Data.DataTable)">
+ <summary>
+ 
+ </summary>
+ <param name="vDT">from GetInvoicesWithCreditFromCache</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.DeactivateAdjustment(System.String,System.String)">
+ <summary>
+ returns nothing if success. otherwise, returns the error message
+ </summary>
+ <param name="vAdjustmentID"></param>
+ <param name="vUserID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.GetCanvassItems(System.String,System.String)">
+ <summary>
+ this should be in another file
+ </summary>
+ <param name="vCanvassID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransInvoice.SaveSalesOrderJson.CopyProductsFromInvoiceID">
+ <summary>
+ comma-separated
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransInvoice.SaveSalesOrderJson.SetInvoiceID">
+ <summary>
+ if true, records, with IDs from CopyProductsFromInvoiceID, will have their InvoiceID set to the generated ID
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.SalesMenuGetInvoiceDetails(System.String)">
+ <summary>
+ vb version of SalesMenu.js GetInvoiceDetails
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.CustomerPaymentReport(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vPaymentDateFrom"></param>
+ <param name="vPaymentDateTo"></param>
+ <param name="vMaturityDateFrom"></param>
+ <param name="vMaturityDateTo"></param>
+ <param name="vExcludeCash"></param>
+ <param name="vExcludeChecks"></param>
+ <param name="vExcludeCreditCard"></param>
+ <param name="vExcludeDebitCard"></param>
+ <param name="vExcludeSrv"></param>
+ <param name="vCustomerID"></param>
+ <param name="vExcludeDeposited"></param>
+ <param name="vExcludeReturned"></param>
+ <param name="vExcludeUndeposited"></param>
+ <param name="vDepositGroupID">if set, other filters are ignored</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.CreateOrderFromProject(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vCurrentOrgID"></param>
+ <param name="vRequisitionID">LibraryProjectRequisition.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.GetProjectProducts(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vRequisitionID">LibraryProjectRequisition.ID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.GetTotalSubTotal(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vID"></param>
+ <param name="vFieldName">Quantity or OrderedQuantity</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.SalesOrderToInvoice(System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ return the ID of the generated invoice
+ </summary>
+ <param name="vSalesOrderID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.CopyTransaction(System.String,System.String,System.String)">
+ <summary>
+ return the ID of the generated invoice
+ </summary>
+ <param name="vSalesOrderID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.MostUsedAccountsPayableAddress(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vFieldName">BillingAddressID or DeliveryAddressID</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransInvoice.SaveItemRequisitionInput.ID">
+ <summary>
+ TransItemRequisitions.ID
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransInvoice.SaveItemRequisitionInput.BackOrderClass.ID">
+ <summary>
+ TransItemRequisitionBackOrder.ID
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.CopyToItemRequisition(System.String,System.String,System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vID">TransInvoice.ID</param>
+ <param name="vQuantityField">Quantity or OrderedQuantity</param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransInvoice.ChangeInvoiceNumbers(System.Data.DataTable,System.String,System.String@)">
+ <summary>
+ returns the number of updated rows
+ </summary>
+ <param name="vDT"></param>
+ <returns></returns>
+</member>
+<member name="M:WebProj.TransInvoice.UpdateCacheInvoicesDailyInput.Validate">
+ <summary>
+ returns nothing if no error
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:WebProj.TransMemoSalesReturn.Approve(System.String,System.String,System.String,System.String,System.String,System.Boolean)">
+ <summary>
+ vApprovedBy is optional
+ </summary>
+ <param name="vMemoID"></param>
+ <param name="vApprovedBy">optional</param>
+ <param name="vUserID"></param>
+ <param name="vFowstID"></param>
+ <param name="vDeviceID"></param>
+ <param name="vIsRefund"></param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransMemoSalesReturn.GetContents(System.String,System.String,System.String,System.String,System.String,System.Boolean)">
+ <summary>
+ get invoice products and returned and remaining qty
+ </summary>
+ <param name="vInvoiceID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransQr.mStartDate">
+ <summary>
+ look in POS and CS that have this date or newer
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransQr.GetStockSql(System.Int32,System.DateTime,System.DateTime,System.String)">
+ <summary>
+ generate common sql used only by GetStocks and GetStocksSummary
+ </summary>
+ <param name="vBranchID"></param>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesOrder.StockSummary(System.DateTime,System.DateTime,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="vDateFrom"></param>
+ <param name="vDateTo"></param>
+ <param name="vMaxLeadTime">If less than zero, lead times will be ignored</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.TransSalesOrder.Creator.ID">
+ <summary>
+ read-only
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesOrder.IsPerfectlySorted(System.String,System.Int32@,System.Int32@)">
+ <summary>
+ compares items from sales order and it's corresponding uninvoiced sorting list.
+ Returns true if sorted qty is the same with ordered qty and has no backorder nor alternative
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesOrder.InvoiceableOrders(System.Boolean,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="vExcludeSetPerfectlySorted">only records with TransSalesOrder.PerfectlySorted null</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesOrder.GetGroupItems(System.String)">
+ <summary>
+ used to save summary (CacheStockSalesDaily)
+ </summary>
+ <param name="vID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesOrder.LegacyGetByMobizInvoiceID(System.String)">
+ <summary>
+ wholesale database
+ </summary>
+ <param name="vMobizInvoiceID"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesReturnLedger.Save(System.String,System.Boolean,System.String,System.String,System.String,System.String)">
+ <summary>
+ this must be inside a transaction
+ </summary>
+ <param name="vMemoID"></param>
+ <param name="vRefund"></param>
+ <param name="vSubscriberOrganizationBranchID">LibraryCustomersAddresses.ID</param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesReturnLedger.Consume(System.String,System.String,System.Decimal,System.String,System.String@)">
+ <summary>
+ use this in a transaction
+ </summary>
+ <param name="vMemoID"></param>
+ <param name="vDestinationPaymentID"></param>
+ <param name="vAmount"></param>
+ <param name="vSubscriberOrganizationBranchID">LibraryCustomersAddresses.ID</param>
+ <param name="oError"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransSalesReturnLedger.SaveSalesPaymentsRefund(System.String)">
+ <summary>
+ Added by janine May 20 2015
+ 
+ This function is an addition to the sales return function, particularly, REFUND. 
+ This is to insert a negative or contra value to the payment made.
+ Example: if the client returned all of the items in an invoice (it should work like void),
+ a negative value of the amount paid will be inserted so that 
+ in the dashboard sales reports, it will be easy to sum and still get the correct
+ amount in the inventory of payments. so if the cashamount is 100 originally, and 
+ the client wants a refund, another -100 will be inserted.
+ 
+ For invoices wherein only part of the items are refunded, there is a formula applied.
+ the payment method average will be used as contra value of the amount (in case of multiple payment type made)
+ 
+ Also note that for payment methods such as Other Type and Credit Card, 
+ there is a specific contra value inserted to to their respective tables.
+ This is because Other Type payment methods can be SMAC, EPlus, or voucher and the credit card
+ could be visa, mastercard, etc. For easier summation purposes in the dashboard reports,
+ the inserted contra values for refund are necessary.
+ </summary>
+ <param name="vMemoID"></param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransStockPurchase.GetPendingProposal(System.Int32,System.DateTime,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vBranchID"></param>
+ <param name="vDateNeeded">vSupplierID must also be set if this is set</param>
+ <param name="vSupplierID">Time component will be removed internally. vDateNeeded must also be set if this is set.</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransStockPurchase.FillProposedInfo(System.Data.DataRow@)">
+ <summary>
+ add/update TransProposedPurchaseOrderSuppliers
+ </summary>
+ <param name="rDR">a row from TransProposedPurchaseOrderSuppliers</param>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.TransStockPurchase.GetProposed(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vStockID"></param>
+ <param name="vProposedPoId">If blank, returns data from all unserved proposed PO</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="T:WebProj.PoXmlSm.xml">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xml.document">
+<remarks/>
+</member>
+<member name="T:WebProj.PoXmlSm.xmlDocument">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocument.header">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocument.body">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocument.footer">
+<remarks/>
+</member>
+<member name="T:WebProj.PoXmlSm.xmlDocumentHeader">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.DocumentType">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.CompanyName">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.PostDate">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.PostTime">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.VendorName">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.VendorCode">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.TermsDiscount">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.SiteCode">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.SiteName">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.SiteAddress">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.SiteTIN">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.DocumentNumber">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.DateEntry">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.DateCancel">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.DateReceipt">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.ArticleCount">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentHeader.DeliveryMessage">
+<remarks/>
+</member>
+<member name="T:WebProj.PoXmlSm.xmlDocumentArticle">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticle.LineNumber">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticle.SKUMatCode">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticle.ArticleDescription">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticle.UPC">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticle.BuyQty">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticle.BuyCost">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticle.BuyUM">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticle.Package">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticle.SellUM">
+<remarks/>
+</member>
+<member name="T:WebProj.PoXmlSm.xmlDocumentArticleArticleDescription">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticleArticleDescription.Description">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentArticleArticleDescription.Discount">
+<remarks/>
+</member>
+<member name="T:WebProj.PoXmlSm.xmlDocumentFooter">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentFooter.TotalAmount">
+<remarks/>
+</member>
+<member name="P:WebProj.PoXmlSm.xmlDocumentFooter.ImportantNotification">
+<remarks/>
+</member>
+<member name="F:WebProj.FlushZipConverter.JsonInfo.CsvFilename">
+ <summary>
+ applicable for cyberpos
+ </summary>
+</member>
+<member name="F:WebProj.ImportFromSqlite.MinimumDate">
+ <summary>
+ dont import data whose LastUpdated is lower than this
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="T:WebProj.InvoiceToOrder">
+ <summary>
+ copy data from MobizDUC.TransInvoice to Wholesale.TransSalesOrder
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SortingListCreator.CreateSortingList(System.String,System.String)">
+ <summary>
+ return the SortingListNo of the newly created wholesale.TransStockSortingList
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.DeviceDataExporter.Export">
+ <summary>
+ return the number of exported records
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.ImportDataClass.UploadsFolder">
+ <summary>
+ optional. used for debugging only
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.ImportDataClass.CreateCustomerPaymentsDataTable(System.String,WebProj.DictionaryBinder@,System.String@,System.Data.DataTable)">
+ <summary>
+ 
+ </summary>
+ <param name="vInputZipFilename"></param>
+ <param name="oBinder"></param>
+ <param name="oError"></param>
+ <param name="vDtInvoice"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.ImportDataClass.ParseTime(System.String)">
+ <summary>
+ return the total number of seconds
+ </summary>
+ <param name="vText"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.OldSqliteDeleter.mFilesToRetain">
+ <summary>
+ per org and per type (sqlite, sql server)
+ </summary>
+</member>
+<member name="F:WebProj.OldSqliteDeleter.OldFile.Count">
+ <summary>
+ number of files in the orgid-filetype group
+ </summary>
+</member>
+<member name="M:WebProj.SecurityAccess.SecurityModules.Add(System.String,System.String,System.String,System.Int32,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="vID"></param>
+ <param name="vName"></param>
+ <param name="vDescription"></param>
+ <param name="SortOrder"></param>
+ <param name="vLabel">if provided, user will see this instead of vName</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.SecurityAccess.GrantAllToSysAdmin(ProPack.ProData)">
+ <summary>
+ requires private database
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.App.Agent.MinimumInterval">
+ <summary>
+ in seconds
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.Client.CompareLocalTimeAndSqlServerTime(System.String@)">
+ <summary>
+ return true if ok
+ </summary>
+ <param name="oError"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.modClient.AbcOrgID">
+ <summary>
+ dev server
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="F:WebProj.modClient.DsmeOrgID">
+ <summary>
+ southern metal in prod
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.WebRequest.HandleOrganization(System.Boolean,System.String@)">
+ <summary>
+ redirects to organization page if has no or invalid organization. Connects to private database if has valid organization.
+ Return true if has valid organization.
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:WebProj.WebRequest.HandleInvoiceCountByMonth(System.String@)">
+ <summary>
+ dont call before calling HandleOrganization
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="P:WebProj.WebSession.SubscriberOrganizationBranchID">
+ <summary>
+ LibraryCustomersAddresses.ID
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

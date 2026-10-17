@@ -1,0 +1,60 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ProWeb
+</name>
+</assembly>
+<members>
+<member name="T:ProWeb.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:ProWeb.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:ProWeb.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:ProWeb.Common.TimeOffset">
+ <summary>
+ in seconds
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="T:ProWeb.CrcAppenderController.CrcAppender">
+ <summary>
+ append crc querystring to js paths
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:ProWeb.Utility.Transfer(System.String)">
+ <summary>
+ the workaround for Server.Transfer for MVC
+ </summary>
+ <param name="vUrl"></param>
+ <remarks></remarks>
+</member>
+<member name="M:ProWeb.WebRequest.AllData">
+ <summary>
+ JSON data from AJAX
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:ProWeb.WebSession.SqlAccess">
+ <summary>
+ see SqlController.Login
+ </summary>
+ <remarks></remarks>
+</member>
+</members>
+</doc>
