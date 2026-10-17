@@ -1,0 +1,33 @@
+﻿<div data-role="popup" id="divPopupProductMakerProduct" data-overlay-theme="a" data-theme="a" data-corners="false" style="display:none">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center><h3 name="title">Title</h3></center>
+    <div data-role="content" class="ui-content ui-body-d">
+        <div>
+            <span>Product No.:</span><span name="spanProductNumber"></span>
+        </div>
+        <div>
+            <span>Description:</span><span name="title"></span>
+        </div>
+        <table name="tableProduct" data-role="table" data-role="reflow" style="margin-right: 5px; display: table;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+            <thead>
+                <tr class="custom-theme-f fixed-cell-width">
+                    <th class="txt-center"> Unit </th>
+                    <th class="txt-center"> # of <span name="BaseUnit">Base Unit</span>(s) </th>
+                    <th class="txt-center"> Qty </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="data" class="fixed-cell-width">
+                    <td name="Unit" class="txt-center"></td>
+                    <td name="QtyInBaseUnit" class="txt-center"></td>
+                    <td name="Qty" class="txt-center"><input name="txtQty" /></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr name="footer" class="fixed-cell-width"></tr>
+            </tfoot>
+        </table>
+        <br />
+        <a name="butOk" data-role="none" data-rel="back" class="btn custom-btn-theme-b">Save</a>
+    </div>
+</div>

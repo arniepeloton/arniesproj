@@ -1,0 +1,57 @@
+﻿<div>
+    <div class="text-right mb-3">
+        <button data-role="none" name="butAddCategory" class="btn btn-secondary">Add category GPM</button>
+        <button data-role="none" name="butDeleteCategory" class="btn btn-secondary">Delete category GPM</button>
+    </div>
+
+    <div style="overflow: auto;">
+        <table name="tableCategories" data-role="none" style="margin-right: 5px; display: table;width:100%" class="table table-light table-striped table-hover">
+            <thead>
+                <tr class="custom-theme-f txt-center">
+                    <th><input name="select_all" value="1" class="form-check-input" type="checkbox"></th>
+                    <th class="txt-center"> Category </th>
+                    <th class="txt-center"> Minimum GPM (%) </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr name="data" class="fixed-cell-width">
+                    <td name="Category" class="txt-center">  </td>
+                    <td name="Gpm" class="txt-center">  </td>
+                </tr>-->
+            </tbody>
+        </table>
+        <!--<button name="butAddProduct">Add Product</button>-->
+    </div>
+
+    <div name="popCategory" id="requiredDummy_PEP7PFHFY6" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Category</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Category:</label>
+                        <button name="butCategory" data-role="none" class="btn btn-secondary btn-block">Please Select</button>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Minimum GPM (%):</label>
+                        <input name="txtCategoryGpm" type="number" data-role="none" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" name="butOkCategoryGpm" class="btn btn-success btn-lg btn-block">Save</button>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

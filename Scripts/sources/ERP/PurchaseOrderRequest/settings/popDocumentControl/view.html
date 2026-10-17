@@ -1,0 +1,154 @@
+﻿<div data-role="popup" idx="popOrderInput" data-overlay-theme="a" data-theme="a" data-corners="false" style="display:none">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center><h3 name="title">Document Control</h3></center>
+    <div data-role="content" class="ui-content ui-body-d" style="width:800px">
+        <form>
+            <div class="custom-ui-label">
+                <div>Document Name: <span class="required">*</span></div>
+                <div>
+                    <input name="txtDocumentName" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <input name="fileTemplate" type="file" />
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Module Source: <span class="required">*</span></div>
+                <div>
+                    <select name="cbModuleSource" data-role="none" class="form-control">
+                        <option value="">Please Select</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Series Type: <span class="required">*</span></div>
+                <div>
+                    <select name="cbSeriesType" data-role="none" class="form-control">
+                        <option value="0">Unique per FOWST-Device</option>
+                        <option value="1">Unique per FOWST</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Series Starting Number: <span class="required"></span></div>
+                <div>
+                    <input name="txtSeriesStartingNum" type="number" data-role="none" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Permit Number: <span class="required"></span></div>
+                <div>
+                    <input name="txtPermitNum" maxlength="100" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Printer Name: <span class="required">*</span></div>
+                <div>
+                    <input name="txtPrinterName" data-role="none" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Print Limit: <span class="required">*</span></div>
+                <div>
+                    <select name="cbPrintLimit" data-role="none" class="form-control">
+                        <option value="">Please Select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" name="chkPreprinted" data-iconpos="notext" />
+                <div>Preprinted</div>
+            </div>
+            <div class="custom-ui-label">
+                <div>No. of Copies per Print: <span class="required">*</span></div>
+                <div>
+                    <input name="txtCopiesPerPrint" type="number" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Label of Copies: <span class="required">*</span></div>
+                <div>
+                    <input name="txtLabelOfCopy01" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div></div>
+                <div>
+                    <input name="txtLabelOfCopy02" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div></div>
+                <div>
+                    <input name="txtLabelOfCopy03" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div></div>
+                <div><input name="txtLabelOfCopy04" data-role="none" class="form-control" /></div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div></div>
+                <div>
+                    <input name="txtLabelOfCopy05" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div></div>
+                <div>
+                    <input name="txtLabelOfCopy06" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div></div>
+                <div>
+                    <input name="txtLabelOfCopy07" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div></div>
+                <div>
+                    <input name="txtLabelOfCopy08" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div></div>
+                <div>
+                    <input name="txtLabelOfCopy09" data-role="none" class="form-control" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div></div>
+                <div><input name="txtLabelOfCopy10" data-role="none" class="form-control" /></div>
+            </div>
+            <div class="custom-ui-label">
+                <div>Footnote:</div>
+                <div><textarea name="txtFootnote" data-role="none" class="form-control"></textarea></div>
+            </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" name="chkActive" data-iconpos="notext" />
+                <div>Active?</div>
+            </div>
+            <br />
+            <button type="submit" class="btn custom-btn-theme-b">Save</button>
+            <a data-role="none" data-rel="back" href="#" class="btn custom-btn-theme-c">Cancel</a>
+        </form>
+    </div>
+</div>

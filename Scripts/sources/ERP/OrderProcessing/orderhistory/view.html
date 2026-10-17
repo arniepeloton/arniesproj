@@ -1,0 +1,117 @@
+﻿<div id="popCRMOrderHistoryBreakdown" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Transaction History</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:150px;">Product No:</td>
+                        <td id="lblCRMProductID" style="font-weight:bold; text-transform:capitalize; width:200px"></td>
+                        <td style="width:120px;">Product Name:</td>
+                        <td id="lblCRMProductName" style="font-weight:bold; text-transform:capitalize;"></td>
+                    </tr>
+                    <tr>
+                        <td style="width:150px;">Transaction Scope:</td>
+                        <td>
+                            <select id="selShowOrderHistoryBreakdown" data-role="none" class="form-control form-select fixed">
+                                <option value="1">Within the last week</option>
+                                <option value="2">Within the last 2 weeks</option>
+                                <option value="3">Within the last 3 weeks</option>
+                                <option value="4">Within the last 4 weeks</option>
+                                <option value="6">Within the last 6 weeks</option>
+                                <option value="8">Within the last 8 weeks</option>
+                                <option value="12">Within the last 12 weeks</option>
+                            </select>
+                        </td>
+                        <td colspan="2"><input data-role="none" type="text" class="form-control" id="txtSearchCRMOrderHistoryBreakdown" placeholder="Search here" style="width:200px; float:right;" /></td>
+                    </tr>
+                </table>
+                <br />
+                <div style="overflow:auto;">
+                    <table id="tblDataTableOrderHistoryBreakdown" data-role="none" style="margin-right:5px; display:table;" class="table-stroke table-stripe custom-tbl-responsive">
+                        <thead>
+                            <tr class="custom-theme-f">
+                                <th data-sort="accounting" style="cursor:pointer;"> # </th>
+                                <th data-sort="string" style="cursor:pointer;"> Date </th>
+                                <th data-sort="string" style="cursor:pointer;"> Transaction Number </th>
+                                <th data-sort="string" style="cursor:pointer;"> Qty </th>
+                                <th data-sort="string" style="cursor:pointer;"> Unit Measure </th>
+                                <th data-sort="string" style="cursor:pointer;"> Unit Price </th>
+                                <th data-sort="string" style="cursor:pointer;"> Sub Total </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popOrderHistory" class="modal fade" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Order History</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="content">
+    <table style="width:100%">
+        <tr>
+            <td style="width:150px;">Client Name:</td>
+            <td colspan="3" class="txtActionClientName" style="font-weight:bold; text-transform:capitalize;"></td>
+        </tr>
+        <tr>
+            <td style="width:150px;">Transaction Scope:</td>
+            <td>
+                <select id="selShowOrderHistory" data-role="none" class="form-control form-select fixed">
+                    <option value="1">Within the last week</option>
+                    <option value="2">Within the last 2 weeks</option>
+                    <option value="3">Within the last 3 weeks</option>
+                    <option value="4">Within the last 4 weeks</option>
+                    <option value="6">Within the last 6 weeks</option>
+                    <option value="8">Within the last 8 weeks</option>
+                    <option value="12">Within the last 12 weeks</option>
+                </select>
+            </td>
+            <td>
+                <button data-role="none" id="btnCRMCopyOHToPlainText" class="btn custom-btn-theme-c btn-secondary">Copy transaction to plain text</button>
+            </td>
+            <td>
+                <button data-role="none" id="btnCRMMarkAsFollowedUp" class="btn custom-btn-theme-c btn-light">Mark as followed up</button>
+            </td>
+            <td><input data-role="none" type="text" class="form-control" id="txtSearchCRMOrderHistory" placeholder="Search here" /></td>
+        </tr>
+    </table>
+    <br />
+    <div style="overflow:auto;">
+        <table id="tblDataTableOrderHistory" data-role="none" style="margin-right: 5px; display: table;" class="ui-table table-stroke table-stripe custom-tbl-responsive table table-light table-striped table-hover">
+            <thead class="custom-theme-f">
+            <!--<tr class="custom-theme-f">
+                <th data-sort="accounting" style="cursor:pointer;"> # </th>
+                <th data-sort="string" style="cursor:pointer;"> Product No. </th>
+                <th data-sort="string" style="cursor:pointer;"> Product Name </th>
+                <th data-sort="string" style="cursor:pointer;"> Ordered Qty </th>
+                <th data-sort="string" style="cursor:pointer;"> Invoiced Qty </th>
+                <th data-sort="string" style="cursor:pointer;"> New Order Qty </th>
+            </tr>-->
+            </thead>
+            <tbody></tbody>
+        </table>        
+    </div>
+    <br />
+    <button data-role="none" name="butSaveAsOrder" class="btn custom-btn-theme-b btn-success btn-lg btn-block">Save Line Items with "New Order Quantities" As A New Sales Order</button>
+</div>

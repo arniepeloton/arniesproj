@@ -1,0 +1,62 @@
+﻿<div id="divPopupReceivingProduct" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" name="title"></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-sm-auto">Product No.:</div>
+                    <div class="col-sm"><b name="spanProductNumber"></b></div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-auto">Description:</div>
+                    <div class="col-sm"><b name="title"></b></div>
+                </div>
+
+                <div class="table-responsive mb-3">
+                    <table name="tableProduct" data-role="none" style="margin-right: 5px; display: table;" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="custom-theme-f fixed-cell-width">
+                                <th class="txt-center"> Unit </th>
+                                <th class="txt-center"> # of <span name="BaseUnit">Base Unit</span>(s) </th>
+                                <th class="txt-center"> PO Qty </th>
+                                <th class="txt-center"> Good Qty </th>
+                                <th class="txt-center"> Bad Qty </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr name="data" class="fixed-cell-width">
+                                <td name="Unit" class="txt-center"></td>
+                                <td name="QtyInBaseUnit" class="txt-center"></td>
+                                <td name="tdPoQty" class="txt-center"></td>
+                                <td name="GoodQty" class="txt-center"><input name="txtGoodQty" class="form-control" /></td>
+                                <td name="BadQty" class="txt-center"><input name="txtBadQty" class="form-control" /></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr name="footer" class="fixed-cell-width"></tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Bad Order Reason:</label>
+                    <select name="cbBadOrderReason" data-role="none" class="form-select"></select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" name="butOk" class="btn btn-success btn-block btn-lg">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

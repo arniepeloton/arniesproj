@@ -1,0 +1,35 @@
+﻿<nav class="navbar navbar-dark bg-primary sticky-top text-light pl-3 pr-3 mb-3">
+    <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+        <a href="javascript:history.back()" data-role="none" class="btn btn-primary">
+            <span class="bi-chevron-left"></span>
+        </a>
+        Assets Management
+    </div>
+</nav>
+
+<div id="divAssetsMgmtMain" class="container-fluid mb-5" subpage="divErpAssetsManagement" style="display: block;">
+    <div id="divAssetsMgmtTab" style="white-space:nowrap; overflow:auto;">
+        <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabAssetsMgmtDashboard" type="button" role="tab" aria-controls="home" aria-selected="true">Dashboard</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" id="btnGPWork" data-toggle="tab" data-target="#tabAssetsMgmtWork" type="button" role="tab" aria-controls="profile" aria-selected="false">Assets Management</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" id="btnTabAssetsMgmtSettings" data-target="#tabAssetsMgmtSettings" type="button" role="tab" aria-controls="profile" aria-selected="false">Settings</button>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content p-3">
+        <div id="tabAssetsMgmtDashboard" class="tab-pane show active">
+
+        </div>
+        <div id="tabAssetsMgmtWork" class="tab-pane">
+
+        </div>
+        <div id="tabAssetsMgmtSettings" class="tab-pane">
+
+        </div>
+    </div>
+</div>

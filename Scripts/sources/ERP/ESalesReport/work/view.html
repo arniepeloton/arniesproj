@@ -1,0 +1,77 @@
+﻿<style>
+    input[readonly] {
+        background-color: #e9ecef; /* Example: light grey */
+        border: 1px solid;
+        /* Add other styles as needed, e.g., border, box-shadow */
+    }
+</style>
+<div>
+    <h1>E-Sales Report Data Entry</h1>
+
+    <div class="form-group mb-3">
+        <label>Year<span class="required">*</span>:</label>
+        <select name="cbYear" data-role="none" type="text" class="form-control"></select>
+    </div>
+    <div class="form-group mb-3">
+        <label>Machine Number<span class="required">*</span>:</label>
+        <div class="input-group">
+            <input name="txtMachineNumber" data-role="none" type="text" class="form-control" />
+            <button name="butMachineNumber" data-role="none" class="btn btn-secondary" style="float: right;"><span class="bi-search"></span></button>
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <label>VAT Rate %<span class="required">*</span>:</label>
+        <div class="input-group">
+            <input name="txtVatRate" readonly data-role="none" type="text" value="12" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <label>Output Tax Rate %<span class="required">*</span>:</label>
+        <div class="input-group">
+            <input name="txtOutputTaxRate" data-role="none" type="text" class="form-control" value="1" />
+            <button name="butOutputTaxRate" data-role="none" class="btn btn-secondary" style="float: right;"><span class="bi-search"></span></button>
+        </div>
+    </div>
+
+    <div class="mb-4" style="overflow:auto;">
+        <table name="table" data-role="none" style="display: table;" class="table table-light table-striped table-hover">
+            <thead>
+                <tr class="custom-theme-f fixed-cell-width" style="font-size:12px;">
+                    <th class="txt-center"> Month </th>
+                    <th class="txt-center"> Last Sales Invoice No. Issued </th>
+                    <th class="txt-center"> Gross Sales </th>
+                    <th class="txt-center"> Accumulated Gross Sales </th>
+                    <th class="txt-center"> VAT Sales </th>
+                    <th class="txt-center"> Accumulated VAT Sales </th>
+                    <th class="txt-center"> Output Tax </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="data" class="fixed-cell-width">
+                    <td name="month" class="txt-center" style="width:70px;"></td>
+                    <td name="invoice-number" class="txt-center"> <input class="txt-right" /> </td>
+                    <td name="gross-sales" class="txt-center"> <input class="txt-right" /> </td>
+                    <td name="accumulated-gross-sales" class="txt-center"> <input readonly tabindex="-1" class="txt-right"  /> </td>
+                    <td name="vat-sales" class="txt-center"><input class="txt-right" /> </td>
+                    <td name="accumulated-vat-sales" class="txt-center"><input readonly tabindex="-1" class="txt-right" /> </td>
+                    <td name="output-tax" class="txt-center"> <input readonly tabindex="-1" class="txt-right" /> </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr name="data" class="fixed-cell-width">
+                    <td name="month" class="txt-center" style="width:70px;"> </td>
+                    <td name="invoice-number" class="txt-center"> SKU # </td>
+                    <td name="gross-sales" class="txt-right"> Product Description </td>
+                    <td name="accumulated-gross-sales" class="txt-center"> Order Qty </td>
+                    <td name="vat-sales" class="txt-right"> </td>
+                    <td name="accumulated-vat-sales" class="txt-center"> </td>
+                    <td name="output-tax" class="txt-right"> Packing Size </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <button name="butSave" data-role="none" class="btn btn-primary">Save Data and Post Numbers to Zread</button>
+    <button name="butExportToPdf" data-role="none" class="btn btn-secondary">Export To PDF</button>
+
+</div>

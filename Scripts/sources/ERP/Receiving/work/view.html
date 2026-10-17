@@ -1,0 +1,456 @@
+﻿<div id="tabStockReceivingWork" class="tab-pane fade">
+    <div class="row gx-1 mb-4">
+        <div class="col-md-7 col-lg-8 mb-3">
+            <div name="divToolbar" class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+                <button data-role="none" name="butNew" class="btn btn-light border h-100 w-100 align-self-auto">
+                    <span class="bi-file-earmark-plus" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">New</div>
+                </button>
+                <button data-role="none" name="butLookup" class="btn btn-light border h-100 w-100">
+                    <span class="bi-search" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Lookup</div>
+                </button>
+                <button data-role="none" name="butLookupPo" class="btn btn-light border h-100 w-100">
+                    <span class="bi-search" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Lookup <br /> PO</div>
+                </button>
+                <button data-role="none" name="butSaveAsDraft" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save as <br /> Draft</div>
+                </button>
+                <button data-role="none" name="butSaveAndFinalize" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save & <br /> Finalize</div>
+                </button>
+                <button data-role="none" name="butOutput" class="btn btn-light border h-100 w-100">
+                    <span class="bi-printer" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Print</div>
+                </button>
+                <button data-role="none" name="butCancel" class="btn btn-light border h-100 w-100">
+                    <span class="bi-x-square" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Cancel</div>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-4 text-right" style="font-size: 30px; display: flex">
+            <div style="flex:1">
+                <div name="divUpdatedBy" style="font-size: 16px; text-align: right"></div>
+                <div name="divLastUpdated" style="font-size: 16px; text-align: right"></div>
+            </div>
+            <div style="flex:1">
+                <div name="divTransNum" style="font-size: 30px"></div>
+                <div name="divDraftOrFinalized"></div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="accordion mb-3">
+        <div class="card">
+            <div class="card-header p-0">
+                <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransHeader" data-role="none" data-toggle="collapse">
+                    <b>Transaction Header</b>
+                </button>
+            </div>
+            <div class="collapse show" id="colTransHeader">
+                <div class="card-body">
+                    <div id="divStockReceivingWorkTab">
+                        <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                            <li class="nav-item" role="presentation">
+                                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabStockReceivingWorkBasicInfo">Basic Info</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabStockReceivingFreightInfo">Freight and Handling</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content p-3">
+                        <div id="tabStockReceivingWorkBasicInfo" class="tab-pane fade show active">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Vendor: <span class="required">*</span></label>
+                                                <div class="input-group">
+                                                    <input name="txtSupplier" readonly data-role="none" type="text" class="form-control" />
+                                                    <button name="butSupplier" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>PO No:</label>
+                                                <div class="input-group">
+                                                    <input name="txtPoNumber" readonly data-role="none" type="text" class="form-control" />
+                                                    <button name="butPoNumber" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>PO Date:</label>
+                                                <input name="txtPoDate" readonly data-role="none" type="text" id="btnInvoicingPODate" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Canvass No:</label>
+                                                <input name="txtCanvassNumber" readonly data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Canvass Date:</label>
+                                                <input name="txtCanvassDate" readonly data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>SO Number:</label>
+                                                <input name="txtSalesOrderNumber" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>SO Date:</label>
+                                                <div class="input-group">
+                                                    <input name="txtSalesOrderDate" data-role="none" type="text" class="form-control" />
+                                                    <button name="butSalesOrderDate" data-role="none" class="btn btn-secondary"><span class="bi-calendar-week"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Inv. Reference:</label>
+                                                <div class="input-group">
+                                                    <input name="txtInvoiceNumber" data-role="none" type="text" class="form-control" />
+                                                    <button data-role="none" name="butInvoiceImageReference" class="btn btn-secondary" title="Show Invoice Images"><span class="bi bi-image"></span></button>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Inv. Date<span class="required">*</span>:</label>
+                                                <div class="input-group">
+                                                    <input name="txtInvoiceDate" data-role="none" type="text" class="form-control" />
+                                                    <button name="butInvoiceDate" data-role="none" class="btn btn-secondary"><span class="bi-calendar-week"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Payment Terms:</label>
+                                                <input name="txtPaymentTerms" readonly data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-3">
+                            <label>Sales Partner</label>
+                            <div style="margin-top:-5px; display:inline-block; float:right;">
+                                <button name="butSalesPartner" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float:right;"><img class="img-search-white"/></button>
+                            </div>
+                            <input name="txtSalesPartner" readonly data-role="none" type="text" class="form-control"/>
+                        </div>
+                    </div>
+                </div>-->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Sales Rep:</label>
+                                                <!--<div style="margin-top:-5px; display:inline-block; float:right;">
+                                <button name="butSalesRep" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float:right;"><img class="img-search-white"/></button>
+                            </div>-->
+                                                <input name="txtSalesRep" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>SR Number:</label>
+                                                <input name="txtSrNum" readonly data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>SR Created Date:</label>
+                                                <input name="txtSrDate" readonly data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-group mb-3">
+                    <label>Date Needed:</label>
+                    <input name="txtDateNeeded" readonly data-role="none" type="text" id="btnInvoicingDateNeeded" class="form-control"/>
+                </div>-->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Billing Address<span class="required">*</span>:</label>
+                                                <div class="input-group">
+                                                    <input name="txtBillingAddress" data-role="none" type="text" class="form-control" />
+                                                    <!--<button name="butAddBillingAddress" data-role="none" class="btn btn-secondary"><span class="bi-plus"></span></button>-->
+                                                    <button name="butSearchBillingAddress" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Delivery Address<span class="required">*</span>:</label>
+                                                <div class="input-group">
+                                                    <input name="txtDeliveryAddress" data-role="none" type="text" class="form-control" />
+                                                    <!--<button name="butAddDeliveryAddress" data-role="none" class="btn btn-secondary"><span class="bi-plus"></span></button>-->
+                                                    <button name="butSearchDeliveryAddress" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabStockReceivingFreightInfo" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Carrier/ Logistics Company: <span class="required">*</span></label>
+                                                <div class="input-group">
+                                                    <input name="txtShipper" data-role="none" type="text" class="form-control" />
+                                                    <button name="butShipper" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>B/L or Waybill No.: <span class="required">*</span></label>
+                                                <input name="txtWaybillNumber" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Ship Date: <span class="required">*</span></label>
+                                                <div class="input-group">
+                                                    <input name="txtShipDate" data-role="none" type="text" class="form-control" />
+                                                    <button name="butShipDate" data-role="none" class="btn btn-secondary"><span class="bi-calendar-week"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Package Quantity:<span class="required">*</span></label>
+                                                <input name="txtPackageQuantity" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Gross Weight:<span class="required">*</span></label>
+                                                <input name="txtGrossWeight" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Gross Volume:<span class="required">*</span></label>
+                                                <input name="txtGrossVolume" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Freight Charges:<span class="required">*</span></label>
+                                                <input name="txtFreight" data-role="none" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Handling Charges:<span class="required">*</span></label>
+                                                <input name="txtHandling" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Arrastre Charges:<span class="required">*</span></label>
+                                                <input name="txtArrastre" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Other Charges:<span class="required">*</span></label>
+                                                <input name="txtOtherCharges" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group mb-3">
+                                                <label>Total Freight Cost:<span class="required">*</span></label>
+                                                <input name="txtFreightAndHandling" readonly data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion mb-3">
+        <div class="card">
+            <div class="card-header p-0">
+                <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransBody" data-role="none" data-toggle="collapse">
+                    <b>Transaction Line Items</b>
+                </button>
+            </div>
+            <div class="collapse show" id="colTransBody">
+                <div class="card-body">
+                    <div class="text-right mb-3">
+                        <button name="butAddProduct" data-role="none" class="btn btn-secondary">Add product</button>
+                    </div>
+
+                    <div class="row">
+                        <div style="overflow:auto;">
+                            <table name="tableProducts" data-role="none" style="margin-right: 5px; display: table;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="custom-theme-f fixed-cell-width" style="font-size:12px; vertical-align:top;">
+                                        <th class="txt-center"> Image </th>
+                                        <th class="txt-center"> SKU # </th>
+                                        <th class="txt-center"> Product Description </th>
+                                        <th class="txt-center"> UoM </th>
+                                        <th class="txt-center"> PO Qty </th>
+                                        <th class="txt-center"> Rcvd Good Qty </th>
+                                        <th class="txt-center"> Rcvd Bad Qty </th>
+                                        <th class="txt-center receiving-landed-cost" style="display:none"> PO Price </th>
+                                        <th class="txt-center receiving-landed-cost" style="display:none"> Sub Total (Good Qty Received) </th>
+                                        <th class="txt-center receiving-landed-cost" style="display:none"> Sub Total (Bad Qty Received) </th>
+                                        <th class="txt-center receiving-landed-cost" style="display:none"> Sub Total (Good and Bad Qty Received) </th>
+                                        <th class="txt-center receiving-landed-cost" style="display:none"> Line Freight Cost </th>
+                                        <th class="txt-center receiving-landed-cost" style="display:none"> Line Landed Cost </th>
+                                        <th class="txt-center receiving-landed-cost" style="display:none"> Unit Freight Cost </th>
+                                        <th class="txt-center receiving-landed-cost" style="display:none"> Freight as % of Vendor Cost for this Transaction </th>
+                                        <th class="txt-center receiving-landed-cost" style="display:none"> Unit Landed Cost </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr name="data" class="fixed-cell-width">
+                                        <td name="ProductImage" class="txt-center" style="width:70px;"> </td>
+                                        <td name="ProductNumber" class="txt-left"> SKU # </td>
+                                        <td name="ProductDescription" class="txt-left"> Product Description </td>
+                                        <td name="PackingSize" class="txt-center"> Packing Size </td>
+                                        <td name="QtyPo" class="txt-center"> PO Qty </td>
+                                        <td name="QtyGood" class="txt-center"> Order Qty </td>
+                                        <td name="QtyBad" class="txt-center"> </td>
+                                        <td name="UnitCost" class="txt-center receiving-landed-cost" style="display:none"> UnitCost </td>
+                                        <td name="Subtotal" class="txt-center receiving-landed-cost" style="display:none"> Subtotal </td>
+                                        <td name="SubtotalBad" class="txt-center receiving-landed-cost" style="display:none"> SubtotalBad </td>
+                                        <td name="SubtotalGoodBad" class="txt-center receiving-landed-cost" style="display:none"> SubtotalGoodBad </td>
+                                        <td name="LineFreightCost" class="txt-center receiving-landed-cost" style="display:none"> LineFreightCost </td>
+                                        <td name="LineLandedCost" class="txt-center receiving-landed-cost" style="display:none"> LineLandedCost </td>
+                                        <td name="UnitFreightCost" class="txt-center receiving-landed-cost" style="display:none"> UnitFreightCost </td>
+                                        <td name="FreightPercent" class="txt-center receiving-landed-cost" style="display:none"> FreightPercent </td>
+                                        <td name="UnitLandedCost" class="txt-center receiving-landed-cost" style="display:none"> UnitLandedCost </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr name="data" class="fixed-cell-width">    
+                                        <td name="ProductImage" class="txt-center" style="width:70px;"> </td>                                    
+                                        <td name="ProductNumber" class="txt-center"> </td>
+                                        <td name="ProductDescription" class="txt-center">  </td>
+                                        <td name="QtyPo" class="txt-center">  </td>
+                                        <td name="QtyGood" class="txt-center">  </td>
+                                        <td name="QtyBad" class="txt-center"> </td>
+                                        <td name="PackingSize" class="txt-center">  </td>
+                                        <td name="UnitCost" class="txt-center receiving-landed-cost" style="display:none">  </td>
+                                        <td name="Subtotal" class="txt-center receiving-landed-cost" style="display:none">  </td>
+                                        <td name="SubtotalBad" class="txt-center receiving-landed-cost" style="display:none">  </td>
+                                        <td name="SubtotalGoodBad" class="txt-center receiving-landed-cost" style="display:none">  </td>
+                                        <td name="LineFreightCost" class="txt-center receiving-landed-cost" style="display:none">  </td>
+                                        <td name="LineLandedCost" class="txt-center receiving-landed-cost" style="display:none">  </td>
+                                        <td name="UnitFreightCost" class="txt-center receiving-landed-cost" style="display:none">  </td>
+                                        <td name="FreightPercent" class="txt-center receiving-landed-cost" style="display:none">  </td>
+                                        <td name="UnitLandedCost" class="txt-center receiving-landed-cost" style="display:none">  </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion mb-3">
+        <div class="card">
+            <div class="card-header p-0">
+                <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransFooter" data-role="none" data-toggle="collapse">
+                    <b>Transaction Footer</b>
+                </button>
+            </div>
+            <div class="collapse show" id="colTransFooter">
+                <div class="card-body">
+                    <div class="row mb-3 align-items-center">
+                        <div class="col">
+                            Remarks:
+                        </div>
+                        <div class="col text-right">
+                            <button data-role="none" class="btn btn-secondary" name="btnChooseQuickRemarks">Quick Remarks</button>
+                        </div>
+                    </div>
+                    <textarea name=txtRemarks data-role="none" class="form-control" style="height:150px; resize:none"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

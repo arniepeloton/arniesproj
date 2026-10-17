@@ -1,0 +1,56 @@
+﻿<div id="popupUnapprovedPurchaseOrders" custom-data-role="popup">
+    <div class="popup">
+        <div class="popup-header">
+            Unapproved Sales Orders
+            <a class="popup-close">x</a>
+        </div>
+
+        <div class="popup-content">
+            <select style="display:none">
+                <option>Unapproved Purchase Orders</option>
+            </select>
+            <button name="butRefreshUnapprovedOrders">Refresh</button>
+            <div name="divUnapprovedOrders" custom-tab-role="content" style="display: block; overflow:auto;">
+                <table id="tableUnapprovedOrders" data-role="table" data-role="reflow" style="margin-right:5px; display:table; width:100%;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                    <thead>
+                        <tr class="custom-theme-f fixed-cell-width">
+                            <th class="txt-center"> Vendor Name </th>
+                            <th class="txt-center"> PO No. </th>
+                            <th class="txt-center"> PO Date </th>
+                            <th name="thServedQty" class="txt-center"> Order Amount </th>
+                            <th class="txt-center"> Requested By </th>
+                            <th class="txt-center"> Status </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr name="data" class="fixed-cell-width">
+                            <td name="CustomerName" class="txt-center"> SKU # </td>
+                            <td name="OrderNum" class="txt-center"> Product Description </td>
+                            <td name="OrderDate" class="txt-center"> Order Qty </td>
+                            <td name="OrderAmount" class="txt-center"> </td>
+                            <td name="RequestedBy" class="txt-center"> Packing Size </td>
+                            <td name="Status" class="txt-center"> Unapproved </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr name="data" class="fixed-cell-width">
+                            <td name="CustomerName" class="txt-center"> </td>
+                            <td name="OrderNum" class="txt-center">  </td>
+                            <td name="OrderDate" class="txt-center">  </td>
+                            <td name="OrderAmount" class="txt-center"> </td>
+                            <td name="RequestedBy" class="txt-center"> </td>
+                            <td name="Status" class="txt-center">  </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="popup-footer align-right">
+            <button id="" data-role="none" class="btn custom-btn-theme-c btnCircle popup-close">
+                <img alt="Options" src="/Content/images/close-black.png" />
+            </button>
+        </div>
+    </div>
+</div>

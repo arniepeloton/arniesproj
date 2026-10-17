@@ -1,0 +1,95 @@
+﻿<script>
+    require([GetPathFormat('/Scripts/sources/WebPosSettings/WebPosSettings.js?v=' + assetversion)]);
+</script>
+<div class="container-fluid">
+    <h1 class="display-6 mb-4">WebPOS Settings</h1>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 mb-3 col-form-label" for="">What type of WebPOS machine is this?</label>
+        <div class="col-sm-9">
+            <div class="form-check mb-3">
+                <input class="form-check-input" data-role="none" name="radWebPosMachineType" value="1" type="radio" id="radWebPosMachineType1">
+                <label class="form-check-label" for="radWebPosMachineType1">
+                    Stand Alone WebPOS Server (this is usually the WebPOS Main Server)
+                </label>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" data-role="none" name="radWebPosMachineType" value="2" type="radio" id="radWebPosMachineType2">
+                <label class="form-check-label" for="radWebPosMachineType2">
+                    WebPOS Branch Server (connects to WebPOS Main Server)
+                </label>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" data-role="none" name="radWebPosMachineType" value="3" type="radio" id="radWebPosMachineType3">
+                <label class="form-check-label" for="radWebPosMachineType3">
+                    WebPOS Client connected to a WebPOS Branch Server over a Local Network
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mb-3" name="divWebPosMachineType1">
+        <div>Your local IP is: <span name="spanWebPosSettingLocalIp"></span></div>
+        <div>Other computers on this local network may connect to this server via the IP address shown above.</div>
+        <div>Please make sure that your IP Address on this computer is set to static for a stable connection to this server.</div>
+        <br />
+        <div>Your external IP is: <span name="spanWebPosSettingExternalIp"></span></div>
+        <div>Other computers on external networks may connect to this server via the external IP address shown above.</div>
+        <div>Please make sure that your external and local IP Address on this computer is set to static for a stable connection to this server.</div>
+    </div>
+
+    <div class="row mb-3" name="divWebPosMachineType2">
+        <div>Please enter the external IP address/ domain name of the server to which this WebPOS Branch Server connects to.</div>
+        <div>
+            External IP Address of Main Server:<input id="txtWebPosSettingExternalIp2" />
+        </div>
+        <br />
+        <div>Your local IP is: <span name="spanWebPosSettingLocalIp"></span></div>
+        <div>Other computers on this local network may connect to this server via the IP address shown above.</div>
+        <div>Please make sure that your IP Address on this computer is set to static for a stable connection to this server.</div>
+    </div>
+
+    <div class="row mb-3" name="divWebPosMachineType3">
+        <div>Please enter the local IP address of the WebPOS Branch Server here.</div>
+        <div>External IP Address of Main Server:<input id="txtWebPosSettingExternalIp3" /></div>
+        <br />
+        <div>Your WebPOS Client PC does not have a database installed on its local disk. Connection to the WebPOS Branch Database is required for POS operations to start and complete successfully. </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 mb-3 col-form-label" for="">Device profile for this server for this organization:</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <input id="txtDevice" readonly data-role="none" type="text" class="form-control" />
+                <button id="butDevice" data-role="none" class="btn btn-secondary" style="float: right;"><span class="bi-search"></span></button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 mb-3 col-form-label" for="">After saving</label>
+        <div class="col-sm-9">
+            <div class="form-check mb-3">
+                <input class="form-check-input" data-role="none" name="radWebPosAfterSaving" value="0" type="radio" id="radWebPosAfterSaving1">
+                <label class="form-check-label" for="radWebPosAfterSaving1">
+                    Print even if no printer is assigned
+                </label>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" data-role="none" name="radWebPosAfterSaving" value="1" type="radio" id="radWebPosAfterSaving2">
+                <label class="form-check-label" for="radWebPosAfterSaving2">
+                    Print only if a printer is assigned
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a id="butWebPosSettingSave" data-role="none" class="btn btn-success btn-lg">Save</a>
+    </div>
+</div>

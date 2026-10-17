@@ -1,0 +1,23 @@
+﻿require([
+    'common'
+    ], function () {
+
+        $(function () {
+
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+        });
+
+    });

@@ -1,0 +1,52 @@
+﻿<div>
+    <div custom-data-role="accordion">
+        <div class="accordion-header active">
+            GPM / Discount Thresholds per Category
+            <span class="txt-right">
+                <a name="butAddCategory" data-role="none" class="custom-link">Add category GPM</a>
+                &nbsp; &sdot; &nbsp;
+                <a name="butDeleteCategory" data-role="none" class="custom-link">Delete category GPM</a>
+            </span>
+        </div>
+        <div class="accordion-content">
+            <div style="overflow: auto;">
+                <table name="tableCategories" data-role="table" data-role="reflow" style="margin-right: 5px; display: table;width:100%" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                    <thead>
+                        <tr class="custom-theme-f txt-center">
+                            <th><input name="select_all" value="1" type="checkbox"></th>
+                            <th class="txt-center"> Category </th>
+                            <th class="txt-center"> Minimum GPM (%) </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<tr name="data" class="fixed-cell-width">
+                            <td name="Category" class="txt-center">  </td>
+                            <td name="Gpm" class="txt-center">  </td>
+                        </tr>-->
+                    </tbody>
+                </table>
+                <!--<button name="butAddProduct">Add Product</button>-->
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div data-role="popup" name="popCategory" id="requiredDummy_PEP7PFHFY6" data-overlay-theme="a" data-theme="a" data-corners="false" style="display:none">
+        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <center><h3 name="title">Category</h3></center>
+        <div data-role="content" class="ui-content ui-body-d">
+            <div class="custom-ui-label">
+                <div>Category:</div>
+                <div><button name="butCategory" data-role="button">Please Select</button></div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Minimum GPM (%):</div>
+                <div><input name="txtCategoryGpm" /></div>
+            </div>
+            <a name="butOkCategoryGpm" data-role="none" class="btn custom-btn-theme-b">Save</a>
+        </div>
+    </div>
+</div>

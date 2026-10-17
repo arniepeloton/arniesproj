@@ -1,0 +1,982 @@
+﻿<style type="text/css">
+    .gridreserve{
+        background-color: #fdfd96 /*rgba(279,279,0,0.4)*/ !important;
+        font-size:12px;
+    }
+    .gridunavailable{
+        background-color: #dc3545 /*rgba(255, 13, 0, 0.4)*/ !important;
+        color: #FFF !important;
+        text-shadow: 0px 1px 0px #e60b0b;
+        font-size:12px;
+    }
+    .gridpastcheckins{
+        background-color: #795548 /*rgba(255, 13, 0, 0.4)*/ !important;
+        color: #FFF !important;
+        text-shadow: 0px 1px 0px #795548;
+        font-size:12px;
+        border: 1px solid #563d34;
+    }
+    .gridpastcheckinstransfer{
+        background-color: #28a745 /*rgba(255, 13, 0, 0.4)*/ !important;
+        color: #FFF !important;
+        text-shadow: 0px 1px 0px #795548;
+        font-size:12px;
+        border: 1px solid #563d34;
+    }
+    .gridtransfer{
+        background-color: #28a745  /*rgba(255, 13, 0, 0.4)*/ !important;
+        color: #FFF !important;
+        text-shadow: 0px 1px 0px #268002;
+        font-size:12px;
+    }
+    .gridcancelled {
+        background-color: #6c757d /*rgba(255, 13, 0, 0.4)*/ !important;
+        color: #FFF !important;
+        text-shadow: 0px 1px 0px #268002;
+        font-size: 12px;
+    }
+    .gridforcleaning{
+        background-color: #673AB7  /*rgba(255, 13, 0, 0.4)*/ !important;
+        color: #FFF !important;
+        text-shadow: 0px 1px 0px #000;
+        font-size:12px;
+    }
+    .gridoutoforder{
+        background-color: #313131  /*rgba(255, 13, 0, 0.4)*/ !important;
+        color: #FFF !important;
+        font-size:12px;
+    }
+    .gridcontainer{
+        /*height:100%;*/
+        position:absolute;
+        z-index:1;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        line-height:2.7;
+        top: 0px;
+        position: absolute;
+        bottom: -1px;
+        font-size:14px;
+    }
+    td > div.gridreserve{
+        /*border-left:1px solid #ffe924;
+        border-right:1px solid #ffe924;*/
+    }
+    td > div.gridunavailable{
+        /*border-left:1px solid #d80b00;
+        border-right:1px solid #d80b00;*/
+    }
+
+    .finishday{
+        background-color: #ccc !important;
+    }
+
+    .curDay{
+        background-color: #ff9800 !important;
+    }
+
+    .gridhover{
+        background-color: #8BC34A !important;
+    }
+
+    .table-scroll-assets {
+        position: relative;
+        /*min-width: 980px;*/ /* just for testing fixed left column*/
+        /*z-index: 1;
+        margin: auto;
+        overflow: scroll;
+        min-height:100px;
+        max-height: 400px;*/
+        font-size:14px;
+    }
+    .table-scroll-assets table {
+        /*width: 100%;
+        min-width: 1280px;*/
+        /*margin: auto;*/
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+    .table-scroll-assets thead th {
+        /*color: #fff;*/
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index:4;
+    }
+    /* safari and ios need the tfoot itself to be position:sticky also */
+    .table-scroll-assets tfoot,
+    .table-scroll-assets tfoot th,
+    .table-scroll-assets tfoot td {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0;
+        color: #fff;
+        z-index:4;
+    }/* testing links*/
+
+    .table-scroll-assets th:nth-child(1),
+    .table-scroll-assets td:nth-child(1) {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background-color:#FFF;
+    }
+
+    .table-scroll-assets thead th:nth-child(1),
+    .table-scroll-assets tfoot th:nth-child(1){
+        z-index: 5;
+    }   
+</style>
+
+<div id="popupTransferAsset" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Transfer</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-6 mb-3">
+                        Please choose an Asset where to move.
+                    </div>
+                    <div class="offset-md-1 col-md-1 text-md-right text-left mb-3">
+                        Date:
+                    </div>
+                    <div class="col-md-4 text-right">                        
+                        <div class="input-group">
+                            <button data-role="none" id="btnTransferAvailabilityPrev" class="btn btn-light border" data-toggle="tooltip" data-placement="bottom" title="Previous">
+                                <span class="bi-chevron-left"></span>
+                            </button>
+                            <select id="selTransferAvailabilityMonth" class="navcal form-select fixed" data-role="none">
+                                <option value="0">January</option>
+                                <option value="1">February</option>
+                                <option value="2">March</option>
+                                <option value="3">April</option>
+                                <option value="4">May</option>
+                                <option value="5">June</option>
+                                <option value="6">July</option>
+                                <option value="7">August</option>
+                                <option value="8">September</option>
+                                <option value="9">October</option>
+                                <option value="10">November</option>
+                                <option value="11">December</option>
+                            </select>
+                            <input type="number" id="txtTransferAvailabilityYear" class="navcal form-control" data-role="none" style="width:80px; display:inline-block;" />
+                            <button data-role="none" id="btnTransferAvailabilityNext" class="btn btn-light border" data-toggle="tooltip" data-placement="bottom" title="Next">
+                                <span class="bi-chevron-right"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-scroll-assets">
+                    <table cellpadding="2" cellspacing="0" class="table table-light">
+                        <thead>
+                            <tr id="thTransferAvailabilityDate" class="custom-theme-c text-center">
+                                <!--<th style="width:20px">1</th>-->
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyTransferAvailability"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" data-dismiss="modal" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupAssetNewCustomer" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lblAssetActionTitle"></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3" id="divTransfer" style="display:none;">
+                    <div class="col-md-4">Transfer to:</div>
+                    <div class="col-md-8">
+                        <label id="lblTransferTo"></label>
+                    </div>
+                </div>
+                <div class="row mb-3" id="divCheckedInDate" style="display:none;">
+                    <div class="col-md-4" id="lblCheckIn">Checked In Date:</div>
+                    <div class="col-md-8">
+                        <label id="lblCheckedInDate"></label>
+                    </div>
+                </div>
+                <div class="row mb-3" id="divActualCheckedInDate" style="display:none;">
+                    <div class="col-md-4">Actual Checked In Date:</div>
+                    <div class="col-md-8">
+                        <label id="lblActualCheckedInDate"></label>
+                    </div>
+                </div>
+                <div class="row mb-3" id="divDateReservation">
+                    <div class="col-md-4"><span id="lblAssetDate">Reservation Date:</span> <span class="required">*</span></div>
+                    <div class="col-md-8">
+                        <a data-role="none" id="btnDateReservation" class="custom-link">Set Date</a>
+                    </div>
+                </div>
+                <div class="row mb-3" id="divReservationWasMadeBy" style="display:none;">
+                    <div class="col-md-4">Reservation was made by:</div>
+                    <div class="col-md-8">
+                        <label id="lblReservationWasMadeBy"></label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">Number of day(s):</div>
+                    <div class="col-md-8">
+                        <label id="lblNoOfDays"></label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">Booked online from:</div>
+                    <div class="col-md-8">
+                        <input data-role="none" type="text" class="form-control" id="txtAssetOTAName" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">Confirmation number from <span id="lblOTA">Online Travel Agency (OTA)</span>:</div>
+                    <div class="col-md-8">
+                        <input data-role="none" type="text" class="form-control" id="txtAssetOTAConfirmationNo" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4" id="lblTransferLabel"></div>
+                    <div class="col-md-8" id="lblTransferAsset"></div>
+                </div>
+
+                <div id="divTabAssetCustomer" style="white-space:nowrap; overflow:auto;">
+                    <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabCusClientInfo" type="button" role="tab" aria-controls="home" aria-selected="true">Client Info</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabCusAssetInfo" type="button" role="tab" aria-controls="profile" aria-selected="false">Asset Info</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content p-3">
+                    <div id="tabCusClientInfo" class="tab-pane fade show active">
+                        <div class="row mb-3">
+                            <div class="col-md-3">Organization:</div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <input data-role="none" type="text" class="form-control" id="txtAssetOrgName" readonly>
+                                    <button data-role="none" class="btn btn-success" id="btnSearchAssetOrg" type="button"><span class="bi-search"></span></button>
+                                    <button data-role="none" class="btn btn-danger" title="Clear Selected Organization" id="btnRemoveAssetOrg" type="button"><span class="bi-x"></span></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-9">List of <span class="lblGuest">Guest</span>(s)</div>
+                            <div class="col-md-3" style="text-align:right;">
+                                <button data-role="none" class="btn btn-success" id="btnAddGuest">
+                                    Add <span class="lblGuest">Guest</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <table style="width:100%;" class="table table-light table-striped table-hover">
+                            <thead>
+                                <tr class="custom-theme-c text-center">
+                                    <th style="width:50px;">#</th>
+                                    <th><span class="lblGuest">Guest</span> Name</th>
+                                    <th style="width:150px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyAssetCustomerList"></tbody>
+                        </table>
+                    </div>
+                    <div id="tabCusAssetInfo" class="tab-pane fade">
+                        <div class="row mb-3">
+                            <div class="col-auto">Asset Name:</div>
+                            <div class="col">
+                                <b id="lblAssetName"></b>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 fieldsforhotel" style="margin-bottom:15px;">
+                            <div class="col-md-3">No. of Adults: <span class="required">*</span></div>
+                            <div class="col-md-9">
+                                <input data-role="none" class="form-control" type="number" id="txtNoOfAdults" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 fieldsforhotel" style="margin-bottom:15px;">
+                            <div class="col-md-3">No. of Child:</div>
+                            <div class="col-md-9">
+                                <input data-role="none" class="form-control" type="number" id="txtNoOfChild" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 fieldsforhotel" style="margin-bottom:15px;">
+                            <div class="col-md-3">No. of Guest Cards:</div>
+                            <div class="col-md-9">
+                                <input data-role="none" class="form-control" type="number" id="txtNoOfGuestCards" min="1" value="1" />
+                            </div>
+                        </div>
+                        <h4>Rates per <span id="lblAssetUom"></span></h4>
+                        <div class="table-responsive mb-3">
+                            <table style="width:100%;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="custom-theme-c text-center">
+                                        <th style="width:50px;"></th>
+                                        <th>Description</th>
+                                        <th>Unit</th>
+                                        <th style="width:100px;">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyRates"></tbody>
+                            </table>
+                        </div>
+
+                        <h4>Other Charges</h4>
+                        <div class="table-responsive">
+                            <table style="width:100%;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="custom-theme-c text-center">
+                                        <th style="width:50px;"></th>
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th style="width:100px;">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyOC"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Close</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnSaveAssetCus" class="btn btn-success btn-block btn-lg">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popAssetCustomerInfo" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Customer Info</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" id="divTabNewAssetCustomer" role="tablist" style="flex-wrap:nowrap;">
+                    <li class="nav-item" role="presentation">
+                        <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabCustomerInfo" type="button" role="tab" aria-controls="home" aria-selected="true">Customer Info</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabCusAssetRequest" type="button" role="tab" aria-controls="profile" aria-selected="false">Special Request</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content p-3">
+                    <div id="tabCustomerInfo" class="tab-pane fade show active">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <h4>Personal Info</h4>
+                            </div>
+                            <div class="col-auto text-right">
+                                <button data-role="none" id="btnSearchExistingCustomer" class="btn btn-success">Search Customer</button>
+                            </div>
+                            <div class="col-auto text-right">
+                                <button data-role="none" id="btnClearExistingCustomer" class="btn btn-danger">Clear Customer</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">First name: <span class="required">*</span></div>
+                            <div class="col-md-9">
+                                <input data-role="none" type="text" class="form-control formppol" id="txtAssetCusFirstName">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3">Middle Initial / Name:</div>
+                            <div class="col-md-9">
+                                <input data-role="none" type="text" class="form-control formppol" id="txtAssetCusMiddleName">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3">Last Name:<span class="required">*</span></div>
+                            <div class="col-md-9">
+                                <input data-role="none" type="text" class="form-control formppol" id="txtAssetCusLastName">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3">Date of Birth:</div>
+                            <div class="col-md-9">
+                                <a data-role="none" id="btnDateOfBirth" class="custom-link">Set Birth Date</a>
+                            </div>
+                        </div>
+                        <br />
+                        <h4>Address</h4>
+                        <div class="row">
+                            <div class="col-md-3">House / Bldg No.:</div>
+                            <div class="col-md-9">
+                                <input data-role="none" type="text" class="form-control formppol" id="txtAssetCusHomeNo">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3">Street Name:</div>
+                            <div class="col-md-9">
+                                <input data-role="none" type="text" class="form-control formppol" id="txtAssetCusStreetName">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3">City:</div>
+                            <div class="col-md-9">
+                                <select data-role="none" class="form-select" id="selAssetCusCity"></select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3">Country:</div>
+                            <div class="col-md-9">
+                                <select data-role="none" class="form-select" id="selAssetCusCountry"></select>
+                            </div>
+                        </div>
+                        <br />
+                        <h4>Contact Info</h4>
+                        <div class="row">
+                            <div class="col-md-3">Mobile No.:<span class="required">*</span></div>
+                            <div class="col-md-3">
+                                <select data-role="none" class="form-control" id="selAssetCusCountryCode" disabled></select>
+                            </div>
+                            <!--<div class="col-md-3">
+                                <select data-role="none" class="form-control" id="selAssetCusTelcoPrefix"></select>
+                            </div>-->
+                            <div class="col-md-6">
+                                <input data-role="none" type="text" maxlength="10" id="txtAssetCusMobileNo" placeholder="Number" class="form-control formppol" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3">Email:</div>
+                            <div class="col-md-9">
+                                <input data-role="none" type="email" class="form-control formppol" id="txtAssetCusEmail">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tabCusAssetRequest" class="tab-pane fade">
+                        <div style="text-align:right;">
+                            <button data-role="none" id="btnAddAssetCustomerPreviousRequest" class="btn btn-secondary">Previous Request</button>
+                            <button data-role="none" id="btnAddAssetCustomerRequest" class="btn btn-success">Add Request</button>
+                        </div>
+                        <br />
+                        <ul id="listAssetCustomerRequest" data-role="none" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Close</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnOkAssetCustomer" class="btn btn-success btn-block btn-lg">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupCheckAvailabity" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Check Asset Availability</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Close</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnOkAssetCustomer" class="btn btn-success btn-block btn-lg">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupCardCreationConfirmationMessage" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Guest Room Information</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                You are about to create a key/guest card(s) for <br />
+                <label id="lblGuestName" style="font-size:1.5em; font-weight:bold">Guita, Sam Pa</label> <br /> <br /> <br />
+
+                <label id="lblNoOfNights" style="font-size:1.5em; font-weight:bold">Good for 2 Night(s) </label> <br />
+                from <label id="lblGuestCheckInDate" style="font-size:1.5em; font-weight:bold"> May 16, 2019 </label> to <label id="lblGuestCheckOutDate" style="font-size:1.5em; font-weight:bold">  May 18, 2019 </label>
+                <br /> <br /> <br />
+
+                For use in <br />
+                <label id="lblGuestRoomNo" style="font-size:1.5em; font-weight:bold">Room 1 </label>
+                <br /> <br /> <br /> <br />
+
+                Would you like to proceed with the creation of guest/ key card(s)?
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" id="btnMakeGuestCard" class="btn btn-success btn-block btn-lg">Yes, make guest card(s)</button>
+                <button data-role="none" id="btnCancelGuestCard" class="btn btn-secondary btn-block btn-lg">Go back and edit check in/guest information</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupCardCreation" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Creating Guest Card</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <img src="/Content/images/AssetManagement.png" style="width:96px;" />
+                </div>
+
+                <div>
+                    <h2 id="dvMessage"> Please put card on top of the card reader. </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupCardInformation" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Guest Card Information</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="row">
+                        <div class="col-md-4">Room No:</div>
+                        <div class="col-md-8">
+                            <label id="lblRoomNo"></label>
+                        </div>
+                        <br /><br />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Check-In Date:</div>
+                        <div class="col-md-8">
+                            <label id="lblCheckInDate"></label>
+                        </div>
+                        <br /><br />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">Check-Out Date:</div>
+                        <div class="col-md-8">
+                            <label id="lblCheckOutDate"></label>
+                        </div>
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Close</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnGetCardInformation" class="btn btn-success btn-block btn-lg">Get Card Info</button>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<div id="popAssetOutOfOrder" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Out of Order</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <b id="lblOutOfOrderAssetName"></b> will not be available from the selected date:
+                <br /><br />
+                From: <input data-role="none" id="txtOOODateFrom" type="date" onkeydown="return false" class="form-control" />
+                <br />
+                To: <input data-role="none" id="txtOOODateTo" type="date" onchange="return" class="form-control" />
+                <br />
+                Reason:
+                <textarea data-role="none" id="txtOOOReason" class="form-control" style="height:100px; resize:none; width:100%;"></textarea>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnOutOfOrderSave" class="btn btn-success btn-block btn-lg">Save</button>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<div id="popAssetCustomerRequest" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Request</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                Write here the request:<br /><br />
+                <textarea data-role="none" id="txtAssetCustomerRequest" class="form-control" style="height:200px; resize:none; width:100%;"></textarea>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnOkAssetCustomerRequest" class="btn btn-success btn-block btn-lg">Ok</button>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<div id="popupCustomerRequestHistoryDetails" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Request History</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <table style="width:100%;" class="table table-light table-striped table-hover">
+                    <thead>
+                        <tr class="custom-theme-f">
+                            <th> Request </th>
+                            <th style="width:150px;"> User </th>
+                            <th style="width:150px"> Last Updated </th>
+                            <th style="width:80px"> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyRequestHistory"></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col text-right">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupCustomerPreviousRequest" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Previous Request</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <table style="width:100%;" class="table table-light table-striped table-hover">
+                    <thead>
+                        <tr class="custom-theme-f">
+                            <th style="width:20px;"> # </th>
+                            <th> Request </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyCustomerPreviousRequest"></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col text-right">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupDailySalesReport" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Daily Sales Report</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="h-100 d-flex flex-column overflow-hidden">                    
+                    <div class="flex-shrink-1">
+                        <div class="row mb-3 align-items-center">
+                            <div class="col-auto">
+                                Date:
+                            </div>
+                            <div class="col-auto">
+                                <button data-role="none" id="btnDSRSelectedDate" class="btn btn-secondary">Select Date</button>
+                            </div>
+                            <div class="col text-right">
+                                <button data-role="none" id="btnDownloadDailySalesReport" class="btn btn-success">Generate</button>
+                            </div>
+                        </div>
+
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <button data-role="none" class="nav-link active" data-target="#tabDSRCheckIns" data-toggle="tab">Check-ins</button>
+                            </li>
+                            <li class="nav-item">
+                                <button data-role="none" class="nav-link" data-target="#tabDSRPayments" data-toggle="tab">Payments Made Upon Check-out</button>
+                            </li>
+                            <li class="nav-item">
+                                <button data-role="none" class="nav-link" data-target="#tabDSRReservations" data-toggle="tab">Reservations</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex-fill d-flex flex-row overflow-auto w-100 h-100 pt-3">
+                        <div class="tab-content w-100 h-100">
+                            <div id="tabDSRCheckIns" class="tab-pane active h-100">
+                                <div class="table-fixed w-100 h-100">
+                                    <table id="tblDSRCheckIns" data-role="none" class="table table-light table-hover table-striped">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th class="fixed-col text-nowrap" style="width:50px;">#</th>
+                                                <th class="fixed-col text-nowrap">Room No.</th>
+                                                <th class="fixed-col">Name of Guest</th>
+                                                <th class="fixed-col text-nowrap">Check-In</th>
+                                                <th class="fixed-col text-nowrap">Check-Out</th>
+                                                <th class="fixed-col text-nowrap">No. of Nights</th>
+                                                <th class="fixed-col text-nowrap">Rate</th>
+                                                <th class="fixed-col text-nowrap">Credit</th>
+                                                <th class="fixed-col text-nowrap">Booking Made</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tabDSRPayments" class="tab-pane">
+
+                            </div>
+                            <div id="tabDSRReservations" class="tab-pane">
+
+                            </div>
+                        </div>                        
+                    </div>
+                </div>                
+                <!--<div class="mb-3">
+                    <label for="txtSalesReportDate" class="form-label">Date:</label>
+                    <input data-role="none" type="date" class="form-control" id="txtSalesReportDate" />
+                </div>-->
+            </div>
+            <!--<div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Close</button>
+                    </div>
+                    <div class="col">
+                        
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<!--<div class="row">
+    <div class="col-md-3">
+        
+    </div>
+    <div class="col-md-3">
+        Status:
+        <select data-role="none" id="selAssetStatus" class="form-control fixed">
+            <option value="All">All</option>
+            <option value="Reserved">Reserved</option>
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        Asset Type:
+        <select data-role="none" id="selAssetType" class="form-control fixed"></select>
+    </div>    
+    <div class="col-md-3">
+        <input data-role="none" type="text" class="form-control" placeholder="Search here" id="txtSearchAsset" />
+    </div>
+</div>-->
+<!--<div style="width:100%; overflow:auto;">
+    <table id="tblAssetsMgmt" data-role="table" data-mode="reflow" style="margin-right:5px; display:table; width:100%;" class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+        <thead>
+            <tr class="custom-theme-f txt-center">
+                <th style="width:200px;">Asset Name</th>
+                <th style="width:100px;">Asset Type</th>
+                <th style="width:50px;">Capacity</th>
+                <th style="width:110px;">Capacity Unit</th>
+                <th style="width:50px;">Status</th>
+                <th style="max-width:200px;">Client</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>-->
+<div id="divMainAssetMgmt" subpage="pageAssetMgmt" style="display:block;">
+    <div class="row">        
+        <div class="col-md-6 mb-3">
+            <input type="search" data-role="none" class="form-control txtAssetSearchClient" placeholder="Search Client Name ..." />
+        </div>
+        <div class="col-md-4 mb-3 txt-right">
+            <div class="input-group">
+                <!--<span class="lblAssetForSearch" style="display:none;">Find Prev / Next</span> for search only-->
+                <button data-role="none" id="btnAvailabilityPrev" class="btn btn-light border" data-toggle="tooltip" data-placement="bottom" title="Previous">
+                    <span class="bi-chevron-left"></span>
+                </button>
+                <select id="selAvailabilityMonth" class="navcal form-select fixed" data-role="none">
+                    <option value="0">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                </select>
+                <input type="number" id="txtAvailabilityYear" class="navcal form-control" data-role="none" style="width:80px; display:inline-block;" />
+                <button data-role="none" id="btnAvailabilityNext" class="btn btn-light border" data-toggle="tooltip" data-placement="bottom" title="Next">
+                    <span class="bi-chevron-right"></span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-2 mb-3 text-right">
+            <button data-role="none" id="btnMoreOptions" class="btn btn-secondary">More Options</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md mb-3">
+            Legends:
+            <button data-role="none" class="btn gridreserve">Reserved</button>
+            <button data-role="none" class="btn gridunavailable">Unavailable</button>
+            <button data-role="none" class="btn gridforcleaning">Vacant and Dirty</button>
+            <button data-role="none" class="btn gridoutoforder">Out of Order</button>
+            <button data-role="none" class="btn gridpastcheckins">Past check-ins</button>
+            <button data-role="none" class="btn gridtransfer">Transferred</button>
+            <button data-role="none" class="btn gridcancelled">Cancelled Reservation</button>
+        </div>
+        <div class="col-md-auto mb-3">
+            <div class="form-check form-switch float-right">
+                <input data-role="none" class="form-check-input" type="checkbox" id="chbShowPastCheckins">
+                <label data-role="none" class="form-check-label" for="chbShowPastCheckins">Show guest names of past check-ins</label>
+            </div>
+        </div>
+    </div>    
+    <br />
+    <div id="divTableAvailabity" class="table-scroll-assets">
+        <table cellpadding="2" cellspacing="0" style="width:auto !important;" class="table table-light">
+            <thead>
+                <!--<tr class="custom-theme-f txt-center">
+                <th rowspan="3" class="txt-middle" style="min-width:150px !important; max-width:150px !important;">Asset Name</th>
+            </tr>
+            <tr class="custom-theme-c txt-center">
+                <th colspan="32" id="thLblMonth"></th>
+            </tr>-->
+                <tr id="thAvailabilityDate" class="custom-theme-c text-center position-sticky" style="z-index:3;">
+                    <!--<th style="width:20px">1</th>-->
+                </tr>
+            </thead>
+            <tbody id="tbodyAvailability"></tbody>
+        </table>
+    </div>
+    
+    <div style="position:fixed; bottom:20px; right:32px; z-index:1;">
+        <button data-role="none" id="btnCheckAssetAvailability" data-toggle="tooltip" data-placement="left" title="Refresh" class="btn btn-danger btn-lg">
+            <span class="bi-arrow-clockwise"></span>
+        </button>
+    </div>
+</div>
+<div id="divSearchAssetMgmt" subpage="pageAssetMgmt" style="display:none;">
+    <div class="row mb-3">
+        <div class="col-md">
+            Legends:
+            <button data-role="none" class="btn gridreserve">Reserved</button>
+            <button data-role="none" class="btn gridunavailable">Unavailable</button>
+            <button data-role="none" class="btn gridforcleaning">Vacant and Dirty</button>
+            <button data-role="none" class="btn gridoutoforder">Out of Order</button>
+            <button data-role="none" class="btn gridpastcheckins">Past check-ins</button>
+            <button data-role="none" class="btn gridtransfer">Transferred</button>
+            <button data-role="none" class="btn gridcancelled">Cancelled Reservation</button>
+        </div>
+        <div class="col-md-auto">
+            <input type="search" data-role="none" class="form-control txtAssetSearchClient" placeholder="Search Client Name ..." />
+        </div>
+    </div>
+
+    <ul id="listAMSearchClient" class="mb-5" style="list-style-type:none; padding:0px;">
+        <li>
+            <h3>Cherry Amacio</h3>
+
+            <table class="table table-light table-striped table-hover">
+                <thead>
+                    <tr class="custom-theme-h text-center">
+                        <td style="width:100px;">Legend</td>
+                        <td>From</td>
+                        <td>To</td>
+                        <td style="width:150px;">Date Created</td>
+                        <td style="width:150px;">Last Updated</td>
+                    </tr>
+                </thead>
+            </table>
+        </li>
+    </ul>
+
+    <div class="mt-4 mb-4 text-center fixed-bottom" style="display:block; left:50%; transform: translate(-50%, 0); right:auto">
+        <button data-role="none" id="btnBackSearchAssetMgmt" class="btn btn-secondary btn-lg">
+            Back
+        </button>
+    </div>
+</div>

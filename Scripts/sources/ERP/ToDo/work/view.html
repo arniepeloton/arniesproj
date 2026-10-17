@@ -1,0 +1,139 @@
+﻿<div class="row gx-1 mb-4">
+    <div class="col-md-4 mb-3">
+        <div name="divToolbar" class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+            <button data-role="none" name="btnTodoNew" class="btn btn-light border h-100 w-100 align-self-auto">
+                <span class="bi-file-earmark-plus" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">New</div>
+            </button>
+            <button data-role="none" name="btnTodoLookup" class="btn btn-light border h-100 w-100">
+                <span class="bi-search" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Lookup</div>
+            </button>
+            <button data-role="none" name="btnTodoSave" class="btn btn-light border h-100 w-100">
+                <span class="bi-save" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Save</div>
+            </button>
+            <button data-role="none" name="btnTodoMakeACopy" class="btn btn-light border h-100 w-100">
+                <span class="bi-clipboard" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Make A Copy</div>
+            </button>
+            <button data-role="none" name="btnTodoMark" class="btn btn-light border h-100 w-100">
+                <span class="bi-check-square" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Mark As Done</div>
+            </button>
+        </div>
+    </div>
+    <div class="col-md text-right">
+        <div name="lblTodoNo" style="font-size:30px; font-weight:bold;"></div>
+        <div name="lblTodoStatus" style="font-size:25px; font-weight:bold;"></div>
+        <div name="lblCreatedBy"></div>
+        <div name="lblUpdatedBy"></div>
+    </div>
+</div>
+
+<div class="accordion mb-3">
+    <div class="card">
+        <div class="card-header p-0">
+            <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransBody" data-role="none" data-toggle="collapse">
+                <b>Details</b>
+            </button>
+        </div>
+        <div class="collapse show" id="colTransBody">
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <label class="form-label">Title of To-Do item: <span class="required">*</span></label>
+                    <input data-role="none" class="form-control" name="txtTodoTitle" />
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label">To-Do Description: <span class="required">*</span></label>
+                    <textarea name="txtTodoDescription" data-role="none" class="form-control" style="min-height: 300px; resize: none"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion mb-3">
+    <div class="card">
+        <div class="card-header p-0">
+            <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransFooter" data-role="none" data-toggle="collapse">
+                <b>Additional Information</b>
+            </button>
+        </div>
+        <div class="collapse show" id="colTransFooter">
+            <div class="card-body">
+                <input type="checkbox" class="btn-check d-none" name="chbTodoMarkAsDone" id="chbTodoMarkAsDone" autocomplete="off">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Organization Name:</label>
+                            <input name="txtTodoOrg" readonly data-role="none" type="text" placeholder="Search Organization here" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Due Date:</label>
+                            <div class="input-group">
+                                <input name="txtTodoDueDate" readonly data-role="none" type="text" placeholder="Set Date" class="form-control" />
+                                <input name="txtTodoDueTime" readonly data-role="none" type="text" placeholder="Set Time" class="form-control" />
+                                <button data-role="none" name="btnTodoDueClear" class="btn btn-light border">Clear Date/Time</button>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Category:</label>
+                            <select data-role="none" name="selTodoCategory" class="form-select"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Urgency:</label>
+                            <select data-role="none" name="selTodoUrgency" class="form-select">
+                                <option value="Very Urgent">Very Urgent</option>
+                                <option value="Urgent">Urgent</option>
+                                <option value="NA" selected>NA</option>
+                                <option value="Not Urgent">Not Urgent</option>
+                                <option value="Very Not Urgent">Very Not Urgent</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Importance:</label>
+                            <select data-role="none" name="selTodoImportance" class="form-select">
+                                <option value="Very Important">Very Important</option>
+                                <option value="Important">Important</option>
+                                <option value="NA" selected>NA</option>
+                                <option value="Not Important">Not Important</option>
+                                <option value="Very Not Important">Very Not Important</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion mb-3">
+    <div class="card">
+        <div class="card-header p-0">
+            <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransBody" data-role="none" data-toggle="collapse">
+                <b>Assigned Person(s)</b>
+            </button>
+        </div>
+        <div class="collapse show" id="colTransBody">
+            <div class="card-body">
+                <div class="mb-3 text-right">
+                    <button data-role="none" name="btnTodoAddEmployee" class="btn btn-success">Add Person</button>
+                </div>
+
+                <ul data-role="none" name="listTodoAssignedEmp" class="list-group"></ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+﻿<style>
+    /*.outer th:nth-child(2),
+    .outer td:nth-child(2){
+        background-color: white;
+    }*/
+</style>
+<div>
+    <div class="row mb-3">
+        <div class="col col-md-offset-6 col-md-6">
+            <input data-role="none" type="search" class="form-control" name="txtSearchPriceBulletin" placeholder="Search here" />
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table id="tblPriceBulletinDashboard" data-role="none" class="table table-light table-striped table-hover" style="table-layout:fixed;">
+            <thead>
+                <tr class="text-center align-items-center" style="font-size:14px;">
+                    <th style="width:50px;">#</th>
+                    <th>Bulletin Name</th>
+                    <th>Last Updated</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <!--<button data-role="none" class="btn btn-success" data-toggle="modal" data-target="#popupPriceBulletinDashboard">Show</button>-->
+
+    <div id="popupPriceBulletinDashboard" class="modal pl-0" data-backdrop="static" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark">              
+                <div class="outer" style="width:100%; height:100%;">
+                    <div>
+                        <span class="row m-2 align-items-center text-light" style="font-size:5vh;">
+                            <span class="col" name="lblBulletinName"></span>
+                            <span class="col-auto text-center" name="lblDateToday"></span>
+                        </span>
+                        <span class="row m-2 mb-0 g-0 align-items-center text-light" style="font-size:4vh;">
+                            <span class="col"></span>
+                            <span class="col-auto p-2 pr-3 colretail text-center">Retail</span>
+                            <span class="col-auto p-2 pl-3 colwholesale text-center">Wholesale</span>
+                        </span>
+                        <div name="divProductList" class="p-3 pb-0" style="font-size:8vh;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div id="popupBulletinDashboard" class="modal fade" data-backdrop="static" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Price Bulletin</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <label class="col-md-2 col-form-label" for="txtBulletinName">Bulletin Name: <span class="required">*</span></label>
+                        <div class="col-md">
+                            <input data-role="none" class="form-control" type="text" name="txtBulletinName" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col">
+                            <h5>Product Lists</h5>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table data-role="none" class="table table-light table-striped table-hover" style="table-layout:fixed;">
+                            <thead>
+                                <tr class="text-center align-items-center" style="font-size:14px;">
+                                    <th style="width:50px;">#</th>
+                                    <th style="width:150px;">Product No.</th>
+                                    <th style="width:150px;">Brand</th>
+                                    <th>Product Name</th>
+                                    <th>Display Name</th>
+                                    <th>Retail Price</th>
+                                    <th>Wholesale Price</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md order-1 order-md-0">
+                            <button data-role="none" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col-md order-1 order-md-0">
+                            <button data-role="none" name="btnPBPlay" class="btn btn-success btn-block btn-lg">Play</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

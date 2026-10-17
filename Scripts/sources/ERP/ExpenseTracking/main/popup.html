@@ -1,0 +1,1779 @@
+﻿<!--<script type="text/javascript">
+    require([GetPathFormat('/Scripts/sources/ERP/ExpenseTracking/main/popup.js?crc=' + assetversion)])
+</script>-->
+
+<style type="text/css">
+    .table-scroll-checkins {
+        position: relative;
+        /*min-width: 980px;*/ /* just for testing fixed left column*/
+        /*z-index: 1;
+        margin: auto;
+        overflow: scroll;
+        min-height:100px;
+        max-height: 400px;
+        font-size:14px;*/
+    }
+    .table-scroll-checkins table {
+        /*width: 100%;
+        min-width: 1280px;*/
+        /*margin: auto;*/
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+    .table-scroll-checkins table thead tr,
+    .table-scroll-checkins table tfoot tr {
+        position:sticky;
+        z-index:4;
+    }
+    .table-scroll-checkins thead th,
+    .table-scroll-checkins tfoot td {
+        /*color: #fff;*/
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index:4;
+        background-color:#FFF;
+    }
+    /* safari and ios need the tfoot itself to be position:sticky also */
+    .table-scroll-checkins tfoot,
+    .table-scroll-checkins tfoot th,
+    .table-scroll-checkins tfoot td {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0;
+        /*color: #fff;*/
+        z-index:4;
+    }/* testing links*/
+
+    .table-scroll-checkins th:nth-child(1),
+    .table-scroll-checkins td:nth-child(1) {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background-color:#FFF;
+    }
+
+    .table-scroll-checkins thead th:nth-child(1),
+    .table-scroll-checkins tfoot th:nth-child(1){
+        z-index: 5;
+    }
+</style>
+
+<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDKWvMWWXqdnh_dQEb8OjFQouNO85_-g5w&sensor=false"></script>
+
+<div id="popupLogExpenseReport" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Log Expense Report</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-2" style="font-size:20px;">
+                        Filter
+                    </div>
+                    <div class="col-sm-2">
+                        Employee:<br />
+                        <select id="selExpenseEmployee" data-role="none" class="form-select"></select>
+                    </div>
+                    <div class="col-sm-2">
+                        Cost Center Location:<br />
+                        <select id="selExpenseCostCenterLocation" data-role="none" class="form-select"></select>
+                    </div>
+                </div>
+                <br />
+                <div style="background-color: #f0f0f0; padding: 10px; border: 1px solid #CCC;">
+                    <div class="row">
+                        <div class="col-sm-2" style="font-size:20px;">
+                            Fund Summary
+                        </div>
+                        <div class="col-sm-3">
+                            Month Covered:<br />
+                            <div class="input-group">
+                                <button data-role="none" id="btnyMonthCoveredPrev" class="btn btn-light border" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Previous">
+                                    <span class="bi-chevron-left"></span>
+                                </button>
+                                <select id="selExpensesSummaryMonthCovered" class="navcal form-select fixed" data-role="none">
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <input type="number" id="txtExpensesSummaryYearCovered" class="navcal form-control" data-role="none" style="width:80px; display:inline-block;">
+                                <button data-role="none" id="btnyMonthCoveredNext" class="btn btn-light border" data-toggle="tooltip" data-placement="bottom" title="Next">
+                                    <span class="bi-chevron-right"></span>
+                                </button>
+                            </div>
+                            <div style="display:inline-flex">
+                                <span class="lblAssetForSearch" style="display:none;">Find Prev / Next</span> <!--for search only-->
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-2 txt-center">
+                            Carried Over Funds from Previous Month:
+                            <br /><br />
+                            <b id="lblCarryOverFund" style="font-size:25px;"></b>
+                            <br />
+                            <div id="divForAdjustedCarryOverFundBalance" style="display:none;">
+                                <i><span class="required">*</span> Adjusted ending balance</i>
+                                <br />
+                                <a data-role="none" class="custom-link">View Details</a>
+                            </div>
+                        </div>
+                        <div id="btnViewDetailsBeginningBalance" class="col-sm-2 txt-center">
+                            Total Received Funds for the Month:
+                            <br /><br />
+                            <b class="lblTotalReceiveFundsHeader" style="font-size:25px;"></b>
+                            <br />
+                            <a data-role="none" class="custom-link">View Details</a>
+                        </div>
+                        <div class="col-sm-3 txt-center">
+                            Total Carried Over and Received Funds for the Month:
+                            <br /><br />
+                            <b id="lblTotalBegFundBal" style="font-size:25px;"></b>
+                        </div>
+                        <div id="btnViewDetailsExpenses" class="col-sm-2 txt-center">
+                            Total Expenses For The Month:
+                            <br /><br />
+                            <b class="lblTotalExpenseHeader" style="font-size:25px;"></b>
+                            <br />
+                            <a data-role="none" class="custom-link">View Details</a>
+                        </div>
+                        <div class="col-sm-2 txt-center">
+                            Net Fund Balance For The Month:
+                            <br /><br />
+                            <b id="lblNetFundBalance" style="font-size:25px;"></b>
+                            <br />
+                            <div id="divForAdjustedNetFundBalance" style="display:none;">
+                                <i><span class="required">*</span> Adjusted ending balance</i>
+                                <br />
+                                <a data-role="none" class="custom-link">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-2" style="font-size:20px;">
+                        Fund Details
+                    </div>
+                    <div class="col-auto">
+                        Expense Type:<br />
+                        <select id="selLogExpenseType" data-role="none" class="form-select">
+                            <option value="all">All</option>
+                            <option value="Store">Store</option>
+                            <option value="Representation">Representation</option>
+                            <option value="Jeepney Fare">Jeepney Fare</option>
+                            <option value="Bus Fare">Bus Fare</option>
+                            <option value="Taxi Fare">Taxi Fare</option>
+                            <option value="Fuel">Fuel</option>
+                            <option value="Tricycle Fare">Tricycle Fare</option>
+                            <option value="Air Fare">Air Fare</option>
+                            <option value="Sea Fare">Sea Fare</option>
+                            <option value="Train Fare">Train Fare</option>
+                            <option value="Telco">Telco</option>
+                            <option value="Internet">Internet</option>
+                            <option value="Meal">Meal</option>
+                            <option value="Lodging">Lodging</option>
+                            <option value="Other Expense">Other Expense</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        Date Covered:<br />
+                        <button data-role="none" id="btnLogExpenseDateRange" class="btn btn-secondary"></button>
+                    </div>
+                    <div class="col-auto">
+                        Cost Center:<br />
+                        <select id="selExpenseCostCenter" data-role="none" class="form-select"></select>
+                    </div>
+                    <div class="col-auto">
+                        <br />
+                        <button data-role="none" id="btnDownloadReportByEmployee" class="btn btn-secondary">Download Report</button>
+                    </div>
+                </div>
+                <br />
+                <div id="tabExpenseFundReports" style="white-space:nowrap; overflow:auto;">
+                    <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabExpenses">Expenses</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabReceivedFunds">Received Funds</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabFundAdjustments">Carry Over Fund Adjustments <span id="badgePendingRAF" style="display:none;"><span class="badge bg-danger"></span></span></button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content p-3">
+                    <div id="tabExpenses" class="tab-pane fade show active">
+                        <!--<div class="text-right mb-3">
+            <button id="btnAddExpense" data-role="none" class="btn btn-success">Add Expense</button>
+        </div>
+        <br />-->
+                        <div class="table-responsive">
+                            <table id="tblLogExpenseReport" data-role="none" style="margin-right:5px; display:table; width:100%;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <!--<th>#</th>
+                                        <th>Employee Name</th>
+                                        <th>Expense Date</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Date Created</th>
+                                        <th>Expense Type</th>
+                                        <th>Amount</th>
+                                        <th style="width:250px;">Remarks</th>
+                                        <th></th>-->
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyLogExpense"></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th id="tfFooterExpense" style="text-align:right">Total:</th>
+                                        <th id="tfFooterExpenseExtra" colspan="2"></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>                        
+                    </div>
+
+                    <div id="tabReceivedFunds" class="tab-pane fade">
+                        <div class="table-responsive">
+                            <table id="tblFundReport" data-role="none" style="margin-right:5px; display:table; width:100%;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="custom-theme-f txt-center">
+                                        <th>#</th>
+                                        <th>Employee Name</th>
+                                        <th>Received Date</th>
+                                        <th>Received From</th>
+                                        <th>Amount</th>
+                                        <th>Comment</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyFunds"></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="tfFooterFund" style="text-align:right">Total:</th>
+                                        <th colspan="3"></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>                        
+                    </div>
+
+                    <div id="tabFundAdjustments" class="tab-pane fade">
+                        <div class="text-right mb-3">
+                            <button data-role="none" id="btnAdjustCarryOverFund" class="btn btn-success">Adjust Carry Over Fund</button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table id="tblFundAdjustment" data-role="none" style="margin-right:5px; display:table; width:100%;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="custom-theme-f txt-center">
+                                        <th>#</th>
+                                        <th>Branch To Be Adjusted</th>
+                                        <th>Requested Name</th>
+                                        <th>Adjusted Period</th>
+                                        <th>Original Fund</th>
+                                        <th>Adjusted Amount</th>
+                                        <th>Requested Date</th>
+                                        <th>Remarks</th>
+                                        <th>Status</th>
+                                        <th>Approved Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyFundAdjustment"></tbody>
+                            </table>
+                        </div>                        
+                    </div>
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupExpenseCheckInOutReport" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title">Check-ins Report</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                <div class="row align-items-center">
+                    <div class="col-md">
+                        <div class="row align-items-center">
+                            <div class="col-2 col-md-auto mb-3 mb-md-0">
+                                Employee:
+                            </div>
+                            <div class="col mb-3 mb-md-0">
+                                <div class="input-group">
+                                    <select id="selExpenseCheckInOutEmployee" data-role="none" class="form-select"></select>
+                                    <div class="dropdown">
+                                        <button type="button" data-role="none" class="btn btn-secondary rounded-0 rounded-right dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+                                            Options
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a class="dropdown-item" id="btnViewEmployeeRouteSchedule" href="#"><span class="bi-calendar-check text-primary"></span> View Route Schedule</a></li>
+                                            <li><a class="dropdown-item" id="btnDownloadCheckInReportByEmployee" href="#"><span class="bi-pin-map text-danger"></span> Download Check-in Report</a></li>
+                                            <li><a class="dropdown-item" id="btnDownloadStoreVisitedReport" href="#"><span class="bi-calendar3 text-success"></span> Download Visit Frequency Report</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <div class="modal-body p-0">
+                <div id="divCheckInOutTab" class="p-3" style="white-space:nowrap; overflow:auto;">
+                    <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link active" id="btnCHUnplannedRoute" data-toggle="tab" data-target="#tabCHUnplannedRoute">List View</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" id="btnCHv2PlannedRoute" data-toggle="tab" data-target="#tabCHv2PlannedRoute">Planned Route</button>
+                        </li>
+                        <!--<li class="nav-item" role="presentation">
+        <button data-role="none" class="nav-link" id="btnCHPlannedRoute" data-toggle="tab" data-target="#tabCHPlannedRoute">Planned Route</button>
+    </li>-->
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+                    <div id="tabCHv2PlannedRoute" class="tab-pane">
+                        <div>
+                            <div class="row align-items-center p-3">
+                                <div class="col-2 col-md-auto mb-3 mb-md-0">
+                                    Month Covered:
+                                </div>
+                                <div class="col-auto mb-3 mb-md-0">
+                                    <div class="input-group">
+                                        <select data-role="none" class="form-select fixed" id="selExpenseCheckInOutDateRangeMonth"></select>
+                                        <select data-role="none" class="form-select fixed" id="selExpenseCheckInOutDateRangeYear"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-scroll-checkins">
+                                <table name="tblRouteScheduleByEmployeeV2" data-role="none" class="table table-light table-hover table-striped">
+                                    <thead>
+                                        <tr id="thPlannedRouteDate" class="text-center align-middle">
+                                            <th rowspan="2" style="min-width:200px; max-width:400px;">Locations</th>
+                                            <!--<th class="table-active" colspan="31">Planned Route</th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr class="font-weight-bold"></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <!--<div id="tabCHPlannedRoute" class="tab-pane fade">
+                        <div name="divRouteSchedByDay" class="d-none mb-3">
+                            <h4 name="lblDay" class="mb-3"></h4>
+
+                            <div class="table-responsive">
+                                <table name="tblRouteScheduleByEmployee" data-role="none" class="table table-hover">
+                                    <thead>
+                                        <tr class="text-center align-middle">
+                                            <th rowspan="2">Location</th>
+                                            <th class="table-active" colspan="2">Planned Route</th>
+                                            <th class="table-light" colspan="3">Actual Route</th>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <th class="table-active" style="width:200px;">Time</th>
+                                            <th class="table-active" style="width:200px;">Duration</th>
+                                            <th class="table-light" style="width:200px;">In</th>
+                                            <th class="table-light" style="width:200px;">Out</th>
+                                            <th class="table-light" style="width:200px;">Duration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="divRSByEmployee"></div>
+                    </div>-->
+
+                    <div id="tabCHUnplannedRoute" class="tab-pane p-3 show active">
+                        <div class="row align-items-center mb-3">
+                            <div class="col-2 col-md-auto mb-3 mb-md-0">
+                                Date Covered:
+                            </div>
+                            <div class="col mb-3 mb-md-0">
+                                <button data-role="none" id="btnCheckinDateRange" class="btn btn-secondary"></button>
+                            </div>
+                        </div>
+                        <!--<div class="mb-3 row">
+        <div class="offset-md-6 col-md">
+            <input data-role="none" type="search" class="form-control" placeholder="Search here" id="txtExpenseCheckInOutReportSearch" />
+        </div>
+    </div>-->
+
+                        <div class="table-responsive">
+                            <table id="tblExpenseCheckInOutReport" data-role="none" style="width:100%;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="align-top text-center">
+                                        <th>#</th>
+                                        <th id="thExpenseEmployeeName">Employee Name</th>
+                                        <th>Location</th>
+                                        <th>In</th>
+                                        <th>Out</th>
+                                        <th>Duration</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyExpenseCheckInOut"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>         
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popStoreVisitedReport" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Store Visited Report</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        From:
+                    </div>
+                    <div class="col-sm-5">
+                        <select data-role="none" class="form-select" id="selSVRFromMonth">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-5">
+                        <input data-role="none" type="number" class="form-control" id="txtSVRFromYear" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-2">
+                        To:
+                    </div>
+                    <div class="col-sm-5">
+                        <select data-role="none" class="form-select" id="selSVRToMonth">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-5">
+                        <input data-role="none" type="number" class="form-control" id="txtSVRToYear" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-6">
+                        Check the list of employees that you want to view their report
+                    </div>
+                    <div class="col-sm-6 txt-right">
+                        <a data-role="none" id="btnSVRSelectAll" class="custom-link">Select All</a> |
+                        <a data-role="none" id="btnSVRDeselectAll" class="custom-link">Deselect All</a>
+                    </div>
+                </div>
+                <br />
+                <div id="divSVREmployeeList" class="p-3" style="max-height:300px; width:100%; border: 1px solid #CCC; overflow:auto;">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnDownloadSVR" class="btn btn-success btn-block btn-lg">Download Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popCarryOverFund" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Fund Adjustment</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        Employee Name:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblCOFEmployeeName" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Adjusted Period:
+                    </div>
+                    <div class="col-sm-8">
+                        <span class="lblCOFPeriod" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Branch to be adjusted: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <select data-role="none" id="selCOFFowst" class="form-select"></select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Remaining fund from <span class="lblCOFPeriod"></span>:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblCOFRemainingFund" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Adjusted Amount: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <input data-role="none" type="text" class="form-control" id="txtCOFAdjustedAmount" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Remarks: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <!--<span id="lblROExpenseRemarks" style="font-weight:bold;"></span>-->
+                        <textarea data-role="none" id="txtCOFRemarks" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnCOFSave" class="btn btn-success btn-block btn-lg">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popExpenseCheckInOutMoreDetails" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">More Details</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="divExpenseCheckInDetails" style="display:none;">
+                    <h3>Check In</h3>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:30px;">
+                            Location:
+                        </div>
+                        <div class="col-sm-8">
+                            <span id="lblROExpenseCheckInLocation" style="font-weight:bold;"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:30px;">
+                            Time:
+                        </div>
+                        <div class="col-sm-8">
+                            <span id="lblROExpenseCheckInTime" style="font-weight:bold;"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:30px;">
+                            GPS:
+                        </div>
+                        <div class="col-sm-8">
+                            <span id="lblROExpenseCheckInGPS" style="font-weight:bold;"></span>
+                        </div>
+                    </div>
+
+                    <div id="divCheckInExpense" style="display:none;">
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-4" style="padding-left:30px;">
+                                Expense:
+                            </div>
+                            <div class="col-sm-8">
+                                <span id="lblROExpenseCheckInAmount" style="font-weight:bold;"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="divCheckInExpenseDestination" style="display:none;">
+                            <br />
+                            <div class="col-sm-4" style="padding-left:30px;">
+                                Destination:
+                            </div>
+                            <div class="col-sm-8">
+                                <span id="lblROExpenseCheckInDestination" style="font-weight:bold;"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div id="divGMapCheckInGPS" style="width:100%; height:300px;"></div>
+                </div>
+
+                <div id="divExpenseCheckOutDetails" style="display:none;">
+                    <h3>Check Out</h3>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:30px;">
+                            Location:
+                        </div>
+                        <div class="col-sm-8">
+                            <span id="lblROExpenseCheckOutLocation" style="font-weight:bold;"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:30px;">
+                            Time:
+                        </div>
+                        <div class="col-sm-8">
+                            <span id="lblROExpenseCheckOutTime" style="font-weight:bold;"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-left:30px;">
+                            GPS:
+                        </div>
+                        <div class="col-sm-8">
+                            <span id="lblROExpenseCheckOutGPS" style="font-weight:bold;"></span>
+                        </div>
+                    </div>
+
+                    <div id="divCheckOutExpense" style="display:none;">
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-4" style="padding-left:30px;">
+                                Expense:
+                            </div>
+                            <div class="col-sm-8">
+                                <span id="lblROExpenseCheckOutAmount" style="font-weight:bold;"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="divCheckOutExpenseDestination" style="display:none;">
+                            <br />
+                            <div class="col-sm-4" style="padding-left:30px;">
+                                Destination:
+                            </div>
+                            <div class="col-sm-8">
+                                <span id="lblROExpenseCheckOutDestination" style="font-weight:bold;"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div id="divGMapCheckOutGPS" style="width:100%; height:300px;"></div>
+                </div>
+
+                <div class="row" id="divExpenseCheckInOutRemarks" style="display:none;">
+                    <br />
+                    <div class="col-sm-4">
+                        Remarks:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblROExpenseCheckInOutRemarks" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+
+                <div class="row" id="divExpenseCheckInOutDuration" style="display:none;">
+                    <br />
+                    <div class="col-sm-4">
+                        Duration:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblROExpenseCheckInOutDuration" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popExpenseFundDownloadOption" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Download Options</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Please select format for your Expense Report:</label>
+                    <button data-role="none" id="btnExpenseReportDLSeparate" class="btn btn-secondary btn-block">Display each unique expense type in its own separate column</button>
+                    <button data-role="none" id="btnExpenseReportDLSingle" class="btn btn-secondary btn-block">Display different expense types in a single column</button>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Received Fund Report:</label>
+                    <button data-role="none" id="btnFundReportDL" class="btn btn-secondary btn-block">Download Received Fund Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popFundAdjustmentDetails" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Fund Adjustment</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        Branch to be adjusted:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblFAFowst" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Requested Date:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblFARequestedDate" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Requested By:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblFARequestedBy" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Original Amount:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblFAOriginalAmount" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Adjusted Amount:
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="number" id="txtFAAdjustedAmount" data-role="none" class="form-control" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Remarks:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblFARemarks" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnFADeny" class="btn btn-danger btn-block btn-lg">Deny</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnFAApprove" class="btn btn-success btn-block btn-lg">Approve</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popReceiveFundMoreDetails" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Received Fund Details</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        Encoded By:
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="lblROReceiveFundEncodedBy"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row divROReceiveFundLastUpdatedBy">
+                    <div class="col-sm-3">
+                        Last Updated By:
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="lblROReceiveFundLastUpdatedByName"></span>
+                    </div>
+                </div>
+                <br class="divROReceiveFundLastUpdatedBy" />
+                <div class="row divROReceiveFundEmployee">
+                    <div class="col-sm-3">
+                        Employee Name:
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="lblROReceiveFundEmployeeName"></span>
+                    </div>
+                </div>
+                <br class="divROReceiveFundEmployee" />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Received Date: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <input id="lblROReceiveFundDate" data-role="none" type="date" placeholder="Select date here" class="form-control" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Received In: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <select data-role="none" id="selReceiveFundFowst" class="form-control"></select>
+                    </div>
+                </div>
+                <br />
+                <div class="row divROReceiveFundEmployee">
+                    <div class="col-sm-3">
+                        Received From: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="bs-radio">
+                            <input data-role="none" type="radio" id="radRFCoEmployee" class="form-check-input" name="radROReceiveFundFrom" value="coemployee" />
+                            <label data-role="none" for="radRFCoEmployee">Co-Employee</label>
+                            <div>
+                                <select id="selReceiveFundFromCoEmployee" data-role="none" class="form-select"></select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="bs-radio">
+                            <input data-role="none" type="radio" id="radRFOther" class="form-check-input" name="radROReceiveFundFrom" value="others" />
+                            <label data-role="none" for="radRFOther">Other Person</label>
+                            <div>
+                                <input id="txtReceiveFundFromOther" autocomplete="off" data-role="none" type="text" placeholder="Enter person's name" class="form-control" />
+                            </div>
+                        </div>
+                        <span id="lblROReceiveFundFrom"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Amount: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROReceiveFundAmount" style="font-weight:bold;"></span>-->
+                        <input data-role="none" type="text" class="form-control" id="lblROReceiveFundAmount" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Comment: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROReceiveFundRemarks" style="font-weight:bold;"></span>-->
+                        <textarea data-role="none" id="lblROReceiveFundComment" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnSaveReceiveFund" class="btn btn-success btn-block btn-lg">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupUnfinishedReport" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Expense Tickets without Amounts</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblUnfinishedReport" data-role="none" style="width:100%;" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="custom-theme-f txt-center">
+                                <!--<th>#</th>
+                                <th>Employee Name</th>
+                                <th>Expense Date</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Date Created</th>
+                                <th>Expense Type</th>
+                                <th>Amount</th>
+                                <th style="width:250px;">Remarks</th>
+                                <th></th>-->
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyUnfinishedReport"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupUnapprovedExpenseTicket" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Expense Tickets</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row align-items-center">
+                    <div class="col-sm-auto">
+                        Show:
+                    </div>
+                    <div class="col-sm-auto">
+                        <select data-role="none" id="selFilterTickets" class="form-select fixed">
+                            <option value="unapproved">Unapproved Tickets</option>
+                            <option value="approved">Approved Tickets</option>
+                            <option value="rejected">Rejected Tickets</option>
+                            <option value="unfinished">Unencoded Amounts</option>
+                        </select>
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" data-role="none" id="txtSearchExpenseTickets" class="form-control" placeholder="Search here" />
+                    </div>
+                </div>
+                <br />
+                <div class="table-responsive">
+                    <table id="tblUnapprovedExpenseTicket" data-role="table" style="margin-right:5px; display:table; width:100%;" class="table table-light table-striped table-hover">
+                        <thead>
+                            <!--<tr class="custom-theme-f txt-center">
+                                <th>#</th>
+                                <th>ET No.</th>
+                                <th>Employee Name</th>
+                                <th>Expense Date</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Date Created</th>
+                                <th>Expense Type</th>
+                                <th>Associated To</th>
+                                <th>Payment Method</th>
+                                <th>Amount</th>
+                                <th style="width:250px;">Remarks</th>
+                                <th></th>
+                            </tr>-->
+                        </thead>
+                        <tbody id="tbodyUnapprovedExpenseTicket"></tbody>
+                    </table>
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popLogExpenseMoreDetails" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Expense Details</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        Expense Ticket No.:
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="lblROExpenseTicketNo"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Encoded By:
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="lblROExpenseEncodedBy"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row divROExpenseLastUpdatedBy">
+                    <div class="col-sm-3">
+                        Last Updated By:
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="lblROExpenseLastUpdatedByName"></span>
+                    </div>
+                </div>
+                <br class="divROExpenseLastUpdatedBy" />
+                <div class="row divROExpenseEmployee">
+                    <div class="col-sm-3">
+                        Employee Name:
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="lblROExpenseEmployeeName"></span>
+                    </div>
+                </div>
+                <br class="divROExpenseEmployee" />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Expense Date: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <input id="lblROExpenseDate" data-role="none" type="date" disabled placeholder="Select date here" class="form-control" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Expense Type: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROExpenseType" style="font-weight:bold;"></span>-->
+                        <select data-role="none" id="lblROExpenseType" class="form-control">
+                            <option value="Store">Store</option>
+                            <option value="Representation">Representation</option>
+                            <option value="Jeepney Fare">Jeepney Fare</option>
+                            <option value="Bus Fare">Bus Fare</option>
+                            <option value="Taxi Fare">Taxi Fare</option>
+                            <option value="Van Fare">Van Fare</option>
+                            <option value="Fuel">Fuel</option>
+                            <option value="Tricycle Fare">Tricycle Fare</option>
+                            <option value="Air Fare">Air Fare</option>
+                            <option value="Sea Fare">Sea Fare</option>
+                            <option value="Train Fare">Train Fare</option>
+                            <option value="Telco">Telco</option>
+                            <option value="Internet">Internet</option>
+                            <option value="Meal">Meal</option>
+                            <option value="Lodging">Lodging</option>
+                            <option value="Other Expense">Other Expense</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Location From:
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROExpenseFromLocation" style="font-weight:bold;"></span>-->
+                        <input data-role="none" type="text" class="form-control" id="lblROExpenseFromLocation" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Location To:
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROExpenseToLocation" style="font-weight:bold;"></span>-->
+                        <input data-role="none" type="text" class="form-control" id="lblROExpenseToLocation" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        GPS Location:
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="lblROExpenseGPSLocation" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Amount: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROExpenseAmount" style="font-weight:bold;"></span>-->
+                        <input data-role="none" type="text" class="form-control" id="lblROExpenseAmount" />
+                        <div class="custom-checkbox" id="divAmountToBeEncodedNextTime" style="display:none;">
+                            <label class="checkbox-only">
+                                <input type="checkbox" id="chbROExpenseAmountToBeFollow" data-iconpos="notext" />
+                            </label>
+                            <div>Exact amount to be encoded at a later time</div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Associate to:
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="lblROExpenseAssociatedTo" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Cost Center Location: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROExpenseFowst" style="font-weight:bold;"></span>-->
+                        <select data-role="none" id="lblROExpenseFowst" class="form-control"></select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Cost Center: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROExpenseCostCenter" style="font-weight:bold;"></span>-->
+                        <select data-role="none" id="lblROExpenseCostCenter" class="form-control"></select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        Invoice Reference:
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input data-role="none" type="text" id="lblROInvoiceReference" class="form-control" readonly />
+                            <button data-role="none" id="btnROInvoiceReference" title="Show Invoice Images" class="btn btn-secondary"><span class="bi bi-image"></span></button>
+                        </div>                        
+                    </div>
+                </div>
+                <br />
+                <div id="divROExpenseParticulars" class="row" style="display:none">
+                    <div class="col-sm-3">
+                        Particulars (Expense Description):
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROExpenseRemarks" style="font-weight:bold;"></span>-->
+                        <textarea data-role="none" id="lblROExpenseParticulars" class="form-control" style="height:150px; resize:none; margin-bottom:20px;"></textarea>
+                    </div>
+                </div>
+                <div id="divROExpensePreviousRemarks" class="row" style="display:none">
+                    <div class="col-sm-3">
+                        Previous Remarks:
+                    </div>
+                    <div class="col-sm-9" id="txtROExpensePreviousRemarks">
+
+                    </div>
+                    <br /><br /><br /><br />
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        Remarks: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <!--<span id="lblROExpenseRemarks" style="font-weight:bold;"></span>-->
+                        <textarea data-role="none" id="lblROExpenseRemarks" class="form-control" style="height:150px; resize:none;"></textarea>
+                    </div>
+                </div>
+                <!--<br /><br />
+    <span id="forLogExpense" subpage="divExpenseLogButtons" style="display:block;">
+        <a data-role="none" data-rel="back" id="btnSaveLogExpense" class="btn custom-btn-theme-b">Save</a>
+    </span>
+    <span id="forExpenseTicket" subpage="divExpenseLogButtons" style="display:none;">
+        <a data-role="none" data-rel="back" id="btnApproveExpenseTicket" class="btn custom-btn-theme-b">Approve</a>
+        <br /><br />
+        <a data-role="none" data-rel="back" id="btnRejectExpenseTicket" class="btn custom-btn-theme-d">Reject</a>
+        <br />
+    </span>
+    <br />
+    <a data-role="none" class="btn custom-btn-theme-c popup-close">Cancel</a>-->
+
+            </div>
+            <div class="modal-footer">
+                <div class=" divTable" style="font-size:inherit;">
+                    <div class="divTableRow">
+                        <div class="divTableCell">
+                            <a data-role="none" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cancel</a>
+                        </div>
+                        <div class="divTableCell forUnapprovedExpenseTicket" subpage="divExpenseLogButtons" style="display:none;">
+                            <a data-role="none" data-rel="back" id="btnApproveExpenseTicket" class="btn btn-success btn-block btn-lg">Approve</a>
+                        </div>
+                        <div class="divTableCell forUnapprovedExpenseTicket" subpage="divExpenseLogButtons" style="display:none;">
+                            <a data-role="none" data-rel="back" id="btnRejectExpenseTicket" class="btn btn-danger btn-block btn-lg">Reject</a>
+                        </div>
+                        <div class="divTableCell" id="forWithoutAmount" subpage="divExpenseLogButtons" style="display:block;">
+                            <a data-role="none" data-rel="back" id="btnSaveLogExpenseWithoutAmount" class="btn btn-success btn-block btn-lg">Save as Finalized</a>
+                        </div>
+                        <div class="divTableCell" id="forLogExpense" subpage="divExpenseLogButtons" style="display:block;">
+                            <a data-role="none" data-rel="back" id="btnSaveLogExpense" class="btn btn-success btn-block btn-lg">Save</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divDetailForBeginningBalance" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Received Funds of <b class="lblEmployeeName"></b> For The Month Of <span class="lblDetailMonthCovered"></span></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblDetailForBeginningBalance" style="width:100%;" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="custom-theme-f">
+                                <th>#</th>
+                                <th>Employee Name</th>
+                                <th>Received Date</th>
+                                <th>Received From</th>
+                                <th>Amount</th>
+                                <th>Comment</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyReceivedFundsDetails"></tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="tfFooterFund" style="text-align:right"></th>
+                                <th colspan="3"></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divDetailForExpenses" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Expenses of <b class="lblEmployeeName"></b> For The Month Of <span class="lblDetailMonthCovered"></span></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblDetailForExpenses" style="width:100%;" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="custom-theme-f">
+                                <!--<th>#</th>
+                                <th>Employee Name</th>
+                                <th style="width:200px;">Expense Date</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Date Created</th>
+                                <th>Expense Type</th>
+                                <th>Amount</th>
+                                <th>Remarks</th>
+                                <th></th>-->
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyExpensesDetails"></tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="7" style="text-align:right;">TOTAL:</td>
+                                <td style="text-align:right;" id="lblExpensesDetailsTotal"></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divLogExpenseHistory" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit History Logs <span class="lblEmployeeName"></span></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblLogExpenseHistory" style="width:100%" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="custom-theme-f" style="font-size:12px; vertical-align:top; text-align:center;">
+                                <th>#</th>
+                                <th style="width:200px;">Expense Date</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Date Created</th>
+                                <th>Expense Type</th>
+                                <th>GPS Location</th>
+                                <th>Associated To</th>
+                                <th>Cost Center Location</th>
+                                <th>Cost Center</th>
+                                <th>Amount</th>
+                                <th>Remarks</th>
+                                <th>Modified By</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyLogExpenseHistory"></tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="9" style="text-align:right;">TOTAL:</td>
+                                <td style="text-align:right;" id="lblLogExpenseHistoryTotal"></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divReceiveFundHistory" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Fund History of <span class="lblEmployeeName"></span></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblReceiveFundHistory" style="width:100%" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="custom-theme-f" style="font-size:12px; vertical-align:top; text-align:center;">
+                                <th>#</th>
+                                <th>Received Date</th>
+                                <th>Received From</th>
+                                <th>Amount</th>
+                                <th>Comment</th>
+                                <th>Modified By</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyReceiveFundHistory"></tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" style="text-align:right;">TOTAL:</td>
+                                <td style="text-align:right;" id="lblReceiveFundHistoryTotal"></td>
+                                <td colspan="3"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divAdjustedFundHistory" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Fund Adjustments History of <b class="lblEmployeeName"></b></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblAdjustedFundHistory" style="margin-right:5px; width:100%" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="custom-theme-f">
+                                <th>#</th>
+                                <th>Branch To Be Adjusted</th>
+                                <th>Adjusted Period</th>
+                                <th>Ending Balance</th>
+                                <th>Adjusted Amount</th>
+                                <th>Requested Date</th>
+                                <th>Remarks</th>
+                                <th>Status</th>
+                                <th>Approved Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyAdjustedFundHistory"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popEmployeeRouteSchedule" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Route Schedule</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <textarea data-role="none" class="form-control" id="txtRSCopyToClipboard" style="position:absolute; margin-left:-1000px;"></textarea>
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">
+                        Employee Name: <span class="required">*</span>
+                    </label>
+                    <div class="col-md">
+                        <input data-role="none" class="form-control" placeholder="Search Employee" id="txtRSEmployee" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">
+                        Route Name:<span class="required">*</span>
+                    </label>
+                    <div class="col-md">
+                        <input data-role="none" class="form-control" id="txtRSRouteName" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-md-3 col-form-label">
+                        Route Description:
+                    </label>
+                    <div class="col-md">
+                        <textarea data-role="none" class="form-control" id="txtRSRouteDescription" style="height:150px; resize:none;"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-md-3" for="radRSSchedFreqWeekly"> Schedule Frequency: </label>
+                    <div class="col-md">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="radRSSchedFreq" id="radRSSchedFreqWeekly" value="weekly">
+                            <label class="form-check-label" for="radRSSchedFreqWeekly">Weekly</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="radRSSchedFreq" id="radRSSchedFreqMonthly" value="monthly">
+                            <label class="form-check-label" for="radRSSchedFreqMonthly">Monthly</label>
+                        </div>
+                    </div>                    
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-md-3">
+                        Schedule Type:
+                    </label>
+                    <div class="col-md">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="radRSSchedType" id="radRSSchedTypeFixed" value="1">
+                            <label class="form-check-label" for="radRSSchedTypeFixed">Fixed</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="radRSSchedType" id="radRSSchedTypeFlexi" value="0">
+                            <label class="form-check-label" for="radRSSchedTypeFlexi">Flexible</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md">
+                        <h5>List of Schedules</h5>
+                    </div>
+                    <div class="col-md text-right">
+                        <button data-role="none" class="btn btn-light border" id="btnRSCopySchedule" data-toggle="tooltip" title="Copy to clipboard">Copy Schedule</button>
+                        <button data-role="none" class="btn btn-success" id="btnRSAdd">Add Schedule</button>
+                    </div>
+                </div>
+
+                <div id="divRSTab" style="white-space:nowrap; overflow:auto;">
+                    <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabRSSchedFreqWeekly">Weekly</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabRSSchedFreqMonthly">Monthly</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content p-3">
+                    <div id="tabRSSchedFreqWeekly" class="tab-pane fade show active">
+                        <div id="divRSWeeklyTab" style="white-space:nowrap; overflow:auto;">
+                            <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                                <!--<li class="nav-item" role="presentation">
+                                    <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabRSWeek1">Week 1</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabRSWeek2">Week 2</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabRSWeek3">Week 3</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabRSWeek4">Week 4</button>
+                                </li>-->
+                            </ul>
+                        </div>
+
+                        <div class="tab-content"></div>
+                    </div>
+
+                    <div id="tabRSSchedFreqMonthly" class="tab-pane fade">
+                        <ul data-role="none" class="list-group list-group-flush" id="listRSEmployeeMonthlySchedules">
+                            <li class="list-group-item mb-3">
+                                <h6 class="mb-3">Any Day</h6>
+                                <div data-role="none" class="list-group mb-3" id="listRSSchedany"></div>
+                            </li>
+                            <li class="list-group-item mb-3">
+                                <h6 class="mb-3">Monday</h6>
+                                <div data-role="none" class="list-group mb-3" id="listRSSched0"></div>
+                            </li>
+                            <li class="list-group-item mb-3">
+                                <h6 class="mb-3">Tuesday</h6>
+                                <div data-role="none" class="list-group mb-3" id="listRSSched1"></div>
+                            </li>
+                            <li class="list-group-item mb-3">
+                                <h6 class="mb-3">Wednesday</h6>
+                                <div data-role="none" class="list-group mb-3" id="listRSSched2"></div>
+                            </li>
+                            <li class="list-group-item mb-3">
+                                <h6 class="mb-3">Thursday</h6>
+                                <div data-role="none" class="list-group mb-3" id="listRSSched3"></div>
+                            </li>
+                            <li class="list-group-item mb-3">
+                                <h6 class="mb-3">Friday</h6>
+                                <div data-role="none" class="list-group mb-3" id="listRSSched4"></div>
+                            </li>
+                            <li class="list-group-item mb-3">
+                                <h6 class="mb-3">Saturday</h6>
+                                <div data-role="none" class="list-group mb-3" id="listRSSched5"></div>
+                            </li>
+                            <li class="list-group-item mb-3">
+                                <h6 class="mb-3">Sunday</h6>
+                                <div data-role="none" class="list-group mb-3" id="listRSSched6"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" class="btn btn-success btn-lg btn-block" id="btnRSSave">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popRouteSchedule" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Schedule</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <label class="mb-3">Please fill out all fields marked by an asterisk (<span class="required">*</span>).</label>
+                <div class="mb-3" id="divRSSchedFreqWeekly">
+                    <label class="form-label" for="selRSSchedFreqWeek"> Select Week: <span class="required">*</span> </label>
+                    <select data-role="none" class="form-select" id="selRSSchedFreqWeek">
+                        <option value="">Please select</option>
+                        <option value="1">Week 1</option>
+                        <option value="2">Week 2</option>
+                        <option value="3">Week 3</option>
+                        <option value="4">Week 4</option>
+                        <option value="5">Week 5</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtRSLocationToVisit"> Organization/Company to visit: <span class="required">*</span> </label>
+                    <button data-role="none" class="btn btn-secondary btn-block" id="txtRSLocationToVisit">Search Location</button>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtRSBranch"> Branch of selected Organization/Company: <span class="required">*</span> </label>
+                    <button data-role="none" class="btn btn-secondary btn-block" id="txtRSBranch">Search Branch</button>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"> Day: </label>
+                    <div class="row gy-3">
+                        <div class="col-6">
+                            <label class="form-check-label">                                
+                                <input data-role="none" type="checkbox" class="form-check-input" name="chbRSDay" value="0" />
+                                Monday
+                            </label>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-check-label">
+                                <input data-role="none" type="checkbox" class="form-check-input" name="chbRSDay" value="4" />
+                                Friday
+                            </label>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-check-label">                                
+                                <input data-role="none" type="checkbox" class="form-check-input" name="chbRSDay" value="1" />
+                                Tuesday
+                            </label>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-check-label">
+                                <input data-role="none" type="checkbox" class="form-check-input" name="chbRSDay" value="5" />
+                                Saturday
+                            </label>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-check-label">                                
+                                <input data-role="none" type="checkbox" class="form-check-input" name="chbRSDay" value="2" />
+                                Wednesday
+                            </label>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-check-label">
+                                <input data-role="none" type="checkbox" class="form-check-input" name="chbRSDay" value="6" />
+                                Sunday
+                            </label>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-check-label">                                
+                                <input data-role="none" type="checkbox" class="form-check-input" name="chbRSDay" value="3" />
+                                Thursday
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label class="col-auto" for="switchRSSetTime"> Set Time: </label>
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switchRSSetTime">
+                        </div>
+                    </div>                    
+                </div>
+
+                <div id="divRSSetTime" style="display:none;">
+                    <div class="mb-3">
+                        <label class="form-label" for="txtRSStartTime"> Start Time: <span class="required">*</span> </label>
+                        <input data-role="none" type="text" class="form-control RSSetTime" id="txtRSStartTime" placeholder="Click to set time" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="txtRSEndTime"> End Time: <span class="required">*</span> </label>
+                        <input data-role="none" type="text" class="form-control RSSetTime" id="txtRSEndTime" placeholder="Click to set time" readonly />
+                    </div>
+                </div>                
+
+                <div class="mb-3 d-none">
+                    <label class="form-label" for="selRSTag"> Tag: </label>
+                    <select data-role="none" class="form-select" id="selRSTag">
+                        <option value="">Please select</option>
+                        <option value="Priority">Priority</option>
+                        <option value="Cannot be swapped">Cannot be swapped</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" class="btn btn-success btn-lg btn-block" id="btnRSScheduleOk">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿<div class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Activity Tracker</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="popup"  data-overlay-theme="a" data-theme="a" data-corners="false" style="display:none">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center><h3 name="title">Activity Tracker</h3></center>
+    <div data-role="content" class="ui-content ui-body-d">
+        <table>
+            <tr>
+                <td for="txtActivityTrackerSearch">Search serial number or IMEI:</td>
+                <td><input type="text" id="txtActivityTrackerSearch" class="form-control" placeholder="Enter here serial number or IMEI here then press enter" /></td>
+                <td><button id="butActivityTrackerSearch" data-role="none" class="btn btn-secondary">Search</button></td>
+            </tr>
+        </table>
+        <br />
+        <div style="overflow: auto;">
+            <table name="table" data-role="table" style="margin-right: 5px; display: table; table-layout: fixed;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive table table-light table-striped table-hover">
+                <thead>
+                <tr class="custom-theme-f fixed-cell-width">
+                    <th class="txt-center"> Activity </th>
+                    <th class="txt-center"> FOWST / Location </th>
+                    <th class="txt-center"> Ref. No. </th>
+                    <th class="txt-center"> Date & Time </th>
+                    <th class="txt-center"> Time Elapsed from Previous Activity </th>
+                    <th class="txt-center"> Last Modified By </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr name="data" class="fixed-cell-width">
+                    <th name="activity" class="txt-center"> Activity </th>
+                    <th name="fowst" class="txt-center"> FOWST / Location </th>
+                    <th name="ref" class="txt-center"> Ref. No. </th>
+                    <th name="date" class="txt-center"> Date & Time </th>
+                    <th name="timeElapsed" class="txt-center"> Time Elapsed from Previous Activity </th>
+                    <th name="lastModifiedBy" class="txt-center"> Last Modified By </th>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr name="data" class="fixed-cell-width"></tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

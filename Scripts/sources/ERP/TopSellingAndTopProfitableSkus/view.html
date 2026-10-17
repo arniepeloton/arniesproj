@@ -1,0 +1,43 @@
+﻿<div name="popupTopSellingAndTopProfitableSkus" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Top Selling And Top Profitable SKUs Report</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <label class="col-md-auto col-form-label">Invoice Date Range:</label>
+                    <div class="col-md">
+                        <button name="butDateRange" data-role="none" class="btn btn-secondary">
+                            <span name="butInvoiceDateRange"> Select Date </span>
+                        </button>
+                    </div>
+                    <label class="col-md-auto col-form-label">Group By:</label>
+                    <div class="col-md" style="padding-top: 9px">
+                        <select name="selGroup">
+                            <option value="product">Product</option>
+                            <option value="brand">Brand</option>
+                            <option value="sales channel">Sales Channel</option>
+                            <option value="customer industry">Customer Industry</option>
+                            <option value="product category">Product Category</option>
+                            <option value="customer">Customer</option>
+                        </select>
+                    </div>
+                    <!--<div class="col-md">
+        <button name="butDateRange1" data-role="none" class="btn btn-secondary">
+            <span name="butDownloadAsExcel"> Download As Excel Spreadsheet </span>
+        </button>
+    </div>-->
+                </div>
+
+                <div class="table-responsive">
+                    <table name="tableData" data-role="none" class="table table-light table-striped table-hover"></table>
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

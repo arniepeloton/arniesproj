@@ -1,0 +1,50 @@
+﻿<nav class="navbar navbar-dark bg-primary sticky-top text-light pl-3 pr-3 mb-3">
+    <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+        <a href="javascript:history.back()" data-role="none" class="btn btn-primary">
+            <span class="bi-chevron-left"></span>
+        </a>
+        Fulfillment Center
+    </div>
+</nav>
+
+<div class="container-fluid mb-5">
+    <button data-role="none" id="btnPlaySound" style="display:none;"></button>
+    <div id="divFCTab" style="white-space:nowrap; overflow:auto;">
+        <ul class="nav nav-tabs"  role="tablist" style="flex-wrap:nowrap;">
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabOFDashboard" type="button" role="tab" aria-controls="home" aria-selected="true">Dashboard</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabOFWork" type="button" role="tab" aria-controls="profile" aria-selected="false">Fulfillment Center</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabOFSettings" type="button" role="tab" aria-controls="profile" aria-selected="false">Settings</button>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content p-3">
+        <div id="tabOFDashboard" class="tab-pane">
+
+        </div>
+        <div id="tabOFWork" class="tab-pane show active">
+
+        </div>
+        <div id="tabOFSettings" class="tab-pane">
+            <div class="row mb-3">
+                <label class="col-form-label col-md-auto">Pick List Print Count:</label>
+                <div class="col-md">
+                    <input name="txtPickListPrintCount" type="number" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-check" style="display:none">
+                <label for="chkFcSettingExcludeVendorPoInFc" class="form-check-label">Exclude Vendor PO in FC (Internal Order Fulfillment)</label>
+                <input id="chkFcSettingExcludeVendorPoInFc" type="checkbox" class="form-check-input" />
+            </div>
+
+            <div class="text-center">
+                <button name="butSave" data-role="none" class="btn btn-success btn-lg">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

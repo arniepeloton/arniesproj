@@ -1,0 +1,68 @@
+﻿<div id="popupBir" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Customer Invoice List</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <label class="col-md-auto col-form-label">Invoice Date Range:</label>
+                    <div class="col-md">
+                        <button name="butDateRange" data-role="none" class="btn btn-secondary">
+                            <span name="butInvoiceDateRange"> Select Date </span>
+                        </button>
+                    </div>
+                    <!--<div class="col-md">
+            <button name="butDateRange1" data-role="none" class="btn btn-secondary">
+                <span name="butDownloadAsExcel"> Download As Excel Spreadsheet </span>
+            </button>
+        </div>-->
+                </div>
+
+                <div name="divInvoiceType" class="form-check" style="display:none">
+                    <label class="form-check-label">Invoice Type</label>
+                    <input data-role="none" type="checkbox" class="form-check-input chkBirInvoiceType" />
+                </div>
+
+                Invoice Types:
+                <div name="divInvoiceTypes" style="margin-bottom:16px">
+
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Customer: <span class="required">*</span></label>
+                    <div class="input-group">
+                        <input name="txtCustomer" readonly data-role="none" type="text" class="form-control" />
+                        <button name="butCustomer" data-role="none" class="btn btn-secondary" style="float: right;"><span class="bi-search"></span></button>
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <label class="form-check-label" for="chkBirAllCustomers">Show all customers</label>
+                    <input id="chkBirAllCustomers" data-role="none" type="checkbox" checked class="form-check-input" />
+                </div>
+
+                <div class="form-check">
+                    <label for="chkBirGroupByCustomer">Show only totals by customers</label>
+                    <input id="chkBirGroupByCustomer" data-role="none" type="checkbox" class="form-check-input" />
+                </div>
+                <br />
+                <button name="butExport" data-role="none" class="btn btn-primary btn-lg">Export to Excel</button>
+                <div class="table-responsive">
+                    <table name="tableData" data-role="none" class="table table-light table-striped table-hover"></table>
+                </div>
+
+                <hr />
+                <p>Invoice Numbers (1 invoice per line):</p>
+                <textarea name="txtInvoiceNumbers" placeholder="example: CHI-111-222-333" style="width:400px; height:250px; margin-bottom:12px"></textarea>
+                <br />
+                <button name="butExportPdf" data-role="none" class="btn btn-primary btn-lg">Export to PDF</button>
+
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

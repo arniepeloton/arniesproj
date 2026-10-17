@@ -1,0 +1,71 @@
+﻿<div id="popComparePrices" custom-data-role="popup">
+    <div class="popup">
+        <div class="popup-header">
+            Compare Prices
+            <a class="popup-close">x</a>
+        </div>
+
+        <div class="popup-content">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-4">Canvass No:</div>
+                        <div name="lblCanvassNo" class="col-sm-8 txt-bold"></div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-4">Canvass Name:</div>
+                        <div name="lblCanvassName" class="col-sm-8 txt-bold"></div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-4">No. Of Vendors Invited:</div>
+                        <div name="lblCanvassNoOfVendors" class="col-sm-8 txt-bold"></div>
+                    </div>
+                    <br />
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-4">Last Updated:</div>
+                        <div name="lblCanvassLastUpdated" class="col-sm-8 txt-bold"></div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-4">Modified By:</div>
+                        <div name="lblCanvassModifiedBy" class="col-sm-8 txt-bold"></div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div style="overflow:auto;">
+                <table style="margin-right:5px; display:table;" class="ui-table ui-responsive table-stroke table-stripe">
+                    <thead>
+                        <tr class="custom-theme-f" id="theadComparePricesVendor">
+                            <th style="cursor:pointer;"> Item Description </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyComparePrices"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="popup-footer align-right">
+            <button data-role="none" title="Close" class="btn custom-btn-theme-c btnCircle popup-close">
+                <img alt="Close" class="img-cancel" />
+            </button>
+            <button id="btnComparePricesEdit" title="Edit" data-role="none" class="btn custom-btn-theme-b btnCircle popup-close">
+                <img alt="Edit" class="img-edit" />
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--<div class="fixed-ActionBtn" style="display:block;">
+    <button name="butPriceCanvassNew" data-role="none" title="Refresh" class="btn custom-btn-theme-d btnCircle">
+        <img class="img-plus-white" />
+    </button>
+    <ol class="secondaryActionBtn">
+        <li>
+            <button id="btnRefreshPriceCanvass" data-toggle="tooltip" data-placement="top" title="Back to top" data-role="none" class="btn custom-btn-theme-e btnCircle-sm">
+                <span class="glyphicon glyphicon-refresh"></span>
+            </button>
+        </li>
+    </ol>
+</div>-->

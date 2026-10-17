@@ -1,0 +1,543 @@
+﻿<div idx="popOrderInput" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Universal Product Information (UPI)</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="popOrderInputcontent-bs">
+                <div name="divforUPIScanner" class="input-group mb-3" style="display:none;">
+                    <input data-role="none" name="txtSearchUPI" class="form-control form-control-lg" placeholder="Search Product" />
+                    <button data-role="none" name="btnScanUPI" class="btn btn-success btn-lg">Scan Barcode</button>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-auto">
+                        <img name="imgDefaultPic" class="img-thumbnail" width="100" src="/Content/images/box.png" />
+                    </div>
+                    <div class="col" style="font-size:20px;">
+                        <div>
+                            <span>Product No.:</span> <b name="spanProductNumber"></b>
+                        </div>
+                        <div>
+                            <span>Description:</span> <b name="title"></b>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="white-space:nowrap; overflow:auto;">
+                    <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link active" name="btnUPIOrdering" data-target="#tabUPIOrdering">Ordering</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" name="btnUPIProductPriceCost" data-target="#tabUPIProductPriceCost">Cost, Selling and Vendor Prices</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" name="btnUPIPriceHistory" data-target="#tabUPIPriceHistory">Customer's Price History</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" name="btnUPIInventoryBalance" data-target="#tabUPIInventoryBalance">Inventory Balances</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" name="btnUPIInventoryLedger" data-target="#tabUPIInventoryLedger">Inventory Ledger</button>
+                        </li>
+                        <li>
+                            <button data-role="none" class="nav-link" name="btnUPIRequisitioning" data-target="#tabUPIRequisitioning">Requisitioning and Sales Demand Data</button>
+                        </li>
+                        <li>
+                            <button data-role="none" class="nav-link" name="btnUPIInventoryCounting" data-target="#tabUPIInventoryCounting">Inventory Counting</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content pt-3">
+                    <div id="tabUPIOrdering" class="tab-pane fade show active">
+                        <!--<div class="d-block d-md-none mb-2 text-center">swipe left or right to see more</div>
+        <div class="overflow-auto text-center pl-1 pr-2">
+            <div class="btn-group" role="group" style="white-space:nowrap;">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-secondary" for="btnradio1"><span class="bi bi-cart4"></span> Basic Order Info</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="btnradio2"><span class="bi bi-tag"></span> Vendor Price Matrix</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="btnradio3"><span class="bi bi-tag"></span> Selling Price Matrix</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="btnradio4"><span class="bi bi-clock-history"></span> Price History</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="btnradio5"><span class="bi bi-journal-text"></span> Ledger</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="btnradio6"><span class="bi bi-person"></span> Sales Representative</label>
+            </div>
+        </div>-->
+
+                        <div id="accUPIBasicInfo" class="accordion mb-3">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button name="btnOrderInputBasicInfo" class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button" data-target="#colBasicOrderInfo" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-cart4"></span> Basic Order Info</b>
+                                    </button>
+                                </div>
+                                <div class="collapse show" id="colBasicOrderInfo">
+                                    <div class="card-body" id="tabOrderInputBasicInfo">
+                                        <div style="overflow:auto; display:grid;">
+                                            <div class="mb-3" style="float: right">
+                                                <span name="ProductTotal"></span>
+                                            </div>
+                                            <!--<button class="btn custom-btn-theme-c btn-less-width btn-secondary" name="butInventory">View This Product's Inventory Balance(s)</button>
+                            <br /><br />-->
+                                            <div class="table-responsive">
+                                                <table name="tableProduct" data-role="table" style="margin-right: 5px; display: table; width:100%;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive table table-light table-striped table-hover">
+                                                    <thead>
+                                                        <tr class="custom-theme-f fixed-cell-width" style="font-size:12px; vertical-align:top;">
+                                                            <th class="txt-center"> Selling Unit </th>
+                                                            <th class="txt-center"> # of <span name="BaseUnit">Base Unit</span>(s) </th>
+                                                            <th name="thOrderQty" class="txt-center" style="min-width:120px"> Order Qty </th>
+                                                            <th name="thServeredQty" class="txt-center" style="min-width:120px"> Served Qty </th>
+                                                            <th class="txt-center"> Optimized Order Qty for Discounts </th>
+                                                            <th class="txt-center PriceLevel PriceClass" style="min-width:140px;"> Price Level </th>
+                                                            <th class="txt-center PriceClass"> Net Price per <span name="BaseUnit">Base Unit</span></th>
+                                                            <th class="txt-center VendorPrice PriceClass"> Last Known Vendor Price </th>
+                                                            <th class="txt-center PriceClass"> SRP </th>
+                                                            <th class="txt-center PriceClass"> Trade Discount </th>
+                                                            <th class="txt-center FreeTypePrice PriceClass" style="display: none; min-width:140px"> Net Price per Selling Unit </th>
+                                                            <th class="txt-center PriceClass"> Sub Total </th>
+                                                            <th name="tdPaymentTerm" class="txt-center PriceClass" style="min-width:120px"> Payment Terms </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr name="data" class="fixed-cell-width">
+                                                            <td name="SellingUnit" class="txt-center txt-middle"></td>
+                                                            <td name="QtyInBaseUnit" class="txt-center txt-middle"></td>
+                                                            <td name="OrderQty" class="txt-center txt-middle"><input name="txtQty" class="form-control txt-center txt-middle" style="width:100%" /><span name="lblOrderedQty"></span></td>
+                                                            <td name="ServedQty" class="txt-center txt-middle"><input name="txtServedQty" class="form-control" style="width:100%" type="number" /></td>
+                                                            <td name="OptimizedOrderQtyForDiscounts" class="txt-center txt-middle"></td>
+                                                            <td name="PriceLevel" class="txt-center txt-middle PriceLevel PriceClass"><select class="form-select txt-center txt-middle" style="width:100%"></select></td>
+                                                            <td name="NetPricePerBaseUnit" class="txt-center txt-middle PriceClass"></td>
+                                                            <td name="VendorPrice" class="txt-center txt-middle VendorPrice PriceClass"></td>
+                                                            <td name="SRP" class="txt-center txt-middle PriceClass"></td>
+                                                            <td name="DiscountRate" class="txt-center txt-middle PriceClass"><a class="custom-link">Set Trade Discount</a></td>
+                                                            <td name="NetPricePerSellingUnit" class="txt-center txt-middle FreeTypePrice PriceClass" style="display: none"><span></span><input class="form-control txt-center txt-middle" style="display: none; width:100%;" /><a name="lnkUpdateToLatestPrice" href="">Update to latest price</a></td>
+                                                            <td name="SubTotal" class="txt-center txt-middle PriceClass"></td>
+                                                            <td name="tdPaymentTerm" class="txt-center txt-middle PriceClass"> <input class="form-control txt-center txt-middle" style="width:100%;" /> </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr name="data" class="fixed-cell-width"></tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div style="text-align:center;">
+                                            <!--<button data-role="none" name="butClose" class="btn custom-btn-theme-c btn-less-width btn-secondary btn-lg">Close</button>-->
+                                            <button data-role="none" name="butOk" class="btn custom-btn-theme-b btn-less-width btn-success btn-lg">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="accUPIVendorPriceMatrix" class="accordion mb-3" style="display:none">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button name="btnOrderInputVendorPrices" class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button" data-target="#colVendorPriceMatrix" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-tag"></span> Vendor Price Matrix</b>
+                                    </button>
+                                </div>
+                                <div class="collapse show" id="colVendorPriceMatrix">
+                                    <div class="card-body" id="tabOrderInputVendorPrices">
+                                        <div class="table-responsive">
+                                            <table id="tblOrderInputVendorPrices" class="table table-light table-striped table-hover">
+                                                <thead>
+                                                    <tr class="text-center">
+                                                        <th>#</th>
+                                                        <th>Vendor Name</th>
+                                                        <th>Price</th>
+                                                        <th>Date Modified</th>
+                                                        <th>Modified By</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="accUPISellingPriceMatrix" class="accordion mb-3" style="display:none;">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button" data-target="#colSellingPriceMatrix" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-tag"></span> Selling Price Matrix</b>
+                                    </button>
+                                </div>
+                                <div class="collapse show" id="colSellingPriceMatrix">
+                                    <div class="card-body">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="accUPISalesRepresentative" class="accordion mb-3">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button name="btnOrderInputSalesRepresentative" class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button collapsed" data-target="#colSalesRepresentative" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-person"></span> Sales Representative</b>
+                                    </button>
+                                </div>
+                                <div class="collapse" id="colSalesRepresentative">
+                                    <div class="card-body" id="tabOrderInputSalesRepresentative">
+                                        <div class="row mb-3 align-items-center">
+                                            <div class="col-sm-6">
+                                                <h5>List of Sales Representatives for this Product</h5>
+                                            </div>
+                                            <div class="col-sm-6 text-right">
+                                                <button data-role="none" name="btnOrderInputAddSalesRep" class="btn btn-success">Add Sales Representatives</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-5">
+                                            <div class="col-6">
+                                                <ul name="listOrderInputSalesRep" class="list-group">
+                                                    <li class="list-group-item d-flex">
+                                                        <p class="p-0 m-0 flex-grow-1"></p>
+                                                        <button data-role="none" class="btn btn-danger"><span class="bi-trash"></span></button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div style="text-align:center;">
+                                            <button data-role="none" name="butClose" class="btn custom-btn-theme-c btn-less-width btn-secondary btn-lg">Close</button>
+                                            <button data-role="none" name="butOk" class="btn custom-btn-theme-b btn-less-width btn-success btn-lg">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tabUPIProductPriceCost" class="tab-pane fade">
+                        <h4>Price Levels</h4><br />
+
+                        <div class="table-responsive mb-3">
+                            <table data-role="none" style="display:table; width:100%;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="align-top text-center" style="font-size:14px;">
+                                        <th class="text-left">#</th>
+                                        <th class="text-left">Price Level</th>
+                                        <th class="text-center">Price</th>
+                                        <th class="text-center">Gross Profit</th>
+                                        <th class="text-center">Gross Profit Margin</th>
+                                        <th>Last Updated By</th>
+                                        <th>Last Updated</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblBodyUPIProductPrice"></tbody>
+                            </table>
+                        </div>
+
+                        <h4>Vendor Prices</h4><br />
+
+                        <div class="table-responsive mb-3">
+                            <table data-role="none" style="display:table; width:100%;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="align-top text-center" style="font-size:14px;">
+                                        <th class="text-left">#</th>
+                                        <th class="text-left">Vendor Name</th>
+                                        <th>Price</th>
+                                        <th>Unit of Measure</th>
+                                        <th>Last Updated By</th>
+                                        <th>Last Updated</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblBodyUPIVendorPrice"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="tabUPIPriceHistory" class="tab-pane fade">
+                        <p>Price history of customer is updated when order is invoiced.</p>
+                        <div class="table-responsive">
+                            <table name="tablePriceHistory" data-role="table" style="margin-right: 5px; display: table; width:100%;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="custom-theme-f fixed-cell-width">
+                                        <th class="txt-center">Invoice No.</th>
+                                        <th class="txt-center">Invoice Date</th>
+                                        <th class="txt-center">Served Qty</th>
+                                        <th class="txt-center">Price Level</th>
+                                        <th class="txt-center">Price</th>
+                                        <th class="txt-center">Sub Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="tabUPIInventoryLedger" class="tab-pane fade">
+                        <div id="tabOrderInputLedger"></div>
+                    </div>
+
+                    <div id="tabUPIInventoryBalance" class="tab-pane fade">
+                        <div id="tabOrderCompanyWideIB"></div>
+                    </div>
+
+                    <div id="tabUPIRequisitioning" class="tab-pane fade">
+                        <div class="row">
+                            <!--<div class="col-6 col-sm-6 col-md-3 mb-3">
+                <div class="dashboardGrid bg-light border p-3 rounded h-100" id="">
+                    <div class="gHeader">
+                        Historical | Aggregate | Demand
+                    </div>
+                    <div class="gBody" id="">
+                        0
+                    </div>
+                    <div class="gFooter" id="">
+
+                    </div>
+                </div>
+            </div>-->
+
+                            <div class="col-6 col-sm-6 col-md-3 mb-3">
+                                <div class="dashboardGrid bg-light border p-3 rounded h-100" name="btnOrderInputStocksInTransit">
+                                    <div class="gHeader">
+                                        Incoming Stock(s) In Transit
+                                    </div>
+                                    <div class="gBody" id="">
+                                        
+                                    </div>
+                                    <div class="gFooter" id="">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-6 col-md-3 mb-3">
+                                <div class="dashboardGrid bg-light border p-3 rounded h-100" id="">
+                                    <div class="gHeader">
+                                        Back Order List
+                                    </div>
+                                    <div class="gBody" id="">
+                                        
+                                    </div>
+                                    <div class="gFooter" id="">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--<div class="col-6 col-sm-6 col-md-3 mb-3">
+                <div class="dashboardGrid bg-light border p-3 rounded h-100" name="btnOrderCompanyWideIB">
+                    <div class="gHeader">
+                        Company-Wide Inventory Balance
+                    </div>
+                    <div class="gBody" id="">
+                        0
+                    </div>
+                    <div class="gFooter" id="">
+
+                    </div>
+                </div>
+            </div>-->
+                        </div>
+
+                        <div id="accUPIItemRequisition" class="accordion mb-3">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button name="btnOrderInputItemRequisition" class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button" data-target="#colItemRequisition" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-journal-check"></span> Item Requisition</b>
+                                    </button>
+                                </div>
+                                <div class="collapse show" id="colItemRequisition">
+                                    <div class="card-body" id="tabOrderInputItemRequisition">
+                                        <div class="text-center p-5">Sorry! You don't have access to Item Requisition. Please contact your System Administrator for assistance.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="accUPIPOHistory" class="accordion mb-3">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button name="btnOrderInputPurchaseOrderHistory" class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button collapsed" data-target="#colPOHistory" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-cart-check"></span> Purchase Order History</b>
+                                    </button>
+                                </div>
+                                <div class="collapse" id="colPOHistory">
+                                    <div class="card-body" id="tabOrderInputPOHistory">
+                                        <div class="table-responsive">
+                                            <table name="tablePurchaseOrderHistory" data-role="table" style="margin-right: 5px; display: table; width:100%;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive table table-light table-striped table-hover"></table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tabUPIInventoryCounting" class="tab-pane fade">
+                        <!--Gihimo og tab <div class="row">
+            <div class="col-6 col-sm-6 col-md-3 mb-3">
+                <div class="dashboardGrid bg-light border p-3 rounded h-100" name="btnOrderCompanyWideIB">
+                    <div class="gHeader">
+                        Company-Wide Inventory Balance
+                    </div>
+                    <div class="gBody" id="">
+                        0
+                    </div>
+                    <div class="gFooter" id="">
+
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+                        <div id="accUPISetBegBalance" class="accordion mb-3">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button name="btnOrderSetBegBalance" class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button collapsed" data-target="#colSetBegBalance" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-123"></span> Set Beginning Balance</b>
+                                    </button>
+                                </div>
+                                <div class="collapse" id="colSetBegBalance">
+                                    <div class="card-body" id="tabOrderSetBegBalance">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="accUPIInventoryCount" class="accordion mb-3">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button name="btnOrderInventoryCount" class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button collapsed" data-target="#colInventoryCount" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-boxes"></span> Inventory Count</b>
+                                    </button>
+                                </div>
+                                <div class="collapse" id="colInventoryCount">
+                                    <div class="card-body" id="tabOrderInventoryCount">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="accUPIInventoryCountApprovalDisapproval" class="accordion mb-3">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button name="btnOrderICApprovalDisapproval" class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button collapsed" data-target="#colInventoryCountApprovalDisapproval" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-boxes"></span> Inventory Count Approval/Disapproval</b>
+                                    </button>
+                                </div>
+                                <div class="collapse" id="colInventoryCountApprovalDisapproval">
+                                    <div class="card-body" id="tabOrderICApprovalDisapproval">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="accUPIInventoryCountApprovalDisapprovalHistory" class="accordion mb-3">
+                            <div class="card">
+                                <div class="card-header p-0">
+                                    <button name="btnOrderICApprovalDisapprovalHistory" class="btn btn-light btn-block text-left p-3 text-dark rounded-0 accordion-button collapsed" data-target="#colInventoryCountApprovalDisapprovalHistory" data-role="none" data-toggle="collapse">
+                                        <b><span class="bi bi-boxes"></span> Inventory Count Approval/Disapproval History</b>
+                                    </button>
+                                </div>
+                                <div class="collapse" id="colInventoryCountApprovalDisapprovalHistory">
+                                    <div class="card-body" id="tabOrderICApprovalDisapprovalHistory">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popOrderTradeDiscount-bs" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Trade Discount</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="popOrderTradeDiscountcontent-bs">
+                <i>
+                    Please enter the trade discounts (excluding volume and cash discounts for this SKU). Separate trade discounts with commas. <br />
+                    Example: Less 5,2,3
+                </i>
+                <br /><br />
+                <div class="divTable" style="font-size: inherit !important;">
+                    <div class="divTableCell" style="width:60px;">Less: <span class="required">*</span></div>
+                    <div class="divTableCell"><input type="text" data-role="none" class="form-control" id="txtOrderTradeDiscountLess" /></div>
+                    <div class="divTableCell" style="width:50px;">%</div>
+                </div>
+                <br />
+                <div>
+                    Net Discount Factor: <span id="lblOrderTradeDiscountFactor"></span>
+                </div>
+                <br />
+                <div>
+                    Net Discount Rate: <span id="lblOrderTradeDiscountRate"></span>
+                </div>
+                <br /><br />
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a data-role="none" href="#" data-rel="back" data-dismiss="modal" class="btn custom-btn-theme-c btn-secondary btn-lg btn-block">Close</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <button data-role="none" id="btnOkOrderTradeDiscount" class="btn custom-btn-theme-b btn-success btn-lg btn-block">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popOrderCWIB" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Company-Wide Inventory Balance</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="">
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popOrderStockInTransit" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Stock In Transit</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="tabOrderInputStocksInTransit">
+                <div class="table-responsive">
+                    <table name="tableStocksInTransit" data-role="table" style="margin-right: 5px; display: table; width:100%;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive table table-light table-striped table-hover"></table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divProductImages" class="bxslider" style="display:none;"></div>

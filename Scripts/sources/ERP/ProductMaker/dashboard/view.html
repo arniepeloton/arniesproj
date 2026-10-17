@@ -1,0 +1,200 @@
+﻿<style type="text/css">
+    .divLeft {
+        float:none;
+        width:auto;
+        overflow:auto;
+        padding:3px;
+    }
+
+    .divRight{
+        width:250px;
+        float:right;
+        padding:3px;
+    }
+</style>
+<div id="popupDashboardGridDetails" custom-data-role="popup">
+    <div class="popup">
+        <div class="popup-header">
+            <span id="lblDashboardGridTitle"></span>
+            <a data-role="none" class="popup-close">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        </div>
+        <div class="popup-content full-height">
+            <div id="divAMAsofDate">
+                As of <!--<input type="date" id="txtDashboardAsofDate" data-role="none" readonly class="form-control" style="width:auto; display:inline-block;" />-->
+                <button data-role="none" id="btnDashboardAsof" class="btn custom-btn-theme-c btn-less-width btn-sm">Today</button>
+                <br /><br />
+            </div>
+            
+            <div style="width:100%; overflow:auto;">
+                <table id="tblAssetsDashboard" data-role="table" data-mode="reflow" style="margin-right:5px; display:table; width:100%;" class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+                    <thead>
+                        <tr class="custom-theme-f txt-center">
+                            <th style="width:200px;">Asset Type</th>
+                            <th style="width:200px;">Asset Name</th>
+                            <th style="width:200px;">Client Name</th>
+                            <th>Date / Time From</th>
+                            <th>Date / Time Until</th>
+                            <th class="thExtra" style="display:none;"></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupDashboardPreviousCheckedIn" custom-data-role="popup">
+    <div class="popup">
+        <div class="popup-header">
+            View Past Check-ins
+            <a data-role="none" class="popup-close">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        </div>
+        <div class="popup-content full-height">
+            <div class="row">
+                <div class="col-sm-4">
+                    Checked-in date:
+                    <button data-role="none" id="btnPrevCheckedInDate" class="btn custom-btn-theme-c btn-less-width btn-sm">Today</button>
+                </div>
+                <div class="col-sm-8">
+                    <input data-role="none" type="text" class="form-control" placeholder="Search client name here regardless of selected checked-in date" id="txtSearchClientPrevCheckedIn" />
+                </div>
+            </div>
+
+            <br /><br />
+            <div style="width:100%; overflow:auto;">
+                <table id="tblPreviousCheckedIn" data-role="table" data-mode="reflow" style="margin-right:5px; display:table; width:100%;" class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+                    <thead>
+                        <tr class="custom-theme-f txt-center">
+                            <th style="width:100px;">Asset Type</th>
+                            <th style="width:100px;">Asset Name</th>
+                            <th>Client Name</th>
+                            <th style="width:200px;">Checked-in Date</th>
+                            <th style="width:200px;">Checked-out Date</th>
+                            <th style="width:100px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="dashboardGrid" id="btnAssetScheduledCheckout">
+            <div class="gHeader">
+                Scheduled Check-out for Today
+            </div>
+            <div class="gBody" id="lblScheduledCheckoutBody">
+                0
+            </div>
+            <div class="gFooter" id="">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="dashboardGrid" id="btnAssetOccupied">
+            <div class="gHeader">
+                No. of Occupied/Used Assets Today
+            </div>
+            <div class="gBody" id="lblOccupiedBody">
+                0
+            </div>
+            <div class="gFooter" id="">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="dashboardGrid" id="btnAssetUnoccupied">
+            <div class="gHeader">
+                No. of Unoccupied/Unused (Inc. Reserved Assets) Assets Today
+            </div>
+            <div class="gBody" id="lblUnoccupiedBody">
+                0
+            </div>
+            <div class="gFooter" id="">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="dashboardGrid" id="btnAssetReserved">
+            <div class="gHeader">
+                No. of Reserved Assets Today
+            </div>
+            <div class="gBody" id="lblReservedBody">
+                0
+            </div>
+            <div class="gFooter" id="">
+
+            </div>
+        </div>
+    </div>    
+</div>
+<br />
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="dashboardGrid" id="btnAssetCheckIn">
+            <div class="gHeader">
+                No. of Check-Ins Made Today
+            </div>
+            <div class="gBody" id="lblCheckInUsedBody">
+                0
+            </div>
+            <div class="gFooter" id="">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="dashboardGrid" id="btnAssetReservation">
+            <div class="gHeader">
+                No. of Reservations Made Today
+            </div>
+            <div class="gBody" id="lblReservationBody">
+                0
+            </div>
+            <div class="gFooter" id="">
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="dashboardGrid" id="btnAssetCancelled">
+            <div class="gHeader">
+                No. of Cancelled Assets Today
+            </div>
+            <div class="gBody" id="lblCancelledBody">
+                0
+            </div>
+            <div class="gFooter" id="">
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="dashboardGrid" id="btnViewPastCheckIns">
+            <div class="gHeader">
+                <br />
+            </div>
+            <div class="gBody" id="lblCancelledBody">
+                Past Check-ins
+            </div>
+            <div class="gFooter" id="">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fixed-ActionBtn" style="display:block;">
+    <button data-role="none" id="btnAssetDashboardRefresh" data-toggle="tooltip" data-placement="left" title="Refresh" class="btn custom-btn-theme-d btnCircle">
+        <span class="glyphicon glyphicon-refresh"></span>
+    </button>
+</div>

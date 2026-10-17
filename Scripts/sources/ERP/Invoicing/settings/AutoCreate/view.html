@@ -1,0 +1,58 @@
+﻿<div class="mb-3 row">
+    <label class="col-md-4" for="selAutoCreateInvoiceType">Invoice Type:</label>
+    <div class="col-md">
+        <select id="selAutoCreateInvoiceType" data-role="none" class="form-select fixed">
+            <option>Loading...</option>
+        </select>
+    </div>
+</div>
+
+<div class="mb-3 row">
+    <label class="col-md-4" for="butAutoCreateInvoiceFowst">Invoice FOWST:</label>
+    <div class="col-md">
+        <button id="butAutoCreateInvoiceFowst" data-role="none" class="btn btn-secondary">Please select a FOWST</button>
+    </div>
+</div>
+
+<div class="mb-3 row">
+    <label class="col-md-4" for="butAutoCreateInvoiceDevice">Invoice Device:</label>
+    <div class="col-md">
+        <button id="butAutoCreateInvoiceDevice" data-role="none" class="btn btn-secondary">Please select a device</button>
+    </div>
+</div>
+
+<div class="mb-3 row">
+    <label class="col-md-4" for="radAutoCreateInvoiceStockReceiving">Auto create invoice upon finalizing in stock receiving</label>
+    <div class="col-md">
+        <input id="radAutoCreateInvoiceStockReceiving" name="radAutoCreateInvoiceCondition" checked="checked" value="StockReceiving" type="radio" class="form-check-input" />
+    </div>
+</div>
+
+<div class="mb-3 row">
+    <label class="col-md-4" for="radAutoCreateInvoiceVendorPortal">Auto create invoice upon finalizing in vendor portal</label>
+    <div class="col-md">
+        <input id="radAutoCreateInvoiceVendorPortal" name="radAutoCreateInvoiceCondition" value="VendorPortal" type="radio" class="form-check-input" />
+    </div>
+</div>
+
+<div class="mb-3 row">
+    <label class="col-md-4" for="radAutoCreateInvoiceStockReceivingSelected">Auto create invoice upon finalizing in stock receiving for the following vendors. For all other vendors, auto create invoice upon finalizing in vendor portal</label>
+    <div class="col-md">
+        <input id="radAutoCreateInvoiceStockReceivingSelected" name="radAutoCreateInvoiceCondition" value="StockReceivingSelected" type="radio" class="form-check-input" />
+    </div>
+</div>
+
+<div class="mb-3 row">
+    <label class="col-md-4" for="radAutoCreateInvoiceVendorPortalSelected">Auto create invoice upon finalizing in vendor portal for the following vendors. For all other vendors, auto create invoice upon finalizing in stock receiving</label>
+    <div class="col-md">
+        <input id="radAutoCreateInvoiceVendorPortalSelected" name="radAutoCreateInvoiceCondition" value="VendorPortalSelected" type="radio" class="form-check-input" />
+    </div>
+</div>
+
+<div name="divAutoCreateInvoiceVendors">
+    <div class="text-right mb-3">
+        <button name="butAddAutoCreateInvoiceVendor" data-role="none" class="btn btn-secondary">Add Vendor To List</button>
+    </div>
+
+    <table name="tableAutoCreateInvoiceVendors" data-role="none" class="table table-light table-striped table-hover"></table>
+</div>

@@ -1,0 +1,47 @@
+﻿<div idx="popRelatedOrders" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" name="title">SO Ready to Invoice</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="divDropShipTab" style="white-space:nowrap; overflow:auto;">
+                    <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabDropShipSalesOrders">Dashboard</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabDropShipPurchaseOrders">Transaction Details</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content p-3">
+                    <div id="tabDropShipSalesOrders" class="tab-pane fade show active">
+                        <div data-role="content" class="ui-content">
+                            <div class="row equal" style="padding-bottom: 30px;">
+                                <div class="col-sm-3">
+                                    Date Needed: <button data-role="none" name="butDateNeeded" class="btn btn-secondary btn-block"></button>
+                                </div>
+                                <div class="col-sm-3">
+                                    Sales Order Date: <button data-role="none" name="butSalesOrderDate" class="btn btn-secondary btn-block"></button>
+                                </div>
+                                <div class="col-sm-3">
+                                    Serving Location: <button data-role="none" name="butServingLocation" class="btn btn-secondary btn-block"></button>
+                                </div>
+                            </div>
+                            <table></table>
+                        </div>
+                    </div>
+                    <div id="tabDropShipPurchaseOrders" class="tab-pane fade">
+                        
+                    </div>
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

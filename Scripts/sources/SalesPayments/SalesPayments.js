@@ -1,0 +1,14385 @@
+﻿require([
+    'common',
+    'jquery.plugin.html2canvas',
+    GetPathFormat('/Scripts3/Browser/LibraryOrganizationRepresentative.js?crc='),
+    GetPathFormat('/Scripts3/Browser/LibraryFowst.js?crc='),
+    GetPathFormat('/Scripts3/Browser/LibraryPeoplePreSuffix.js?crc='),
+    GetPathFormat('/Scripts3/Browser/LibraryPeoplePostSuffix.js?crc='),
+    GetPathFormat('/Scripts3/Browser/LibraryOrganization.js?crc='),
+    GetPathFormat('/Scripts3/Discounts.js?crc=')
+    ], function () {
+         
+        var mHtml;
+        var mDeferred = $.Deferred();
+
+        var intFAFCTotalLenght = 40;
+        var intFBTotalLenght = 27;
+        var intFCDoubleTotalLenght = 18;
+
+        var intDesktopPrintLenght = 45;
+
+        var IsPrintReceipt = false;
+        var IsPrintOrderSlip;
+        var IsEmailReceipt = false;
+        var IsSaleSPaymentSaving = false;
+        var IsDeliveryInfoPriceQuote;
+
+        var IsNewSalesPayCheck = true;
+        var arSalesPayCheck = new Array();
+        var intSalesPayCheckCntr = 0;
+        var intSalesPayCheckIndex = 0;
+
+        var intSalesPayCheckRecID = 0;
+        var intSalesPayCheckBankID = 1;
+        var intSalesPayCheckBank = 2;
+        var intSalesPayCheckBankBranchID = 3;
+        var intSalesPayCheckBankBranch = 4;
+        var intSalesPayCheckAccountName = 5;
+        var intSalesPayCheckAccountNo = 6;
+        var intSalesPayCheckNumber = 7;
+        var intSalesPayCheckDateMonth = 8;
+        var intSalesPayCheckDateDay = 9;
+        var intSalesPayCheckDateyear = 10;
+        var intSalesPayCheckAmount = 11;
+        var intSalesPayCheckState = 12;
+        var intSalesPayCheckType = 13;
+
+        var IsNewSalesPayDebitCard = true;
+        var arSalesPayDebitCard = new Array();
+        var intSalesPayDebitCardCntr = 0;
+        var intSalesPayDebitCardIndex = 0;
+
+        var intSalesPayDebitCardRecID = 0;
+        var intSalesPayDebitCardType = 1;
+        var intSalesPayDebitCardBankID = 2;
+        var intSalesPayDebitCardBank = 3;
+        var intSalesPayDebitCardHolderLName = 4;
+        var intSalesPayDebitCardHolderFName = 5;
+        var intSalesPayDebitCardHolderMName = 6;
+        var intSalesPayDebitCardHolderGenSuffix = 7;
+        var intSalesPayDebitCardBankCountryID = 8;
+        var intSalesPayDebitCardBankCountry = 9;
+        var intSalesPayDebitCardNumber = 10;
+        var intSalesPayDebitCardIssuanceDateMonth = 11;
+        var intSalesPayDebitCardIssuanceDateDay = 12;
+        var intSalesPayDebitCardIssuanceDateYear = 13;
+        var intSalesPayDebitCardExpirationDateMonth = 14;
+        var intSalesPayDebitCardExpirationDateDay = 15;
+        var intSalesPayDebitCardExpirationDateYear = 16;
+        var intSalesPayDebitCardApprovalNumber = 17;
+        var intSalesPayDebitCardNoOfInstallment = 18;
+        var intSalesPayDebitCardAmount = 19;
+        var intSalesPayDebitCardState = 20;
+
+        var IsNewSalesPayCreditCard = true;
+        var arSalesPayCreditCard = new Array();
+        var intSalesPayCreditCardCntr = 0;
+        var intSalesPayCreditCardIndex = 0;
+
+        var intSalesPayCreditCardRecID = 0;
+        var intSalesPayCreditCardType = 1;
+        var intSalesPayCreditCardBankID = 2;
+        var intSalesPayCreditCardBank = 3;
+        var intSalesPayCreditCardHolderLName = 4;
+        var intSalesPayCreditCardHolderFName = 5;
+        var intSalesPayCreditCardHolderMName = 6;
+        var intSalesPayCreditCardHolderGenSuffix = 7;
+        var intSalesPayCreditCardBankCountryID = 8;
+        var intSalesPayCreditCardBankCountry = 9;
+        var intSalesPayCreditCardNumber = 10;
+        var intSalesPayCreditCardIssuanceDateMonth = 11;
+        var intSalesPayCreditCardIssuanceDateDay = 12;
+        var intSalesPayCreditCardIssuanceDateYear = 13;
+        var intSalesPayCreditCardExpirationDateMonth = 14;
+        var intSalesPayCreditCardExpirationDateDay = 15;
+        var intSalesPayCreditCardExpirationDateYear = 16;
+        var intSalesPayCreditCardApprovalNumber = 17;
+        var intSalesPayCreditCardNoOfInstallment = 18;
+        var intSalesPayCreditCardAmount = 19;
+        var intSalesPayCreditCardState = 20;
+
+        var IsNewSalesPaySRV = true;
+        var arSalesPaySRV = new Array();
+        var intSalesPaySRVCntr = 0;
+        var intSalesPaySRVIndex = 0;
+
+        var intSalesPaySRVRecID = 0;
+        var intSalesPaySRVMemoID = 1;
+        var intSalesPaySRVNo = 2;
+        var intSalesPaySRVPinCode = 3;
+        var intSalesPaySRVAmount = 4;
+        var intSalesPaySRVConsumedAmount = 5;
+        var intSalesPaySRVState = 6;
+
+        var intSalesPaymentEmailCntr = -1;
+        var strSalesPaymentEmail = "";
+        var lblVATableSales = 0;
+        //////////////////////////////////////////////////////////////////
+        //additional by janine
+        var IsNewSalesPayOtherType = true;
+        var arSalesPayOtherType = new Array();
+        var intSalesPayOtherTypeCntr = 0;
+        var intSalesPayOtherTypeIndex = 0;
+
+        var intSalesPayOtherTypeRecID = 0;
+        var intSalesPayOtherTypeName = 1;
+        var intSalesPayOtherTypeOrg = 2;
+        var intSalesPayOtherTypeCardHolderName = 3;
+        var intSalesPayOtherTypeCardNumber = 4;
+        var intSalesPayOtherTypeIssuanceDateMonth = 5;
+        var intSalesPayOtherTypeIssuanceDateDay = 6;
+        var intSalesPayOtherTypeIssuanceDateYear = 7;
+        var intSalesPayOtherTypeExpirationDateMonth = 8;
+        var intSalesPayOtherTypeExpirationDateDay = 9;
+        var intSalesPayOtherTypeExpirationDateYear = 10;
+        var intSalesPayOtherTypeApprovalNo = 11;
+        var intSalesPayOtherTypeAmount = 12;
+        var intSalesPayOtherTypeState = 13;
+        var intSalesPayOtherTypeRoomNo = 14;
+        var intSalesPayOtherTypeRemarks = 15;
+        var intSalesPayOtherTypeGCashRefNo = 16;
+
+
+        var showDiscountDetails = false;
+        var isSeniorCitizenDiscount = false;
+        var IsNewSalesPayCustomerIdentification = true;
+        var arSalesPayCustomerIdentification = new Array();
+        var intSalesPayCustomerIdentificationCntr = 0;
+        var intSalesPayCustomerIdentificationIndex = 0;
+
+        var intSalesPayCustomerIdentificationIDType = 0;
+        var intSalesPayCustomerIdentificationIDOtherType = 1;
+        var intSalesPayCustomerIdentificationIDText = 2;
+        var intSalesPayCustomerIdentificationState = 3;
+        var intSalesPayCustomerIdentificationImage = 4;
+
+        var IsNewSalesPayCustomerName = true;
+        var arSalesPayCustomerName = new Array();
+        var intSalesPayCustomerNameCntr = 0;
+        var intSalesPayCustomerNameIndex = 0;
+
+        var intSalesPayCustomerNameID = 0;
+        var intSalesPayCustomerNameTitleID = 1;
+        var intSalesPayCustomerNameTitleName = 2;
+        var intSalesPayCustomerNameSurname = 3;
+        var intSalesPayCustomerNameFirstName = 4;
+        var intSalesPayCustomerNameMiddleName = 5;
+        var intSalesPayCustomerNameSuffix = 6;
+        var intSalesPayCustomerNameDOBMonth = 7;
+        var intSalesPayCustomerNameDOBDay = 8;
+        var intSalesPayCustomerNameDOBYear = 9;
+        var intSalesPayCustomerNameState = 10;
+        var intSalesPayCustomerNameFullName = 11;
+
+        var isSeniorCitizenPWDDiscount = false;
+        var seniorCitizenNetAmount = 0;
+        var SCDiscountExempt = 0;
+        var SubTotalOfVatExemptItems = 0;
+        var GrossSalesToNoneSC = 0;
+        var GrossSalesToSC = 0;
+        var VatExemptSales = 0;
+        var seniorCitizenDiscount = 0;
+        var MaxSCDiscountableAmount = 0;
+        var IsApplyMaxSCDiscountableAmount = false;
+        //var SubTotalOfItemsWithoutVatExempt = 0;
+
+        sessionStorage.IsPaymentJSLoaded = 'true';
+        sessionStorage.CurrentPage = 'payment';
+        var newPrinterIP;
+        var newPrinterFowstID;
+        var originalDevFowstPrinterID;
+        //end of additional
+        //////////////////////////////////////////////////////////////////
+
+        var dblTotalAmountDueForDiscount = 0;
+        var dblSubTotal = 0;
+        var taxPercent = 0;
+        var longDiscountPercent;
+        var longChargeAmount = 0;
+        //                var isFromBilling = false;
+        var isInitCheckFx = false, isInitDebitFx = false, isInitCreditCardFx = false, isInitSrvFx = false, isInitGCFx = false,
+           isInitOtherPaymentFx = false;
+
+        var pDataCharges = [];
+        var printAttempt = 1;
+        var pPrintBillingArguments;
+        var theInvoiceID;
+        var mInvoiceID;
+        var IsVAT;
+	var mAllowOfflineCredit;
+        window.imagefilename = '';
+
+        AjaxSend({
+            ExactUrl: '/Scripts3/view/Payments.html',
+            type: 'GET',
+            dataType: 'text',
+            success: function (vData) {
+                mHtml = vData;
+                mDeferred.resolve();
+                $('#pageSalesPayment')
+                    .html('')
+                    .html(mHtml)
+                    .trigger('create');
+                $('#divHeader').hide();
+                $('#divHotButtons').hide();
+                $('#divPayment').show();
+
+                // https://stackoverflow.com/a/47760233/334045
+                $('input[type=number]').on('wheel', function(e){
+                    return false;
+                });
+            }
+        });
+
+        require([
+            (OfflineMode ? '/Scripts/sources/SalesPayments/SalesPayments_offline.js?crc=' : ''),
+            (OfflineMode ? '/Scripts3/SalesMenu_offline.js?crc=' : ''),
+            (OfflineMode ? '/Scripts3/SalesMenuSalesRepresentatives.js?crc=' : '')
+        ], function () {
+
+            var mSalesPayments_offline;
+            var mDefaultCountryID;
+            var mDefaultCountryName;
+
+            $(function () {
+
+                (function staticInit() { 
+
+                    MainFunction();
+
+                })();
+
+            }); // END $(function () {
+
+            proj.SalesPayments = proj.SalesPayments || {};
+            proj.SalesPayments.ClearSalesPaymentsInfoFields = function () {
+                // dont clear
+                // sessionStorage.clear();
+                proj.ClearSessionStorage();
+
+                dblTotalAmountDueForDiscount = 0;
+                dblSubTotal = 0;
+
+                $('#lstSalesPayCheck, #lstSalesPayDebitCard, #lstSalesPayCreditCard, #divSalesPayRecordCountCreditCard, ' +
+                    '#divSalesPayRecordCountOther, #lstSalesPayCustomerName').empty();
+                $('#divAddCustomerDetails').hide();
+                $('#selDiscountType').val('').selectmenu('refresh');
+
+                $("#lblSalesPaySubTotal").text('0.00');
+                $("#lblSalesPayTotalDiscount").text('0.00');
+                $("#lblSalesPayCharges").text('0.00');
+                $("#lblSalesPayOtherTax").text('0.00');
+                $("#lblSalesPayTip").text('0.00');
+                $("#divPaymentsOtherTax").hide();
+                $("#divPaymentsTip").hide();
+
+                $("#lblSalesPayAmountDue").text('0.00');
+
+                $("#lblSalesPayTotalAmountTendered").text('0.00');
+                $("#lblSalesPayAmountLacking").text('0.00');
+                $("#lblSalesPayTotalChangeAmount").text('0.00');
+
+                $("#lblSalesPayTotalCash").text('0.00');
+                $("#txtSalesPaymentCash").val('');
+                $("#txtOnCredit").val('');
+
+                $("#lblSalesPayTotalCheck").text('0.00');
+                $("#lblSalesPayTotalDebitCard").text('0.00');
+                $("#lblSalesPayTotalCreditCard").text('0.00');
+                $("#lblSalesPayTotalSRV").text('0.00');
+                $("#lblSalesPayTotalGiftCert").text('0.00');
+                $("#lblSalesPayTotalOtherType").text('0.00');
+                $("#lblSalesPayTotalCreditTerms").text('0.00');
+
+                $("#txtDiscountPercentCeiling").val('0.00');
+                $("#txtDiscountPercent").val('0.00');
+                $("#txtDiscountAmount").val('0.00');
+
+                ////
+                longChargeAmount = 0;
+                $("#txtAddCharge").text('');
+                $("#txtChargeRemarks").text('');
+                $("#tblChargesList").html('');
+
+                ClearSalesPaymentVariables();
+            }
+            
+            function MainFunction() {               
+
+                window.SalesPayment = {};
+                if (OfflineMode)
+                    if (CStr2(sessionStorage.FowstID) != '')
+                        SalesMenu_offline().HandleEnforceZRead({ silent: true });
+
+                if (window.location.pathname.toLowerCase() != '/salesmenu/posviewall') { // dili lang initialize ang fx sa bawat isa kapag gamit ang HB with sidecart, iload lang pag needed -- arnie 4-20-2018
+                    InitCheckFunctions();
+                    InitDebitFunctions();
+                    InitCreditCardFunctions();
+                    InitSrvFunctions();
+                    InitOtherPaymentFunctions();
+                }                
+
+                setMonthCollection("selSalesPayGiftCertDateOfIssueMonth");
+                setYearCollection("selSalesPayGiftCertDateOfIssueYear");
+                setMonthCollection("selSalesPayGiftCertExpirationDateMonth");
+                setYearCollection("selSalesPayGiftCertExpirationDateYear");
+
+                setMonthCollection("selDeliveryInfoPODateMonth");
+                setYearCollection("selDeliveryInfoPODateYear");
+
+                setMonthCollection("selPickUpMonth");
+                setYearCollection("selPickUpYear");
+                setHoursCollection("selPickUpHour");
+                setMinutesCollection("selPickUpMin");
+                
+                if (!window.OfflineMode) {
+                    $('#divSalesPaymentSalesRep').hide();
+                }
+
+                proj.ShowPaymentDetails = function () {
+                    //                    isEnableDiningMode = CBool(IsEnableDiningMode());
+                    ShowSalesPaymentsInfo();
+                 
+                    getOrgDiscountType();
+
+                    getCurrentDiscount();
+
+                    getCurrentCharges();
+
+                    proj.RefreshTotalDiscount();
+
+                    proj.ShowSalesReps();
+
+                    getPrinterConnectionType();
+
+                    setSCPWDCount();
+
+                    $("#popupLoad").popup("close");
+                };
+
+                proj.RefreshTotalDiscount = function () {
+                    var dblDiscount = 0;
+                    var dblTotalAmount = 0;
+
+                    dblSubTotal = CDec2(dblSubTotal);
+                    if ($('#selDiscountType').val() == '') {
+
+                        $('#rowVATPercent').hide();
+                        $('#rowAmountLessVAT').hide();
+
+                        $('#lblVATAmount').text('');
+                        $('#lblTotalAmount').text('');
+
+                        $("#txtDiscountPercentCeiling").val('');
+                        $("#txtDiscountPercent").val('');
+                        $("#txtDiscountAmount").val('');
+
+                        var pParams = GetUrlParameters();
+                        var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+                        pIU = new InsertUpdate('private.TransInvoice');
+
+                        pIU.Add('Vatable', dblSubTotal / (1 + (CDec2(taxPercent) / 100)));
+                        pIU.Add('VATExempt', 0);
+                        pIU.Add('VAT', dblSubTotal - (dblSubTotal / (1 + (CDec2(taxPercent) / 100))));
+                        pIU.Add('ForegoneVAT', 0);
+                        pIU.Add('SCDiscount', 0);
+                        pIU.Add('TotalNonSCDiscount', 0);
+                        pIU.Add('AmountDueBeforeCharges', dblSubTotal);
+                        pIU.Add('AmountDueNetofCharges', dblSubTotal + CDec2(GetInvoiceCharges(pInvoiceID)));
+
+                        pSql = pIU.GetUpdate("ID = " + ReadyString(pInvoiceID));
+
+                        Sql.ExecuteSql(pSql);
+                         
+                    } else {
+                        var pParams = GetUrlParameters();
+                        var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+                        SubTotalOfVatExemptItems = GetSSDItemsWithVatExempt(pInvoiceID);
+                        SCDiscountExempt = CDec2(dblSubTotal) - CDec2(SubTotalOfVatExemptItems);
+                        
+                        dblTotalAmount = isSeniorCitizenDiscount ? CDec2(SubTotalOfVatExemptItems) / (1 + (CDec2(taxPercent) / 100)) : CDec2(dblSubTotal);
+
+                        //dblDiscount = parseFloat(CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, ""))) * (parseFloat(CDec2($('#txtDiscountPercent').val().replace(/,/g, "")))/100);
+                        //dblDiscount = Math.round(parseFloat(CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, ""))) * (parseFloat(CDec2($('#txtDiscountPercent').val().replace(/,/g, ""))) / 100) / 0.05) * 0.05;
+
+
+                        if (isSeniorCitizenDiscount) {
+
+                            $('#rowVATPercent').show();
+                            $('#rowAmountLessVAT').show();
+
+                            $('#lblVATPercentValue').text(taxPercent);
+
+                            IsVAT = Sql.ExecuteScalar('Select IsVAT from LibraryOrganization WHERE ID = ' + ReadyString(sessionStorage.OrgID));
+                            
+                            //                        vatSale = vData.Rows[0].TotalAmountDue / (1 + (vData.Rows[0].TaxPercent / 100));
+                            $('#lblVATPercent').text(AccountingFormat(CDec2(SubTotalOfVatExemptItems) - CDec2(dblTotalAmount)));
+                            //$('#lblTotalAmount').text(AccountingFormat(dblTotalAmount));
+
+                            //francis 07/01/16
+                            //$("#txtDiscountAmount").val((CDec2(longDiscountPercent) == "0" ? '' : AccountingFormat(CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, "")) * (CDec2(longDiscountPercent)) / 100)));
+                            //$("#txtDiscountAmount").val((CDec2(longDiscountPercent) == "0" ? '' : AccountingFormat(dblTotalAmount * (CDec2(longDiscountPercent)) / 100)));
+                            
+                            if (CDec2($.trim($("#txtSalesPayNoOfSC").val())) > 0 && CDec2($.trim($("#txtSalesPayNoOfDiners").val())) > 0) {
+
+                                var proportionOfNoOfSeniors = parseFloat($.trim($("#txtSalesPayNoOfSC").val())) / parseFloat($.trim($("#txtSalesPayNoOfDiners").val()));
+                                //var GrossSales = mSubTotalOfItemsWithVatExempt;
+                                GrossSalesToSC = proportionOfNoOfSeniors * SubTotalOfVatExemptItems;
+                                
+                                var proportionofregular = (parseFloat($.trim($("#txtSalesPayNoOfDiners").val())) - parseFloat($.trim($("#txtSalesPayNoOfSC").val()))) / parseFloat($.trim($("#txtSalesPayNoOfDiners").val()));
+                                GrossSalesToNoneSC = proportionofregular * SubTotalOfVatExemptItems;
+
+                                VatExemptSales = GrossSalesToSC / (1 + (CDec2(taxPercent) / 100));
+                                var seniorCitizenDiscountRate = parseFloat($('#txtDiscountPercentCeiling').val()) * 0.01;
+
+                                if (IsVAT != undefined) {
+                                    if (!CBool(IsVAT)) {
+                                        VatExemptSales = GrossSalesToSC;
+                                    }                                    
+                                }   
+
+                                MaxSCDiscountableAmount = getMaxSCDiscountableAmount();
+
+                                MaxSCDiscountableAmount = MaxSCDiscountableAmount * CInt2($.trim($("#txtSalesPayNoOfSC").val()));
+
+                                if(MaxSCDiscountableAmount != 0){
+                                    if (MaxSCDiscountableAmount < VatExemptSales) {
+                                        IsApplyMaxSCDiscountableAmount = true;
+                                    }
+                                } else {
+
+                                }
+
+                                seniorCitizenDiscount = (IsApplyMaxSCDiscountableAmount == true ? MaxSCDiscountableAmount : VatExemptSales) * seniorCitizenDiscountRate;
+
+                                //VatExToSC should always be the Gross VAT-Ex Amount(variable VatExToSC) even if MaxSCDiscountableAmount is present
+                                seniorCitizenNetAmount = VatExemptSales - seniorCitizenDiscount;
+
+                                //var totalBillToBePayed = seniorCitizenNetAmount + GrossSalesToNoneSC;
+
+                                var weightedSCDiscountRate = proportionOfNoOfSeniors * seniorCitizenDiscountRate;
+
+                                //var totalBillBeforeSCDiscount = parseFloat($('#lblSalesPayAmountDue').val());
+
+                                //var totalBillToBePayed = weightedSCDiscountRate * totalBillBeforeSCDiscount;
+                                 
+                                var pIU;
+                                var AmountDueBeforeCharges = 0;
+                                var AmountDueNetofCharges = 0;
+
+                                AmountDueBeforeCharges = CDec2(GrossSalesToNoneSC + VatExemptSales + SCDiscountExempt); //comment 06/28/17 change var SCDiscountExempt to seniorCitizenDiscount to fix charge issue
+                                //AmountDueBeforeCharges = CDec2(GrossSalesToNoneSC + VatExemptSales + SCDiscountExempt - seniorCitizenDiscount);
+                                AmountDueNetofCharges = CDec2(AmountDueBeforeCharges) + CDec2(GetInvoiceCharges(pInvoiceID)); //comment 06/28/17 remove charges since it will be calculated in SCD page
+
+                                pIU = new InsertUpdate('private.TransInvoice');
+
+                                pIU.Add('Vatable', CDec2((GrossSalesToNoneSC / (1 + (CDec2(taxPercent) / 100))) + (SCDiscountExempt / (1 + (CDec2(taxPercent) / 100)))));
+                                pIU.Add('VATExempt', CDec2(VatExemptSales));
+                                pIU.Add('VAT', CDec2(((GrossSalesToNoneSC + SCDiscountExempt)) - ((GrossSalesToNoneSC / (1 + (CDec2(taxPercent) / 100))) + (SCDiscountExempt / (1 + (CDec2(taxPercent) / 100))))));
+                                pIU.Add('ForegoneVAT', CDec2(GrossSalesToSC) - CDec2(VatExemptSales));
+                                pIU.Add('SCDiscount', CDec2(seniorCitizenDiscount));
+                                pIU.Add('TotalNonSCDiscount', 0);
+                                pIU.Add('AmountDueBeforeCharges', CDec2(AmountDueBeforeCharges));
+                                pIU.Add('AmountDueNetofCharges', CDec2(AmountDueNetofCharges));
+
+                                pSql = pIU.GetUpdate("ID = " + ReadyString(pInvoiceID));
+
+                                Sql.ExecuteSql(pSql);
+
+                                $('#lblVATPercent').text(AccountingFormat(CDec2(GrossSalesToSC) - CDec2(VatExemptSales)));
+
+                                $('#lblTotalAmount').text(AccountingFormat(AmountDueNetofCharges));
+
+                                $("#txtDiscountPercent").val(weightedSCDiscountRate * 100);
+
+                                $("#txtDiscountAmount").val(CDec2(seniorCitizenDiscount));
+
+                                longDiscountPercent = seniorCitizenDiscountRate * 100;
+                                
+                                //proj.RefreshTotalDiscount();
+                            }
+
+                        } else {
+
+                            $('#rowVATPercent').hide();
+                            $('#rowAmountLessVAT').hide();
+
+                            $('#lblVATAmount').text('');
+                            $('#lblTotalAmount').text('');
+                            $("#txtDiscountAmount").val((CDec2(longDiscountPercent) == "0" ? '' : AccountingFormat(CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, "")) * (CDec2(longDiscountPercent)) / 100)));
+
+                            var pParams = GetUrlParameters();
+                            var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+                            pIU = new InsertUpdate('private.TransInvoice');
+
+                            pIU.Add('Vatable', (dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))) / (1 + (CDec2(taxPercent) / 100)));
+                            pIU.Add('VATExempt', 0);
+                            pIU.Add('VAT', (dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))) - ((dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))) / (1 + (CDec2(taxPercent) / 100))));
+                            pIU.Add('ForegoneVAT', 0);
+                            pIU.Add('SCDiscount', 0);
+                            pIU.Add('TotalNonSCDiscount', 0);
+                            pIU.Add('AmountDueBeforeCharges', (dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))));
+                            pIU.Add('AmountDueNetofCharges', (dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))) + CDec2(GetInvoiceCharges(pInvoiceID)));
+
+                            if (IsVAT != undefined) {
+                                if (!CBool(IsVAT)) {
+                                    pIU = new InsertUpdate('private.TransInvoice');
+
+                                    pIU.Add('Vatable', (dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))) / (1 + (CDec2(taxPercent) / 100)));
+                                    pIU.Add('VATExempt', 0);
+                                    pIU.Add('VAT', (dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))) - ((dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))) / (1 + (CDec2(taxPercent) / 100))));
+                                    pIU.Add('ForegoneVAT', 0);
+                                    pIU.Add('SCDiscount', 0);
+                                    pIU.Add('TotalNonSCDiscount', 0);
+                                    pIU.Add('AmountDueBeforeCharges', (dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))));
+                                    pIU.Add('AmountDueNetofCharges', (dblSubTotal - (dblSubTotal * (CDec2(longDiscountPercent) / 100))) + CDec2(GetInvoiceCharges(pInvoiceID)));
+
+                                }
+                            }
+
+                            pSql = pIU.GetUpdate("ID = " + ReadyString(pInvoiceID));
+
+                            Sql.ExecuteSql(pSql);
+
+                        }
+
+                    }
+                    dblDiscount = $('#txtDiscountAmount').val();  //(dblTotalAmount * (parseFloat(CDec2($('#txtDiscountPercent').val().replace(/,/g, ""))) / 100) / 0.05) * 0.05;
+
+                    $("#lblSalesPayTotalDiscount").text(AccountingFormat(dblDiscount));
+
+                    $("#lblSalesPayCheckTotalDiscount").text(AccountingFormat(dblDiscount));
+                    $("#lblSalesPayDebitCardTotalDiscount").text(AccountingFormat(dblDiscount));
+                    $("#lblSalesPayCreditCardTotalDiscount").text(AccountingFormat(dblDiscount));
+                    $("#lblSalesPaySRVTotalDiscount").text(AccountingFormat(dblDiscount));
+                    $("#lblSalesPayOtherTypeTotalDiscount").text(AccountingFormat(dblDiscount));
+
+
+                    RefreshSalesPaymentTotal_onchange();
+
+                    //janine feb 24 2015 11am
+                    if (OfflineMode) {
+                        var vData = SalesPayment_offline().getSalesPaymentReceiptFooterAmountsInfo(sessionStorage.CartOrderID);
+                        if (vData.Rows.length > 0) {
+                            // for service charge. this is the basis not thew total amount due or subtotal. see sm coin
+
+                            lblVATableSales = CDec2(vData.Rows[0].TaxSales || 0) + CDec2(vData.Rows[0].VATExemptSale || 0);
+
+                        }
+                    }
+                }; // END proj.RefreshTotalDiscount = function () {
+
+                proj.ShowSalesReps = function ShowSalesReps() {
+
+                    var pHtml = '';
+                    var pDT;
+                    var pDR;
+
+                    if (!window.OfflineMode)
+                        return;
+
+                    var pParams = GetUrlParameters();
+                    var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+                    pDT = SalesPayment_offline().GetSalesReps(pInvoiceID);
+
+                    $('#lstSalesRep').empty();
+                    for (var pIndex = 0; pIndex <= pDT.Rows.length - 1; pIndex++) {
+                        pDR = pDT.Rows[pIndex];
+                        if (pHtml != '')
+                            pHtml += '<br />';
+                        pHtml += HtmlEncode(pDR.PeopleName);
+
+                        $('#lstSalesRep').append($('<li>')
+                            .append($('<a>')
+                                .text(pDR.PeopleName)
+                            )
+                            .append($('<a>')
+                                .attr('href', "#")
+                                .attr('data-icon', "delete")
+                                .data('data', pDR)
+                                .click(function (e) {
+                                    e.preventDefault();
+                                    Business.TransInvoice.RemoveSalesRep({ PeopleID: $(this).data('data').PeopleID, InvoiceID: sessionStorage.CartOrderID });
+                                    proj.ShowSalesReps();
+                                })
+                            )
+                        ).listview('refresh')
+                    }
+                    //$('#divSalesPaymentSalesRepList').html(pHtml);
+
+                }; // END proj.ShowSalesReps = function ShowSalesReps() {
+
+                $(document).ready(function () {
+
+
+                    if (!window.InAndroid && !InWinRt) {
+                        $('<applet name="jzebra" code="jzebra.PrintApplet.class" archive="/Scripts/jzebra.jar" width="10" height="10"></applet>').appendTo($('body'));
+                    }
+
+                    //Not yet available in Offline Mode
+                    if (IsMobile) {
+                        $("#btnSalesPaymentEmail").hide(); 
+                        $("#btnSalesPaymentPrintEmail").hide();
+                        $("#btnDeliveryInfoPriceQoute").hide();
+                    }
+
+
+
+                    window.pageSourcePage = $.mobile.activePage;
+
+                    if (window.OfflineMode) {
+                        Business.TransInvoice.HandleCorrectDate();
+                    }
+
+                    if (CStr2(sessionStorage.CartOrderID) != '') {
+                        //if enable dining mode, show saved payment details, like discounts, charges, etc.
+                        //                        var pParams = GetUrlParameters();
+
+                        //                        if (CStr2(pParams.IsFromBilling) == 'true') {
+                        //                            isFromBilling = true;
+                        //                        if (CStr2(sessionStorage.IsEnableDiningMode) == 'true') {
+                        //                            $("#divPaymentsTip").show();
+                        //                            sessionStorage.IsEnableDiningMode = 'true';
+                        //                        }
+
+                        proj.ShowPaymentDetails();
+
+
+
+
+                        //                        } else {
+                        //                            isFromBilling = false;
+                        //                            //if not, load the payments page normally
+                        //                            ShowSalesPaymentsInfo();
+                        //                            getOrgDiscountType();
+
+                        //                            sessionStorage.IsEnableDiningMode = 'false';
+
+
+                        //                        }
+
+                    }
+
+
+
+                });
+
+                $("#txtSalesPaymentCash").bind('keyup', function () {
+
+                    var pSalesPayCash = parseFloat(CDec2($.trim($(this).val().replace(/,/g, ""))));
+                    $("#lblSalesPayTotalCash").text((pSalesPayCash > 0 ? AccountingFormat(pSalesPayCash) : "0.00"));
+
+                    RefreshSalesPaymentTotal_onchange();
+                });
+                $("#txtOnCredit").bind('keyup', function () {
+                    var pSalesPayCash = parseFloat(CDec2($.trim($(this).val().replace(/,/g, ""))));
+                    $("#txtOnCredit").text((pSalesPayCash > 0 ? AccountingFormat(pSalesPayCash) : "0.00"));
+                    RefreshSalesPaymentTotal_onchange();
+                });
+
+                $("#txtSalesPaymentCash").keydown(function (e) {
+                    if (e.keyCode != 110 && e.keyCode != 190) {
+                        if (!NumberOnly(e)) return;
+                    }
+                });
+
+                $("#txtSalesPaymentCash").blur(function () {
+                    var pSalesPayCash = parseFloat(CDec2($("#txtSalesPaymentCash").val().replace(/,/g, "")));
+                    $("#txtSalesPaymentCash").val((pSalesPayCash > 0 ? AccountingFormat(pSalesPayCash) : ""));
+                });
+
+                $('#btnSalesPayAddCheck').click(function (e) {
+                    e.preventDefault();
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                        window.pageHeader.ShowCheckPaymentPage(function () {
+                            GoInit();
+                            ShowSalesPaymentsInfo();
+                            proj.RefreshTotalDiscount();
+                        });
+                    } else {
+                        $.mobile.changePage('#pageSalesPayCheck');
+                        GoInit();
+                    }
+
+                    function GoInit() {
+                        InitCheckFunctions();
+                        ShowHideCheckBank(true);
+
+                        IsNewSalesPayCheck = true
+                        intSalesPayCheckCntr = intSalesPayCheckCntr + 1;
+                        intSalesPayCheckIndex = intSalesPayCheckCntr;
+
+                        ClearSalesPayCheckFields();
+                        ShowSalesPaymentsInfo(true);
+                        proj.RefreshTotalDiscount();
+                    }
+                });
+
+                $('#btnSalesPayAddDebitCard').click(function (e) {
+                    e.preventDefault();
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                        window.pageHeader.ShowDebitCardPaymentPage(function () {
+                            GoInit();
+                        });
+                    } else {
+                        $.mobile.changePage('#pageSalesPayDebitCard');
+                        GoInit();
+                    }
+
+                    function GoInit() {
+                        InitDebitFunctions();
+                        ShowHideDebitCardBank(true);
+
+                        IsNewSalesPayDebitCard = true
+                        intSalesPayDebitCardCntr = intSalesPayDebitCardCntr + 1;
+                        intSalesPayDebitCardIndex = intSalesPayDebitCardCntr;
+
+                        ClearSalesPayDebitCardFields();
+                        ShowSalesPaymentsInfo(true);
+                        proj.RefreshTotalDiscount();
+                    }
+                });
+
+                $('#btnSalesPayAddCreditCard').click(function (e) {
+                    e.preventDefault();
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                        window.pageHeader.ShowCreditCardPaymentPage(function () {
+                            GoInit();
+                        });
+                    } else {
+                        $.mobile.changePage('#pageSalesPayCreditCard');
+                        GoInit();
+                    }
+
+                    function GoInit() {
+                        InitCreditCardFunctions();
+                        ShowHideCreditCardBank(true);
+
+                        IsNewSalesPayCreditCard = true
+                        intSalesPayCreditCardCntr = intSalesPayCreditCardCntr + 1;
+                        intSalesPayCreditCardIndex = intSalesPayCreditCardCntr;
+
+                        ClearSalesPayCreditCardFields();
+                        ShowSalesPaymentsInfo(true);
+                        proj.RefreshTotalDiscount();
+                    }
+                });
+
+                $('#btnSalesPayAddSRV').click(function (e) {
+                    e.preventDefault();
+
+                    // march 21, 2014: dapat mkaSRV miskan offline
+                    //                if(OfflineMode) {
+                    //                    MessageBox("SRV payment is not available in offline mode.",
+                    //                           "SRV Payment",
+                    //                            [
+                    //                                { Text: 'Ok'
+                    //                                }
+                    //                            ]
+                    //                    );
+                    //                    return;                
+                    //                }
+
+                    if (IsMobile) {
+                        var pData = {};
+                        var pParams = GetUrlParameters();
+                        pData.InvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+
+                        AjaxSend({
+                            url: 'Login3/TestCookies',
+                            data: pData,
+                            success: function (vData) {
+                                SrvPage();
+                            },
+                            error: function (vError) {
+                                MessageBox("This feature requires internet connection.",
+                                   "Requires Internet Connection",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                        });
+                    } else {
+                        SrvPage();
+                    }
+
+                    function SrvPage() {
+                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                            window.pageHeader.ShowSRVPaymentPage(function () {
+                                GoInit();
+                            });
+                        } else {
+                            $.mobile.changePage('#pageSalesPaySRV');
+                            GoInit();
+                        }
+                    }
+
+                    function GoInit() {
+                        InitSrvFunctions();
+                        IsNewSalesPaySRV = true
+                        intSalesPaySRVCntr = intSalesPaySRVCntr + 1;
+                        intSalesPaySRVIndex = intSalesPaySRVCntr;
+
+                        ClearSalesPaySRVFields();
+                        ShowSalesPaymentsInfo(true);
+                        proj.RefreshTotalDiscount();
+                    }
+                });
+
+                $('#btnSalesPayAddGC').click(function (e) {
+                    e.preventDefault();
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowGiftCertPaymentPage();
+                    else
+                        $.mobile.changePage('#pageSalesPayGiftCert');
+
+                });
+
+                $('#btnSalesPayGiftCertSave').click(function (e) {
+                    e.preventDefault();
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+
+                });
+
+                $('#btnSalesPayGiftCertRemove').click(function (e) {
+                    e.preventDefault();
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+
+                });
+
+                $('#btnSalesPayGiftCertCancel').click(function (e) {
+                    e.preventDefault();
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage();
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+
+                });
+
+                $('#btnSalesPayAddOtherType').click(function (e) {
+                    e.preventDefault();
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                        window.pageHeader.ShowOtherTypePaymentPage(function () {
+                            GoInit();
+                        });
+                    } else {
+                        $.mobile.changePage('#pageSalesPayOtherPaymentType');
+                        GoInit();
+                    }
+
+
+                    function GoInit() {
+                        InitOtherPaymentFunctions();
+                        IsNewSalesPayOtherType = true
+                        intSalesPayOtherTypeCntr = intSalesPayOtherTypeCntr + 1;
+                        intSalesPayOtherTypeIndex = intSalesPayOtherTypeCntr;
+
+                        ClearSalesPayOtherTypeFields();
+                        ShowSalesPaymentsInfo(true);
+                        proj.RefreshTotalDiscount();
+                    }
+                });
+
+                $('#btnOrderBy').click(function () {
+
+                    Browser.LibraryOrganizationRepresentative.InputData.OrganizationID = $("#txtSalesPayCustomerID").val();
+                    Browser.LibraryOrganizationRepresentative.Click = function (e) {
+
+                        $('#txtOrderedByID').val(e.ID);
+                        $('#btnOrderBy').text(e.RepresentativeName)
+                        .button('refresh');
+
+                        $('#txtDeliveryInfoTelNo').val(e.TelNo);
+                        $('#txtDeliveryInfoFaxNo').val(e.FaxNo);
+                        $('#txtDeliveryInfoMobileNo').val(e.MobileNo);
+                        $('#txtDeliveryInfoEmail').val(e.Email);
+
+                    };
+                    Browser.LibraryOrganizationRepresentative.Show();
+
+                });
+
+                $('#btnBillTo').click(function () {
+
+                    Browser.LibraryFowst.InputData.OrganizationID = $("#txtSalesPayCustomerID").val();
+                    Browser.LibraryFowst.Click = function (e) {
+
+                        $('#txtBillToID').val(e.ID)
+                        $('#btnBillTo').text(e.Address)
+                    .button('refresh');
+
+                    };
+                    Browser.LibraryFowst.Show();
+
+                });
+
+                $('#btnShipTo').click(function () {
+
+                    Browser.LibraryFowst.InputData.OrganizationID = $("#txtSalesPayCustomerID").val();
+                    Browser.LibraryFowst.Click = function (e) {
+
+                        $('#txtShipToID').val(e.ID)
+                        $('#btnShipTo').text(e.Address)
+                    .button('refresh');
+
+                    };
+                    Browser.LibraryFowst.Show();
+
+                });
+
+                $('#btnPickLocation').click(function () {
+
+                    AjaxSend({
+                        url: "DeliveryInfo/getCurrentSubcriberOrgID",
+                        success: function (vData) {
+                            if (vData.DeliveryInfoData != "") {
+                                Browser.LibraryFowst.InputData.OrganizationID = vData.DeliveryInfoData;
+                                Browser.LibraryFowst.Click = function (e) {
+
+                                    $('#txtPickUpLocationID').val(e.ID)
+                                    $('#btnPickLocation').text(e.BranchName)
+                                .button('refresh');
+
+                                };
+                                Browser.LibraryFowst.Show();
+                            }
+                        }
+                    });
+
+                });
+
+                $('#selDeliveryMode').change(function (e) {
+                    e.preventDefault();
+
+                    SetDeliveryMode();
+
+                });
+
+                $('#rdoRush').click(function () {
+                    SetDeliveryDownTown($(this).is(":checked"));
+                });
+
+                $('#rdoNotRush').click(function () {
+                    SetDeliveryDownTown(!$(this).is(":checked"));
+
+                });
+
+                $("#txtDeliverWithIn").keydown(function (e) {
+                    if (!NumberOnly(e)) {
+                        return;
+                    }
+                });
+
+                $('#rdoNormalRoute').click(function () {
+
+                    SetDeliveryOutOfTown($(this).is(":checked"));
+
+                });
+
+                $('#rdoBus').click(function () {
+
+                    SetDeliveryOutOfTown(!$(this).is(":checked"));
+
+                });
+
+                $('#rdoCustomerIsWaiting').click(function () {
+
+                    SetPickUp($(this).is(":checked"));
+
+                });
+
+                $('#rdoDateAndTime').click(function () {
+
+                    SetPickUp(!$(this).is(":checked"));
+
+                });
+
+                $('#selPickUpMonth').change(function (e) {
+                    e.preventDefault();
+
+                    setDayCollection('selPickUpMonth', 'selPickUpDay', 'selPickUpYear', true);
+
+                });
+
+                $('#selPickUpYear').change(function (e) {
+                    e.preventDefault();
+
+                    setDayCollection('selPickUpMonth', 'selPickUpDay', 'selPickUpYear', true);
+
+                });
+
+                $('#butSaveReceipt').click(function (e) {
+                    e.preventDefault();
+
+
+                    //additional by janine
+                    //if senior citizen discount or pwd is selected
+                    //check if all fields are filled
+
+                    if (isSeniorCitizenPWDDiscount) {
+
+                        //                        if (CStr2(sessionStorage.IsEnableDiningMode) == 'true') {
+                        //                            if (!window.pageDiscounts.checkDiscountDetails(showDiscountDetails))
+                        //                                return;
+                        //                        } else {
+                        if (!checkDiscountDetails())
+                            return;
+                        //                        }
+                    }
+                    //end of additional
+
+
+                    IsPrintReceipt = false;
+                    IsEmailReceipt = false;
+                    IsDeliveryInfoPriceQuote = false;
+
+                    SaveDeliveryInfo();
+
+                });
+
+                $('#btnSalesPaymentDone, #butPrintReceipt').click(function (e) {
+                    e.preventDefault();
+
+                    sessionStorage.PrintOption = '';
+                    //additional by janine
+                    //if senior citizen discount or pwd is selected
+                    //check if all fields are filled
+
+                    if (isSeniorCitizenPWDDiscount) {
+
+                        //                        if (CStr2(sessionStorage.IsEnableDiningMode) == 'true') {
+                        //                            if (!window.pageDiscounts.checkDiscountDetails(showDiscountDetails))
+                        //                                return;
+                        //                        } else {
+                        if (!checkDiscountDetails())
+                            return;
+                        //                        }
+                    }
+                    //end of additional
+
+
+                    IsPrintReceipt = true;
+                    IsPrintOrderSlip = false;
+                    IsEmailReceipt = false;
+                    IsDeliveryInfoPriceQuote = false;
+
+                    SaveDeliveryInfo();
+
+                });
+
+                $('#butPrintOrderSlip').click(function() {
+                    NewMessageBox('Priting order slip. jsDCNGFPUKRG!');
+                });
+
+                $('#butPrintOrderSlipAndBilling').click(function() {
+                    NewMessageBox('Priting order slip and billing. jsW83MS9GUHP!');
+                });
+
+                $('#butPrintReceiptOrderSlip').click(function() {
+                    NewMessageBox('Priting receipt / order slip. jsAJZ7LJSM8G!');
+                    Business.TransInvoice.CreateSalesOrderPdf(pParams.InvoiceID);
+                });
+
+                $('#butPrintBilling').click(function () {
+                    var pParams = GetUrlParameters();
+                    var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+                    var pSql = '';
+                    var pDt;
+
+                    pSql = 'Select SalesOrderNo from private.TransInvoice where ID = ' + ReadyString(pInvoiceID);
+                    pDt = Sql.Execute(pSql);
+
+                    if (parseInt(pDt.Rows[0].SalesOrderNo) == 0 || pDt.Rows[0].SalesOrderNo == undefined) {
+
+                        pSql = 'SELECT IFNULL(devfowst.POSLastSONo,0)+1 NewInvoiceNo FROM private.LibraryDeviceFowst devfowst WHERE devfowst.FowstID = ' + ReadyString(sessionStorage.FowstID) + ' AND devfowst.DeviceID = ' + ReadyString(Web.DeviceID())
+
+                        pDt = Sql.Execute(pSql);
+
+                        if (pDt.Rows.length > 0) {
+
+                            pSql = 'Update private.TransInvoice set SalesOrderNo = ' + pDt.Rows[0].NewInvoiceNo + ' Where ID = ' + ReadyString(pInvoiceID);
+
+                            Sql.ExecuteSql(pSql);
+
+                            var pIU;
+
+                            pIU = new InsertUpdate('private.LibraryDeviceFowst');
+
+                            pIU.Add('POSLastSONo', "(SELECT IFNULL(devfowst.POSLastSONo,0) + 1 FROM private.LibraryDeviceFowst devfowst WHERE devfowst.FowstID = " + ReadyString(sessionStorage.FowstID) + " AND devfowst.DeviceID = " + ReadyString(Web.DeviceID()) + ")");
+
+                            pSql = pIU.GetUpdate("FowstID = " + ReadyString(sessionStorage.FowstID) + " AND DeviceID = " + ReadyString(Web.DeviceID()));
+
+                            Sql.ExecuteSql(pSql);
+                        }
+                    }
+
+                    PrintBilling(pInvoiceID);
+                });
+
+                $('#btnSalesPaymentBack').click(function (e) {
+                    e.preventDefault();
+
+                    if (location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                        $('#divPayment').hide();
+                        $('#divHeader').show();
+                        $('#divHotButtons').show();
+                    }
+                    else {
+                        history.back();
+                    }
+
+                });
+
+                $('#btnSalesPaymentEmail').click(function (e) {
+                    e.preventDefault();
+
+                    //                if (OfflineMode) {
+                    //                    MessageBox("Email Receipt is not available in offline mode.",
+                    //                                        "Email Receipt",
+                    //                                        [
+                    //                                            { Text: 'Ok'
+                    //                                            }
+                    //                                        ]
+                    //                                );
+                    //                }
+                    //                else{
+
+
+                    //additional by janine
+                    //if senior citizen discount or pwd is selected
+                    //check if all fields are filled
+
+                    if (isSeniorCitizenPWDDiscount) {
+
+                        //                        if (CStr2(sessionStorage.IsEnableDiningMode) == 'true') {
+                        //                            if (!window.pageDiscounts.checkDiscountDetails(showDiscountDetails))
+                        //                                return;
+                        //                        } else {
+                        if (!checkDiscountDetails())
+                            return;
+                        //                        }
+                    }
+                    //end of additional
+
+                    var pData = {};
+                    var pParams = GetUrlParameters();
+                    pData.InvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+                    AjaxSend({
+                        url: 'Login3/TestCookies',
+                        data: pData,
+                        success: function (vData) {
+                            IsPrintReceipt = false;
+                            IsEmailReceipt = true;
+                            IsDeliveryInfoPriceQuote = false;
+
+                            SaveDeliveryInfo();
+                        },
+                        error: function (vError) {
+                            MessageBox("This feature requires internet connection.",
+                                   "Requires Internet Connection",
+                                    [
+                                        { Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                            return;
+                        }
+
+                    });
+                    //                }
+
+                });
+
+                $('#btnDeliveryInfoPriceQoute').click(function (e) {
+                    e.preventDefault();
+
+                    //                if (OfflineMode) {
+                    //                    MessageBox("Email Price Quote is not available in offline mode.",
+                    //                                        "Email Receipt",
+                    //                                        [
+                    //                                            { Text: 'Ok'
+                    //                                            }
+                    //                                        ]
+                    //                                );
+                    //                }
+                    //                else{
+
+                    var pData = {};
+                    var pParams = GetUrlParameters();
+                    pData.InvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+                    AjaxSend({
+                        url: 'Login3/TestCookies',
+                        data: pData,
+                        success: function (vData) {
+                            IsPrintReceipt = false;
+                            IsEmailReceipt = true;
+                            IsDeliveryInfoPriceQuote = true;
+
+                            SaveDeliveryInfo();
+                        },
+                        error: function (vError) {
+                            MessageBox("This feature requires internet connection.",
+                                   "Requires Internet Connection",
+                                    [
+                                        { Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                            return;
+                        }
+
+                    });
+                    //                }
+
+                });
+
+                $('#btnSalesPaymentPrintEmail').click(function (e) {
+                    e.preventDefault();
+
+                    //                if (OfflineMode) {
+                    //                    MessageBox("Email Receipt is not available in offline mode.",
+                    //                                        "Email Receipt",
+                    //                                        [
+                    //                                            { Text: 'Ok'
+                    //                                            }
+                    //                                        ]
+                    //                                );
+                    //                }
+                    //                else{
+
+
+                    //additional by janine
+                    //if senior citizen discount or pwd is selected
+                    //check if all fields are filled
+
+                    if (isSeniorCitizenPWDDiscount) {
+
+                        //                        if (CStr2(sessionStorage.IsEnableDiningMode) == 'true') {
+                        //                            if (!window.pageDiscounts.checkDiscountDetails(showDiscountDetails))
+                        //                                return;
+                        //                        } else {
+                        if (!checkDiscountDetails())
+                            return;
+                        //                        }
+                    }
+                    //end of additional
+
+                    var pData = {};
+                    var pParams = GetUrlParameters();
+                    pData.InvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+                    AjaxSend({
+                        url: 'Login3/TestCookies',
+                        data: pData,
+                        success: function (vData) {
+                            IsPrintReceipt = true;
+                            IsEmailReceipt = true;
+                            IsDeliveryInfoPriceQuote = false;
+
+                            SaveDeliveryInfo();
+                        },
+                        error: function (vError) {
+                            MessageBox("This feature requires internet connection.",
+                                   "Requires Internet Connection",
+                                    [
+                                        { Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                            return;
+                        }
+
+                    });
+                    //                }
+
+
+                });
+
+                $('#btnSalesPaymentEmailOK').click(function (e) {
+                    e.preventDefault();
+
+                    strSalesPaymentEmail = "";
+                    for (var i = 0; i <= intSalesPaymentEmailCntr; i++) {
+
+                        if ($("#chkEmail-" + i).is(":checked")) {
+                            var pEmailData = $("#chkEmail-" + i).data('Data');
+
+                            strSalesPaymentEmail = strSalesPaymentEmail + (strSalesPaymentEmail.length > 0 ? ", " : "") + pEmailData.EmailAddress
+                        }
+
+                    }
+
+                    if ($.trim($("#txtSalesPayEmailAddress").val()) == "" && strSalesPaymentEmail == "") {
+                        MessageBox("Please enter email address.",
+                           "Email Address",
+                            [
+                                { Text: 'Ok'
+                                }
+                            ]
+                    );
+                        return;
+                    } else {
+                        if ($.trim($("#txtSalesPayEmailAddress").val()).length > 0) {
+                            strSalesPaymentEmail = strSalesPaymentEmail + (strSalesPaymentEmail.length > 0 ? ", " : "") + $.trim($("#txtSalesPayEmailAddress").val())
+                        }
+                    }
+
+                    SaveDeliveryInfo();
+
+                });
+
+                $('#btnSalesPaymentEmailCancel').click(function (e) {
+                    e.preventDefault();
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+
+                });
+
+
+                $('#selDiscountType').change(function (e) {
+                    e.preventDefault();
+
+                    var strAccessType = "";
+                    $('#divAddCustomerDetails').hide();
+                    $('#divSCPWDDiscount').hide();
+
+                    $("#txtDiscountPercent").removeAttr("disabled");
+                    $("#txtDiscountAmount").removeAttr("disabled");
+
+                    if ($(this).val().toUpperCase() == '35F954A0-C67C-499C-AF60-F08E64477FDC') {
+                        strAccessType = "Allow to grant VIP Discount";
+                        showDiscountDetails = false;
+                        isSeniorCitizenPWDDiscount = false;
+                        isSeniorCitizenDiscount = false;
+                    } else if ($('#selDiscountType').val().toUpperCase() == '764EDACB-0131-4033-8E44-7B903368008C') {
+                        strAccessType = "Allow to grant Regular Discount 1";
+                        showDiscountDetails = false;
+                        isSeniorCitizenPWDDiscount = false;
+                        isSeniorCitizenDiscount = false;
+                    } else if ($('#selDiscountType').val().toUpperCase() == 'C4199347-6A00-45C9-BE11-8934DD63ECD1') {
+                        strAccessType = "Allow to grant Regular Discount 2";
+                        showDiscountDetails = false;
+                        isSeniorCitizenPWDDiscount = false;
+                        isSeniorCitizenDiscount = false;
+                    } else if ($('#selDiscountType').val().toUpperCase() == '8E2DCA9C-433F-42FC-A644-04476DBA056A') {
+                        strAccessType = "Allow to grant Regular Discount 3";
+                        showDiscountDetails = false;
+                        isSeniorCitizenPWDDiscount = false;
+                        isSeniorCitizenDiscount = false;
+                    } else if ($('#selDiscountType').val().toUpperCase() == '7804A35A-B531-4380-945E-FC9643E99843') {
+                        strAccessType = "Allow to grant Employee Discount";
+                        showDiscountDetails = false;
+                        isSeniorCitizenPWDDiscount = false;
+                        isSeniorCitizenDiscount = false;
+                    } else if ($('#selDiscountType').val().toUpperCase() == '055A0A33-DD98-47EC-ADD3-8B2009F3944A') {
+                        strAccessType = "Allow to grant Senior Citizens' (SC) Discount";
+                        $('#divAddCustomerDetails').show();
+                        $('#divSCPWDDiscount').show();
+                        showDiscountDetails = true;
+                        isSeniorCitizenPWDDiscount = true;
+                        isSeniorCitizenDiscount = true;
+                        $('#txtDiscountPercent').attr("disabled", "disabled");
+                        $("#txtDiscountAmount").attr("disabled", "disabled");
+                    } else if ($('#selDiscountType').val().toUpperCase() == '34A4032F-A142-4C15-A868-4AC4410434DF') {
+                        strAccessType = "Allow to grant Person With Disability (PWD) Discount";
+                        $('#divAddCustomerDetails').show();
+                        isSeniorCitizenPWDDiscount = true;
+                        showDiscountDetails = false;
+                        isSeniorCitizenDiscount = false;
+                        $('#txtDiscountPercent').attr("disabled", "disabled");
+                        $("#txtDiscountAmount").attr("disabled", "disabled");
+                    } else if ($('#selDiscountType').val().toUpperCase() == '674AD791-188B-4238-B95C-97B5C2B9D544') {
+                        strAccessType = "Allow to grant Senior Citizens' (SC) Discount";
+                        $('#divAddCustomerDetails').show();
+                        isSeniorCitizenPWDDiscount = true;
+                        isSeniorCitizenDiscount = true;
+                        showDiscountDetails = false;
+                        $('#txtDiscountPercent').attr("disabled", "disabled");
+                        $("#txtDiscountAmount").attr("disabled", "disabled");
+                    } else if ($('#selDiscountType').val().toUpperCase() == 'C2218C86-0450-4CD3-B019-3EDD43E51741') {
+                        strAccessType = "Allow to grant GPC Discount";
+                        showDiscountDetails = false;
+                        isSeniorCitizenPWDDiscount = false;
+                        isSeniorCitizenDiscount = false;
+                    } else {
+                        showDiscountDetails = false;
+                        isSeniorCitizenPWDDiscount = false;
+                        isSeniorCitizenDiscount = false;
+                    }
+
+                    if (strAccessType == "") {
+                        $('#selDiscountType').val('').selectmenu('refresh');
+                        $("#txtDiscountPercent").val("0.00");
+                        $("#txtDiscountAmount").val("0.00");
+
+                        getOrgDiscountPercentRefresh($('#selDiscountType').val());
+                        proj.RefreshTotalDiscount();
+
+                    } else {
+                        window.pageSecuritySourcePage = $.mobile.activePage;
+                        PromptUserAccess(strAccessType, {
+                            OnClickOKSuccess: function () {
+
+                                $.mobile.changePage(window.pageSecuritySourcePage);
+
+                                getOrgDiscountPercentRefresh($('#selDiscountType').val());
+
+                                //                                proj.RefreshTotalDiscount();
+
+                            },
+                            OnFailed: function () {
+                                $.mobile.changePage(window.pageSecuritySourcePage);
+                                $('#selDiscountType').val('').selectmenu('refresh');
+                                $("#txtDiscountPercent").val("0.00");
+                                $("#txtDiscountAmount").val("0.00");
+                                getOrgDiscountPercentRefresh($('#selDiscountType').val());
+
+                                proj.RefreshTotalDiscount();
+                            }
+                        });
+                    }
+
+                    //if enabling biling, then save discount on change not on print or save
+                    // this is necessary because changes in the billing page discount dropdown are directly applied to the local db
+                    //on CHANGE event. upon paying, when there are changes made in the discount dropdown, it must also reflect directly in the db
+                    // if billing mode is not enabled, then there is no changes in the db regarding discounts so it's ok not to save the 
+                    //changes directly to the db
+                    // - janine feb 20 2015
+                    //                    if (CStr2(sessionStorage.IsEnableDiningMode) == 'true')
+                    window.pageDiscounts.RefreshSalesPaymentTotalBilling();
+                });
+
+                $("#txtDiscountPercent").keydown(function (e) {
+                    if (e.keyCode != 110 && e.keyCode != 190) {
+                        if (!NumberOnly(e)) return;
+                    }
+                }).bind('change', function () {
+
+                    var percent = CDec2($.trim($(this).val()));
+                    var pSalesPayDiscountCeiling = parseFloat(CDec2($.trim($("#txtDiscountPercentCeiling").val().replace(/,/g, ""))));
+
+                    if (CDec2(pSalesPayDiscountCeiling) < percent && percent > 0) {
+
+                        percent = CDec2($.trim($("#txtDiscountPercentCeiling").val().replace(/,/g, "")));
+
+                        MessageBox("Sorry. You are allowed to give maximum of " + AccountingFormat(percent) + "% discount only.",
+                           $("#selDiscountType option:selected").text(),
+                            [
+                                { Text: 'Ok'
+                                }
+                            ]
+                             );
+
+                        $(this).val(AccountingFormat((percent > 0 ? AccountingFormat(percent) : "0.00")));
+                    } else {
+                        $(this).val(AccountingFormat(percent));
+
+                    }
+
+
+                    var discountAmt = (CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, "")) * (CDec2($.trim($(this).val().replace(/,/g, ""))) / 100) / 0.05) * 0.05;
+
+                    $("#txtDiscountAmount").val(AccountingFormat(discountAmt));
+                    longDiscountPercent = (CDec2($.trim($("#txtDiscountAmount").val())) / CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, ""))) * 100;
+
+
+                    proj.RefreshTotalDiscount();
+
+                });
+
+                $("#txtDiscountAmount").keydown(function (e) {
+                    if (e.keyCode != 110 && e.keyCode != 190) {
+                        if (!NumberOnly(e)) return;
+                    }
+                }).bind('change', function () {
+                    var percent = (CDec2($.trim($(this).val())) / CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, ""))) * 100;
+                    var pSalesPayDiscountCeiling = parseFloat(CDec2($.trim($("#txtDiscountPercentCeiling").val().replace(/,/g, ""))));
+
+                    if (CDec2(pSalesPayDiscountCeiling) < percent && percent > 0) {
+
+                        percent = parseFloat(CDec2($.trim($("#txtDiscountPercentCeiling").val().replace(/,/g, ""))));
+
+                        MessageBox("Sorry. You are allowed to give maximum of " + AccountingFormat(percent) + "% discount only.",
+                           $("#selDiscountType option:selected").text(),
+                            [
+                                { Text: 'Ok'
+                                }
+                            ]
+                             );
+
+                        $("#txtDiscountPercent").val(AccountingFormat((percent > 0 ? AccountingFormat(percent) : "0.00")));
+
+                    } else {
+                        $("#txtDiscountPercent").val(AccountingFormat(percent));
+                    }
+
+
+                    var discountAmt = (CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, "")) * (CDec2(percent) / 100) / 0.05) * 0.05;
+
+                    $(this).val(AccountingFormat(discountAmt));
+                    longDiscountPercent = percent;
+
+
+                    proj.RefreshTotalDiscount();
+
+
+                });
+
+
+                //////////////////////////////////////////////////////////////////////////////////
+                //additional by janine
+                $("#txtSalesPayNoOfSC").keydown(function (e) {
+                    if (e.keyCode != 110 && e.keyCode != 190) {
+                        if (!NumberOnly(e)) return;
+                    }
+                });
+
+                $('#txtSalesPayNoOfSC').change(function () {
+                    getOrgDiscountPercentRefresh($('#selDiscountType').val());
+
+                    if (CDec2($.trim($("#txtSalesPayNoOfDiners").val())) < CDec2($(this).val()))
+                        $("#txtSalesPayNoOfDiners").val($(this).val());
+
+                    sessionStorage.NoOfSeniorCitizens = $(this).val();
+                    ComputeSCDiscount();
+                    window.pageDiscounts.RefreshSalesPaymentTotalBilling();
+                })
+
+                $("#txtSalesPayNoOfSC").bind('keyup', function () {
+                    getOrgDiscountPercentRefresh($('#selDiscountType').val());
+
+                    if (CDec2($.trim($("#txtSalesPayNoOfDiners").val())) < CDec2($(this).val()))
+                        $("#txtSalesPayNoOfDiners").val($(this).val());
+
+                    sessionStorage.NoOfSeniorCitizens = $(this).val();
+                    window.pageDiscounts.RefreshSalesPaymentTotalBilling();
+                    //if (CDec2($.trim($("#txtSalesPayNoOfSC").val())) > 0 && CDec2($.trim($("#txtSalesPayNoOfDiners").val())) > 0) {
+                        
+                    //    var proportionOfSeniors = parseFloat($.trim($("#txtSalesPayNoOfSC").val())) / parseFloat($.trim($("#txtSalesPayNoOfDiners").val()));
+                    //    var seniorCitizenDiscountRate = parseFloat($('#txtDiscountPercentCeiling').val()) * 0.01;
+                    //    var weightedSCDiscountRate = proportionOfSeniors * seniorCitizenDiscountRate;
+                    //    var totalBillBeforeSCDiscount = parseFloat($('#lblSalesPayAmountDue').val());
+                    //    var totalBillToBePayed = weightedSCDiscountRate * totalBillBeforeSCDiscount;
+                        
+                    //    $("#txtDiscountPercent").val(AccountingFormat(weightedSCDiscountRate * 100));
+
+                    //    $("#txtDiscountAmount").val(AccountingFormat(CDec2($('#lblTotalAmount').text().replace(/,/g, "")) * weightedSCDiscountRate));
+                    //} 
+
+                    //longDiscountPercent = (CDec2($.trim($("#txtDiscountAmount").val())) / CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, ""))) * 100;
+
+                    //proj.RefreshTotalDiscount();
+
+                    ComputeSCDiscount();
+                });
+
+                $("#txtSalesPayNoOfDiners").keydown(function (e) {
+                    if (e.keyCode != 110 && e.keyCode != 190) {
+                        if (!NumberOnly(e)) return;
+                    }
+                });
+
+                $("#txtSalesPayNoOfDiners").change(function () {
+                    getOrgDiscountPercentRefresh($('#selDiscountType').val());
+                    sessionStorage.TotalNumberOfCustomer = $(this).val();
+                    ComputeSCDiscount();
+                    window.pageDiscounts.RefreshSalesPaymentTotalBilling();
+                });
+
+                $("#txtSalesPayNoOfDiners").bind('keyup', function () {
+                    getOrgDiscountPercentRefresh($('#selDiscountType').val());
+                    sessionStorage.TotalNumberOfCustomer = $(this).val();
+                    ComputeSCDiscount();
+                    window.pageDiscounts.RefreshSalesPaymentTotalBilling();
+                    //if (CDec2($.trim($("#txtSalesPayNoOfSC").val())) > 0 && CDec2($.trim($("#txtSalesPayNoOfDiners").val())) > 0) {
+
+                    //    var proportionOfSeniors = parseFloat($.trim($("#txtSalesPayNoOfSC").val())) / parseFloat($.trim($("#txtSalesPayNoOfDiners").val()));
+                    //    var seniorCitizenDiscountRate = parseFloat($('#txtDiscountPercentCeiling').val()) * 0.01;
+                    //    var weightedSCDiscountRate = proportionOfSeniors * seniorCitizenDiscountRate;
+                    //    var totalBillBeforeSCDiscount = parseFloat($('#lblSalesPayAmountDue').val());
+                    //    var totalBillToBePayed = weightedSCDiscountRate * totalBillBeforeSCDiscount;
+
+                    //    $("#txtDiscountPercent").val(weightedSCDiscountRate * 100);
+
+                    //    $("#txtDiscountAmount").val(AccountingFormat(CDec2($('#lblTotalAmount').text().replace(/,/g, "")) * weightedSCDiscountRate));
+
+                    //}
+
+                    ////var discountAmt = (CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, "")) * (CDec2($.trim($(this).val().replace(/,/g, ""))) / 100) / 0.05) * 0.05;
+
+                    ////$("#txtDiscountAmount").val(AccountingFormat(discountAmt));
+                    //longDiscountPercent = (CDec2($.trim($("#txtDiscountAmount").val())) / CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, ""))) * 100;
+
+
+                    //proj.RefreshTotalDiscount();
+
+
+                });
+
+                function ComputeSCDiscount() {
+
+                    if (CDec2($.trim($("#txtSalesPayNoOfSC").val())) > 0 && CDec2($.trim($("#txtSalesPayNoOfDiners").val())) > 0) {
+
+                        //var proportionOfSeniors = parseFloat($.trim($("#txtSalesPayNoOfSC").val())) / parseFloat($.trim($("#txtSalesPayNoOfDiners").val()));
+                        //var seniorCitizenDiscountRate = parseFloat($('#txtDiscountPercentCeiling').val()) * 0.01;
+                        //var weightedSCDiscountRate = proportionOfSeniors * seniorCitizenDiscountRate;
+                        //var totalBillBeforeSCDiscount = parseFloat($('#lblSalesPayAmountDue').val());
+                        //var totalBillToBePayed = weightedSCDiscountRate * totalBillBeforeSCDiscount;
+
+                        //$("#txtDiscountPercent").val(weightedSCDiscountRate * 100);
+
+                        //$("#txtDiscountAmount").val(AccountingFormat(CDec2($('#lblTotalAmount').text().replace(/,/g, "")) * weightedSCDiscountRate));
+
+                        //longDiscountPercent = (CDec2($.trim($("#txtDiscountAmount").val())) / CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, ""))) * 100;
+                        
+                        //proj.RefreshTotalDiscount();
+
+
+                        //var proportionofseniors = parseFloat($.trim($("#txtSalesPayNoOfSC").val())) / parseFloat($.trim($("#txtSalesPayNoOfDiners").val()));
+                        //var proportionofregular = (parseFloat($.trim($("#txtSalesPayNoOfDiners").val())) - parseFloat($.trim($("#txtSalesPayNoOfSC").val()))) / parseFloat($.trim($("#txtSalesPayNoOfDiners").val()));
+
+                        //var seniorcitizendiscountrate = parseFloat($('#txtDiscountPercentCeiling').val()) * 0.01;
+                        //var weightedscdiscountrateofSenior = proportionofseniors * seniorcitizendiscountrate;
+                        
+                        ////var totalbillbeforescdiscount = parseFloat($('#lblSalesPayAmountDue').text());
+                        //var totalbillbeforescdiscount = parseFloat($('#lblTotalAmount').text());
+
+                        //var totalbilltobepayedofSeniors = weightedscdiscountrateofSenior * totalbillbeforescdiscount;
+                        ////var totalbilltobepayedofregular = proportionofregular * totalbillbeforescdiscount;
+
+                        //$("#txtDiscountPercent").val(weightedscdiscountrateofSenior * 100);
+
+                        //$("#txtDiscountAmount").val(AccountingFormat(CDec2($('#lblTotalAmount').text().replace(/,/g, "")) * weightedscdiscountrateofSenior));
+
+                        //longdiscountpercent = (CDec2($.trim($("#txtDiscountAmount").val())) / CDec2($('#lblSalesPaySubTotal').text().replace(/,/g, ""))) * 100;
+
+                        proj.RefreshTotalDiscount();
+                    }
+                                        
+                }
+
+                $('#btnTitle').click(function () {
+
+                    Browser.LibraryPeoplePreSuffix.Click = function (e) {
+
+                        $('#txtTitleID').val(e.ID)
+                        $('#btnTitle').text(e.Code)
+                    .button('refresh');
+
+                    };
+                    Browser.LibraryPeoplePreSuffix.Show();
+
+                });
+                $('#selDOBMonth').change(function (e) {
+                    e.preventDefault();
+
+                    setDayCollection('selDOBMonth', 'selDOBDay', 'selDOBYear', true);
+
+                });
+
+                $('#selDOBYear').change(function (e) {
+                    e.preventDefault();
+
+                    setDayCollection('selDOBMonth', 'selDOBDay', 'selDOBYear', true);
+
+                });
+
+                $('#selDOBYear').click(function (e) {
+                    e.preventDefault();
+
+                    if ($.trim($('#selDOBYear').val()) == "") {
+                        $('#selDOBYear').val('1980');
+                        $('#selDOBYear').selectmenu('refresh');
+                    }
+
+                });
+
+
+                $('#selIDType').change(function (e) {
+                    e.preventDefault();
+
+                    $('#txtOtherIDType').val('');
+                    if ($(this).val() == 'Other')
+                        $('#divOtherIDType').show();
+                    else
+                        $('#divOtherIDType').hide();
+
+
+                    ///////////////////////////////
+
+                    for (var i = 0; i <= intSalesPayCustomerIdentificationCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerIdentification-" + i] != undefined) {
+
+                            arSalesPayCustomerIdentification = new Array();
+                            arSalesPayCustomerIdentification = JSON.parse(sessionStorage["SalesPayCustomerIdentification-" + i]);
+                            if (arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] != "Remove") {
+                                IsNewSalesPayCustomerIdentification = false;
+
+                                intSalesPayCustomerIdentificationIndex = i;
+
+                                $('#txtIDText').val('');
+                            }
+
+                        }
+                    }
+
+                });
+
+
+
+                $('#btnSCPWDDiscountCustomerInfo').click(function (e) {
+                    e.preventDefault();
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+                    ClearSalesPaySeniorCitizenDiscountFields();
+
+                });
+
+
+                $('#btnAddNewCustomer').click(function (e) {
+                    e.preventDefault();
+
+
+                    IsNewSalesPayCustomerName = true;
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+
+                        if (location.hash == '#payment')
+                            sessionStorage.CurrentPage = 'payment';
+                        else
+                            sessionStorage.CurrentPage = 'discount';
+
+                        ShowSeniorCitizenPWDPage();
+
+
+                    }
+                    else
+                        $.mobile.changePage('#pageAddNewCustomer');
+
+                    setMonthCollection("selDOBMonth");
+                    setYearCollection("selDOBYear");
+
+                    ClearSalesPayCustomerNameFields();
+
+                    intSalesPayCustomerNameCntr = intSalesPayCustomerNameCntr + 1;
+                    intSalesPayCustomerNameIndex = intSalesPayCustomerNameCntr;
+
+                    IsNewSalesPayCustomerIdentification = true;
+                    ClearSalesPayCustomerIdentificationFields();
+
+
+                    for (var i = 0; i <= intSalesPayCustomerIdentificationCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerIdentification-" + i] != undefined) {
+                            sessionStorage.removeItem("SalesPayCustomerIdentification-" + i);
+
+                        }
+
+                    }
+
+                    intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                    intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+
+
+
+                    $('#btnSalesPayCustomerIdentificationRemove').hide();
+
+                    $("#btnSalesPayCustomerNameRemove").hide();
+
+                    var pSql = "SELECT DefaultValue FROM private.SystemDefaults WHERE Description = 'PictureOfIDDurationSCPWDDiscount'";
+
+                    if (CBool(Sql.ExecuteScalar(pSql))) {                        
+
+                        imagefilename = "SC" + Date.parse(new Date());
+
+                        e.preventDefault();
+                        NewCameraImageManual(imagefilename);
+                    }
+
+                });
+
+
+
+
+                $('#frmCustomerSearch').submit(function (e) {
+
+                    e.preventDefault();
+
+                    window.pageSourcePage = $.mobile.activePage;
+
+                    var pSql = "SELECT DefaultValue FROM private.SystemDefaults WHERE Description = 'PictureOfIDDurationSCPWDDiscount'";
+
+                    if (CBool(Sql.ExecuteScalar(pSql))) {                        
+
+                        imagefilename = "SC" + Date.parse(new Date());
+
+                        e.preventDefault();
+                        NewCameraImageManual(imagefilename);
+                    }
+
+                    //filter to show only person type customers
+                    Browser.LibraryOrganization.InputData.FilterTypePerson = 1;
+                    Browser.LibraryOrganization.InputData.FilterCustomers = 1;
+                    Browser.LibraryOrganization.Click = function (e) {
+
+                        sessionStorage.CurrentPage = 'payment';
+
+
+                        for (var i = 0; i <= intSalesPayCustomerNameCntr; i++) {
+
+                            if (sessionStorage["SalesPayCustomerName-" + i] != undefined) {
+
+                                arSalesPayCustomerName = new Array();
+                                arSalesPayCustomerName = JSON.parse(sessionStorage["SalesPayCustomerName-" + i]);
+
+                                if (arSalesPayCustomerName[intSalesPayCustomerNameState] != "Remove") {
+
+                                    if (e.ID == arSalesPayCustomerName[intSalesPayCustomerNameID]) {
+
+                                        arSalesPayCustomerName[intSalesPayCustomerNameState] = "Remove";
+                                        sessionStorage["SalesPayCustomerName-" + i] = JSON.stringify(arSalesPayCustomerName);
+
+                                    }
+                                }
+
+                            } //end if
+                        } //end for
+
+                        if (OfflineMode) {
+                           
+                            SalesPayment_offline().saveSeniorCitizenPWDCustomer(e.ID, sessionStorage.CartOrderID, imagefilename)
+
+                            
+                            // get all sr. citizen from db
+                            var vDataShow = SalesPayment_offline().getSeniorCitizenPWDCustomer(sessionStorage.CartOrderID);
+                            window.pageDiscounts.LoadSavedCustomerNameList(vDataShow.Rows, true)
+
+
+                            // commented by arnie 1.12.18 
+                            //var vData = SalesPayment_offline().getOrganizationInfo(e.ID);
+
+
+                            //if (vData.OrganizationData.Rows.length > 0) {
+                            //    location.hash = '';
+
+                            //    displayCustomerNameList(vData.OrganizationData.Rows);
+
+                            //} else {
+                            //    MessageBox('No data found.');
+                            //}
+
+                        } else {
+                            AjaxSend({
+                                url: 'OrganizationShort/getOrganizationInfo',
+                                data: { OrganizationID: e.ID },
+                                success: function (vData) {
+                                    displayCustomerNameList(vData.OrganizationData.Rows);
+
+                                },
+                                error: function (vError) {
+                                    MessageBox("This feature requires internet connection.",
+                                                "Requires Internet Connection",
+                                                [
+                                                    { Text: 'Ok'
+                                                    }
+                                                ]
+                                        );
+                                    return;
+                                }
+
+                            }); //ajaxsend
+
+
+                        } // end if offline
+
+
+                    };
+
+                    Browser.LibraryOrganization.Show($('#txtCustomerSearch').val());
+
+                });
+
+                //                    $('#btnSalesPayCustomerNameRemove').click(function (e) {
+                //                        e.preventDefault();
+
+                //                        MessageBox("Remove this record?",
+                //                        'Remove',
+                //                        [
+                //                            { Text: 'Yes',
+                //                                Click: function () {
+                //                                    sessionStorage.CurrentPage = 'payment';
+                //                                    RemoveSalesPayCustomerName();
+                //                                }
+                //                            }
+                //                        ,
+                //                            { Text: 'No'
+                //                            }
+                //                        ]
+                //                    );
+
+
+                //                    });
+
+
+
+
+
+                $('#btnSalesPayCustomerIdentificationAdd').click(function (e) {
+                    e.preventDefault();
+
+                    IsNewSalesPayCustomerIdentification = true;
+                    $('#btnSalesPayCustomerIdentificationRemove').hide();
+
+                    $('#popupAddNewID').popup('open');
+
+                    ClearSalesPayCustomerIdentificationFields();
+
+                    intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                    intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+
+                });
+
+
+
+                //additional by janine nov 10
+                $('#btnBackPayments').click(function (e) {
+                    e.preventDefault();
+
+                    window.pageHeader.LoadHotButtons();
+                });
+                $('#btnBackGiftCert').click(function (e) {
+                    e.preventDefault();
+                    window.pageHeader.ShowPaymentsPage(false);
+                });
+
+                $('#btnBackSRV').click(function (e) {
+                    e.preventDefault();
+                    window.pageHeader.ShowPaymentsPage(false);
+                });
+                
+                $('#txtAddChargePercent').change(function (e) {
+                    var chargeAmount = CDec2($.trim($(this).val())) / 100;
+                    //longChargeAmount = chargeAmount * CDec2(lblVATableSales);
+                    longChargeAmount = chargeAmount * CDec2($('#lblSalesPaySubTotal').text());
+
+                    $('#txtAddCharge').val(chargeAmount * CDec2($('#lblSalesPaySubTotal').text()));
+
+                });
+
+                $('#txtAddCharge').change(function (e) {
+                    var chargePercent = CDec2($.trim($(this).val())) / CDec2($('#lblSalesPaySubTotal').text());
+                    longChargeAmount = $(this).val();
+                    $('#txtAddChargePercent').val(chargePercent * 100);
+                });
+                //                $('#txtAddCharge').keydown(function (e) {
+                //                    if (e.keyCode != 110 && e.keyCode != 190) {
+                //                        if (!NumberOnly(e)) return;
+                //                    }
+                //                });
+
+                $('#btnAddCharge').click(function (e) {
+                    e.preventDefault();
+                    if ($.trim($("#txtAddCharge").val()) != '') {
+                        var hasMatch = false;
+
+                        if (pDataCharges[0] != undefined) {
+                            for (var i = 0; i < pDataCharges.length; i++) {
+                                if ($('#selChargeType').val() == pDataCharges[i].ChargeType) {
+                                    //charges
+
+                                    pDataCharges[i] = {
+                                        ChargeType: $.trim($("#selChargeType").val()),
+                                        ChargeAmount: $.trim($("#selChargeType").val()) != 'Tip' && $.trim($("#selChargeType").val()) != 'Local Tax' ? longChargeAmount : 0,
+                                        TipAmount: $.trim($("#selChargeType").val()) == 'Tip' ? longChargeAmount : 0,
+                                        TaxAmount: $.trim($("#selChargeType").val()) == 'Local Tax' ? longChargeAmount : 0,
+                                        Remarks: $.trim($("#txtChargeRemarks").val())
+                                    };
+                                    hasMatch = true;
+                                    break;
+                                }
+                            }
+
+
+                            if (!hasMatch) {
+                                pDataCharges[1] = {
+                                    ChargeType: $.trim($("#selChargeType").val()),
+                                    ChargeAmount: $.trim($("#selChargeType").val()) != 'Tip' && $.trim($("#selChargeType").val()) != 'Local Tax' ? longChargeAmount : 0,
+                                    TipAmount: $.trim($("#selChargeType").val()) == 'Tip' ? longChargeAmount : 0,
+                                    TaxAmount: $.trim($("#selChargeType").val()) == 'Local Tax' ? longChargeAmount : 0,
+                                    Remarks: $.trim($("#txtChargeRemarks").val())
+                                };
+                            }
+                        } else {
+                            pDataCharges[0] = {
+                                ChargeType: $.trim($("#selChargeType").val()),
+                                ChargeAmount: $.trim($("#selChargeType").val()) != 'Tip' && $.trim($("#selChargeType").val()) != 'Local Tax' ? longChargeAmount : 0,
+                                TipAmount: $.trim($("#selChargeType").val()) == 'Tip' ? longChargeAmount : 0,
+                                TaxAmount: $.trim($("#selChargeType").val()) == 'Local Tax' ? longChargeAmount : 0,
+                                Remarks: $.trim($("#txtChargeRemarks").val())
+                            };
+
+
+                        }
+                        var pParams = GetUrlParameters();
+                        var invoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                        var pData = {
+                            InvoiceID: invoiceID,
+                            SalesPaymentChargeList: pDataCharges
+                        };
+
+
+                        if (SalesPayment_offline().SaveBillingCharges(pData) == 'ok') {
+
+                            getCurrentCharges();
+
+                            RefreshSalesPaymentTotal();
+
+                            RefreshSalesPaymentTotal_onchange();
+                        }
+                    } else {
+                        Android.Toast('Please enter an amount');
+                    }
+                });
+
+                $('#selChargeType').change(function (e) {
+                    e.preventDefault();
+                    longChargeAmount = 0;
+                    $("#txtAddCharge").val('');
+                    $("#txtAddChargePercent").val('');
+                    $("#txtChargeRemarks").val('');
+                });
+                ////////////////////////////////
+                //DIAGNOSE PRINTER - janine jan 30 2015
+                if (window.location.pathname.toLowerCase() != '/salesmenu/posviewall') {
+                    function DisplayPrinterList(vRows) {
+
+                        $('#selOtherPrinter').empty();
+
+                        $('#selOtherPrinter').append(new Option('Please Select', ''));
+                        for (var p = 0; p <= vRows.length - 1; p++) {
+                            $('#selOtherPrinter').append(new Option(vRows[p].PrinterName + ' - ' + vRows[p].PrinterIPAddress, vRows[p].ID + '_' + vRows[p].PrinterIPAddress, false, false));
+                        }
+
+                        $('#selOtherPrinter').selectmenu('refresh');
+                    }
+                    $('#selOtherPrinter').change(function (e) {
+                        e.preventDefault();
+
+                        newPrinterFowstID = '';
+                        newPrinterIP = '';
+
+                        if ($(this).val() != '') {
+                            var vPrinter = $(this).val().split('_'); //after the underscore, ip address. first, id
+                            newPrinterFowstID = vPrinter[0];
+                            newPrinterIP = vPrinter[1];
+
+                            var pParams = GetUrlParameters();
+                            var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                            PrintReceipt(pInvoiceID);
+                        }
+                        //                    $("#selOtherPrinter option[value='" + $(this).val() + "']").attr("selected", "selected");
+                        //                    $(this).selectmenu('refresh');
+
+                    });
+                    $('#btnReprint').click(function (e) {
+                        e.preventDefault();
+
+                        var pParams = GetUrlParameters();
+                        var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                        if (pInvoiceID != '') {
+                            PrintReceipt(pInvoiceID);
+                        }
+                    });
+                    $('#btnPrintOther').click(function (e) {
+                        e.preventDefault();
+
+
+                        $.mobile.changePage('#pageOtherPrinter');
+                        $('#txtNewPrinterName').val('');
+                        $('#txtNewPrinterIP').val('');
+
+                        var result = SalesPayment_offline().getFowstPrinterList(sessionStorage.FowstID);
+                        if (result.Rows != undefined) {
+                            DisplayPrinterList(result.Rows);
+                        }
+                    });
+                    $('#btnSavePrint').click(function (e) {
+                        e.preventDefault();
+
+                        if ($.trim($("#txtNewPrinterName").val()) == "") {
+                            MessageBox("Please enter printer name.",
+                            "Printer Name",
+                            [
+                                { Text: 'Ok' }
+                            ]
+                       );
+                            return;
+                        }
+                        if ($.trim($("#txtNewPrinterIP").val()) == "") {
+                            MessageBox("Please enter printer IP Address.",
+                            "Printer IP Address",
+                            [
+                                { Text: 'Ok' }
+                            ]
+                       );
+                            return;
+                        } else {
+
+                            if (!validateIP($.trim($("#txtNewPrinterIP").val()))) {
+                                MessageBox("Please enter a valid IP address.",
+                           "Printer IP Address",
+                            [
+                                { Text: 'Ok'
+                                }
+                            ]
+                        );
+                                return;
+
+                            }
+                        }
+
+
+
+
+                        //POS PRINTER ID
+                        newPrinterFowstID = '';
+                        newPrinterIP = '';
+
+                        var pData = { FowstID: sessionStorage.FowstID,
+                            PrinterID: 'E4D81E52-3A7E-4D2A-A4F2-0098DC19C5C6',
+                            PrinterName: $.trim($('#txtNewPrinterName').val()),
+                            PrinterIPAddress: $.trim($('#txtNewPrinterIP').val())
+                        };
+
+                        var vDataName = SalesPayment_offline().CheckUniquePrinterName(pData);
+                        if (vDataName.Rows.length > 0) {
+                            MessageBox('There is already an existing record with the same printer name.', 'Printer Name');
+                            return;
+                        } else {
+                            var vDataIP = SalesPayment_offline().CheckUniquePrinterIPAddress(pData);
+                            if (vDataIP.Rows.length > 0) {
+                                MessageBox('There is already an existing record with the same IP address.', 'Printer IP Address');
+                                return;
+                            } else {
+                                var result = SalesPayment_offline().SaveFOWSTPrinterIP(pData);
+                                var pParams = GetUrlParameters();
+                                var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                                if (result != '') {
+                                    newPrinterFowstID = result;
+                                    newPrinterIP = $.trim($("#txtNewPrinterIP").val());
+                                    PrintReceipt(pInvoiceID);
+                                }
+                            }
+                        }
+                    });
+
+
+
+                    $('#lnkInstruction').click(function (e) {
+                        e.preventDefault();
+
+                        $('#popupIPAddressInstruction').popup('open');
+
+
+                    });
+
+
+                }
+                
+                $('#btnPrintYes').click(function (e) {
+                    e.preventDefault();
+
+                    if (CStr2(newPrinterFowstID) != '' && CStr2(originalDevFowstPrinterID) != '') {
+                        var result = SalesPayment_offline().AssignFowstPrinterIPAsDefault(newPrinterFowstID, originalDevFowstPrinterID);
+
+                        if (result == 'ok') {
+                            Android.Toast(CStr2(newPrinterIP) + ' has been set as the new default IP address of this device.');
+                            newPrinterFowstID = '';
+                            newPrinterIP = '';
+
+                        }
+                    }
+
+                    sessionStorage.removeItem('CartOrderID');
+                    if (CStr2(sessionStorage.IsEnableDiningMode) == 'true' || GetUrlParameters().TableNo != undefined) {
+                        printAttempt = 1;
+                        if(sessionStorage.PrintOption != ''){
+                            $.mobile.changePage('#pageMain');
+                        }                        
+                        else {
+                            if (window.InAndroid) {
+                                
+                            } else 
+                            location = MergeUrlParameters({
+                                OrgID: sessionStorage["OrgID"],
+                                mode: 'pos',
+                                IsMobile: IsMobile ? 1 : 0
+                            }, '/TableView/NewTable');
+                        }
+                    } else {
+                        goToSalesMenu();
+                    }
+                    //                                        window.location = GetPathFormat("/SalesMenu?mode=pos&OrgID=" + sessionStorage.OrgID + (IsMobile ? "&IsMobile=1" : ""));
+
+
+                });
+                
+                $('#btnPrintNo').click(function (e) {
+                    e.preventDefault();
+
+
+                    window.pageSecuritySourcePage = $.mobile.activePage;
+                    PromptUserAccess('POS Receipt Reprint', {
+                        OnClickOKSuccess: function () {
+                            if (printAttempt > 1) {
+                                $.mobile.changePage('#pageDiagnosePrinter');
+                            } else {
+                                printAttempt = printAttempt + 1;
+
+                                if (sessionStorage.PrintOption == 'billing') {
+                                    OptionPrintBilling();
+                                }
+                                else if (sessionStorage.PrintOption == 'orderslip') {
+                                    OptionPrintOrderSlip();
+                                }
+                                else if (sessionStorage.PrintOption == 'billingorderslip') {
+                                    OptionPrintBilling();
+                                    OptionPrintOrderSlip();
+                                }
+                                else {
+                                    $.mobile.changePage(window.pageSourcePage);
+                                    PrintReceipt(theInvoiceID);
+                                }                                
+                            }
+                        }
+                    });
+
+
+
+                });
+
+
+                function InitCheckFunctions() {
+                    if (isInitCheckFx) { // to avoid double click
+                        return;
+                    }
+                    isInitCheckFx = true;
+                    setMonthCollection("selSalesPayCheckDateMonth");
+                    setYearCollection("selSalesPayCheckDateYear");
+
+                    $('#btnBackCheck').click(function (e) {
+                        e.preventDefault();
+                        window.pageHeader.ShowPaymentsPage(false);
+                    });
+
+                    $('[name="radOpPayCheck"]').change(function () {
+                        var val = $.trim($(this).val());
+
+                        if (val == 'check') {
+                            $('#lblPayCheckNo').html('Check No.: <span style="color: #FF0000;">*</span>');
+                            $('#lblPayCheckDate').html('Check Date: <span style="color: #FF0000;">*</span>');
+                            $('#lblPayCheckAmount').html('Check Amount: <span style="color: #FF0000;">*</span>');
+                            $('#divForCheck').show();
+                        } else {
+                            $('#lblPayCheckNo').html('Gift Check/ Certificate No.:');
+                            $('#lblPayCheckDate').html('Date of Issue:');
+                            $('#lblPayCheckAmount').html('Gift Check/ Certificate Amount: <span style="color: #FF0000;">*</span>');
+                            $('#divForCheck').hide();
+                        }
+
+                        $('#txtSalesPayCheckNo, #selSalesPayCheckDateMonth, #selSalesPayCheckDateDay, #selSalesPayCheckDateYear').val('');
+                    })
+
+                    $('#btnSalesPayCheckBank').click(function () {
+
+                        Browser.LibraryOrganizationBanks.AutoSearch = true;
+                        Browser.LibraryOrganizationBanks.Click = function (e) {
+
+
+                            if (e.IsManualEntry != undefined) {
+                                if (e.IsManualEntry) {
+                                    ShowHideCheckBank(false);
+                                }
+                            } else {
+                                ShowHideCheckBank(true);
+
+                                $('#txtSalesPayCheckBankID').val(e.ID)
+                                $('#btnSalesPayCheckBank').text(e.CompanyName)
+                            .button('refresh');
+
+                                $('#txtSalesPayCheckBankBranchID').val('')
+                                $('#btnSalesPayCheckBankBranch').text("Please Select")
+                            .button('refresh');
+                            }
+
+                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                                location.hash = '';
+                                $.mobile.back();
+                                window.pageHeader.ShowCheckPaymentPage();
+                            }
+                        };
+                        Browser.LibraryOrganizationBanks.Show();
+
+                    });
+
+                    $('#btnSalesPayCheckBankBranch').click(function () {
+
+                        Browser.LibraryBankBranches.InputData.BankID = $("#txtSalesPayCheckBankID").val();
+                        Browser.LibraryBankBranches.Click = function (e) {
+
+                            $('#txtSalesPayCheckBankBranchID').val(e.ID)
+                            $('#btnSalesPayCheckBankBranch').text(e.BranchName)
+                        .button('refresh');
+
+                        };
+                        Browser.LibraryBankBranches.Show();
+
+                    });
+
+                    $('#selSalesPayCheckDateMonth').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayCheckDateMonth', 'selSalesPayCheckDateDay', 'selSalesPayCheckDateYear', true);
+
+                    });
+
+                    $('#selSalesPayCheckDateYear').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayCheckDateMonth', 'selSalesPayCheckDateDay', 'selSalesPayCheckDateYear', true);
+
+                    });
+
+                    $("#txtSalesPayCheckAmount").keydown(function (e) {
+                        if (e.keyCode != 110 && e.keyCode != 190) {
+                            if (!NumberOnly(e)) return;
+                        }
+                    });
+
+                    $("#txtSalesPayCheckAmount").blur(function () {
+                        var pSalesPayCheck = parseFloat(CDec2($("#txtSalesPayCheckAmount").val().replace(/,/g, "")));
+                        $("#txtSalesPayCheckAmount").val((pSalesPayCheck > 0 ? AccountingFormat(pSalesPayCheck) : "0.00"));
+                    });
+
+                    $('#btnSalesPayCheckSave').click(function (e) {
+                        e.preventDefault();
+
+                        if ($('[name="radOpPayCheck"]:checked').val() == 'check') {
+                            if ($('#divCheckBankButton').is(':visible')) {
+
+                                if ($.trim($("#txtSalesPayCheckBankID").val()) == "") {
+                                    NewMessageBox("Please select bank.",
+                                       "Bank",
+                                        [
+                                            {
+                                                Text: 'Ok'
+                                            }
+                                        ]
+                                );
+                                    return;
+                                }
+
+                                //////                    if ($.trim($("#txtSalesPayCheckBankBranchID").val()) == "") {
+                                //////                        MessageBox("Please select bank branch.",
+                                //////                               "Bank Branch",
+                                //////                                [
+                                //////                                    { Text: 'Ok'
+                                //////                                    }
+                                //////                                ]
+                                //////                        );
+                                //////                        return;
+                                //////                    }
+
+                            } else {
+                                if ($.trim($("#txtSalesPayCheckBankName").val()) == "") {
+                                    NewMessageBox("Please enter bank name.",
+                                       "Bank",
+                                        [
+                                            {
+                                                Text: 'Ok'
+                                            }
+                                        ]
+                                );
+                                    return;
+                                }
+                            }
+
+                            if ($.trim($('#txtSalesPayCheckBankID').val()) == "") {
+                                NewMessageBox("Please enter bank branch.",
+                                    "Bank Branch",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                            //if ($.trim($("#txtSalesPayCheckAccountName").val()) == "") {
+                            //    MessageBox("Please enter account name.",
+                            //       "Account Name",
+                            //        [
+                            //            {
+                            //                Text: 'Ok'
+                            //            }
+                            //        ]
+                            //);
+                            //    return;
+                            //}
+
+                            if ($.trim($("#txtSalesPayCheckAccountNo").val()) == "") {
+                                NewMessageBox("Please enter account number.",
+                                   "Account Number",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                            if ($.trim($("#txtSalesPayCheckNo").val()) == "") {
+                                NewMessageBox("Please enter check number.",
+                                   "Check Number",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                            if ($.trim($("#selSalesPayCheckDateMonth").val()) == "" ||
+                            $.trim($("#selSalesPayCheckDateDay").val()) == "" ||
+                            $.trim($("#selSalesPayCheckDateYear").val()) == "") {
+
+                                NewMessageBox("Please enter check date.",
+                                    "Check Date",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+                        }
+
+                        if ($.trim($("#txtSalesPayCheckAmount").val()) == "" || parseFloat(CDec2($.trim($("#txtSalesPayCheckAmount").val().replace(/,/g, ""))) || '0') == 0) {
+                            NewMessageBox("Please enter check amount.",
+                               "Check Amount",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        SaveSalesPayCheck();
+
+                    });
+
+                    $('#btnSalesPayCheckRemove').click(function (e) {
+                        e.preventDefault();
+
+                        NewMessageBox("Remove this record?",
+                            'Remove',
+                            [
+                                {
+                                    Text: 'Yes',
+                                    Click: function () {
+                                        RemoveSalesPayCheck();
+                                    }
+                                }
+                            ,
+                                {
+                                    Text: 'No'
+                                }
+                            ]
+                        );
+                    });
+
+                    $('#btnSalesPayCheckCancel').click(function (e) {
+                        e.preventDefault();
+
+                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                            window.pageHeader.ShowPaymentsPage(false);
+                        else
+                            $.mobile.changePage('#pageSalesPayment');
+
+                    });
+
+                    initCheckFx = true;
+                }
+
+                function InitDebitFunctions() {
+                    if (isInitDebitFx) { // to avoid double click
+                        return;
+                    }
+                    setMonthCollection("selSalesPayDebitCardIssuanceDateMonth");
+                    setYearCollection("selSalesPayDebitCardIssuanceDateYear");
+                    setMonthCollection("selSalesPayDebitCardExpirationDateMonth");
+                    setYearCollection("selSalesPayDebitCardExpirationDateYear");
+
+                    $('#btnBackDebitCard').click(function (e) {
+                        e.preventDefault();
+                        window.pageHeader.ShowPaymentsPage(false);
+                    });
+
+                    $('#btnSalesPayDebitCardBank').click(function () {
+
+                        Browser.LibraryOrganizationBanks.AutoSearch = true;
+                        Browser.LibraryOrganizationBanks.Click = function (e) {
+
+                            if (e.IsManualEntry != undefined) {
+                                if (e.IsManualEntry) {
+                                    ShowHideDebitCardBank(false);
+                                }
+                            } else {
+                                ShowHideDebitCardBank(true);
+
+                                $('#txtSalesPayDebitCardBankID').val(e.ID)
+                                $('#btnSalesPayDebitCardBank').text(e.CompanyName)
+                            .button('refresh');
+                            }
+
+                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+
+                                location.hash = '';
+                                $.mobile.back();
+                                window.pageHeader.ShowDebitCardPaymentPage();
+
+                            }
+
+                        };
+                        Browser.LibraryOrganizationBanks.Show();
+
+                    });
+
+                    $('#btnSalesPayDebitCardBankLocation').click(function () {
+
+                        Browser.LibraryCountries.Click = function (e) {
+
+                            $('#txtSalesPayDebitCardBankLocationID').val(e.ID)
+                            $('#btnSalesPayDebitCardBankLocation').text(e.Name)
+                        .button('refresh');
+
+                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+
+                                location.hash = '';
+                                $.mobile.back();
+                                window.pageHeader.ShowDebitCardPaymentPage();
+
+                            }
+                        };
+                        Browser.LibraryCountries.Show();
+
+                    });
+
+                    $('#selSalesPayDebitCardIssuanceDateMonth').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayDebitCardIssuanceDateMonth', 'selSalesPayDebitCardIssuanceDateDay', 'selSalesPayDebitCardIssuanceDateYear', true);
+
+                    });
+
+                    $('#selSalesPayDebitCardIssuanceDateYear').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayDebitCardIssuanceDateMonth', 'selSalesPayDebitCardIssuanceDateDay', 'selSalesPayDebitCardIssuanceDateYear', true);
+
+                    });
+
+                    $('#selSalesPayDebitCardExpirationDateMonth').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayDebitCardExpirationDateMonth', 'selSalesPayDebitCardExpirationDateDay', 'selSalesPayDebitCardExpirationDateYear', true);
+
+                    });
+
+                    $('#selSalesPayDebitCardExpirationDateYear').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayDebitCardExpirationDateMonth', 'selSalesPayDebitCardExpirationDateDay', 'selSalesPayDebitCardExpirationDateYear', true);
+
+                    });
+
+                    $("#txtSalesPayDebitCardNoOfPayments").keydown(function (e) {
+                        if (!NumberOnly(e)) return;
+                    });
+
+                    $("#txtSalesPayDebitCardTenderedAmount").keydown(function (e) {
+                        if (e.keyCode != 110 && e.keyCode != 190) {
+                            if (!NumberOnly(e)) return;
+                        }
+                    });
+
+                    $("#txtSalesPayDebitCardTenderedAmount").blur(function () {
+                        var pSalesPayCC = parseFloat(CDec2($("#txtSalesPayDebitCardTenderedAmount").val().replace(/,/g, "")));
+                        $("#txtSalesPayDebitCardTenderedAmount").val((pSalesPayCC > 0 ? AccountingFormat(pSalesPayCC) : "0.00"));
+                    });
+
+                    $('#btnSalesPayDebitCardSave').click(function (e) {
+                        e.preventDefault();
+
+                        //                if ($.trim($("#selSalesPayDebitCardType").val()) == "") {
+                        //                    MessageBox("Please select Debit card type.",
+                        //                           "Debit Card Type",
+                        //                            [
+                        //                                { Text: 'Ok'
+                        //                                }
+                        //                            ]
+                        //                    );
+                        //                    return;
+                        //                }
+
+                        if ($('#divSalesPayDebitCardBankButton').is(':visible')) {
+
+                            if ($.trim($("#txtSalesPayDebitCardBankID").val()) == "") {
+                                MessageBox("Please select Debit card bank.",
+                                   "Debit Card Bank",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                        } else {
+                            if ($.trim($("#txtSalesPayDebitCardBank").val()) == "") {
+                                MessageBox("Please enter bank name.",
+                                   "Bank",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                        }
+
+                        if ($.trim($("#txtSalesPayDebitCardLastName").val()) == "") {
+                            MessageBox("Please enter last name of Debit card holder.",
+                               "Debit Card Holder",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        if ($.trim($("#txtSalesPayDebitCardFirstName").val()) == "") {
+                            MessageBox("Please enter first name of Debit card holder.",
+                               "Debit Card Holder",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        if ($.trim($("#txtSalesPayDebitCardNo").val()) == "") {
+                            MessageBox("Please enter Debit card number.",
+                                   "Debit Card Number",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                            return;
+                        }
+
+                        if ($.trim($("#selSalesPayDebitCardIssuanceDateMonth").val()) != "" ||
+                        $.trim($("#selSalesPayDebitCardIssuanceDateDay").val()) != "" ||
+                        $.trim($("#selSalesPayDebitCardIssuanceDateYear").val()) != "") {
+
+                            if ($.trim($("#selSalesPayDebitCardIssuanceDateMonth").val()) == "" ||
+                            $.trim($("#selSalesPayDebitCardIssuanceDateDay").val()) == "" ||
+                            $.trim($("#selSalesPayDebitCardIssuanceDateYear").val()) == "") {
+
+                                MessageBox("Please enter valid Debit card issuance date.",
+                                   "Issuance Date",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+                        }
+
+                        if ($.trim($("#selSalesPayDebitCardExpirationDateMonth").val()) != "" ||
+                        $.trim($("#selSalesPayDebitCardExpirationDateDay").val()) != "" ||
+                        $.trim($("#selSalesPayDebitCardExpirationDateYear").val()) != "") {
+
+                            if ($.trim($("#selSalesPayDebitCardExpirationDateMonth").val()) == "" ||
+                            $.trim($("#selSalesPayDebitCardExpirationDateDay").val()) == "" ||
+                            $.trim($("#selSalesPayDebitCardExpirationDateYear").val()) == "") {
+
+                                MessageBox("Please enter valid Debit card expiration date.",
+                                   "Expiration Date",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+                        }
+
+                        if ($.trim($("#txtSalesPayDebitCardTenderedAmount").val()) == "" || parseFloat(CDec2($.trim($("#txtSalesPayDebitCardTenderedAmount").val().replace(/,/g, ""))) || '0') == 0) {
+                            MessageBox("Please enter Debit card amount.",
+                               "Amount",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        SaveSalesPayDebitCard();
+                    });
+
+                    $('#btnSalesPayDebitCardRemove').click(function (e) {
+                        e.preventDefault();
+
+                        MessageBox("Remove this record?",
+                        'Remove',
+                        [
+                            {
+                                Text: 'Yes',
+                                Click: function () {
+                                    RemoveSalesPayDebitCard();
+                                }
+                            }
+                        ,
+                            {
+                                Text: 'No'
+                            }
+                        ]
+                    );
+
+                    });
+
+                    $('#btnSalesPayDebitCardCancel').click(function (e) {
+                        e.preventDefault();
+
+                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                            window.pageHeader.ShowPaymentsPage(false);
+                        else
+                            $.mobile.changePage('#pageSalesPayment');
+                    });
+
+                    isInitDebitFx = true;
+                }
+
+                function InitCreditCardFunctions() {
+                    if (isInitCreditCardFx) { // to avoid double click
+                        return;
+                    }
+
+                    setMonthCollection("selSalesPayCreditCardIssuanceDateMonth");
+                    setYearCollection("selSalesPayCreditCardIssuanceDateYear");
+                    setMonthCollection("selSalesPayCreditCardExpirationDateMonth");
+                    setYearCollection("selSalesPayCreditCardExpirationDateYear");
+
+                    $('#btnBackCreditCard').click(function (e) {
+                        e.preventDefault();
+                        window.pageHeader.ShowPaymentsPage(false);
+                    });
+
+                    $('#btnSalesPayCreditCardBank').click(function () {
+
+                        Browser.LibraryOrganizationBanks.AutoSearch = true;
+                        Browser.LibraryOrganizationBanks.Click = function (e) {
+
+                            if (e.IsManualEntry != undefined) {
+                                if (e.IsManualEntry) {
+                                    ShowHideCreditCardBank(false);
+                                }
+                            } else {
+                                ShowHideCreditCardBank(true);
+
+                                $('#txtSalesPayCreditCardBankID').val(e.ID)
+                                $('#btnSalesPayCreditCardBank').text(e.CompanyName)
+                            .button('refresh');
+                            }
+
+
+
+                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+
+                                location.hash = '';
+                                $.mobile.back();
+                                window.pageHeader.ShowCreditCardPaymentPage();
+
+                            }
+
+
+
+                        };
+                        Browser.LibraryOrganizationBanks.Show();
+
+                    });
+
+                    $('#btnSalesPayCreditCardBankLocation').click(function () {
+
+                        Browser.LibraryCountries.Click = function (e) {
+
+                            $('#txtSalesPayCreditCardBankLocationID').val(e.ID)
+                            $('#btnSalesPayCreditCardBankLocation').text(e.Name)
+                        .button('refresh');
+
+                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                                location.hash = '';
+                                $.mobile.back();
+                                window.pageHeader.ShowCreditCardPaymentPage();
+
+                            }
+
+                        };
+                        Browser.LibraryCountries.Show();
+
+                    });
+
+                    $('#selSalesPayCreditCardIssuanceDateMonth').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayCreditCardIssuanceDateMonth', 'selSalesPayCreditCardIssuanceDateDay', 'selSalesPayCreditCardIssuanceDateYear', true);
+
+                    });
+
+                    $('#selSalesPayCreditCardIssuanceDateYear').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayCreditCardIssuanceDateMonth', 'selSalesPayCreditCardIssuanceDateDay', 'selSalesPayCreditCardIssuanceDateYear', true);
+
+                    });
+
+                    $('#selSalesPayCreditCardExpirationDateMonth').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayCreditCardExpirationDateMonth', 'selSalesPayCreditCardExpirationDateDay', 'selSalesPayCreditCardExpirationDateYear', true);
+
+                    });
+
+                    $('#selSalesPayCreditCardExpirationDateYear').change(function (e) {
+                        e.preventDefault();
+
+                        setDayCollection('selSalesPayCreditCardExpirationDateMonth', 'selSalesPayCreditCardExpirationDateDay', 'selSalesPayCreditCardExpirationDateYear', true);
+
+                    });
+
+                    $("#txtSalesPayCreditCardNoOfPayments").keydown(function (e) {
+                        if (!NumberOnly(e)) return;
+                    });
+
+                    $("#txtSalesPayCreditCardTenderedAmount").keydown(function (e) {
+                        if (e.keyCode != 110 && e.keyCode != 190) {
+                            if (!NumberOnly(e)) return;
+                        }
+                    });
+
+                    $("#txtSalesPayCreditCardTenderedAmount").blur(function () {
+                        var pSalesPayCC = parseFloat(CDec2($("#txtSalesPayCreditCardTenderedAmount").val().replace(/,/g, "")));
+                        $("#txtSalesPayCreditCardTenderedAmount").val((pSalesPayCC > 0 ? AccountingFormat(pSalesPayCC) : "0.00"));
+                    });
+
+                    $('#btnSalesPayCreditCardSave').click(function (e) {
+                        e.preventDefault();
+
+                        if ($.trim($("#selSalesPayCreditCardType").val()) == "") {
+                            MessageBox("Please select credit card type.",
+                               "Credit Card Type",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        if ($('#divSalesPayCreditCardBankButton').is(':visible')) {
+
+                            if ($.trim($("#txtSalesPayCreditCardBankID").val()) == "") {
+                                MessageBox("Please select credit card bank.",
+                                   "Credit Card Bank",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                        } else {
+                            if ($.trim($("#txtSalesPayCreditCardBank").val()) == "") {
+                                MessageBox("Please enter bank name.",
+                                   "Bank",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                        }
+
+                        if ($.trim($("#txtSalesPayCreditCardLastName").val()) == "") {
+                            MessageBox("Please enter last name of credit card holder.",
+                               "Credit Card Holder",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        if ($.trim($("#txtSalesPayCreditCardFirstName").val()) == "") {
+                            MessageBox("Please enter first name of credit card holder.",
+                               "Credit Card Holder",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        if ($.trim($("#txtSalesPayCreditCardNo").val()) == "") {
+                            MessageBox("Please enter credit card number.",
+                               "Credit Card Number",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        if ($.trim($("#selSalesPayCreditCardIssuanceDateMonth").val()) != "" ||
+                        $.trim($("#selSalesPayCreditCardIssuanceDateDay").val()) != "" ||
+                        $.trim($("#selSalesPayCreditCardIssuanceDateYear").val()) != "") {
+
+                            if ($.trim($("#selSalesPayCreditCardIssuanceDateMonth").val()) == "" ||
+                            $.trim($("#selSalesPayCreditCardIssuanceDateDay").val()) == "" ||
+                            $.trim($("#selSalesPayCreditCardIssuanceDateYear").val()) == "") {
+
+                                MessageBox("Please enter valid credit card issuance date.",
+                                   "Issuance Date",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+                        }
+
+                        if ($.trim($("#selSalesPayCreditCardExpirationDateMonth").val()) != "" ||
+                        $.trim($("#selSalesPayCreditCardExpirationDateDay").val()) != "" ||
+                        $.trim($("#selSalesPayCreditCardExpirationDateYear").val()) != "") {
+
+                            if ($.trim($("#selSalesPayCreditCardExpirationDateMonth").val()) == "" ||
+                            $.trim($("#selSalesPayCreditCardExpirationDateDay").val()) == "" ||
+                            $.trim($("#selSalesPayCreditCardExpirationDateYear").val()) == "") {
+
+                                MessageBox("Please enter valid credit card expiration date.",
+                                   "Expiration Date",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+                        }
+
+                        if ($.trim($("#txtSalesPayCreditCardTenderedAmount").val()) == "" || parseFloat(CDec2($.trim($("#txtSalesPayCreditCardTenderedAmount").val().replace(/,/g, ""))) || '0') == 0) {
+                            MessageBox("Please enter credit card amount.",
+                               "Amount",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        SaveSalesPayCreditCard();
+                    });
+
+                    $('#btnSalesPayCreditCardRemove').click(function (e) {
+                        e.preventDefault();
+
+                        MessageBox("Remove this record?",
+                        'Remove',
+                        [
+                            {
+                                Text: 'Yes',
+                                Click: function () {
+                                    RemoveSalesPayCreditCard();
+                                }
+                            }
+                        ,
+                            {
+                                Text: 'No'
+                            }
+                        ]
+                    );
+
+                    });
+
+                    $('#btnSalesPayCreditCardCancel').click(function (e) {
+                        e.preventDefault();
+
+                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                            window.pageHeader.ShowPaymentsPage(false);
+                        else
+                            $.mobile.changePage('#pageSalesPayment');
+                    });
+
+                    isInitCreditCardFx = true;
+                }
+
+                function InitSrvFunctions() {
+                    if (isInitSrvFx) { // to avoid double click
+                        return;
+                    }
+
+                    $('#btnBackSRV').click(function (e) {
+                        e.preventDefault();
+                        window.pageHeader.ShowPaymentsPage(false);
+                    });
+
+                    $("#txtSalesPaySRVNo").keydown(function (e) {
+                        if (e.keyCode == 13) {
+                            $("#btnSalesPaySRVVerify").click();
+                        } else if (!NumberOnly(e)) {
+                            return;
+                        }
+                    });
+
+                    $('#btnSalesPayScanSRVNumber').click(function () {
+                        if (IsMobile)
+                            mobile.Scan({
+                                Success: function (vData) {
+                                    $('#txtSalesPaySRVNo').val(vData.Value);
+                                }
+                            });
+                        else
+                            MessageBox('Scan Barcode / QR Code feature is only available on the mobile app');
+                    });
+
+                    $("#txtSalesPaySRVPinCode").keydown(function (e) {
+                        if (e.keyCode == 13) {
+                            $("#btnSalesPaySRVVerify").click();
+                        }
+                    });
+
+                    $('#btnSalesPayScanSRVPin').click(function () {
+                        try {
+                            mobile.Scan({
+                                Success: function (vData) {
+                                    $('#txtSalesPaySRVPinCode').val(vData.Value);
+                                }
+                            });
+                        } catch (e) {
+                            alert("Failed to scan: " + e);
+                        };
+                    });
+
+                    $("#btnSalesPaySRVVerify").click(function (e) {
+                        LoadSalesPaymentSRVInfo();
+                    });
+
+                    $("#txtSalesPaySRVConsumedAmount").keydown(function (e) {
+                        if (e.keyCode != 110 && e.keyCode != 190) {
+                            if (!NumberOnly(e)) return;
+                        }
+                    });
+
+                    $("#txtSalesPaySRVConsumedAmount").blur(function () {
+                        var pSalesPaySRV = parseFloat(CDec2($("#txtSalesPaySRVConsumedAmount").val().replace(/,/g, "")));
+                        $("#txtSalesPaySRVConsumedAmount").val((pSalesPaySRV > 0 ? AccountingFormat(pSalesPaySRV) : "0.00"));
+                    });
+
+                    $('#btnSalesPaySRVSave').click(function (e) {
+                        e.preventDefault();
+
+                        if ($.trim($("#txtSalesPaySRVTransMemoID").val()) == "") {
+                            MessageBox("Please enter SRV Number.",
+                               "SRV Number",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        if ($("#txtSalesPaySRVNo").val() == "") {
+                            MessageBox("Please enter SRV number.",
+                                    "SRV Number",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                                );
+
+                            $("#txtSalesPaySRVTransMemoID").val('');
+                            $("#txtSalesPaySRVAmount").val('0.00');
+                            $("#txtSalesPaySRVConsumedAmount").val('0.00');
+
+                            return;
+                        }
+
+                        if ($("#txtSalesPaySRVPinCode").val() == "") {
+                            MessageBox("Please enter SRV pin code.",
+                                    "SRV Pin Code",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                                );
+
+                            $("#txtSalesPaySRVTransMemoID").val('');
+                            $("#txtSalesPaySRVAmount").val('0.00');
+                            $("#txtSalesPaySRVConsumedAmount").val('0.00');
+
+                            return;
+                        }
+
+                        //if ($.trim($("#txtSalesPaySRVConsumedAmount").val()) == "" || parseFloat(CDec2($.trim($("#txtSalesPaySRVConsumedAmount").val().replace(/,/g, ""))) || '0') == 0) {
+                        //    MessageBox("Please enter SRV amount to consume.",
+                        //       "SRV Amount",
+                        //        [
+                        //            {
+                        //                Text: 'Ok'
+                        //            }
+                        //        ]
+                        //    );
+                        //    return;
+                        //}
+
+                        if (parseFloat(CDec2($.trim($("#txtSalesPaySRVConsumedAmount").val().replace(/,/g, "")))) > parseFloat(CDec2($.trim($("#txtSalesPaySRVAmount").val().replace(/,/g, ""))))) {
+                            MessageBox("Sorry! You only have " + $("#txtSalesPaySRVAmount").val() + " on your SRV credit.",
+                               "SRV Amount",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                        SaveSalesPaySRV();
+
+                    });
+
+                    $('#btnSalesPaySRVRemove').click(function (e) {
+                        e.preventDefault();
+
+                        MessageBox("Remove this record?",
+                        'Remove',
+                        [
+                            {
+                                Text: 'Yes',
+                                Click: function () {
+                                    RemoveSalesPaySRV();
+                                }
+                            }
+                        ,
+                            {
+                                Text: 'No'
+                            }
+                        ]
+                    );
+
+                    });
+
+                    $('#btnSalesPaySRVCancel').click(function (e) {
+                        e.preventDefault();
+
+                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                            window.pageHeader.ShowPaymentsPage(false);
+                        else
+                            $.mobile.changePage('#pageSalesPayment');
+
+                    });
+
+                    isInitSrvFx = true;
+                }
+
+                function InitOtherPaymentFunctions() {
+                    if (isInitOtherPaymentFx) { // to avoid double click
+                        return;
+                    }
+
+                    setMonthCollection("selSalesPayOtherPaymentTypeCardIssuanceDateMonth");
+                    setYearCollection("selSalesPayOtherPaymentTypeCardIssuanceDateYear");
+                    setMonthCollection("selSalesPayOtherPaymentTypeCardExpirationDateMonth");
+                    setYearCollection("selSalesPayOtherPaymentTypeCardExpirationDateYear");
+
+                    $('#btnBackOtherPaymentType').click(function (e) {
+                        e.preventDefault();
+                        window.pageHeader.ShowPaymentsPage(false);
+                    });
+
+                    $('#selOtherPaymentType').change(function () {
+                        var val = $('#selOtherPaymentType').val();
+                        $('#txtSalesPayOtherPaymentTypeRoomNo').val('');
+                        $('#divForVSED').show();
+                        $('[name=spanRequiredForComplimentary]').show();
+                        $('#divForRoomIn, #divForRoomInSendBill, #divForGCash').hide();
+                        if (val == 'V-Plus') {
+                            GetVPlusPoints();
+                            $('#txtSalesPayOtherPaymentTypeRemarks').val('');
+                        } else if (val == "Room In") {
+                            $('#divForVSED, #divForGCash').hide();
+                            $('#divForRoomIn, #divForRoomInSendBill').show();
+                        //} else if (val == "Send Bill") {
+                        //    $('#divForVSED, #divForRoomIn, #divForGCash').hide();
+                        //    $('#divForRoomInSendBill').show();
+                        //} else if (val == "GCash" || val == "GrabFood" || val == "FoodPanda") {
+                        //    $('#divForVSED, #divForRoomIn, #divForRoomInSendBill').hide();
+
+                        //    if (val == "GrabFood" || val == "FoodPanda") {
+                        //        $('#dvGcashReferenceNo').css('visibility', 'hidden');
+                        //        $('#dvGcashReferenceNo').css('display', 'none');
+                        //    } else {
+                        //        $('#dvGcashReferenceNo').css('visibility', 'visible');
+                        //        $('#dvGcashReferenceNo').css('display', 'block');
+                        //    }
+
+                        //    $('#divForGCash').show();
+                        //} else if (val == "Complimentary") {
+                        //    $('[name=spanRequiredForComplimentary]').hide();
+                        }
+                    });
+
+                    $("#txtSalesPayOtherPaymentTypeAmount").keydown(function (e) {
+                        if (e.keyCode != 110 && e.keyCode != 190) {
+                            if (!NumberOnly(e)) return;
+                        }
+                    }).blur(function () {
+                        var pSalesPayCC = parseFloat(CDec2($("#txtSalesPayOtherPaymentTypeAmount").val().replace(/,/g, "")));
+                        $("#txtSalesPayOtherPaymentTypeAmount").val((pSalesPayCC > 0 ? AccountingFormat(pSalesPayCC) : ""));
+                    });
+
+                    $('#btnGCashPayBal').click(function () {
+                        if (IsNumeric($('#lblSalesPayOtherTypeAmountLacking').text())) {
+                            $("#txtSalesPayOtherPaymentTypeAmount").val(AccountingFormat(($('#lblSalesPayOtherTypeAmountLacking').text())));
+                        } else {
+                            $("#txtSalesPayOtherPaymentTypeAmount").val('');
+                        }
+                    })
+
+                    $('#txtSalesPayOtherPaymentTypeGCashRefNo').keydown(function (e) {
+                        if(!NumberOnly(e)){
+                            return;
+                        }
+                    })
+
+                    $('#btnSalesPayOtherPaymentTypeSave').click(function (e) {
+                        e.preventDefault();
+                        var selOtherPaymentType = $('#selOtherPaymentType').val();
+
+                        if (selOtherPaymentType != 'Room In' && selOtherPaymentType != 'Send Bill' && selOtherPaymentType != 'GCash' && selOtherPaymentType != 'PayMaya' && selOtherPaymentType != 'GrabFood' && selOtherPaymentType != 'FoodPanda' && selOtherPaymentType != 'AliPay') {
+                            if ($.trim($("#selOtherPaymentType").val()) == "") {
+                                MessageBox("Please select payment type.",
+                                   "Payment Type",
+                                    [
+                                        {
+                                            Text: 'Ok'
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                            if (($("#txtSalesPayOtherPaymentTypeIssuingOrg").val() == "")
+                                && (selOtherPaymentType != 'Complimentary')) {
+                                MessageBox("Please enter issuing organization.",
+                                        "Issuing Organization",
+                                        [
+                                            {
+                                                Text: 'Ok'
+                                            }
+                                        ]
+                                    );
+
+                                return;
+                            }
+
+                            if ($("#txtSalesPayOtherPaymentTypeCardNo").val() == "") {
+                                MessageBox("Please enter card number.",
+                                        "Card Number",
+                                        [
+                                            {
+                                                Text: 'Ok'
+                                            }
+                                        ]
+                                    );
+                                return;
+                            }
+                        }
+
+                        if (selOtherPaymentType == 'Room In') {
+                            if ($.trim($("#txtSalesPayOtherPaymentTypeRoomNo").val()) == "") {
+                                MessageBox("Please enter room number.",
+                                        "Room No",
+                                        [
+                                            {
+                                                Text: 'Ok'
+                                            }
+                                        ]
+                                    );
+                                return;
+                            }
+                        } else if (selOtherPaymentType == 'GCash') {
+                            if ($.trim($('#txtSalesPayOtherPaymentTypeCardNo').val()) == '') {
+                                MessageBox("Please enter GCash reference number.", "GCash", [{ Text: 'Ok' }]);
+                                return;
+                            }
+                        }
+
+
+                        if ($.trim($("#txtSalesPayOtherPaymentTypeAmount").val()) == "" || parseFloat(CDec2($.trim($("#txtSalesPayOtherPaymentTypeAmount").val().replace(/,/g, ""))) || '0') == 0) {
+                            MessageBox("Please enter amount.",
+                               "Amount",
+                                [
+                                    {
+                                        Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+                        SaveSalesPayOtherType();
+
+                    });
+
+                    $('#btnSalesPayOtherPaymentTypeRemove').click(function (e) {
+                        e.preventDefault();
+
+                        NewMessageBox('Remove this record?', 'Remove', [
+                            {
+                                Text: 'Yes', Click: function(){
+                                    RemoveSalesPayOtherType();
+                                }
+                            }, { Text: 'No' }
+                        ])
+                    });
+
+                    $('#btnSalesPayOtherPaymentTypeCancel').click(function (e) {
+                        e.preventDefault();
+
+                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                            window.pageHeader.ShowPaymentsPage(false);
+                        else
+                            $.mobile.changePage('#pageSalesPayment');
+
+                    });
+
+                    isInitOtherPaymentFx = true;
+                }
+
+                function getMaxSCDiscountableAmount(){
+                    //return CDec2(Business.SystemDefaults.GetSystemDefault("Max SC Discountable Amount"));
+                    var pSql = '';
+
+                    pSql = 'Select MaxAllowableDiscountableAmount from LibraryOrganizationTradeName ' +
+                            'inner join private.LibraryReceiptSettings on private.LibraryReceiptSettings.OrgTradeNameID = LibraryOrganizationTradeName.ID ' +
+                            'inner join private.LibraryReceiptSettingsFowst on private.LibraryReceiptSettingsFowst.ReceiptSettingsID = private.LibraryReceiptSettings.ID ' +                    
+                            'where private.LibraryReceiptSettingsFowst.FowstID = ' + ReadyString(sessionStorage.FowstID);
+
+                    return CDec2(Sql.ExecuteScalar(pSql));
+                }
+
+                ///////////////////////////////
+                function validateIP(string) {
+                    var re = /^(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))$/;
+
+                    return re.test(string);
+                }
+
+                function GetVPlusPoints() {
+                    AjaxSend({
+                        url: 'SalesPayments/GetVPlusPoints',
+                        data: { CustomerID: $.trim($("#txtSalesPayCustomerID").val()) },
+                        success: function (vData) {
+                            if (!vData.Result == '') {
+                                $('#txtSalesPayOtherPaymentTypeAvailablePoints').val(CDec2(vData.Result));
+                            }
+                        },
+                        error: function (vError) {
+
+                        }
+                    });
+                }
+
+                function checkDiscountDetails() {
+                    //                    return window.pageDiscounts.checkDiscountDetails(showDiscountDetails);
+
+                    if (showDiscountDetails) {
+                        if (CDec2($.trim($("#txtSalesPayNoOfSC").val())) < 1) {
+                            MessageBox("Please enter the number of Senior Citizens.",
+                           "Number of Senior Citizens",
+                            [
+                                { Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                            );
+                            return false;
+                        } else {
+
+                            if (CDec2($.trim($("#txtSalesPayNoOfSC").val())) < countCustomer()) {
+                                MessageBox("You've exceeded the number people you can list. Please remove a record.",
+                                   "List of Senior Citizens / PWD Availing the Discount",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+                                                $.mobile.changePage('');
+
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                            }
+                                        }
+                                    ]
+                                    );
+                                return false;
+                            }
+
+                            if (CDec2($.trim($("#txtSalesPayNoOfSC").val())) > CDec2($.trim($("#txtSalesPayNoOfDiners").val()))) {
+                                MessageBox("The number of senior citizens should be less than or equal to the total number of people.",
+                                   "Number of People (including the Senior Citizen)",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+                                                $.mobile.changePage('');
+
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                            }
+                                        }
+                                    ]
+                                    );
+                                return false;
+                            }
+
+                        } //end if number of Senior Citizens
+
+                        if (CDec2($.trim($("#txtSalesPayNoOfDiners").val())) < 1) {
+                            MessageBox("Please enter the number of people (including the Senior Citizen).",
+                           "Number of People (including the Senior Citizen)",
+                            [
+                                { Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                            );
+                            return false;
+                        }
+
+                        if (countCustomer() < parseInt($.trim($("#txtSalesPayNoOfSC").val()))) {
+                            MessageBox("Please add " + $.trim($("#txtSalesPayNoOfSC").val()) + " Senior Citizen/PWD record(s) to Senior Citizen/PWD Availing Discount list.",
+                                "List of Senior Citizens / PWD Availing the Discount",
+                                [
+                                    { Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                            );
+                            return false;
+                        }
+                    } else {
+                        if (countCustomer() > 1) {
+                            MessageBox("You've exceeded the number people you can list. Please remove a record.",
+                                   "List of Senior Citizens / PWD Availing the Discount",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+                                                $.mobile.changePage('');
+
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                            }
+                                        }
+                                    ]
+                                    );
+                            return false;
+                        }
+
+                        if (countCustomer() < 1) {
+                            MessageBox("Please add a customer to the list.",
+                                "List of Senior Citizens / PWD Availing the Discount",
+                                [
+                                    { Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                            );
+                            return false;
+                        }
+                    } // end if showDiscountDetails
+
+                    if (CStr2(sessionStorage.IsEnableDiningMode) == 'false') {
+                        if (!isCompleteCustomerData()) {
+                            MessageBox("Some customer/s in the list have incomplete data. Please fill in the Date of Birth and add at least one Valid ID.",
+                                    "List of Senior Citizens / PWD Availing the Discount",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+                                                $.mobile.changePage('');
+
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                            }
+                                        }
+                                    ]
+                                );
+                            return false;
+
+                        }
+                    }
+                    return true;
+                }
+
+                function countCustomer() {
+                    var cntr = 0;
+
+                    // commented by arnie 1.12.18 since dili na ginagamit ang sessionStorage.SalesPayCustomerName
+                    //for (var i = 0; i < intSalesPayCustomerNameCntr; i++) {
+
+                    //    if (sessionStorage["SalesPayCustomerName-" + i] != undefined) {
+
+                    //        arSalesPayCustomerName = new Array();
+                    //        arSalesPayCustomerName = JSON.parse(sessionStorage["SalesPayCustomerName-" + i]);
+
+                    //        if (arSalesPayCustomerName[intSalesPayCustomerNameState] != "Remove") {
+                    //            cntr = cntr + 1;
+                    //        }
+
+                    //    } //end if
+                    //} //end for
+
+                    //additional for billing. check the saved no of customers
+                    if (cntr == 0) {
+                        cntr = window.pageDiscounts.countCustomer();
+                    }
+
+
+                    return cntr;
+
+                } //countCustomer
+
+                function countCustomerIdentification() {
+                    var cntr = 0;
+
+                    for (var i = 0; i <= intSalesPayCustomerIdentificationCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerIdentification-" + i] != undefined) {
+
+                            arSalesPayCustomerIdentification = new Array();
+                            arSalesPayCustomerIdentification = JSON.parse(sessionStorage["SalesPayCustomerIdentification-" + i]);
+
+                            if (arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] != "Remove") {
+                                cntr = cntr + 1;
+                            }
+
+                        } //end if
+                    } //end for
+
+                    return cntr;
+
+                } //countCustomer
+
+                function isCompleteCustomerData() {
+
+                    var cntr = 0;
+
+                    for (var i = 0; i <= intSalesPayCustomerNameCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerName-" + i] != undefined) {
+
+                            arSalesPayCustomerName = new Array();
+                            arSalesPayCustomerName = JSON.parse(sessionStorage["SalesPayCustomerName-" + i]);
+
+                            if (arSalesPayCustomerName[intSalesPayCustomerNameState] != "Remove") {
+                                if (CDec2(arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth]) == '')
+                                    //birthday is now optional, just return true (nov 4,2016)
+                                    return true;
+
+
+                            }
+
+                        } //end if
+                    } //end for
+
+                    return true;
+
+
+                } //isCompleteCustomerData
+
+
+
+                ///////////////////////////////////////////////////////////////////////////////////////////////////
+                function getCurrentDiscount() {
+
+                    if (OfflineMode) {
+                        var discount = SalesPayment_offline().getCurrentDiscount(sessionStorage.CartOrderID);
+                        if (discount.Rows != undefined) {
+                            if (discount.Rows.length > 0) {
+                                $('#selDiscountType').val(discount.Rows[0].DiscountTypeID).selectmenu('refresh');
+                                $('#txtDiscountPercent').val(discount.Rows[0].DiscountPercentage);
+                                $('#txtDiscountRemarks').val(discount.Rows[0].DiscountRemarks);
+                                $('#txtDiscountPercentCeiling').val(discount.Rows[0].PercentDiscount);
+
+                                $('#divAddCustomerDetails').hide();
+                                $('#divSCPWDDiscount').hide();
+
+                                $("#txtDiscountPercent").removeAttr("disabled");
+                                $("#txtDiscountAmount").removeAttr("disabled");
+
+                                if ($('#selDiscountType').val().toUpperCase() == '35F954A0-C67C-499C-AF60-F08E64477FDC') {
+                                    strAccessType = "Allow to grant VIP Discount";
+                                    showDiscountDetails = false;
+                                    isSeniorCitizenPWDDiscount = false;
+                                    isSeniorCitizenDiscount = false;
+                                } else if ($('#selDiscountType').val().toUpperCase() == '764EDACB-0131-4033-8E44-7B903368008C') {
+                                    strAccessType = "Allow to grant Regular Discount 1";
+                                    showDiscountDetails = false;
+                                    isSeniorCitizenPWDDiscount = false;
+                                    isSeniorCitizenDiscount = false;
+                                } else if ($('#selDiscountType').val().toUpperCase() == 'C4199347-6A00-45C9-BE11-8934DD63ECD1') {
+                                    strAccessType = "Allow to grant Regular Discount 2";
+                                    showDiscountDetails = false;
+                                    isSeniorCitizenPWDDiscount = false;
+                                    isSeniorCitizenDiscount = false;
+                                } else if ($('#selDiscountType').val().toUpperCase() == '8E2DCA9C-433F-42FC-A644-04476DBA056A') {
+                                    strAccessType = "Allow to grant Regular Discount 3";
+                                    showDiscountDetails = false;
+                                    isSeniorCitizenPWDDiscount = false;
+                                    isSeniorCitizenDiscount = false;
+                                } else if ($('#selDiscountType').val().toUpperCase() == '7804A35A-B531-4380-945E-FC9643E99843') {
+                                    strAccessType = "Allow to grant Employee Discount";
+                                    showDiscountDetails = false;
+                                    isSeniorCitizenPWDDiscount = false;
+                                    isSeniorCitizenDiscount = false;
+                                } else if ($('#selDiscountType').val().toUpperCase() == '055A0A33-DD98-47EC-ADD3-8B2009F3944A') {
+                                    strAccessType = "Allow to grant Senior Citizen (SC) Discount";
+                                    $('#divAddCustomerDetails').show();
+                                    $('#divSCPWDDiscount').show();
+                                    showDiscountDetails = true;
+                                    isSeniorCitizenPWDDiscount = true;
+                                    isSeniorCitizenDiscount = true;
+                                    $('#txtDiscountPercent').attr("disabled", "disabled");
+                                    $("#txtDiscountAmount").attr("disabled", "disabled");
+
+                                    $('#txtSalesPayNoOfSC').val(discount.Rows[0].NoOfSeniorCitizens || 1);
+                                    $('#txtSalesPayNoOfDiners').val(discount.Rows[0].NoOfPeople || 1);
+
+                                    sessionStorage.NoOfSeniorCitizens = (discount.Rows[0].NoOfSeniorCitizens || 1);
+                                    sessionStorage.TotalNumberOfCustomer = (discount.Rows[0].NoOfPeople || 1);
+
+                                } else if ($('#selDiscountType').val().toUpperCase() == '34A4032F-A142-4C15-A868-4AC4410434DF') {
+                                    strAccessType = "Allow to grant Person With Disability (PWD) Discount";
+                                    $('#divAddCustomerDetails').show();
+                                    isSeniorCitizenPWDDiscount = true;
+                                    showDiscountDetails = false;
+                                    isSeniorCitizenDiscount = false;
+                                    $('#txtDiscountPercent').attr("disabled", "disabled");
+                                    $("#txtDiscountAmount").attr("disabled", "disabled");
+                                } else if ($('#selDiscountType').val().toUpperCase() == '674AD791-188B-4238-B95C-97B5C2B9D544') {
+                                    strAccessType = "Allow to grant Senior Citizen (SC) Discount";
+                                    $('#divAddCustomerDetails').show();
+                                    isSeniorCitizenPWDDiscount = true;
+                                    isSeniorCitizenDiscount = true;
+                                    showDiscountDetails = false;
+                                    $('#txtDiscountPercent').attr("disabled", "disabled");
+                                    $("#txtDiscountAmount").attr("disabled", "disabled");
+                                } else if ($('#selDiscountType').val().toUpperCase() == 'C2218C86-0450-4CD3-B019-3EDD43E51741') {
+                                    strAccessType = "Allow to grant GPC Discount";
+                                    showDiscountDetails = false;
+                                    isSeniorCitizenPWDDiscount = false;
+                                    isSeniorCitizenDiscount = false;
+                                } else {
+                                    showDiscountDetails = false;
+                                    isSeniorCitizenPWDDiscount = false;
+                                    isSeniorCitizenDiscount = false;
+
+                                }
+
+                                if (isSeniorCitizenPWDDiscount) {
+                                    var vDataShow = SalesPayment_offline().getSeniorCitizenPWDCustomer(sessionStorage.CartOrderID);
+                                    //put the ids in sessionstorage
+
+                                    if (vDataShow.Rows.length > 0) {
+
+                                        arSalesPayCustomerName = new Array();
+                                        for (var i = 0; i < vDataShow.Rows.length; i++) {
+                                            arSalesPayCustomerName[intSalesPayCustomerNameID] = vDataShow.Rows[i].CustomerID;
+                                            arSalesPayCustomerName[intSalesPayCustomerNameState] = "Edit";
+                                            sessionStorage["SalesPayCustomerName-" + i] = JSON.stringify(arSalesPayCustomerName);
+
+                                        }
+
+                                        intSalesPayCustomerNameCntr = window.pageDiscounts.LoadSavedCustomerNameList(vDataShow.Rows, true);
+
+                                    }
+
+
+                                }
+
+                                longDiscountPercent = discount.Rows[0].DiscountPercentage;
+
+
+                            }
+
+                        }
+                    }
+                }
+
+
+                function getCurrentCharges() {
+
+                    if (OfflineMode) {
+                        var total = 0.00;
+                        var otherTax = 0.00;
+                        var charges = 0.00;
+                        var result = SalesPayment_offline().GetBillCharges(sessionStorage.CartOrderID);
+                        var tip = 0.00;
+
+                        if (result.Rows != undefined) {
+
+                            for (var i = 0; i < result.Rows.length; i++) {
+                                otherTax += parseFloat(result.Rows[i].LocalTaxAmount);
+                                total += parseFloat(result.Rows[i].ChargeAmount) + parseFloat(result.Rows[i].LocalTaxAmount) + parseFloat(result.Rows[i].TipAmount);
+                                charges += parseFloat(result.Rows[i].ChargeAmount);
+                                tip += parseFloat(result.Rows[i].TipAmount);
+                            }
+
+                            DisplayChargesList(result.Rows);
+
+                        }
+                        $("#lblSalesPayCharges").text(charges > 0 ? charges : AccountingFormat(charges));
+
+                        $("#lblSalesPayCheckCharges").text(AccountingFormat(total));
+                        $("#lblSalesPayCreditCardCharges").text(AccountingFormat(total));
+                        $("#lblSalesPayDebitCardCharges").text(AccountingFormat(total));
+                        $("#lblSalesPaySRVCharges").text(AccountingFormat(total));
+                        $("#lblSalesPayOtherTypeCharges").text(AccountingFormat(total));
+
+                        $("#lblBillTotalCharges").text(AccountingFormat(total));
+
+                        if (tip > 0) {
+                            $("#divPaymentsTip").show();
+                            $("#lblSalesPayTip").text(tip > 0 ? tip : AccountingFormat(tip));
+                        } else {
+                            $("#divPaymentsTip").hide();
+                            $("#lblSalesPayTip").text('');
+
+                        }
+
+
+                        if (otherTax > 0) {
+                            $("#divPaymentsOtherTax").show();
+                            $("#lblSalesPayOtherTax").text(otherTax > 0 ? otherTax : AccountingFormat(otherTax));
+
+                        } else {
+                            $("#divPaymentsOtherTax").hide();
+                            $("#lblSalesPayOtherTax").text('');
+
+                        }
+
+                    }
+                }
+                function DisplayChargesList(vRows) {
+
+                    var pLV = $("#tblChargesList");
+
+                    pLV.html('');
+
+                    for (var i = 0; i <= vRows.length - 1; i++) {
+
+                        pItem = $('<tr style="cursor: pointer;">')
+                        .append($('<td>')
+                            .text(vRows[i].ChargeType)
+                        )
+                         .append($('<td style="text-align: right;">')
+                            .text(CDec2(vRows[i].ChargeAmount) + CDec2(vRows[i].LocalTaxAmount) + CDec2(vRows[i].TipAmount))
+                        )
+                         .append($('<td>')
+                            .text(vRows[i].Remarks)
+                        )
+                        .append($('<td>')
+                            .append($('<a href="">')
+                                    .data('ChargeType', vRows[i].ChargeType)
+                                    .text('Remove')
+                                    .click(function () {
+                                        var pData = {
+                                            InvoiceID: sessionStorage.CartOrderID,
+                                            ChargeType: $(this).data('ChargeType')
+                                        };
+
+                                        if (SalesPayment_offline().DeleteBillCharges(pData) == 'ok') {
+                                            getCurrentCharges();
+                                            RefreshSalesPaymentTotal();
+                                            RefreshSalesPaymentTotal_onchange();
+                                        } else {
+                                            MessageBox('There was an error while processing your request.');
+                                        }
+
+
+
+                                    })
+                                )
+                        )
+                        pLV.append(pItem)
+
+                    }
+
+                    //            $('#tblFranchiseeOrdersBody').table("refresh");
+                }
+
+
+                ////////
+
+
+
+
+                function ShowHideCheckBank(IsShow) {
+
+                    $('#txtSalesPayCheckBankID').val('')
+                    $('#btnSalesPayCheckBank').text("Please Select").button('refresh');
+                    $('#txtSalesPayCheckBankName').val('')
+
+                    $('#txtSalesPayCheckBankBranchID').val('')
+                    $('#btnSalesPayCheckBankBranch').text("Please Select").button('refresh');
+                    $('#txtSalesPayCheckBankBranch').val('')
+
+                    $("#divCheckBankButton").hide();
+                    $("#divCheckBankBranchButton").hide();
+                    $("#divCheckBankTextbox").hide();
+                    $("#txtSalesPayCheckBankBranch").hide();
+
+                    if (IsShow) {
+                        $("#divCheckBankButton").show();
+                        ////                    $("#divCheckBankBranchButton").show();
+                    } else {
+                        $("#divCheckBankTextbox").show();
+                        ////                    $("#divCheckBankBranchTextbox").show();
+                    }
+
+                    $("#txtSalesPayCheckBankBranch").show();
+                }
+
+                function ShowHideDebitCardBank(IsShow) {
+                    $('#txtSalesPayDebitCardBankID').val('')
+                    $('#btnSalesPayDebitCardBank').text("Please Select").button('refresh');
+                    $('#txtSalesPayDebitCardBank').val('')
+
+                    $("#divSalesPayDebitCardBankButton").hide();
+                    $("#divSalesPayDebitCardBankTextbox").hide();
+
+                    if (IsShow) {
+                        $("#divSalesPayDebitCardBankButton").show();
+                    } else {
+                        $("#divSalesPayDebitCardBankTextbox").show();
+                    }
+                }
+
+                function ShowHideCreditCardBank(IsShow) {
+                    $('#txtSalesPayCreditCardBankID').val('')
+                    $('#btnSalesPayCreditCardBank').text("Please Select").button('refresh');
+                    $('#txtSalesPayCreditCardBank').val('')
+
+                    $("#divSalesPayCreditCardBankButton").hide();
+                    $("#divSalesPayCreditCardBankTextbox").hide();
+
+                    if (IsShow) {
+                        $("#divSalesPayCreditCardBankButton").show();
+                    } else {
+                        $("#divSalesPayCreditCardBankTextbox").show();
+                    }
+                }
+
+                function getOrgDiscountType() {
+
+                    if (OfflineMode) {
+                        LoadOrgDiscountType(SalesPayment_offline().getOrgDiscountType().Rows);
+                    } else {
+                        AjaxSend({
+                            url: 'DiscountSettings/getDiscountSettings',
+                            success: function (vData) {
+
+                                LoadOrgDiscountType(vData.DiscountData.Rows);
+
+                            },
+                            error: function (vError) {
+                                var pDummy;
+                            }
+                        });
+                    };
+
+                }
+
+                function LoadOrgDiscountType(vRows) {
+
+                    $('#selDiscountType').empty();
+
+                    $('#selDiscountType').append(new Option('Please Select', ''));
+                    for (var p = 0; p <= vRows.length - 1; p++) {
+                        if (CDec2(vRows[p].PercentDiscount) != 0) {
+                            if (vRows[p].DiscountType != 'Person With Disability Discount') {
+
+                                if (vRows[p].DiscountType == 'Senior Citizen Discount') {
+                                    $('#selDiscountType').append(new Option('Senior Citizen / PWD Discount', vRows[p].ID, false, false));
+                                }else
+                                    $('#selDiscountType').append(new Option(vRows[p].DiscountType, vRows[p].ID, false, false));
+
+                            }                            
+                        }
+                    }
+                }
+
+                function getOrgDiscountPercentRefresh(strDiscountID) {
+                    var pData = {}
+                    pData.DiscountID = strDiscountID;
+
+                    if (OfflineMode) {
+                        var vRows = SalesPayment_offline().getOrgDiscountPercentRefresh(strDiscountID).Rows[0];
+
+                        if (vRows != undefined) {
+                            LoadOrgDiscountPercentRefresh(vRows);
+                        } else {
+
+                            $('#txtDiscountPercentCeiling').val('');
+                            $('#txtDiscountPercent').val('');
+                            $("#txtDiscountAmount").val('');
+                            $("#lblSalesPayTotalDiscount").text('');
+                            $("#lblSalesPayCheckTotalDiscount").text('');
+                            $("#lblSalesPayDebitCardTotalDiscount").text('');
+                            $("#lblSalesPayCreditCardTotalDiscount").text('');
+                            $("#lblSalesPaySRVTotalDiscount").text('');
+                            $("#lblSalesPayOtherTypeTotalDiscount").text('');
+                            RefreshSalesPaymentTotal();
+
+                            //                            proj.RefreshTotalDiscount();
+
+                        }
+
+                    } else {
+                        AjaxSend({
+                            url: 'DiscountSettings/getDiscountSettingsInfo',
+                            data: pData,
+                            success: function (vData) {
+
+                                if (vData.DiscountData.Rows.length > 0) {
+                                    LoadOrgDiscountPercentRefresh(vData.DiscountData.Rows[0]);
+                                } else {
+
+                                    $('#txtDiscountPercentCeiling').val('');
+                                    $('#txtDiscountPercent').val('');
+                                    $("#txtDiscountAmount").val('');
+                                    $("#lblSalesPayTotalDiscount").text('');
+                                    $("#lblSalesPayCheckTotalDiscount").text('');
+                                    $("#lblSalesPayDebitCardTotalDiscount").text('');
+                                    $("#lblSalesPayCreditCardTotalDiscount").text('');
+                                    $("#lblSalesPaySRVTotalDiscount").text('');
+                                    $("#lblSalesPayOtherTypeTotalDiscount").text('');
+
+                                    //                                    proj.RefreshTotalDiscount();
+
+                                }
+
+                            },
+                            error: function (vError) {
+                                var pDummy;
+                            }
+                        });
+                    };
+
+                }
+
+
+                function LoadOrgDiscountPercentRefresh(vRows) {
+                    $('#txtDiscountPercentCeiling').val((vRows.PercentDiscount == "0" ? '' : AccountingFormat(vRows.PercentDiscount)));
+                    $('#txtDiscountPercent').val((vRows.PercentDiscount == "0" ? '' : AccountingFormat(vRows.PercentDiscount)));
+
+                    longDiscountPercent = vRows.PercentDiscount;
+
+
+                    proj.RefreshTotalDiscount();
+
+                }
+                
+                function SetDeliveryMode() {
+                    var pParams = GetUrlParameters();
+
+                    $('#divDeliverDownTown').hide();
+                    $('#divDeliverOutOfTown').hide();
+                    $('#divPickup').hide();
+
+                    if ($('#selDeliveryMode').val() == "Deliver (Downtown)") {
+                        $('#divDeliverDownTown').show();
+                    }
+                    else if ($('#selDeliveryMode').val() == "Deliver (Out Of Town)") {
+                        $('#divDeliverOutOfTown').show();
+                    }
+                    else if ($('#selDeliveryMode').val() == "PickUp") {
+                        $('#divPickup').show();
+
+                        $('#divPickUpType').show();
+                        $("#rdoCustomerIsWaiting").attr("checked", true).checkboxradio("refresh");
+                        $("#rdoDateAndTime").attr("checked", false).checkboxradio("refresh");
+                        SetPickUp(true);
+                    }
+
+                }
+
+                function SetDeliveryDownTown(IsRush) {
+
+                    $('#divRush').hide();
+                    $('#divNotRush').hide();
+                    if (IsRush) {
+                        $('#divRush').show();
+                    }
+                    else {
+                        $('#txtDeliverWithIn').val('0');
+                        $('#selHourMinute').val('').selectmenu('refresh');
+                        $('#divNotRush').show();
+                    }
+
+                }
+
+                function SetDeliveryOutOfTown(IsNormalRoute) {
+
+                    $('#divBus').hide();
+                    if (!IsNormalRoute) {
+                        $('#divBus').show();
+                    }
+
+                }
+
+                function SetPickUp(IsCustomerWaiting) {
+
+                    $('#divCustomerIsWaiting').hide();
+                    $('#divDateAndTime').hide();
+                    if (IsCustomerWaiting) {
+                        $('#selPickUpMonth').val('').selectmenu('refresh');
+                        $('#selPickUpDay').val('').selectmenu('refresh');
+                        $('#selPickUpYear').val('').selectmenu('refresh');
+                        $('#selPickUpHour').val('').selectmenu('refresh');
+                        $('#selPickUpMin').val('').selectmenu('refresh');
+                        $('#selPickUpAMPM').val('').selectmenu('refresh');
+
+                        $('#divCustomerIsWaiting').show();
+                    }
+                    else {
+                        $('#divDateAndTime').show();
+                    }
+                }
+
+                function ShowSalesPaymentsInfo(isRefreshByOtherModeOfPayment) {
+                    var pData = {};
+                    var pParams = GetUrlParameters();
+                    pData.InvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                    mInvoiceID = pData.InvoiceID;
+                    //                    if (window.location.pathname.toLowerCase() == '/salespayments')
+
+                    //                    if (window.location.pathname.toLowerCase() == '/salespayments')
+                    //                        ClearSalesPaymentsInfoFields();
+
+                    if (OfflineMode) {
+
+                        LoadSalesPaymentsInfo(SalesPayment_offline().ShowSalesPaymentsInfo(pData.InvoiceID).Rows[0]);
+
+                        if (!CBool(isRefreshByOtherModeOfPayment)) { // credit card, debit card, srv, check
+                            $("#pageSalesPayment").show();
+                        }
+
+                    } else {
+                        AjaxSend({
+                            url: "SalesPayments/getInvoiceTotalAmountDue",
+                            data: pData,
+                            success: function (vData) {
+
+                                LoadSalesPaymentsInfo(vData);
+                                if (!CBool(isRefreshByOtherModeOfPayment)) { // credit card, debit card, srv, check
+                                    $("#pageSalesPayment").show();
+                                }
+                            }
+                        });
+                    };
+                };
+
+                function LoadSalesPaymentsInfo(vData) {
+                    if (vData == undefined) {
+                        $.mobile.changePage('');
+                        return;
+                    } else {
+                        dblTotalAmountDueForDiscount = 0;
+                        dblTotalAmountDueForDiscount = vData.TotalAmountDue || 0;
+                        dblSubTotal = 0;
+                        dblSubTotal = CDec2(vData.TransInvoiceItems) || 0;
+                        taxPercent = vData.TaxPercent || 0;
+                        $("#txtSalesPayCustomerID").val(vData.CustomerID || '');
+
+                        $("#lblSalesPaySubTotal").text(AccountingFormat(vData.TransInvoiceItems || 0));
+                        SalesPayment_offline().AddDefaultServiceCharge(sessionStorage.CartOrderID);
+                        $("#lblSalesPayCheckSubTotal").text(AccountingFormat(vData.TransInvoiceItems || 0));
+                        $("#lblSalesPayDebitCardSubTotal").text(AccountingFormat(vData.TransInvoiceItems || 0));
+                        $("#lblSalesPayCreditCardSubTotal").text(AccountingFormat(vData.TransInvoiceItems || 0));
+                        $("#lblSalesPaySRVSubTotal").text(AccountingFormat(vData.TransInvoiceItems || 0));
+                        $("#lblSalesPayOtherTypeSubTotal").text(AccountingFormat(vData.TransInvoiceItems || 0));
+                        if (CDec2(vData.DepositAmount)) {
+                            $('#txtSalesPaymentCash').val(AccountingFormat(vData.DepositAmount));
+                            $('#lblSalesPayTotalCash').text(AccountingFormat(vData.DepositAmount));
+                        }
+                        $('#pSkuCount').text(vData.SkuCount);
+                        $('#pTotalQuantity').text(vData.TotalQuantity);
+                        //////                if (CStr2(vData.RefNum).trim() != '')
+                        $('#divSaveReceipt').show();
+                        $('#divPrintBilling').show();
+                        if (window.DebugMode) {
+                            $('#divPrintReceiptOrderSlip').show();
+                            $('#divPrintOrderSlip').show();
+                            $('#divPrintOrderSlipAndBilling').show();
+                        }
+
+                        RefreshSalesPaymentTotal();
+
+                        //RefreshSalesPaymentTotalFromBilling();
+
+                        //Delivery Info
+                        //                    IsDeliveryInfoProceedToPayments = false;
+                        IsDeliveryInfoPriceQuote = false;
+
+                        //                    //default Value for POS Pickup
+                        //                    //edited by janine, get delivery method set in pos. if none then pickup default
+                        //                    if (CStr2(sessionStorage.DeliveryMethod) == '')
+                        //                        $("#selDeliveryMode").val('PickUp').selectmenu('refresh');
+                        //                    else
+                        //                        $('#selDeliveryMode').val(sessionStorage.DeliveryMethod).selectmenu('refresh');
+
+
+                        SetDeliveryMode();
+
+                        ShowDeliveryInfo();
+
+                    }
+                }
+
+                function ShowDeliveryInfo() {
+                    var pData = { FowstID: sessionStorage.FowstID };
+                    var pParams = GetUrlParameters();
+                    pData.InvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+
+                    ClearDeliveryInfoFields();
+
+                    if (OfflineMode) {
+                        LoadDeliveryInfo(SalesPayment_offline().ShowDeliveryInfo(pData.InvoiceID, sessionStorage.FowstID).Rows[0]);
+                    } else {
+                        AjaxSend({
+                            url: "DeliveryInfo/getDeliveryInfo",
+                            data: pData,
+                            success: function (vData) {
+
+                                if (vData.Error) {
+                                    MessageBox(vData.Error);
+                                    return;
+                                };
+
+                                LoadDeliveryInfo(vData.DeliveryInfoData.Rows[0]);
+
+                            }
+                        });
+                    };
+
+                };
+
+                function LoadDeliveryInfo(vData) {
+
+                    $("#txtOrgCustomer").val(vData.CustomerName || '');
+
+                    $("#txtOrderedByID").val(vData.RepresentativeID || '');
+                    $("#btnOrderBy").text(vData.Representative || 'Please Select').button('refresh');
+
+                    $("#txtBillToID").val(vData.BillingAddressID || '');
+                    $("#btnBillTo").text(vData.BillingAddress || 'Please Select').button('refresh');
+
+                    $("#txtShipToID").val(vData.DeliveryAddressID || '');
+                    $("#btnShipTo").text(vData.DeliveryAddress || 'Please Select').button('refresh');
+
+                    $("#txtDeliveryInfoTelNo").val(vData.TelNo || '');
+                    $("#txtDeliveryInfoFaxNo").val(vData.FaxNo || '');
+                    $("#txtDeliveryInfoMobileNo").val(vData.MobileNo || '');
+                    $("#txtDeliveryInfoEmail").val(vData.Email || '');
+
+                    $("#txtPickUpLocationID").val(vData.PickUpLocationID || '');
+                    $("#btnPickLocation").text(vData.PickUpLocation || 'Please Select').button('refresh');
+
+                    //Set Delivery Method
+                    if (vData.DeliveryMethod == 'Deliver') {
+                        if (vData.IsDownTown == 1) {
+                            $("#selDeliveryMode").val('Deliver (Downtown)').selectmenu('refresh');
+                        }
+                        else {
+                            $("#selDeliveryMode").val('Deliver (Out Of Town)').selectmenu('refresh');
+                        }
+                    }
+                    else {
+
+                        //default Value for POS Pickup
+                        //edited by janine, get delivery method set in pos. if none then pickup default
+                        if (CStr2(vData.DeliveryMethod) == '')
+                            $('#selDeliveryMode').val('PickUp').selectmenu('refresh');
+                        else
+                            $('#selDeliveryMode').val(vData.DeliveryMethod).selectmenu('refresh');
+
+                    }
+                    SetDeliveryMode();
+
+                    //Set if Rush or Not
+                    if (vData.IsRushDelivery == 1) {
+                        $("#rdoRush").attr("checked", true).checkboxradio("refresh");
+                        $("#rdoNotRush").attr("checked", false).checkboxradio("refresh");
+                        $("#txtDeliverWithIn").val(vData.DeliverWithin || '');
+                        $("#selHourMinute").val('Working Minutes').selectmenu('refresh');
+                        SetDeliveryDownTown(true);
+                    }
+                    else {
+                        $("#rdoRush").attr("checked", false).checkboxradio("refresh");
+                        $("#rdoNotRush").attr("checked", true).checkboxradio("refresh");
+                        SetDeliveryDownTown(false);
+                    }
+
+                    //Set Normal Route, Bus or Customer id Waiting
+                    if (vData.DeliveryType == 'Normal Route Delivery') {
+                        $("#rdoNormalRoute").attr("checked", true).checkboxradio("refresh");
+                        $("#rdoBus").attr("checked", false).checkboxradio("refresh");
+                        SetDeliveryOutOfTown(true);
+                    }
+                    else if (vData.DeliveryType == 'Bus') {
+                        $("#rdoNormalRoute").attr("checked", false).checkboxradio("refresh");
+                        $("#rdoBus").attr("checked", true).checkboxradio("refresh");
+                        SetDeliveryOutOfTown(false);
+                    }
+                    else if (vData.DeliveryType == 'Customer Is Waiting') {
+                        $("#rdoCustomerIsWaiting").attr("checked", true).checkboxradio("refresh");
+                        $("#rdoDateAndTime").attr("checked", false).checkboxradio("refresh");
+                        SetPickUp(true);
+                    }
+                    else {
+                        if (vData.DeliveryMethod.toLowerCase() == 'pickup') {
+                            $("#rdoCustomerIsWaiting").attr("checked", false).checkboxradio("refresh");
+                            $("#rdoDateAndTime").attr("checked", true).checkboxradio("refresh");
+
+                            $("#selPickUpMonth").val(vData.PickupDateMonth || '').selectmenu('refresh');
+                            $("#selPickUpYear").val(vData.PickupDateYear || '').selectmenu('refresh');
+                            setDayCollection('selPickUpMonth', 'selPickUpDay', 'selPickUpYear', true);
+                            $("#selPickUpDay").val(vData.PickupDateDay || '').selectmenu('refresh');
+
+                            $("#selPickUpHour").val(vData.PickupDateHour || '').selectmenu('refresh');
+                            $("#selPickUpMin").val(vData.PickupDateMinute || '').selectmenu('refresh');
+                            $("#selPickUpAMPM").val(vData.PickupDateAMPM || '').selectmenu('refresh');
+
+                            SetPickUp(false);
+                        }
+                    }
+
+                    //Get OutOfTownBus Default
+                    if (OfflineMode) {
+                        $("#lblOutOfTownBus").text('Maximum service time : ' + SalesPayment_offline().getOutOfTownBusDefault().Rows[0].DefaultValue + ' hour(s)' || 'Maximum service time : 2 hour(s)');
+                    } else {
+                        AjaxSend({
+                            url: "DeliveryInfo/getOutOfTownBusDefault",
+                            success: function (vData) {
+
+                                $("#lblOutOfTownBus").text('Maximum service time : ' + vData.OutOfTownBusDefault + ' hour(s)' || 'Maximum service time : 2 hour(s)');
+
+                            }
+                        });
+                    };
+
+                    //Get Pick Up Customer Is Waiting Default
+                    if (OfflineMode) {
+                        $("#lblOutOfTownBus").text('Maximum service time : ' + SalesPayment_offline().getPickUpCustomerIsWaitingDefault().Rows[0].DefaultValue + ' hour(s)' || 'Maximum service time : 2 hour(s)');
+                    } else {
+                        AjaxSend({
+                            url: "DeliveryInfo/getPickUpCustomerIsWaitingDefault",
+                            success: function (vData) {
+
+                                $("#lblPickUpCustomerIsWaiting").text('Maximum service time : ' + vData.PickUpCustomerIsWaitingDefault + ' Minute(s)' || 'Maximum service time : 30 Minute(s)');
+
+                            }
+                        });
+                    };
+
+                    if (OfflineMode) {
+                        var vData = SalesPayment_offline().getOrganizationRepresentative(sessionStorage.OrgID);
+                        if (vData != null) {
+                            LoadOrganizationRepresentative(vData.Rows[0]);
+                        }
+                    } else {
+                        AjaxSend({
+                            url: "Browser/LibraryOrganizationRepresentative",
+                            data: { Top1: 1 },
+                            success: function (vData) {
+                                LoadOrganizationRepresentative(vData.Results.Rows[0]);
+                            }
+                        });
+                    };
+
+                }
+
+                function LoadOrganizationRepresentative(pDR) {
+                    if (pDR == undefined) return;
+                    $('#txtOrderedByID').val(pDR.ID);
+                    $('#btnOrderBy').text(pDR.RepresentativeName)
+                    .button('refresh');
+
+                    $('#txtDeliveryInfoTelNo').val(pDR.TelNo);
+                    $('#txtDeliveryInfoFaxNo').val(pDR.FaxNo);
+                    $('#txtDeliveryInfoMobileNo').val(pDR.MobileNo);
+                    $('#txtDeliveryInfoEmail').val(pDR.Email);
+                }
+
+                function LoadSalesPayCheck(vRows) {
+
+                    for (var p = 0; p <= vRows.length - 1; p++) {
+
+                        arSalesPayCheck = new Array();
+                        arSalesPayCheck[intSalesPayCheckRecID] = vRows[p].ID;
+                        arSalesPayCheck[intSalesPayCheckBankID] = vRows[p].BankID;
+                        arSalesPayCheck[intSalesPayCheckBank] = vRows[p].BankName;
+                        arSalesPayCheck[intSalesPayCheckBankBranchID] = vRows[p].BankBranchID;
+                        arSalesPayCheck[intSalesPayCheckBankBranch] = vRows[p].BankBranchName;
+                        arSalesPayCheck[intSalesPayCheckAccountName] = vRows[p].AccountName;
+                        arSalesPayCheck[intSalesPayCheckAccountNo] = vRows[p].AccountNumber;
+                        arSalesPayCheck[intSalesPayCheckNumber] = vRows[p].CheckNumber;
+
+                        arSalesPayCheck[intSalesPayCheckDateMonth] = vRows[p].CheckDateMonth;
+                        arSalesPayCheck[intSalesPayCheckDateDay] = vRows[p].CheckDateDay;
+                        arSalesPayCheck[intSalesPayCheckDateyear] = vRows[p].CheckDateYear;
+
+                        arSalesPayCheck[intSalesPayCheckAmount] = AccountingFormat(vRows[p].CheckAmount);
+                        arSalesPayCheck[intSalesPayCheckState] = "";
+
+                        sessionStorage["SalesPayCheck-" + p] = JSON.stringify(arSalesPayCheck);
+
+                    };
+
+                    intSalesPayCheckCntr = vRows.length;
+                    LoadSalesPayCheckList();
+
+                };
+
+                function LoadSalesPayDebitCard(vRows) {
+
+                    for (var p = 0; p <= vRows.length - 1; p++) {
+
+                        arSalesPayDebitCard = new Array();
+                        arSalesPayDebitCard[intSalesPayDebitCardRecID] = vRows[p].ID;
+                        arSalesPayDebitCard[intSalesPayDebitCardType] = vRows[p].DebitCardType;
+                        arSalesPayDebitCard[intSalesPayDebitCardBankID] = vRows[p].DebitCardBankID;
+                        arSalesPayDebitCard[intSalesPayDebitCardBank] = vRows[p].DebitCardBankName;
+                        arSalesPayDebitCard[intSalesPayDebitCardHolderLName] = vRows[p].HolderLastName;
+                        arSalesPayDebitCard[intSalesPayDebitCardHolderFName] = vRows[p].HolderFirstName;
+                        arSalesPayDebitCard[intSalesPayDebitCardHolderMName] = vRows[p].HolderMiddleName;
+                        arSalesPayDebitCard[intSalesPayDebitCardHolderGenSuffix] = vRows[p].HolderGenerationalSuffix;
+                        arSalesPayDebitCard[intSalesPayDebitCardBankCountryID] = vRows[p].BankCountryID;
+                        arSalesPayDebitCard[intSalesPayDebitCardBankCountry] = vRows[p].BankCountry;
+
+                        arSalesPayDebitCard[intSalesPayDebitCardNumber] = vRows[p].DebitCardNumber;
+                        arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateMonth] = vRows[p].DebitCardIssuanceDateMonth;
+                        arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateDay] = vRows[p].DebitCardIssuanceDateDay;
+                        arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateYear] = vRows[p].DebitCardIssuanceDateYear;
+                        arSalesPayDebitCard[intSalesPayDebitCardExpirationDateMonth] = vRows[p].DebitCardExpirationDateMonth;
+                        arSalesPayDebitCard[intSalesPayDebitCardExpirationDateDay] = vRows[p].DebitCardExpirationDateDay;
+                        arSalesPayDebitCard[intSalesPayDebitCardExpirationDateYear] = vRows[p].DebitCardExpirationDateYear;
+
+                        arSalesPayDebitCard[intSalesPayDebitCardApprovalNumber] = vRows[p].ApprovalNo;
+                        arSalesPayDebitCard[intSalesPayDebitCardNoOfInstallment] = vRows[p].NoOfInstallmentPayments;
+                        arSalesPayDebitCard[intSalesPayDebitCardAmount] = AccountingFormat(vRows[p].DebitCardAmount);
+                        arSalesPayDebitCard[intSalesPayDebitCardState] = "";
+
+                        sessionStorage["SalesPayDebitCard-" + p] = JSON.stringify(arSalesPayDebitCard);
+
+                    };
+
+                    intSalesPayDebitCardCntr = vRows.length;
+                    LoadSalesPayDebitCardList();
+
+                };
+
+                function LoadSalesPayCreditCard(vRows) {
+
+                    for (var p = 0; p <= vRows.length - 1; p++) {
+
+                        arSalesPayCreditCard = new Array();
+                        arSalesPayCreditCard[intSalesPayCreditCardRecID] = vRows[p].ID;
+                        arSalesPayCreditCard[intSalesPayCreditCardType] = vRows[p].CreditCardType;
+                        arSalesPayCreditCard[intSalesPayCreditCardBankID] = vRows[p].CreditCardBankID;
+                        arSalesPayCreditCard[intSalesPayCreditCardBank] = vRows[p].CreditCardBankName;
+                        arSalesPayCreditCard[intSalesPayCreditCardHolderLName] = vRows[p].HolderLastName;
+                        arSalesPayCreditCard[intSalesPayCreditCardHolderFName] = vRows[p].HolderFirstName;
+                        arSalesPayCreditCard[intSalesPayCreditCardHolderMName] = vRows[p].HolderMiddleName;
+                        arSalesPayCreditCard[intSalesPayCreditCardHolderGenSuffix] = vRows[p].HolderGenerationalSuffix;
+                        arSalesPayCreditCard[intSalesPayCreditCardBankCountryID] = vRows[p].BankCountryID;
+                        arSalesPayCreditCard[intSalesPayCreditCardBankCountry] = vRows[p].BankCountry;
+
+                        arSalesPayCreditCard[intSalesPayCreditCardNumber] = vRows[p].CreditCardNumber;
+                        arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateMonth] = vRows[p].CreditCardIssuanceDateMonth;
+                        arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateDay] = vRows[p].CreditCardIssuanceDateDay;
+                        arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateYear] = vRows[p].CreditCardIssuanceDateYear;
+                        arSalesPayCreditCard[intSalesPayCreditCardExpirationDateMonth] = vRows[p].CreditCardExpirationDateMonth;
+                        arSalesPayCreditCard[intSalesPayCreditCardExpirationDateDay] = vRows[p].CreditCardExpirationDateDay;
+                        arSalesPayCreditCard[intSalesPayCreditCardExpirationDateYear] = vRows[p].CreditCardExpirationDateYear;
+
+                        arSalesPayCreditCard[intSalesPayCreditCardApprovalNumber] = vRows[p].ApprovalNo;
+                        arSalesPayCreditCard[intSalesPayCreditCardNoOfInstallment] = vRows[p].NoOfInstallmentPayments;
+                        arSalesPayCreditCard[intSalesPayCreditCardAmount] = AccountingFormat(vRows[p].CreditCardAmount);
+                        arSalesPayCreditCard[intSalesPayCreditCardState] = "";
+
+                        sessionStorage["SalesPayCreditCard-" + p] = JSON.stringify(arSalesPayCreditCard);
+
+                    };
+
+                    intSalesPayCreditCardCntr = vRows.length;
+                    LoadSalesPayCreditCardList();
+
+                };
+
+                function LoadSalesPaySRV(vRows) {
+
+                    for (var p = 0; p <= vRows.length - 1; p++) {
+
+                        arSalesPaySRV = new Array();
+                        arSalesPaySRV[intSalesPaySRVRecID] = vRows[p].ID;
+                        arSalesPaySRV[intSalesPaySRVMemoID] = vRows[p].MemoID;
+                        arSalesPaySRV[intSalesPaySRVNo] = vRows[p].SRVNo;
+                        arSalesPaySRV[intSalesPaySRVPinCode] = vRows[p].PinCode;
+                        arSalesPaySRV[intSalesPaySRVAmount] = AccountingFormat(vRows[p].SRVAmount);
+                        arSalesPaySRV[intSalesPaySRVConsumedAmount] = AccountingFormat(vRows[p].ConsumedAmount);
+                        arSalesPaySRV[intSalesPaySRVState] = "";
+
+                        sessionStorage["SalesPaySRV-" + p] = JSON.stringify(arSalesPaySRV);
+
+                    };
+
+                    intSalesPaySRVCntr = vRows.length;
+                    LoadSalesPaySRVList();
+
+                };
+
+                function ShowSalesPayCheckInfo(arData, index) {
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowCheckPaymentPage();
+                    else
+                        $.mobile.changePage('#pageSalesPayCheck');
+
+                    ClearSalesPayCheckFields();
+
+                    intSalesPayCheckIndex = index;
+
+                    $("#txtSalesPayCheckID").val(arData[intSalesPayCheckRecID] || '');
+
+                    if (arData[intSalesPayCheckBankID] == "") {
+                        ShowHideCheckBank(false);
+                        $("#txtSalesPayCheckBankName").val(arData[intSalesPayCheckBank] || '');
+                    } else {
+                        ShowHideCheckBank(true);
+                        $("#txtSalesPayCheckBankID").val(arData[intSalesPayCheckBankID] || '');
+                        $("#btnSalesPayCheckBank").text(arData[intSalesPayCheckBank] || 'Please Select').button('refresh');
+                        $("#txtSalesPayCheckBankBranchID").val(arData[intSalesPayCheckBankBranchID] || '');
+                        $("#btnSalesPayCheckBankBranch").text(arData[intSalesPayCheckBankBranch] || 'Please Select').button('refresh');
+                    }
+
+                    $("#txtSalesPayCheckBankBranch").val(arData[intSalesPayCheckBankBranch] || '');
+
+                    $("#txtSalesPayCheckAccountName").val(arData[intSalesPayCheckAccountName] || '');
+                    $("#txtSalesPayCheckAccountNo").val(arData[intSalesPayCheckAccountNo] || '');
+                    $("#txtSalesPayCheckNo").val(arData[intSalesPayCheckNumber] || '');
+
+                    $("#selSalesPayCheckDateMonth").val(arData[intSalesPayCheckDateMonth] || '').selectmenu('refresh');
+                    $("#selSalesPayCheckDateDay").val(arData[intSalesPayCheckDateDay] || '').selectmenu('refresh');
+                    $("#selSalesPayCheckDateYear").val(arData[intSalesPayCheckDateyear] || '').selectmenu('refresh');
+
+                    $("#txtSalesPayCheckAmount").val(arData[intSalesPayCheckAmount] || '');
+
+                    $('[name="radOpPayCheck"]').removeAttr('checked').checkboxradio('refresh');
+                    $('[name="radOpPayCheck"][value="' + arData[intSalesPayCheckType] + '"]').attr('checked', true).checkboxradio('refresh')
+                    
+                    if (arData[intSalesPayCheckType] == 'check') {
+                        $('#lblPayCheckNo').html('Check No.: <span style="color: #FF0000;">*</span>');
+                        $('#lblPayCheckDate').html('Check Date: <span style="color: #FF0000;">*</span>');
+                        $('#lblPayCheckAmount').html('Check Amount: <span style="color: #FF0000;">*</span>');
+                        $('#divForCheck').show();
+                    } else {
+                        $('#lblPayCheckNo').html('Gift Check/ Certificate No.:');
+                        $('#lblPayCheckDate').html('Date of Issue:');
+                        $('#lblPayCheckAmount').html('Gift Check/ Certificate Amount: <span style="color: #FF0000;">*</span>');
+                        $('#divForCheck').hide();
+                    }
+
+                    IsNewSalesPayCheck = false;
+
+                    $("#btnSalesPayCheckRemove").show();
+
+                };
+
+                function ShowSalesPayDebitCardInfo(arData, index) {
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowDebitCardPaymentPage();
+                    else
+                        $.mobile.changePage('#pageSalesPayDebitCard');
+
+                    ClearSalesPayDebitCardFields();
+
+                    intSalesPayDebitCardIndex = index;
+
+                    $("#txtSalesPayDebitCardID").val(arData[intSalesPayDebitCardRecID] || '');
+                    $("#selSalesPayDebitCardType").val(arData[intSalesPayDebitCardType] || '').selectmenu('refresh');
+
+                    if (arData[intSalesPayDebitCardBankID] == "") {
+                        ShowHideDebitCardBank(false);
+                        $("#txtSalesPayDebitCardBank").val(arData[intSalesPayDebitCardBank] || '');
+                    } else {
+                        ShowHideDebitCardBank(true);
+                        $("#txtSalesPayDebitCardBankID").val(arData[intSalesPayDebitCardBankID] || '');
+                        $("#btnSalesPayDebitCardBank").text(arData[intSalesPayDebitCardBank] || 'Please Select').button('refresh');
+                    }
+
+                    $("#txtSalesPayDebitCardBankLocationID").val(arData[intSalesPayDebitCardBankCountryID] || '');
+                    $("#btnSalesPayDebitCardBankLocation").text(arData[intSalesPayDebitCardBankCountry] || 'Please Select').button('refresh');
+
+                    $("#txtSalesPayDebitCardLastName").val(arData[intSalesPayDebitCardHolderLName] || '');
+                    $("#txtSalesPayDebitCardFirstName").val(arData[intSalesPayDebitCardHolderFName] || '');
+                    $("#txtSalesPayDebitCardMiddleName").val(arData[intSalesPayDebitCardHolderMName] || '');
+                    $("#selSalesPayDebitPersonalSuffixName").val(arData[intSalesPayDebitCardHolderGenSuffix] || '').selectmenu('refresh');
+
+                    $("#txtSalesPayDebitCardNo").val(arData[intSalesPayDebitCardNumber] || '');
+
+                    $("#selSalesPayDebitCardIssuanceDateMonth").val(arData[intSalesPayDebitCardIssuanceDateMonth] || '').selectmenu('refresh');
+                    $("#selSalesPayDebitCardIssuanceDateDay").val(arData[intSalesPayDebitCardIssuanceDateDay] || '').selectmenu('refresh');
+                    $("#selSalesPayDebitCardIssuanceDateYear").val(arData[intSalesPayDebitCardIssuanceDateYear] || '').selectmenu('refresh');
+                    $("#selSalesPayDebitCardExpirationDateMonth").val(arData[intSalesPayDebitCardExpirationDateMonth] || '').selectmenu('refresh');
+                    $("#selSalesPayDebitCardExpirationDateDay").val(arData[intSalesPayDebitCardExpirationDateDay] || '').selectmenu('refresh');
+                    $("#selSalesPayDebitCardExpirationDateYear").val(arData[intSalesPayDebitCardExpirationDateYear] || '').selectmenu('refresh');
+
+                    $("#txtSalesPayDebitCardApprovalNo").val(arData[intSalesPayDebitCardApprovalNumber] || '');
+                    $("#txtSalesPayDebitCardNoOfPayments").val(arData[intSalesPayDebitCardNoOfInstallment] || '');
+
+                    $("#txtSalesPayDebitCardTenderedAmount").val(arData[intSalesPayDebitCardAmount] || '');
+
+                    IsNewSalesPayDebitCard = false;
+
+                    $("#btnSalesPayDebitCardRemove").show();
+
+                };
+
+                function ShowSalesPayCreditCardInfo(arData, index) {
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowCreditCardPaymentPage();
+                    else
+                        $.mobile.changePage('#pageSalesPayCreditCard');
+
+                    ClearSalesPayCreditCardFields();
+
+                    intSalesPayCreditCardIndex = index;
+
+                    $("#txtSalesPayCreditCardID").val(arData[intSalesPayCreditCardRecID] || '');
+                    $("#selSalesPayCreditCardType").val(arData[intSalesPayCreditCardType] || '').selectmenu('refresh');
+
+                    if (arData[intSalesPayCreditCardBankID] == "") {
+                        ShowHideCreditCardBank(false);
+                        $("#txtSalesPayCreditCardBank").val(arData[intSalesPayCreditCardBank] || '');
+                    } else {
+                        ShowHideCreditCardBank(true);
+                        $("#txtSalesPayCreditCardBankID").val(arData[intSalesPayCreditCardBankID] || '');
+                        $("#btnSalesPayCreditCardBank").text(arData[intSalesPayCreditCardBank] || 'Please Select').button('refresh');
+                    }
+
+                    $("#txtSalesPayCreditCardBankLocationID").val(arData[intSalesPayCreditCardBankCountryID] || '');
+                    $("#btnSalesPayCreditCardBankLocation").text(arData[intSalesPayCreditCardBankCountry] || 'Please Select').button('refresh');
+
+                    $("#txtSalesPayCreditCardLastName").val(arData[intSalesPayCreditCardHolderLName] || '');
+                    $("#txtSalesPayCreditCardFirstName").val(arData[intSalesPayCreditCardHolderFName] || '');
+                    $("#txtSalesPayCreditCardMiddleName").val(arData[intSalesPayCreditCardHolderMName] || '');
+                    $("#selSalesPayPersonalSuffixName").val(arData[intSalesPayCreditCardHolderGenSuffix] || '').selectmenu('refresh');
+
+                    $("#txtSalesPayCreditCardNo").val(arData[intSalesPayCreditCardNumber] || '');
+
+                    $("#selSalesPayCreditCardIssuanceDateMonth").val(arData[intSalesPayCreditCardIssuanceDateMonth] || '').selectmenu('refresh');
+                    $("#selSalesPayCreditCardIssuanceDateDay").val(arData[intSalesPayCreditCardIssuanceDateDay] || '').selectmenu('refresh');
+                    $("#selSalesPayCreditCardIssuanceDateYear").val(arData[intSalesPayCreditCardIssuanceDateYear] || '').selectmenu('refresh');
+                    $("#selSalesPayCreditCardExpirationDateMonth").val(arData[intSalesPayCreditCardExpirationDateMonth] || '').selectmenu('refresh');
+                    $("#selSalesPayCreditCardExpirationDateDay").val(arData[intSalesPayCreditCardExpirationDateDay] || '').selectmenu('refresh');
+                    $("#selSalesPayCreditCardExpirationDateYear").val(arData[intSalesPayCreditCardExpirationDateYear] || '').selectmenu('refresh');
+
+                    $("#txtSalesPayCreditCardApprovalNo").val(arData[intSalesPayCreditCardApprovalNumber] || '');
+                    $("#txtSalesPayCreditCardNoOfPayments").val(arData[intSalesPayCreditCardNoOfInstallment] || '');
+
+                    $("#txtSalesPayCreditCardTenderedAmount").val(arData[intSalesPayCreditCardAmount] || '');
+
+                    IsNewSalesPayCreditCard = false;
+
+                    $("#btnSalesPayCreditCardRemove").show();
+
+                };
+
+                function ShowSalesPaySRVInfo(arData, index) {
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowSRVPaymentPage();
+                    else
+                        $.mobile.changePage('#pageSalesPaySRV');
+
+                    ClearSalesPaySRVFields();
+
+                    intSalesPaySRVIndex = index;
+
+                    $("#txtSalesPayTransSRVID").val(arData[intSalesPaySRVRecID] || '');
+
+                    $("#txtSalesPaySRVTransMemoID").val(arData[intSalesPaySRVMemoID] || '');
+
+                    $("#txtSalesPaySRVNo").val(arData[intSalesPaySRVNo]);
+                    $("#txtSalesPaySRVPinCode").val(arData[intSalesPaySRVPinCode]);
+
+                    $("#txtSalesPaySRVAmount").val(arData[intSalesPaySRVAmount] || '');
+                    $("#txtSalesPaySRVConsumedAmount").val(arData[intSalesPaySRVConsumedAmount] || '');
+
+                    IsNewSalesPaySRV = false;
+
+                    $("#btnSalesPaySRVRemove").show();
+
+
+                };
+                function ShowSalesPayOtherTypeInfo(arData, index) {
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowOtherTypePaymentPage();
+                    else
+                        $.mobile.changePage('#pageSalesPayOtherPaymentType');
+
+                    ClearSalesPayOtherTypeFields();
+
+                    intSalesPayOtherTypeIndex = index;
+
+                    $("#txtSalesPayOtherPaymentTypeID").val(arData[intSalesPayOtherTypeRecID] || '');
+                    $("#selOtherPaymentType").val(arData[intSalesPayOtherTypeName] || '').selectmenu('refresh');
+                    $("#txtSalesPayOtherPaymentTypeIssuingOrg").val(arData[intSalesPayOtherTypeOrg] || '');
+                    $("#txtSalesPayOtherPaymentTypeCardHolder").val(arData[intSalesPayOtherTypeCardHolderName] || '');
+                    $("#txtSalesPayOtherPaymentTypeCardNo").val(arData[intSalesPayOtherTypeCardNumber] || '');
+                    $("#selSalesPayOtherPaymentTypeCardIssuanceDateMonth").val(arData[intSalesPayOtherTypeIssuanceDateMonth] || '');
+                    $("#selSalesPayOtherPaymentTypeCardIssuanceDateDay").val(arData[intSalesPayOtherTypeIssuanceDateDay] || '');
+                    $("#selSalesPayOtherPaymentTypeCardIssuanceDateYear").val(arData[intSalesPayOtherTypeIssuanceDateYear] || '');
+                    $("#selSalesPayOtherPaymentTypeCardExpirationDateMonth").val(arData[intSalesPayOtherTypeExpirationDateMonth] || '');
+                    $("#selSalesPayOtherPaymentTypeCardExpirationDateDay").val(arData[intSalesPayOtherTypeExpirationDateDay] || '');
+                    $("#selSalesPayOtherPaymentTypeCardExpirationDateYear").val(arData[intSalesPayOtherTypeExpirationDateYear] || '');
+                    $("#txtSalesPayOtherPaymentTypeApprovalNo").val(arData[intSalesPayOtherTypeApprovalNo] || '');
+                    $("#txtSalesPayOtherPaymentTypeAmount").val(arData[intSalesPayOtherTypeAmount] || '');
+                    $("#txtSalesPayOtherPaymentTypeRoomNo").val(arData[intSalesPayOtherTypeRoomNo] || '');
+                    $("#txtSalesPayOtherPaymentTypeRemarks").val(arData[intSalesPayOtherTypeRemarks] || '');
+                    $("#txtSalesPayOtherPaymentTypeGCashRefNo").val(arData[intSalesPayOtherTypeGCashRefNo] || '');
+
+                    //gicomment para mugawas ang form in edit mode sa other payment types 08/11/2020 francis h
+
+                    //$('#divForVSED').hide();
+
+                    //if (arData[intSalesPayOtherTypeName] == "Room In") {
+                    //    $('#divForRoomIn, #divForRoomInSendBill').show();
+                    //} else if (arData[intSalesPayOtherTypeName] == "Send Bill") {
+                    //    $('#divForRoomIn').hide();
+                    //    $('#divForRoomInSendBill').show();
+                    //} else if (arData[intSalesPayOtherTypeName] == "GCash") {
+                    //    $('#divForGCash').show();
+                    //    $('#dvGcashReferenceNo').css('visibility', 'visible');
+                    //    $('#dvGcashReferenceNo').css('display', 'block');
+                    //} else if (arData[intSalesPayOtherTypeName] == "GrabFood" || arData[intSalesPayOtherTypeName] == "FoodPanda") {
+                    //    $('#divForGCash').show();
+                    //    $('#dvGcashReferenceNo').css('visibility', 'hidden');
+                    //    $('#dvGcashReferenceNo').css('display', 'none');
+                    //} else {
+                    //    $('#divForVSED').show();
+                    //    $('#divForRoomIn, #divForRoomInSendBill, #divForGCash').hide();
+                    //}
+
+                    //end comment
+
+                    IsNewSalesPayOtherType = false;
+
+                    $("#btnSalesPayOtherPaymentTypeRemove").show();
+
+
+                };
+
+                function LoadSalesPaymentSRVInfo() {
+                    var pData = {};
+
+                    if ($("#txtSalesPaySRVNo").val() == "") {
+                        MessageBox("Please enter SRV number.",
+                                "SRV Number",
+                                [
+                                    { Text: 'Ok'
+                                    }
+                                ]
+                            );
+
+                        $("#txtSalesPaySRVTransMemoID").val('');
+                        $("#txtSalesPaySRVAmount").val('0.00');
+                        $("#txtSalesPaySRVConsumedAmount").val('0.00');
+
+
+                        return;
+                    }
+
+                    if ($("#txtSalesPaySRVPinCode").val() == "") {
+                        MessageBox("Please enter SRV pin code.",
+                                "SRV Pin Code",
+                                [
+                                    { Text: 'Ok'
+                                    }
+                                ]
+                            );
+
+                        $("#txtSalesPaySRVTransMemoID").val('');
+                        $("#txtSalesPaySRVAmount").val('0.00');
+                        $("#txtSalesPaySRVConsumedAmount").val('0.00');
+
+
+                        return;
+                    }
+
+                    pData.SRVNumber = $("#txtSalesPaySRVNo").val();
+                    pData.SRVPin = $("#txtSalesPaySRVPinCode").val();
+
+                    AjaxSend({
+                        url: "SalesPayments/getSalesPaymentSRVInfo",
+                        data: pData,
+                        success: function (vData) {
+
+                            if (vData.MemoID != "") {
+                                if ((CDec2(vData.SRVAmount) == 0)
+                                    && (CDec2(vData.DestinationPaymentCount) > 0)) {
+
+                                    NewMessageBox('SRV #' + pData.SRVNumber + ' was already consumed.');
+                                    return;
+                                }
+                                $("#txtSalesPaySRVTransMemoID").val(vData.MemoID || '');
+                                $("#txtSalesPaySRVAmount").val(AccountingFormat(vData.SRVAmount) || '0.00');
+
+                                if (CDec2($("#lblSalesPaySRVAmountLacking").text()) <= CDec2(vData.SRVAmount)) {
+                                    $("#txtSalesPaySRVConsumedAmount").val($("#lblSalesPaySRVAmountLacking").text());
+                                } else {
+                                    $("#txtSalesPaySRVConsumedAmount").val(AccountingFormat(vData.SRVAmount) || '0.00');
+                                }
+
+                            } else {
+
+                                $("#txtSalesPaySRVTransMemoID").val('');
+                                $("#txtSalesPaySRVAmount").val('0.00');
+                                $("#txtSalesPaySRVConsumedAmount").val('0.00');
+
+                                MessageBox("SRV number not found.",
+                                "SRV Number",
+                                [
+                                    { Text: 'Ok'
+                                    }
+                                ]
+                            );
+                            }
+
+                        },
+                        error: function (vError) {
+                            MessageBox("This feature requires internet connection.",
+                                "Requires Internet Connection",
+                                [
+                                    { Text: 'Ok'
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+                    });
+                }
+
+                //////////////////////////////////////////////////////////////////
+                //additional by janine
+
+                function ShowSalesPayCustomerIdentificationInfo(arData, index) {
+                    $("#popupAddNewID").popup('open');
+
+
+                    ClearSalesPayCustomerIdentificationFields();
+
+                    intSalesPayCustomerIdentificationIndex = index;
+                    $("#selIDType").selectmenu();
+                    $("#selIDType").val(arData[intSalesPayCustomerIdentificationIDType] || '').selectmenu('refresh');
+
+
+                    if (arData[intSalesPayCustomerIdentificationIDOtherType] == '') {
+                        $("#divOtherIDType").hide();
+                    } else {
+                        $("#divOtherIDType").show();
+                        $("#txtOtherIDType").val(arData[intSalesPayCustomerIdentificationIDOtherType] || '');
+
+                    }
+
+                    $("#txtIDText").val(arData[intSalesPayCustomerIdentificationIDText] || '');
+
+                    IsNewSalesPayCustomerIdentification = false;
+
+                    $("#btnSalesPayCustomerIdentificationRemove").show();
+
+
+                };
+
+                function ShowSalesPayCustomerNameInfo(arData, index) {
+                    if (OfflineMode) {
+                        var vData = SalesPayment_offline().getOrganizationInfo(arData[intSalesPayCustomerNameID]);
+
+                        if (vData.OrganizationData != undefined) {
+                            displayCustomerNameInfo(vData.OrganizationData.Rows, arData, index);
+                        } else {
+
+                            MessageBox('No data found.');
+                        }
+
+                    } else {
+
+                        AjaxSend({
+                            url: 'OrganizationShort/getOrganizationInfo',
+                            data: { OrganizationID: arData[intSalesPayCustomerNameID] },
+                            success: function (vData) {
+                                displayCustomerNameInfo(vData.OrganizationData.Rows, arData, index);
+
+                            },
+                            error: function (vError) {
+
+                                MessageBox("This feature requires internet connection.",
+                                            "Requires Internet Connection",
+                                            [
+                                                { Text: 'Ok'
+                                                }
+                                            ]
+                                    );
+                                return;
+                            }
+                        });
+
+
+                    }
+
+                };
+
+
+                // end of additional
+                /////////////////////////////////////////////////////////////////////////////////////
+                function ClearSalesPaymentsInfoFields() {
+                    proj.SalesPayments.ClearSalesPaymentsInfoFields.apply(this, arguments);
+                }
+                
+                function ClearSalesPayCheckFields() {
+                    $('[name="radOpPayCheck"]').removeAttr('checked').checkboxradio('refresh');
+                    $('[name="radOpPayCheck"][value="check"]').attr('checked', true).checkboxradio('refresh');
+                    $('#lblPayCheckNo').html('Check No.: <span style="color: #FF0000;">*</span>');
+                    $('#lblPayCheckDate').html('Check Date: <span style="color: #FF0000;">*</span>');
+                    $('#lblPayCheckAmount').html('Check Amount: <span style="color: #FF0000;">*</span>');
+                    $('#divForCheck').show();
+
+                    $("#txtSalesPayCheckID").val('');
+
+                    $("#txtSalesPayCheckBankID").val('');
+                    $("#btnSalesPayCheckBank").text('Please Select').button('refresh');
+                    $("#txtSalesPayCheckBankName").val('');
+
+                    $("#txtSalesPayCheckBankBranchID").val('');
+                    $("#btnSalesPayCheckBankBranch").text('Please Select').button('refresh');
+                    $("#txtSalesPayCheckBankBranch").val('');
+
+                    $("#txtSalesPayCheckAccountName").val('');
+                    $("#txtSalesPayCheckAccountNo").val('');
+                    $("#txtSalesPayCheckNo").val('');
+
+                    $("#selSalesPayCheckDateMonth").val('').selectmenu('refresh');
+                    $("#selSalesPayCheckDateDay").val('').selectmenu('refresh');
+                    $("#selSalesPayCheckDateYear").val('').selectmenu('refresh');
+
+                    $("#txtSalesPayCheckAmount").val('0.00');
+
+                    $("#btnSalesPayCheckRemove").hide();
+
+                }
+
+                function HandleDefaultCountry() {
+                    if (mDefaultCountryID != null)
+                        return true;
+                    var pDT = OfflineBrowser.LibraryCountries.GetData({
+                        keywords: 'Philippines'
+                    });
+                    if (pDT.Rows.length == 0) 
+                        return false;
+                    var pDR = pDT.Rows[0];
+                    mDefaultCountryID = pDR.ID;
+                    mDefaultCountryName = pDR.Name;
+                    return true;
+                }
+                function ClearSalesPayDebitCardFields() {
+
+                    $("#txtSalesPayDebitCardID").val('');
+
+                    $("#selSalesPayDebitCardType").val('').selectmenu('refresh');
+
+                    $("#txtSalesPayDebitCardBankID").val('');
+                    $("#btnSalesPayDebitCardBank").text('Please Select').button('refresh');
+                    $("#txtSalesPayDebitCardBank").val('');
+
+                    if (HandleDefaultCountry()) {
+                        $("#txtSalesPayDebitCardBankLocationID").val(mDefaultCountryID || '');
+                        $("#btnSalesPayDebitCardBankLocation").text(mDefaultCountryName || '').button('refresh');
+                    } else {
+                    $("#txtSalesPayDebitCardBankLocationID").val('');
+                    $("#btnSalesPayDebitCardBankLocation").text('Please Select').button('refresh');
+                    }
+
+                    $("#txtSalesPayDebitCardLastName").val('-');
+                    $("#txtSalesPayDebitCardFirstName").val('-');
+                    $("#txtSalesPayDebitCardMiddleName").val('');
+                    $("#selSalesPayDebitPersonalSuffixName").val('').selectmenu('refresh');
+                    $("#txtSalesPayDebitCardNo").val('');
+
+                    $("#selSalesPayDebitCardIssuanceDateMonth").val('').selectmenu('refresh');
+                    $("#selSalesPayDebitCardIssuanceDateDay").val('').selectmenu('refresh');
+                    $("#selSalesPayDebitCardIssuanceDateYear").val('').selectmenu('refresh');
+
+                    $("#selSalesPayDebitCardExpirationDateMonth").val('').selectmenu('refresh');
+                    $("#selSalesPayDebitCardExpirationDateDay").val('').selectmenu('refresh');
+                    $("#selSalesPayDebitCardExpirationDateYear").val('').selectmenu('refresh');
+
+                    $("#txtSalesPayDebitCardApprovalNo").val('');
+                    $("#txtSalesPayDebitCardNoOfPayments").val('1');
+                    $("#txtSalesPayDebitCardTenderedAmount").val('0.00');
+
+                    $("#btnSalesPayDebitCardRemove").hide();
+
+                }
+
+                function ClearSalesPayCreditCardFields() {
+
+                    $("#txtSalesPayCreditCardID").val('');
+
+                    $("#selSalesPayCreditCardType").val('Other Card').selectmenu('refresh');
+
+                    $("#txtSalesPayCreditCardBankID").val('');
+                    $("#btnSalesPayCreditCardBank").text('Please Select').button('refresh');
+                    $("#txtSalesPayCreditCardBank").val('');
+
+                    if (HandleDefaultCountry()) {
+                        $("#txtSalesPayCreditCardBankLocationID").val(mDefaultCountryID || '');
+                        $("#btnSalesPayCreditCardBankLocation").text(mDefaultCountryName || '').button('refresh');
+                    } else {
+                    $("#txtSalesPayCreditCardBankLocationID").val('');
+                    $("#btnSalesPayCreditCardBankLocation").text('Please Select').button('refresh');
+                    }
+
+                    $("#txtSalesPayCreditCardLastName").val('-');
+                    $("#txtSalesPayCreditCardFirstName").val('-');
+                    $("#txtSalesPayCreditCardMiddleName").val('');
+                    $("#selSalesPayPersonalSuffixName").val('').selectmenu('refresh');
+                    $("#txtSalesPayCreditCardNo").val('');
+
+                    $("#selSalesPayCreditCardIssuanceDateMonth").val('').selectmenu('refresh');
+                    $("#selSalesPayCreditCardIssuanceDateDay").val('').selectmenu('refresh');
+                    $("#selSalesPayCreditCardIssuanceDateYear").val('').selectmenu('refresh');
+
+                    $("#selSalesPayCreditCardExpirationDateMonth").val('').selectmenu('refresh');
+                    $("#selSalesPayCreditCardExpirationDateDay").val('').selectmenu('refresh');
+                    $("#selSalesPayCreditCardExpirationDateYear").val('').selectmenu('refresh');
+
+                    $("#txtSalesPayCreditCardApprovalNo").val('');
+                    $("#txtSalesPayCreditCardNoOfPayments").val('1');
+                    $("#txtSalesPayCreditCardTenderedAmount").val('0.00');
+
+                    $("#btnSalesPayCreditCardRemove").hide();
+
+                }
+
+                function ClearSalesPaySRVFields() {
+
+                    $("#txtSalesPayTransSRVID").val('');
+
+                    $("#txtSalesPaySRVTransMemoID").val('');
+                    $("#txtSalesPaySRVNo").val('');
+                    $("#txtSalesPaySRVPinCode").val('');
+
+                    $("#txtSalesPaySRVAmount").val('0.00');
+                    $("#txtSalesPaySRVConsumedAmount").val('0.00');
+
+                    $("#btnSalesPaySRVRemove").hide();
+
+                }
+
+                function ClearSalesPayOtherTypeFields() {
+
+                    $("#txtSalesPayOtherPaymentTypeID").val('');
+                    $("#selOtherPaymentType").val('').selectmenu('refresh');
+                    $("#txtSalesPayOtherPaymentTypeIssuingOrg").val('');
+                    $("#txtSalesPayOtherPaymentTypeCardHolder").val('');
+                    $("#txtSalesPayOtherPaymentTypeCardNo").val('');
+                    $("#selSalesPayOtherPaymentTypeCardIssuanceDateMonth").val('');
+                    $("#selSalesPayOtherPaymentTypeCardIssuanceDateDay").val('');
+                    $("#selSalesPayOtherPaymentTypeCardIssuanceDateYear").val('');
+                    $("#selSalesPayOtherPaymentTypeCardExpirationDateMonth").val('');
+                    $("#selSalesPayOtherPaymentTypeCardExpirationDateDay").val('');
+                    $("#selSalesPayOtherPaymentTypeCardExpirationDateYear").val('');
+                    $("#txtSalesPayOtherPaymentTypeApprovalNo").val('');
+                    $("#txtSalesPayOtherPaymentTypeAmount").val('');
+                    $("#txtSalesPayOtherPaymentTypeRoomNo").val('');
+                    $("#txtSalesPayOtherPaymentTypeRemarks").val('');
+                    $("#txtSalesPayOtherPaymentTypeGCashRefNo").val('');
+                    $("#btnSalesPayOtherPaymentTypeRemove").hide();
+
+                    $('#divForVSED').show();
+                    $('#divForRoomIn, #divForRoomInSendBill, #divForGCash').hide();
+                }
+
+                function ClearDeliveryInfoFields() {
+                    var intHour;
+
+                    $("#txtOrgCustomer").val('');
+
+                    $("#txtOrderedByID").val('');
+                    $("#btnOrderBy").text('Please Select').button('refresh');
+
+                    $("#txtBillToID").val('');
+                    $("#btnBillTo").text('Please Select').button('refresh');
+
+                    $("#txtShipToID").val('');
+                    $("#btnShipTo").text('Please Select').button('refresh');
+
+                    $("#txtDeliveryInfoTelNo").val('');
+                    $("#txtDeliveryInfoFaxNo").val('');
+                    $("#txtDeliveryInfoMobileNo").val('');
+                    $("#txtDeliveryInfoEmail").val('');
+
+                    $("#txtPickUpLocationID").val('');
+                    $("#btnPickLocation").text('Please Select').button('refresh');
+
+                    $("#selDeliveryMode").val('');
+                    SetDeliveryMode();
+
+                    $("#txtDeliverWithIn").val('');
+                    $("#selHourMinute").val('').selectmenu('refresh');
+                    $("#rdoNotRush").attr("checked", true).checkboxradio("refresh");
+                    SetDeliveryDownTown(false);
+
+                    $("#rdoNormalRoute").attr("checked", true).checkboxradio("refresh");
+                    SetDeliveryOutOfTown(true);
+
+                    $("#rdoCustomerIsWaiting").attr("checked", true).checkboxradio("refresh");
+                    SetPickUp(true);
+
+                    intHour = new Date().getHours();
+
+                    $("#selPickUpMonth").val(new Date().getFullYear()).selectmenu('refresh');
+                    $("#selPickUpDay").val(new Date().getDate()).selectmenu('refresh');
+                    $("#selPickUpYear").val(new Date().getFullYear()).selectmenu('refresh');
+                    $("#selPickUpHour").val((intHour > 12 ? intHour - 12 : intHour)).selectmenu('refresh');
+                    $("#selPickUpMin").val(new Date().getMinutes()).selectmenu('refresh');
+                    $("#selPickUpAMPM").val((intHour > 12 ? 'PM' : 'AM')).selectmenu('refresh');
+
+                    $("#selHoldOrder").val('0').slider("refresh");
+
+                }
+
+                //additional by janine
+
+                function ClearSalesPayCustomerIdentificationFields() {
+                    $("#selIDType").selectmenu();
+                    $("#selIDType").val('').selectmenu('refresh');
+                    $("#txtOtherIDType").val('');
+                    $("#txtIDText").val('');
+
+                    $("#btnSalesPayCustomerIdentificationRemove").hide();
+
+                }
+
+                function ClearSalesPayCustomerNameFields() {
+
+                    $("#txtID").val('');
+                    $("#txtCustomerIndex").val('');
+                    $("#txtTitleID").val('');
+                    $("#btnTitle").text('Please Select').button('refresh');
+                    $("#txtFullname").textinput('enable').val('');
+                    $("#txtSurname").textinput('enable').val('');
+                    $("#txtFirstName").textinput('enable').val('');
+                    $("#txtMiddleName").textinput('enable').val('');
+                    $("#selPersonalSuffixName").val('').selectmenu('refresh');
+                    $("#selDOBMonth").val('').selectmenu('refresh');
+                    $("#selDOBDay").val('').selectmenu('refresh');
+                    $("#selDOBYear").val('').selectmenu('refresh');
+
+                    $("#btnSalesPayCustomerIdentificationRemove").hide();
+
+                    var pLV = $('#lstSalesPayCustomerIdentification');
+                    pLV.html('');
+                    pLV.listview('refresh');
+
+
+                    ClearSalesPayCustomerIdentificationFields();
+
+                }
+                function ClearSalesPaySeniorCitizenDiscountFields() {
+                    $('#txtCustomerSearch').val('');
+                    $("#txtSalesPayNoOfSC").val('');
+                    $("#txtSalesPayNoOfDiners").val('');
+
+                    var pLV = $('#lstSalesPayCustomerName');
+                    pLV.html('');
+                    pLV.listview('refresh');
+
+
+                    ClearSalesPayCustomerNameFields();
+
+                }
+
+
+                // end of additional
+
+                function LoadCustomerEmailList(vRows) {
+                    var pLV = $('#fldsetSalesPayEmail');
+                    var pItem;
+
+                    intSalesPaymentEmailCntr = vRows.length - 1;
+
+                    pLV.html('');
+                    for (var i = 0; i <= vRows.length - 1; i++) {
+
+                        pItem = $('<input>')
+                                .attr("type", 'checkbox')
+                                .attr('id', 'chkEmail-' + i)
+                                .attr('checked', false)
+                                .data('Data', vRows[i])
+                            .append($('<label>')
+                                .attr('for', 'chkEmail-' + i)
+                                .text((vRows[i].EmailAddress || 'No Email Address'))
+                            );
+
+                        pLV.append(pItem);
+                    }
+
+                    $('#divSalesPaymentsEmail').trigger("create");
+
+                    if (vRows.length <= 0) {
+                        $("#divSalesPaymentEmailNone").show();
+                    } else {
+                        $("#divSalesPaymentEmailNone").hide();
+                    }
+
+                    $.mobile.changePage("#divSalesPaymentPromptEmail");
+                    return;
+
+                };
+
+                function SaveDeliveryInfo(vParams) {
+                    var pData = [];
+                    var pDataEmail = [];
+                    var pPODate = "";
+                    var pDeliveryType = "";
+                    var pDeliverWithin = 0;
+                    var pPickupDate = "";
+                    var pParams = GetUrlParameters();
+                    var intHour;
+                    var amtDue = isSeniorCitizenDiscount ? $('#lblTotalAmount').text().replace(/,/g, "") : $('#lblSalesPaySubTotal').text().replace(/,/g, "");
+                    var finalAmtDue = AccountingFormat(CDec2(amtDue) - CDec2($('#lblSalesPayTotalDiscount').text().replace(/,/g, "")) + (isSeniorCitizenDiscount ? 0: CDec2($('#lblSalesPayCharges').text().replace(/,/g, ""))) + CDec2($('#lblSalesPayTip').text().replace(/,/g, "")) + CDec2($('#lblSalesPayOtherTax').text().replace(/,/g, "")));
+
+                    vParams = $.extend({
+                        sucess: function(){}
+                    }, vParams);
+
+                    if (CDec2($('#txtOnCredit').val()) < 0) {
+                        MessageBox('On Credit must be equal to or greater than zero.');
+                        return;
+                    }
+                    if (!IsDeliveryInfoPriceQuote) {
+                        //if ($.trim($('#lblSalesPayTotalAmountTendered').text()) == "-") {
+                        //    MessageBox("Please pay full amount due.",
+                        //       "Insufficient Payment",
+                        //        [
+                        //            { Text: 'Ok',
+                        //                Click: function () {
+
+                        //                    $.mobile.changePage('');
+
+                        //                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        //                        window.pageHeader.ShowPaymentsPage(false);
+
+                        //                }
+                        //            }
+                        //        ]
+                        //);
+                        //    return;
+                        //}
+
+
+                        if (CDec2(CDec2(finalAmtDue.replace(/,/g, "")).toFixed(2)) > CDec2(CDec2($('#lblSalesPayTotalAmountTendered').text().replace(/,/g, "")).toFixed(2))) {
+                            var pCashAmount = parseFloat(CDec2($('#lblSalesPayTotalCash').text().replace(/,/g, "")));
+                            var pButtons = [
+                                { Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ];
+                            if (pCashAmount > 0)
+                                pButtons.push({
+                                    Text: 'Save deposit/advanced deposit',
+                                    Click: function() {
+                                        try {
+                                            SalesMenu_offline().SaveSalesOrder({
+                                                DepositAmount: pCashAmount,
+                                                InvoiceID: mInvoiceID
+                                            });
+                                            //var pIU = new InsertUpdate('private.TransInvoice');
+                                            //pIU.Add('DepositAmount', pCashAmount);
+                                            //var pSql = pIU.GetUpdate('ID = ' + ReadyString(mInvoiceID));
+                                            //Sql.ExecuteSql(pSql);
+                                            NewMessageBox('Deposit/advanced payment was successfully saved.');
+                                            PrintBilling(mInvoiceID);
+                                        } catch (e) {
+                                            NewMessageBox('An error occured while saving advanced payment: ' + e.message);
+                                        }
+                                    }
+                                });
+                            NewMessageBox("Please pay full amount due.",
+                                "Insufficient Payment",
+                                pButtons                        
+                            );
+                            return;
+                        }
+
+                    }
+
+
+                    //additional check in for large numbers
+                    if (CDec2($('#lblSalesPayTotalAmountTendered').text().replace(/,/g, "")) > proj.MaxNumber) {
+                        MessageBox("The amount tendered is too large for the system to handle. Please make sure that you have entered the correct amount.",
+                               "Amount Tender",
+                                [
+                                    { Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                        );
+                        return;
+
+                    }
+                    ////
+
+                    //                if($("#chkForGovReport").is(":checked")) {
+
+                    //                    if ($.trim($("#txtOrderedByID").val()) == "") {
+                    //                        MessageBox("Please select customer representative.",
+                    //                                    "Customer Representative",
+                    //                                    [
+                    //                                        { Text: 'Ok' }
+                    //                                    ]
+                    //                        );
+                    //                        return;
+                    //                    }
+
+                    //                }
+
+                    if ($.trim($("#selDeliveryMode").val()) == "") {
+                        MessageBox("Please select delivery mode.",
+                                "Delivery Mode",
+                                [
+                                    { Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                        );
+                        return;
+                    }
+                    else {
+                        if ($.trim($("#selDeliveryMode").val()) == "Deliver (Downtown)") {
+
+                            if ($.trim($("#txtBillToID").val()) == "") {
+                                MessageBox("Please select billing address.",
+                                    "Billing Address",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+                                                $.mobile.changePage('');
+
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                            }
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                            if ($.trim($("#txtShipToID").val()) == "") {
+                                MessageBox("Please select delivery address.",
+                                    "Delivery Address",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+                                                $.mobile.changePage('');
+
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                            }
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+
+                            if ($("#rdoRush").is(":checked")) {
+                                if ($.trim($("#txtDeliverWithIn").val()) == "") {
+
+                                    MessageBox("Please enter minute(s) or hour(s) value.",
+                                        "Hours or Minutes",
+                                        [
+                                            { Text: 'Ok',
+                                                Click: function () {
+
+                                                    $.mobile.changePage('');
+
+                                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                                }
+                                            }
+                                        ]
+                                    );
+
+                                    return;
+                                }
+
+                                if (!$.isNumeric($("#txtDeliverWithIn").val())) {
+                                    MessageBox("Please enter valid minute(s) or hour(s) value.",
+                                            "Hours or Minutes",
+                                            [
+                                                { Text: 'Ok',
+                                                    Click: function () {
+
+                                                        $.mobile.changePage('');
+
+                                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                                    }
+                                                }
+                                            ]
+                                    );
+                                    return;
+                                }
+
+                                if ($.trim($("#selHourMinute").val()) == "") {
+
+                                    MessageBox("Please select if value is in minutes or hours.",
+                                        "Hours or Minutes",
+                                        [
+                                            { Text: 'Ok',
+                                                Click: function () {
+
+                                                    $.mobile.changePage('');
+
+                                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                                }
+                                            }
+                                        ]
+                                    );
+
+                                    return;
+                                }
+
+                            }
+                        }
+
+                        if ($.trim($("#selDeliveryMode").val()) == "PickUp") {
+                            if ($("#rdoDateAndTime").is(":checked")) {
+
+                                if ($.trim($("#selPickUpMonth").val()) == "" ||
+                                    $.trim($("#selPickUpDay").val()) == "" ||
+                                    $.trim($("#selPickUpYear").val()) == "" ||
+                                    $.trim($("#selPickUpHour").val()) == "" ||
+                                    $.trim($("#selPickUpMin").val()) == "" ||
+                                    $.trim($("#selPickUpAMPM").val()) == "") {
+
+                                    intHour = new Date().getHours();
+
+                                    $("#selPickUpMonth").val(new Date().getFullYear()).selectmenu('refresh');
+                                    $("#selPickUpDay").val(new Date().getDate()).selectmenu('refresh');
+                                    $("#selPickUpYear").val(new Date().getFullYear()).selectmenu('refresh');
+                                    $("#selPickUpHour").val((intHour > 12 ? intHour - 12 : intHour)).selectmenu('refresh');
+                                    $("#selPickUpMin").val(new Date().getMinutes()).selectmenu('refresh');
+                                    $("#selPickUpAMPM").val((intHour > 12 ? 'PM' : 'AM')).selectmenu('refresh');
+
+
+                                    //////                                MessageBox("Please enter valid pick up date and time.",
+                                    //////                                                "Pick Up Date and Time",
+                                    //////                                                [
+                                    //////                                                    { Text: 'Ok' }
+                                    //////                                                ]
+                                    //////                                    );
+                                    //////                                return;
+                                }
+
+                            }
+                        }
+
+                    }
+
+                    pDeliverWithin = $("#txtDeliverWithIn").val();
+                    if ($.trim($("#selHourMinute").val()) == "Working Hours") {
+                        pDeliverWithin = $("#txtDeliverWithIn").val() * 60;
+                    }
+
+                    if ($.trim($("#selDeliveryMode").val()) == "Deliver (Out Of Town)") {
+                        if ($("#rdoNormalRoute").is(":checked")) {
+                            pDeliveryType = "Normal Route Delivery"
+                        }
+                        else if ($("#rdoBus").is(":checked")) {
+                            pDeliveryType = "Bus"
+                        }
+                    }
+                    else if ($.trim($("#selDeliveryMode").val()) == "PickUp") {
+                        if ($("#rdoCustomerIsWaiting").is(":checked")) {
+                            pDeliveryType = "Customer Is Waiting"
+                        }
+                    }
+
+                    if ($.trim($("#selPickUpMonth").val()) != "" &&
+                    $.trim($("#selPickUpDay").val()) != "" &&
+                    $.trim($("#selPickUpYear").val()) != "" &&
+                    $.trim($("#selPickUpHour").val()) != "" &&
+                    $.trim($("#selPickUpMin").val()) != "" &&
+                    $.trim($("#selPickUpAMPM").val()) != "") {
+
+                        pPickupDate = $("#selPickUpMonth").val() + '/' + $("#selPickUpDay").val() + '/' + $("#selPickUpYear").val() + " " + $("#selPickUpHour").val() + ":" + $("#selPickUpMin").val() + ":00 " + $("#selPickUpAMPM").val();
+                    }
+
+                    if (IsDeliveryInfoPriceQuote) {
+
+                        if (strSalesPaymentEmail == "") {
+
+                            //if (OfflineMode) {
+                            //    LoadCustomerEmailList(SalesPayment_offline().getCustomerEmails($("#txtSalesPayCustomerID").val()).Rows);
+                            //} else {
+                                pDataEmail = {
+                                    CustomerID: $("#txtSalesPayCustomerID").val()
+                                };
+
+                                AjaxSend({
+                                    url: "SalesPayments/getCustomerEmails",
+                                    data: pDataEmail,
+                                    success: function (vDataEmail) {
+                                        LoadCustomerEmailList(vDataEmail.SalesPaymentData.Rows);
+                                    }
+                                });
+                            //}
+                            return;
+                        }
+                    }
+
+                    pData = {
+                        ID: CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID,
+                        CustomerID: $.trim($("#txtSalesPayCustomerID").val()),
+                        CusRepresentativeID: $.trim($("#txtOrderedByID").val()),
+                        BillToID: $.trim($("#txtBillToID").val()),
+                        ShipToID: $.trim($("#txtShipToID").val()),
+                        EmailAddress: $.trim(strSalesPaymentEmail),
+                        PickUpLocationID: $.trim($("#txtPickUpLocationID").val()),
+                        DeliveryMethod: ($.trim($("#selDeliveryMode").val()) == "Deliver (Downtown)" || $.trim($("#selDeliveryMode").val()) == "Deliver (Out Of Town)" ? "Deliver" : $.trim($("#selDeliveryMode").val())),
+                        IsDownTown: ($.trim($("#selDeliveryMode").val()) == "Deliver (Downtown)" ? "1" : "0"),
+                        IsRushDelivery: ($("#rdoRush").is(":checked") ? "1" : "0"),
+                        DeliverWithin: pDeliverWithin,
+                        DeliveryType: pDeliveryType,
+                        PickupDate: pPickupDate,
+                        IsEmailReceipt: IsEmailReceipt
+                    };
+
+                    IsVAT = Sql.ExecuteScalar('Select IsVAT from LibraryOrganization WHERE ID = ' + ReadyString(sessionStorage.OrgID));
+
+                    if (IsVAT != undefined) {
+                        pData.IsNoneVATSale = !CBool(IsVAT);
+                    }
+
+                    if (OfflineMode) {
+                        //Check for valid email addresses
+                        if (strSalesPaymentEmail != "") {
+                            if (!VerifyEmail(strSalesPaymentEmail)) {
+                                MessageBox("Please enter valid email address.",
+                                    "Invalid email",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+                                                $.mobile.changePage(window.pageSourcePage);
+                                                return;
+                                            }
+                                        }
+                                    ]
+                            );
+                            }
+                        }
+
+                        ///Check valid Numeric value
+                        if (pDeliverWithin != "" && !IsNumeric(pDeliverWithin)) {
+                            MessageBox("Please enter valid minutes or hours value.",
+                                "Minutes or Hours",
+                                [
+                                    { Text: 'Ok' }
+                                ]
+                                );
+                            return;
+                        }
+
+                        if (pDeliverWithin != "" && !IsNumeric(pDeliverWithin)) {
+                            MessageBox("Please select valid pick up date and time.",
+                                "Pick Up Date and Time",
+                                [
+                                    { Text: 'Ok' }
+                                ]
+                                );
+                            return;
+                        }
+                        
+                        if (SalesPayment_offline().SaveDeliveryInfo(pData)) {
+                            localStorage.removeItem('CartCustomerID');
+
+                            if (IsDeliveryInfoPriceQuote) {
+                                EmailQuotation(pData);
+                            }
+                            else {
+                                VerifySalesPayment();
+                            }
+                        }
+
+                    } else {
+                        AjaxSend({
+                            url: "DeliveryInfo/SaveInvoiceDeliveryInfo",
+                            data: pData,
+                            success: function (vSaveData) {
+
+                                if (vSaveData.DeliveryInfoData == "InvalidEmail") {
+                                    MessageBox("Please enter valid email address.",
+                                        "Invalid email",
+                                        [
+                                            { Text: 'Ok'
+                                            }
+                                        ]
+                                );
+                                    return;
+                                }
+                                else if (vSaveData.DeliveryInfoData == "MinutesOrHoursError") {
+                                    MessageBox("Please enter valid minutes or hours value.",
+                                        "Minutes or Hours",
+                                        [
+                                            { Text: 'Ok' }
+                                        ]
+                                        );
+                                    return;
+                                }
+                                else if (vSaveData.DeliveryInfoData == "PickUpDateAndTimeError") {
+                                    MessageBox("Please select valid pick up date and time.",
+                                        "Pick Up Date and Time",
+                                        [
+                                            { Text: 'Ok' }
+                                        ]
+                                        );
+                                    return;
+                                }
+
+                                localStorage.removeItem('CartCustomerID');
+
+                                if (IsDeliveryInfoPriceQuote) {
+                                    EmailQuotation(pData);
+                                }
+                                else {
+                                    VerifySalesPayment();
+                                }
+                            }
+                        });
+                    }
+
+
+                }; // END function SaveDeliveryInfo(vParams) {
+
+                function VerifyEmail(vSalesPaymentEmail) {
+                    var strEmail;
+
+                    if ($.trim(vSalesPaymentEmail) == "") {
+                        return false;
+                    } else {
+                        strEmail = vSalesPaymentEmail.split(",");
+
+                        for (var i = 0; i <= strEmail.length - 1; i++) {
+                            if (!IsEmail(strEmail[i])) {
+                                return false;
+                            }
+                        }
+                    }
+
+                    return true;
+                };
+
+                function EmailQuotation(pData) {
+
+                    AjaxSend({
+                        url: "DeliveryInfo/SaveInvoiceToQuotation",
+                        data: pData,
+                        success: function (vSaveQuoteData) {
+
+                            MessageBox("Sending price quote via email...",
+                                "Email Price Quote",
+                                [
+                                ]
+                        );
+
+                            var pEmailQuoteData = [];
+                            pEmailQuoteData = {
+                                QuotationID: vSaveQuoteData.DeliveryInfoData,
+                                EmailAddress: $.trim(strSalesPaymentEmail)
+                            };
+
+                            AjaxSend({
+                                url: "DeliveryInfo/SendEmailQuotation",
+                                data: pEmailQuoteData,
+                                success: function (vSendQuoteData) {
+                                    sessionStorage.removeItem('CustomerOrganizationID'); //reset to customer org para mahimong cash ang default
+                                    MessageBox("Your transaction has been saved. An email price quote has been sent to the email address(es) that you specified.",
+                                        "Email Price Quote",
+                                        [
+                                            { Text: 'Ok',
+                                                Click: function () {
+                                                    goToSalesMenu();
+                                                    //                                                    window.location = GetPathFormat("/SalesMenu?mode=pos&OrgID=" + sessionStorage.OrgID);
+                                                }
+                                            }
+                                        ]
+                                );
+                                },
+                                error: function (vError) {
+                                    MessageBox("This feature requires internet connection.",
+                                       "Requires Internet Connection",
+                                        [
+                                            { Text: 'Ok',
+                                                Click: function () {
+
+                                                    $.mobile.changePage('');
+
+                                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                                }
+                                            }
+                                        ]
+                                );
+                                    return;
+                                }
+                            });
+                        },
+                        error: function (vError) {
+                            MessageBox("This feature requires internet connection.",
+                                "Requires Internet Connection",
+                                [
+                                    { Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+
+                    });
+
+                };
+
+                function VerifySalesPayment() {
+                    RefreshSalesPaymentTotal_onchange();
+                    var pParams = GetUrlParameters();
+                    var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                    var amtDue = isSeniorCitizenDiscount ? $('#lblTotalAmount').text().replace(/,/g, "") : $('#lblSalesPaySubTotal').text().replace(/,/g, "");
+                    var finalAmtDue = AccountingFormat(CDec2(amtDue) - CDec2($('#lblSalesPayTotalDiscount').text().replace(/,/g, "")) + (isSeniorCitizenDiscount ? 0 : CDec2($('#lblSalesPayCharges').text().replace(/,/g, ""))) + CDec2($('#lblSalesPayTip').text().replace(/,/g, "")) + CDec2($('#lblSalesPayOtherTax').text().replace(/,/g, "")));
+                    var pOverPayment = CDec2($('#lblSalesPayTotalAmountTendered').text().replace(/,/g, "")) - CDec2(finalAmtDue.replace(/,/g, ""));
+
+                    if (pOverPayment < 0) {
+                        MessageBox("Please pay full amount due.",
+                           "Insufficient Payment",
+                            [
+                                { Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                        );
+                        return;
+                    }
+
+                    pOverPayment = CDec2($('#lblSalesPayTotalAmountTendered').text()) - CDec2($('#lblSalesPayAmountDue').text()) - CDec2($('#lblSalesPayTotalChangeAmount').text());
+                    if (pOverPayment > 0.01) {
+                        NewMessageBox('Amount paid is greater than the amount due.', 'Overpayment');
+                        return;
+                    }
+
+                    // 2018_04_17__15_49_46_0010 commented 
+                    //var pDtInvoice = Business.TransInvoice.GetByID(sessionStorage.CartOrderID);
+                    //if (pDtInvoice != null) {
+                    //    var pAmountDue = CDec2(pDtInvoice.Rows[0].TotalAmount);
+                    //    pAmountDue += CDec2($('#lblSalesPayCharges').text());
+                    //    pAmountDue -= CDec2($('#lblSalesPayTotalDiscount').text());
+                    //    var pAmountPaid = CDec2($('#lblSalesPayTotalAmountTendered').text().replace(/,/g, "")) - CDec2($('#lblSalesPayTotalChangeAmount').text());
+                    //    pOverPayment = pAmountPaid - pAmountDue;
+                    //    if (pOverPayment > 0.01) {
+                    //        NewMessageBox('Amount paid is greater than the amount due.', 'Overpayment!');
+                    //        return;
+                    //    }
+                    //}
+
+                    sessionStorage.CartOnHoldCheckPayment = 0;
+                    if (parseFloat(CDec2($('#lblSalesPayAmountDue').text().replace(/,/g, ""))) < parseFloat(CDec2($('#lblSalesPayTotalCheck').text().replace(/,/g, "")))) {
+                        MessageBox("The check amount exceeds the total amount due. Do you want to proceed with the payment or consume the amount by adding items to cart?",
+                           "Check Payment",
+                            [
+                                { Text: 'Proceed',
+                                    Click: function () {
+                                        $.mobile.changePage(window.pageSourcePage);
+                                        SaveSalesPayment(CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID, true);
+                                        return;
+                                    }
+                                }
+                            ,
+                                { Text: 'Hold transaction while customer adds items to cart',
+                                    Click: function () {
+                                        sessionStorage.CartOnHoldCheckPayment = 1;
+                                        sessionStorage.CartOnHoldCheckPaymentOrderID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                                        //                                        window.location = GetPathFormat("/SalesMenu?mode=pos&OrgID=" + sessionStorage.OrgID);
+                                        goToSalesMenu();
+                                        return;
+                                    }
+                                }
+                            ]
+                    );
+                        return;
+                    }
+
+
+                    //additional check in for large numbers
+                    if (CDec2($('#lblSalesPayTotalAmountTendered').text().replace(/,/g, "")) > proj.MaxNumber) {
+                        MessageBox("The amount tendered is too large for the system to handle. Please make sure that you have entered the correct amount.",
+                               "Amount Tender",
+                                [
+                                    { Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                        );
+                        return;
+
+                    }
+
+                    ///Required Sales Rep?
+                    if (window.OfflineMode && CBool(SalesPayment_offline().IsRequiredSalesRep())) {
+                        pDT = SalesPayment_offline().GetSalesReps(pInvoiceID);
+                        if (pDT.Rows.length == 0) {
+                            MessageBox("Please assign sales representative for this transaction.",
+                               "Amount Tender",
+                                [
+                                    {
+                                        Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+                    }
+
+                    var pOnCredit = CDec2($('#txtOnCredit').val());
+                    if (pOnCredit) {
+                        mAllowOfflineCredit = false;
+                        AjaxSend({
+                            url: '/CreditAndCollection/GetCustomerNetBalance',
+                            data: {
+                                CustomerOrganizationID: $("#txtSalesPayCustomerID").val()
+                            },
+                            success: function (vData) {
+                                if (vData.Error) {
+                                    NewMessageBox(vData.Error, 'Fail');
+                                    return;
+                                }
+                                Android.AddLog('On credit amount: ' + pOnCredit + '\n' +
+                                    'Previous invoices net balance: ' + CDec2(vData.NetInvoiceBalance) + '\n' +
+                                    'Customer credit limit: ' + CDec2(vData.CreditLimit));
+                                if (CDec2(vData.CreditLimit) < CDec2(vData.NetInvoiceBalance) + pOnCredit) {
+                                    NewMessageBox('Over credit limit: the Customer\'s purchase exceeds his/her available credit. Please enter other form(s) of payment.');
+                                    
+                                } else 
+                                    ProceedToSaveSalesPayment();
+                            },
+                            error: function() {
+                                if (CBool(Business.SystemDefaults.GetSystemDefault('GrantCreditOffline'))) {
+                                    if (CBool(Business.SystemDefaults.GetSystemDefault('GrantCreditAllCustomers'))) {
+                                        NewMessageBox('Can\'t connect to the server.<br /><br /> But all customers are granted unlimited credit if this device is offline', 'Credit Granted', null, {
+                                            Close: function() {
+                                                mAllowOfflineCredit = true;
+                                                ProceedToSaveSalesPayment();
+                                            }
+                                        });
+                                    } else {
+                                        var pDR = Business.LibraryOrganization.GetCustomerInfo($("#txtSalesPayCustomerID").val());
+                                        if ((pDR == null)
+                                            || (CBool(pDR.UnlimitedCredit) == false)) 
+
+                                            NewMessageBox('Can\'t connect to the server.<br /><br /> Credit sales transactions require an active connection with the server to successully complete. Please enter other form(s) of payment. That customer was not set to be granted credit while offline.', 'Credit Not Granted');
+                                        else
+                                            NewMessageBox('Can\'t connect to the server.<br /><br /> But the currently selected customer is granted unlimited credit if this device is offline', 'Credit Granted', null, {
+                                                Close: function() {
+                                                    mAllowOfflineCredit = true;
+                                                    ProceedToSaveSalesPayment();
+                                                }
+                                            });
+                                    }
+                                } else 
+                                    NewMessageBox('Can\'t connect to the server. Credit sales transactions require an active connection with the server to successully complete. Please enter other form(s) of payment.');
+                            }
+                        });
+                    } else
+                        ProceedToSaveSalesPayment();
+
+                    function ProceedToSaveSalesPayment() {
+                        SaveSalesPayment(CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID, false);
+                    }
+
+                };
+
+                function IsRequiredSalesRep() {
+
+                }
+
+                function SaveSalesPayment(pInvoiceID, blnIsCheckChangeTY, vParams) {
+                    var pData = [];
+                    var pDataDiscount = [];
+                    var pDataSeniorCitizenPWD = [];
+                    var pDataEmail = [];
+                    var pDataCheck = [];
+                    var pDataDebitCard = [];
+                    var pDataCreditCard = [];
+                    var pDataSRV = [];
+                    var pDataOtherType = [];
+                    var intIndex;
+
+                    vParams = $.extend({
+                        success: function(){}
+                    }, vParams);
+
+                    if (IsEmailReceipt) {
+                        if (strSalesPaymentEmail == "") {
+                            var vRows = {};
+
+                            LoadCustomerEmailList(vRows)
+                            //if (OfflineMode) {
+                            //    LoadCustomerEmailList(SalesPayment_offline().getCustomerEmails($("#txtSalesPayCustomerID").val()).Rows);
+                            //} else {
+                                //pDataEmail = {
+                                //    CustomerID: $("#txtSalesPayCustomerID").val()
+                                //};
+
+                                //AjaxSend({
+                                //    url: "SalesPayments/getCustomerEmails",
+                                //    data: pDataEmail,
+                                //    success: function (vDataEmail) {
+                                //        LoadCustomerEmailList(vDataEmail.SalesPaymentData.Rows);
+                                //    },
+                                //    error: function (vError) {
+                                //        MessageBox("This feature requires internet connection.",
+                                //           "Requires Internet Connection",
+                                //            [
+                                //                { Text: 'Ok',
+                                //                    Click: function () {
+
+                                //                        $.mobile.changePage('');
+
+                                //                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                //                            window.pageHeader.ShowPaymentsPage(false);
+
+                                //                    }
+                                //                }
+                                //            ]
+                                //    );
+                                //        return;
+                                //    }
+                                //});
+                            //}
+                            return;
+                        }
+                    }
+
+                    //Discount
+
+                    if ($("#selDiscountType").val() != "") {
+                        intIndex = 0;
+                        pDataDiscount[intIndex] = {
+                            ID: $("#selDiscountType").val(),
+                            DiscountPercent: longDiscountPercent,
+                            DiscountRemarks: $("#txtDiscountRemarks").val()
+                        };
+
+                    }
+
+                    //Senior Citizen PWD
+                    //check first if SCD or PWD
+                    if (isSeniorCitizenPWDDiscount) {
+
+                        intIndex = 0;
+
+                        for (var i = 0; i <= intSalesPayCustomerNameCntr; i++) {
+
+                            if (sessionStorage["SalesPayCustomerName-" + i] != undefined) {
+
+                                arSalesPayCustomerName = new Array();
+                                arSalesPayCustomerName = JSON.parse(sessionStorage["SalesPayCustomerName-" + i]);
+
+                                if (arSalesPayCustomerName[intSalesPayCustomerNameState] != "Remove") {
+                                    pDataSeniorCitizenPWD[intIndex] = {
+                                        ID: arSalesPayCustomerName[intSalesPayCustomerNameID]
+                                    };
+
+                                    intIndex = intIndex + 1;
+                                } //end if not remove
+                            } //end if session storage
+                        } //end for
+                    }
+                    //Check
+                    intIndex = 0;
+                    for (var i = 0; i <= intSalesPayCheckCntr; i++) {
+
+                        if (sessionStorage["SalesPayCheck-" + i] != undefined) {
+
+                            arSalesPayCheck = new Array();
+                            arSalesPayCheck = JSON.parse(sessionStorage["SalesPayCheck-" + i]);
+
+                            var dtCheckDate = "";
+                            if (arSalesPayCheck[intSalesPayCheckDateMonth] != "" &&
+                            arSalesPayCheck[intSalesPayCheckDateDay] != "" &&
+                            arSalesPayCheck[intSalesPayCheckDateyear] != "") {
+
+                                dtCheckDate = arSalesPayCheck[intSalesPayCheckDateMonth] + "/" + arSalesPayCheck[intSalesPayCheckDateDay] + "/" + arSalesPayCheck[intSalesPayCheckDateyear];
+                            }
+
+                            pDataCheck[intIndex] = {
+                                ID: arSalesPayCheck[intSalesPayCheckRecID],
+                                BankID: arSalesPayCheck[intSalesPayCheckBankID],
+                                BankName: arSalesPayCheck[intSalesPayCheckBank],
+                                BankBranchID: arSalesPayCheck[intSalesPayCheckBankBranchID],
+                                BankBranchName: arSalesPayCheck[intSalesPayCheckBankBranch],
+                                AccountName: arSalesPayCheck[intSalesPayCheckAccountName],
+                                AccountNumber: arSalesPayCheck[intSalesPayCheckAccountNo],
+                                CheckNumber: arSalesPayCheck[intSalesPayCheckNumber],
+                                CheckDate: dtCheckDate,
+                                CheckAmount: arSalesPayCheck[intSalesPayCheckAmount],
+                                RecState: arSalesPayCheck[intSalesPayCheckState]
+                            };
+
+                            intIndex = intIndex + 1;
+
+                        }
+                    }
+
+                    //Debit Card
+                    intIndex = 0;
+                    for (var i = 0; i <= intSalesPayDebitCardCntr; i++) {
+
+                        if (sessionStorage["SalesPayDebitCard-" + i] != undefined) {
+
+                            arSalesPayDebitCard = new Array();
+                            arSalesPayDebitCard = JSON.parse(sessionStorage["SalesPayDebitCard-" + i]);
+
+                            var dtDebitCardIssuanceDate = "";
+                            if (arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateMonth] != "" &&
+                            arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateDay] != "" &&
+                            arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateYear] != "") {
+
+                                dtDebitCardIssuanceDate = arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateMonth] + "/" + arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateDay] + "/" + arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateYear];
+                            }
+
+                            var dtDebitCardExpirationDate = "";
+                            if (arSalesPayDebitCard[intSalesPayDebitCardExpirationDateMonth] != "" &&
+                            arSalesPayDebitCard[intSalesPayDebitCardExpirationDateDay] != "" &&
+                            arSalesPayDebitCard[intSalesPayDebitCardExpirationDateYear] != "") {
+
+                                dtDebitCardExpirationDate = arSalesPayDebitCard[intSalesPayDebitCardExpirationDateMonth] + "/" + arSalesPayDebitCard[intSalesPayDebitCardExpirationDateDay] + "/" + arSalesPayDebitCard[intSalesPayDebitCardExpirationDateYear];
+                            }
+
+                            pDataDebitCard[intIndex] = {
+                                ID: arSalesPayDebitCard[intSalesPayDebitCardRecID],
+                                DebitCardType: arSalesPayDebitCard[intSalesPayDebitCardType],
+                                DebitCardBankID: arSalesPayDebitCard[intSalesPayDebitCardBankID],
+                                DebitCardBank: arSalesPayDebitCard[intSalesPayDebitCardBank],
+                                HolderLastName: arSalesPayDebitCard[intSalesPayDebitCardHolderLName],
+                                HolderFirstName: arSalesPayDebitCard[intSalesPayDebitCardHolderFName],
+                                HolderMiddleName: arSalesPayDebitCard[intSalesPayDebitCardHolderMName],
+                                HolderGenerationalSuffix: arSalesPayDebitCard[intSalesPayDebitCardHolderGenSuffix],
+                                BankCountryID: arSalesPayDebitCard[intSalesPayDebitCardBankCountryID],
+                                DebitCardNumber: arSalesPayDebitCard[intSalesPayDebitCardNumber],
+                                DebitCardIssuanceDate: dtDebitCardIssuanceDate,
+                                DebitCardExpirationDate: dtDebitCardExpirationDate,
+                                ApprovalNo: arSalesPayDebitCard[intSalesPayDebitCardApprovalNumber],
+                                NoOfInstallmentPayments: arSalesPayDebitCard[intSalesPayDebitCardNoOfInstallment],
+                                DebitCardAmount: arSalesPayDebitCard[intSalesPayDebitCardAmount],
+                                RecState: arSalesPayDebitCard[intSalesPayDebitCardState]
+                            };
+
+                            intIndex = intIndex + 1;
+
+                        }
+                    }
+
+                    //Credit Card
+                    intIndex = 0;
+                    for (var i = 0; i <= intSalesPayCreditCardCntr; i++) {
+
+                        if (sessionStorage["SalesPayCreditCard-" + i] != undefined) {
+
+                            arSalesPayCreditCard = new Array();
+                            arSalesPayCreditCard = JSON.parse(sessionStorage["SalesPayCreditCard-" + i]);
+
+                            var dtCreditCardIssuanceDate = "";
+                            if (arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateMonth] != "" &&
+                            arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateDay] != "" &&
+                            arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateYear] != "") {
+
+                                dtCreditCardIssuanceDate = arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateMonth] + "/" + arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateDay] + "/" + arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateYear];
+                            }
+
+                            var dtCreditCardExpirationDate = "";
+                            if (arSalesPayCreditCard[intSalesPayCreditCardExpirationDateMonth] != "" &&
+                            arSalesPayCreditCard[intSalesPayCreditCardExpirationDateDay] != "" &&
+                            arSalesPayCreditCard[intSalesPayCreditCardExpirationDateYear] != "") {
+
+                                dtCreditCardExpirationDate = arSalesPayCreditCard[intSalesPayCreditCardExpirationDateMonth] + "/" + arSalesPayCreditCard[intSalesPayCreditCardExpirationDateDay] + "/" + arSalesPayCreditCard[intSalesPayCreditCardExpirationDateYear];
+                            }
+
+                            pDataCreditCard[intIndex] = {
+                                ID: arSalesPayCreditCard[intSalesPayCreditCardRecID],
+                                CreditCardType: arSalesPayCreditCard[intSalesPayCreditCardType],
+                                CreditCardBankID: arSalesPayCreditCard[intSalesPayCreditCardBankID],
+                                CreditCardBank: arSalesPayCreditCard[intSalesPayCreditCardBank],
+                                HolderLastName: arSalesPayCreditCard[intSalesPayCreditCardHolderLName],
+                                HolderFirstName: arSalesPayCreditCard[intSalesPayCreditCardHolderFName],
+                                HolderMiddleName: arSalesPayCreditCard[intSalesPayCreditCardHolderMName],
+                                HolderGenerationalSuffix: arSalesPayCreditCard[intSalesPayCreditCardHolderGenSuffix],
+                                BankCountryID: arSalesPayCreditCard[intSalesPayCreditCardBankCountryID],
+                                CreditCardNumber: arSalesPayCreditCard[intSalesPayCreditCardNumber],
+                                CreditCardIssuanceDate: dtCreditCardIssuanceDate,
+                                CreditCardExpirationDate: dtCreditCardExpirationDate,
+                                ApprovalNo: arSalesPayCreditCard[intSalesPayCreditCardApprovalNumber],
+                                NoOfInstallmentPayments: arSalesPayCreditCard[intSalesPayCreditCardNoOfInstallment],
+                                CreditCardAmount: arSalesPayCreditCard[intSalesPayCreditCardAmount],
+                                RecState: arSalesPayCreditCard[intSalesPayCreditCardState]
+                            };
+
+                            intIndex = intIndex + 1;
+
+                        }
+                    }
+
+                    //SRV
+                    intIndex = 0;
+                    for (var i = 0; i <= intSalesPaySRVCntr; i++) {
+
+                        if (sessionStorage["SalesPaySRV-" + i] != undefined) {
+
+                            arSalesPaySRV = new Array();
+                            arSalesPaySRV = JSON.parse(sessionStorage["SalesPaySRV-" + i]);
+
+                            pDataSRV[intIndex] = {
+                                ID: arSalesPaySRV[intSalesPaySRVRecID],
+                                MemoID: arSalesPaySRV[intSalesPaySRVMemoID],
+                                ConsumedAmount: arSalesPaySRV[intSalesPaySRVConsumedAmount],
+                                RecState: arSalesPaySRV[intSalesPaySRVState],
+                                SrvNum: arSalesPaySRV[intSalesPaySRVNo],
+                                Pin: arSalesPaySRV[intSalesPaySRVPinCode]
+                            };
+
+                            intIndex = intIndex + 1;
+
+                        }
+                    }
+                    //Other Payment Type
+                    intIndex = 0;
+                    for (var i = 0; i <= intSalesPayOtherTypeCntr; i++) {
+
+                        if (sessionStorage["SalesPayOtherType-" + i] != undefined) {
+
+                            arSalesPayOtherType = new Array();
+                            arSalesPayOtherType = JSON.parse(sessionStorage["SalesPayOtherType-" + i]);
+
+                            var dtOtherTypeIssuanceDate = "";
+                            if (arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateMonth] != "" &&
+                            arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateDay] != "" &&
+                            arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateYear] != "") {
+
+                                dtOtherTypeIssuanceDate = arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateMonth] + "/" + arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateDay] + "/" + arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateYear];
+                            }
+
+                            var dtOtherTypeExpirationDate = "";
+                            if (arSalesPayOtherType[intSalesPayOtherTypeExpirationDateMonth] != "" &&
+                            arSalesPayOtherType[intSalesPayOtherTypeExpirationDateDay] != "" &&
+                            arSalesPayOtherType[intSalesPayOtherTypeExpirationDateYear] != "") {
+
+                                dtOtherTypeExpirationDate = arSalesPayOtherType[intSalesPayOtherTypeExpirationDateMonth] + "/" + arSalesPayOtherType[intSalesPayOtherTypeExpirationDateDay] + "/" + arSalesPayOtherType[intSalesPayOtherTypeExpirationDateYear];
+                            }
+
+                            pDataOtherType[intIndex] = {
+                                ID: arSalesPayOtherType[intSalesPayOtherTypeRecID],
+                                PaymentType: arSalesPayOtherType[intSalesPayOtherTypeName],
+                                IssuingOrganization: arSalesPayOtherType[intSalesPayOtherTypeOrg],
+                                CardHolder: arSalesPayOtherType[intSalesPayOtherTypeCardHolderName],
+                                CardNo: arSalesPayOtherType[intSalesPayOtherTypeCardNumber],
+                                IssuanceDate: dtOtherTypeIssuanceDate,
+                                ExpirationDate: dtOtherTypeExpirationDate,
+                                ApprovalNo: arSalesPayOtherType[intSalesPayOtherTypeApprovalNo],
+                                Amount: arSalesPayOtherType[intSalesPayOtherTypeAmount],
+                                RecState: arSalesPayOtherType[intSalesPayOtherTypeState],
+                                RoomNo: arSalesPayOtherType[intSalesPayOtherTypeRoomNo],
+                                Remarks: arSalesPayOtherType[intSalesPayOtherTypeRemarks],
+                                GCashRefNo: arSalesPayOtherType[intSalesPayOtherTypeGCashRefNo]
+                            };
+
+                            intIndex = intIndex + 1;
+
+                        }
+                    }
+
+                    var charges = CDec2($('#lblBillTotalCharges').text().replace(/,/g, ""));
+
+                    pData = {
+                        EmailAddress: (IsEmailReceipt ? $.trim(strSalesPaymentEmail) : ""),
+                        CustomerID: $("#txtSalesPayCustomerID").val(),
+                        InvoiceID: pInvoiceID,
+                        IsForGovReport: ($("#chkForGovReport").is(":checked") ? "1" : "0"),
+                        CashAmount: $.trim($("#lblSalesPayTotalCash").text()),
+                        DebitCardAmount: $("#lblSalesPayTotalDebitCard").text(),
+                        CreditCardAmount: $("#lblSalesPayTotalCreditCard").text(),
+                        CheckPaymentAmount: $("#lblSalesPayTotalCheck").text(),
+                        SRVAmount: $("#lblSalesPayTotalSRV").text(),
+                        OtherTypeAmount: $("#lblSalesPayTotalOtherType").text(),
+                        ChargeAmount: charges,
+                        TotalAmountDue: showDiscountDetails ? $("#lblTotalAmount").text() : $("#lblSalesPaySubTotal").text(), //for senior citizen discount $("#lblSalesPaySubTotal").text(),
+                        TotalDiscountAmount: $("#lblSalesPayTotalDiscount").text(),
+                        TotalAmountTendered: $("#lblSalesPayTotalAmountTendered").text(),
+                        CustomerChangeCash: ($("#lblSalesPayTotalChangeAmount").text() == "No Change" ? "0.00" : (blnIsCheckChangeTY ? "0.00" : $("#lblSalesPayTotalChangeAmount").text())),
+                        NoOfPeople: showDiscountDetails ? $("#txtSalesPayNoOfDiners").val() : "", //for senior citizen discount
+                        NoOfSeniorCitizens: showDiscountDetails ? $("#txtSalesPayNoOfSC").val() : "", //for senior citizen discount
+                        SalesPaymentCheckList: pDataCheck,
+                        SalesPaymentDebitCardList: pDataDebitCard,
+                        SalesPaymentCreditCardList: pDataCreditCard,
+                        SalesPaymentSRVList: pDataSRV,
+                        SalesPaymentDiscountList: pDataDiscount,
+                        SalesPaymentSeniorCitizenPWDList: pDataSeniorCitizenPWD,
+                        SalesPaymentOtherTypeList: pDataOtherType,
+                        OnCreditAmount: $('#txtOnCredit').val(),
+                        OnCreditRemarks: $('#txtOnCreditRemarks').val(),
+                        RewardsCardNum: $('#txtPaymentRewardsCardNum').val()
+                    };
+
+                    if (OfflineMode) {
+
+                        //Check for valid email addresses
+                        if (strSalesPaymentEmail != "") {
+                            if (!VerifyEmail(strSalesPaymentEmail)) {
+                                MessageBox("Please enter valid email address.",
+                                    "Invalid email",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+                                                $.mobile.changePage(window.pageSourcePage);
+                                                return;
+                                            }
+                                        }
+                                    ]
+                            );
+                                return;
+                            }
+                        }
+
+                        if (mSalesPayments_offline == null)
+                            mSalesPayments_offline = SalesPayment_offline();
+                        mSalesPayments_offline.PreConsumeSrv(pDataSRV,
+                            function (vData) {
+                            // PARAMS:
+                            //  CustomerPaymentID: optional.
+                            var pError = {};
+
+                            if (vData != undefined) {
+                                pData = $.extend(pData, {
+                                    CustomerPaymentID: vData.CustomerPaymentID
+                                });
+                            }
+
+                            if (!Business.TransInvoice.HandleCorrectDate({
+                                Write: true
+                            }))
+                                return false;
+
+                            function Proceed(vData) {
+                                var pData = vData;
+                                
+                                if (!SalesPayment_offline().SaveSalesPayments(pData, pError)) {
+                                    if (pError.Message != null) 
+                                        pError = pError.Message;
+                                    pError = 'There are some validation issues with regard to this invoice\'s totals. ' + pError;
+                                    pError += '<br /><br />';
+                                    pError += 'The cause of this may be different rounding off methods for the two said totals. Data may also have been transformed during transmission. In any case, this error will be logged and sent to Mobiz for review.';
+                                    pError += '<br /><br />';
+                                    pError += 'Would you like to continue your transaction even with this discrepancy?';
+
+                                    NewMessageBox(pError,
+                                        "Save Receipt",
+                                        [
+                                            {
+                                                Text: 'Yes',
+                                                Click: function() {
+                                                    pData.DontVerify = true;
+                                                    Proceed(pData);
+                                                }
+                                            },
+                                            { Text: 'No',
+                                                Click: function () {
+
+                                                    $.mobile.changePage('');
+
+                                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                                }
+                                            }
+                                        ]
+                                    );
+                                    return;
+                                } // END if(SalesPayment_offline().SaveSalesPayments(pData)){
+
+                                if ((CDec2($('#txtOnCredit').val()) > 0)
+                                    && (mAllowOfflineCredit == false)) {
+
+                                    NewMessageBox('Please wait while your sales transaction is being sent to the server. This should take 15 seconds or less.');
+                                    window.SalesPaymentsExport_offline().ResetFlushCounter();
+                                    setTimeout(function () {
+                                        window.SalesPaymentsExport_offline().FlushDeviceData(
+                                            $.extend({}, vParams, {
+                                                Success: function () {
+                                                    AfterSave();
+                                                    // vParams.Success(); // dont do this
+                                                },
+                                                OnProgress: function (vData) {
+                                                    NewMessageBox('Can\'t connect to the server.<br /><br /> Credit sales transactions require an active connection with the server to successully complete. Please enter other form(s) of payment.', 'In progress');
+                                                },
+                                                Fail: function (vData) {
+                                                    NewMessageBox('Can\'t connect to the server.<br /><br /> Credit sales transactions require an active connection with the server to successully complete. Please enter other form(s) of payment.', 'Fail');
+                                                }
+                                            })
+                                        );
+                                    }, 1000);
+                                } else
+                                    AfterSave();
+
+                                function AfterSave() {
+                                    NewMessageBoxClose();
+                                    sessionStorage.removeItem('CustomerOrganizationID'); //reset to customer org para mahimong cash ang default
+                                //if (!window.InWinRt) {
+                                //    SalesPayment_offline().UpdateSalesTextFile(pData.InvoiceID);
+                                //    SalesPayment_offline().UpdateZReadData(pData.InvoiceID);
+                                //    SalesPayment_offline().UpdateSalesProductCount(pData.InvoiceID);
+                                //}                                    
+
+                                    if (IsEmailReceipt) {
+
+                                        //doSendEmailReceipt(pData);
+
+                                        MessageBox("Your transaction has been saved successfully. We will send an email receipt to the customer after the POS transaction is saved in Mobiz Server.",
+                                                                                        "Email Receipt",
+                                                                                        [
+                                                                                            {
+                                                                                                Text: 'Ok',
+                                                                                                Click: function () {
+                                                                                                    // window.location = GetPathFormat("/SalesMenu?mode=pos&OrgID=" + sessionStorage.OrgID);
+                                                                                                    if (CStr2(sessionStorage.IsEnableDiningMode) == 'true') {
+                                                                                                        location = MergeUrlParameters({
+                                                                                                            OrgID: sessionStorage["OrgID"],
+                                                                                                            mode: 'pos',
+                                                                                                            IsMobile: IsMobile ? 1 : 0
+                                                                                                        }, '/TableView/NewTable');
+
+                                                                                                    } else {
+                                                                                                        goToSalesMenu();
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                );
+
+                                    } else if (IsPrintReceipt) {
+                                        PrintReceipt(pInvoiceID);
+                                    }; // if (IsPrintReceipt) {
+
+                                    var pDtInvoice = Business.TransInvoice.GetByID(pData.InvoiceID);
+                                    var pDrInvoice;
+                                    var pStr;
+                                    if (pDtInvoice != null) {
+                                        pDrInvoice = pDtInvoice.Rows[0];
+                                        if (CDec2(pDrInvoice.InvoiceNumber) > 0)
+                                            pStr = 'Invoice No.: ' + CDec2(pDrInvoice.InvoiceNumber);
+                                        else if (CDec2(pDrInvoice.SalesOrderNo) > 0)
+                                            pStr = 'Sales Order No.: ' + CDec2(pDrInvoice.SalesOrderNo);
+
+                                        if (pStr != null)
+                                            pStr += '; Transaction date: ' + $.format.date(new Date(pDrInvoice.InvoiceDate), proj.DateFormat);
+                                    }
+
+                                    sessionStorage.removeItem('CartOrderID');
+                                    
+                                    if (!IsEmailReceipt && !IsPrintReceipt) {
+                                        var pMsgBox = NewMessageBox("Your transaction has been saved successfully. " + pStr,
+                                                "Save Receipt",
+                                                [
+                                                    { Text: 'Ok',
+                                                        Click: function () {
+                                                            if (window.InAndroid 
+                                                                && $.isFunction(proj.SalesMenuInit)) {
+
+                                                                Android.ScriptToWebView({
+                                                                    Script: 'proj.ReloadTableView()',
+                                                                    WebViewIndex: 1
+                                                                });
+                                                                Android.SetCurrentTab(0);
+                                                                // history.back(); // bug
+                                                                proj.SalesMenuInit();
+                                                                proj.SalesPayments.ClearSalesPaymentsInfoFields();
+                                                                $('#divHeader, #divHotButtons').show();
+                                                                $('#divPayment').hide();
+                                                                //var pBaseLocation = '/SalesMenu';
+                                                                //if ($(window).width() > proj.WideWidth) //
+                                                                //    pBaseLocation += '/POSViewAll';
+                                                                //var pLocation = MergeUrlParameters({
+                                                                //    OrgID: sessionStorage["OrgID"],
+                                                                //    mode: 'pos',
+                                                                //    IsMobile: IsMobile ? 1 : 0,
+                                                                //    // TableView: 'true', 
+                                                                //    TableNo: 'js998QYHQHXH!'
+                                                                //}, pBaseLocation);
+                                                                //location = pLocation;
+                                                            } else {
+                                                                Proceed();
+
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                        );
+
+                                        ClearCustomerSCPWDSession(); //additional by janine
+                                    } else {
+                                        Proceed();
+                                    }
+                                    function Proceed() {
+                                        //if (/* CStr2(sessionStorage.IsEnableDiningMode) == 'true' || */ CStr2(sessionStorage.CustomerTableNo) != '') {
+                                        //    location = MergeUrlParameters({
+                                        //        OrgID: sessionStorage["OrgID"],
+                                        //        mode: 'pos',
+                                        //        IsMobile: IsMobile ? 1 : 0
+                                        //    }, '/TableView/NewTable');
+                                        //} else 
+                                        if ((window.location.pathname.toLowerCase() == '/salespayments')
+                                            || (window.location.pathname.toLowerCase() == '/salesmenu')) {
+
+                                            Android.ScriptToWebView({
+                                                Script: 'proj.NewCartPos();',
+                                                WebViewIndex: 1
+                                            });
+                                            if (localStorage.getItem('PosView') == 'Hot Button Mode')
+                                                Android.ScriptToWebView({
+                                                    Script: 'proj.goToHotButtonPage();',
+                                                    WebViewIndex: 1
+                                                });
+                                            Android.SetCurrentTab(0);
+                                            //window.location = location = MergeUrlParameters({
+                                            //    mode: 'pos',
+                                            //    OrgID: sessionStorage.OrgID,
+                                            //    IsMobile: CBool(IsMobile) ? 1 : 0
+                                            //}, '/SalesMenu');
+                                        } else {
+                                            Android.ScriptToWebView({
+                                                Script: 'proj.ReloadTableView()',
+                                                WebViewIndex: 1
+                                            });
+                                            Android.SetCurrentTab(0);
+                                            proj.SalesMenuInit();
+                                            proj.SalesPayments.ClearSalesPaymentsInfoFields();
+                                            $('#divHeader, #divHotButtons').show();
+                                            $('#divPayment').hide();
+                                        }
+                                    }
+                                } // END function AfterSave() {
+                                
+                            } // END function Proceed() {
+                            Proceed(pData);
+                            
+                        } // END function
+                    );
+
+
+                    } else {
+                        AjaxSend({
+                            url: "SalesPayments/SaveSalesPayments",
+                            data: pData,
+                            success: function (vData) {
+                                sessionStorage.removeItem('CustomerOrganizationID'); //reset to customer org para mahimong cash ang default
+
+                                if (vData.Error != undefined) {
+                                    MessageBox(vData.Error);
+                                    return;
+                                };
+
+                                if (vData.SalesPaymentData == "InsufficientPayment") {
+                                    MessageBox("Please pay full amount due.",
+                                       "Insufficient Payment",
+                                        [
+                                            { Text: 'Ok',
+                                                Click: function () {
+
+                                                    $.mobile.changePage('');
+
+                                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                                }
+                                            }
+                                        ]
+                                );
+                                } else if (vData.SalesPaymentData == "InvalidEmail") {
+                                    MessageBox("Please enter valid email address.",
+                                       "Invalid email",
+                                        [
+                                            { Text: 'Ok',
+                                                Click: function () {
+
+                                                    $.mobile.changePage('');
+
+                                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                                }
+                                            }
+                                        ]
+                                );
+                                } else if (vData.SalesPaymentData == "DoubleEntry") {
+                                    PrintReceipt(pInvoiceID);
+                                    return;
+                                } else {
+                                    ClearCustomerSCPWDSession(); //additional by janine
+
+                                    if (IsEmailReceipt) {
+
+                                        MessageBox("Sending receipt via email...",
+                                                        "Email Receipt",
+                                                        [
+                                                        ]
+                                                );
+
+                                        AjaxSend({
+                                            url: "SalesPayments/SendEmailReceipt",
+                                            data: pData,
+                                            success: function (vData) {
+                                                if (!IsPrintReceipt) {
+                                                    MessageBox("Your transaction has been saved. An email receipt has been sent to the email address(es) that you specified.",
+                                                        "Email Receipt",
+                                                        [
+                                                            { Text: 'Ok',
+                                                                Click: function () {
+
+                                                                    if (!IsPrintReceipt) {
+                                                                        //                                                                        window.location = GetPathFormat("/SalesMenu?mode=pos&OrgID=" + sessionStorage.OrgID);
+                                                                        goToSalesMenu();
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                );
+                                                } else {
+                                                    $.mobile.changePage(window.pageSourcePage);
+                                                    PrintReceipt(pInvoiceID);
+                                                }
+                                            },
+                                            error: function (vError) {
+                                                MessageBox("You need to have an internet connection to send an email.",
+                                                    "Email Receipt",
+                                                    [
+                                                        { Text: 'Ok',
+                                                            Click: function () {
+                                                                return;
+                                                            }
+                                                        }
+                                                    ]
+                                            );
+                                            }
+
+                                        });
+                                    } else if (IsPrintReceipt) {
+                                        PrintReceipt(pInvoiceID);
+                                    }; // if (IsPrintReceipt) {
+
+                                    if (!IsEmailReceipt && !IsPrintReceipt) {
+                                        MessageBox("Your transaction has been saved successfully.",
+                                            "Save Receipt",
+                                            [
+                                                { Text: 'Ok',
+                                                    Click: function () {
+
+                                                        // window.location = GetPathFormat("/SalesMenu?mode=pos&OrgID=" + sessionStorage.OrgID);
+                                                        if (CStr2(sessionStorage.IsEnableDiningMode) == 'true') {
+                                                            location = MergeUrlParameters({
+                                                                OrgID: sessionStorage["OrgID"],
+                                                                mode: 'pos',
+                                                                IsMobile: IsMobile ? 1 : 0
+                                                            }, '/TableView/NewTable');
+
+                                                        } else {
+                                                            goToSalesMenu();
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        );
+                                    }
+
+                                }; // end if
+
+                            }
+                        });
+                    }
+                }
+
+                function doSendEmailReceipt(pData) {
+                    ClearCustomerSCPWDSession(); //additional by janine
+
+                    MessageBox("Please wait while sending the receipt.",
+                            "Email Receipt",
+                            [
+                                { Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                    );
+
+                    AjaxSend({
+                        url: "SalesPayments/SendEmailReceipt",
+                        data: pData,
+                        success: function (vData) {
+                            if (!IsPrintReceipt) {
+                                MessageBox("Your transaction has been saved. An email receipt has been sent to the email address(es) that you specified.",
+                                    "Email Receipt",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+
+                                                if (!IsPrintReceipt) {
+                                                    goToSalesMenu();
+                                                    //                                                    window.location = GetPathFormat("/SalesMenu?mode=pos&OrgID=" + sessionStorage.OrgID);
+                                                }
+                                            }
+                                        }
+                                    ]
+                            );
+                            } else {
+                                $.mobile.changePage(window.pageSourcePage);
+                                PrintReceipt(pInvoiceID);
+                            }
+                        },
+                        error: function (vError) {
+                            MessageBox("This feature requires internet connection.",
+                                "Requires Internet Connection",
+                                [
+                                    { Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                        );
+                            return;
+                        }
+                    });
+
+                }
+
+                function PrintReceipt(pInvoiceID) {
+
+
+                    //                    if (window.InAndroid || IsMobile) { //Android or Mobile, query to offline
+                    
+                    PrintPOSReceipt(pInvoiceID);
+
+                    //                    } else {
+                    //                        //Web App, query to server
+                    //                        var japplet = document.jzebra;
+                    //                        var blnIsPrinterFound = false;
+
+                    //                        if (japplet != null) {
+                    //                            while (!blnIsPrinterFound) {
+
+                    //                                if (FindDesktopPrinter("")) {
+                    //                                    blnIsPrinterFound = true;
+
+                    //                                    PrintPOSDesktopReceipt(pInvoiceID);
+
+                    //                                };
+
+                    //                            }
+                    //                        } else {
+                    //                            MessageBox("Jzebra applet was not loaded.",
+                    //                                "Jzebra",
+                    //                                [
+                    //                                    { Text: 'Ok'
+                    //                                    }
+                    //                                ]
+                    //                            );
+                    //                        }
+                    //                    }
+                }
+
+                function SaveSalesPayCheck() {
+
+                    arSalesPayCheck = new Array();
+                    arSalesPayCheck[intSalesPayCheckRecID] = $("#txtSalesPayCheckID").val();
+                    arSalesPayCheck[intSalesPayCheckBankID] = $("#txtSalesPayCheckBankID").val();
+                    arSalesPayCheck[intSalesPayCheckBank] = ($('#divCheckBankButton').is(':visible') ? $("#btnSalesPayCheckBank").text() : $("#txtSalesPayCheckBankName").val());
+                    arSalesPayCheck[intSalesPayCheckBankBranchID] = $("#txtSalesPayCheckBankBranchID").val();
+                    ////                arSalesPayCheck[intSalesPayCheckBankBranch] = ($('#divCheckBankButton').is(':visible') ? $("#btnSalesPayCheckBankBranch").text() : $("#txtSalesPayCheckBankBranch").val());
+                    arSalesPayCheck[intSalesPayCheckBankBranch] = $("#txtSalesPayCheckBankBranch").val();
+                    arSalesPayCheck[intSalesPayCheckAccountName] = $("#txtSalesPayCheckAccountName").val();
+                    arSalesPayCheck[intSalesPayCheckAccountNo] = $("#txtSalesPayCheckAccountNo").val();
+                    arSalesPayCheck[intSalesPayCheckNumber] = $("#txtSalesPayCheckNo").val();
+                    arSalesPayCheck[intSalesPayCheckDateMonth] = $("#selSalesPayCheckDateMonth").val();
+                    arSalesPayCheck[intSalesPayCheckDateDay] = $("#selSalesPayCheckDateDay").val();
+                    arSalesPayCheck[intSalesPayCheckDateyear] = $("#selSalesPayCheckDateYear").val();
+                    arSalesPayCheck[intSalesPayCheckAmount] = AccountingFormat($("#txtSalesPayCheckAmount").val());
+                    arSalesPayCheck[intSalesPayCheckState] = (IsNewSalesPayCheck ? "New" : "Edit");
+                    arSalesPayCheck[intSalesPayCheckType] = $('[name="radOpPayCheck"]:checked').val();
+
+                    sessionStorage["SalesPayCheck-" + intSalesPayCheckIndex] = JSON.stringify(arSalesPayCheck);
+
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+
+
+                    LoadSalesPayCheckList();
+
+                };
+
+                function SaveSalesPayDebitCard() {
+
+                    arSalesPayDebitCard = new Array();
+                    arSalesPayDebitCard[intSalesPayDebitCardRecID] = $("#txtSalesPayDebitCardID").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardType] = $("#selSalesPayDebitCardType").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardBankID] = $("#txtSalesPayDebitCardBankID").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardBank] = ($('#divSalesPayDebitCardBankButton').is(':visible') ? $("#btnSalesPayDebitCardBank").text() : $("#txtSalesPayDebitCardBank").val());
+                    arSalesPayDebitCard[intSalesPayDebitCardHolderLName] = $("#txtSalesPayDebitCardLastName").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardHolderFName] = $("#txtSalesPayDebitCardFirstName").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardHolderMName] = $("#txtSalesPayDebitCardMiddleName").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardHolderGenSuffix] = $("#selSalesPayDebitPersonalSuffixName").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardBankCountryID] = $("#txtSalesPayDebitCardBankLocationID").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardBankCountry] = $("#btnSalesPayDebitCardBankLocation").text();
+                    arSalesPayDebitCard[intSalesPayDebitCardNumber] = $("#txtSalesPayDebitCardNo").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateMonth] = $("#selSalesPayDebitCardIssuanceDateMonth").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateDay] = $("#selSalesPayDebitCardIssuanceDateDay").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateYear] = $("#selSalesPayDebitCardIssuanceDateYear").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardExpirationDateMonth] = $("#selSalesPayDebitCardExpirationDateMonth").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardExpirationDateDay] = $("#selSalesPayDebitCardExpirationDateDay").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardExpirationDateYear] = $("#selSalesPayDebitCardExpirationDateYear").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardApprovalNumber] = $("#txtSalesPayDebitCardApprovalNo").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardNoOfInstallment] = $("#txtSalesPayDebitCardNoOfPayments").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardAmount] = AccountingFormat($("#txtSalesPayDebitCardTenderedAmount").val());
+                    arSalesPayDebitCard[intSalesPayDebitCardState] = (IsNewSalesPayDebitCard ? "New" : "Edit");
+
+                    sessionStorage["SalesPayDebitCard-" + intSalesPayDebitCardIndex] = JSON.stringify(arSalesPayDebitCard);
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+                    LoadSalesPayDebitCardList();
+
+                };
+
+                function SaveSalesPayCreditCard() {
+
+                    arSalesPayCreditCard = new Array();
+                    arSalesPayCreditCard[intSalesPayCreditCardRecID] = $("#txtSalesPayCreditCardID").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardType] = $("#selSalesPayCreditCardType").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardBankID] = $("#txtSalesPayCreditCardBankID").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardBank] = ($('#divSalesPayCreditCardBankButton').is(':visible') ? $("#btnSalesPayCreditCardBank").text() : $("#txtSalesPayCreditCardBank").val());
+                    arSalesPayCreditCard[intSalesPayCreditCardHolderLName] = $("#txtSalesPayCreditCardLastName").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardHolderFName] = $("#txtSalesPayCreditCardFirstName").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardHolderMName] = $("#txtSalesPayCreditCardMiddleName").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardHolderGenSuffix] = $("#selSalesPayPersonalSuffixName").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardBankCountryID] = $("#txtSalesPayCreditCardBankLocationID").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardBankCountry] = $("#btnSalesPayCreditCardBankLocation").text();
+                    arSalesPayCreditCard[intSalesPayCreditCardNumber] = $("#txtSalesPayCreditCardNo").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateMonth] = $("#selSalesPayCreditCardIssuanceDateMonth").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateDay] = $("#selSalesPayCreditCardIssuanceDateDay").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateYear] = $("#selSalesPayCreditCardIssuanceDateYear").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardExpirationDateMonth] = $("#selSalesPayCreditCardExpirationDateMonth").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardExpirationDateDay] = $("#selSalesPayCreditCardExpirationDateDay").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardExpirationDateYear] = $("#selSalesPayCreditCardExpirationDateYear").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardApprovalNumber] = $("#txtSalesPayCreditCardApprovalNo").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardNoOfInstallment] = $("#txtSalesPayCreditCardNoOfPayments").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardAmount] = AccountingFormat($("#txtSalesPayCreditCardTenderedAmount").val());
+                    arSalesPayCreditCard[intSalesPayCreditCardState] = (IsNewSalesPayCreditCard ? "New" : "Edit");
+
+                    sessionStorage["SalesPayCreditCard-" + intSalesPayCreditCardIndex] = JSON.stringify(arSalesPayCreditCard);
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+                    LoadSalesPayCreditCardList();
+
+                };
+
+                function SaveSalesPaySRV() {
+                    var intExist = CheckSalesPaySRVExist();
+
+                    if (intExist <= 0) {
+                        arSalesPaySRV = new Array();
+                        arSalesPaySRV[intSalesPaySRVRecID] = $("#txtSalesPayTransSRVID").val();
+                        arSalesPaySRV[intSalesPaySRVMemoID] = $("#txtSalesPaySRVTransMemoID").val();
+                        arSalesPaySRV[intSalesPaySRVNo] = $("#txtSalesPaySRVNo").val();
+                        arSalesPaySRV[intSalesPaySRVPinCode] = $("#txtSalesPaySRVPinCode").val();
+                        arSalesPaySRV[intSalesPaySRVAmount] = AccountingFormat($("#txtSalesPaySRVAmount").val());
+                        arSalesPaySRV[intSalesPaySRVConsumedAmount] = AccountingFormat($("#txtSalesPaySRVConsumedAmount").val());
+                        arSalesPaySRV[intSalesPaySRVState] = (IsNewSalesPaySRV ? "New" : "Edit");
+
+                        sessionStorage["SalesPaySRV-" + intSalesPaySRVIndex] = JSON.stringify(arSalesPaySRV);
+
+                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                            window.pageHeader.ShowPaymentsPage(false);
+                        else
+                            $.mobile.changePage('#pageSalesPayment');
+                        LoadSalesPaySRVList();
+                    } else {
+                        MessageBox("SRV number already listed.",
+                                "SRV Number",
+                                [
+                                    { Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                            );
+                    }
+                };
+                ////////////////////////////////////////////////////////////////////////////////////
+                //additional by janine
+
+                function SaveSalesPayOtherType() {
+
+                    arSalesPayOtherType = new Array();
+                    arSalesPayOtherType[intSalesPayOtherTypeRecID] = $("#txtSalesPayOtherPaymentTypeID").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeName] = $("#selOtherPaymentType").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeOrg] = $("#txtSalesPayOtherPaymentTypeIssuingOrg").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeCardHolderName] = $("#txtSalesPayOtherPaymentTypeCardHolder").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeCardNumber] = $("#txtSalesPayOtherPaymentTypeCardNo").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateMonth] = $("#selSalesPayOtherPaymentTypeCardIssuanceDateMonth").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateDay] = $("#selSalesPayOtherPaymentTypeCardIssuanceDateDay").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateYear] = $("#selSalesPayOtherPaymentTypeCardIssuanceDateYear").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeExpirationDateMonth] = $("#selSalesPayOtherPaymentTypeCardExpirationDateMonth").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeExpirationDateDay] = $("#selSalesPayOtherPaymentTypeCardExpirationDateDay").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeExpirationDateYear] = $("#selSalesPayOtherPaymentTypeCardExpirationDateYear").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeApprovalNo] = $("#txtSalesPayOtherPaymentTypeApprovalNo").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeAmount] = AccountingFormat($("#txtSalesPayOtherPaymentTypeAmount").val());
+                    arSalesPayOtherType[intSalesPayOtherTypeState] = (IsNewSalesPayOtherType ? "New" : "Edit");
+                    arSalesPayOtherType[intSalesPayOtherTypeRoomNo] = $.trim($('#txtSalesPayOtherPaymentTypeRoomNo').val());
+                    arSalesPayOtherType[intSalesPayOtherTypeRemarks] = $.trim($('#txtSalesPayOtherPaymentTypeRemarks').val());
+                    arSalesPayOtherType[intSalesPayOtherTypeGCashRefNo] = $.trim($('#txtSalesPayOtherPaymentTypeCardNo').val()); // txtSalesPayOtherPaymentTypeGCashRefNo
+
+                    sessionStorage["SalesPayOtherType-" + intSalesPayOtherTypeIndex] = JSON.stringify(arSalesPayOtherType);
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+                    LoadSalesPayOtherTypeList();
+
+                };
+
+                function SaveSalesPayCustomerIdentification() {
+
+                    arSalesPayCustomerIdentification = new Array();
+
+                    arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = $("#selIDType").val();
+                    arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = $("#txtOtherIDType").val();
+                    arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = $.trim($("#txtIDText").val());
+                    arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                    sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+
+                    $('#popupAddNewID').popup('close');
+                    LoadSalesPayCustomerIdentificationList();
+
+                };
+
+                function SaveSalesPayCustomerName() {
+                    if (countCustomerIdentification() < 1) {
+                        MessageBox("Please add at least one valid identification number.",
+                                "Identification Number",
+                                [
+                                    { Text: 'Ok' }
+                                ]
+                            );
+                        return;
+                    }
+
+
+                    var seniorCitizensIDNo;
+                    var pwdIDNo;
+                    var passportNo;
+                    var driversLicenseNo;
+                    var sssNo;
+                    var gsisIDNo;
+                    var prcIDNo;
+                    var postalIDNo;
+                    var votersIDNo;
+                    var otherIDNo;
+                    var otherIDType;
+
+                    for (var i = 0; i <= intSalesPayCustomerIdentificationCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerIdentification-" + i] != undefined) {
+
+                            arIdentificationNumber = new Array();
+                            arIdentificationNumber = JSON.parse(sessionStorage["SalesPayCustomerIdentification-" + i]);
+
+                            if (arIdentificationNumber[intSalesPayCustomerIdentificationState] != "Remove") {
+
+                                switch (arIdentificationNumber[intSalesPayCustomerIdentificationIDType]) {
+                                    case "Senior Citizens' ID":
+                                        seniorCitizensIDNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                    case "Persons With Disabilities (PWD) ID":
+                                        pwdIDNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                    case "Passport":
+                                        passportNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                    case "Driver's License":
+                                        driversLicenseNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                    case "SSS ID":
+                                        sssNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                    case "GSIS ID":
+                                        gsisIDNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                    case "PRC ID":
+                                        prcIDNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                    case "Postal ID":
+                                        postalIDNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                    case "Voter's ID":
+                                        votersIDNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                    case "Other":
+                                        otherIDType = arIdentificationNumber[intSalesPayCustomerIdentificationIDOtherType];
+                                        otherIDNo = arIdentificationNumber[intSalesPayCustomerIdentificationIDText];
+                                        break;
+                                }
+
+                                imagefilename = arIdentificationNumber[intSalesPayCustomerIdentificationImage];
+                            }
+
+                        } // end if
+
+
+                    } //end for
+
+                    var pDataTradeName = [];
+                    var pDataCategory = [];
+
+                    var pDataPerson = {
+                        IsOrganization: 0,
+                        OrganizationID: $("#txtID").val(),
+                        PersonFullName: $.trim($("#txtFullname").val()),
+                        PersonFirstName: $.trim($("#txtFirstName").val()),
+                        PersonMiddleName: $.trim($("#txtMiddleName").val()),
+                        PersonSurname: $.trim($("#txtSurname").val()),
+                        PersonSuffixName: $.trim($("#selPersonalSuffixName").val()),
+                        PersonTitleID: $.trim($("#txtTitleID").val()),
+                        PersonDOB: $("#selDOBMonth").val() + '/' + $("#selDOBDay").val() + '/' + $("#selDOBYear").val(),
+                        PersonSeniorCitizensIDNo: seniorCitizensIDNo,
+                        PersonPWDIDNo: pwdIDNo,
+                        PersonPassportNo: passportNo,
+                        PersonDriversLicenseNo: driversLicenseNo,
+                        PersonSSSNo: sssNo,
+                        PersonGSISIDNo: gsisIDNo,
+                        PersonPRCIDNo: prcIDNo,
+                        PersonPostalIDNo: postalIDNo,
+                        PersonVotersIDNo: votersIDNo,
+                        PersonOtherIDType: otherIDType,
+                        PersonOtherIDNo: otherIDNo,
+                        PersonMotherMaidenSurname: '',
+                        PersonMotherMaidenFirstName: '',
+                        PersonMotherMaidenMiddleName: '',
+                        OrgTradeNameList: pDataTradeName,
+                        OrgCategoryList: pDataCategory,
+                        IsAddAsCustomer: (IsNewSalesPayCustomerName ? 1 : 0),
+                        CompanyNameInitial: '',
+                        IsFranchisor: 0,
+                        TIN: '',
+                        OfficeAddressBuildingNo: '',
+                        OfficeAddressStreet: '',
+                        OfficeAddressCityID: '',
+                        OfficeAddressCountryID: '',
+                        BusinessAddressBuildingNo: '',
+                        BusinessAddressStreet: '',
+                        BusinessAddressCityID: '',
+                        BusinessAddressCountryID: ''
+                    };
+
+                    if (OfflineMode) {
+
+                        var result = SalesPayment_offline().SaveOrganizationInfo(pDataPerson);
+                        if (result != 'Existing') {
+
+                            $("#txtID").val(result);
+
+                            SalesPayment_offline().saveSeniorCitizenPWDCustomer(result, sessionStorage.CartOrderID, imagefilename)
+
+                            arSalesPayCustomerName = new Array();
+                            arSalesPayCustomerName[intSalesPayCustomerNameID] = $("#txtID").val();
+                            arSalesPayCustomerName[intSalesPayCustomerNameTitleID] = $.trim($("#txtTitleID").val());
+                            arSalesPayCustomerName[intSalesPayCustomerNameTitleName] = $.trim($("#btnTitle").text());
+                            arSalesPayCustomerName[intSalesPayCustomerNameFullName] = $.trim($("#txtFullname").val());
+                            arSalesPayCustomerName[intSalesPayCustomerNameSurname] = $.trim($("#txtSurname").val());
+                            arSalesPayCustomerName[intSalesPayCustomerNameFirstName] = $("#txtFirstName").val();
+                            arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] = $.trim($("#txtMiddleName").val());
+                            arSalesPayCustomerName[intSalesPayCustomerNameSuffix] = $.trim($("#selPersonalSuffixName").val());
+                            arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] = $("#selDOBMonth").val();
+                            arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] = $.trim($("#selDOBDay").val());
+                            arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] = $.trim($("#selDOBYear").val());
+                            arSalesPayCustomerName[intSalesPayCustomerNameState] = (IsNewSalesPayCustomerName ? "New" : "Edit");
+
+                            sessionStorage["SalesPayCustomerName-" + intSalesPayCustomerNameIndex] = JSON.stringify(arSalesPayCustomerName);
+                            intSalesPayCustomerNameCntr = intSalesPayCustomerNameCntr + 1;
+                            intSalesPayCustomerNameIndex = intSalesPayCustomerNameCntr;
+
+
+                            ClearSalesPayCustomerNameFields();
+                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                                location.hash = '';
+                                window.pageHeader.ShowPaymentsPage(false);
+                            } else
+                                $.mobile.changePage('#pageSalesPayment');
+                            LoadSalesPayCustomerNameList();
+
+                        } else {
+                            MessageBox("Person with the same information already exists.", "Person Info");
+
+                        } // end if existing
+                    } else {
+                        if ($("#txtID").val() == '') {
+
+                            AjaxSend({
+                                url: "OrganizationShort/CheckPersonUniqueName",
+                                data: { IsOrganization: 0,
+                                    OrganizationID: $("#txtID").val(),
+                                    PersonFullName: $.trim($("#txtFullname").val()),
+                                    PersonFirstName: $.trim($("#txtFirstName").val()),
+                                    PersonMiddleName: $.trim($("#txtMiddleName").val()),
+                                    PersonSurname: $.trim($("#txtSurname").val()),
+                                    PersonSuffixName: $.trim($("#selPersonalSuffixName").val()),
+                                    PersonTitleID: $.trim($("#txtTitleID").val()),
+                                    PersonDOB: $("#selDOBMonth").val() + '/' + $("#selDOBDay").val() + '/' + $("#selDOBYear").val(),
+                                    PersonMotherMaidenSurname: '',
+                                    PersonMotherMaidenFirstName: '',
+                                    PersonMotherMaidenMiddleName: '',
+                                    IsFull: false
+
+                                },
+                                success: function (vData) {
+
+                                    if (vData.OrganizationData.Rows.length > 0) {
+                                        MessageBox("Person with the same information already exists.", "Person Info");
+
+                                    } else {
+                                        AjaxSend({
+                                            url: 'OrganizationShort/SaveOrganizationInfo',
+                                            data: pDataPerson,
+                                            success: function (vSaveData) {
+                                                $("#txtID").val(vSaveData.OrganizationData);
+
+                                                arSalesPayCustomerName = new Array();
+                                                arSalesPayCustomerName[intSalesPayCustomerNameID] = $("#txtID").val();
+                                                arSalesPayCustomerName[intSalesPayCustomerNameTitleID] = $.trim($("#txtTitleID").val());
+                                                arSalesPayCustomerName[intSalesPayCustomerNameTitleName] = $.trim($("#btnTitle").text());
+                                                arSalesPayCustomerName[intSalesPayCustomerNameFullName] = $.trim($("#txtFullname").val());
+                                                arSalesPayCustomerName[intSalesPayCustomerNameSurname] = $.trim($("#txtSurname").val());
+                                                arSalesPayCustomerName[intSalesPayCustomerNameFirstName] = $("#txtFirstName").val();
+                                                arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] = $.trim($("#txtMiddleName").val());
+                                                arSalesPayCustomerName[intSalesPayCustomerNameSuffix] = $.trim($("#selPersonalSuffixName").val());
+                                                arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] = $("#selDOBMonth").val();
+                                                arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] = $.trim($("#selDOBDay").val());
+                                                arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] = $.trim($("#selDOBYear").val());
+                                                arSalesPayCustomerName[intSalesPayCustomerNameState] = (IsNewSalesPayCustomerName ? "New" : "Edit");
+
+                                                sessionStorage["SalesPayCustomerName-" + intSalesPayCustomerNameIndex] = JSON.stringify(arSalesPayCustomerName);
+                                                intSalesPayCustomerNameCntr = intSalesPayCustomerNameCntr + 1;
+                                                intSalesPayCustomerNameIndex = intSalesPayCustomerNameCntr;
+
+                                                ClearSalesPayCustomerNameFields();
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+                                                else
+                                                    $.mobile.changePage('#pageSalesPayment');
+                                                LoadSalesPayCustomerNameList();
+                                            }
+                                        });
+
+                                    }
+
+                                }
+                            }); // end ajaxsend
+                        } else {
+                            AjaxSend({
+                                url: 'OrganizationShort/SaveOrganizationInfo',
+                                data: pDataPerson,
+                                success: function (vSaveData) {
+                                    $("#txtID").val(vSaveData.OrganizationData);
+
+                                    arSalesPayCustomerName = new Array();
+                                    arSalesPayCustomerName[intSalesPayCustomerNameID] = $("#txtID").val();
+                                    arSalesPayCustomerName[intSalesPayCustomerNameTitleID] = $.trim($("#txtTitleID").val());
+                                    arSalesPayCustomerName[intSalesPayCustomerNameTitleName] = $.trim($("#btnTitle").text());
+                                    arSalesPayCustomerName[intSalesPayCustomerNameFullName] = $.trim($("#txtFullname").val());
+                                    arSalesPayCustomerName[intSalesPayCustomerNameSurname] = $.trim($("#txtSurname").val());
+                                    arSalesPayCustomerName[intSalesPayCustomerNameFirstName] = $("#txtFirstName").val();
+                                    arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] = $.trim($("#txtMiddleName").val());
+                                    arSalesPayCustomerName[intSalesPayCustomerNameSuffix] = $.trim($("#selPersonalSuffixName").val());
+                                    arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] = $("#selDOBMonth").val();
+                                    arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] = $.trim($("#selDOBDay").val());
+                                    arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] = $.trim($("#selDOBYear").val());
+                                    arSalesPayCustomerName[intSalesPayCustomerNameState] = (IsNewSalesPayCustomerName ? "New" : "Edit");
+
+                                    sessionStorage["SalesPayCustomerName-" + intSalesPayCustomerNameIndex] = JSON.stringify(arSalesPayCustomerName);
+                                    intSalesPayCustomerNameCntr = intSalesPayCustomerNameCntr + 1;
+                                    intSalesPayCustomerNameIndex = intSalesPayCustomerNameCntr;
+
+                                    ClearSalesPayCustomerNameFields();
+
+                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                        window.pageHeader.ShowPaymentsPage(false);
+                                    else
+                                        $.mobile.changePage('#pageSalesPayment');
+                                    LoadSalesPayCustomerNameList();
+                                }
+                            });
+
+
+                        } // end if id is empty
+                    } // end if offline
+
+
+                };
+
+
+                //end of additional
+                ////////////////////////////////////////////////////////////////////////////
+
+                function CheckSalesPaySRVExist() {
+                    var intExist = 0;
+
+                    for (var i = 0; i <= intSalesPaySRVCntr; i++) {
+
+                        if (sessionStorage["SalesPaySRV-" + i] != undefined) {
+
+                            if (i != intSalesPaySRVIndex) {
+                                arSalesPaySRVTmp = new Array();
+                                arSalesPaySRVTmp = JSON.parse(sessionStorage["SalesPaySRV-" + i]);
+
+                                if (arSalesPaySRVTmp[intSalesPaySRVMemoID] == $("#txtSalesPaySRVTransMemoID").val() && arSalesPaySRVTmp[intSalesPaySRVState] != "Remove") {
+                                    intExist = intExist + 1;
+                                }
+                            }
+                        }
+                    }
+
+                    return intExist;
+                };
+
+
+                function RemoveSalesPayCheck() {
+
+                    arSalesPayCheck = new Array();
+                    arSalesPayCheck[intSalesPayCheckRecID] = $("#txtSalesPayCheckID").val();
+                    arSalesPayCheck[intSalesPayCheckBankID] = $("#txtSalesPayCheckBankID").val();
+                    arSalesPayCheck[intSalesPayCheckBank] = ($('#divCheckBankButton').is(':visible') ? $("#btnSalesPayCheckBank").text() : $("#txtSalesPayCheckBankName").val());
+                    arSalesPayCheck[intSalesPayCheckBankBranchID] = $("#txtSalesPayCheckBankBranchID").val();
+                    arSalesPayCheck[intSalesPayCheckBankBranch] = ($('#divCheckBankButton').is(':visible') ? $("#btnSalesPayCheckBankBranch").text() : $("#txtSalesPayCheckBankBranch").val());
+                    arSalesPayCheck[intSalesPayCheckAccountName] = $("#txtSalesPayCheckAccountName").val();
+                    arSalesPayCheck[intSalesPayCheckAccountNo] = $("#txtSalesPayCheckAccountNo").val();
+                    arSalesPayCheck[intSalesPayCheckNumber] = $("#txtSalesPayCheckNo").val();
+                    arSalesPayCheck[intSalesPayCheckDateMonth] = $("#selSalesPayCheckDateMonth").val();
+                    arSalesPayCheck[intSalesPayCheckDateDay] = $("#selSalesPayCheckDateDay").val();
+                    arSalesPayCheck[intSalesPayCheckDateyear] = $("#selSalesPayCheckDateYear").val();
+                    arSalesPayCheck[intSalesPayCheckAmount] = $("#txtSalesPayCheckAmount").val();
+                    arSalesPayCheck[intSalesPayCheckState] = "Remove";
+
+                    sessionStorage["SalesPayCheck-" + intSalesPayCheckIndex] = JSON.stringify(arSalesPayCheck);
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+                    LoadSalesPayCheckList();
+                };
+
+                function RemoveSalesPayDebitCard() {
+
+                    arSalesPayDebitCard = new Array();
+                    arSalesPayDebitCard[intSalesPayDebitCardRecID] = $("#txtSalesPayDebitCardID").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardType] = $("#selSalesPayDebitCardType").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardBankID] = $("#txtSalesPayDebitCardBankID").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardBank] = ($('#divSalesPayDebitCardBankButton').is(':visible') ? $("#btnSalesPayDebitCardBank").text() : $("#txtSalesPayDebitCardBank").val());
+                    arSalesPayDebitCard[intSalesPayDebitCardHolderLName] = $("#txtSalesPayDebitCardLastName").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardHolderFName] = $("#txtSalesPayDebitCardFirstName").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardHolderMName] = $("#txtSalesPayDebitCardMiddleName").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardHolderGenSuffix] = $("#selSalesPayPersonalSuffixName").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardBankCountryID] = $("#txtSalesPayDebitCardBankLocationID").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardBankCountry] = $("#btnSalesPayDebitCardBankLocation").text();
+                    arSalesPayDebitCard[intSalesPayDebitCardNumber] = $("#txtSalesPayDebitCardNo").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateMonth] = $("#selSalesPayDebitCardIssuanceDateMonth").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateDay] = $("#selSalesPayDebitCardIssuanceDateDay").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardIssuanceDateYear] = $("#selSalesPayDebitCardIssuanceDateYear").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardExpirationDateMonth] = $("#selSalesPayDebitCardExpirationDateMonth").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardExpirationDateDay] = $("#selSalesPayDebitCardExpirationDateDay").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardExpirationDateYear] = $("#selSalesPayDebitCardExpirationDateYear").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardApprovalNumber] = $("#txtSalesPayDebitCardApprovalNo").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardNoOfInstallment] = $("#txtSalesPayDebitCardNoOfPayments").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardAmount] = $("#txtSalesPayDebitCardTenderedAmount").val();
+                    arSalesPayDebitCard[intSalesPayDebitCardState] = "Remove";
+
+                    sessionStorage["SalesPayDebitCard-" + intSalesPayDebitCardIndex] = JSON.stringify(arSalesPayDebitCard);
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+                    LoadSalesPayDebitCardList();
+                };
+
+                function RemoveSalesPayCreditCard() {
+
+                    arSalesPayCreditCard = new Array();
+                    arSalesPayCreditCard[intSalesPayCreditCardRecID] = $("#txtSalesPayCreditCardID").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardType] = $("#selSalesPayCreditCardType").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardBankID] = $("#txtSalesPayCreditCardBankID").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardBank] = ($('#divSalesPayCreditCardBankButton').is(':visible') ? $("#btnSalesPayCreditCardBank").text() : $("#txtSalesPayCreditCardBank").val());
+                    arSalesPayCreditCard[intSalesPayCreditCardHolderLName] = $("#txtSalesPayCreditCardLastName").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardHolderFName] = $("#txtSalesPayCreditCardFirstName").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardHolderMName] = $("#txtSalesPayCreditCardMiddleName").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardHolderGenSuffix] = $("#selSalesPayPersonalSuffixName").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardBankCountryID] = $("#txtSalesPayCreditCardBankLocationID").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardBankCountry] = $("#btnSalesPayCreditCardBankLocation").text();
+                    arSalesPayCreditCard[intSalesPayCreditCardNumber] = $("#txtSalesPayCreditCardNo").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateMonth] = $("#selSalesPayCreditCardIssuanceDateMonth").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateDay] = $("#selSalesPayCreditCardIssuanceDateDay").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardIssuanceDateYear] = $("#selSalesPayCreditCardIssuanceDateYear").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardExpirationDateMonth] = $("#selSalesPayCreditCardExpirationDateMonth").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardExpirationDateDay] = $("#selSalesPayCreditCardExpirationDateDay").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardExpirationDateYear] = $("#selSalesPayCreditCardExpirationDateYear").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardApprovalNumber] = $("#txtSalesPayCreditCardApprovalNo").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardNoOfInstallment] = $("#txtSalesPayCreditCardNoOfPayments").val();
+                    arSalesPayCreditCard[intSalesPayCreditCardAmount] = AccountingFormat($("#txtSalesPayCreditCardTenderedAmount").val());
+                    arSalesPayCreditCard[intSalesPayCreditCardState] = "Remove";
+
+                    sessionStorage["SalesPayCreditCard-" + intSalesPayCreditCardIndex] = JSON.stringify(arSalesPayCreditCard);
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+                    LoadSalesPayCreditCardList();
+                };
+
+                function RemoveSalesPaySRV() {
+
+                    arSalesPaySRV = new Array();
+                    arSalesPaySRV[intSalesPaySRVRecID] = $("#txtSalesPayTransSRVID").val();
+                    arSalesPaySRV[intSalesPaySRVMemoID] = $("#txtSalesPaySRVTransMemoID").val();
+                    arSalesPaySRV[intSalesPaySRVNo] = $("#txtSalesPaySRVNo").val();
+                    arSalesPaySRV[intSalesPaySRVPinCode] = $("#txtSalesPaySRVPinCode").val();
+                    arSalesPaySRV[intSalesPaySRVAmount] = $("#txtSalesPaySRVAmount").val();
+                    arSalesPaySRV[intSalesPaySRVConsumedAmount] = $("#txtSalesPaySRVConsumedAmount").val();
+                    arSalesPaySRV[intSalesPaySRVState] = "Remove";
+
+                    sessionStorage["SalesPaySRV-" + intSalesPaySRVIndex] = JSON.stringify(arSalesPaySRV);
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+                    LoadSalesPaySRVList();
+                };
+
+                function RemoveSalesPayOtherType() {
+
+                    arSalesPayOtherType = new Array();
+                    arSalesPayOtherType[intSalesPayOtherTypeRecID] = $("#txtSalesPayOtherPaymentTypeID").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeName] = $("#selOtherPaymentType").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeOrg] = $("#txtSalesPayOtherPaymentTypeIssuingOrg").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeCardHolderName] = $("#txtSalesPayOtherPaymentTypeCardHolder").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeCardNumber] = $("#txtSalesPayOtherPaymentTypeCardNo").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateMonth] = $("#selSalesPayOtherPaymentTypeCardIssuanceDateMonth").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateDay] = $("#selSalesPayOtherPaymentTypeCardIssuanceDateDay").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeIssuanceDateYear] = $("#selSalesPayOtherPaymentTypeCardIssuanceDateYear").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeExpirationDateMonth] = $("#selSalesPayOtherPaymentTypeCardExpirationDateMonth").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeExpirationDateDay] = $("#selSalesPayOtherPaymentTypeCardExpirationDateDay").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeExpirationDateYear] = $("#selSalesPayOtherPaymentTypeCardExpirationDateYear").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeApprovalNo] = $("#txtSalesPayOtherPaymentTypeApprovalNo").val();
+                    arSalesPayOtherType[intSalesPayOtherTypeAmount] = AccountingFormat($("#txtSalesPayOtherPaymentTypeAmount").val());
+                    arSalesPayOtherType[intSalesPayOtherTypeState] = "Remove";
+                    arSalesPayOtherType[intSalesPayOtherTypeRoomNo] = $.trim($('#txtSalesPayOtherPaymentTypeRoomNo').val());
+                    arSalesPayOtherType[intSalesPayOtherTypeRemarks] = $.trim($('#txtSalesPayOtherPaymentTypeRemarks').val());
+                    arSalesPayOtherType[intSalesPayOtherTypeGCashRefNo] = $.trim($('#txtSalesPayOtherPaymentTypeGCashRefNo').val());
+
+                    sessionStorage["SalesPayOtherType-" + intSalesPayOtherTypeIndex] = JSON.stringify(arSalesPayOtherType);
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        window.pageHeader.ShowPaymentsPage(false);
+                    else
+                        $.mobile.changePage('#pageSalesPayment');
+                    LoadSalesPayOtherTypeList();
+
+                };
+
+                //additional by janine
+                function RemoveSalesPayCustomerIdentification() {
+
+                    arSalesPayCustomerIdentification = new Array();
+                    arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = $("#selIDType").val();
+                    arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = $("#txtOtherIDType").val();
+                    arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = $("#txtIDText").val();
+                    arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = "Remove";
+
+                    sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                        ShowSeniorCitizenPWDPage();
+                    else
+                        $.mobile.changePage('#pageAddNewCustomer');
+                    LoadSalesPayCustomerIdentificationList();
+                };
+                proj.RemoveSalesPayCustomerName = function () {
+
+                    arSalesPayCustomerName = new Array();
+                    arSalesPayCustomerName[intSalesPayCustomerNameID] = $("#txtID").val();
+                    arSalesPayCustomerName[intSalesPayCustomerNameTitleID] = $.trim($("#txtTitleID").val());
+                    arSalesPayCustomerName[intSalesPayCustomerNameTitleName] = $.trim($("#btnTitle").text());
+                    arSalesPayCustomerName[intSalesPayCustomerNameSurname] = $.trim($("#txtSurname").val());
+                    arSalesPayCustomerName[intSalesPayCustomerNameFirstName] = $("#txtFirstName").val();
+                    arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] = $.trim($("#txtMiddleName").val());
+                    arSalesPayCustomerName[intSalesPayCustomerNameSuffix] = $.trim($("#selPersonalSuffixName").val());
+                    arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] = $("#selDOBMonth").val();
+                    arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] = $.trim($("#selDOBDay").val());
+                    arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] = $.trim($("#selDOBYear").val());
+                    arSalesPayCustomerName[intSalesPayCustomerNameState] = "Remove";
+
+
+                    sessionStorage["SalesPayCustomerName-" + intSalesPayCustomerNameIndex] = JSON.stringify(arSalesPayCustomerName);
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                        location.hash = '';
+                        window.pageHeader.ShowPaymentsPage(false);
+                    } else
+                        $.mobile.changePage('#pageSalesPayment');
+                    LoadSalesPayCustomerNameList();
+                };
+
+                //end of additional
+
+                function LoadSalesPayCheckList() {
+                    var pLV = $('#lstSalesPayCheck');
+                    var pItem;
+
+                    pLV.html('');
+                    for (var i = 0; i <= intSalesPayCheckCntr; i++) {
+
+                        if (sessionStorage["SalesPayCheck-" + i] != undefined) {
+
+                            arSalesPayCheck = new Array();
+                            arSalesPayCheck = JSON.parse(sessionStorage["SalesPayCheck-" + i]);
+
+                            if (arSalesPayCheck[intSalesPayCheckState] != "Remove") {
+
+                                pItem = $('<li id="lst' + i + '">')
+                            .append($('<a>')
+                                    .attr('ID', i)
+                                    .data('Data', arSalesPayCheck)
+                                    .click(function (e) {
+                                        e.preventDefault();
+                                        ShowSalesPayCheckInfo($(this).data('Data'), $(this).attr('ID'));
+                                    })
+                                    .append($('<h3>')
+                                        .attr("style", "white-space:normal")
+                                        .text((arSalesPayCheck[intSalesPayCheckType] == 'check' ? 'Bank Check No.: ' : 'Gift Check No.: ') + arSalesPayCheck[intSalesPayCheckNumber])
+                                    )
+                                    .append($('<p>')
+                                        .attr("style", "white-space:normal")
+                                        .text("Amount : " + arSalesPayCheck[intSalesPayCheckAmount])
+                                    )
+                            );
+
+
+                                pLV.append(pItem);
+
+                            }
+
+                        }
+                    }
+
+                    pLV.listview('refresh');
+
+                    RefreshSalesPayCheckTotal();
+                };
+
+                function LoadSalesPayDebitCardList() {
+                    var pLV = $('#lstSalesPayDebitCard');
+                    var pItem;
+
+                    pLV.html('');
+                    for (var i = 0; i <= intSalesPayDebitCardCntr; i++) {
+
+                        if (sessionStorage["SalesPayDebitCard-" + i] != undefined) {
+
+                            arSalesPayDebitCard = new Array();
+                            arSalesPayDebitCard = JSON.parse(sessionStorage["SalesPayDebitCard-" + i]);
+
+                            if (arSalesPayDebitCard[intSalesPayDebitCardState] != "Remove") {
+
+                                pItem = $('<li id="lst' + i + '">')
+                            .append($('<a>')
+                                    .attr('ID', i)
+                                    .data('Data', arSalesPayDebitCard)
+                                    .click(function (e) {
+                                        e.preventDefault();
+                                        ShowSalesPayDebitCardInfo($(this).data('Data'), $(this).attr('ID'));
+                                    })
+                                    .append($('<h3>')
+                                        .attr("style", "white-space:normal")
+                                        .text(arSalesPayDebitCard[intSalesPayDebitCardApprovalNumber])
+                                    )
+                                    .append($('<p>')
+                                        .attr("style", "white-space:normal")
+                                        .text("Amount : " + arSalesPayDebitCard[intSalesPayDebitCardAmount])
+                                    )
+                            );
+
+
+                                pLV.append(pItem);
+
+                            }
+
+                        }
+                    }
+
+                    pLV.listview('refresh');
+
+                    RefreshSalesPayDebitCardTotal();
+
+                };
+
+                function LoadSalesPayCreditCardList() {
+                    var pLV = $('#lstSalesPayCreditCard');
+                    var pItem;
+
+                    pLV.html('');
+                    for (var i = 0; i <= intSalesPayCreditCardCntr; i++) {
+
+                        if (sessionStorage["SalesPayCreditCard-" + i] != undefined) {
+
+                            arSalesPayCreditCard = new Array();
+                            arSalesPayCreditCard = JSON.parse(sessionStorage["SalesPayCreditCard-" + i]);
+
+                            if (arSalesPayCreditCard[intSalesPayCreditCardState] != "Remove") {
+
+                                pItem = $('<li id="lst' + i + '">')
+                            .append($('<a>')
+                                    .attr('ID', i)
+                                    .data('Data', arSalesPayCreditCard)
+                                    .click(function (e) {
+                                        e.preventDefault();
+                                        ShowSalesPayCreditCardInfo($(this).data('Data'), $(this).attr('ID'));
+                                    })
+                                    .append($('<h3>')
+                                        .attr("style", "white-space:normal")
+                                        .text(arSalesPayCreditCard[intSalesPayCreditCardApprovalNumber])
+                                    )
+                                    .append($('<p>')
+                                        .attr("style", "white-space:normal")
+                                        .text("Amount : " + arSalesPayCreditCard[intSalesPayCreditCardAmount])
+                                    )
+                            );
+
+
+                                pLV.append(pItem);
+
+                            }
+
+                        }
+                    }
+
+                    pLV.listview('refresh');
+
+                    RefreshSalesPayCreditCardTotal();
+
+                };
+
+                function LoadSalesPaySRVList() {
+                    var pLV = $('#lstSalesPaySRV');
+                    var pItem;
+
+                    pLV.html('');
+                    for (var i = 0; i <= intSalesPaySRVCntr; i++) {
+
+                        if (sessionStorage["SalesPaySRV-" + i] != undefined) {
+
+                            arSalesPaySRV = new Array();
+                            arSalesPaySRV = JSON.parse(sessionStorage["SalesPaySRV-" + i]);
+
+                            if (arSalesPaySRV[intSalesPaySRVState] != "Remove") {
+
+                                pItem = $('<li id="lst' + i + '">')
+                            .append($('<a>')
+                                    .attr('ID', i)
+                                    .data('Data', arSalesPaySRV)
+                                    .click(function (e) {
+                                        e.preventDefault();
+                                        ShowSalesPaySRVInfo($(this).data('Data'), $(this).attr('ID'));
+                                    })
+                                    .append($('<h3>')
+                                        .attr("style", "white-space:normal")
+                                        .text("SRV No. : " + arSalesPaySRV[intSalesPaySRVNo])
+                                    )
+                                    .append($('<p>')
+                                        .attr("style", "white-space:normal")
+                                        .text("Amount : " + arSalesPaySRV[intSalesPaySRVConsumedAmount])
+                                    )
+                            );
+
+
+                                pLV.append(pItem);
+
+                            }
+
+                        }
+                    }
+
+                    pLV.listview('refresh');
+
+                    RefreshSalesPaySRVTotal();
+                };
+                ////////////////////////////////////////////////////////////////////////////////////////////////////
+                //additional by janine
+
+                function LoadSalesPayOtherTypeList() {
+
+                    var pLV = $('#lstSalesPayOtherType');
+                    var pItem;
+
+                    pLV.html('');
+                    for (var i = 0; i <= intSalesPayOtherTypeCntr; i++) {
+
+                        if (sessionStorage["SalesPayOtherType-" + i] != undefined) {
+
+                            arSalesPayOtherType = new Array();
+                            arSalesPayOtherType = JSON.parse(sessionStorage["SalesPayOtherType-" + i]);
+
+                            if (arSalesPayOtherType[intSalesPayOtherTypeState] != "Remove") {
+                                var lbl;
+                                var OtherPaymentType;
+
+                                if (arSalesPayOtherType[intSalesPayOtherTypeName] == "Room In") {
+                                    lbl = "Room No. : " + arSalesPayOtherType[intSalesPayOtherTypeRoomNo];
+                                } else if (arSalesPayOtherType[intSalesPayOtherTypeName] == "Send Bill") {
+                                    lbl = "Send Bill";
+                                } else if (arSalesPayOtherType[intSalesPayOtherTypeName] == "GCash") {
+                                    lbl = "GCash Ref. No.: " + arSalesPayOtherType[intSalesPayOtherTypeGCashRefNo];
+                                } else if (arSalesPayOtherType[intSalesPayOtherTypeName] == "GrabFood" || arSalesPayOtherType[intSalesPayOtherTypeName] == "FoodPanda") {
+                                    lbl = "Reference No. : " + arSalesPayOtherType[intSalesPayOtherTypeCardNumber];
+
+                                    if(arSalesPayOtherType[intSalesPayOtherTypeName] == "GrabFood")
+                                        OtherPaymentType = 'Grab Food'
+                                    else if(arSalesPayOtherType[intSalesPayOtherTypeName] == "FoodPanda")
+                                        OtherPaymentType = 'Food Panda'
+
+                                } else {
+                                    lbl = "Card No. : " + arSalesPayOtherType[intSalesPayOtherTypeCardNumber];
+                                }
+
+                                pItem = $('<li id="lst' + i + '">')
+                            .append($('<a>')
+                                    .attr('ID', i)
+                                    .data('Data', arSalesPayOtherType)
+                                    .click(function (e) {
+                                        e.preventDefault();
+                                        ShowSalesPayOtherTypeInfo($(this).data('Data'), $(this).attr('ID'));
+                                    })
+                                    .append($('<h3>')
+                                        .attr("style", "white-space:normal")
+                                        .text(OtherPaymentType)
+                                    )
+                                    .append($('<h3>')
+                                        .attr("style", "white-space:normal")
+                                        .text(lbl)
+                                    )                                    
+                                    .append($('<p>')
+                                        .attr("style", "white-space:normal")
+                                        .text("Amount : " + arSalesPayOtherType[intSalesPayOtherTypeAmount])
+                                    )
+                            );
+
+
+                                pLV.append(pItem);
+
+                            }
+
+                        }
+                    }
+
+                    pLV.listview('refresh');
+
+                    RefreshSalesPayOtherTypeTotal();
+
+                };
+
+                function LoadSalesPayCustomerIdentificationList() {
+
+                    var pLV = $('#lstSalesPayCustomerIdentification');
+                    var pItem;
+
+                    pLV.html('');
+                    for (var i = 0; i <= intSalesPayCustomerIdentificationCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerIdentification-" + i] != undefined) {
+
+                            arSalesPayCustomerIdentification = new Array();
+                            arSalesPayCustomerIdentification = JSON.parse(sessionStorage["SalesPayCustomerIdentification-" + i]);
+
+                            if (arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] != "Remove") {
+
+                                pItem = $('<li id="lst' + i + '">')
+                            .append($('<a>')
+                                    .attr('ID', i)
+                                    .data('Data', arSalesPayCustomerIdentification)
+                                    .click(function (e) {
+                                        e.preventDefault();
+                                        ShowSalesPayCustomerIdentificationInfo($(this).data('Data'), $(this).attr('ID'));
+                                    })
+                                    .append($('<h3>')
+                                        .attr("style", "white-space:normal")
+                                        .text(arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] == '' ? arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] : arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType])
+                                    )
+                                    .append($('<p>')
+                                        .attr("style", "white-space:normal")
+                                        .text("No.: " + arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText])
+                                    )
+                            );
+
+
+                                pLV.append(pItem);
+
+                            }
+
+                        }
+                    }
+
+                    pLV.listview('refresh');
+
+                    //                    RefreshSalesPayDebitCardTotal();
+
+                };
+                function LoadSalesPayCustomerNameList() {
+                    location.hash = 'payment';
+
+                    var vDataShow = SalesPayment_offline().getSeniorCitizenPWDCustomer(sessionStorage.CartOrderID);
+                    window.pageDiscounts.LoadSavedCustomerNameList(vDataShow.Rows, true)
+
+                    return;
+
+                    //ayaw ni gamita kay makasakit ug ulo :x by arnie 1.12.17
+
+                    $('#txtCustomerSearch').val('');
+
+
+                    var pLV = $('#lstSalesPayCustomerName');
+                    var pItem;
+
+                    pLV.html('');
+
+                    for (var i = 0; i <= intSalesPayCustomerNameCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerName-" + i] != undefined) {
+
+                            arSalesPayCustomerName = new Array();
+                            arSalesPayCustomerName = JSON.parse(sessionStorage["SalesPayCustomerName-" + i]);
+
+                            if (arSalesPayCustomerName[intSalesPayCustomerNameState] != "Remove") {
+
+                                pItem = $('<li id="lst' + i + '">')
+                            .append($('<a>')
+                                    .attr('ID', i)
+                                    .data('Data', arSalesPayCustomerName)
+                                    .click(function (e) {
+                                        e.preventDefault();
+
+                                        ShowSalesPayCustomerNameInfo($(this).data('Data'), $(this).attr('ID'));
+                                    })
+                                    .append($('<h3>')
+                                        .attr("style", "white-space:normal")
+                                        .text((CStr2(arSalesPayCustomerName[intSalesPayCustomerNameTitleName]) == '' || CStr2(arSalesPayCustomerName[intSalesPayCustomerNameTitleName]) == 'Please Select' ? '' : arSalesPayCustomerName[intSalesPayCustomerNameTitleName]) + ' ' +
+                                        (CStr2(arSalesPayCustomerName[intSalesPayCustomerNameFullName]) == '' ? arSalesPayCustomerName[intSalesPayCustomerNameSurname] + ', ' +
+                                        arSalesPayCustomerName[intSalesPayCustomerNameFirstName] + ' ' +
+                                        arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] : arSalesPayCustomerName[intSalesPayCustomerNameFullName]))
+                                    )
+                            );
+
+
+                                pLV.append(pItem);
+
+                            }
+
+                        }
+                    }
+
+                    pLV.listview('refresh');
+
+                    //                    RefreshSalesPayDebitCardTotal();
+
+                };
+
+
+                function displayCustomerNameList(vRows) {
+                    IsNewSalesPayCustomerName = false;
+
+                    arSalesPayCustomerName = new Array();
+                    arSalesPayCustomerName[intSalesPayCustomerNameID] = vRows[0].ID;
+                    arSalesPayCustomerName[intSalesPayCustomerNameTitleID] = vRows[0].PersonTitleID;
+                    arSalesPayCustomerName[intSalesPayCustomerNameTitleName] = vRows[0].PersonTitle;
+                    arSalesPayCustomerName[intSalesPayCustomerNameFullName] = vRows[0].PersonFullname;
+                    arSalesPayCustomerName[intSalesPayCustomerNameSurname] = vRows[0].PersonSurname;
+                    arSalesPayCustomerName[intSalesPayCustomerNameFirstName] = vRows[0].PersonFirstName;
+                    arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] = vRows[0].PersonMiddleName;
+                    arSalesPayCustomerName[intSalesPayCustomerNameSuffix] = vRows[0].PersonSuffixName;
+                    arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] = new Date(vRows[0].PersonDateOfBirth).getMonth() + 1;
+                    arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] = new Date(vRows[0].PersonDateOfBirth).getDate();
+                    arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] = new Date(vRows[0].PersonDateOfBirth).getFullYear();
+                    arSalesPayCustomerName[intSalesPayCustomerNameState] = (IsNewSalesPayCustomerName ? "New" : "Edit");
+
+                    sessionStorage["SalesPayCustomerName-" + intSalesPayCustomerNameCntr] = JSON.stringify(arSalesPayCustomerName);
+
+                    intSalesPayCustomerNameCntr = intSalesPayCustomerNameCntr + 1;
+                    intSalesPayCustomerNameIndex = intSalesPayCustomerNameCntr;
+
+                    //                    $.mobile.changePage('#pageSalesPayment');
+                    //                    //if bday is null
+                    //                    if (CDec2(arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth]) == '')
+                    //                        ShowSalesPayCustomerNameInfo(arSalesPayCustomerName, intSalesPayCustomerNameCntr - 1);
+
+                    LoadSalesPayCustomerNameList();
+                }
+
+                function displayCustomerNameInfo(vRows, arData, index) {
+                    //reset id list. clear
+
+                    for (var i = 0; i <= intSalesPayCustomerIdentificationCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerIdentification-" + i] != undefined) {
+                            sessionStorage.removeItem("SalesPayCustomerIdentification-" + i);
+
+                        }
+                    }
+
+                    ////////////////////////////////////////////////////////////////////////////
+                    IsNewSalesPayCustomerIdentification = false;
+                    intSalesPayCustomerIdentificationCntr = 0;
+                    intSalesPayCustomerIdentificationIndex = 0;
+
+
+                    if (CStr2(vRows[0].PersonSeniorCitizensIDNo) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "Senior Citizens' ID";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = '';
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonSeniorCitizensIDNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+                    if (CStr2(vRows[0].PersonPWDIDNo) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "Persons With Disabilities (PWD) ID";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = '';
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonPWDIDNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+                    if (CStr2(vRows[0].PersonPassportNo) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "Passport";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = '';
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonPassportNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+                    if (CStr2(vRows[0].PersonDriversLicenseNo) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "Driver's License";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = '';
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonDriversLicenseNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+                    if (CStr2(vRows[0].PersonSSSNo) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "SSS ID";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = '';
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonSSSNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+                    if (CStr2(vRows[0].PersonGSISIDNo) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "GSIS ID";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = '';
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonGSISIDNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+                    if (CStr2(vRows[0].PersonPRCIDNo) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "PRC ID";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = '';
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonPRCIDNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+                    if (CStr2(vRows[0].PersonPostalIDNo) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "Postal ID";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = '';
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonPostalIDNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+                    if (CStr2(vRows[0].PersonVotersIDNo) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "Voter's ID";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = '';
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonVotersIDNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+
+                    if (CStr2(vRows[0].PersonOtherIDType) != '') {
+                        arSalesPayCustomerIdentification = new Array();
+
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDType] = "Other";
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDOtherType] = vRows[0].PersonOtherIDType;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationIDText] = vRows[0].PersonOtherIDNo;
+                        arSalesPayCustomerIdentification[intSalesPayCustomerIdentificationState] = (IsNewSalesPayCustomerIdentification ? "New" : "Edit");
+
+                        sessionStorage["SalesPayCustomerIdentification-" + intSalesPayCustomerIdentificationIndex] = JSON.stringify(arSalesPayCustomerIdentification);
+                        intSalesPayCustomerIdentificationCntr = intSalesPayCustomerIdentificationCntr + 1;
+                        intSalesPayCustomerIdentificationIndex = intSalesPayCustomerIdentificationCntr;
+                    }
+
+                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                        // window.pageHeader.ShowSeniorCitizenPWDPage();
+                        $.mobile.changePage('#SeniorCitizenPWD');
+
+                        if (CStr2(sessionStorage.IsSeniorCitizenPWDPageLoaded) != 'true') {
+                            AjaxSend({
+                                ExactUrl: '/SalesPayments/SeniorCitizenPWD?cache=1',
+                                type: 'GET',
+                                dataType: 'text',
+                                success: function (vData) {
+
+                                    $('#SeniorCitizenPWD').append(vData).trigger('create');
+                                    sessionStorage.IsSeniorCitizenPWDPageLoaded = 'true';
+
+                                    App.Deferred.fulfill('FQ26E5TP78');
+
+                                    setMonthCollection("selDOBMonth");
+                                    setYearCollection("selDOBYear");
+
+                                    ClearSalesPayCustomerNameFields();
+
+
+                                    arSalesPayCustomerName = new Array();
+
+                                    arSalesPayCustomerName[intSalesPayCustomerNameID] = arData[intSalesPayCustomerNameID];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameTitleID] = arData[intSalesPayCustomerNameTitleID];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameTitleName] = arData[intSalesPayCustomerNameTitleName];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameSurname] = arData[intSalesPayCustomerNameSurname];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameFirstName] = arData[intSalesPayCustomerNameFirstName];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] = arData[intSalesPayCustomerNameMiddleName];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameSuffix] = arData[intSalesPayCustomerNameSuffix];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] = arData[intSalesPayCustomerNameDOBMonth];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] = arData[intSalesPayCustomerNameDOBYear];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] = arData[intSalesPayCustomerNameDOBDay];
+                                    arSalesPayCustomerName[intSalesPayCustomerNameState] = (IsNewSalesPayCustomerName ? "New" : "Edit");
+
+                                    intSalesPayCustomerNameIndex = index;
+                                    sessionStorage["SalesPayCustomerName-" + intSalesPayCustomerNameIndex] = JSON.stringify(arSalesPayCustomerName);
+
+                                    /////////////////////////////////////////////////
+
+
+                                    $("#txtID").val(arSalesPayCustomerName[intSalesPayCustomerNameID] || '');
+                                    $("#txtCustomerIndex").val(index);
+                                    $("#txtTitleID").val(arSalesPayCustomerName[intSalesPayCustomerNameTitleID] || '');
+                                    $("#btnTitle").text(arSalesPayCustomerName[intSalesPayCustomerNameTitleName] || 'Please Select').button('refresh');
+                                    $("#txtSurname").val(arSalesPayCustomerName[intSalesPayCustomerNameSurname] || '');
+                                    $("#txtFirstName").val(arSalesPayCustomerName[intSalesPayCustomerNameFirstName] || '');
+                                    $("#txtMiddleName").val(arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] || '');
+                                    $("#selPersonalSuffixName").val(arSalesPayCustomerName[intSalesPayCustomerNameSuffix] || '');
+                                    $("#selPersonalSuffixName").selectmenu('refresh');
+
+                                    $("#selDOBMonth").val(arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] || ''); //remove leading zeros
+                                    $("#selDOBMonth").selectmenu('refresh');
+                                    $("#selDOBYear").val(arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] || '');
+                                    $("#selDOBYear").selectmenu('refresh');
+                                    setDayCollection('selDOBMonth', 'selDOBDay', 'selDOBYear', true);
+                                    $("#selDOBDay").val(arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] || '');
+                                    $("#selDOBDay").selectmenu('refresh');
+
+                                    IsNewSalesPayCustomerName = false;
+
+                                    $("#btnSalesPayCustomerNameRemove").show();
+
+
+                                    LoadSalesPayCustomerIdentificationList();
+
+                                }
+                            });
+                        } else {
+
+                            arSalesPayCustomerName = new Array();
+
+                            arSalesPayCustomerName[intSalesPayCustomerNameID] = arData[intSalesPayCustomerNameID];
+                            arSalesPayCustomerName[intSalesPayCustomerNameTitleID] = arData[intSalesPayCustomerNameTitleID];
+                            arSalesPayCustomerName[intSalesPayCustomerNameTitleName] = arData[intSalesPayCustomerNameTitleName];
+                            arSalesPayCustomerName[intSalesPayCustomerNameFullName] = arData[intSalesPayCustomerNameFullName];
+                            arSalesPayCustomerName[intSalesPayCustomerNameSurname] = arData[intSalesPayCustomerNameSurname];
+                            arSalesPayCustomerName[intSalesPayCustomerNameFirstName] = arData[intSalesPayCustomerNameFirstName];
+                            arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] = arData[intSalesPayCustomerNameMiddleName];
+                            arSalesPayCustomerName[intSalesPayCustomerNameSuffix] = arData[intSalesPayCustomerNameSuffix];
+                            arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] = arData[intSalesPayCustomerNameDOBMonth];
+                            arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] = arData[intSalesPayCustomerNameDOBYear];
+                            arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] = arData[intSalesPayCustomerNameDOBDay];
+                            arSalesPayCustomerName[intSalesPayCustomerNameState] = (IsNewSalesPayCustomerName ? "New" : "Edit");
+
+                            intSalesPayCustomerNameIndex = index;
+                            sessionStorage["SalesPayCustomerName-" + intSalesPayCustomerNameIndex] = JSON.stringify(arSalesPayCustomerName);
+
+                            /////////////////////////////////////////////////
+
+
+                            $("#txtID").val(arSalesPayCustomerName[intSalesPayCustomerNameID] || '');
+                            $("#txtCustomerIndex").val(index);
+                            $("#txtTitleID").val(arSalesPayCustomerName[intSalesPayCustomerNameTitleID] || '');
+                            $("#btnTitle").text(arSalesPayCustomerName[intSalesPayCustomerNameTitleName] || 'Please Select').button('refresh');
+                            $("#txtFullname").val(arSalesPayCustomerName[intSalesPayCustomerNameFullName] || '');
+                            $("#txtSurname").val(arSalesPayCustomerName[intSalesPayCustomerNameSurname] || '');
+                            $("#txtFirstName").val(arSalesPayCustomerName[intSalesPayCustomerNameFirstName] || '');
+                            $("#txtMiddleName").val(arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] || '');
+                            $("#selPersonalSuffixName").val(arSalesPayCustomerName[intSalesPayCustomerNameSuffix] || '');
+                            $("#selPersonalSuffixName").selectmenu('refresh');
+
+                            $("#selDOBMonth").val(arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] || ''); //remove leading zeros
+                            $("#selDOBMonth").selectmenu('refresh');
+                            $("#selDOBYear").val(arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] || '');
+                            $("#selDOBYear").selectmenu('refresh');
+                            setDayCollection('selDOBMonth', 'selDOBDay', 'selDOBYear', true);
+                            $("#selDOBDay").val(arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] || '');
+                            $("#selDOBDay").selectmenu('refresh');
+
+                            IsNewSalesPayCustomerName = false;
+
+                            $("#btnSalesPayCustomerNameRemove").show();
+
+
+                            LoadSalesPayCustomerIdentificationList();
+
+
+                        }
+                    }
+                    else {
+                        $.mobile.changePage('#pageAddNewCustomer');
+
+                        setMonthCollection("selDOBMonth");
+                        setYearCollection("selDOBYear");
+
+                        ClearSalesPayCustomerNameFields();
+                        arSalesPayCustomerName = new Array();
+
+                        arSalesPayCustomerName[intSalesPayCustomerNameID] = arData[intSalesPayCustomerNameID];
+                        arSalesPayCustomerName[intSalesPayCustomerNameTitleID] = arData[intSalesPayCustomerNameTitleID];
+                        arSalesPayCustomerName[intSalesPayCustomerNameTitleName] = arData[intSalesPayCustomerNameTitleName];
+                        arSalesPayCustomerName[intSalesPayCustomerNameFullName] = arData[intSalesPayCustomerNameFullName];
+                        arSalesPayCustomerName[intSalesPayCustomerNameSurname] = arData[intSalesPayCustomerNameSurname];
+                        arSalesPayCustomerName[intSalesPayCustomerNameFirstName] = arData[intSalesPayCustomerNameFirstName];
+                        arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] = arData[intSalesPayCustomerNameMiddleName];
+                        arSalesPayCustomerName[intSalesPayCustomerNameSuffix] = arData[intSalesPayCustomerNameSuffix];
+                        arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] = arData[intSalesPayCustomerNameDOBMonth];
+                        arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] = arData[intSalesPayCustomerNameDOBYear];
+                        arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] = arData[intSalesPayCustomerNameDOBDay];
+                        arSalesPayCustomerName[intSalesPayCustomerNameState] = (IsNewSalesPayCustomerName ? "New" : "Edit");
+
+                        intSalesPayCustomerNameIndex = index;
+                        sessionStorage["SalesPayCustomerName-" + intSalesPayCustomerNameIndex] = JSON.stringify(arSalesPayCustomerName);
+
+                        /////////////////////////////////////////////////
+
+
+                        $("#txtID").val(arSalesPayCustomerName[intSalesPayCustomerNameID] || '');
+                        $("#txtCustomerIndex").val(index)
+                        $("#txtTitleID").val(arSalesPayCustomerName[intSalesPayCustomerNameTitleID] || '');
+                        $("#btnTitle").text(arSalesPayCustomerName[intSalesPayCustomerNameTitleName] || 'Please Select').button('refresh');
+                        $("#txtFullname").val(arSalesPayCustomerName[intSalesPayCustomerNameFullName] || '');
+                        $("#txtSurname").val(arSalesPayCustomerName[intSalesPayCustomerNameSurname] || '');
+                        $("#txtFirstName").val(arSalesPayCustomerName[intSalesPayCustomerNameFirstName] || '');
+                        $("#txtMiddleName").val(arSalesPayCustomerName[intSalesPayCustomerNameMiddleName] || '');
+                        $("#selPersonalSuffixName").val(arSalesPayCustomerName[intSalesPayCustomerNameSuffix] || '');
+                        $("#selPersonalSuffixName").selectmenu('refresh');
+
+                        $("#selDOBMonth").val(arSalesPayCustomerName[intSalesPayCustomerNameDOBMonth] || ''); //remove leading zeros
+                        $("#selDOBMonth").selectmenu('refresh');
+                        $("#selDOBYear").val(arSalesPayCustomerName[intSalesPayCustomerNameDOBYear] || '');
+                        $("#selDOBYear").selectmenu('refresh');
+                        setDayCollection('selDOBMonth', 'selDOBDay', 'selDOBYear', true);
+                        $("#selDOBDay").val(arSalesPayCustomerName[intSalesPayCustomerNameDOBDay] || '');
+                        $("#selDOBDay").selectmenu('refresh');
+
+                        IsNewSalesPayCustomerName = false;
+
+                        $("#btnSalesPayCustomerNameRemove").show();
+
+
+                        LoadSalesPayCustomerIdentificationList();
+
+
+                    }
+                }
+
+
+
+                //end of additional
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                function RefreshSalesPayCheckTotal() {
+
+                    var dblTotalSalesPayCheck = 0;
+
+                    for (var i = 0; i <= intSalesPayCheckCntr; i++) {
+
+                        if (sessionStorage["SalesPayCheck-" + i] != undefined) {
+
+                            arSalesPayCheck = new Array();
+                            arSalesPayCheck = JSON.parse(sessionStorage["SalesPayCheck-" + i]);
+
+                            if (arSalesPayCheck[intSalesPayCheckState] != "Remove") {
+
+                                dblTotalSalesPayCheck = dblTotalSalesPayCheck + parseFloat(CDec2(arSalesPayCheck[intSalesPayCheckAmount].replace(/,/g, "")));
+                            }
+                        }
+                    }
+
+                    $("#lblSalesPayTotalCheck").text((dblTotalSalesPayCheck > 0 ? AccountingFormat(dblTotalSalesPayCheck) : "0.00"));
+
+
+                    //                    RefreshSalesPaymentTotal();
+                    RefreshSalesPaymentTotal_onchange();
+                };
+
+                function RefreshSalesPayDebitCardTotal() {
+
+                    var dblTotalSalesPayCC = 0;
+
+                    for (var i = 0; i <= intSalesPayDebitCardCntr; i++) {
+
+                        if (sessionStorage["SalesPayDebitCard-" + i] != undefined) {
+
+                            arSalesPayDebitCard = new Array();
+                            arSalesPayDebitCard = JSON.parse(sessionStorage["SalesPayDebitCard-" + i]);
+
+                            if (arSalesPayDebitCard[intSalesPayDebitCardState] != "Remove") {
+
+                                dblTotalSalesPayCC = dblTotalSalesPayCC + parseFloat(CDec2(arSalesPayDebitCard[intSalesPayDebitCardAmount].replace(/,/g, "")));
+                            }
+                        }
+                    }
+
+                    $("#lblSalesPayTotalDebitCard").text((dblTotalSalesPayCC > 0 ? AccountingFormat(dblTotalSalesPayCC) : "0.00"));
+
+
+                    //                    RefreshSalesPaymentTotal();
+                    RefreshSalesPaymentTotal_onchange();
+                };
+
+                function RefreshSalesPayCreditCardTotal() {
+
+                    var dblTotalSalesPayCC = 0;
+
+                    for (var i = 0; i <= intSalesPayCreditCardCntr; i++) {
+
+                        if (sessionStorage["SalesPayCreditCard-" + i] != undefined) {
+
+                            arSalesPayCreditCard = new Array();
+                            arSalesPayCreditCard = JSON.parse(sessionStorage["SalesPayCreditCard-" + i]);
+
+                            if (arSalesPayCreditCard[intSalesPayCreditCardState] != "Remove") {
+
+                                dblTotalSalesPayCC = dblTotalSalesPayCC + parseFloat(CDec2(arSalesPayCreditCard[intSalesPayCreditCardAmount].replace(/,/g, "")));
+                            }
+                        }
+                    }
+
+                    $("#lblSalesPayTotalCreditCard").text((dblTotalSalesPayCC > 0 ? AccountingFormat(dblTotalSalesPayCC) : "0.00"));
+
+                    //                    RefreshSalesPaymentTotal();
+                    RefreshSalesPaymentTotal_onchange();
+                };
+
+                function RefreshSalesPaySRVTotal() {
+
+                    var dblTotalSalesPaySRV = 0;
+
+                    for (var i = 0; i <= intSalesPaySRVCntr; i++) {
+
+                        if (sessionStorage["SalesPaySRV-" + i] != undefined) {
+
+                            arSalesPaySRV = new Array();
+                            arSalesPaySRV = JSON.parse(sessionStorage["SalesPaySRV-" + i]);
+
+                            if (arSalesPaySRV[intSalesPaySRVState] != "Remove") {
+
+                                dblTotalSalesPaySRV = dblTotalSalesPaySRV + parseFloat(arSalesPaySRV[intSalesPaySRVConsumedAmount].replace(/,/g, ""));
+                            }
+                        }
+                    }
+
+                    $("#lblSalesPayTotalSRV").text((dblTotalSalesPaySRV > 0 ? AccountingFormat(dblTotalSalesPaySRV) : "0.00"));
+                    //                    RefreshSalesPaymentTotal();
+                    RefreshSalesPaymentTotal_onchange();
+
+                };
+
+                function RefreshSalesPayOtherTypeTotal() {
+
+                    var dblTotalSalesPayOtherType = 0;
+
+                    for (var i = 0; i <= intSalesPayOtherTypeCntr; i++) {
+
+                        if (sessionStorage["SalesPayOtherType-" + i] != undefined) {
+
+                            arSalesPayOtherType = new Array();
+                            arSalesPayOtherType = JSON.parse(sessionStorage["SalesPayOtherType-" + i]);
+
+                            if (arSalesPayOtherType[intSalesPayOtherTypeState] != "Remove") {
+
+                                dblTotalSalesPayOtherType = dblTotalSalesPayOtherType + parseFloat(arSalesPayOtherType[intSalesPayOtherTypeAmount].replace(/,/g, ""));
+                            }
+                        }
+                    }
+
+                    $("#lblSalesPayTotalOtherType").text((dblTotalSalesPayOtherType > 0 ? AccountingFormat(dblTotalSalesPayOtherType) : "0.00"));
+
+                    //                    RefreshSalesPaymentTotal();
+                    RefreshSalesPaymentTotal_onchange();
+                };
+
+
+                //old. commented on april 21 2015 by janine
+                function RefreshSalesPaymentTotal_onchange() {
+                    var cashAmountTendered = parseFloat(CDec2($('#lblSalesPayTotalCash').text().replace(/,/g, "")));
+
+                    var dblTotalSalesPay = 0;
+                    var dblTotalAmountDue = 0;
+                    var amtDue = isSeniorCitizenDiscount ? parseFloat($('#lblSalesPaySubTotal').text().replace(/,/g, "")) - parseFloat(CDec2($('#lblVATPercent').text().replace(/,/g, ""))) : $('#lblSalesPaySubTotal').text().replace(/,/g, "");
+
+                    if (isSeniorCitizenDiscount) {
+                        dblTotalAmountDue = parseFloat(CDec2(amtDue)) - parseFloat(CDec2($("#lblSalesPayTotalDiscount").text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayCharges').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayOtherTax').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTip').text().replace(/,/g, ""))); //removed charges since its already computed in amountDue variable --+ parseFloat(CDec2($('#lblSalesPayCharges').text().replace(/,/g, ""))) 
+                    } else {
+                        dblTotalAmountDue = parseFloat(CDec2(amtDue)) - parseFloat(CDec2($("#lblSalesPayTotalDiscount").text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayCharges').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayOtherTax').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTip').text().replace(/,/g, "")));                        
+                    }
+                    
+                    dblTotalSalesPay = (parseFloat(CDec2($('#lblSalesPayTotalCash').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTotalCheck').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTotalDebitCard').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTotalCreditCard').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTotalSRV').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTotalOtherType').text().replace(/,/g, "")))) - (parseFloat(CDec2(amtDue))
+                                        - parseFloat(CDec2($('#lblSalesPayTotalDiscount').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayCharges').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTip').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayOtherTax').text().replace(/,/g, ""))));
+
+                    $("#lblSalesPayAmountDue").text(AccountingFormat(dblTotalAmountDue));
+
+                    $("#lblSalesPayCheckAmountDue").text($("#lblSalesPayAmountDue").text());
+                    $("#lblSalesPayDebitCardAmountDue").text($("#lblSalesPayAmountDue").text());
+                    $("#lblSalesPayCreditCardAmountDue").text($("#lblSalesPayAmountDue").text());
+                    $("#lblSalesPaySRVAmountDue").text($("#lblSalesPayAmountDue").text());
+                    $("#lblSalesPayOtherTypeAmountDue").text($("#lblSalesPayAmountDue").text());
+
+                    $("#lblSalesPayTotalAmountTendered").text(AccountingFormat((
+                        cashAmountTendered + 
+                        parseFloat(CDec2($('#lblSalesPayTotalCheck').text().replace(/,/g, ""))) + 
+                        parseFloat(CDec2($('#lblSalesPayTotalDebitCard').text().replace(/,/g, ""))) + 
+                        parseFloat(CDec2($('#lblSalesPayTotalCreditCard').text().replace(/,/g, ""))) + 
+                        parseFloat(CDec2($('#lblSalesPayTotalSRV').text().replace(/,/g, ""))) + 
+                        parseFloat(CDec2(CStr2($('#txtOnCredit').val()).replace(/,/g, ""))) +
+                        parseFloat(CDec2($('#lblSalesPayTotalOtherType').text().replace(/,/g, ""))))));
+                    $("#lblSalesPayCheckTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+                    $("#lblSalesPayDebitCardTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+                    $("#lblSalesPayCreditCardTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+                    $("#lblSalesPaySRVTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+                    $("#lblSalesPayOtherTypeTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+
+                    var totalAmountTendered = parseFloat(CDec2($('#lblSalesPayTotalAmountTendered').text().replace(/,/g, "")));
+
+                    if (dblTotalSalesPay >= 0) {
+                        $("#lblSalesPayAmountLacking").text("Complete Payment");
+
+                        //check for cash payments only. other types of payments dont have change! if they paid greater
+                        //than the total amount due the change should be 0
+                        if ((totalAmountTendered - dblTotalAmountDue) > 0) {
+                            //if the cash amount tendered is greater than the change, then return the cash amount
+                            if (dblTotalSalesPay > cashAmountTendered)
+                                $("#lblSalesPayTotalChangeAmount").text(AccountingFormat(cashAmountTendered));
+                            else if (cashAmountTendered > 0)
+                                $("#lblSalesPayTotalChangeAmount").text(AccountingFormat(dblTotalSalesPay));
+                            else
+                                $("#lblSalesPayTotalChangeAmount").text("No Change");
+                        } else
+                            $("#lblSalesPayTotalChangeAmount").text(AccountingFormat(dblTotalSalesPay));
+
+
+                    } else {
+                        $("#lblSalesPayAmountLacking").text(AccountingFormat(-dblTotalSalesPay));
+                        $("#lblSalesPayTotalChangeAmount").text("No Change");
+                    }
+
+                    $("#lblSalesPayCheckAmountLacking").text($("#lblSalesPayAmountLacking").text());
+                    $("#lblSalesPayDebitCardAmountLacking").text($("#lblSalesPayAmountLacking").text());
+                    $("#lblSalesPayCreditCardAmountLacking").text($("#lblSalesPayAmountLacking").text());
+                    $("#lblSalesPaySRVAmountLacking").text($("#lblSalesPayAmountLacking").text());
+                    $("#lblSalesPayOtherTypeAmountLacking").text($("#lblSalesPayAmountLacking").text());
+
+                    $("#lblSalesPayCheckTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                    $("#lblSalesPayDebitCardTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                    $("#lblSalesPayCreditCardTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                    $("#lblSalesPaySRVTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                    $("#lblSalesPayOtherTypeTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                };
+
+
+
+                function RefreshSalesPaymentTotal() {
+
+                    var vDataFooter;
+
+                    //                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                    if (OfflineMode) {
+                        vDataFooter = SalesPayment_offline().getSalesPaymentReceiptFooterAmountsInfo(sessionStorage.CartOrderID);
+                        ShowSalesPaymentTotalResults(vDataFooter);
+                    } else {
+
+                        //Get Footer Amounts
+                        AjaxSend({
+                            url: "SalesPayments/getSalesPaymentReceiptFooterAmountsInfo",
+                            data: { InvoiceID: sessionStorage.CartOrderID },
+                            success: function (vRetDataFooter) {
+                                vDataFooter = vRetDataFooter.SalesPaymentData;
+                                ShowSalesPaymentTotalResults(vDataFooter);
+                            }
+                        });
+
+
+                    }
+
+
+
+                }
+
+                function ShowSalesPaymentTotalResults(vDataFooter) {
+                    //Get Footer Amounts
+                    var dblTotalSalesPay = 0;
+                    var dblTotalAmountDue = 0;
+                    var dblDiscount = 0;
+                    var dblCharges = 0;
+                    var dblTip = 0;
+                    var dblLocalTaxAmount = 0;
+                    var cashAmountTendered = parseFloat(CDec2($('#lblSalesPayTotalCash').text().replace(/,/g, "")));
+
+
+                    if (vDataFooter.Rows.length > 0) {
+
+                        dblDiscount = vDataFooter.Rows[0].DiscountAmount;
+
+                        if (!isSeniorCitizenDiscount) {
+                            $("#lblSalesPayTotalDiscount").text(AccountingFormat(dblDiscount));
+                        }
+                        
+                        $("#lblSalesPayCheckTotalDiscount").text(AccountingFormat(dblDiscount));
+                        $("#lblSalesPayDebitCardTotalDiscount").text(AccountingFormat(dblDiscount));
+                        $("#lblSalesPayCreditCardTotalDiscount").text(AccountingFormat(dblDiscount));
+                        $("#lblSalesPaySRVTotalDiscount").text(AccountingFormat(dblDiscount));
+                        $("#lblSalesPayOtherTypeTotalDiscount").text(AccountingFormat(dblDiscount));
+
+                        dblCharges = CDec2(vDataFooter.Rows[0].ChargeAmount);
+                        dblTip = CDec2(vDataFooter.Rows[0].TipAmount);
+                        dblLocalTaxAmount = CDec2(vDataFooter.Rows[0].LocalTaxAmount);
+                    }
+
+
+
+                    $("#lblSalesPayCharges").text(dblCharges > 0 ? dblCharges : AccountingFormat(dblCharges));
+
+                    if (dblTip > 0) {
+                        $("#divPaymentsTip").show();
+                        $("#lblSalesPayTip").text(dblTip > 0 ? dblTip : AccountingFormat(dblTip));
+                    } else {
+                        $("#divPaymentsTip").hide();
+                        $("#lblSalesPayTip").text('');
+
+                    }
+
+                    if (dblLocalTaxAmount > 0) {
+                        $("#divPaymentsOtherTax").show();
+                        $("#lblSalesPayOtherTax").text(dblLocalTaxAmount > 0 ? dblLocalTaxAmount : AccountingFormat(dblLocalTaxAmount));
+
+                    } else {
+                        $("#divPaymentsOtherTax").hide();
+                        $("#lblSalesPayOtherTax").text('');
+
+                    }
+
+                    $("#lblSalesPayCheckCharges").text(dblCharges + dblTip + dblLocalTaxAmount > 0 ? dblCharges + dblTip + dblLocalTaxAmount : AccountingFormat(dblCharges + dblTip + dblLocalTaxAmount));
+                    $("#lblSalesPayCreditCardCharges").text(dblCharges + dblTip + dblLocalTaxAmount > 0 ? dblCharges + dblTip + dblLocalTaxAmount : AccountingFormat(dblCharges + dblTip + dblLocalTaxAmount));
+                    $("#lblSalesPayDebitCardCharges").text(dblCharges + dblTip + dblLocalTaxAmount > 0 ? dblCharges + dblTip + dblLocalTaxAmount : AccountingFormat(dblCharges + dblTip + dblLocalTaxAmount));
+                    $("#lblSalesPaySRVCharges").text(dblCharges + dblTip + dblLocalTaxAmount > 0 ? dblCharges + dblTip + dblLocalTaxAmount : AccountingFormat(dblCharges + dblTip + dblLocalTaxAmount));
+                    $("#lblSalesPayOtherTypeCharges").text(dblCharges + dblTip + dblLocalTaxAmount > 0 ? dblCharges + dblTip + dblLocalTaxAmount : AccountingFormat(dblCharges + dblTip + dblLocalTaxAmount));
+
+
+
+                    //                    }
+
+                    var amtDue = isSeniorCitizenDiscount ? $('#lblTotalAmount').text().replace(/,/g, "") : $('#lblSalesPaySubTotal').text().replace(/,/g, "");
+
+
+                    dblTotalAmountDue = parseFloat(CDec2(amtDue)) - parseFloat(CDec2($("#lblSalesPayTotalDiscount").text())) + parseFloat(CDec2($('#lblSalesPayCharges').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTip').text().replace(/,/g, "")));
+
+                    $("#lblSalesPayAmountDue").text(AccountingFormat(dblTotalAmountDue));
+
+                    dblTotalSalesPay = cashAmountTendered + parseFloat(CDec2($('#lblSalesPayTotalCheck').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTotalDebitCard').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTotalCreditCard').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTotalSRV').text().replace(/,/g, ""))) + parseFloat(CDec2($('#lblSalesPayTotalOtherType').text().replace(/,/g, ""))) - parseFloat(CDec2(dblTotalAmountDue));
+
+                    $("#lblSalesPayCheckAmountDue").text($("#lblSalesPayAmountDue").text());
+                    $("#lblSalesPayDebitCardAmountDue").text($("#lblSalesPayAmountDue").text());
+                    $("#lblSalesPayCreditCardAmountDue").text($("#lblSalesPayAmountDue").text());
+                    $("#lblSalesPaySRVAmountDue").text($("#lblSalesPayAmountDue").text());
+                    $("#lblSalesPayOtherTypeAmountDue").text($("#lblSalesPayAmountDue").text());
+
+                    $("#lblSalesPayTotalAmountTendered").text(AccountingFormat((
+                        cashAmountTendered + 
+                        parseFloat(CDec2($('#lblSalesPayTotalCheck').text().replace(/,/g, ""))) + 
+                        parseFloat(CDec2($('#lblSalesPayTotalDebitCard').text().replace(/,/g, ""))) + 
+                        parseFloat(CDec2($('#lblSalesPayTotalCreditCard').text().replace(/,/g, ""))) + 
+                        parseFloat(CDec2($('#lblSalesPayTotalSRV').text().replace(/,/g, ""))) + 
+                        parseFloat(CDec2(CStr2($('#txtOnCredit').val()).replace(/,/g, ""))) + 
+                        parseFloat(CDec2($('#lblSalesPayTotalOtherType').text().replace(/,/g, ""))))));
+                    $("#lblSalesPayCheckTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+                    $("#lblSalesPayDebitCardTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+                    $("#lblSalesPayCreditCardTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+                    $("#lblSalesPaySRVTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+                    $("#lblSalesPayOtherTypeTotalAmountTendered").text($("#lblSalesPayTotalAmountTendered").text());
+
+                    //                    if (dblTotalSalesPay >= 0) {
+                    //                        $("#lblSalesPayAmountLacking").text("Complete Payment");
+                    //                        $("#lblSalesPayTotalChangeAmount").text(AccountingFormat(dblTotalSalesPay));
+                    //                    } else {
+                    //                        $("#lblSalesPayAmountLacking").text(AccountingFormat(-dblTotalSalesPay));
+                    //                        $("#lblSalesPayTotalChangeAmount").text("No Change");
+                    //                    }
+
+                    var totalAmountTendered = parseFloat(CDec2($('#lblSalesPayTotalAmountTendered').text().replace(/,/g, "")));
+
+                    if (dblTotalSalesPay >= 0) {
+                        $("#lblSalesPayAmountLacking").text("Complete Payment");
+                        $("#lblSalesPayTotalChangeAmount").text(AccountingFormat(dblTotalSalesPay));
+
+                        //check for cash payments only. other types of payments dont have change! if they paid greater
+                        //than the total amount due the change should be 0
+                        if ((totalAmountTendered - dblTotalAmountDue) > 0) {
+                            //if the cash amount tendered is greater than the change, then return the cash amount
+                            if (dblTotalSalesPay > cashAmountTendered)
+                                $("#lblSalesPayTotalChangeAmount").text(AccountingFormat(cashAmountTendered));
+                            else if (cashAmountTendered > 0)
+                                $("#lblSalesPayTotalChangeAmount").text(AccountingFormat(dblTotalSalesPay));
+                            else
+                                $("#lblSalesPayTotalChangeAmount").text("No Change");
+                        } else
+                            $("#lblSalesPayTotalChangeAmount").text(AccountingFormat(dblTotalSalesPay));
+
+
+
+                    } else {
+                        $("#lblSalesPayAmountLacking").text(AccountingFormat(-dblTotalSalesPay));
+                        $("#lblSalesPayTotalChangeAmount").text("No Change");
+                    }
+
+
+                    $("#lblSalesPayCheckAmountLacking").text($("#lblSalesPayAmountLacking").text());
+                    $("#lblSalesPayDebitCardAmountLacking").text($("#lblSalesPayAmountLacking").text());
+                    $("#lblSalesPayCreditCardAmountLacking").text($("#lblSalesPayAmountLacking").text());
+                    $("#lblSalesPaySRVAmountLacking").text($("#lblSalesPayAmountLacking").text());
+                    $("#lblSalesPayOtherTypeAmountLacking").text($("#lblSalesPayAmountLacking").text());
+
+                    $("#lblSalesPayCheckTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                    $("#lblSalesPayDebitCardTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                    $("#lblSalesPayCreditCardTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                    $("#lblSalesPaySRVTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                    $("#lblSalesPayOtherTypeTotalChangeAmount").text($("#lblSalesPayTotalChangeAmount").text());
+                }
+                
+                function PrintBilling() {
+                    var pPrintBillingArguments = arguments;                     
+                    require(['promise!/Scripts3/SalesMenu.js?crc='],
+                        function() {
+                            proj.SalesMenu.PrintBilling.apply(this, pPrintBillingArguments);
+                        }
+                    );
+
+                    return;
+                    //var vDataPrint;
+                    //var vDataHeader;
+                    //var vDataInvHeader;
+                    //var vDataItem;
+                    //var vDataItemSerial;
+                    //var vDataPayment;
+                    //var vDataFooter;
+                    //var vDataMsg;
+                    //var pData = {};
+                    //pData.InvoiceID = pInvoiceID;
+
+                    ////Get Printer IP Address
+                    //if (OfflineMode) {
+                    //    vDataPrint = SalesPayment_offline().getOrgFOWSTPrinterIP();
+                    //    //Get Header
+                    //    vDataHeader = SalesPayment_offline().getReceiptHeaderInfo(pInvoiceID);
+                    //    //Get Invoice Header
+                    //    vDataInvHeader = SalesPayment_offline().getSalesPaymentInvoiceHeaderInfo(pInvoiceID);
+                    //    //Get Invoice Items
+                    //    vDataItem = SalesPayment_offline().getSalesPaymentReceiptBodyInfo(pInvoiceID);
+                    //    //Get Payment Info
+                    //    vDataPayment = SalesPayment_offline().getSalesPaymentReceiptPaymentInfo(pInvoiceID);
+                    //    //Get Invoice Items Serial
+                    //    vDataItemSerial = SalesPayment_offline().getSalesPaymentReceiptSerial(pInvoiceID);
+                    //    //Get Footer Amounts
+                    //    vDataFooter = SalesPayment_offline().getSalesPaymentReceiptFooterAmountsInfo(pInvoiceID);
+                    //    //Get Footer Messages
+                    //    //vDataMsg = SalesPayment_offline().getSalesPaymentReceiptFooterMessagesInfo();
+
+                    //    //PrintBillingNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+
+                    //    if (window.InAndroid || InWinRt) { //Android Mobile, query to offline
+                    //        PrintBillingNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg, vOptions);
+                    //    } else { //Mobile (window), query to offline
+                    //        var japplet = document.jzebra;
+                    //        var blnIsPrinterFound = false;
+
+                    //        if (japplet != null) {
+                    //            while (!blnIsPrinterFound) {
+
+                    //                if (FindDesktopPrinter("")) {
+                    //                    blnIsPrinterFound = true;
+
+                    //                    PrintBillingNow(pInvoiceID, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg, vOptions);
+
+                    //                };
+
+                    //            }
+                    //        } else {
+                    //            MessageBox("Jzebra applet was not loaded.",
+                    //                "Jzebra",
+                    //                [
+                    //                    { Text: 'Ok',
+                    //                        Click: function () {
+
+                    //                            $.mobile.changePage('');
+
+                    //                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                    //                                window.pageHeader.ShowPaymentsPage(false);
+
+                    //                        }
+                    //                    }
+                    //                ]
+                    //            );
+                    //        }
+                    //    }
+
+                    //} else {
+                    //    AjaxSend({
+                    //        url: "Organization/getOrgFOWSTPrinterIP",
+                    //        success: function (vRetDataPrint) {
+                    //            vDataPrint = vRetDataPrint.OrganizationFOWSTData;
+
+                    //            //Get Header
+                    //            AjaxSend({
+                    //                url: "SalesPayments/getReceiptHeaderInfo",
+                    //                data: pData,
+                    //                success: function (vRetDataHeader) {
+                    //                    vDataHeader = vRetDataHeader.SalesPaymentData;
+
+                    //                    //Get Invoice Header
+                    //                    AjaxSend({
+                    //                        url: "SalesPayments/getSalesPaymentInvoiceHeaderInfo",
+                    //                        data: pData,
+                    //                        success: function (vRetDataInvHeader) {
+                    //                            vDataInvHeader = vRetDataInvHeader.SalesPaymentData;
+
+                    //                            //Get Invoice Items
+                    //                            AjaxSend({
+                    //                                url: "SalesPayments/getSalesPaymentReceiptBodyInfo",
+                    //                                data: pData,
+                    //                                success: function (vRetDataItem) {
+                    //                                    vDataItem = vRetDataItem.SalesPaymentData;
+
+                    //                                    //Get Invoice Items Serial
+                    //                                    AjaxSend({
+                    //                                        url: "SalesPayments/getSalesPaymentReceiptSerial",
+                    //                                        data: pData,
+                    //                                        success: function (vRetDataItemSerial) {
+                    //                                            vDataItemSerial = vRetDataItemSerial.SalesPaymentData;
+
+                    //                                            //Get Payment Info
+                    //                                            AjaxSend({
+                    //                                                url: "SalesPayments/getSalesPaymentReceiptPaymentInfo",
+                    //                                                data: pData,
+                    //                                                success: function (vRetDataPayment) {
+                    //                                                    vDataPayment = vRetDataPayment.SalesPaymentData;
+
+                    //                                                    //Get Footer Amounts
+                    //                                                    AjaxSend({
+                    //                                                        url: "SalesPayments/getSalesPaymentReceiptFooterAmountsInfo",
+                    //                                                        data: pData,
+                    //                                                        success: function (vRetDataFooter) {
+                    //                                                            vDataFooter = vRetDataFooter.SalesPaymentData;
+
+                    //                                                            //Get Footer Messages
+                    //                                                            AjaxSend({
+                    //                                                                url: "SalesPayments/getSalesPaymentReceiptFooterMessagesInfo",
+                    //                                                                data: pData,
+                    //                                                                success: function (vRetDataMsg) {
+                    //                                                                    vDataMsg = vRetDataMsg.SalesPaymentData;
+
+                    //                                                                    if (window.InAndroid || InWinRt) { //Android Mobile Or Mobile (window)
+                    //                                                                        PrintBillingNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vRetDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+                    //                                                                    } else { //Web App
+                    //                                                                        var japplet = document.jzebra;
+                    //                                                                        var blnIsPrinterFound = false;
+
+                    //                                                                        if (japplet != null) {
+                    //                                                                            while (!blnIsPrinterFound) {
+
+                    //                                                                                if (FindDesktopPrinter("")) {
+                    //                                                                                    blnIsPrinterFound = true;
+
+                    //                                                                                    PrintBillingNow(pInvoiceID, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+
+                    //                                                                                };
+
+                    //                                                                            }
+                    //                                                                        } else {
+                    //                                                                            MessageBox("Jzebra applet was not loaded.",
+                    //                                                                                "Jzebra",
+                    //                                                                                [
+                    //                                                                                    { Text: 'Ok',
+                    //                                                                                        Click: function () {
+
+                    //                                                                                            $.mobile.changePage('');
+
+                    //                                                                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                    //                                                                                                window.pageHeader.ShowPaymentsPage(false);
+
+                    //                                                                                        }
+                    //                                                                                    }
+                    //                                                                                ]
+                    //                                                                            );
+                    //                                                                        }
+                    //                                                                    }
+
+                    //                                                                }
+                    //                                                            });
+
+                    //                                                        }
+                    //                                                    });
+                    //                                                }
+                    //                                            });
+
+                    //                                        }
+                    //                                    });
+                    //                                }
+                    //                            });
+                    //                        }
+                    //                    });
+
+                    //                }
+                    //            });
+
+                    //        }
+                    //    });
+                    //}
+                }
+
+                function PrintPOSReceipt(pInvoiceID) {
+                    var vDataPrint;
+                    var vDataHeader;
+                    var vDataInvHeader;
+                    var vDataItem;
+                    var vDataItemSerial;
+                    var vDataPayment;
+                    var vDataFooter;
+                    var vDataMsg;
+                    var pData = {};
+                    pData.InvoiceID = pInvoiceID;
+
+                    //Get Printer IP Address
+                    if (OfflineMode) {
+                        vDataPrint = SalesPayment_offline().getOrgFOWSTPrinterIP();
+                        //Get Header
+                        vDataHeader = SalesPayment_offline().getReceiptHeaderInfo(pInvoiceID);
+                        //Get Invoice Header
+                        vDataInvHeader = SalesPayment_offline().getSalesPaymentInvoiceHeaderInfo(pInvoiceID);
+                        //Get Invoice Items
+                        vDataItem = SalesPayment_offline().getSalesPaymentReceiptBodyInfo(pInvoiceID);
+                        //Get Payment Info
+                        vDataPayment = SalesPayment_offline().getSalesPaymentReceiptPaymentInfo(pInvoiceID);
+                        //Get Invoice Items Serial
+                        vDataItemSerial = SalesPayment_offline().getSalesPaymentReceiptSerial(pInvoiceID);
+                        //Get Footer Amounts
+                        vDataFooter = SalesPayment_offline().getSalesPaymentReceiptFooterAmountsInfo(pInvoiceID);
+                        //Get Footer Messages
+                        vDataMsg = SalesPayment_offline().getSalesPaymentReceiptFooterMessagesInfo();
+
+                        //PrintPOSReceiptViaWindowsPrintServer(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg)
+                        //PrintPOSReceiptNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+                        Business.TransInvoice.IncrementPrintCount(pInvoiceID);
+                        //return;
+                        if (window.InAndroid || InWinRt) { //Android Mobile, query to offline
+                            //if (window.InAndroid || InWinRt) { //Android Mobile, query to offline
+                            var vDataPrinterType = SalesPayment_offline().getOrgFOWSTPrinterType();
+
+                            //PrintPOSReceiptDotMatrix(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+
+                            if (vDataPrinterType.Rows.length > 0) {
+                                if (vDataPrinterType.Rows[0].PrinterType == 'Epson TM-U220B Printer') {
+                                    PrintPOSReceiptDotMatrix(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+
+                                    if (CBool($("#chkPrintDeliveryReceipt").is(":checked"))) {
+                                        PrintDeliveryReceiptThermalPrinter(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg)
+                                    }
+                                    
+                                } else if (vDataPrinterType.Rows[0].PrinterType == '80MM Mini Thermal Printer') {
+
+                                } else if (vDataPrinterType.Rows[0].PrinterType == 'Epson G Printer') {
+                                    sessionStorage.Printer = 'GPrinter';
+                                    PrintPOSReceiptNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+
+                                } else if (vDataPrinterType.Rows[0].PrinterType == 'Windows Print Server') {
+                                    PrintPOSReceiptViaWindowsPrintServer(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg)
+
+                                    if (CBool($("#chkPrintDeliveryReceipt").is(":checked"))) {
+                                        PrintDeliveryReceiptViaWindowsPrintServer(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg)
+                                    }
+                                    
+                                } else {
+                                    // BEGIN 2020_01_28__16_27_51_5665
+                                    // payment bug is here
+                                    PrintPOSReceiptNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+
+                                    if (CBool($("#chkPrintDeliveryReceipt").is(":checked"))) {
+                                        PrintDeliveryReceiptThermalPrinter(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg)
+                                    }
+                                    
+                                    // END 2020_01_28__16_27_51_5665
+                                }
+                            } else {
+                                PrintPOSReceiptNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+
+                                if (CBool($("#chkPrintDeliveryReceipt").is(":checked"))) {
+                                    PrintDeliveryReceiptThermalPrinter(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg)
+                                }
+                                
+                            }                            
+                        } else { //Mobile (window), query to offline
+                            var japplet = document.jzebra;
+                            var blnIsPrinterFound = false;
+
+                            if (japplet != null) {
+                                while (!blnIsPrinterFound) {
+
+                                    if (FindDesktopPrinter("")) {
+                                        blnIsPrinterFound = true;
+
+                                        PrintPOSDesktopReceiptNow(pInvoiceID, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+
+                                    };
+
+                                }
+                            } else {
+                                MessageBox("Jzebra applet was not loaded.",
+                                    "Jzebra",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+                                                $.mobile.changePage('');
+
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                            }
+                                        }
+                                    ]
+                                );
+                            }
+                        }
+
+                    } else {
+                        AjaxSend({
+                            url: "Organization/getOrgFOWSTPrinterIP",
+                            success: function (vRetDataPrint) {
+                                vDataPrint = vRetDataPrint.OrganizationFOWSTData;
+
+                                //Get Header
+                                AjaxSend({
+                                    url: "SalesPayments/getReceiptHeaderInfo",
+                                    data: pData,
+                                    success: function (vRetDataHeader) {
+                                        vDataHeader = vRetDataHeader.SalesPaymentData;
+
+                                        //Get Invoice Header
+                                        AjaxSend({
+                                            url: "SalesPayments/getSalesPaymentInvoiceHeaderInfo",
+                                            data: pData,
+                                            success: function (vRetDataInvHeader) {
+                                                vDataInvHeader = vRetDataInvHeader.SalesPaymentData;
+
+                                                //Get Invoice Items
+                                                AjaxSend({
+                                                    url: "SalesPayments/getSalesPaymentReceiptBodyInfo",
+                                                    data: pData,
+                                                    success: function (vRetDataItem) {
+                                                        vDataItem = vRetDataItem.SalesPaymentData;
+
+                                                        //Get Invoice Items Serial
+                                                        AjaxSend({
+                                                            url: "SalesPayments/getSalesPaymentReceiptSerial",
+                                                            data: pData,
+                                                            success: function (vRetDataItemSerial) {
+                                                                vDataItemSerial = vRetDataItemSerial.SalesPaymentData;
+
+                                                                //Get Payment Info
+                                                                AjaxSend({
+                                                                    url: "SalesPayments/getSalesPaymentReceiptPaymentInfo",
+                                                                    data: pData,
+                                                                    success: function (vRetDataPayment) {
+                                                                        vDataPayment = vRetDataPayment.SalesPaymentData;
+
+                                                                        //Get Footer Amounts
+                                                                        AjaxSend({
+                                                                            url: "SalesPayments/getSalesPaymentReceiptFooterAmountsInfo",
+                                                                            data: pData,
+                                                                            success: function (vRetDataFooter) {
+                                                                                vDataFooter = vRetDataFooter.SalesPaymentData;
+
+                                                                                //Get Footer Messages
+                                                                                AjaxSend({
+                                                                                    url: "SalesPayments/getSalesPaymentReceiptFooterMessagesInfo",
+                                                                                    data: pData,
+                                                                                    success: function (vRetDataMsg) {
+                                                                                        vDataMsg = vRetDataMsg.SalesPaymentData;
+
+                                                                                        if (window.InAndroid || InWinRt) { //Android Mobile Or Mobile (window)
+                                                                                            PrintPOSReceiptNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vRetDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+                                                                                        } else { //Web App
+                                                                                            var japplet = document.jzebra;
+                                                                                            var blnIsPrinterFound = false;
+
+                                                                                            if (japplet != null) {
+                                                                                                while (!blnIsPrinterFound) {
+
+                                                                                                    if (FindDesktopPrinter("")) {
+                                                                                                        blnIsPrinterFound = true;
+
+                                                                                                        PrintPOSDesktopReceiptNow(pInvoiceID, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg);
+
+                                                                                                    };
+
+                                                                                                }
+                                                                                            } else {
+                                                                                                MessageBox("Jzebra applet was not loaded.",
+                                                                                                    "Jzebra",
+                                                                                                    [
+                                                                                                        { Text: 'Ok',
+                                                                                                            Click: function () {
+
+                                                                                                                $.mobile.changePage('');
+
+                                                                                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                                                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ]
+                                                                                                );
+                                                                                            }
+                                                                                        }
+
+                                                                                    }
+                                                                                });
+
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                });
+
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+
+                                    }
+                                });
+
+                            }
+                        });
+                    }
+
+                    if (IsPrintOrderSlip) {
+                        SalesMenu_offline().SaveSalesOrder({
+                            InvoiceID: pInvoiceID,
+                            AsOrderSlip: true
+                        });
+                        PrintBilling(pInvoiceID, {
+                            PrintAsOrderSlip: true,
+                            ByCategory: true,
+                            DontConfirm: true                            
+                        });
+                    }
+                } // END function PrintPOSReceipt(pInvoiceID) {
+
+                window.PrintPOSReceiptViaWindowsPrintServer = function (pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg) {
+                    var strTemp = '';
+                    var strPrint = '';
+                    var strPrinterIP = '';
+                    var strPrinterName = '';
+                    var strStockID = '';
+                    var IsShowSalesRep = false;
+                    var pData = {};
+                    pData.InvoiceID = pInvoiceID;
+
+                    //Get Printer IP Address
+                    if (vDataPrint == undefined) {
+                        MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                            "Printer",
+                            [
+                                { Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                    );
+                        return;
+                    }
+
+                    if (vDataPrint.Rows.length > 0) {
+                        //additional by janine jan 31 2015
+                        originalDevFowstPrinterID = vDataPrint.Rows[0].ID;
+                        if (CStr2(newPrinterIP) != '')
+                            strPrinterIP = newPrinterIP;
+                        else {
+                            strPrinterIP = vDataPrint.Rows[0].PrinterIPAddress;
+                            strPrinterName = vDataPrint.Rows[0].PrinterName;
+                        }
+                            
+                            
+                        //New set of text to print
+                        //NewPrintBuilder();
+
+                        //Get Header
+                        IsShowSalesRep = false;
+                        var mDate = '';
+
+                        if (InAndroid) {
+                            mDate = vDataInvHeader.Rows[0].InvoiceDate;
+                        }
+                        else {
+                            mDate = vDataInvHeader.Rows[0].InvoiceDate.replace(/-/g, '/');
+                        }
+
+                        if (vDataHeader.Rows.length > 0) {
+
+                            IsShowSalesRep = (vDataHeader.Rows[0].IsShowSalesRep == 1 ? true : false);
+                            
+                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                WindowsPrinter($.trim((vDataHeader.Rows[0].BusinessTradeName || '')), [0, 0, 0, 1, 0, 36]);
+
+                                //strPrint = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].BusinessTradeName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                strPrint = '';
+                                WindowsPrinter($.trim((vDataHeader.Rows[0].CorporateName || '')), [0, 0, 0, 1, 0, 36]);
+                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].CorporateName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);                            
+                                //strPrint = strPrint + strTemp;
+
+                                WindowsPrinter('VAT TIN ' + $.trim((vDataHeader.Rows[0].TIN || '')), [0, 0, 0, 1, 0, 36]);
+                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT TIN ' + $.trim((vDataHeader.Rows[0].TIN || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                //strPrint = strPrint + strTemp;
+
+                                WindowsPrinter($.trim((vDataHeader.Rows[0].CompleteAddress || '')), [1, 0, 0, 1, 0, 36]);
+                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].CompleteAddress || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                //strPrint = strPrint + strTemp;
+
+                                WindowsPrinter('Tel. No.' + $.trim((vDataHeader.Rows[0].TelNo || '')), [1, 0, 0, 1, 0, 36]);
+                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Tel. No.' + $.trim((vDataHeader.Rows[0].TelNo || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                //strPrint = strPrint + strTemp;
+
+                                WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                //strPrint = strPrint + strTemp;
+
+                                //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+                            }
+                            //Get Items
+                            if (vDataInvHeader.Rows.length > 0) {
+                                strPrint = '';
+                                WindowsPrinter('Customer : '+ $.trim((vDataInvHeader.Rows[0].CustomerName || '')), [0, 0, 0, 0, 0, 36]);
+                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Customer', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerName || '')), intFAFCTotalLenght, '', 0, 0);
+                                //strPrint = strPrint + strTemp;
+
+                                WindowsPrinter('Address : '+$.trim((vDataInvHeader.Rows[0].CustomerAddress || '')), [0, 0, 0, 0, 0, 36]);
+                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Address', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerAddress || '')), intFAFCTotalLenght, '', 0, 0);
+                                //strPrint = strPrint + strTemp;
+
+                                if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                    WindowsPrinter('TIN : ' + $.trim((vDataInvHeader.Rows[0].CustomerTIN || '')), [0, 0, 0, 0, 0, 36]);
+                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('TIN', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerTIN || '')), intFAFCTotalLenght, '', 0, 0);
+                                    //strPrint = strPrint + strTemp;
+                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+                                }
+
+                                if (CStr2(vDataInvHeader.Rows[0].CustomerTableNo) != '') {
+                                    var prefix = (vDataInvHeader.Rows[0].CustomerTableNo).substring((vDataInvHeader.Rows[0].CustomerTableNo).lastIndexOf('-'));
+
+                                    if ($.trim((vDataInvHeader.Rows[0].CustomerTableNo || '')) != '') {
+                                        WindowsPrinter('Table # : ' + CDec2(Math.abs(prefix)), [0, 0, 0, 0, 0, 36]);
+                                        //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Table #', 8, ' ', 1), 7, ': ' + $.trim((prefix[1] || '')), intFAFCTotalLenght, '', 0, 0);
+                                        //strPrint = strTemp;
+                                        //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+                                    }
+                                }
+
+                                if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                    WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+                                }
+
+                                //strPrint = '';
+                                WindowsPrinter('SI ' +SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0), [0, 0, 0, 1, 0, 36]);
+                                //strTemp = FormatTextToPrint(intFCDoubleTotalLenght, 'SI ' + SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                //strPrint = strPrint + strTemp;
+
+                                WindowsPrinter(($.format.date(new Date(mDate), 'MMM dd, yyyy HH:mm') || ''), [0, 0, 0, 1, 0, 36]);
+
+                                //strTemp = FormatTextToPrint(intFCDoubleTotalLenght, ($.format.date(new Date(mDate), 'MMM dd, yyyy HH:mm') || ''), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                //strPrint = strPrint + strTemp;
+
+                                //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+                                WindowsPrinter('Cashier : '+ $.trim((vDataInvHeader.Rows[0].CashierName || '')), [0, 0, 0, 0, 0, 36]);
+                                //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Cashier: ' + ($.trim(vDataInvHeader.Rows[0].CashierName || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                //ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+
+                                if (IsShowSalesRep) {
+                                    var SalesRepList = [];
+                                    var SalesRepConcatenated;
+                                    var IsSalesRepExist = false;
+
+                                    for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+                                        IsSalesRepExist = false;
+                                        for (var i = 0; i <= SalesRepList.length - 1; i++) {
+
+                                            if (SalesRepList[i] == vDataItem.Rows[p].SalesPerson) {
+                                                IsSalesRepExist = true;
+                                            }
+
+                                        }
+
+                                        if (!IsSalesRepExist) {
+                                            SalesRepList[SalesRepList.length] = vDataItem.Rows[p].SalesPerson;
+                                            if (p == 0) {
+                                                SalesRepConcatenated = vDataItem.Rows[p].SalesPerson;
+                                            } else {
+                                                SalesRepConcatenated += ', ' + vDataItem.Rows[p].SalesPerson;
+                                            }
+                                        }
+
+                                    }
+
+                                    WindowsPrinter('Sales Person: ' + $.trim((SalesRepConcatenated || '')), [1, 0, 0, 0, 0, 36]);
+                                }
+
+                                WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                //strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                //Get Items
+                                var strProductID = "";
+                                if (vDataItem.Rows.length > 0) {
+                                    strStockID = '';
+                                    strPrint = '';
+                                    var intLimitPerBatchPrint = 0;
+                                    for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+
+                                        var strStockDescription = $.trim((vDataItem.Rows[p].StockDescription || ''));
+                                        var strUnitPrice = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].UnitPrice || '0'), intFAFCTotalLenght - 30, ' ', 0);
+                                        var strQty = SetPrefixPostfix(AccountingFormat((vDataItem.Rows[p].Quantity || '0'), 0), 8, ' ', 0);
+                                        strQty = strQty.replace(/\s/g, '');
+                                        var strUnitMeasure = SetPrefixPostfix((vDataItem.Rows[p].UnitMeasure || ''), 10, ' ', 0);
+                                        strUnitMeasure = strUnitMeasure.replace(/\s/g, '');
+                                        var strSubTotal = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].SubTotal || '0'), intFAFCTotalLenght - 26, ' ', 0);
+
+                                        strPrint = '';
+                                        if (strProductID == "") {
+                                            strProductID = vDataItem.Rows[p].StockID;
+                                        }
+
+                                        if (vDataItemSerial.Rows.length > 0) {
+                                            if (strProductID != vDataItem.Rows[p].StockID) { //Print Serials
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Serial(s) : ', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                    if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                        var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                        WindowsPrinter('Serials(s) : '+strSerial, [1, 0, 0, 0, 0, 36]);
+                                                        
+                                                        //strTemp = FormatTextToPrint(intFAFCTotalLenght, strSerial, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                        //strPrint = strPrint + strTemp;
+
+                                                    }
+                                                }
+
+                                                WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                strProductID = vDataItem.Rows[p].StockID;
+                                            }
+                                        }
+
+
+                                        if (vDataPrint.Rows[0].ProductDescriptionInReceipt != undefined) {
+                                            if (vDataPrint.Rows[0].ProductDescriptionInReceipt == 'ProductShortDescription') {
+                                                
+                                                strStockDescription = $.trim((vDataItem.Rows[p].ReceiptName || vDataItem.Rows[p].StockDescription));
+
+                                                WindowsPrinter(strQty + ' ' + strUnitMeasure + ' ' + strStockDescription, [0, 0, 0, 0, 0, 36], strSubTotal, [0, 0, 0, 0, 1, 36]);
+
+                                            } else {
+                                                WindowsPrinter($.trim(strStockDescription), [1, 0, 0, 0, 0, 36]);
+                                                WindowsPrinter(' ' + $.trim(strQty) + ' @ ' + $.trim(strUnitPrice) + ' / ' + $.trim(strUnitMeasure), [0, 0, 0, 0, 0, 36], AccountingFormat((CDec2($.trim(strQty)) * CDec2($.trim(strUnitPrice)) || '0')), [0, 0, 0, 0, 1, 36]);
+                                            }
+                                        } else {
+                                            WindowsPrinter($.trim(strStockDescription), [1, 0, 0, 0, 0, 36]);
+                                            WindowsPrinter(' ' + $.trim(strQty) + ' @ ' + $.trim(strUnitPrice) + ' / ' + $.trim(strUnitMeasure), [0, 0, 0, 0, 0, 36], AccountingFormat((CDec2($.trim(strQty)) * CDec2($.trim(strUnitPrice)) || '0')), [0, 0, 0, 0, 1, 36]);
+                                        }
+
+                                        if (vDataItemSerial.Rows.length > 0) {
+                                            if (p == vDataItem.Rows.length - 1) {
+
+                                                WindowsPrinter('Serial(s) : ', [1, 16, 0, 0, 0, 36], ': ' + $.trim((vDataItem.Rows[p].SalesPerson || '')));
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Serial(s) : ', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                    if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                        var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                        WindowsPrinter(strSerial, [1, 16, 0, 0, 0, 36]);
+                                                        //strTemp = FormatTextToPrint(intFAFCTotalLenght, strSerial, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                        //strPrint = strPrint + strTemp;
+
+                                                    }
+                                                }
+
+                                                //WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                strProductID = vDataItem.Rows[p].StockID;
+                                            }
+                                        } else {
+                                            //WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                            //strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                            //strPrint = strPrint + strTemp;
+                                        }
+
+                                        if (vDataItem.Rows[p].ItemModifier != undefined) {
+                                            if (vDataItem.Rows[p].ItemModifier.length > 0) {
+                                                for (var im = 0; im < vDataItem.Rows[p].ItemModifier.length; im++) {
+                                                    var mod = vDataItem.Rows[p].ItemModifier[im];
+                                                    WindowsPrinter('* ' + mod.Description, [0, 0, 0, 0, 0, 36]);
+
+                                                    if (CStr2(mod.OrderedQty) != '') {
+                                                        var itemmodifiertotal = AccountingFormat(CDec2(mod.OrderedQty) * CDec2(mod.ModifierPrice) * CDec2(strQty));
+                                                        WindowsPrinter(' ' + mod.OrderedQty + ' @ ' + AccountingFormat($.trim(mod.ModifierPrice)) + ' @ ' + strQty + ' ' + strUnitMeasure, [0, 0, 0, 0, 0, 36], AccountingFormat((itemmodifiertotal || '0')), [0, 0, 0, 0, 1, 36]);
+                                                    }
+                                                }
+                                                WindowsPrinter('   Item Total:  ---->', [0, 0, 0, 0, 0, 36], AccountingFormat((strSubTotal || '0')), [0, 0, 0, 0, 1, 36]);
+                                                WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                            }
+                                        } else {
+                                            WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                        }
+
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                        intLimitPerBatchPrint = intLimitPerBatchPrint + 1;
+
+                                        if (intLimitPerBatchPrint >= 100 && vDataItem.Rows.length > 100) {
+
+                                            PrintText(strPrinterIP);
+                                            ClearCommandBuffer();
+
+                                            //New set of text to print because it causes error when you print directly all items at once.
+                                            NewPrintBuilder();
+                                            intLimitPerBatchPrint = 0;
+                                        }
+
+                                    };
+
+                                    //Get Footer Amounts
+                                    if (vDataPayment.Rows.length > 0) {
+
+                                        //Get Footer Amounts
+                                        if (vDataFooter.Rows.length > 0) {
+
+                                            var strSKUCount = SetPrefixPostfix(AccountingFormat((vDataFooter.Rows[0].SKUCount || '0'), 0), intFAFCTotalLenght - 14, ' ', 0);
+                                            var strTotalAmountDue = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].SubTotal || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strTotalDiscount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].DiscountAmount || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strNetAmountDue = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].NetAmountDue) + (isSeniorCitizenDiscount ? 0 : CDec2(vDataFooter.Rows[0].ChargeAmount)) + CDec2(vDataFooter.Rows[0].TipAmount) + CDec2(vDataFooter.Rows[0].LocalTaxAmount)), intFAFCTotalLenght - 22, ' ', 0);
+
+                                            var strTotalCharges = SetPrefixPostfix(vDataFooter.Rows[0].ChargeAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                            var strTip = SetPrefixPostfix(vDataFooter.Rows[0].TipAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+
+                                            var strVatSale = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TotalAmountDue), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strVatAmount = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].SubTotal) - CDec2(vDataFooter.Rows[0].TotalAmountDue)), intFAFCTotalLenght - 22, ' ', 0);
+
+                                            var strOtherTax = SetPrefixPostfix(vDataFooter.Rows[0].LocalTaxAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+
+                                            WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+                                            WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+
+                                            WindowsPrinter('SKU Count: ', [0, 0, 0, 0, 0, 36], CDec2((vDataFooter.Rows[0].SKUCount || '0')), [0, 0, 0, 0, 1, 36]);
+                                            //strPrint = '';
+                                            //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SKU Count: ', 12, strSKUCount, intFAFCTotalLenght, '', 0, 0);
+                                            //strPrint = strPrint + strTemp;
+
+                                            WindowsPrinter('Gross Total: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].SubTotal || '0'), [0, 0, 0, 0, 1, 36]);
+                                            //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Sub Total: ', 20, strTotalAmountDue, intFAFCTotalLenght, '', 0, 0);
+                                            //strPrint = strPrint + strTemp;
+
+                                            if (isSeniorCitizenDiscount) {
+                                                //WindowsPrinter('Less: ' + vDataFooter.Rows[0].TaxPercent + '% VAT ', [0, 0, 0, 0, 0, 36], AccountingFormat($.trim($('#lblVATPercent').text())), [0, 0, 0, 0, 1, 36]);
+                                                ////strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Less: ' + vDataFooter.Rows[0].TaxPercent + '% VAT ', 20, strVatAmount, intFAFCTotalLenght, '', 0, 0);
+                                                ////strPrint = strPrint + strTemp;
+
+                                                //WindowsPrinter('Total Amount: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].TotalAmountDue - CDec2($.trim($('#lblVATPercent').text()))), [0, 0, 0, 0, 1, 36]);
+                                                ////strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Amount: ', 20, strVatSale, intFAFCTotalLenght, '', 0, 0);
+                                                ////strPrint = strPrint + strTemp;
+
+                                                //WindowsPrinter('Total Amount: ', [0, 0, 0, 0, 0, 36], AccountingFormat($.trim($('#lblSalesPayTotalDiscount').text())), [0, 0, 0, 0, 1, 36]);
+
+                                                
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+                                                
+                                                WindowsPrinter('________________________________________', [0, 0, 0, 0, 0, 36], '', [0, 0, 0, 0, 1, 36]);
+
+                                                if (SCDiscountExempt > 0) {
+                                                    //var strSCDiscountExempt = SetPrefixPostfix(AccountingFormat(SCDiscountExempt || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SC Discount-Exempt: ', 20, strSCDiscountExempt, intFAFCTotalLenght, '', 0, 0);
+                                                    //strPrint = strPrint + strTemp;
+                                                    WindowsPrinter('SC Discount-Exempt: ', [0, 0, 0, 0, 0, 36], AccountingFormat(CDec2(SCDiscountExempt)), [0, 0, 0, 0, 1, 36]);
+                                                }                                                
+
+                                                //var strSubTotalOfVatExemptItems = SetPrefixPostfix(AccountingFormat(SubTotalOfVatExemptItems || '0'), intFAFCTotalLenght - 31, ' ', 0);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, '\nGross Amount Subject to SCD: ', 29, strSubTotalOfVatExemptItems, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                                WindowsPrinter('\nGross Amount Subject to SCD: ', [1, 22, 0, 0, 0, 36], AccountingFormat(CDec2(SubTotalOfVatExemptItems)), [0, 0, 0, 0, 1, 36]);
+
+                                                if (GrossSalesToNoneSC > 0) {
+                                                    //var strGrossSalesToNoneSC = SetPrefixPostfix(AccountingFormat(GrossSalesToNoneSC || '0'), intFAFCTotalLenght - 31, ' ', 0);
+                                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Gross Sales to None-SC ' + (CInt2($('#txtSalesPayNoOfDiners').val()) - CInt2($('#txtSalesPayNoOfSC').val())) + '/' + $('#txtSalesPayNoOfDiners').val() + ':', 29, strGrossSalesToNoneSC, intFAFCTotalLenght, '', 0, 0);
+                                                    //strPrint = strPrint + strTemp;
+                                                    WindowsPrinter('Gross Sales to None-SC ' + (CInt2($('#txtSalesPayNoOfDiners').val()) - CInt2($('#txtSalesPayNoOfSC').val())) + '/' + $('#txtSalesPayNoOfDiners').val() + ':', [1, 22, 0, 0, 0, 36], AccountingFormat(CDec2(GrossSalesToNoneSC)), [0, 0, 0, 0, 1, 36]);
+                                                }
+                                                
+                                                //var strGrossSalesToSC = SetPrefixPostfix(AccountingFormat(GrossSalesToSC || '0'), intFAFCTotalLenght - 23, ' ', 0);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, '\nGross Sales to SC ' + $('#txtSalesPayNoOfSC').val() + '/' + $('#txtSalesPayNoOfDiners').val() + ':', 21, strGrossSalesToSC, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                                WindowsPrinter('\nGross Sales to SC ' + $('#txtSalesPayNoOfSC').val() + '/' + $('#txtSalesPayNoOfDiners').val() + ':', [1, 22, 0, 0, 0, 36], AccountingFormat(CDec2(GrossSalesToSC)), [0, 0, 0, 0, 1, 36]);
+
+                                                //var strVatExemptSales = SetPrefixPostfix(AccountingFormat(VatExemptSales || '0') + (IsApplyMaxSCDiscountableAmount ? '' : '*'), intFAFCTotalLenght - 22, ' ', 0);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT-Ex for SC: ', 20, strVatExemptSales, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                                WindowsPrinter('VAT-Ex for SC: ', [0, 0, 0, 0, 0, 36], AccountingFormat(CDec2(VatExemptSales)), [0, 0, 0, 0, 1, 36]);
+
+                                                //var strMaxSCDiscountableAmount = SetPrefixPostfix(AccountingFormat(MaxSCDiscountableAmount || '0') + (IsApplyMaxSCDiscountableAmount ? '*' : ''), intFAFCTotalLenght - 25, ' ', 0);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Max Discountable VAT-EX(' + (MaxSCDiscountableAmount / CInt2($('#txtSalesPayNoOfSC').val())) + '*' + CInt2($('#txtSalesPayNoOfSC').val()) + ')', 23, strMaxSCDiscountableAmount, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                                WindowsPrinter('Max Discountable VAT-EX(' + (CDec2(MaxSCDiscountableAmount) / CInt2($('#txtSalesPayNoOfSC').val())) + '*' + CInt2($('#txtSalesPayNoOfSC').val()) + ')', [1, 22, 0, 0, 0, 36], AccountingFormat(CDec2(MaxSCDiscountableAmount)), [0, 0, 0, 0, 1, 36]);
+
+                                                //var strDiscountPercentCeiling = SetPrefixPostfix(AccountingFormat($('#txtDiscountPercent').val()) + '%', intFAFCTotalLenght - 22, ' ', 0);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SC Discount Rate: ', 20, strDiscountPercentCeiling, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                                WindowsPrinter('SC Discount Rate: ', [1, 22, 0, 0, 0, 36], AccountingFormat($('#txtDiscountPercentCeiling').val()) + '%', [0, 0, 0, 0, 1, 36]);
+
+                                                //var strseniorCitizenDiscount = SetPrefixPostfix(AccountingFormat(seniorCitizenDiscount || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SC Discount Amount based on Vat-Ex Sale: ', 20, strseniorCitizenDiscount, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                                WindowsPrinter('SC Discount Amount based on Vat-Ex Sale: ', [1, 22, 0, 0, 0, 36], AccountingFormat(seniorCitizenDiscount), [0, 0, 0, 0, 1, 36]);
+
+                                                //var strseniorCitizenNetAmount = SetPrefixPostfix(AccountingFormat(seniorCitizenNetAmount || '0'), intFAFCTotalLenght - 32, ' ', 0);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Net Amount to be Paid by SC: ', 30, strseniorCitizenNetAmount, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                                WindowsPrinter('Net Amount to be Paid by SC: ', [1, 22, 0, 0, 0, 36], AccountingFormat(seniorCitizenNetAmount), [0, 0, 0, 0, 1, 36]);
+
+                                                WindowsPrinter('________________________________________', [0, 0, 0, 0, 0, 36], '', [0, 0, 0, 0, 1, 36]);
+
+
+                                            } else {
+                                                WindowsPrinter('Total Discount: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].DiscountAmount || '0'), [0, 0, 0, 0, 1, 36]);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Discount:   ', 20, strTotalDiscount, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                            }
+                                                                                        
+
+                                            if (CDec2(vDataFooter.Rows[0].ChargeAmount) > 0) {
+                                                WindowsPrinter('Total Charges: ', [0, 0, 0, 0, 0, 36], AccountingFormat(CDec2(vDataFooter.Rows[0].ChargeAmount || '0')), [0, 0, 0, 0, 1, 36]);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Charges:   ', 20, strTotalCharges, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                            }
+
+                                            if (CDec2(vDataFooter.Rows[0].TipAmount) > 0) {
+                                                WindowsPrinter('Tip: ', [0, 0, 0, 0, 0, 36], AccountingFormat(CDec2(vDataFooter.Rows[0].TipAmount || '0')), [0, 0, 0, 0, 1, 36]);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Tip:   ', 20, strTip, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                            }
+
+                                            if (CDec2(vDataFooter.Rows[0].LocalTaxAmount) > 0) {
+                                                WindowsPrinter('Local Tax:   ', [0, 0, 0, 0, 0, 36], AccountingFormat(CDec2(vDataFooter.Rows[0].LocalTaxAmount || '0')), [0, 0, 0, 0, 1, 36]);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Local Tax:   ', 20, strOtherTax, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                            }
+
+                                            if (isSeniorCitizenDiscount) {
+                                                strNetAmountDue = AccountingFormat(CDec2(strTotalAmountDue) - CDec2($.trim($('#lblVATPercent').text())) - CDec2($.trim($('#lblSalesPayTotalDiscount').text())));
+                                                WindowsPrinter('Amount Due: ', [0, 0, 0, 0, 0, 36], AccountingFormat(CDec2(strNetAmountDue)), [0, 0, 0, 0, 1, 36]);
+                                            } else {
+                                                WindowsPrinter('Amount Due: ', [0, 0, 0, 0, 0, 36], AccountingFormat(CDec2(vDataFooter.Rows[0].NetAmountDue) + CDec2(vDataFooter.Rows[0].ChargeAmount) + CDec2(vDataFooter.Rows[0].TipAmount) + CDec2(vDataFooter.Rows[0].LocalTaxAmount)), [0, 0, 0, 0, 1, 36]);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Amount Due:   ', 20, strNetAmountDue, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+                                                //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+                                            }
+                                            
+
+                                            if (vDataPayment.Rows.length > 0) {
+
+                                                var strCashPayment = SetPrefixPostfix(AccountingFormat((vDataPayment.Rows[0].CashPayment || '0')), intFAFCTotalLenght - 7, ' ', 0);
+                                                var strCheckPayment = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CheckPaymentAmount || '0'), intFAFCTotalLenght - 8, ' ', 0);
+                                                var strDebitCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].DebitCardAmount || '0'), intFAFCTotalLenght - 14, ' ', 0);
+                                                var strCreditCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CreditCardAmount || '0'), intFAFCTotalLenght - 14, ' ', 0);
+                                                var strSRVAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].SRVAmount || '0'), intFAFCTotalLenght - 6, ' ', 0);
+                                                var strOtherTypeAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].OtherTypeAmount || '0'), intFAFCTotalLenght - 14, ' ', 0);
+                                                var strCustomerChangeCash = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CustomerChangeCash || '0'), intFAFCTotalLenght - 9, ' ', 0);
+
+                                                WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+                                                if (vDataPayment.Rows[0].CashPayment > 0) {
+                                                    WindowsPrinter('Cash:', [0, 0, 0, 0, 0, 36], AccountingFormat((vDataPayment.Rows[0].CashPayment || '0')), [0, 0, 0, 0, 1, 36]);
+                                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Cash:', 5, strCashPayment, intFAFCTotalLenght, '', 0, 0);
+                                                    //strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].CheckPaymentAmount > 0) {
+                                                    WindowsPrinter('Check:', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataPayment.Rows[0].CheckPaymentAmount || '0'), [0, 0, 0, 0, 1, 36]);
+                                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Check:', 6, strCheckPayment, intFAFCTotalLenght, '', 0, 0);
+                                                    //strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].DebitCardAmount > 0) {
+                                                    WindowsPrinter('Debit Card:', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataPayment.Rows[0].DebitCardAmount || '0'), [0, 0, 0, 0, 1, 36]);
+                                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Debit Card:', 12, strDebitCardAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    //strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].CreditCardAmount > 0) {
+                                                    WindowsPrinter('Credit Card:', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataPayment.Rows[0].CreditCardAmount || '0'), [0, 0, 0, 0, 1, 36]);
+                                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Credit Card:', 12, strCreditCardAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    //strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].SRVAmount > 0) {
+                                                    WindowsPrinter('SRV:', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataPayment.Rows[0].SRVAmount || '0'), [0, 0, 0, 0, 1, 36]);
+                                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SRV:', 4, strSRVAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    //strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].OtherTypeAmount > 0) {
+                                                    var oSql = 'Select PaymentType from ' +
+                                                    'TransCustomerPaymentInvoices inner join ' +
+                                                    'TransCustomerPaymentOther on TransCustomerPaymentInvoices.CustomerPaymentID = TransCustomerPaymentOther.CustomerPaymentID ' +
+                                                    'where TransCustomerPaymentInvoices.InvoiceID = ' + ReadyString(sessionStorage.CartOrderID)
+
+                                                    var pdtCustomerPaymentOther = Sql.Execute(oSql);
+
+                                                    WindowsPrinter('Other Tender(' + pdtCustomerPaymentOther.Rows[0].PaymentType + '):', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataPayment.Rows[0].OtherTypeAmount || '0'), [0, 0, 0, 0, 1, 36]);
+                                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Other Tender:', 12, strOtherTypeAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    //strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].OnCreditAmount > 0) {
+                                                    WindowsPrinter('On Credit:', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataPayment.Rows[0].OnCreditAmount || '0'), [0, 0, 0, 0, 1, 36]);
+                                                    WindowsPrinter('Remarks:', [0, 0, 0, 0, 0, 36], (vDataPayment.Rows[0].OnCreditRemarks || ''), [0, 0, 0, 0, 1, 36]);
+                                                    WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+                                                    WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                                    WindowsPrinter('Name and Signature', [0, 0, 0, 1, 0, 36]);
+                                                }
+
+                                                WindowsPrinter('Change:', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataPayment.Rows[0].CustomerChangeCash || '0'), [0, 0, 0, 0, 1, 36]);
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Change:', 7, strCustomerChangeCash, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                if (vDataPayment.Rows[0].CheckPaymentAmount > vDataFooter.Rows[0].NetAmountDue) {
+                                                    WindowsPrinter('* Excess payments made through checks are not entitled to cash refunds.', [0, 0, 0, 0, 0, 36]);
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, '* Excess payments made through checks are not entitled to cash refunds.', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                    //ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+                                                }
+
+                                            }
+
+                                            WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                            
+                                            //strPrint = '';
+                                            //strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                            //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+                                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                                strPrint = '';
+                                                var strVATSales = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].TaxSales || '0'), intFAFCTotalLenght - 20, ' ', 0);
+                                                var strVATAmount = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].TaxAmount || '0'), intFAFCTotalLenght - 15, ' ', 0);
+                                                var strNonVAT = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].NonVATSale || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                var strVATExempt = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].VATExemptSale || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                var strVATZeroRated = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].ZeroRatedSale || '0'), intFAFCTotalLenght - 25, ' ', 0);
+
+                                                if (CDec2(vDataFooter.Rows[0].VATExemptSale > 0)) {
+                                                    WindowsPrinter('VAT-able Sales:', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].VatablePortionOfSCDTransaction || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                    WindowsPrinter('VAT Amount: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].VatAmountPortionOfSCDTransaction || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                    WindowsPrinter('Non-VAT Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].NonVATSale || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                    WindowsPrinter('VAT Exempt Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].VATExemptSale || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                    WindowsPrinter('VAT Exempt Tax: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].VATExemptTax || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                    WindowsPrinter('Zero-Rated VAT Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].ZeroRatedSale || '0'), [0, 0, 0, 0, 1, 36]);
+                                                } else if (IsVAT != undefined) {
+                                                    if (!CBool(IsVAT)) {
+                                                        WindowsPrinter('VAT-able Sales:', [0, 0, 0, 0, 0, 36], AccountingFormat('0'), [0, 0, 0, 0, 1, 36]);
+
+                                                        WindowsPrinter('VAT Amount: ', [0, 0, 0, 0, 0, 36], AccountingFormat('0'), [0, 0, 0, 0, 1, 36]);
+
+                                                        WindowsPrinter('Non-VAT Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(CDec2(vDataFooter.Rows[0].TaxAmount) + CDec2(vDataFooter.Rows[0].TaxSales) || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                        WindowsPrinter('VAT Exempt Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].VATExemptSale || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                        WindowsPrinter('Zero-Rated VAT Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].ZeroRatedSale || '0'), [0, 0, 0, 0, 1, 36]);
+                                                    } else {
+                                                        WindowsPrinter('VAT-able Sales:', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].TaxSales || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                        WindowsPrinter('VAT Amount: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].TaxAmount || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                        WindowsPrinter('Non-VAT Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].NonVATSale || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                        WindowsPrinter('VAT Exempt Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].VATExemptSale || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                        WindowsPrinter('Zero-Rated VAT Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].ZeroRatedSale || '0'), [0, 0, 0, 0, 1, 36]);
+                                                    }
+                                                    
+                                                }else {
+                                                    WindowsPrinter('VAT-able Sales:', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].TaxSales || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                    WindowsPrinter('VAT Amount: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].TaxAmount || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                    WindowsPrinter('Non-VAT Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].NonVATSale || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                    WindowsPrinter('VAT Exempt Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].VATExemptSale || '0'), [0, 0, 0, 0, 1, 36]);
+
+                                                    WindowsPrinter('Zero-Rated VAT Sales: ', [0, 0, 0, 0, 0, 36], AccountingFormat(vDataFooter.Rows[0].ZeroRatedSale || '0'), [0, 0, 0, 0, 1, 36]);
+                                                }
+
+                                                WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                                //strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+
+                                                WindowsPrinter('Accredited Supplier : ' + proj.AccreditedSupplier, [0, 0, 0, 0, 0, 36]);
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Accredited Supplier', 20, ' ', 1), 19, ': 1MOBIZ, INC.', intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                WindowsPrinter('Registered Address  : ' + proj.RegisteredAddress, [0, 0, 0, 0, 0, 36]);
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Registered Address', 20, ' ', 1), 19, ': DAVAO CITY', intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                WindowsPrinter('TIN-Branch Code     : ' + proj.TinBranchCode, [0, 0, 0, 0, 0, 36]);
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('TIN-Branch Code', 20, ' ', 1), 19, ': 462756815-000', intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp; 
+
+                                                WindowsPrinter('POS Accreditation   : ', [1, 22, 0, 0, 0, 36], proj.PosAccreditation, [1, 14, 0, 0, 0, 36]);
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('POS Accreditation', 20, ' ', 1), 19, ': ' + $.trim((vDataHeader.Rows[0].POSAccreditationNo || '')), intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                                //strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+
+                                            WindowsPrinter('Machine S/N', [1, 22, 0, 0, 0, 36], ': ' + $.trim(vDataInvHeader.Rows[0].UuidDisplay || Web.DeviceSerial() || ''), [0, 14, 0, 0, 0, 36]);
+                                            WindowsPrinter('POS Reg. No./Permit : To Use (PTU) No.', [1, 22, 0, 0, 0, 36], ': ' + $.trim((vDataHeader.Rows[0].POSPermitNo || '')), [0, 14, 0, 0, 0, 36]);
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('POS Reg. No./Permit To Use (PTU) No.', 20, ' ', 1), 19, ': ' + $.trim((vDataHeader.Rows[0].POSPermitNo || '')), intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                            WindowsPrinter('Machine ID No. (MIN): '+ vDataHeader.Rows[0].MIN, [0, 0, 0, 0, 0, 36]);
+                                            WindowsPrinter('Date  Issued: ' + proj.PosAccreditationDateIssued, [0, 0, 0, 0, 0, 36]);
+                                            //WindowsPrinter('Valid Until: ' + proj.PosAccreditationValidUntil, [0, 0, 0, 0, 0, 36]);
+
+                                                WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Machine ID No. (MIN)', 20, ' ', 1), 19, ': ' + vDataHeader.Rows[0].MIN + ' \n', intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                // 2022_07_14__13_09_45_3756
+                                                // WindowsPrinter('THIS INVOICE/RECEIPT SHALL BE VALID FOR FIVE(5) YEARS FROM THE DATE OF THE PERMIT TO USE', [1, 0, 0, 0, 0, 36]);
+
+                                                //strPrint = '';
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim('THIS INVOICE/RECEIPT SHALL BE VALID FOR FIVE(5) YEARS FROM THE DATE OF THE PERMIT TO USE'), intFAFCTotalLenght, '', 0, '', 0, 1);
+
+                                                //strPrint = strPrint + strTemp;
+
+                                                //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                //Senior Citizen/Person With Disability info
+                                                if (isSeniorCitizenDiscount) {
+                                                    //WindowsPrinter($.trim('SCD Details:'), [0, 0, 0, 0, 0, 36]);
+
+                                                    //WindowsPrinter('Number of SC: ' + $('#txtSalesPayNoOfSC').val() + ' of ' + $('#txtSalesPayNoOfDiners').val(), [0, 0, 0, 0, 0, 36]);
+
+                                                    //WindowsPrinter('Senior Citizen\'s Bill: ' + AccountingFormat(seniorCitizenNetAmount), [0, 0, 0, 0, 0, 36]);
+
+                                                    //WindowsPrinter('Non-Senior Citizen\'s Bill:' + AccountingFormat(GrossSalesToNoneSC), [0, 0, 0, 0, 0, 36]);
+
+                                                    //WindowsPrinter('SCD-Exempt Amount: ' + AccountingFormat(SCDiscountExempt), [0, 0, 0, 0, 0, 36]);
+
+                                                    //WindowsPrinter('Total Bill: ' + AccountingFormat(CDec2(SCDiscountExempt) + CDec2(seniorCitizenNetAmount) + CDec2(GrossSalesToNoneSC)), [0, 0, 0, 0, 0, 36]);
+
+                                                    ////---list of Senior Citizen
+                                                    //intIndex = 0;
+
+                                                    //for (var i = 0; i <= intSalesPayCustomerNameCntr; i++) {
+
+                                                    //    if (sessionStorage["SalesPayCustomerName-" + i] != undefined) {
+
+                                                    //        arSalesPayCustomerName = new Array();
+                                                    //        arSalesPayCustomerName = JSON.parse(sessionStorage["SalesPayCustomerName-" + i]);
+
+                                                    //        if (arSalesPayCustomerName[intSalesPayCustomerNameState] != "Remove") {
+                                                                
+                                                    //            WindowsPrinter((intIndex + 1) + '. ' + arSalesPayCustomerName[3] + ' ' + arSalesPayCustomerName[5], [0, 0, 0, 0, 0, 36]);
+
+                                                    //        } //end if not remove
+                                                    //    } //end if session storage
+                                                    //} //end for
+
+                                                    //WindowsPrinter('Senior Citizen/PWD TIN: ', [1, 22, 0, 0, 0, 36]);
+                                                    ////strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Senior Citizen/PWD TIN: ', 12, "Emilio Aguinaldo", intFAFCTotalLenght, '', 0, 0);
+                                                    ////ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //WindowsPrinter('OSCA ID No./PWD ID No.: ', [1, 22, 0, 0, 0, 36]);
+                                                    ////strPrint = FormatTextToPrint(intFAFCTotalLenght, 'OSCA ID No./PWD ID No.: ', 12, "8700-324", intFAFCTotalLenght, '', 0, 0);
+                                                    ////ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //WindowsPrinter('Signature', [1, 22, 0, 0, 0, 36]);
+                                                    ////strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Signature: ', 12, "Heiroglophyics \n", intFAFCTotalLenght, '', 0, 0);
+                                                    ////ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+                                                }
+
+                                                WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                                //strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+                                            }
+                                            //Get Footer Messages
+                                            strPrint = '';
+                                            //                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Use for testing only. This is not an Official Receipt.', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                            //                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'This Serves as Your Official Receipt.', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                            WindowsPrinter(vDataInvHeader.Rows[0].ReceiptFooterMsg, [1, 0, 0, 1, 0, 36]);
+                                            //strTemp = FormatTextToPrint(intFAFCTotalLenght, vDataInvHeader.Rows[0].ReceiptFooterMsg, intFAFCTotalLenght, '', 0, '', 0, 1);
+                                            //strPrint = strPrint + strTemp;
+
+                                            if (vDataMsg.Rows.length > 0) {
+                                                if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                                    for (var p = 0; p <= vDataMsg.Rows.length - 1; p++) {
+                                                        WindowsPrinter($.trim((vDataMsg.Rows[p].MessageFooter || '')), [1, 0, 0, 1, 0, 36]);
+                                                        //strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataMsg.Rows[p].MessageFooter || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                        //strPrint = strPrint + strTemp;
+                                                    };
+
+                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 1, 0, 0, 0);
+
+                                                    WindowsPrinter('This business is made more efficient by Mobiz. Visit us at www.mobiz-apps.com', [1, 0, 0, 1, 0, 36]);
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'This business is made more efficient by Mobiz. Visit us at www.mobiz-apps.com', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+                                                }
+                                                //breakdown
+
+                                                /*//Print Barcode
+                                                strPrint = 'SI|' + vDataInvHeader.Rows[0].OrganizationID + '|' + vDataInvHeader.Rows[0].OrganizationBranchID + '|' + SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0)
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 1, 0, 0);
+
+                                                strPrint = SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 1, 0);*/
+
+                                                //ReadyTextToPrint('\n', 3, 1, 1, 0, 0, 0, 0, 0, 1);
+
+                                                WindowsPrinter("address", [0, 0, 0, 0, 0, 0], strPrinterIP, [0, 0, 0, 0, 0, 0], "", [0, 0, 0, 0, 0, 0]);
+
+                                                if (strPrinterName.length == 0) {
+                                                    WindowsPrinter("printerName", [0, 0, 0, 0, 0, 0], strPrinterName, [0, 0, 0, 0, 0, 0], "", [0, 0, 0, 0, 0, 0]);
+                                                }
+                                                
+                                                WindowsPrinter("startPrint", [0, 0, 0, 0, 0, 0], "", [0, 0, 0, 0, 0, 0], "", [0, 0, 0, 0, 0, 0]);
+                                                //PrintText(strPrinterIP);
+                                                ClearCommandBuffer();
+
+                                                //Print SRV
+                                                PrintSalesPaymentSRVReceipt(0, pInvoiceID);
+
+                                                //Check Print Order Reference
+                                                if (OfflineMode) {
+                                                    if (Business.SystemDefaults.GetSystemDefault("When Do You Want To Print Order Slip") == 'After Payment' &&
+                                                        Business.SystemDefaults.GetSystemDefault("Print Order Slip") == '1') {
+
+                                                        var pDataSO;
+                                                        pDataSO = {
+                                                            InvoiceID: pInvoiceID
+                                                        };
+
+                                                        if (SalesMenu_offline().SaveSalesOrder(pDataSO)) {
+                                                            PrintSalesOrderBOM(pInvoiceID);
+                                                        }
+
+                                                    } //if (Business.SystemDefaults.GetSystemDefault("When Do You Want To Print Order Reference") == 'Before Payment'){
+                                                }
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                            "Printer",
+                            [
+                                { Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                    );
+                    }
+
+                }
+
+                window.WindowsPrinter = function (cols1, args1, cols2, args2, cols3, args3) {
+
+                    //cols1 = command / text
+                    //args1 = position of cols 1
+
+                    //cols2 = command / text
+                    //args2 = position of cols 2
+
+                    //cols3 = command / text
+                    //args3 = position of cols 3
+
+                    if ((cols3 == null || cols3 == undefined) && (cols2 != null || cols2 != undefined)) {
+                        // 2 rows will be displayed/printed
+                        Android.WindowsPrinting(
+												{
+												    "data": [
+                                                              { "cols1": cols1 },
+                                                              { "args1": [args1[0].toString(), args1[1].toString(), args1[2].toString(), args1[3].toString(), args1[4].toString(), args1[5].toString()] },
+                                                              { "cols2": cols2 },
+                                                              { "args2": [args2[0].toString(), args2[1].toString(), args2[2].toString(), args2[3].toString(), args2[4].toString(), args2[5].toString()] }
+												    ]
+												}
+						);
+                    } else if ((cols3 == undefined || cols3 == null) && (cols2 == null || cols2 == undefined)) {
+                        // 1 row will be displayed/printed
+                        Android.WindowsPrinting(
+												{
+												    "data": [
+                                                              { "cols1": cols1 },
+                                                              { "args1": [args1[0].toString(), args1[1].toString(), args1[2].toString(), args1[3].toString(), args1[4].toString(), args1[5].toString()] }
+												    ]
+												}
+						);
+                    } else if (cols1 == "newLine") {
+                        Android.WindowsPrinting(
+												{
+												    "data": [
+                                                              { "newLine": "newLine" }
+												    ]
+												}
+						);
+                    } else if (cols1 == "startPrint") {
+                        try {
+                            Android.WindowsPrinting(
+												        {
+												            "data": [
+                                                                      { "startPrint": "startPrint" }
+												            ]
+												        }
+						                            );
+                        } catch (e) {
+                            //get ip address from settings
+                            var MobizSettingsIPAddress = '';
+
+                            MobizSettingsIPAddress = Transfers.ReadFile('printerip.txt', null, true)
+
+                            if (MobizSettingsIPAddress != undefined && MobizSettingsIPAddress != '') {
+                                
+                                Android.AddLog("Overriding printing IP with " + MobizSettingsIPAddress);
+
+                                WindowsPrinter("address", [0, 0, 0, 0, 0, 0], MobizSettingsIPAddress, [0, 0, 0, 0, 0, 0], "", [0, 0, 0, 0, 0, 0]);
+
+                                try {
+                                    Android.WindowsPrinting(
+                                                                {
+                                                                    "data": [
+                                                                              { "startPrint": "startPrint" }
+                                                                    ]
+                                                                }
+                                                            );
+                                } catch (e) {
+                                    Android.AddLog("A problem occured while printing receipt using WPS method.")
+                                }
+                            } else {
+                                Android.AddLog("A problem occured while printing receipt using WPS method.")
+                            }
+                           
+                        }
+                        
+                    } else if (cols1 == "address") {
+                        Android.AddLog("WPS IP address.: " + cols2);
+
+                        Android.WindowsPrinting(
+												{
+												    "data": [
+                                                              { "address": cols2 }
+												    ]
+												}
+						);
+                    } else if (cols1 == "printerName") {
+                        Android.WindowsPrinting(
+												{
+												    "data": [
+                                                              { "printerName": cols2 }
+												    ]
+												}
+						);
+                    } else {    
+                        // 3 row will be displayed/printed
+                        Android.WindowsPrinting(
+												{
+												    "data": [
+                                                              { "cols1": cols1 },
+                                                              { "args1": [args1[0].toString(), args1[1].toString(), args1[2].toString(), args1[3].toString(), args1[4].toString(), args1[5].toString()] },
+                                                              { "cols2": cols2 },
+                                                              { "args2": [args2[0].toString(), args2[1].toString(), args2[2].toString(), args2[3].toString(), args2[4].toString(), args2[5].toString()] },
+                                                              { "cols3": cols3 },
+                                                              { "args3": [args3[0].toString(), args3[1].toString(), args3[2].toString(), args3[3].toString(), args3[4].toString(), args3[5].toString()] }
+												    ]
+												}
+						);
+                    }
+                }
+
+                function PrintPOSReceiptNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg) {
+                    var strTemp = '';
+                    var strPrint = '';
+                    var strPrinterIP = '';
+                    var strStockID = '';
+                    var IsShowSalesRep = false;
+                    var pData = {};
+                    pData.InvoiceID = pInvoiceID;
+
+                    //Get Printer IP Address
+                    if (vDataPrint == undefined) {
+                        MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                            "Printer",
+                            [
+                                {
+                                    Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                    );
+                        return;
+                    }
+
+                    if (vDataPrint.Rows.length > 0) {
+                        //additional by janine jan 31 2015
+                        originalDevFowstPrinterID = vDataPrint.Rows[0].ID;
+                        if (CStr2(newPrinterIP) != '')
+                            strPrinterIP = newPrinterIP;
+                        else
+                            strPrinterIP = vDataPrint.Rows[0].PrinterIPAddress;
+
+                        //New set of text to print
+                        NewPrintBuilder();
+
+                        //Get Header
+                        IsShowSalesRep = false;
+                        var mDate = '';
+
+                        if (InAndroid) {
+                            mDate = vDataInvHeader.Rows[0].InvoiceDate;
+                        }
+                        else {
+                            mDate = vDataInvHeader.Rows[0].InvoiceDate.replace(/-/g, '/');
+                        }
+
+                        if (vDataHeader.Rows.length > 0) {
+
+                            IsShowSalesRep = (vDataHeader.Rows[0].IsShowSalesRep == 1 ? true : false);
+
+                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].BusinessTradeName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                strPrint = '';
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].CorporateName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT TIN ' + $.trim((vDataHeader.Rows[0].TIN || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].CompleteAddress || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Tel. No.' + $.trim((vDataHeader.Rows[0].TelNo || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                            }
+                            //Get Items
+                            if (vDataInvHeader.Rows.length > 0) {
+                                strPrint = '';
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Customer', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerName || '')), intFAFCTotalLenght, '', 0, 0);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Address', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerAddress || '')), intFAFCTotalLenght, '', 0, 0);
+                                strPrint = strPrint + strTemp;
+
+                                if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('TIN', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerTIN || '')), intFAFCTotalLenght, '', 0, 0);
+                                    strPrint = strPrint + strTemp;
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+                                }
+
+                                if (CStr2(vDataInvHeader.Rows[0].CustomerTableNo) != '') {
+                                    var prefix = vDataInvHeader.Rows[0].CustomerTableNo; //.split('_'); modified by arnie 92117
+
+                                    if ($.trim((vDataInvHeader.Rows[0].CustomerTableNo || '')) != '') {
+                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Table #', 8, ' ', 1), 7, ': ' + $.trim((prefix || '')), intFAFCTotalLenght, '', 0, 0);
+                                        strPrint = strTemp;
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+                                    }
+                                }
+
+                                if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+                                }
+
+                                strPrint = '';
+
+                                strTemp = FormatTextToPrint(intFCDoubleTotalLenght, 'SI ' + SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFCDoubleTotalLenght, ($.format.date(new Date(mDate), 'MMM dd, yyyy HH:mm') || ''), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Cashier: ' + ($.trim(vDataInvHeader.Rows[0].CashierName || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+                                
+                                if (IsShowSalesRep) {
+                                    var SalesRepList = [];
+                                    var SalesRepConcatenated;
+                                    var IsSalesRepExist = false;
+
+                                    for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+                                        IsSalesRepExist = false;
+                                        for (var i = 0; i <= SalesRepList.length - 1; i++) {
+
+                                            if (SalesRepList[i] == vDataItem.Rows[p].SalesPerson) {
+                                                IsSalesRepExist = true;
+                                            }
+
+                                        }
+
+                                        if (!IsSalesRepExist) {
+                                            SalesRepList[SalesRepList.length] = vDataItem.Rows[p].SalesPerson;
+                                            if (p == 0) {
+                                                SalesRepConcatenated = vDataItem.Rows[p].SalesPerson;
+                                            } else {
+                                                SalesRepConcatenated += ', ' + vDataItem.Rows[p].SalesPerson;
+                                            }
+                                        }
+                                        
+                                    }
+
+                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Sales Person: ' + ($.trim(SalesRepConcatenated || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                    strPrint = strTemp;
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+                                }
+
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                //Get Items
+                                var strProductID = "";
+                                if (vDataItem.Rows.length > 0) {
+                                    strStockID = '';
+                                    strPrint = '';
+                                    var intLimitPerBatchPrint = 0;
+                                    for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+
+                                        var strStockDescription = $.trim((vDataItem.Rows[p].StockDescription || '')) + (isSeniorCitizenDiscount ? (CBool(vDataItem.Rows[p].IsVatExempt) ? '' : ' (E)') : '');
+                                        var strUnitPrice = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].UnitPrice || '0'), intFAFCTotalLenght - 30, ' ', 0);
+                                        var strQty = SetPrefixPostfix(AccountingFormat((vDataItem.Rows[p].Quantity || '0'), 0), 8, ' ', 0);
+                                        strQty = strQty.replace(/\s/g, '');
+                                        var strUnitMeasure = SetPrefixPostfix((vDataItem.Rows[p].UnitMeasure || ''), 10, ' ', 0);
+                                        strUnitMeasure = strUnitMeasure.replace(/\s/g, '');
+                                        var strSubTotal = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].SubTotal || '0'), intFAFCTotalLenght - 26, ' ', 0);
+
+                                        strPrint = '';
+                                        if (strProductID == "") {
+                                            strProductID = vDataItem.Rows[p].StockID;
+                                        }
+
+                                        if (vDataItemSerial.Rows.length > 0) {
+                                            if (strProductID != vDataItem.Rows[p].StockID) { //Print Serials
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Serial(s) : ', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                    if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                        var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strSerial, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                    }
+                                                }
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strProductID = vDataItem.Rows[p].StockID;
+                                            }
+                                        }
+                                        
+                                        //strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, 15, '   ' + strQty + ' ' + strUnitMeasure + ' @ ', 28, strUnitPrice, intFAFCTotalLenght, 0);
+                                        //strPrint = strPrint + strTemp;
+
+                                        //strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, 13, '   ' + strQty + ' ' + strUnitMeasure + '    @ ' + $.trim(strUnitPrice), 25, '       ' + AccountingFormat(CDec2(strQty) * CDec2(strUnitPrice)), intFAFCTotalLenght, 0);
+                                        //strPrint = strPrint + strTemp;
+
+                                        if (vDataPrint.Rows[0].ProductDescriptionInReceipt != undefined) {
+                                            if (vDataPrint.Rows[0].ProductDescriptionInReceipt == 'ProductShortDescription') {
+                                                strStockDescription = $.trim((vDataItem.Rows[p].ReceiptName || vDataItem.Rows[p].StockDescription));
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, strQty + ' ' + strUnitMeasure, 8, ' ' + strStockDescription, 24, strSubTotal, intFAFCTotalLenght, 0);
+                                                strPrint = strPrint + strTemp;
+                                            } else {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var itemtotal = SetPrefixPostfix(AccountingFormat(CDec2(strQty) * CDec2(strUnitPrice)) || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, ' ' + strQty + ' @ ' + $.trim(strUnitPrice) + ' / ' + strUnitMeasure, 20, itemtotal, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+                                        } else {
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            var itemtotal = SetPrefixPostfix(AccountingFormat(CDec2(strQty) * CDec2(strUnitPrice)) || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, ' ' + strQty + ' @ ' + $.trim(strUnitPrice) + ' / ' + strUnitMeasure, 20, itemtotal, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                        }
+                                                                                
+                                        if (vDataItem.Rows[p].ItemModifier != undefined) {
+                                            if (vDataItem.Rows[p].ItemModifier.length > 0) {
+                                                for (var im = 0; im < vDataItem.Rows[p].ItemModifier.length; im++) {
+                                                    var mod = vDataItem.Rows[p].ItemModifier[im];
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, '+ ' + mod.Description, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                    if (CStr2(mod.OrderedQty) != '') {
+                                                        //strTemp = FormatTextToPrint(intFAFCTotalLenght, '* ' + CStr2(mod.OrderedQty) + '  x ' + CStr2(mod.Description) + ' @ ' + AccountingFormat(mod.ModifierPrice), 20, '          ' + AccountingFormat(mod.SubTotal), intFAFCTotalLenght, '', 0, 0);
+                                                        //strPrint = strPrint + strTemp;
+                                                        var itemmodifiertotal = SetPrefixPostfix(AccountingFormat(CDec2(mod.OrderedQty) * CDec2(mod.ModifierPrice)) || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, ' ' + mod.OrderedQty + ' @ ' + (CDec2(mod.ModifierPrice) == 0 ? '0.00' : AccountingFormat($.trim(mod.ModifierPrice))) + ' each ', 20, itemmodifiertotal, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+                                                    }
+                                                    //else {
+                                                    //    strTemp = FormatTextToPrint(intFAFCTotalLenght, '* ' + CStr2(mod.Description), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                    //    strPrint = strPrint + strTemp;
+                                                    //}
+                                                }
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '   Item Total:  ---->', 20, SetPrefixPostfix(AccountingFormat(strSubTotal), intFAFCTotalLenght - 22, ' ', 0), intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }                                            
+                                        }
+
+                                        //strTemp = FormatTextToPrint(intFAFCTotalLenght, '', 17, 'Sub T', 23, strSubTotal, intFAFCTotalLenght, 0);
+                                        //strPrint = strPrint + strTemp;
+
+                                        //if (IsShowSalesRep) {
+
+                                        //    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Sales Person: ' + ($.trim(vDataItem.Rows[p].SalesPerson || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                        //    strPrint = strPrint + strTemp;
+
+                                        //}
+
+                                        if (vDataItemSerial.Rows.length > 0) {
+                                            if (p == vDataItem.Rows.length - 1) {
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Serial(s) : ', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                    if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                        var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strSerial, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                    }
+                                                }
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strProductID = vDataItem.Rows[p].StockID;
+                                            }
+                                        } else {
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                        }
+
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                        intLimitPerBatchPrint = intLimitPerBatchPrint + 1;
+
+                                        if (intLimitPerBatchPrint >= 100 && vDataItem.Rows.length > 100) {
+
+                                            PrintText(strPrinterIP);
+                                            ClearCommandBuffer();
+
+                                            //New set of text to print because it causes error when you print directly all items at once.
+                                            NewPrintBuilder();
+                                            intLimitPerBatchPrint = 0;
+                                        }
+
+                                    };
+
+                                    //Get Footer Amounts
+                                    if (vDataPayment.Rows.length > 0) {
+
+                                        //Get Footer Amounts
+                                        if (vDataFooter.Rows.length > 0) {
+
+                                            var strSKUCount = SetPrefixPostfix(AccountingFormat((vDataFooter.Rows[0].SKUCount || '0'), 0), intFAFCTotalLenght - 14, ' ', 0);
+                                            var strTotalAmountDue = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].SubTotal || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strTotalDiscount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].DiscountAmount || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strNetAmountDue = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].NetAmountDue) + (isSeniorCitizenDiscount ? 0 : CDec2(vDataFooter.Rows[0].ChargeAmount)) + CDec2(vDataFooter.Rows[0].TipAmount) + CDec2(vDataFooter.Rows[0].LocalTaxAmount)), intFAFCTotalLenght - 22, ' ', 0);
+
+                                            var strTotalCharges = SetPrefixPostfix(vDataFooter.Rows[0].ChargeAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                            var strTip = SetPrefixPostfix(vDataFooter.Rows[0].TipAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+
+                                            var strVatSale = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TotalAmountDue), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strVatAmount = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].SubTotal) - CDec2(vDataFooter.Rows[0].TotalAmountDue)), intFAFCTotalLenght - 22, ' ', 0);
+
+                                            var strOtherTax = SetPrefixPostfix(vDataFooter.Rows[0].LocalTaxAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+
+                                            strPrint = '';
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SKU Count: ', 12, strSKUCount, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Gross Total: ', 20, strTotalAmountDue, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            if (isSeniorCitizenDiscount) {
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+                                                
+                                                if (SCDiscountExempt > 0) {
+                                                    var strSCDiscountExempt = SetPrefixPostfix(AccountingFormat(SCDiscountExempt || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SC Discount-Exempt: ', 20, strSCDiscountExempt, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }                                                
+
+                                                var strSubTotalOfVatExemptItems = SetPrefixPostfix(AccountingFormat(SubTotalOfVatExemptItems || '0'), intFAFCTotalLenght - 31, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '\nGross Amount Subject to SCD: ', 29, strSubTotalOfVatExemptItems, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                if (GrossSalesToNoneSC > 0) {
+                                                    var strGrossSalesToNoneSC = SetPrefixPostfix(AccountingFormat(GrossSalesToNoneSC || '0'), intFAFCTotalLenght - 31, ' ', 0);
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Gross Sales to None-SC ' + (CInt2($('#txtSalesPayNoOfDiners').val()) - CInt2($('#txtSalesPayNoOfSC').val())) + '/' + $('#txtSalesPayNoOfDiners').val() + ':', 29, strGrossSalesToNoneSC, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                
+                                                var strGrossSalesToSC = SetPrefixPostfix(AccountingFormat(GrossSalesToSC || '0'), intFAFCTotalLenght - 23, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '\nGross Sales to SC ' + $('#txtSalesPayNoOfSC').val() + '/' + $('#txtSalesPayNoOfDiners').val() + ':', 21, strGrossSalesToSC, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strVatExemptSales = SetPrefixPostfix(AccountingFormat(VatExemptSales || '0') + (IsApplyMaxSCDiscountableAmount ? '' : '*'), intFAFCTotalLenght - 22, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT-Ex for SC: ', 20, strVatExemptSales, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strMaxSCDiscountableAmount = SetPrefixPostfix(AccountingFormat(MaxSCDiscountableAmount || '0') + (IsApplyMaxSCDiscountableAmount ? '*' : ''), intFAFCTotalLenght - 25, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Max Discountable VAT-EX(' + (CDec2(MaxSCDiscountableAmount) / CInt2($('#txtSalesPayNoOfSC').val())) + '*' + CInt2($('#txtSalesPayNoOfSC').val()) + ')', 23, strMaxSCDiscountableAmount, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strDiscountPercentCeiling = SetPrefixPostfix(AccountingFormat($('#txtDiscountPercentCeiling').val()) + '%', intFAFCTotalLenght - 22, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SC Discount Rate: ', 20, strDiscountPercentCeiling, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strseniorCitizenDiscount = SetPrefixPostfix(AccountingFormat(seniorCitizenDiscount || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SC Discount Amount based on Vat-Ex Sale: ', 20, strseniorCitizenDiscount, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strseniorCitizenNetAmount = SetPrefixPostfix(AccountingFormat(seniorCitizenNetAmount || '0'), intFAFCTotalLenght - 32, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Net Amount to be Paid by SC: ', 30, strseniorCitizenNetAmount, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+
+                                            } else {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Discount:   ', 20, strTotalDiscount, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+
+                                            if (CDec2(vDataFooter.Rows[0].ChargeAmount) > 0) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Charges:   ', 20, strTotalCharges, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+
+                                            if (CDec2(vDataFooter.Rows[0].TipAmount) > 0) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Tip:   ', 20, strTip, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                            }
+
+                                            if (CDec2(vDataFooter.Rows[0].LocalTaxAmount) > 0) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Local Tax:   ', 20, strOtherTax, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+
+                                            //var strSalesPayAmountDue = SetPrefixPostfix(AccountingFormat((strNetAmountDue) || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strSalesPayAmountDue = SetPrefixPostfix(AccountingFormat((isSeniorCitizenDiscount ? $('#lblSalesPayAmountDue').text() : strNetAmountDue) || '0'), intFAFCTotalLenght - 22, ' ', 0);
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Amount Due:   ', 20, strSalesPayAmountDue, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                            ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                            if (vDataPayment.Rows.length > 0) {
+
+                                                var strCashPayment = SetPrefixPostfix(AccountingFormat((vDataPayment.Rows[0].CashPayment || '0')), intFAFCTotalLenght - 7, ' ', 0);
+                                                var strCheckPayment = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CheckPaymentAmount || '0'), intFAFCTotalLenght - 8, ' ', 0);
+                                                var strDebitCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].DebitCardAmount || '0'), intFAFCTotalLenght - 14, ' ', 0);
+                                                var strCreditCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CreditCardAmount || '0'), intFAFCTotalLenght - 14, ' ', 0);
+                                                var strSRVAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].SRVAmount || '0'), intFAFCTotalLenght - 6, ' ', 0);
+                                                var strOtherTypeAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].OtherTypeAmount || '0'), intFAFCTotalLenght - 14, ' ', 0);
+                                                var strCustomerChangeCash = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CustomerChangeCash || '0'), intFAFCTotalLenght - 9, ' ', 0);
+
+                                                strPrint = '\n';
+                                                if (vDataPayment.Rows[0].CashPayment > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Cash:', 5, strCashPayment, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].CheckPaymentAmount > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Check:', 6, strCheckPayment, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].DebitCardAmount > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Debit Card:', 12, strDebitCardAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].CreditCardAmount > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Credit Card:', 12, strCreditCardAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].SRVAmount > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SRV:', 4, strSRVAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].OtherTypeAmount > 0) {
+                                                    var oSql = 'Select PaymentType from ' +
+                                                    'TransCustomerPaymentInvoices inner join ' +
+                                                    'TransCustomerPaymentOther on TransCustomerPaymentInvoices.CustomerPaymentID = TransCustomerPaymentOther.CustomerPaymentID ' +
+                                                    'where TransCustomerPaymentInvoices.InvoiceID = ' + ReadyString(sessionStorage.CartOrderID)
+
+                                                    var pdtCustomerPaymentOther = Sql.Execute(oSql);
+
+                                                    if (pdtCustomerPaymentOther.Rows.length > 0) {
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Other Tender(' + pdtCustomerPaymentOther.Rows[0].PaymentType + '):', 12, strOtherTypeAmount, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+                                                    } else {
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Other Tender:', 12, strOtherTypeAmount, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+                                                    }
+                                                    
+                                                }
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Change:', 7, strCustomerChangeCash, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                if (vDataPayment.Rows[0].CheckPaymentAmount > vDataFooter.Rows[0].NetAmountDue) {
+                                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, '* Excess payments made through checks are not entitled to cash refunds.', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                    ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+                                                }
+
+                                            }
+
+                                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS)) {
+                                                strPrint = '';
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+                                                
+                                                var strVATSales = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].TaxSales || '0'), intFAFCTotalLenght - 20, ' ', 0);
+                                                var strVATAmount = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].TaxAmount || '0'), intFAFCTotalLenght - 15, ' ', 0);
+                                                var strNonVAT = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].NonVATSale || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                var strVATExempt = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].VATExemptSale || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                var strVATZeroRated = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].ZeroRatedSale || '0'), intFAFCTotalLenght - 25, ' ', 0);
+                                                var strVATExemptTax = '-';
+
+                                                if (isSeniorCitizenDiscount) {
+                                                    strVATSales = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VatablePortionOfSCDTransaction || '0'), intFAFCTotalLenght - 20, ' ', 0);
+                                                    strVATAmount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VatAmountPortionOfSCDTransaction || '0'), intFAFCTotalLenght - 15, ' ', 0);
+                                                    strNonVAT = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].NonVATSale || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                    strVATExempt = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VATExemptSale || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                    strVATExemptTax = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VATExemptTax || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                    strVATZeroRated = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].ZeroRatedSale || '0'), intFAFCTotalLenght - 25, ' ', 0);
+
+                                                    //strVATSales = SetPrefixPostfix(AccountingFormat(0), intFAFCTotalLenght - 22, ' ', 0);
+                                                    //strVATAmount = SetPrefixPostfix(AccountingFormat(0), intFAFCTotalLenght - 17, ' ', 0);
+                                                    //strNonVAT = SetPrefixPostfix(AccountingFormat(strTotalAmountDue), intFAFCTotalLenght - 24, ' ', 0);
+                                                    //strVATExempt = SetPrefixPostfix(AccountingFormat(0), intFAFCTotalLenght - 24, ' ', 0);
+                                                    //strVATZeroRated = SetPrefixPostfix(AccountingFormat(0), intFAFCTotalLenght - 27, ' ', 0);
+                                                }
+
+                                                if (IsVAT != undefined) {
+                                                    if (!CBool(IsVAT)) {
+
+                                                        strVATSales = SetPrefixPostfix(AccountingFormat('0'), intFAFCTotalLenght - 20, ' ', 0);
+                                                        strVATAmount = SetPrefixPostfix(AccountingFormat('0'), intFAFCTotalLenght - 15, ' ', 0);
+                                                        strNonVAT = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].TaxSales) + CDec2(vDataFooter.Rows[0].TaxAmount) || '0'), intFAFCTotalLenght - 22, ' ', 0);
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT-able Sales: ', 18, strVATSales, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Amount: ', 13, strVATAmount, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Non-VAT Sales: ', 20, strNonVAT, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Exempt Sales: ', 20, strVATExempt, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Exempt Tax: ', 20, strVATExemptTax, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Zero-Rated VAT Sales: ', 23, strVATZeroRated, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+                                                    } else {
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT-able Sales: ', 18, strVATSales, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Amount: ', 13, strVATAmount, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Non-VAT Sales: ', 20, strNonVAT, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Exempt Sales: ', 20, strVATExempt, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Exempt Tax: ', 20, strVATExemptTax, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Zero-Rated VAT Sales: ', 23, strVATZeroRated, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+                                                    }
+                                                } else {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT-able Sales: ', 18, strVATSales, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Amount: ', 13, strVATAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Non-VAT Sales: ', 20, strNonVAT, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Exempt Sales: ', 20, strVATExempt, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Exempt Tax: ', 20, strVATExemptTax, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Zero-Rated VAT Sales: ', 23, strVATZeroRated, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Accredited Supplier', 20, ' ', 1), 19, ': ' + proj.AccreditedSupplier, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Registered Address', 20, ' ', 1), 19, ': ' + proj.RegisteredAddress, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('TIN-Branch Code', 20, ' ', 1), 19, ': ' + proj.TinBranchCode, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('POS Accreditation', 20, ' ', 1), 19, ': ' + $.trim((vDataHeader.Rows[0].POSAccreditationNo || '')), intFAFCTotalLenght, '', 0, 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('POS Accreditation', 20, ' ', 1), 19, ': ' + proj.PosAccreditation, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Machine S/N', 20, ' ', 1), 19, ': ' + $.trim((vDataInvHeader.Rows[0].UuidDisplay || Web.DeviceSerial() || '')), intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('POS Reg. No./Permit To Use (PTU) No.', 20, ' ', 1), 19, ': ' + $.trim((vDataHeader.Rows[0].POSPermitNo || '')), intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Machine ID No. (MIN)', 20, ' ', 1), 19, ': ' + vDataHeader.Rows[0].MIN + ' \n', intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Date  Issued ', 20, ' ', 1), 19, ': ' + proj.PosAccreditationDateIssued, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                            //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Valid Until', 20, ' ', 1), 19, ': ' + proj.PosAccreditationValidUntil + ' \n', intFAFCTotalLenght, '', 0, 0);
+                                            //strPrint = strPrint + strTemp;
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                // 2022_07_14__13_09_45_3756
+                                                //strPrint = '';
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim('THIS INVOICE/RECEIPT SHALL BE VALID FOR FIVE(5) YEARS FROM THE DATE OF THE PERMIT TO USE'), intFAFCTotalLenght, '', 0, '', 0, 1);
+
+                                                strPrint = strPrint + strTemp;
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                //Senior Citizen/Person With Disability info
+                                                if (isSeniorCitizenDiscount) {
+                                                //    strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim('SCD Details:'), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                //    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                //    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Number of SC: ', 12, $('#txtSalesPayNoOfSC').val() + ' of ' + $('#txtSalesPayNoOfDiners').val(), intFAFCTotalLenght, '', 0, 0);
+                                                //    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                //    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Senior Citizen\'s Bill: ', 23, AccountingFormat(seniorCitizenNetAmount), intFAFCTotalLenght, '', 0, 0);
+                                                //    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                //    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Non-Senior Citizen\'s Bill:', 27, AccountingFormat(GrossSalesToNoneSC), intFAFCTotalLenght, '', 0, 0);
+                                                //    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                //    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'SCD-Exempt Amount: ', 19, AccountingFormat(SCDiscountExempt), intFAFCTotalLenght, '', 0, 0);
+                                                //    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                //    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Total Bill: ', 12, AccountingFormat(CDec2(SCDiscountExempt) + CDec2(seniorCitizenNetAmount) + CDec2(GrossSalesToNoneSC)), intFAFCTotalLenght, '', 0, 0);
+                                                //    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                //    //---list of Senior Citizen
+                                                //    intIndex = 0;
+
+                                                //    for (var i = 0; i <= intSalesPayCustomerNameCntr; i++) {
+
+                                                //        if (sessionStorage["SalesPayCustomerName-" + i] != undefined) {
+
+                                                //            arSalesPayCustomerName = new Array();
+                                                //            arSalesPayCustomerName = JSON.parse(sessionStorage["SalesPayCustomerName-" + i]);
+
+                                                //            if (arSalesPayCustomerName[intSalesPayCustomerNameState] != "Remove") {
+                                                //                //+ ', ' + arIdentificationNumber[0] + ': ' + arIdentificationNumber[2]
+                                                //                strPrint = FormatTextToPrint(intFAFCTotalLenght, (intIndex+1) + '. ', 3, arSalesPayCustomerName[3] + ' ' + arSalesPayCustomerName[5], intFAFCTotalLenght, '', 0, 0);
+                                                //                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                //            } //end if not remove
+                                                //        } //end if session storage
+                                                //    } //end for
+
+                                                //    ////for loop
+                                                //    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Senior Citizen/PWD TIN: ', 12, "Emilio Aguinaldo", intFAFCTotalLenght, '', 0, 0);
+                                                //    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                //    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'OSCA ID No./PWD ID No.: ', 12, "8700-324", intFAFCTotalLenght, '', 0, 0);
+                                                //    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                //    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Signature: ', 12, "Heiroglophyics \n", intFAFCTotalLenght, '', 0, 0);
+                                                //    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+                                                }
+
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                //Get Footer Messages
+                                                strPrint = '';
+                                                //                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Use for testing only. This is not an Official Receipt.', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                //                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'This Serves as Your Official Receipt.', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, vDataInvHeader.Rows[0].ReceiptFooterMsg, intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+                                            } else {
+                                                strPrint = '';
+
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'DO NOT GIVE THIS RECEIPT TO THE CUSTOMER', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                //strPrint = strPrint + strTemp;
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'THIS IS NOT AN OFFICIAL RECEIPT', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'FOR INTERNAL CONTROL PURPOSES ONLY', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 1, 0, 0, 0);
+                                            }
+
+                                            if (vDataMsg.Rows.length > 0) {
+                                                if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS)) {
+                                                    for (var p = 0; p <= vDataMsg.Rows.length - 1; p++) {
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataMsg.Rows[p].MessageFooter || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                        strPrint = strPrint + strTemp;
+                                                    };
+
+                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 1, 0, 0, 0);
+
+                                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'This business is made more efficient by Mobiz. Visit us at www.mobiz-apps.com', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                    //breakdown
+
+                                                    /*//Print Barcode
+                                                    strPrint = 'SI|' + vDataInvHeader.Rows[0].OrganizationID + '|' + vDataInvHeader.Rows[0].OrganizationBranchID + '|' + SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0)
+                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 1, 0, 0);
+    
+                                                    strPrint = SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0);
+                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 1, 0);*/
+                                                }
+
+                                                ReadyTextToPrint('\n', 3, 1, 1, 0, 0, 0, 0, 0, 1);
+                                                PrintText(strPrinterIP);
+                                                ClearCommandBuffer();
+                                                //doDrawerKick(strPrinterIP);
+
+                                                //Print SRV
+                                                PrintSalesPaymentSRVReceipt(0, pInvoiceID);
+
+                                                //Check Print Order Reference
+                                                if (OfflineMode) {
+                                                    if (Business.SystemDefaults.GetSystemDefault("When Do You Want To Print Order Slip") == 'After Payment' &&
+                                                        Business.SystemDefaults.GetSystemDefault("Print Order Slip") == '1') {
+
+                                                        var pDataSO;
+                                                        pDataSO = {
+                                                            InvoiceID: pInvoiceID
+                                                        };
+
+                                                        if (SalesMenu_offline().SaveSalesOrder(pDataSO)) {
+                                                            PrintSalesOrderBOM(pInvoiceID);
+                                                        }
+
+                                                    } //if (Business.SystemDefaults.GetSystemDefault("When Do You Want To Print Order Reference") == 'Before Payment'){
+                                                }
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                            "Printer",
+                            [
+                                {
+                                    Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                    );
+                    }
+
+                }
+
+                window.PrintPOSReceiptDotMatrix = function (pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg) {
+                    var strTemp = '';
+                    var strPrint = '';
+                    var strPrinterIP = '';
+                    var strStockID = '';
+                    var IsShowSalesRep = false;
+                    var pData = {};
+                    pData.InvoiceID = pInvoiceID;
+
+                    //Get Printer IP Address
+                    if (vDataPrint == undefined) {
+                        MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                            "Printer",
+                            [
+                                {
+                                    Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                    );
+                        return;
+                    }
+
+                    if (vDataPrint.Rows.length > 0) {
+                        //additional by janine jan 31 2015
+                        originalDevFowstPrinterID = vDataPrint.Rows[0].ID;
+                        if (CStr2(newPrinterIP) != '')
+                            strPrinterIP = newPrinterIP;
+                        else
+                            strPrinterIP = vDataPrint.Rows[0].PrinterIPAddress;
+
+                        //New set of text to print
+                        NewPrintBuilder();
+
+                        //Get Header
+                        IsShowSalesRep = false;
+                        var mDate = '';
+
+                        if (InAndroid) {
+                            mDate = vDataInvHeader.Rows[0].InvoiceDate;
+                        }
+                        else {
+                            mDate = vDataInvHeader.Rows[0].InvoiceDate.replace(/-/g, '/');
+                        }
+
+                        if (vDataHeader.Rows.length > 0) {
+                            IsShowSalesRep = (vDataHeader.Rows[0].IsShowSalesRep == 1 ? true : false);
+                            
+                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].BusinessTradeName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                strPrint = '';
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].CorporateName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT TIN ' + $.trim((vDataHeader.Rows[0].TIN || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].CompleteAddress || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Tel. No.' + $.trim((vDataHeader.Rows[0].TelNo || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+                            }
+                            //Get Items
+                            if (vDataInvHeader.Rows.length > 0) {
+                                strPrint = '';
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Customer', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerName || '')), intFAFCTotalLenght, '', 0, 0);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Address', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerAddress || '')), intFAFCTotalLenght-3, '', 0, 0);
+                                strPrint = strPrint + strTemp;
+
+                                if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('TIN', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerTIN || '')), intFAFCTotalLenght, '', 0, 0);
+                                    strPrint = strPrint + strTemp;
+                                }
+
+                                ReadyTextToPrint(strPrint + '\n', 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                if (CStr2(vDataInvHeader.Rows[0].CustomerTableNo) != '') {
+                                    var prefix = vDataInvHeader.Rows[0].CustomerTableNo.split('_');
+
+                                    if ($.trim((vDataInvHeader.Rows[0].CustomerTableNo || '')) != '') {
+                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Table #', 8, ' ', 1), 7, ': ' + $.trim((prefix[1] || '')), intFAFCTotalLenght, '', 0, 0);
+                                        strPrint = strTemp;
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+                                    }
+                                }
+
+                                if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+                                }
+
+                                strPrint = '';
+                                strTemp = FormatTextToPrint(intFCDoubleTotalLenght, 'SI ' + SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFCDoubleTotalLenght, ($.format.date(new Date(mDate), 'MMM dd, yyyy HH:mm') || ''), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Cashier: ' + ($.trim(vDataInvHeader.Rows[0].CashierName || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+
+                                if (IsShowSalesRep) {
+                                    var SalesRepList = [];
+                                    var SalesRepConcatenated;
+                                    var IsSalesRepExist = false;
+
+                                    for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+                                        IsSalesRepExist = false;
+                                        for (var i = 0; i <= SalesRepList.length - 1; i++) {
+
+                                            if (SalesRepList[i] == vDataItem.Rows[p].SalesPerson) {
+                                                IsSalesRepExist = true;
+                                            }
+
+                                        }
+
+                                        if (!IsSalesRepExist) {
+                                            SalesRepList[SalesRepList.length] = vDataItem.Rows[p].SalesPerson;
+                                            if (p == 0) {
+                                                SalesRepConcatenated = vDataItem.Rows[p].SalesPerson;
+                                            } else {
+                                                SalesRepConcatenated += ', ' + vDataItem.Rows[p].SalesPerson;
+                                            }
+                                        }
+
+                                    }
+
+                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Sales Person: ' + ($.trim(SalesRepConcatenated || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                    strPrint = strTemp;
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+                                }
+
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                //Get Items
+                                var strProductID = "";
+                                if (vDataItem.Rows.length > 0) {
+                                    strStockID = '';
+                                    strPrint = '';
+                                    var intLimitPerBatchPrint = 0;
+                                    for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+
+                                        var strStockDescription = $.trim((vDataItem.Rows[p].StockDescription || ''));
+                                        var strUnitPrice = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].UnitPrice || '0'), intFAFCTotalLenght - 32, ' ', 0);
+                                        var strQty = SetPrefixPostfix(AccountingFormat((vDataItem.Rows[p].Quantity || '0'), 0), 8, ' ', 0);
+                                        strQty = strQty.replace(/\s/g, '');
+                                        var strUnitMeasure = SetPrefixPostfix((vDataItem.Rows[p].UnitMeasure || ''), 10, ' ', 0);
+                                        strUnitMeasure = strUnitMeasure.replace(/\s/g, '');
+                                        var strSubTotal = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].SubTotal || '0'), intFAFCTotalLenght - 28, ' ', 0);
+
+                                        strPrint = '';
+                                        if (strProductID == "") {
+                                            strProductID = vDataItem.Rows[p].StockID;
+                                        }
+
+                                        if (vDataItemSerial.Rows.length > 0) {
+                                            if (strProductID != vDataItem.Rows[p].StockID) { //Print Serials
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Serial(s) : ', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                    if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                        var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strSerial, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                    }
+                                                }
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '_____________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strProductID = vDataItem.Rows[p].StockID;
+                                            }
+                                        }
+
+                                        if (vDataPrint.Rows[0].ProductDescriptionInReceipt != undefined) {
+                                            if (vDataPrint.Rows[0].ProductDescriptionInReceipt == 'ProductShortDescription') {
+                                                strStockDescription = $.trim((vDataItem.Rows[p].ReceiptName || vDataItem.Rows[p].StockDescription));
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, strQty + ' ' + strUnitMeasure, 8, ' ' + strStockDescription, 24, strSubTotal, intFAFCTotalLenght, 0);
+                                                strPrint = strPrint + strTemp;
+                                            } else {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, 15, '   ' + strQty + ' ' + strUnitMeasure + ' @ ', 28, strUnitPrice, intFAFCTotalLenght, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '', 17, 'Sub T', 23, strSubTotal, intFAFCTotalLenght, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+                                        } else {
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, 15, '   ' + strQty + ' ' + strUnitMeasure + ' @ ', 28, strUnitPrice, intFAFCTotalLenght, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, '', 17, 'Sub T', 23, strSubTotal, intFAFCTotalLenght, 0);
+                                            strPrint = strPrint + strTemp;
+                                        }
+                                        
+
+                                        
+
+                                        //if (IsShowSalesRep) {
+
+                                        //    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Sales Person: ' + ($.trim(vDataItem.Rows[p].SalesPerson || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                        //    strPrint = strPrint + strTemp;
+
+                                        //}
+
+                                        if (vDataItemSerial.Rows.length > 0) {
+                                            if (p == vDataItem.Rows.length - 1) {
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Serial(s) : ', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                    if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                        var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strSerial, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                    }
+                                                }
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '_____________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strProductID = vDataItem.Rows[p].StockID;
+                                            }
+                                        } else {
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, '_____________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                        }
+
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                        intLimitPerBatchPrint = intLimitPerBatchPrint + 1;
+
+                                        if (intLimitPerBatchPrint >= 100 && vDataItem.Rows.length > 100) {
+
+                                            PrintText(strPrinterIP);
+                                            ClearCommandBuffer();
+
+                                            //New set of text to print because it causes error when you print directly all items at once.
+                                            NewPrintBuilder();
+                                            intLimitPerBatchPrint = 0;
+                                        }
+
+                                    };
+
+                                    //Get Footer Amounts
+                                    if (vDataPayment.Rows.length > 0) {
+
+                                        //Get Footer Amounts
+                                        if (vDataFooter.Rows.length > 0) {
+                                            var strSKUCount = SetPrefixPostfix(AccountingFormat((vDataFooter.Rows[0].SKUCount || '0'), 0), intFAFCTotalLenght - 16, ' ', 0);
+                                            var strTotalAmountDue = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].SubTotal || '0'), intFAFCTotalLenght - 24, ' ', 0);
+                                            var strTotalDiscount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].DiscountAmount || '0'), intFAFCTotalLenght - 24, ' ', 0);
+                                            var strNetAmountDue = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].NetAmountDue) + (isSeniorCitizenDiscount ? 0 : CDec2(vDataFooter.Rows[0].ChargeAmount)) + CDec2(vDataFooter.Rows[0].TipAmount) + CDec2(vDataFooter.Rows[0].LocalTaxAmount)), intFAFCTotalLenght - 24, ' ', 0);
+
+                                            var strTotalCharges = SetPrefixPostfix(vDataFooter.Rows[0].ChargeAmount || '0', intFAFCTotalLenght - 24, ' ', 0);
+                                            var strTip = SetPrefixPostfix(vDataFooter.Rows[0].TipAmount || '0', intFAFCTotalLenght - 24, ' ', 0);
+
+                                            var strVatSale = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TotalAmountDue), intFAFCTotalLenght - 24, ' ', 0);
+                                            var strVatAmount = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].SubTotal) - CDec2(vDataFooter.Rows[0].TotalAmountDue)), intFAFCTotalLenght - 24, ' ', 0);
+
+                                            var strOtherTax = SetPrefixPostfix(vDataFooter.Rows[0].LocalTaxAmount || '0', intFAFCTotalLenght - 24, ' ', 0);
+
+                                            strPrint = '';
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SKU Count: ', 12, strSKUCount, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Gross Total: ', 20, strTotalAmountDue, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            if (isSeniorCitizenDiscount) {
+                                                
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+                                                
+                                                if (SCDiscountExempt > 0) {
+                                                    var strSCDiscountExempt = SetPrefixPostfix(AccountingFormat(SCDiscountExempt || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SC Discount-Exempt: ', 20, strSCDiscountExempt, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }                                                
+
+                                                var strSubTotalOfVatExemptItems = SetPrefixPostfix(AccountingFormat(SubTotalOfVatExemptItems || '0'), intFAFCTotalLenght - 31, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '\nGross Amount Subject to SCD: ', 29, strSubTotalOfVatExemptItems, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                if (GrossSalesToNoneSC > 0) {
+                                                    var strGrossSalesToNoneSC = SetPrefixPostfix(AccountingFormat(GrossSalesToNoneSC || '0'), intFAFCTotalLenght - 31, ' ', 0);
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Gross Sales to None-SC ' + (CInt2($('#txtSalesPayNoOfDiners').val()) - CInt2($('#txtSalesPayNoOfSC').val())) + '/' + $('#txtSalesPayNoOfDiners').val() + ':', 29, strGrossSalesToNoneSC, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                
+                                                var strGrossSalesToSC = SetPrefixPostfix(AccountingFormat(GrossSalesToSC || '0'), intFAFCTotalLenght - 23, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '\nGross Sales to SC ' + $('#txtSalesPayNoOfSC').val() + '/' + $('#txtSalesPayNoOfDiners').val() + ':', 21, strGrossSalesToSC, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strVatExemptSales = SetPrefixPostfix(AccountingFormat(VatExemptSales || '0') + (IsApplyMaxSCDiscountableAmount ? '' : '*'), intFAFCTotalLenght - 22, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT-Ex for SC: ', 20, strVatExemptSales, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strMaxSCDiscountableAmount = SetPrefixPostfix(AccountingFormat(MaxSCDiscountableAmount || '0') + (IsApplyMaxSCDiscountableAmount ? '*' : ''), intFAFCTotalLenght - 25, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Max Discountable VAT-EX(' + (CDec2(MaxSCDiscountableAmount) / CInt2($('#txtSalesPayNoOfSC').val())) + '*' + CInt2($('#txtSalesPayNoOfSC').val()) + ')', 23, strMaxSCDiscountableAmount, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strDiscountPercentCeiling = SetPrefixPostfix(AccountingFormat($('#txtDiscountPercentCeiling').val()) + '%', intFAFCTotalLenght - 22, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SC Discount Rate: ', 20, strDiscountPercentCeiling, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strseniorCitizenDiscount = SetPrefixPostfix(AccountingFormat(seniorCitizenDiscount || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SC Discount Amount based on Vat-Ex Sale: ', 20, strseniorCitizenDiscount, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                var strseniorCitizenNetAmount = SetPrefixPostfix(AccountingFormat(seniorCitizenNetAmount || '0'), intFAFCTotalLenght - 32, ' ', 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Net Amount to be Paid by SC: ', 30, strseniorCitizenNetAmount, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Less: ' + vDataFooter.Rows[0].TaxPercent + '% VAT ', 20, strVatAmount, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Amount: ', 20, strVatSale, intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Less: ' + vDataFooter.Rows[0].TaxPercent + '% VAT ', 20, SetPrefixPostfix(AccountingFormat($.trim($('#lblVATPercent').text())), intFAFCTotalLenght - 24, ' ', 0), intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Amount: ', 20, SetPrefixPostfix(AccountingFormat(CDec2(strTotalAmountDue) - CDec2($.trim($('#lblVATPercent').text()))), intFAFCTotalLenght - 24, ' ', 0), intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Discount:   ', 20, SetPrefixPostfix($.trim($('#lblSalesPayTotalDiscount').text()), intFAFCTotalLenght - 24, ' ', 0), intFAFCTotalLenght, '', 0, 0);
+                                                //strPrint = strPrint + strTemp;
+
+                                                //strNetAmountDue = SetPrefixPostfix(AccountingFormat(CDec2(strTotalAmountDue) - CDec2($.trim($('#lblVATPercent').text())) - CDec2($.trim($('#lblSalesPayTotalDiscount').text()))), intFAFCTotalLenght - 24, ' ', 0);
+
+                                            } else {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Discount:   ', 20, strTotalDiscount, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+                                            
+
+                                            if (CDec2(vDataFooter.Rows[0].ChargeAmount) > 0) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Charges:   ', 20, strTotalCharges, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+
+                                            if (CDec2(vDataFooter.Rows[0].TipAmount) > 0) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Tip:   ', 20, strTip, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                            }
+
+                                            if (CDec2(vDataFooter.Rows[0].LocalTaxAmount) > 0) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Local Tax:   ', 20, strOtherTax, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Amount Due:   ', 20, strNetAmountDue, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                            ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                            if (vDataPayment.Rows.length > 0) {
+
+                                                var strCashPayment = SetPrefixPostfix(AccountingFormat((vDataPayment.Rows[0].CashPayment || '0')), intFAFCTotalLenght - 9, ' ', 0);
+                                                var strCheckPayment = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CheckPaymentAmount || '0'), intFAFCTotalLenght - 10, ' ', 0);
+                                                var strDebitCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].DebitCardAmount || '0'), intFAFCTotalLenght - 16, ' ', 0);
+                                                var strCreditCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CreditCardAmount || '0'), intFAFCTotalLenght - 16, ' ', 0);
+                                                var strSRVAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].SRVAmount || '0'), intFAFCTotalLenght - 8, ' ', 0);
+                                                var strOtherTypeAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].OtherTypeAmount || '0'), intFAFCTotalLenght - 16, ' ', 0);
+                                                var strCustomerChangeCash = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CustomerChangeCash || '0'), intFAFCTotalLenght - 11, ' ', 0);
+
+                                                strPrint = '\n';
+                                                if (vDataPayment.Rows[0].CashPayment > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Cash:', 5, strCashPayment, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].CheckPaymentAmount > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Check:', 6, strCheckPayment, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].DebitCardAmount > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Debit Card:', 12, strDebitCardAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].CreditCardAmount > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Credit Card:', 12, strCreditCardAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].SRVAmount > 0) {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SRV:', 4, strSRVAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+                                                if (vDataPayment.Rows[0].OtherTypeAmount > 0) {
+                                                    var oSql = 'Select PaymentType from ' +
+                                                    'TransCustomerPaymentInvoices inner join ' +
+                                                    'TransCustomerPaymentOther on TransCustomerPaymentInvoices.CustomerPaymentID = TransCustomerPaymentOther.CustomerPaymentID ' +
+                                                    'where TransCustomerPaymentInvoices.InvoiceID = ' + ReadyString(sessionStorage.CartOrderID)
+
+                                                    var pdtCustomerPaymentOther = Sql.Execute(oSql);
+
+                                                    if (pdtCustomerPaymentOther.Rows.length > 0) {
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Other Tender(' + pdtCustomerPaymentOther.Rows[0].PaymentType + '):', 12, strOtherTypeAmount, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+                                                    } else {
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Other Tender:', 12, strOtherTypeAmount, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+                                                    }
+                                                }
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Change:', 7, strCustomerChangeCash, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                if (vDataPayment.Rows[0].CheckPaymentAmount > vDataFooter.Rows[0].NetAmountDue) {
+                                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, '* Excess payments made through checks are not entitled to cash refunds.', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                    ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+                                                } 
+
+                                            }
+
+                                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS)) {
+                                                strPrint = '';
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+                                                //var strVATSales = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TaxSales || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                //var strVATAmount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TaxAmount || '0'), intFAFCTotalLenght - 17, ' ', 0);
+                                                //var strNonVAT = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].NonVATSale || '0'), intFAFCTotalLenght - 24, ' ', 0);
+                                                //var strVATExempt = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VATExemptSale || '0'), intFAFCTotalLenght - 24, ' ', 0);
+                                                //var strVATZeroRated = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].ZeroRatedSale || '0'), intFAFCTotalLenght - 27, ' ', 0);
+
+                                                var strVATSales = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].TaxSales || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                var strVATAmount = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].TaxAmount || '0'), intFAFCTotalLenght - 17, ' ', 0);
+                                                var strNonVAT = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].NonVATSale || '0'), intFAFCTotalLenght - 24, ' ', 0);
+                                                var strVATExempt = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].VATExemptSale || '0'), intFAFCTotalLenght - 24, ' ', 0);
+                                                var strVATZeroRated = SetPrefixPostfix(AccountingFormat(vDataInvHeader.Rows[0].ZeroRatedSale || '0'), intFAFCTotalLenght - 27, ' ', 0);
+                                                var strVATExemptTax = '-';
+
+                                                if (isSeniorCitizenDiscount) {
+                                                    strVATSales = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VatablePortionOfSCDTransaction || '0'), intFAFCTotalLenght - 20, ' ', 0);
+                                                    strVATAmount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VatAmountPortionOfSCDTransaction || '0'), intFAFCTotalLenght - 15, ' ', 0);
+                                                    strNonVAT = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].NonVATSale || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                    strVATExempt = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VATExemptSale || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                    strVATExemptTax = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VATExemptTax || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                                    strVATZeroRated = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].ZeroRatedSale || '0'), intFAFCTotalLenght - 25, ' ', 0);
+
+                                                    //strVATSales = SetPrefixPostfix(AccountingFormat(0), intFAFCTotalLenght - 22, ' ', 0);
+                                                    //strVATAmount = SetPrefixPostfix(AccountingFormat(0), intFAFCTotalLenght - 17, ' ', 0);
+                                                    //strNonVAT = SetPrefixPostfix(AccountingFormat(strTotalAmountDue), intFAFCTotalLenght - 24, ' ', 0);
+                                                    //strVATExempt = SetPrefixPostfix(AccountingFormat(0), intFAFCTotalLenght - 24, ' ', 0);
+                                                    //strVATZeroRated = SetPrefixPostfix(AccountingFormat(0), intFAFCTotalLenght - 27, ' ', 0);
+                                                }
+
+                                                if (IsVAT != undefined) {
+                                                    if (!CBool(IsVAT)) {
+
+                                                        strVATSales = SetPrefixPostfix(AccountingFormat('0'), intFAFCTotalLenght - 20, ' ', 0);
+                                                        strVATAmount = SetPrefixPostfix(AccountingFormat('0'), intFAFCTotalLenght - 15, ' ', 0);
+                                                        strNonVAT = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].TaxSales) + CDec2(vDataFooter.Rows[0].TaxAmount) || '0'), intFAFCTotalLenght - 22, ' ', 0);
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT-able Sales: ', 18, strVATSales, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Amount: ', 13, strVATAmount, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Non-VAT Sales: ', 20, strNonVAT, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Exempt Sales: ', 20, strVATExempt, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Zero-Rated VAT Sales: ', 23, strVATZeroRated, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+                                                    } else {
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT-able Sales: ', 18, strVATSales, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Amount: ', 13, strVATAmount, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Non-VAT Sales: ', 20, strNonVAT, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Exempt Sales: ', 20, strVATExempt, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Zero-Rated VAT Sales: ', 23, strVATZeroRated, intFAFCTotalLenght, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+                                                    }
+                                                } else {
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT-able Sales: ', 18, strVATSales, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Amount: ', 13, strVATAmount, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Non-VAT Sales: ', 20, strNonVAT, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT Exempt Sales: ', 20, strVATExempt, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Zero-Rated VAT Sales: ', 23, strVATZeroRated, intFAFCTotalLenght, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+                                                }
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Accredited Supplier', 20, ' ', 1), 19, ': ' + proj.AccreditedSupplier, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Registered Address', 20, ' ', 1), 19, ': ' + proj.RegisteredAddress, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('TIN-Branch Code', 20, ' ', 1), 19, ': ' + proj.TinBranchCode, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('POS Accreditation', 20, ' ', 1), 19, ': ' + $.trim((vDataHeader.Rows[0].POSAccreditationNo || '')), intFAFCTotalLenght, '', 0, 0);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('POS Accreditation', 20, ' ', 1), 19, ': ' + proj.PosAccreditation, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Machine S/N', 20, ' ', 1), 19, ': ' + $.trim((vDataInvHeader.Rows[0].UuidDisplay || Web.DeviceSerial() || '')), intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('POS Reg. No./Permit To Use (PTU) No.', 20, ' ', 1), 19, ': ' + $.trim((vDataHeader.Rows[0].POSPermitNo || '')), intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Machine ID No. (MIN)', 20, ' ', 1), 19, ': ' + vDataHeader.Rows[0].MIN + ' \n', intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Date  Issued ', 20, ' ', 1), 19, ': ' + proj.PosAccreditationDateIssued, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                            //strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Valid Until', 20, ' ', 1), 19, ': ' + proj.PosAccreditationValidUntil + ' \n', intFAFCTotalLenght, '', 0, 0);
+                                            //strPrint = strPrint + strTemp;
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                // 2022_07_14__13_09_45_3756
+                                                //strPrint = '';
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim('THIS INVOICE/RECEIPT SHALL BE VALID FOR FIVE(5) YEARS FROM THE DATE OF THE PERMIT TO USE'), intFAFCTotalLenght, '', 0, '', 0, 1);
+
+                                                strPrint = strPrint + strTemp;
+
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                //Senior Citizen/Person With Disability info
+                                                if (isSeniorCitizenDiscount) {
+                                                    //strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim('SCD Details:'), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Number of SC: ', 12, $('#txtSalesPayNoOfSC').val() + ' of ' + $('#txtSalesPayNoOfDiners').val(), intFAFCTotalLenght, '', 0, 0);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Senior Citizen\'s Bill: ', 23, AccountingFormat(seniorCitizenNetAmount), intFAFCTotalLenght, '', 0, 0);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Non-Senior Citizen\'s Bill:', 27, AccountingFormat(GrossSalesToNoneSC), intFAFCTotalLenght, '', 0, 0);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'SCD-Exempt Amount: ', 19, AccountingFormat(SCDiscountExempt), intFAFCTotalLenght, '', 0, 0);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Total Bill: ', 12, AccountingFormat(CDec2(SCDiscountExempt) + CDec2(seniorCitizenNetAmount) + CDec2(GrossSalesToNoneSC)), intFAFCTotalLenght, '', 0, 0);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    ////---list of Senior Citizen
+                                                    //intIndex = 0;
+
+                                                    //for (var i = 0; i <= intSalesPayCustomerNameCntr; i++) {
+
+                                                    //    if (sessionStorage["SalesPayCustomerName-" + i] != undefined) {
+
+                                                    //        arSalesPayCustomerName = new Array();
+                                                    //        arSalesPayCustomerName = JSON.parse(sessionStorage["SalesPayCustomerName-" + i]);
+
+                                                    //        if (arSalesPayCustomerName[intSalesPayCustomerNameState] != "Remove") {
+                                                    //            //+ ', ' + arIdentificationNumber[0] + ': ' + arIdentificationNumber[2]
+                                                    //            strPrint = FormatTextToPrint(intFAFCTotalLenght, (intIndex + 1) + '. ', 3, arSalesPayCustomerName[3] + ' ' + arSalesPayCustomerName[5], intFAFCTotalLenght, '', 0, 0);
+                                                    //            ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //        } //end if not remove
+                                                    //    } //end if session storage
+                                                    //} //end for
+
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Senior Citizen/PWD TIN: ', 12, "Emilio Aguinaldo", intFAFCTotalLenght, '', 0, 0);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'OSCA ID No./PWD ID No.: ', 12, "8700-324", intFAFCTotalLenght, '', 0, 0);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                    //strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Signature: ', 12, "Heiroglophyics \n", intFAFCTotalLenght, '', 0, 0);
+                                                    //ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+                                                }
+
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                //Get Footer Messages
+                                                strPrint = '';
+                                                //                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Use for testing only. This is not an Official Receipt.', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                //                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'This Serves as Your Official Receipt.', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, vDataInvHeader.Rows[0].ReceiptFooterMsg, intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+                                            } else {
+                                                strPrint = '';
+
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                strPrint = '';
+
+                                                //strTemp = FormatTextToPrint(intFAFCTotalLenght, 'DO NOT GIVE THIS RECEIPT TO THE CUSTOMER', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                //strPrint = strPrint + strTemp;
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'THIS IS NOT AN OFFICIAL RECEIPT', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'FOR INTERNAL CONTROL PURPOSES ONLY', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                strPrint = strPrint + strTemp;
+                                                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 1, 0, 0, 0);
+                                            }
+
+                                            if (vDataMsg.Rows.length > 0) {
+                                                if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS)) {
+                                                    for (var p = 0; p <= vDataMsg.Rows.length - 1; p++) {
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataMsg.Rows[p].MessageFooter || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                        strPrint = strPrint + strTemp;
+                                                    };
+
+                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 1, 0, 0, 0);
+
+                                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'This business is made more efficient by Mobiz. Visit us at www.mobiz-apps.com', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                    //breakdown
+
+                                                    /*//Print Barcode
+                                                    strPrint = 'SI|' + vDataInvHeader.Rows[0].OrganizationID + '|' + vDataInvHeader.Rows[0].OrganizationBranchID + '|' + SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0)
+                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 1, 0, 0);
+    
+                                                    strPrint = SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0);
+                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 1, 0);*/
+                                                }
+                                                ReadyTextToPrint('\n', 3, 1, 1, 0, 0, 0, 0, 0, 1);
+
+                                                PrintText(strPrinterIP);
+                                                ClearCommandBuffer();
+
+                                                //Print SRV
+                                                PrintSalesPaymentSRVReceipt(0, pInvoiceID);
+
+                                                //Check Print Order Reference
+                                                if (OfflineMode) {
+                                                    if (Business.SystemDefaults.GetSystemDefault("When Do You Want To Print Order Slip") == 'After Payment' &&
+                                                        Business.SystemDefaults.GetSystemDefault("Print Order Slip") == '1') {
+
+                                                        var pDataSO;
+                                                        pDataSO = {
+                                                            InvoiceID: pInvoiceID
+                                                        };
+
+                                                        if (SalesMenu_offline().SaveSalesOrder(pDataSO)) {
+                                                            PrintSalesOrderBOM(pInvoiceID);
+                                                        }
+
+                                                    } //if (Business.SystemDefaults.GetSystemDefault("When Do You Want To Print Order Reference") == 'Before Payment'){
+                                                }
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                            "Printer",
+                            [
+                                {
+                                    Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                    );
+                    }
+
+                }
+		
+                function PrintSalesOrderBOM(pInvoiceID) {
+                    var vDataBOMPrinters;
+                    var vDataBOM;
+                    var strTemp = '';
+                    var strPrint = '';
+                    var intFAFCTotalLenght = 40;
+                    var intFBTotalLenght = 27;
+                    var intFCDoubleTotalLenght = 18;
+
+                    vDataBOMPrinters = SalesPayment_offline().getSalesPaymentReceiptBOMPrinter(pInvoiceID);
+
+                    //Get Printer IP Address
+                    if (vDataBOMPrinters != undefined) {
+                        if (vDataBOMPrinters.Rows.length > 0) {
+
+                            //Loop Print per Printer
+                            for (var pCntr = 0; pCntr <= vDataBOMPrinters.Rows.length - 1; pCntr++) {
+
+                                vDataBOM = SalesPayment_offline().getSalesPaymentReceiptBOMByPrinter(pInvoiceID, $.trim((vDataBOMPrinters.Rows[pCntr].ID || '')));
+
+                                if (vDataBOM.Rows.length > 0) {
+
+                                    //New set of text to print
+                                    NewPrintBuilder();
+
+                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataBOMPrinters.Rows[pCntr].PrinterRole || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Order Slip for', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                    ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 1, 0, 1, 0, 0, 0);
+
+                                    strPrint = '';
+                                    strTemp = FormatTextToPrint(intFCDoubleTotalLenght, 'SO ' + $.trim((vDataBOM.Rows[0].SalesOrderNo || '')) + '-' + $.trim((vDataBOM.Rows[0].FOWSTNo || '')) + '-' + $.trim((vDataBOM.Rows[0].DeviceNo || '')), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                    strPrint = strPrint + strTemp;
+
+                                    strTemp = FormatTextToPrint(intFCDoubleTotalLenght, ($.format.date(new Date(vDataBOM.Rows[0].SalesOrderDate), 'MMM dd, yyyy HH:mm') || ''), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                    strPrint = strPrint + strTemp;
+
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                    strPrint = FormatTextToPrint(intFCDoubleTotalLenght, $.trim((vDataBOM.Rows[0].CustomerName || '')), intFCDoubleTotalLenght, '', 0, '', 0, 0);
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                    if ($.trim((vDataBOM.Rows[0].CustomerTableNo || '')) != '') {
+                                        strPrint = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Table # ', 8, ' ', 1), 8, ': ' + $.trim((vDataBOM.Rows[0].CustomerTableNo || '')), intFCDoubleTotalLenght, '', 0, 0);
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 0, 0, 0, 0);
+                                    }
+
+                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Cashier: ' + ($.trim(vDataBOM.Rows[0].CashierName || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                    ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+
+                                    strPrint = 'so|' + SetPrefixPostfix($.trim((pInvoiceID || '')), 12, '0', 0)
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 1, 0, 0);
+
+                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                    strPrint = '';
+                                    var intSKUCnt = 0;
+                                    for (var intSKU = 0; intSKU <= vDataBOM.Rows.length - 1; intSKU++) {
+
+                                        var strStockDescription = $.trim((vDataBOM.Rows[intSKU].StockDescription || ''));
+                                        var strQty = SetPrefixPostfix(AccountingFormat((vDataBOM.Rows[intSKU].Quantity || '0'), 0), 4, ' ', 0);
+                                        var strUnitMeasure = $.trim((vDataBOM.Rows[intSKU].UnitMeasure || ''));
+
+                                        strPrint = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, intFAFCTotalLenght - 14, 'Prepared Qty', intFAFCTotalLenght, '', 0, 0);
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                        strPrint = FormatTextToPrint(intFCDoubleTotalLenght, strQty, 4, strUnitMeasure, 11, '_____', intFCDoubleTotalLenght, 0);
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 0, 0, 0, 0);
+
+                                        strPrint = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                        intSKUCnt = intSKUCnt + 1;
+                                    };
+
+                                    var strSKUCount = SetPrefixPostfix(AccountingFormat((intSKUCnt || 0), 0), intFAFCTotalLenght - 14, ' ', 0);
+                                    strPrint = FormatTextToPrint(intFAFCTotalLenght, 'SKU Count: ', 12, strSKUCount, intFAFCTotalLenght, '', 0, 0);
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                    ReadyTextToPrint('\n', 3, 1, 1, 0, 0, 0, 0, 0, 1);
+
+                                    PrintText(vDataBOMPrinters.Rows[pCntr].PrinterIPAddress);
+                                    ClearCommandBuffer();
+                                }
+                            } //End For
+
+                        } //END if (vDataBOMPrinters.Rows.length > 0) {
+                    }
+
+                };
+
+                function PrintBillingNow(pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg, vOptions) {
+                    var strTemp = '';
+                    var strPrint = '';
+                    var strPrinterIP = '';
+                    var strStockID = '';
+                    var IsShowSalesRep = false;
+                    var pData = {};
+                    pData.InvoiceID = pInvoiceID;
+
+                    //Get Printer IP Address
+                    if (vDataPrint == undefined) {
+                        MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                            "Printer",
+                            [
+                                { Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                    );
+                        return;
+                    }
+
+                    if (vDataPrint.Rows.length > 0) {
+                        if (CStr2(newPrinterIP) != '')
+                            strPrinterIP = newPrinterIP;
+                        else
+                            strPrinterIP = vDataPrint.Rows[0].PrinterIPAddress;
+
+
+                        //New set of text to print
+                        NewPrintBuilder();
+
+                        //Get Header
+                        IsShowSalesRep = false;
+                        if (vDataHeader.Rows.length > 0) {
+
+                            IsShowSalesRep = (vDataHeader.Rows[0].IsShowSalesRep == 1 ? true : false);
+
+                            strPrint = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].BusinessTradeName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                            ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                            //Get Items
+                            if (vDataInvHeader.Rows.length > 0) {
+                                strPrint = '\n\n';
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Customer', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerName || '')), intFAFCTotalLenght, '', 0, 0);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Address', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerAddress || '')), intFAFCTotalLenght, '', 0, 0);
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('TIN', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerTIN || '')), intFAFCTotalLenght, '', 0, 0);
+                                strPrint = strPrint + strTemp;
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                if ($.trim((vDataInvHeader.Rows[0].CustomerTableNo || '')) != '') {
+                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Table #', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerTableNo || '')), intFAFCTotalLenght, '', 0, 0);
+                                    strPrint = strTemp;
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+                                }
+
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                strPrint = '';
+                                if (CBool(vOptions.PrintAsOrderSlip)) {
+                                    strTemp = FormatTextToPrint(intFCDoubleTotalLenght, 'Order Slip No.', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                    strTemp = strTemp + FormatTextToPrint(intFCDoubleTotalLenght, SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].OrderSlipNum || '')), 12, '0', 0), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                } else {
+                                    strTemp = FormatTextToPrint(intFCDoubleTotalLenght, 'Bill ' + SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].SalesOrderNo || '')), 12, '0', 0), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                }
+                                strPrint = strPrint + strTemp;
+
+                                strTemp = FormatTextToPrint(intFCDoubleTotalLenght, ($.format.date(new Date(vDataInvHeader.Rows[0].InvoiceDate), 'MMM dd, yyyy HH:mm') || ''), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                strPrint = strPrint + strTemp;
+
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Cashier: ' + ($.trim(vDataInvHeader.Rows[0].CashierName || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                //Get Items
+                                var strProductID = "";
+                                if (vDataItem.Rows.length > 0) {
+                                    strStockID = '';
+                                    strPrint = '';
+                                    var intLimitPerBatchPrint = 0;
+                                    for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+
+                                        var strStockDescription = $.trim((vDataItem.Rows[p].StockDescription || ''));
+                                        var strUnitPrice = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].UnitPrice || '0'), intFAFCTotalLenght - 30, ' ', 0);
+                                        var strQty = SetPrefixPostfix(AccountingFormat((vDataItem.Rows[p].Quantity || '0'), 0), 8, ' ', 0);
+                                        var strUnitMeasure = SetPrefixPostfix((vDataItem.Rows[p].UnitMeasure || ''), 10, ' ', 0);
+                                        var strSubTotal = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].SubTotal || '0'), intFAFCTotalLenght - 22, ' ', 0);
+
+                                        strPrint = '';
+                                        if (strProductID == "") {
+                                            strProductID = vDataItem.Rows[p].StockID;
+                                        }
+
+                                        if (vDataItemSerial.Rows.length > 0) {
+                                            if (strProductID != vDataItem.Rows[p].StockID) { //Print Serials
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Serial(s) : ', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                    if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                        var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strSerial, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                    }
+                                                }
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strProductID = vDataItem.Rows[p].StockID;
+                                            }
+                                        }
+
+                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, 28, strUnitPrice, intFAFCTotalLenght, '', 0, 0);
+                                        strPrint = strPrint + strTemp;
+
+                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strQty, 8, strUnitMeasure, 20, strSubTotal, intFAFCTotalLenght, 0);
+                                        strPrint = strPrint + strTemp;
+
+                                        if (IsShowSalesRep) {
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Sales Person: ' + ($.trim(vDataItem.Rows[p].SalesPerson || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                        }
+
+                                        if (vDataItemSerial.Rows.length > 0) {
+                                            if (p == vDataItem.Rows.length - 1) {
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Serial(s) : ', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                    if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                        var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strSerial, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                        strPrint = strPrint + strTemp;
+
+                                                    }
+                                                }
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strProductID = vDataItem.Rows[p].StockID;
+                                            }
+                                        } else {
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                        }
+
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                        intLimitPerBatchPrint = intLimitPerBatchPrint + 1;
+
+                                        if (intLimitPerBatchPrint >= 100 && vDataItem.Rows.length > 100) {
+
+                                            PrintText(strPrinterIP);
+                                            ClearCommandBuffer();
+
+                                            //New set of text to print because it causes error when you print directly all items at once.
+                                            NewPrintBuilder();
+                                            intLimitPerBatchPrint = 0;
+                                        }
+
+                                    };
+
+                                    //Get Footer Amounts
+                                    if (vDataPayment.Rows.length > 0) {
+
+                                        //Get Footer Amounts
+                                        if (vDataFooter.Rows.length > 0) {
+
+                                            var strSKUCount = SetPrefixPostfix(AccountingFormat((vDataFooter.Rows[0].SKUCount || '0'), 0), intFAFCTotalLenght - 14, ' ', 0);
+                                            var strTotalAmountDue = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].SubTotal || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strTotalDiscount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].DiscountAmount || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strNetAmountDue = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].NetAmountDue) + CDec2(vDataFooter.Rows[0].ChargeAmount) + CDec2(vDataFooter.Rows[0].TipAmount) + CDec2(vDataFooter.Rows[0].LocalTaxAmount)), intFAFCTotalLenght - 22, ' ', 0);
+
+                                            var strTotalCharges = SetPrefixPostfix(vDataFooter.Rows[0].ChargeAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                            var strTip = SetPrefixPostfix(vDataFooter.Rows[0].TipAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+
+                                            var strVatSale = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TotalAmountDue), intFAFCTotalLenght - 22, ' ', 0);
+                                            var strVatAmount = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].SubTotal) - CDec2(vDataFooter.Rows[0].TotalAmountDue)), intFAFCTotalLenght - 22, ' ', 0);
+
+                                            var strOtherTax = SetPrefixPostfix(vDataFooter.Rows[0].LocalTaxAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+
+                                            strPrint = '';
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SKU Count: ', 12, strSKUCount, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Sub Total: ', 20, strTotalAmountDue, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            if (isSeniorCitizenDiscount) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Less: ' + vDataFooter.Rows[0].TaxPercent + '% VAT ', 20, strVatAmount, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Amount: ', 20, strVatSale, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+
+                                            }
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Discount:   ', 20, strTotalDiscount, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            if (CDec2(vDataFooter.Rows[0].ChargeAmount) > 0) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Total Charges:   ', 20, strTotalCharges, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+
+                                            if (CDec2(vDataFooter.Rows[0].TipAmount) > 0) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Tip:   ', 20, strTip, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+
+                                            }
+
+                                            if (CDec2(vDataFooter.Rows[0].LocalTaxAmount) > 0) {
+                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Local Tax:   ', 20, strOtherTax, intFAFCTotalLenght, '', 0, 0);
+                                                strPrint = strPrint + strTemp;
+                                            }
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Amount Due:   ', 20, strNetAmountDue, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                            ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+
+                                            //Get Footer Messages
+                                            strPrint = '';
+
+                                            strPrint = 'SO|' + vDataInvHeader.Rows[0].OrganizationID + '|' + vDataInvHeader.Rows[0].OrganizationBranchID + '|' + SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0)
+                                            ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 1, 0, 0);
+
+                                            ReadyTextToPrint('\n', 3, 1, 1, 0, 0, 0, 0, 0, 1);
+
+                                            PrintText(strPrinterIP);
+                                            ClearCommandBuffer();
+
+                                            //04-21-18
+                                            setTimeout(VerifyPrintBill(pInvoiceID), 1000)
+                                            
+                                            //Print SRV
+                                            //PrintSalesPaymentSRVReceipt(0, pInvoiceID);
+
+                                            //Check Print Order Reference
+                                            if (OfflineMode) {
+                                                if (Business.SystemDefaults.GetSystemDefault("When Do You Want To Print Order Slip") == 'After Payment' &&
+                                                        Business.SystemDefaults.GetSystemDefault("Print Order Slip") == '1') {
+
+                                                    var pDataSO;
+                                                    pDataSO = {
+                                                        InvoiceID: pInvoiceID
+                                                    };
+
+                                                    if (SalesMenu_offline().SaveSalesOrder(pDataSO)) {
+                                                        PrintSalesOrderBOM(pInvoiceID);
+                                                    }
+
+                                                } //if (Business.SystemDefaults.GetSystemDefault("When Do You Want To Print Order Reference") == 'Before Payment'){
+                                            }
+
+                                        }
+                                    }
+                                    //                                    }
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                            "Printer",
+                            [
+                                { Text: 'Ok',
+                                    Click: function () {
+
+                                        $.mobile.changePage('');
+
+                                        if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                            window.pageHeader.ShowPaymentsPage(false);
+
+                                    }
+                                }
+                            ]
+                    );
+                    }
+
+                };
+                ////////////                function PrintPOSDesktopReceipt(pInvoiceID) {
+                ////////////                    var strTemp = '';
+                ////////////                    var strPrint = '';
+                ////////////                    var IsShowSalesRep = false;
+                ////////////                    var pData = {};
+                ////////////                    pData.InvoiceID = pInvoiceID;
+
+                ////////////                    var japplet = document.jzebra;
+
+                ////////////                    //Get Header
+                ////////////                    AjaxSend({
+                ////////////                        url: "SalesPayments/getReceiptHeaderInfo",
+                ////////////                        data: pData,
+                ////////////                        success: function (vDataHeader) {
+
+                ////////////                            IsShowSalesRep = false;
+                ////////////                            if (vDataHeader.SalesPaymentData.Rows.length > 0) {
+
+                ////////////                                IsShowSalesRep = (vDataHeader.SalesPaymentData.Rows[0].IsShowSalesRep == 1 ? true : false);
+
+                ////////////                                strPrint = SetTextAlign($.trim(vDataHeader.SalesPaymentData.Rows[0].BusinessTradeName || ''), 1, intDesktopPrintLenght);
+                ////////////                                japplet.append(strPrint + "\n");
+
+                ////////////                                strPrint = SetTextAlign($.trim(vDataHeader.SalesPaymentData.Rows[0].CorporateName || ''), 1, intDesktopPrintLenght);
+                ////////////                                japplet.append(strPrint + "\n");
+
+                ////////////                                strPrint = SetTextAlign("TIN " + $.trim(vDataHeader.SalesPaymentData.Rows[0].TIN || ''), 1, intDesktopPrintLenght);
+                ////////////                                japplet.append(strPrint + "\n");
+
+                ////////////                                strPrint = SetTextAlign($.trim(vDataHeader.SalesPaymentData.Rows[0].CompleteAddress || ''), 1, intDesktopPrintLenght);
+                ////////////                                japplet.append(strPrint + "\n");
+
+                ////////////                                strPrint = SetTextAlign("Tel. No. " + $.trim(vDataHeader.SalesPaymentData.Rows[0].TelNo || ''), 1, intDesktopPrintLenght);
+                ////////////                                japplet.append(strPrint + "\n");
+
+                ////////////                                strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                ////////////                                japplet.append(strPrint + "\n");
+
+                ////////////                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('POS Accred. No.', 0, 15), 15, ': ' + $.trim((vDataHeader.SalesPaymentData.Rows[0].POSAccreditationNo || '')), intDesktopPrintLenght, '', 0);
+                ////////////                                japplet.append(strPrint + "\n");
+
+                ////////////                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('POS Reg. No.', 0, 12), 12, ': ' + $.trim((vDataHeader.SalesPaymentData.Rows[0].POSPermitNo || '')), intDesktopPrintLenght, '', 0);
+                ////////////                                japplet.append(strPrint + "\n");
+
+                ////////////                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Machine ID', 0, 10), 10, ': ' + vDataHeader.SalesPaymentData.Rows[0].MIN, intDesktopPrintLenght, '', 0);
+                ////////////                                japplet.append(strPrint + "\n");
+
+                ////////////                                strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                ////////////                                japplet.append(strPrint + "\n");
+
+
+                ////////////                                //Get Invoice Header
+                ////////////                                AjaxSend({
+                ////////////                                    url: "SalesPayments/getSalesPaymentInvoiceHeaderInfo",
+                ////////////                                    data: pData,
+                ////////////                                    success: function (vDataInvHeader) {
+
+                ////////////                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Customer            ', 0, 20), 20, ': ' + $.trim((vDataInvHeader.SalesPaymentData.Rows[0].CustomerName || '')), intDesktopPrintLenght, '', 0);
+                ////////////                                        japplet.append(strPrint + "\n");
+
+                ////////////                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Address             ', 0, 20), 20, ': ' + $.trim((vDataInvHeader.SalesPaymentData.Rows[0].CustomerAddress || '')), intDesktopPrintLenght, '', 0);
+                ////////////                                        japplet.append(strPrint + "\n");
+
+                ////////////                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('TIN                 ', 0, 20), 20, ': ' + $.trim((vDataInvHeader.SalesPaymentData.Rows[0].CustomerTIN || '')), intDesktopPrintLenght, '', 0);
+                ////////////                                        japplet.append(strPrint + "\n");
+
+                ////////////                                        if ($.trim((vDataInvHeader.SalesPaymentData.Rows[0].CustomerTableNo || '')) != '') {
+                ////////////                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Table #             ', 0, 20), 20, ': ' + $.trim((vDataInvHeader.SalesPaymentData.Rows[0].CustomerTableNo || '')), intDesktopPrintLenght, '', 0);
+                ////////////                                            japplet.append(strPrint + "\n");
+                ////////////                                        }
+
+                ////////////                                        strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                ////////////                                        japplet.append(strPrint + "\n");
+
+                ////////////                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Sales Inv. No. ', 0, 15), 15, ': ' + SetPrefixPostfix($.trim((vDataInvHeader.SalesPaymentData.Rows[0].InvoiceNumber || '')), 12, '0', 0), intDesktopPrintLenght, '', 0);
+                ////////////                                        japplet.append(strPrint + "\n");
+
+                ////////////                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Date/Time      ', 0, 15), 15, ': ' + ($.format.date(new Date(vDataInvHeader.SalesPaymentData.Rows[0].InvoiceDate), 'MMM dd, yyyy HH:mm') || ''), intDesktopPrintLenght, '', 0);
+                ////////////                                        japplet.append(strPrint + "\n");
+
+                ////////////                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Cashier        ', 0, 15), 15, ': ' + ($.trim(vDataInvHeader.SalesPaymentData.Rows[0].CashierName || '')), intDesktopPrintLenght, '', 0);
+                ////////////                                        japplet.append(strPrint + "\n");
+
+                ////////////                                        strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                ////////////                                        japplet.append(strPrint + "\n");
+
+                ////////////                                        //Get Items
+                ////////////                                        AjaxSend({
+                ////////////                                            url: "SalesPayments/getSalesPaymentReceiptBodyInfo",
+                ////////////                                            data: pData,
+                ////////////                                            success: function (vDataItem) {
+
+                ////////////                                                //Get Invoice Items Serial
+                ////////////                                                AjaxSend({
+                ////////////                                                    url: "SalesPayments/getSalesPaymentReceiptSerial",
+                ////////////                                                    data: pData,
+                ////////////                                                    success: function (vRetDataItemSerial) {
+                ////////////                                                        var strProductID = "";
+                ////////////                                                        strPrint = '';
+                ////////////                                                        for (var p = 0; p <= vDataItem.SalesPaymentData.Rows.length - 1; p++) {
+
+                ////////////                                                            var strStockDescription = $.trim((vDataItem.SalesPaymentData.Rows[p].StockDescription || ''));
+                ////////////                                                            var strUnitPrice = SetPrefixPostfix(AccountingFormat(vDataItem.SalesPaymentData.Rows[p].UnitPrice || '0'), intDesktopPrintLenght - 34, ' ', 0);
+                ////////////                                                            var strQty = SetPrefixPostfix(AccountingFormat((vDataItem.SalesPaymentData.Rows[p].Quantity || '0'), 0), 8, ' ', 0);
+                ////////////                                                            var strUnitMeasure = SetPrefixPostfix((vDataItem.SalesPaymentData.Rows[p].UnitMeasure || ''), 10, ' ', 0);
+                ////////////                                                            var strSubTotal = SetPrefixPostfix(AccountingFormat(vDataItem.SalesPaymentData.Rows[p].SubTotal || '0'), intDesktopPrintLenght - 26, ' ', 0);
+
+                ////////////                                                            if (strProductID == "") {
+                ////////////                                                                strProductID = vDataItem.SalesPaymentData.Rows[p].StockID;
+                ////////////                                                            }
+
+                ////////////                                                            if (vRetDataItemSerial.SalesPaymentData.Rows.length > 0) {
+                ////////////                                                                if (strProductID != vDataItem.SalesPaymentData.Rows[p].StockID) { //Print Serials
+
+                ////////////                                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Serial(s) : ', intDesktopPrintLenght, '', 0, '', 0, 0);
+                ////////////                                                                    japplet.append(strPrint + "\n");
+
+                ////////////                                                                    for (var intSerial = 0; intSerial <= vRetDataItemSerial.SalesPaymentData.Rows.length - 1; intSerial++) {
+
+                ////////////                                                                        if (strProductID == vRetDataItemSerial.SalesPaymentData.Rows[intSerial].ProductID) {
+
+                ////////////                                                                            var strSerial = $.trim((vRetDataItemSerial.SalesPaymentData.Rows[intSerial].SerialNumber || ''));
+                ////////////                                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, $.trim(strSerial || ''), intDesktopPrintLenght, '', 0, '', 0, 0);
+                ////////////                                                                            japplet.append(strPrint + "\n");
+
+                ////////////                                                                        }
+                ////////////                                                                    }
+
+                ////////////                                                                    strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                ////////////                                                                    japplet.append(strPrint + "\n");
+
+                ////////////                                                                    strProductID = vDataItem.SalesPaymentData.Rows[p].StockID;
+                ////////////                                                                }
+                ////////////                                                            }
+
+                ////////////                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, strStockDescription, 32, strUnitPrice, intDesktopPrintLenght, '', 0);
+                ////////////                                                            japplet.append(strPrint + "\n");
+
+                ////////////                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, strQty, 8, strUnitMeasure, 24, strSubTotal, intDesktopPrintLenght);
+                ////////////                                                            japplet.append(strPrint + "\n");
+
+                ////////////                                                            if (IsShowSalesRep) {
+
+                ////////////                                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Sales Person: ' + ($.trim(vDataItem.SalesPaymentData.Rows[p].SalesPerson || '')), intDesktopPrintLenght, '', 0, '', 0, 0);
+                ////////////                                                                japplet.append(strPrint + "\n");
+
+                ////////////                                                            }
+
+                ////////////                                                            if (vRetDataItemSerial.SalesPaymentData.Rows.length > 0) {
+                ////////////                                                                if (p == vDataItem.SalesPaymentData.Rows.length - 1) { //Print Serials
+
+                ////////////                                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Serial(s) : ', intDesktopPrintLenght, '', 0, '', 0, 0);
+                ////////////                                                                    japplet.append(strPrint + "\n");
+
+                ////////////                                                                    for (var intSerial = 0; intSerial <= vRetDataItemSerial.SalesPaymentData.Rows.length - 1; intSerial++) {
+
+                ////////////                                                                        if (strProductID == vRetDataItemSerial.SalesPaymentData.Rows[intSerial].ProductID) {
+
+                ////////////                                                                            var strSerial = $.trim((vRetDataItemSerial.SalesPaymentData.Rows[intSerial].SerialNumber || ''));
+                ////////////                                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, $.trim(strSerial || ''), intDesktopPrintLenght, '', 0, '', 0, 0);
+                ////////////                                                                            japplet.append(strPrint + "\n");
+
+                ////////////                                                                        }
+                ////////////                                                                    }
+
+                ////////////                                                                    strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                ////////////                                                                    japplet.append(strPrint + "\n");
+
+                ////////////                                                                    strProductID = vDataItem.SalesPaymentData.Rows[p].StockID;
+                ////////////                                                                }
+                ////////////                                                            } else {
+                ////////////                                                                strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                ////////////                                                                japplet.append(strPrint + "\n");
+                ////////////                                                            }
+
+                ////////////                                                        };
+
+                ////////////                                                        //Get Payment Info
+                ////////////                                                        AjaxSend({
+                ////////////                                                            url: "SalesPayments/getSalesPaymentReceiptPaymentInfo",
+                ////////////                                                            data: pData,
+                ////////////                                                            success: function (vDataPayment) {
+
+                ////////////                                                                //Get Footer Amounts
+                ////////////                                                                AjaxSend({
+                ////////////                                                                    url: "SalesPayments/getSalesPaymentReceiptFooterAmountsInfo",
+                ////////////                                                                    data: pData,
+                ////////////                                                                    success: function (vDataFooter) {
+
+                ////////////                                                                        var strSKUCount = SetPrefixPostfix(AccountingFormat((vDataFooter.SalesPaymentData.Rows[0].SKUCount || '0'), 0), intDesktopPrintLenght - 13, ' ', 0);
+                ////////////                                                                        var strTotalAmountDue = SetPrefixPostfix(AccountingFormat(vDataFooter.SalesPaymentData.Rows[0].TotalAmountDue || '0'), intDesktopPrintLenght - 20, ' ', 0);
+                ////////////                                                                        var strTotalDiscount = SetPrefixPostfix(AccountingFormat(vDataFooter.SalesPaymentData.Rows[0].DiscountAmount || '0'), intDesktopPrintLenght - 20, ' ', 0);
+                ////////////                                                                        var strNetAmountDue = SetPrefixPostfix(AccountingFormat(vDataFooter.SalesPaymentData.Rows[0].NetAmountDue || '0'), intDesktopPrintLenght - 20, ' ', 0);
+
+                ////////////                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'SKU Count: ', 11, strSKUCount, intDesktopPrintLenght, '', 0);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Sub Total: ', 18, strTotalAmountDue, intDesktopPrintLenght, '', 0);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Total Discount: ', 18, strTotalDiscount, intDesktopPrintLenght, '', 0);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Amount Due: ', 18, strNetAmountDue, intDesktopPrintLenght, '', 0);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        if (vDataPayment.SalesPaymentData.Rows.length > 0) {
+
+                ////////////                                                                            var strCashPayment = SetPrefixPostfix(AccountingFormat((vDataPayment.SalesPaymentData.Rows[0].CashPayment || '0')), intDesktopPrintLenght - 8, ' ', 0);
+                ////////////                                                                            var strCheckPayment = SetPrefixPostfix(AccountingFormat(vDataPayment.SalesPaymentData.Rows[0].CheckPaymentAmount || '0'), intDesktopPrintLenght - 9, ' ', 0);
+                ////////////                                                                            var strDebitCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.SalesPaymentData.Rows[0].DebitCardAmount || '0'), intDesktopPrintLenght - 15, ' ', 0);
+                ////////////                                                                            var strCreditCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.SalesPaymentData.Rows[0].CreditCardAmount || '0'), intDesktopPrintLenght - 15, ' ', 0);
+                ////////////                                                                            var strSRVAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.SalesPaymentData.Rows[0].SRVAmount || '0'), intDesktopPrintLenght - 7, ' ', 0);
+                ////////////                                                                            var strCustomerChangeCash = SetPrefixPostfix(AccountingFormat(vDataPayment.SalesPaymentData.Rows[0].CustomerChangeCash || '0'), intDesktopPrintLenght - 10, ' ', 0);
+
+                ////////////                                                                            japplet.append("\n");
+
+                ////////////                                                                            if (vDataPayment.SalesPaymentData.Rows[0].CashPayment > 0) {
+                ////////////                                                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Cash: ', 6, strCashPayment, intDesktopPrintLenght, '', 0);
+                ////////////                                                                                japplet.append(strPrint + "\n");
+                ////////////                                                                            }
+                ////////////                                                                            if (vDataPayment.SalesPaymentData.Rows[0].CheckPaymentAmount > 0) {
+                ////////////                                                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Check: ', 7, strCheckPayment, intDesktopPrintLenght, '', 0);
+                ////////////                                                                                japplet.append(strPrint + "\n");
+                ////////////                                                                            }
+                ////////////                                                                            if (vDataPayment.SalesPaymentData.Rows[0].DebitCardAmount > 0) {
+                ////////////                                                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Debit Card: ', 13, strDebitCardAmount, intDesktopPrintLenght, '', 0);
+                ////////////                                                                                japplet.append(strPrint + "\n");
+                ////////////                                                                            }
+                ////////////                                                                            if (vDataPayment.SalesPaymentData.Rows[0].CreditCardAmount > 0) {
+                ////////////                                                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Credit Card: ', 13, strCreditCardAmount, intDesktopPrintLenght, '', 0);
+                ////////////                                                                                japplet.append(strPrint + "\n");
+                ////////////                                                                            }
+                ////////////                                                                            if (vDataPayment.SalesPaymentData.Rows[0].SRVAmount > 0) {
+                ////////////                                                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'SRV: ', 5, strSRVAmount, intDesktopPrintLenght, '', 0);
+                ////////////                                                                                japplet.append(strPrint + "\n");
+                ////////////                                                                            }
+
+                ////////////                                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Change: ', 8, strCustomerChangeCash, intDesktopPrintLenght, '', 0);
+                ////////////                                                                            japplet.append(strPrint + "\n");
+
+                ////////////                                                                            if (vDataPayment.SalesPaymentData.Rows[0].CheckPaymentAmount > vDataFooter.SalesPaymentData.Rows[0].NetAmountDue) {
+                ////////////                                                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, '* Excess payments made through checks are not entitled to cash refunds.', intDesktopPrintLenght, '', 0, '', 0);
+                ////////////                                                                                japplet.append(strPrint + "\n");
+                ////////////                                                                            }
+
+                ////////////                                                                        }
+
+                ////////////                                                                        strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        var strVATSales = SetPrefixPostfix(AccountingFormat(vDataFooter.SalesPaymentData.Rows[0].TaxSales || '0'), intDesktopPrintLenght - 18, ' ', 0);
+                ////////////                                                                        var strVATAmount = SetPrefixPostfix(AccountingFormat(vDataFooter.SalesPaymentData.Rows[0].TaxAmount || '0'), intDesktopPrintLenght - 14, ' ', 0);
+                ////////////                                                                        var strNonVAT = SetPrefixPostfix('0.00', intDesktopPrintLenght - 20, ' ', 0);
+                ////////////                                                                        var strVATExempt = SetPrefixPostfix('0.00', intDesktopPrintLenght - 20, ' ', 0);
+                ////////////                                                                        var strVATZeroRated = SetPrefixPostfix('0.00', intDesktopPrintLenght - 24, ' ', 0);
+
+                ////////////                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'VAT-able Sales: ', 16, strVATSales, intDesktopPrintLenght, '', 0);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'VAT Amount: ', 12, strVATAmount, intDesktopPrintLenght, '', 0);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Non-VAT Sales: ', 18, strNonVAT, intDesktopPrintLenght, '', 0);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'VAT Exempt Sales: ', 18, strVATExempt, intDesktopPrintLenght, '', 0);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'VAT Zero-Rated Sales: ', 22, strVATZeroRated, intDesktopPrintLenght, '', 0);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        //Get Footer Messages
+                ////////////                                                                        //strPrint = SetTextAlign('Use for testing only. This is not an Official Receipt.', 1, intDesktopPrintLenght);
+                ////////////                                                                        //strPrint = SetTextAlign('This Serves as Your Official Receipt.', 1, intDesktopPrintLenght);
+                ////////////                                                                        strPrint = SetTextAlign(vDataInvHeader.SalesPaymentData.Rows[0].ReceiptFooterMsg, 1, intDesktopPrintLenght);
+
+                ////////////                                                                        japplet.append(strPrint + "\n");
+
+                ////////////                                                                        AjaxSend({
+                ////////////                                                                            url: "SalesPayments/getSalesPaymentReceiptFooterMessagesInfo",
+                ////////////                                                                            data: pData,
+                ////////////                                                                            success: function (vDataMsg) {
+
+                ////////////                                                                                for (var p = 0; p <= vDataMsg.SalesPaymentData.Rows.length - 1; p++) {
+                ////////////                                                                                    if (p <= vDataMsg.SalesPaymentData.Rows.length - 1) {
+                ////////////                                                                                        strPrint = SetTextAlign($.trim((vDataMsg.SalesPaymentData.Rows[p].MessageFooter || '')), 1, intDesktopPrintLenght);
+                ////////////                                                                                        japplet.append(strPrint + "\n");
+                ////////////                                                                                    }
+                ////////////                                                                                };
+
+                ////////////                                                                                strPrint = SetTextAlign('This business is made more efficient by Mobiz', 1, intDesktopPrintLenght);
+                ////////////                                                                                japplet.append(strPrint + "\n");
+
+                ////////////                                                                                strPrint = SetTextAlign('Visit us at www.mobiz-apps.com', 1, intDesktopPrintLenght);
+                ////////////                                                                                japplet.append(strPrint + "\n");
+
+                ////////////                                                                                japplet.append("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+                ////////////                                                                                //                                                                    japplet.print();
+
+                ////////////                                                                                //Print SRV
+                ////////////                                                                                PrintSalesPaymentSRVReceipt(0, pInvoiceID);
+
+
+                ////////////                                                                            }
+                ////////////                                                                        });
+
+                ////////////                                                                    }
+                ////////////                                                                });
+
+                ////////////                                                            }
+                ////////////                                                        });
+
+                ////////////                                                    }
+                ////////////                                                });
+
+                ////////////                                            }
+                ////////////                                        });
+
+                ////////////                                    }
+                ////////////                                });
+
+                ////////////                            }
+                ////////////                        }
+                ////////////                    });
+                ////////////                }
+
+                function PrintPOSDesktopReceiptNow(pInvoiceID, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg) {
+                    var strTemp = '';
+                    var strPrint = '';
+                    var IsShowSalesRep = false;
+                    var pData = {};
+                    pData.InvoiceID = pInvoiceID;
+
+                    var japplet = document.jzebra;
+
+                    //Get Header
+                    IsShowSalesRep = false;
+                    if (vDataHeader.Rows.length > 0) {
+
+                        IsShowSalesRep = (vDataHeader.Rows[0].IsShowSalesRep == 1 ? true : false);
+
+                        strPrint = SetTextAlign($.trim(vDataHeader.Rows[0].BusinessTradeName || ''), 1, intDesktopPrintLenght);
+                        japplet.append(strPrint + "\n");
+
+                        strPrint = SetTextAlign($.trim(vDataHeader.Rows[0].CorporateName || ''), 1, intDesktopPrintLenght);
+                        japplet.append(strPrint + "\n");
+
+                        strPrint = SetTextAlign("TIN " + $.trim(vDataHeader.Rows[0].TIN || ''), 1, intDesktopPrintLenght);
+                        japplet.append(strPrint + "\n");
+
+                        strPrint = SetTextAlign($.trim(vDataHeader.Rows[0].CompleteAddress || ''), 1, intDesktopPrintLenght);
+                        japplet.append(strPrint + "\n");
+
+                        strPrint = SetTextAlign("Tel. No. " + $.trim(vDataHeader.Rows[0].TelNo || ''), 1, intDesktopPrintLenght);
+                        japplet.append(strPrint + "\n");
+
+                        strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                        japplet.append(strPrint + "\n");
+
+                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('POS Accred. No.', 0, 15), 15, ': ' + $.trim((vDataHeader.Rows[0].POSAccreditationNo || '')), intDesktopPrintLenght, '', 0);
+                        japplet.append(strPrint + "\n");
+
+                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('POS Reg. No.', 0, 12), 12, ': ' + $.trim((vDataHeader.Rows[0].POSPermitNo || '')), intDesktopPrintLenght, '', 0);
+                        japplet.append(strPrint + "\n");
+
+                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Machine ID', 0, 10), 10, ': ' + vDataHeader.Rows[0].MIN, intDesktopPrintLenght, '', 0);
+                        japplet.append(strPrint + "\n");
+
+                        strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                        japplet.append(strPrint + "\n");
+
+                        //Get Invoice Header
+                        if (vDataInvHeader.Rows.length > 0) {
+
+                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Customer            ', 0, 20), 20, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerName || '')), intDesktopPrintLenght, '', 0);
+                            japplet.append(strPrint + "\n");
+
+                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Address             ', 0, 20), 20, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerAddress || '')), intDesktopPrintLenght, '', 0);
+                            japplet.append(strPrint + "\n");
+
+                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('TIN                 ', 0, 20), 20, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerTIN || '')), intDesktopPrintLenght, '', 0);
+                            japplet.append(strPrint + "\n");
+
+                            if ($.trim((vDataInvHeader.Rows[0].CustomerTableNo || '')) != '') {
+                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Table #             ', 0, 20), 20, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerTableNo || '')), intDesktopPrintLenght, '', 0);
+                                japplet.append(strPrint + "\n");
+                            }
+
+                            strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                            japplet.append(strPrint + "\n");
+
+                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Sales Inv. No. ', 0, 15), 15, ': ' + SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0), intDesktopPrintLenght, '', 0);
+                            japplet.append(strPrint + "\n");
+
+                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Date/Time      ', 0, 15), 15, ': ' + ($.format.date(new Date(vDataInvHeader.Rows[0].InvoiceDate), 'MMM dd, yyyy HH:mm') || ''), intDesktopPrintLenght, '', 0);
+                            japplet.append(strPrint + "\n");
+
+                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Cashier        ', 0, 15), 15, ': ' + ($.trim(vDataInvHeader.Rows[0].CashierName || '')), intDesktopPrintLenght, '', 0);
+                            japplet.append(strPrint + "\n");
+
+                            strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                            japplet.append(strPrint + "\n");
+
+                            //Get Items
+                            if (vDataItem.Rows.length > 0) {
+
+                                var strProductID = "";
+                                strPrint = '';
+                                for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+
+                                    var strStockDescription = $.trim((vDataItem.Rows[p].StockDescription || ''));
+                                    var strUnitPrice = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].UnitPrice || '0'), intDesktopPrintLenght - 34, ' ', 0);
+                                    var strQty = SetPrefixPostfix(AccountingFormat((vDataItem.Rows[p].Quantity || '0'), 0), 8, ' ', 0);
+                                    var strUnitMeasure = SetPrefixPostfix((vDataItem.Rows[p].UnitMeasure || ''), 10, ' ', 0);
+                                    var strSubTotal = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].SubTotal || '0'), intDesktopPrintLenght - 26, ' ', 0);
+
+                                    if (strProductID == "") {
+                                        strProductID = vDataItem.Rows[p].StockID;
+                                    }
+
+                                    //Get Invoice Items Serial
+                                    if (vDataItemSerial.Rows.length > 0) {
+                                        if (strProductID != vDataItem.Rows[p].StockID) { //Print Serials
+
+                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Serial(s) : ', intDesktopPrintLenght, '', 0, '', 0, 0);
+                                            japplet.append(strPrint + "\n");
+
+                                            for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                if (strProductID == vDataItemSerial.Rows[intSerial].ProductID) {
+
+                                                    var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, $.trim(strSerial || ''), intDesktopPrintLenght, '', 0, '', 0, 0);
+                                                    japplet.append(strPrint + "\n");
+
+                                                }
+                                            }
+
+                                            strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                            japplet.append(strPrint + "\n");
+
+                                            strProductID = vDataItem.Rows[p].StockID;
+                                        }
+                                    }
+
+                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, strStockDescription, 32, strUnitPrice, intDesktopPrintLenght, '', 0);
+                                    japplet.append(strPrint + "\n");
+
+                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, strQty, 8, strUnitMeasure, 24, strSubTotal, intDesktopPrintLenght);
+                                    japplet.append(strPrint + "\n");
+
+                                    if (IsShowSalesRep) {
+
+                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Sales Person: ' + ($.trim(vDataItem.Rows[p].SalesPerson || '')), intDesktopPrintLenght, '', 0, '', 0, 0);
+                                        japplet.append(strPrint + "\n");
+
+                                    }
+
+                                    if (vDataItemSerial.Rows.length > 0) {
+                                        if (p == vDataItem.Rows.length - 1) { //Print Serials
+
+                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Serial(s) : ', intDesktopPrintLenght, '', 0, '', 0, 0);
+                                            japplet.append(strPrint + "\n");
+
+                                            for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                if (strProductID == vDataItemSerial.Rows[intSerial].ProductID) {
+
+                                                    var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, $.trim(strSerial || ''), intDesktopPrintLenght, '', 0, '', 0, 0);
+                                                    japplet.append(strPrint + "\n");
+
+                                                }
+                                            }
+
+                                            strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                            japplet.append(strPrint + "\n");
+
+                                            strProductID = vDataItem.Rows[p].StockID;
+                                        }
+                                    } else {
+                                        strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                        japplet.append(strPrint + "\n");
+                                    }
+
+                                };
+
+                                if (vDataPayment.Rows.length > 0) {
+
+                                    //Get Footer Amounts
+                                    if (vDataPayment.Rows.length > 0) {
+                                        var strSKUCount = SetPrefixPostfix(AccountingFormat((vDataFooter.Rows[0].SKUCount || '0'), 0), intDesktopPrintLenght - 13, ' ', 0);
+                                        var strTotalAmountDue = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].SubTotal || '0'), intDesktopPrintLenght - 20, ' ', 0);
+                                        var strTotalDiscount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].DiscountAmount || '0'), intDesktopPrintLenght - 20, ' ', 0);
+                                        var strNetAmountDue = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].NetAmountDue) + CDec2(vDataFooter.Rows[0].ChargeAmount) + CDec2(vDataFooter.Rows[0].TipAmount)), intDesktopPrintLenght - 20, ' ', 0);
+
+                                        var strTotalCharges = SetPrefixPostfix(vDataFooter.Rows[0].ChargeAmount || '0', intDesktopPrintLenght - 20, ' ', 0);
+                                        var strTip = SetPrefixPostfix(vDataFooter.Rows[0].TipAmount || '0', intDesktopPrintLenght - 20, ' ', 0);
+
+                                        var strVatSale = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TotalAmountDue), intDesktopPrintLenght - 20, ' ', 0);
+                                        var strVatAmount = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].SubTotal) - CDec2(vDataFooter.Rows[0].TotalAmountDue)), intDesktopPrintLenght - 20, ' ', 0);
+
+                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'SKU Count: ', 11, strSKUCount, intDesktopPrintLenght, '', 0);
+                                        japplet.append(strPrint + "\n");
+
+                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Sub Total: ', 18, strTotalAmountDue, intDesktopPrintLenght, '', 0);
+                                        japplet.append(strPrint + "\n");
+
+                                        if (isSeniorCitizenDiscount) {
+                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Less: ' + vDataFooter.Rows[0].TaxPercent + '% VAT ', 18, $.trim($('#lblVATPercent').text()), intDesktopPrintLenght, '', 0);
+                                            japplet.append(strPrint + "\n");
+
+                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Total Amount: ', 18, $.trim($('#lblVATPercent').text()), intDesktopPrintLenght, '', 0);
+                                            japplet.append(strPrint + "\n");
+
+                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Total Discount: ', 18, $.trim($('#lblSalesPayTotalDiscount').text()), intDesktopPrintLenght, '', 0);
+                                            japplet.append(strPrint + "\n");
+                                            
+                                            strNetAmountDue = AccountingFormat(CDec2(strTotalAmountDue) - CDec2($.trim($('#lblVATPercent').text())) - CDec2($.trim($('#lblSalesPayTotalDiscount').text())))
+
+                                        } else {
+                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Total Discount: ', 18, strTotalDiscount, intDesktopPrintLenght, '', 0);
+                                            japplet.append(strPrint + "\n");
+                                        }
+
+                                        
+
+                                        if (CStr2(sessionStorage.IsEnableDiningMode) == 'true') {
+                                            var strTotalCharges = SetPrefixPostfix(vDataFooter.Rows[0].ChargeAmount || '0', intDesktopPrintLenght - 20, ' ', 0);
+                                            var strTip = SetPrefixPostfix(vDataFooter.Rows[0].TipAmount || '0', intDesktopPrintLenght - 20, ' ', 0);
+
+                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Total Charges:', 18, strTotalCharges, intDesktopPrintLenght, '', 0);
+                                            japplet.append(strPrint + "\n");
+
+                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Tip:', 18, strTip, intDesktopPrintLenght, '', 0);
+                                            japplet.append(strPrint + "\n");
+
+                                        }
+
+                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Amount Due: ', 18, strNetAmountDue, intDesktopPrintLenght, '', 0);
+                                        japplet.append(strPrint + "\n");
+
+                                        if (vDataPayment.Rows.length > 0) {
+
+                                            var strCashPayment = SetPrefixPostfix(AccountingFormat((vDataPayment.Rows[0].CashPayment || '0')), intDesktopPrintLenght - 8, ' ', 0);
+                                            var strCheckPayment = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CheckPaymentAmount || '0'), intDesktopPrintLenght - 9, ' ', 0);
+                                            var strDebitCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].DebitCardAmount || '0'), intDesktopPrintLenght - 15, ' ', 0);
+                                            var strCreditCardAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CreditCardAmount || '0'), intDesktopPrintLenght - 15, ' ', 0);
+                                            var strSRVAmount = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].SRVAmount || '0'), intDesktopPrintLenght - 7, ' ', 0);
+                                            var strCustomerChangeCash = SetPrefixPostfix(AccountingFormat(vDataPayment.Rows[0].CustomerChangeCash || '0'), intDesktopPrintLenght - 10, ' ', 0);
+
+                                            japplet.append("\n");
+
+                                            if (vDataPayment.Rows[0].CashPayment > 0) {
+                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Cash: ', 6, strCashPayment, intDesktopPrintLenght, '', 0);
+                                                japplet.append(strPrint + "\n");
+                                            }
+                                            if (vDataPayment.Rows[0].CheckPaymentAmount > 0) {
+                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Check: ', 7, strCheckPayment, intDesktopPrintLenght, '', 0);
+                                                japplet.append(strPrint + "\n");
+                                            }
+                                            if (vDataPayment.Rows[0].DebitCardAmount > 0) {
+                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Debit Card: ', 13, strDebitCardAmount, intDesktopPrintLenght, '', 0);
+                                                japplet.append(strPrint + "\n");
+                                            }
+                                            if (vDataPayment.Rows[0].CreditCardAmount > 0) {
+                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Credit Card: ', 13, strCreditCardAmount, intDesktopPrintLenght, '', 0);
+                                                japplet.append(strPrint + "\n");
+                                            }
+                                            if (vDataPayment.Rows[0].SRVAmount > 0) {
+                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'SRV: ', 5, strSRVAmount, intDesktopPrintLenght, '', 0);
+                                                japplet.append(strPrint + "\n");
+                                            }
+
+                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Change: ', 8, strCustomerChangeCash, intDesktopPrintLenght, '', 0);
+                                            japplet.append(strPrint + "\n");
+
+                                            if (vDataPayment.Rows[0].CheckPaymentAmount > vDataFooter.Rows[0].NetAmountDue) {
+                                                strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, '* Excess payments made through checks are not entitled to cash refunds.', intDesktopPrintLenght, '', 0, '', 0);
+                                                japplet.append(strPrint + "\n");
+                                            }
+
+                                        }
+
+                                        strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                        japplet.append(strPrint + "\n");
+
+                                        var strVATSales = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TaxSales || '0'), intDesktopPrintLenght - 18, ' ', 0);
+                                        var strVATAmount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TaxAmount || '0'), intDesktopPrintLenght - 14, ' ', 0);
+                                        var strNonVAT = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].NonVATSale || '0'), intDesktopPrintLenght - 20, ' ', 0);
+                                        var strVATExempt = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].VATExemptSale || '0'), intDesktopPrintLenght - 20, ' ', 0);
+                                        var strVATZeroRated = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].ZeroRatedSale || '0'), intDesktopPrintLenght - 24, ' ', 0);
+
+                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'VAT-able Sales: ', 16, strVATSales, intDesktopPrintLenght, '', 0);
+                                        japplet.append(strPrint + "\n");
+
+                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'VAT Amount: ', 12, strVATAmount, intDesktopPrintLenght, '', 0);
+                                        japplet.append(strPrint + "\n");
+
+                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'Non-VAT Sales: ', 18, strNonVAT, intDesktopPrintLenght, '', 0);
+                                        japplet.append(strPrint + "\n");
+
+                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'VAT Exempt Sales: ', 18, strVATExempt, intDesktopPrintLenght, '', 0);
+                                        japplet.append(strPrint + "\n");
+
+                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, 'VAT Zero-Rated Sales: ', 22, strVATZeroRated, intDesktopPrintLenght, '', 0);
+                                        japplet.append(strPrint + "\n");
+
+                                        strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                        japplet.append(strPrint + "\n");
+
+                                        //Get Footer Messages
+                                        //strPrint = SetTextAlign('Use for testing only. This is not an Official Receipt.', 1, intDesktopPrintLenght);
+                                        //strPrint = SetTextAlign('This Serves as Your Official Receipt.', 1, intDesktopPrintLenght);
+                                        strPrint = SetTextAlign(vDataInvHeader.Rows[0].ReceiptFooterMsg, 1, intDesktopPrintLenght);
+
+                                        japplet.append(strPrint + "\n");
+
+                                        if (vDataMsg.Rows.length > 0) {
+                                            for (var p = 0; p <= vDataMsg.Rows.length - 1; p++) {
+                                                if (p <= vDataMsg.Rows.length - 1) {
+                                                    strPrint = SetTextAlign($.trim((vDataMsg.Rows[p].MessageFooter || '')), 1, intDesktopPrintLenght);
+                                                    japplet.append(strPrint + "\n");
+                                                }
+                                            };
+
+                                            strPrint = SetTextAlign('This business is made more efficient by Mobiz', 1, intDesktopPrintLenght);
+                                            japplet.append(strPrint + "\n");
+
+                                            strPrint = SetTextAlign('Visit us at www.mobiz-apps.com', 1, intDesktopPrintLenght);
+                                            japplet.append(strPrint + "\n");
+
+                                            japplet.append("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+                                            //japplet.print();
+
+                                            //Print SRV
+                                            PrintSalesPaymentSRVReceipt(0, pInvoiceID);
+
+                                        } //Get Footer Messages
+
+                                    } //Get Footer Amounts
+
+                                } //Get Payment Info
+
+                            } //Get Items
+
+                        } //Get Invoice Header
+
+                    } //Get Header
+
+                }
+
+                function PrintSalesPaymentSRVReceipt(intSalesPaySRVPrintCnt, pInvoiceID) {
+
+
+                    if (intSalesPaySRVCntr > 0 && intSalesPaySRVPrintCnt <= intSalesPaySRVCntr) {
+
+                        if (sessionStorage["SalesPaySRV-" + intSalesPaySRVPrintCnt] != undefined) {
+
+                            arSalesPaySRV = new Array();
+                            arSalesPaySRV = JSON.parse(sessionStorage["SalesPaySRV-" + intSalesPaySRVPrintCnt]);
+
+                            if (window.InAndroid || InWinRt) {
+                                PrintPOSSRVReceipt(arSalesPaySRV[intSalesPaySRVMemoID], intSalesPaySRVPrintCnt, pInvoiceID);
+                            } else {
+                                PrintPOSDesktopSRVReceipt(arSalesPaySRV[intSalesPaySRVMemoID], intSalesPaySRVPrintCnt, pInvoiceID);
+                            }
+                        } else {
+                            PrintSalesPaymentSRVReceipt(intSalesPaySRVPrintCnt + 1, pInvoiceID);
+                        }
+
+                    } else {
+
+                        if (!window.InAndroid && !InWinRt) {
+                            var japplet = document.jzebra;
+                            var blnIsPrinterFound = false;
+
+                            if (japplet != null) {
+                                while (!blnIsPrinterFound) {
+
+                                    if (FindDesktopPrinter("")) {
+                                        blnIsPrinterFound = true;
+
+                                        japplet.print();
+                                        jzebraDonePrinting(pInvoiceID);
+
+                                    };
+
+                                }
+                            } else {
+                                MessageBox("Jzebra applet was not loaded.",
+                                    "Jzebra",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+                                                $.mobile.changePage('');
+
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                            }
+                                        }
+                                    ]
+                            );
+                            }
+                        } else {
+                            setTimeout(VerifyPrintReceipt(pInvoiceID), 1000);                            
+                        }
+
+                    }
+
+                }
+
+                function jzebraDonePrinting(pInvoiceID) {
+                    var japplet = document.jzebra;
+                    var IsDonePrinting = false;
+                    var intCntr = 0;
+
+                    if (japplet != null) {
+
+                        //                        IsDonePrinting = false;
+                        //                        while (!IsDonePrinting && intCntr < 30000) {
+                        //                            if (japplet.isDonePrinting()) {
+
+                        //                                IsDonePrinting = true;
+
+                        //                                var e = japplet.getException();
+                        //                                if (e == null) {//Success
+                        setTimeout(VerifyPrintReceipt(pInvoiceID), 1000);                        
+                        return;
+                        //                                } else {
+                        //                                    MessageBox("Unable to print the receipt. Please check your printer and press OK to reprint the receipt.",
+                        //                                        "Printer Problem",
+                        //                                        [
+                        //                                            { Text: 'Ok',
+                        //                                                Click: function () {
+                        //                                                    $.mobile.changePage(window.pageSourcePage);
+                        //                                                    PrintReceipt(pInvoiceID);
+                        //                                                    return;
+                        //                                                }
+                        //                                            }
+                        //                                        ]
+                        //                                );
+                        //                                }
+                        //                            }
+
+                        //                            intCntr = intCntr + 1;
+                        //                        }
+
+                        //                        if (!IsDonePrinting) {//Printing takes too much time.
+                        //                            MessageBox("Unable to print the receipt. Please check your printer and press OK to reprint the receipt.",
+                        //                                    "Printer Problem",
+                        //                                    [
+                        //                                        { Text: 'Ok',
+                        //                                            Click: function () {
+                        //                                                $.mobile.changePage(window.pageSourcePage);
+                        //                                                PrintReceipt(pInvoiceID);
+                        //                                                return;
+                        //                                            }
+                        //                                        }
+                        //                                    ]
+                        //                            );
+                        //                        }
+
+                    } else {
+                        MessageBox("Jzebra applet was not loaded.",
+                                "Jzebra",
+                                [
+                                    { Text: 'Ok',
+                                        Click: function () {
+
+                                            $.mobile.changePage('');
+
+                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                        }
+                                    }
+                                ]
+                        );
+                    }
+                }
+
+                function VerifyPrintBill(pInvoiceID) {
+                    //                    MessageBox("Your transaction has been saved. Were you able to successfully print out a receipt?",
+                    //                        "Print Confirmation",
+                    //                        [
+                    //                            {
+                    //                                Text: 'Yes'
+                    //                            },
+                    //                            {
+                    //                                Text: "No, it didn't print",
+                    //                                Click: function () {
+                    //                                    window.pageSecuritySourcePage = $.mobile.activePage;
+                    //                                    PromptUserAccess('POS Receipt Reprint', {
+                    //                                        OnClickOKSuccess: function () {
+                    //                                            PrintBilling(pInvoiceID);
+                    //                                        }
+                    //                                    });
+                    //                                }
+                    //                            }
+                    //                        ], null, true
+                    //                    );
+                    theInvoiceID = pInvoiceID;
+
+                    //$.mobile.changePage("#dialogPrintConfirmation");
+                    $('#btnPrintYesBill').click();
+
+                    ClearCustomerSCPWDSession(); //additional by janine
+
+                }
+
+                
+                function VerifyPrintReceipt(pInvoiceID) {
+                    theInvoiceID = pInvoiceID;
+
+                    //$.mobile.changePage("#dialogPrintConfirmation");
+                    $('#btnPrintYes').click();
+
+
+                    //                    MessageBox("Your transaction has been saved. Were you able to successfully print out a receipt?",
+                    //                            "Print Confirmation",
+                    //                            [
+                    //                                { Text: 'Yes',
+                    //                                    Click: function () {
+
+                    //                                        if (CStr2(newPrinterFowstID) != '') {
+                    //                                            var result = SalesPayment_offline().AssignFowstPrinterIPAsDefault(newPrinterFowstID);
+                    //                                            
+                    //                                            if (result == 'ok')
+                    //                                                Android.Toast(CStr2(newPrinterIP) + ' has been set as the new default IP address of this device.');
+                    //                                        }
+
+                    //                                        if (CStr2(sessionStorage.IsEnableDiningMode) == 'true') {
+                    //                                            location = MergeUrlParameters({
+                    //                                                OrgID: sessionStorage["OrgID"],
+                    //                                                mode: 'pos',
+                    //                                                IsMobile: IsMobile ? 1 : 0
+                    //                                            }, '/TableView/index2');
+
+                    //                                        } else {
+                    //                                            goToSalesMenu();
+                    //                                        }
+                    //                                        //                                        window.location = GetPathFormat("/SalesMenu?mode=pos&OrgID=" + sessionStorage.OrgID + (IsMobile ? "&IsMobile=1" : ""));
+                    //                                    }
+                    //                                },
+                    //                                { Text: "No, it didn't print",
+                    //                                    Click: function () {
+
+                    //                                        window.pageSecuritySourcePage = $.mobile.activePage;
+                    //                                        PromptUserAccess('POS Receipt Reprint', {
+                    //                                            OnClickOKSuccess: function () {
+                    //                                                //TODO
+                    //                                                //                                                $.mobile.changePage('#pageDiagnosePrinter');
+                    //                                                if (printAttempt > 1) {
+                    //                                                    $.mobile.changePage('#pageDiagnosePrinter');
+                    //                                                } else {
+                    //                                                    printAttempt = printAttempt + 1;
+                    //                                                    $.mobile.changePage(window.pageSourcePage);
+                    //                                                    PrintReceipt(pInvoiceID);
+                    //                                                }
+                    //                                            }
+                    //                                        });
+                    //                                    }
+                    //                                }
+                    //                            ], null, true
+                    //                );
+
+
+                    ClearCustomerSCPWDSession(); //additional by janine
+
+                }
+
+
+
+                function PrintPOSSRVReceipt(pMemoID, intSalesPaySRVPrintCnt, pInvoiceID) {
+                    var strTemp = '';
+                    var strPrint = '';
+                    var strPrinterIP = '';
+                    var pData = {};
+
+                    AjaxSend({
+                        url: "Organization/getOrgFOWSTPrinterIP",
+                        success: function (vDataPrint) {
+
+                            if (vDataPrint.OrganizationFOWSTData.Rows.length > 0) {
+                                if (CStr2(newPrinterIP) != '')
+                                    strPrinterIP = newPrinterIP;
+                                else
+                                    strPrinterIP = vDataPrint.OrganizationFOWSTData.Rows[0].PrinterIPAddress;
+
+
+
+                                pData.MemoID = pMemoID;
+
+                                AjaxSend({
+                                    url: "SalesPayments/getSalesPaymentSRVReceiptHeaderInfo",
+                                    data: pData,
+                                    success: function (vDataSRVChange) {
+                                        if (vDataSRVChange.SalesPaymentData.Rows.length > 0) {
+                                            if (parseFloat(vDataSRVChange.SalesPaymentData.Rows[0].SRVNewAmount || 0) <= 0) {
+                                                PrintSalesPaymentSRVReceipt(intSalesPaySRVPrintCnt + 1, pInvoiceID);
+                                            } else {
+
+                                                //Get Header
+                                                AjaxSend({
+                                                    url: "SalesPayments/getReceiptHeaderInfo",
+                                                    data: pData,
+                                                    success: function (vDataRHeader) {
+
+                                                        if (vDataRHeader.SalesPaymentData.Rows.length > 0) {
+
+                                                            //New set of text to print
+                                                            NewPrintBuilder();
+
+                                                            strPrint = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataRHeader.SalesPaymentData.Rows[0].BusinessTradeName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                            ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                                            strPrint = '';
+                                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataRHeader.SalesPaymentData.Rows[0].CorporateName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                            strPrint = strPrint + strTemp;
+
+                                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'TIN ' + $.trim((vDataRHeader.SalesPaymentData.Rows[0].TIN || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                            strPrint = strPrint + strTemp;
+
+                                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataRHeader.SalesPaymentData.Rows[0].CompleteAddress || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                            strPrint = strPrint + strTemp;
+
+                                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Tel. No.' + $.trim((vDataRHeader.SalesPaymentData.Rows[0].TelNo || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                            strPrint = strPrint + strTemp;
+
+                                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                            strPrint = strPrint + strTemp;
+
+                                                            ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                            //Get SRV Deatils
+                                                            AjaxSend({
+                                                                url: "SalesPayments/getSalesPaymentSRVReceiptHeaderInfo",
+                                                                data: pData,
+                                                                success: function (vDataSRV) {
+
+                                                                    if (vDataSRV.SalesPaymentData.Rows.length > 0) {
+
+                                                                        strPrint = '';
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Customer', 8, ' ', 1), 7, ': ' + $.trim((vDataSRV.SalesPaymentData.Rows[0].CustomerName || '')), intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Address', 8, ' ', 1), 7, ': ' + $.trim((vDataSRV.SalesPaymentData.Rows[0].CustomerAddress || '')), intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('TIN', 8, ' ', 1), 7, ': ' + $.trim((vDataSRV.SalesPaymentData.Rows[0].CustomerTIN || '')), intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                                        strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                                        strPrint = FormatTextToPrint(intFCDoubleTotalLenght, 'SRV ' + SetPrefixPostfix($.trim((vDataSRV.SalesPaymentData.Rows[0].SRVNumber || '')), 12, '0', 0), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                                                        //Print QR
+                                                                        strPrint = SetPrefixPostfix($.trim((vDataSRV.SalesPaymentData.Rows[0].SRVNumber || '')), 12, '0', 0);
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 1, 0, 1, 0);
+
+                                                                        strPrint = FormatTextToPrint(intFCDoubleTotalLenght, 'Pin ' + $.trim((vDataSRV.SalesPaymentData.Rows[0].PinCode || '')), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                                                                        //Print Barcode 1D
+                                                                        strPrint = $.trim((vDataSRV.SalesPaymentData.Rows[0].PinCode || ''));
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 1, 0, 1, 0);
+
+                                                                        strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                                        strPrint = '';
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Bought From', 12, ': ' + ($.trim(vDataSRV.SalesPaymentData.Rows[0].BoughtToBranchName || '')), intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Returned To', 12, ': ' + ($.trim(vDataSRV.SalesPaymentData.Rows[0].ReturnToBranchName || '')), intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Processed By', 12, ': ' + ($.trim(vDataSRV.SalesPaymentData.Rows[0].CashierName || '')), intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Approved By', 12, ': ' + ($.trim(vDataSRV.SalesPaymentData.Rows[0].CashierName || '')), intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                                        strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                                        var strInvoiceNo = SetPrefixPostfix(SetPrefixPostfix($.trim((vDataSRV.SalesPaymentData.Rows[0].InvoiceNumber || '')), 12, '0', 0), intFAFCTotalLenght - 13, ' ', 0);
+                                                                        var strInvoiceAmount = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].InvoiceAmount || '0'), intFAFCTotalLenght - 16, ' ', 0);
+                                                                        var strInvoicePayment = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].InvoicePayment || '0'), intFAFCTotalLenght - 24, ' ', 0);
+
+                                                                        strPrint = '';
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Invoice No.', 11, strInvoiceNo, intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Invoice Amount', 14, strInvoiceAmount, intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Less: Invoice Payment', 22, strInvoicePayment, intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                                        strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                                        var dblInvBalance = (vDataSRV.SalesPaymentData.Rows[0].InvoiceAmount || 0) - (vDataSRV.SalesPaymentData.Rows[0].InvoicePayment || 0);
+                                                                        var strInvoiceBalance = SetPrefixPostfix(AccountingFormat(dblInvBalance), intFAFCTotalLenght - 17, ' ', 0);
+                                                                        var strValueOfReturns = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].SRVOrigAmount || '0'), intFAFCTotalLenght - 18, ' ', 0);
+                                                                        var strRestockingFee = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].SRVRestockingFee || '0'), intFAFCTotalLenght - 31, ' ', 0);
+
+                                                                        strPrint = '';
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Invoice Balance Net of Payment', 15, strInvoiceBalance, intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strPrint = strPrint + '\n';
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Value of Returns', 16, strValueOfReturns, intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Less: One-Time Restocking Fee', 29, strRestockingFee, intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                                        strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                                        var strNetValueOfReturns = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].SRVNewAmount || '0'), intFAFCTotalLenght - 22, ' ', 0);
+
+                                                                        strPrint = '';
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Net Value of Returns', 20, strNetValueOfReturns, intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        strPrint = strPrint + '\n';
+
+                                                                        var dblInvoiceBalanceNetPaymentAndReturns = dblInvBalance - vDataSRV.SalesPaymentData.Rows[0].SRVNewAmount;
+                                                                        var strInvoiceBalanceNetPaymentAndReturns = SetPrefixPostfix(AccountingFormat(dblInvoiceBalanceNetPaymentAndReturns), intFAFCTotalLenght - 22, ' ', 0);
+
+                                                                        if (dblInvoiceBalanceNetPaymentAndReturns < 0) {
+                                                                            strInvoiceBalanceNetPaymentAndReturns = 'NONE';
+                                                                        }
+
+                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Invoice Balance Net  Payments and Returns', 20, strInvoiceBalanceNetPaymentAndReturns, intFAFCTotalLenght, '', 0, 0);
+                                                                        strPrint = strPrint + strTemp;
+
+                                                                        ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                                        //Get SRV Deatils
+                                                                        AjaxSend({
+                                                                            url: "SalesPayments/getSalesPaymentSRVReceiptInvoices",
+                                                                            data: pData,
+                                                                            success: function (vDataSRVInv) {
+
+                                                                                if (vDataSRVInv.SalesPaymentData.Rows.length > 0) {
+
+                                                                                    strPrint = '';
+                                                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Less: Used Portion of SRV', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                                                    strPrint = strPrint + strTemp;
+
+                                                                                    for (var p = 0; p <= vDataSRVInv.SalesPaymentData.Rows.length - 1; p++) {
+
+                                                                                        var strInvAndDate = 'SI' + SetPrefixPostfix($.trim((vDataSRVInv.SalesPaymentData.Rows[p].InvoiceNumber || '')), 12, '0', 0) + ' ' + ($.format.date(new Date(vDataSRVInv.SalesPaymentData.Rows[p].InvoiceDate), 'MM/dd/yy HH:mm') || '');
+                                                                                        var strUsedAmount = SetPrefixPostfix(AccountingFormat(vDataSRVInv.SalesPaymentData.Rows[p].UsedAmount || '0'), intFAFCTotalLenght - 30, ' ', 0);
+
+
+                                                                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strInvAndDate, 28, strUsedAmount, intFAFCTotalLenght, '', 0, 0);
+                                                                                        strPrint = strPrint + strTemp;
+
+                                                                                    };
+
+                                                                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                                                }
+
+                                                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                                                var strNetSRV = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].SRVNewAmount || '0'), intFAFCTotalLenght - 18, ' ', 0);
+
+                                                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Net Value of SRV', 16, strNetSRV, intFAFCTotalLenght, '', 0, 0);
+                                                                                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, 'This SRV is as good as cash.', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                                                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 1, 0, 0, 0);
+
+                                                                                strPrint = '';
+                                                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '* Present and surrender this SRV to       cashier as form of payment.', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                                                strPrint = strPrint + strTemp;
+
+                                                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '* Do not lose or crumple this receipt.', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                                                strPrint = strPrint + strTemp;
+
+                                                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '* To get electronic copy of this SRV,     please register with Customer Service.', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                                                strPrint = strPrint + strTemp;
+
+                                                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+
+                                                                                strPrint = '\n';
+                                                                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'This business is made more efficient by Mobiz. Visit us at www.mobiz-apps.com', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                                                strPrint = strPrint + strTemp;
+
+                                                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                                                                //Print Barcode
+                                                                                strPrint = 'SRV|' + vDataSRV.SalesPaymentData.Rows[0].SubscriberOrganizationID + '|' + vDataSRV.SalesPaymentData.Rows[0].ReturnToBranchID + '|' + SetPrefixPostfix($.trim((vDataSRV.SalesPaymentData.Rows[0].SRVNumber || '')), 12, '0', 0) + '|' + $.trim((vDataSRV.SalesPaymentData.Rows[0].PinCode || ''));
+                                                                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 1, 0, 0);
+
+                                                                                ReadyTextToPrint('\n', 3, 1, 1, 0, 0, 0, 0, 0, 1);
+
+                                                                                PrintText(strPrinterIP);
+                                                                                ClearCommandBuffer();
+
+                                                                                PrintSalesPaymentSRVReceipt(intSalesPaySRVPrintCnt + 1, pInvoiceID);
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                }
+                                                            });
+
+                                                        } else {
+                                                            MessageBox("This branch has no receipt settings. Please contact your system adminstrator.",
+                                                               "Receipt Settings",
+                                                                [
+                                                                    { Text: 'Ok',
+                                                                        Click: function () {
+
+                                                                            $.mobile.changePage('');
+
+                                                                            if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                                                window.pageHeader.ShowPaymentsPage(false);
+
+                                                                        }
+                                                                    }
+                                                                ]
+                                                        );
+                                                        }
+
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                            else {
+                                MessageBox("No available printer for this branch. Please contact your system administrator.",
+                                   "Printer",
+                                    [
+                                        { Text: 'Ok',
+                                            Click: function () {
+
+                                                $.mobile.changePage('');
+
+                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                            }
+                                        }
+                                    ]
+                            );
+                            }
+
+                        }
+                    });
+
+                }
+
+                function PrintPOSDesktopSRVReceipt(pMemoID, intSalesPaySRVPrintCnt, pInvoiceID) {
+                    var strTemp = '';
+                    var strPrint = '';
+                    var pData = {};
+                    var japplet = document.jzebra;
+
+                    pData.MemoID = pMemoID;
+
+                    AjaxSend({
+                        url: "SalesPayments/getSalesPaymentSRVReceiptHeaderInfo",
+                        data: pData,
+                        success: function (vDataSRVChange) {
+                            if (vDataSRVChange.SalesPaymentData.Rows.length > 0) {
+                                if (parseFloat(vDataSRVChange.SalesPaymentData.Rows[0].SRVNewAmount || 0) <= 0) {
+                                    PrintSalesPaymentSRVReceipt(intSalesPaySRVPrintCnt + 1, pInvoiceID);
+                                } else {
+                                    //Get Header
+                                    AjaxSend({
+                                        url: "SalesPayments/getReceiptHeaderInfo",
+                                        data: pData,
+                                        success: function (vDataHeader) {
+
+                                            if (vDataHeader.SalesPaymentData.Rows.length > 0) {
+
+
+                                                strPrint = SetTextAlign($.trim(vDataHeader.SalesPaymentData.Rows[0].BusinessTradeName || ''), 1, intDesktopPrintLenght);
+                                                japplet.append(strPrint + "\n");
+
+                                                strPrint = SetTextAlign($.trim(vDataHeader.SalesPaymentData.Rows[0].CorporateName || ''), 1, intDesktopPrintLenght);
+                                                japplet.append(strPrint + "\n");
+
+                                                strPrint = SetTextAlign("TIN " + $.trim(vDataHeader.SalesPaymentData.Rows[0].TIN || ''), 1, intDesktopPrintLenght);
+                                                japplet.append(strPrint + "\n");
+
+                                                strPrint = SetTextAlign($.trim(vDataHeader.SalesPaymentData.Rows[0].CompleteAddress || ''), 1, intDesktopPrintLenght);
+                                                japplet.append(strPrint + "\n");
+
+                                                strPrint = SetTextAlign("Tel. No. " + $.trim(vDataHeader.SalesPaymentData.Rows[0].TelNo || ''), 1, intDesktopPrintLenght);
+                                                japplet.append(strPrint + "\n");
+
+                                                strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                                japplet.append(strPrint + "\n");
+
+                                                //Get SRV Deatils
+                                                AjaxSend({
+                                                    url: "SalesPayments/getSalesPaymentSRVReceiptHeaderInfo",
+                                                    data: pData,
+                                                    success: function (vDataSRV) {
+
+                                                        if (vDataSRV.SalesPaymentData.Rows.length > 0) {
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Customer ', 0, 9), 9, ': ' + $.trim((vDataSRV.SalesPaymentData.Rows[0].CustomerName || '')), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Address  ', 0, 9), 9, ': ' + $.trim((vDataSRV.SalesPaymentData.Rows[0].CustomerAddress || '')), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('TIN      ', 0, 9), 9, ': ' + $.trim((vDataSRV.SalesPaymentData.Rows[0].CustomerTIN || '')), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('SRV No. ', 0, 8), 8, ': ' + SetPrefixPostfix($.trim((vDataSRV.SalesPaymentData.Rows[0].SRVNumber || '')), 12, '0', 0), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Pin     ', 0, 8), 8, ': ' + $.trim(vDataSRV.SalesPaymentData.Rows[0].PinCode || ''), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Date and Time', 0, 14), 14, ': ' + ($.format.date(new Date(vDataSRV.SalesPaymentData.Rows[0].SRVDateTime), 'MMM dd, yyyy HH:mm') || ''), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Bought From ', 0, 12), 12, ': ' + ($.trim(vDataSRV.SalesPaymentData.Rows[0].BoughtToBranchName || '')), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Returned To ', 0, 12), 12, ': ' + ($.trim(vDataSRV.SalesPaymentData.Rows[0].ReturnToBranchName || '')), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Processed By', 0, 12), 12, ': ' + ($.trim(vDataSRV.SalesPaymentData.Rows[0].CashierName || '')), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Approved By ', 0, 12), 12, ': ' + ($.trim(vDataSRV.SalesPaymentData.Rows[0].CashierName || '')), intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            var strInvoiceNo = SetPrefixPostfix(SetPrefixPostfix($.trim((vDataSRV.SalesPaymentData.Rows[0].InvoiceNumber || '')), 12, '0', 0), intDesktopPrintLenght - 13, ' ', 0);
+                                                            var strInvoiceAmount = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].InvoiceAmount || '0'), intDesktopPrintLenght - 16, ' ', 0);
+                                                            var strInvoicePayment = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].InvoicePayment || '0'), intDesktopPrintLenght - 23, ' ', 0);
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Invoice No.', 0, 11), 11, strInvoiceNo, intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Invoice Amount', 0, 14), 14, strInvoiceAmount, intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Less: Invoice Payment', 0, 21), 21, strInvoicePayment, intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            var dblInvBalance = (vDataSRV.SalesPaymentData.Rows[0].InvoiceAmount || 0) - (vDataSRV.SalesPaymentData.Rows[0].InvoicePayment || 0);
+                                                            var strInvoiceBalance = SetPrefixPostfix(AccountingFormat(dblInvBalance), intDesktopPrintLenght - 32, ' ', 0);
+                                                            var strValueOfReturns = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].SRVOrigAmount || '0'), intDesktopPrintLenght - 18, ' ', 0);
+                                                            var strRestockingFee = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].SRVRestockingFee || '0'), intDesktopPrintLenght - 31, ' ', 0);
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Invoice Balance Net of Payment', 0, 30), 30, strInvoiceBalance, intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            japplet.append("\n");
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Value of Returns', 0, 16), 16, strValueOfReturns, intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Less: One-Time Restocking Fee', 0, 29), 29, strRestockingFee, intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            var strNetValueOfReturns = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].SRVNewAmount || '0'), intDesktopPrintLenght - 22, ' ', 0);
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Net Value of Returns', 0, 20), 20, strNetValueOfReturns, intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+                                                            japplet.append("\n");
+
+                                                            var dblInvoiceBalanceNetPaymentAndReturns = dblInvBalance - vDataSRV.SalesPaymentData.Rows[0].SRVNewAmount;
+                                                            var strInvoiceBalanceNetPaymentAndReturns = SetPrefixPostfix(AccountingFormat(dblInvoiceBalanceNetPaymentAndReturns), intDesktopPrintLenght - 21, ' ', 0);
+
+                                                            if (dblInvoiceBalanceNetPaymentAndReturns < 0) {
+                                                                strInvoiceBalanceNetPaymentAndReturns = SetPrefixPostfix('NONE', intDesktopPrintLenght - 21, ' ', 0);
+                                                            }
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Invoice Balance Net', 0, 19), 19, strInvoiceBalanceNetPaymentAndReturns, intDesktopPrintLenght, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Payments and Returns', 0, intDesktopPrintLenght), intDesktopPrintLenght, '', 0, '', 0);
+                                                            japplet.append(strPrint + "\n");
+
+                                                            //Get SRV Deatils
+                                                            AjaxSend({
+                                                                url: "SalesPayments/getSalesPaymentSRVReceiptInvoices",
+                                                                data: pData,
+                                                                success: function (vDataSRVInv) {
+
+                                                                    if (vDataSRVInv.SalesPaymentData.Rows.length > 0) {
+
+                                                                        strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Less: Used Portion of SRV', 0, intDesktopPrintLenght), intDesktopPrintLenght, '', 0, '', 0);
+                                                                        japplet.append(strPrint + "\n");
+
+                                                                        for (var p = 0; p <= vDataSRVInv.SalesPaymentData.Rows.length - 1; p++) {
+
+                                                                            var strInvAndDate = 'SI' + SetPrefixPostfix($.trim((vDataSRVInv.SalesPaymentData.Rows[p].InvoiceNumber || '')), 12, '0', 0) + ' ' + ($.format.date(new Date(vDataSRVInv.SalesPaymentData.Rows[p].InvoiceDate), 'MM/dd/yy HH:mm') || '');
+                                                                            var strUsedAmount = SetPrefixPostfix(AccountingFormat(vDataSRVInv.SalesPaymentData.Rows[p].UsedAmount || '0'), intDesktopPrintLenght - 30, ' ', 0);
+
+                                                                            strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, strInvAndDate, 28, strUsedAmount, intDesktopPrintLenght, '', 0);
+                                                                            japplet.append(strPrint + "\n");
+
+                                                                        };
+
+                                                                    }
+
+                                                                    strPrint = SetTextAlign('_____________________________________________', 1, intDesktopPrintLenght);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    var strNetSRV = SetPrefixPostfix(AccountingFormat(vDataSRV.SalesPaymentData.Rows[0].SRVNewAmount || '0'), intDesktopPrintLenght - 18, ' ', 0);
+
+                                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('Net Value of SRV', 0, 16), 16, strNetSRV, intDesktopPrintLenght, '', 0);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    strPrint = SetTextAlign(' ', 1, intDesktopPrintLenght);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('This SRV is as good as cash.', 1, intDesktopPrintLenght), intDesktopPrintLenght, '', 0, '', 0);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('* Present and surrender this SRV to cashier.', 0, intDesktopPrintLenght), intDesktopPrintLenght, '', 0, '', 0);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('  as form of payment.', 0, intDesktopPrintLenght), intDesktopPrintLenght, '', 0, '', 0);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('* Do not lose or crumple this receipt.', 0, intDesktopPrintLenght), intDesktopPrintLenght, '', 0, '', 0);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('* To get electronic copy of this SRV, please', 0, intDesktopPrintLenght), intDesktopPrintLenght, '', 0, '', 0);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    strPrint = FormatTextToDesktopPrint(intDesktopPrintLenght, SetTextAlign('  register with Customer Service.', 0, intDesktopPrintLenght), intDesktopPrintLenght, '', 0, '', 0);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    strPrint = SetTextAlign('This business is made more efficient by Mobiz', 1, intDesktopPrintLenght);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    strPrint = SetTextAlign('Visit us at www.mobiz-apps.com', 1, intDesktopPrintLenght);
+                                                                    japplet.append(strPrint + "\n");
+
+                                                                    japplet.append("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+                                                                    //                                                japplet.print();
+                                                                    PrintSalesPaymentSRVReceipt(intSalesPaySRVPrintCnt + 1, pInvoiceID);
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+                                                });
+
+                                            } else {
+                                                MessageBox("This branch has no receipt settings. Please contact your system adminstrator.",
+                                                   "Receipt Settings",
+                                                    [
+                                                        { Text: 'Ok',
+                                                            Click: function () {
+
+                                                                $.mobile.changePage('');
+
+                                                                if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                                                    window.pageHeader.ShowPaymentsPage(false);
+
+                                                            }
+                                                        }
+                                                    ]
+                                            );
+
+                                            }
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    });
+
+                }
+
+                $('[name=btnNewCart]').click(function () {
+                    if (GetUrlParameters().TableNo != undefined) {
+                        proj.SaveCart();
+                        if (window.InAndroid) {
+                            Android.SetCurrentTab(0);
+                            proj.SalesMenuInit();
+                            proj.SalesPayments.ClearSalesPaymentsInfoFields();
+                            $('#divHeader, #divHotButtons').show();
+                            $('#divPayment').hide();
+                        } else {
+                            sessionStorage.PosMode = 'Table View Mode';
+                            proj.ProductID = '';
+                            location = MergeUrlParameters({
+                                OrgID: sessionStorage["OrgID"],
+                                mode: 'pos',
+                                IsMobile: IsMobile ? 1 : 0
+                            }, '/TableView/NewTable');
+                        }
+                    } else if (window.InAndroid
+                        && (sessionStorage.PosMode == 'Retail Mode')) {
+
+                            Android.ScriptToWebView({
+                                Script: 'proj.NewCartPos();',
+                                WebViewIndex: 1
+                            });
+                            if (localStorage.getItem('PosView') == 'Hot Button Mode')
+                                Android.ScriptToWebView({
+                                    Script: 'proj.goToHotButtonPage();',
+                                    WebViewIndex: 1
+                                });
+                            Android.SetCurrentTab(0);
+                    } else {
+                        goToSalesMenu();
+                    }
+                }); // END btnNewCart.click
+
+                function goToSalesMenu() {
+                    proj.SalesMenu.goToSalesMenu.apply(this, arguments);
+                }
+
+                function ShowSeniorCitizenPWDPage() {
+                    $.mobile.changePage('#SeniorCitizenPWD');
+
+                    if (CStr2(sessionStorage.IsSeniorCitizenPWDPageLoaded) != 'true') {
+                        AjaxSend({
+                            ExactUrl: '/SalesPayments/SeniorCitizenPWD?cache=1',
+                            type: 'GET',
+                            dataType: 'text',
+                            success: function (vData) {
+
+
+                                $('#SeniorCitizenPWD').append(vData).trigger('create');
+
+                                sessionStorage.IsSeniorCitizenPWDPageLoaded = 'true';
+
+                                setMonthCollection("selDOBMonth");
+                                setYearCollection("selDOBYear");
+
+                                ClearSalesPayCustomerNameFields();
+
+                                App.Deferred.fulfill('FQ26E5TP88');
+
+
+
+                            }
+                        });
+                    }
+                }
+
+
+
+                proj.ClickEventSaveSalesPayCustomerIdentification = function () {
+                    SaveSalesPayCustomerIdentification();
+                };
+
+                proj.ClickEventRemoveSalesPayCustomerIdentification = function () {
+                    if (countCustomerIdentification() < 1) {
+                        MessageBox("Please add at least one valid identification number.",
+                                "Identification Number",
+                                [
+                                    { Text: 'Ok' }
+                                ]
+                            );
+                        return;
+                    }
+
+
+                    RemoveSalesPayCustomerIdentification();
+
+                };
+
+                proj.ClickEventSaveSalesPayCustomerName = function () {
+                    SaveSalesPayCustomerName();
+                };
+
+
+                function ClearCustomerSCPWDSession() {
+
+                    //clear all session for customer sc and pwd
+                    for (var i = 0; i <= intSalesPayCustomerIdentificationCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerIdentification-" + i] != undefined) {
+                            sessionStorage.removeItem("SalesPayCustomerIdentification-" + i);
+
+                        }
+
+                    }
+                    for (var i = 0; i <= intSalesPayCustomerNameCntr; i++) {
+
+                        if (sessionStorage["SalesPayCustomerName-" + i] != undefined) {
+                            sessionStorage.removeItem("SalesPayCustomerName-" + i);
+
+                        }
+
+                    }
+                    //////////
+                }
+
+                function OptionPrintSalesInvoice() {
+                    if (isSeniorCitizenPWDDiscount) {
+                        if (!checkDiscountDetails())
+                            return;
+                    }
+                    IsPrintReceipt = true;
+                    IsEmailReceipt = false;
+                    IsDeliveryInfoPriceQuote = false;
+
+                    SaveDeliveryInfo();
+                }
+
+                function OptionPrintBilling() {
+                    var pParams = GetUrlParameters();
+                    var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                    PrintBilling(pInvoiceID);
+                }
+
+                function OptionPrintOrderSlip() {
+                    var pParams = GetUrlParameters();
+                    var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                    PrintBilling(pInvoiceID, {
+                        PrintAsOrderSlip: true
+                    });
+                }
+                
+                function getPrinterConnectionType() {
+                    var vDataPrinterType = SalesPayment_offline().getOrgFOWSTPrinterType();
+
+                    if (vDataPrinterType != undefined) {
+                        if (vDataPrinterType.Rows.length > 0) {                            
+                            if (vDataPrinterType.Rows[0].ConnectionType == "USB") {
+                                setPrinterConnectionType(vDataPrinterType.Rows[0].ConnectionType, vDataPrinterType.Rows[0].PrinterType, true)
+                            } else {
+                                setPrinterConnectionType(vDataPrinterType.Rows[0].ConnectionType, vDataPrinterType.Rows[0].PrinterType, false)
+                            }
+                        }
+                    }
+                }
+
+                function setSCPWDCount() {
+
+                    $('#txtSalesPayNoOfSC').empty();
+                    $('#txtSalesPayNoOfDiners').empty();
+
+                    for (var i = 1; i <= 100; i++) {
+                        $('#txtSalesPayNoOfSC').append(new Option(CStr2(i), CStr2(i), false));
+                        $('#txtSalesPayNoOfDiners').append(new Option(CStr2(i), CStr2(i), false));
+                    }
+
+                    $('#txtSalesPayNoOfSC').val(sessionStorage.NoOfSeniorCitizens || 1);
+                    $('#txtSalesPayNoOfDiners').val(CInt2(sessionStorage.TotalNumberOfCustomer) || 1);
+
+                    try {
+                        $('#txtSalesPayNoOfSC').selectmenu('refresh');
+                        $('#txtSalesPayNoOfDiners').selectmenu('refresh');
+                    }
+                    catch (e) {
+                        $('#txtSalesPayNoOfSC').selectmenu();
+                        $('#txtSalesPayNoOfDiners').selectmenu();
+                    }
+
+                    ComputeSCDiscount();
+                }
+
+                $('#butEditCart').click(function () {
+                    if (location.pathname.toLowerCase() == '/salesmenu/posviewall') {
+                        $('#divPayment').hide();
+                        $('#divHeader').show();
+                        $('#divHotButtons').show();
+                    }
+                    else {
+                        // bookmark: retail view go to payments page
+                        //history.back(); 
+                        Android.SetCurrentTab(0);
+                    }                    
+                });
+
+		// $('#btnMoreOptions').click(function() {
+                $('#btnPaymentMoreOptions').click(function () {
+		            proj.SaveCart();
+                    NewMessageBox('', 'Print Options', [
+                        {
+                            Text: 'Print Billing',
+                            Size: 3,
+                            Click: function () {
+                                sessionStorage.PrintOption = 'billingorderslip';
+                                var pParams = GetUrlParameters();
+                                var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                                SalesMenu_offline().SaveSalesOrder({
+                                    InvoiceID: pInvoiceID
+                                });
+                                PrintBilling(pInvoiceID, {
+                                    isSeniorCitizenDiscount: isSeniorCitizenDiscount,
+                                    SCDiscountExempt: SCDiscountExempt,
+                                    SubTotalOfVatExemptItems: SubTotalOfVatExemptItems,
+                                    GrossSalesToNoneSC: GrossSalesToNoneSC,
+                                    GrossSalesToSC: GrossSalesToSC,
+                                    VatExemptSales: VatExemptSales,
+                                    IsApplyMaxSCDiscountableAmount: IsApplyMaxSCDiscountableAmount,
+                                    SubTotalOfVatExemptItems: SubTotalOfVatExemptItems,
+                                    MaxSCDiscountableAmount: MaxSCDiscountableAmount,
+                                    seniorCitizenDiscount: seniorCitizenDiscount,
+                                    seniorCitizenNetAmount: seniorCitizenNetAmount
+                                });
+                            }
+                        },
+                        {
+                            Text: 'Print Order Slip (and cancellation slip if applicable)',
+                            Size: 3,
+                            Click: function () {
+                                if (!proj.HandlePosIsEditable(true))
+                                    return false;
+                                var pParams = GetUrlParameters();
+                                sessionStorage.PrintOption = 'orderslip';
+                                var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                                SalesMenu_offline().SaveSalesOrder({
+                                    InvoiceID: pInvoiceID,
+                                    AsOrderSlip: true
+                                });
+                                PrintBilling(pInvoiceID, {
+                                    PrintAsOrderSlip: true,
+                                    ByCategory: true
+                                });
+                            }
+                        },
+                        {
+                            Text: 'Print Receipt and Order Slip',
+                            Size: 3,
+                            Click: function () {
+                                sessionStorage.PrintOption = '';
+                                if (isSeniorCitizenPWDDiscount) {
+                                    if (!checkDiscountDetails())
+                                        return;
+                                }
+
+                                IsPrintReceipt = true;
+                                IsPrintOrderSlip = true;
+                                IsEmailReceipt = false;
+                                IsDeliveryInfoPriceQuote = false;
+                                SaveDeliveryInfo();
+                            }
+                        },
+                        // hidden for now 2016_09_29__13_00_56_3362
+                        //{
+                        //    Text: 'Print Billing and Order Slip',
+                        //    Size: 3,
+                        //    Click: function () {
+                        //        var pInvoiceID = CStr2(pParams.InvoiceID) == '' ? sessionStorage.CartOrderID : pParams.InvoiceID;
+                        //        SalesMenu_offline().SaveSalesOrder({
+                        //            InvoiceID: pInvoiceID,
+                        //            AsOrderSlip: true
+                        //        });
+                        //        sessionStorage.PrintOption = 'billingorderslip';
+                        //        OptionPrintBilling();
+                        //        sessionStorage.PrintOption = 'orderslip';
+                        //        OptionPrintOrderSlip();
+                        //    }
+                        //},
+                        {
+                            Text: 'Save Receipt',
+                            Size: 3,
+                            Click: function () {
+                                $('#butSaveReceipt').click();
+                            }
+                        },
+                        {
+                            Text: 'Reprint Receipt',
+                            Size: 3,
+                            Click: function () {
+                                $('#butReprintReceipt').click();
+                            }
+                        },
+                        {
+                            Text: 'Email Receipt',
+                            Size: 3,
+                            Click: function () {
+                                $('#btnSalesPaymentEmail').click();
+                            }
+                        }
+                            
+                    ], { CloseButton: 'enable', AutoDismiss: true });
+                }); // END $('#btnMoreOptions').click(function() {                
+
+                if (CBool(sessionStorage.FmcgMode)) {
+                    $('#divPaymentHeader').hide();
+                } // END if (sessionStorage.FmcgMode) {
+                (function Init() {
+                    if (window.OfflineMode) {
+                        var pDT = security_offline().CheckSecurityCurrentUserAcccess({
+                            ModuleName: 'Show Credit Term Payment Option',
+                            UserID: Web.PeopleUserID()
+                        });
+                        if (pDT.Rows.length > 0)
+                            $('#divOnCredit').show();
+                    }
+                })(); // END Init
+
+                function GetSSDItemsWithVatExempt(pInvoiceID) {
+                    var pDT;
+                    var IsEverythingEligibleForSCD = false;
+                    var pSql;
+
+                    pSql = 'Select DefaultValue from private.SystemDefaults where Description = \'AllItemsEligibleForSCPWDDiscount\'';
+                    
+                    IsEverythingEligibleForSCD = CBool(Sql.ExecuteScalar(pSql));
+
+                    pSql = "Select Sum(SubTotal) as Total " +
+                            " from TransInvoiceItems " +
+                            " inner join LibraryOrganizationPIM " +
+                            " ON LibraryOrganizationPIM.ProductID = TransInvoiceItems.ProductID " +
+                            " where InvoiceID = " + ReadyString(pInvoiceID)
+
+                    if(!IsEverythingEligibleForSCD)
+                        pSql += " AND LibraryOrganizationPIM.IsVatExempt=1";
+
+                    pDT = Sql.Execute(pSql);
+
+                    return pDT.Rows[0].Total;
+                }
+
+                function GetInvoiceCharges(pInvoiceID) {
+                    pSql = "Select SUM(ChargeAmount) from TransInvoiceCharges where InvoiceID=" + ReadyString(pInvoiceID);
+
+                    return CDec2(Sql.ExecuteScalar(pSql));
+                }
+
+                window.RemoveSalesPayCustomerName = function (index) {
+                    
+                    if (sessionStorage["SalesPayCustomerIdentification-" + index] != undefined) {
+                        sessionStorage.removeItem("SalesPayCustomerIdentification-" + index);
+                    }
+
+                    if (sessionStorage["SalesPayCustomerName-" + index] != undefined) {
+                        sessionStorage.removeItem("SalesPayCustomerName-" + index);
+                    }
+
+                    //LoadSalesPayCustomerNameList();
+
+                    var vDataShow = SalesPayment_offline().getSeniorCitizenPWDCustomer(sessionStorage.CartOrderID);
+                    window.pageDiscounts.LoadSavedCustomerNameList(vDataShow.Rows, true)
+                }
+
+            } // END function MainFunction() {
+
+            function ClearSalesPaymentVariables() {
+                intFAFCTotalLenght = 40;
+                intFBTotalLenght = 27;
+                intFCDoubleTotalLenght = 18;
+
+                intDesktopPrintLenght = 45;
+
+                IsPrintReceipt = false;
+                IsPrintOrderSlip;
+                IsEmailReceipt = false;
+                IsSaleSPaymentSaving = false;
+                IsDeliveryInfoPriceQuote;
+
+                IsNewSalesPayCheck = true;
+                arSalesPayCheck = new Array();
+                intSalesPayCheckCntr = 0;
+                intSalesPayCheckIndex = 0;
+
+                intSalesPayCheckRecID = 0;
+                intSalesPayCheckBankID = 1;
+                intSalesPayCheckBank = 2;
+                intSalesPayCheckBankBranchID = 3;
+                intSalesPayCheckBankBranch = 4;
+                intSalesPayCheckAccountName = 5;
+                intSalesPayCheckAccountNo = 6;
+                intSalesPayCheckNumber = 7;
+                intSalesPayCheckDateMonth = 8;
+                intSalesPayCheckDateDay = 9;
+                intSalesPayCheckDateyear = 10;
+                intSalesPayCheckAmount = 11;
+                intSalesPayCheckState = 12;
+                intSalesPayCheckType = 13;
+
+                IsNewSalesPayDebitCard = true;
+                arSalesPayDebitCard = new Array();
+                intSalesPayDebitCardCntr = 0;
+                intSalesPayDebitCardIndex = 0;
+
+                intSalesPayDebitCardRecID = 0;
+                intSalesPayDebitCardType = 1;
+                intSalesPayDebitCardBankID = 2;
+                intSalesPayDebitCardBank = 3;
+                intSalesPayDebitCardHolderLName = 4;
+                intSalesPayDebitCardHolderFName = 5;
+                intSalesPayDebitCardHolderMName = 6;
+                intSalesPayDebitCardHolderGenSuffix = 7;
+                intSalesPayDebitCardBankCountryID = 8;
+                intSalesPayDebitCardBankCountry = 9;
+                intSalesPayDebitCardNumber = 10;
+                intSalesPayDebitCardIssuanceDateMonth = 11;
+                intSalesPayDebitCardIssuanceDateDay = 12;
+                intSalesPayDebitCardIssuanceDateYear = 13;
+                intSalesPayDebitCardExpirationDateMonth = 14;
+                intSalesPayDebitCardExpirationDateDay = 15;
+                intSalesPayDebitCardExpirationDateYear = 16;
+                intSalesPayDebitCardApprovalNumber = 17;
+                intSalesPayDebitCardNoOfInstallment = 18;
+                intSalesPayDebitCardAmount = 19;
+                intSalesPayDebitCardState = 20;
+
+                IsNewSalesPayCreditCard = true;
+                arSalesPayCreditCard = new Array();
+                intSalesPayCreditCardCntr = 0;
+                intSalesPayCreditCardIndex = 0;
+
+                intSalesPayCreditCardRecID = 0;
+                intSalesPayCreditCardType = 1;
+                intSalesPayCreditCardBankID = 2;
+                intSalesPayCreditCardBank = 3;
+                intSalesPayCreditCardHolderLName = 4;
+                intSalesPayCreditCardHolderFName = 5;
+                intSalesPayCreditCardHolderMName = 6;
+                intSalesPayCreditCardHolderGenSuffix = 7;
+                intSalesPayCreditCardBankCountryID = 8;
+                intSalesPayCreditCardBankCountry = 9;
+                intSalesPayCreditCardNumber = 10;
+                intSalesPayCreditCardIssuanceDateMonth = 11;
+                intSalesPayCreditCardIssuanceDateDay = 12;
+                intSalesPayCreditCardIssuanceDateYear = 13;
+                intSalesPayCreditCardExpirationDateMonth = 14;
+                intSalesPayCreditCardExpirationDateDay = 15;
+                intSalesPayCreditCardExpirationDateYear = 16;
+                intSalesPayCreditCardApprovalNumber = 17;
+                intSalesPayCreditCardNoOfInstallment = 18;
+                intSalesPayCreditCardAmount = 19;
+                intSalesPayCreditCardState = 20;
+
+                IsNewSalesPaySRV = true;
+                arSalesPaySRV = new Array();
+                intSalesPaySRVCntr = 0;
+                intSalesPaySRVIndex = 0;
+
+                intSalesPaySRVRecID = 0;
+                intSalesPaySRVMemoID = 1;
+                intSalesPaySRVNo = 2;
+                intSalesPaySRVPinCode = 3;
+                intSalesPaySRVAmount = 4;
+                intSalesPaySRVConsumedAmount = 5;
+                intSalesPaySRVState = 6;
+
+                intSalesPaymentEmailCntr = -1;
+                strSalesPaymentEmail = "";
+                lblVATableSales = 0;
+
+                IsNewSalesPayOtherType = true;
+                arSalesPayOtherType = new Array();
+                intSalesPayOtherTypeCntr = 0;
+                intSalesPayOtherTypeIndex = 0;
+
+                intSalesPayOtherTypeRecID = 0;
+                intSalesPayOtherTypeName = 1;
+                intSalesPayOtherTypeOrg = 2;
+                intSalesPayOtherTypeCardHolderName = 3;
+                intSalesPayOtherTypeCardNumber = 4;
+                intSalesPayOtherTypeIssuanceDateMonth = 5;
+                intSalesPayOtherTypeIssuanceDateDay = 6;
+                intSalesPayOtherTypeIssuanceDateYear = 7;
+                intSalesPayOtherTypeExpirationDateMonth = 8;
+                intSalesPayOtherTypeExpirationDateDay = 9;
+                intSalesPayOtherTypeExpirationDateYear = 10;
+                intSalesPayOtherTypeApprovalNo = 11;
+                intSalesPayOtherTypeAmount = 12;
+                intSalesPayOtherTypeState = 13;
+                intSalesPayOtherTypeRoomNo = 14;
+                intSalesPayOtherTypeRemarks = 15;
+                intSalesPayOtherTypeGCashRefNo = 16;
+
+
+                showDiscountDetails = false;
+                isSeniorCitizenDiscount = false;
+                IsNewSalesPayCustomerIdentification = true;
+                arSalesPayCustomerIdentification = new Array();
+                intSalesPayCustomerIdentificationCntr = 0;
+                intSalesPayCustomerIdentificationIndex = 0;
+
+                intSalesPayCustomerIdentificationIDType = 0;
+                intSalesPayCustomerIdentificationIDOtherType = 1;
+                intSalesPayCustomerIdentificationIDText = 2;
+                intSalesPayCustomerIdentificationState = 3;
+
+                IsNewSalesPayCustomerName = true;
+                arSalesPayCustomerName = new Array();
+                intSalesPayCustomerNameCntr = 0;
+                intSalesPayCustomerNameIndex = 0;
+
+                intSalesPayCustomerNameID = 0;
+                intSalesPayCustomerNameTitleID = 1;
+                intSalesPayCustomerNameTitleName = 2;
+                intSalesPayCustomerNameSurname = 3;
+                intSalesPayCustomerNameFirstName = 4;
+                intSalesPayCustomerNameMiddleName = 5;
+                intSalesPayCustomerNameSuffix = 6;
+                intSalesPayCustomerNameDOBMonth = 7;
+                intSalesPayCustomerNameDOBDay = 8;
+                intSalesPayCustomerNameDOBYear = 9;
+                intSalesPayCustomerNameState = 10;
+                intSalesPayCustomerNameFullName = 11;
+
+                isSeniorCitizenPWDDiscount = false;
+                seniorCitizenNetAmount = 0;
+                SCDiscountExempt = 0;
+                SubTotalOfVatExemptItems = 0;
+                GrossSalesToNoneSC = 0;
+                GrossSalesToSC = 0;
+                VatExemptSales = 0;
+                seniorCitizenDiscount = 0;
+                MaxSCDiscountableAmount = 0;
+                IsApplyMaxSCDiscountableAmount = false;
+                //var SubTotalOfItemsWithoutVatExempt = 0;
+
+                sessionStorage.IsPaymentJSLoaded = 'true';
+                sessionStorage.CurrentPage = 'payment';
+                newPrinterIP;
+                newPrinterFowstID;
+                originalDevFowstPrinterID;
+
+                dblTotalAmountDueForDiscount = 0;
+                dblSubTotal = 0;
+                taxPercent = 0;
+                longDiscountPercent;
+                longChargeAmount = 0;
+                //                var isFromBilling = false;
+                // group 4
+                if (!window.InAndroid) {
+                isInitCheckFx = false;
+                isInitDebitFx = false;
+                isInitCreditCardFx = false;
+                isInitSrvFx = false;
+                isInitGCFx = false;
+                isInitOtherPaymentFx = false;
+                }
+
+                pDataCharges = [];
+                printAttempt = 1;
+                pPrintBillingArguments = undefined;
+                theInvoiceID = undefined;
+            } // end function ClearSalesPaymentVariables
+
+            window.PrintDeliveryReceiptThermalPrinter = function (pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg) {
+                var strTemp = '';
+                var strPrint = '';
+                var strPrinterIP = '';
+                var strStockID = '';
+                var IsShowSalesRep = false;
+                var pData = {};
+                pData.InvoiceID = pInvoiceID;
+
+                //Get Printer IP Address
+                if (vDataPrint == undefined) {
+                    MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                        "Printer",
+                        [
+                            {
+                                Text: 'Ok',
+                                Click: function () {
+
+                                    $.mobile.changePage('');
+
+                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                }
+                            }
+                        ]
+                );
+                    return;
+                }
+
+                if (vDataPrint.Rows.length > 0) {
+                    //additional by janine jan 31 2015
+                    originalDevFowstPrinterID = vDataPrint.Rows[0].ID;
+                    if (CStr2(newPrinterIP) != '')
+                        strPrinterIP = newPrinterIP;
+                    else
+                        strPrinterIP = vDataPrint.Rows[0].PrinterIPAddress;
+
+                    //New set of text to print
+                    NewPrintBuilder();
+
+                    //Get Header
+                    IsShowSalesRep = false;
+                    var mDate = '';
+
+                    if (InAndroid) {
+                        mDate = vDataInvHeader.Rows[0].InvoiceDate;
+                    }
+                    else {
+                        mDate = vDataInvHeader.Rows[0].InvoiceDate.replace(/-/g, '/');
+                    }
+
+                    if (vDataHeader.Rows.length > 0) {
+
+                        IsShowSalesRep = (vDataHeader.Rows[0].IsShowSalesRep == 1 ? true : false);
+
+                        if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+
+                            strPrint = FormatTextToPrint(intFAFCTotalLenght, $.trim(('NOT FOR ITEM RELEASING' || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                            ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                            strPrint = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].BusinessTradeName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                            ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                            strPrint = '';
+                            strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].CorporateName || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                            strPrint = strPrint + strTemp;
+
+                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'VAT TIN ' + $.trim((vDataHeader.Rows[0].TIN || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                            strPrint = strPrint + strTemp;
+
+                            strTemp = FormatTextToPrint(intFAFCTotalLenght, $.trim((vDataHeader.Rows[0].CompleteAddress || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                            strPrint = strPrint + strTemp;
+
+                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Tel. No.' + $.trim((vDataHeader.Rows[0].TelNo || '')), intFAFCTotalLenght, '', 0, '', 0, 1);
+                            strPrint = strPrint + strTemp;
+
+                            strTemp = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                            strPrint = strPrint + strTemp;
+
+                            ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                        }
+                        //Get Items
+                        if (vDataInvHeader.Rows.length > 0) {
+                            strPrint = '';
+                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Customer', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerName || '')), intFAFCTotalLenght, '', 0, 0);
+                            strPrint = strPrint + strTemp;
+
+                            strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Address', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerAddress || '')), intFAFCTotalLenght, '', 0, 0);
+                            strPrint = strPrint + strTemp;
+
+                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('TIN', 8, ' ', 1), 7, ': ' + $.trim((vDataInvHeader.Rows[0].CustomerTIN || '')), intFAFCTotalLenght, '', 0, 0);
+                                strPrint = strPrint + strTemp;
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+                            }
+
+                            if (CStr2(vDataInvHeader.Rows[0].CustomerTableNo) != '') {
+                                var prefix = vDataInvHeader.Rows[0].CustomerTableNo; //.split('_'); modified by arnie 92117
+
+                                if ($.trim((vDataInvHeader.Rows[0].CustomerTableNo || '')) != '') {
+                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, SetPrefixPostfix('Table #', 8, ' ', 1), 7, ': ' + $.trim((prefix || '')), intFAFCTotalLenght, '', 0, 0);
+                                    strPrint = strTemp;
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+                                }
+                            }
+
+                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+                            }
+
+                            strPrint = '';
+                            //+ SetPrefixPostfix($.trim((vDataInvHeader.Rows[0].InvoiceNumber || '')), 12, '0', 0)
+                            strTemp = FormatTextToPrint(intFCDoubleTotalLenght, 'Delivery Receipt ' , intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                            strPrint = strPrint + strTemp;
+
+                            strTemp = FormatTextToPrint(intFCDoubleTotalLenght, ($.format.date(new Date(mDate), 'MMM dd, yyyy HH:mm') || ''), intFCDoubleTotalLenght, '', 0, '', 0, 1);
+                            strPrint = strPrint + strTemp;
+
+                            ReadyTextToPrint(strPrint, 3, 1, 1, 1, 1, 1, 0, 0, 0);
+
+                            strPrint = FormatTextToPrint(intFAFCTotalLenght, 'Cashier: ' + ($.trim(vDataInvHeader.Rows[0].CashierName || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                            ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+
+                            if (IsShowSalesRep) {
+                                var SalesRepList = [];
+                                var SalesRepConcatenated;
+                                var IsSalesRepExist = false;
+
+                                for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+                                    IsSalesRepExist = false;
+                                    for (var i = 0; i <= SalesRepList.length - 1; i++) {
+
+                                        if (SalesRepList[i] == vDataItem.Rows[p].SalesPerson) {
+                                            IsSalesRepExist = true;
+                                        }
+
+                                    }
+
+                                    if (!IsSalesRepExist) {
+                                        SalesRepList[SalesRepList.length] = vDataItem.Rows[p].SalesPerson;
+                                        if (p == 0) {
+                                            SalesRepConcatenated = vDataItem.Rows[p].SalesPerson;
+                                        } else {
+                                            SalesRepConcatenated += ', ' + vDataItem.Rows[p].SalesPerson;
+                                        }
+                                    }
+
+                                }
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Sales Person: ' + ($.trim(SalesRepConcatenated || '')), intFAFCTotalLenght, '', 0, '', 0, 0);
+                                strPrint = strTemp;
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0);
+                            }
+
+                            strPrint = FormatTextToPrint(intFAFCTotalLenght, '________________________________________', intFAFCTotalLenght, '', 0, '', 0, 1);
+                            ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                            //Get Items
+                            var strProductID = "";
+                            if (vDataItem.Rows.length > 0) {
+                                strStockID = '';
+                                strPrint = '';
+                                var intLimitPerBatchPrint = 0;
+
+                                var strQtyLabel = SetPrefixPostfix('Qty' || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Product Description', 20, strQtyLabel, intFAFCTotalLenght, '', 0, 0);
+                                strPrint = '\n' + strPrint + strTemp;
+
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+                                strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                strPrint = strTemp;
+                                ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+
+                                    var strStockDescription = $.trim((vDataItem.Rows[p].StockDescription || '')) + (isSeniorCitizenDiscount ? (CBool(vDataItem.Rows[p].IsVatExempt) ? '' : ' (E)') : '');
+                                    var strUnitPrice = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].UnitPrice || '0'), intFAFCTotalLenght - 30, ' ', 0);
+                                    var strQty = SetPrefixPostfix(AccountingFormat((vDataItem.Rows[p].Quantity || '0'), 0), intFAFCTotalLenght - 14, ' ', 0);                                    
+                                    //var strQty = SetPrefixPostfix(AccountingFormat((vDataItem.Rows[p].Quantity || '0'), 0), 8, ' ', 0);
+                                    strQty = strQty.replace(/\s/g, '');
+                                    var strUnitMeasure = SetPrefixPostfix((vDataItem.Rows[p].UnitMeasure || ''), 10, ' ', 0);
+                                    strUnitMeasure = strUnitMeasure.replace(/\s/g, '');
+                                    var strSubTotal = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].SubTotal || '0'), intFAFCTotalLenght - 26, ' ', 0);
+
+                                    strPrint = '';
+                                    if (strProductID == "") {
+                                        strProductID = vDataItem.Rows[p].StockID;
+                                    }
+
+                                    if (vDataItemSerial.Rows.length > 0) {
+                                        if (strProductID != vDataItem.Rows[p].StockID) { //Print Serials
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, 'Serial(s) : ', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                    var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                    strTemp = FormatTextToPrint(intFAFCTotalLenght, strSerial, intFAFCTotalLenght, '', 0, '', 0, 0);
+                                                    strPrint = strPrint + strTemp;
+
+                                                }
+                                            }
+
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, '_______________________________________', intFAFCTotalLenght, '', 0, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                            strProductID = vDataItem.Rows[p].StockID;
+                                        }
+                                    }
+
+                                    if (vDataPrint.Rows[0].ProductDescriptionInReceipt != undefined) {
+                                        if (vDataPrint.Rows[0].ProductDescriptionInReceipt == 'ProductShortDescription') {
+                                            strStockDescription = $.trim((vDataItem.Rows[p].ReceiptName || vDataItem.Rows[p].StockDescription));
+                                            //strTemp = FormatTextToPrint(intFAFCTotalLenght, strQty + ' ' + strUnitMeasure, 8, ' ' + strStockDescription, 24, strSubTotal, intFAFCTotalLenght, 0);
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, 20, strQty, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+                                        } else {                                            
+                                            var itemtotal = SetPrefixPostfix(strQty || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                            strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, 20, itemtotal, intFAFCTotalLenght, '', 0, 0);
+                                            strPrint = strPrint + strTemp;
+
+                                        }
+                                    } else {
+                                        var itemtotal = SetPrefixPostfix(strQty || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, strStockDescription, 20, itemtotal, intFAFCTotalLenght, '', 0, 0);
+                                        strPrint = strPrint + strTemp;
+                                    }
+                                                                        
+                                    ReadyTextToPrint(strPrint, 3, 1, 1, 0, 0, 0, 0, 0, 0);
+                                };
+
+                                //Get Footer Amounts
+                                if (vDataPayment.Rows.length > 0) {
+
+                                    //Get Footer Amounts
+                                    if (vDataFooter.Rows.length > 0) {
+
+                                        
+                                        var strSKUCount = SetPrefixPostfix(AccountingFormat((vDataFooter.Rows[0].SKUCount || '0'), 0), intFAFCTotalLenght - 14, ' ', 0);
+                                        
+                                        strPrint = '\n';
+                                        strTemp = FormatTextToPrint(intFAFCTotalLenght, 'SKU Count: ', 12, strSKUCount, intFAFCTotalLenght, '', 0, 0);
+                                        strPrint = strPrint + strTemp;
+
+
+                                        ReadyTextToPrint(strPrint, 3, 1, 1, 1, 0, 0, 0, 0, 0);
+
+
+                                        if (vDataMsg.Rows.length > 0) {
+                                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS)) {
+                                              
+                                                strPrint = FormatTextToPrint(intFAFCTotalLenght, 'This business is made more efficient by Mobiz. Visit us at www.mobiz-apps.com', intFAFCTotalLenght, '', 0, '', 0, 1);
+                                                ReadyTextToPrint('\n' + strPrint, 3, 1, 1, 0, 0, 1, 0, 0, 0);
+
+                                            }
+
+                                            ReadyTextToPrint('\n', 3, 1, 1, 0, 0, 0, 0, 0, 1);
+                                            PrintText(strPrinterIP);
+                                            ClearCommandBuffer();
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                        "Printer",
+                        [
+                            {
+                                Text: 'Ok',
+                                Click: function () {
+
+                                    $.mobile.changePage('');
+
+                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                }
+                            }
+                        ]
+                );
+                }
+            }
+
+            window.PrintDeliveryReceiptViaWindowsPrintServer = function (pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg) {
+                var strTemp = '';
+                var strPrint = '';
+                var strPrinterIP = '';
+                var strPrinterName = '';
+                var strStockID = '';
+                var IsShowSalesRep = false;
+                var pData = {};
+                pData.InvoiceID = pInvoiceID;
+
+                //Get Printer IP Address
+                if (vDataPrint == undefined) {
+                    MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                        "Printer",
+                        [
+                            {
+                                Text: 'Ok',
+                                Click: function () {
+
+                                    $.mobile.changePage('');
+
+                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                }
+                            }
+                        ]
+                );
+                    return;
+                }
+
+                if (vDataPrint.Rows.length > 0) {
+                    //additional by janine jan 31 2015
+                    originalDevFowstPrinterID = vDataPrint.Rows[0].ID;
+                    if (CStr2(newPrinterIP) != '')
+                        strPrinterIP = newPrinterIP;
+                    else {
+                        strPrinterIP = vDataPrint.Rows[0].PrinterIPAddress;
+                        strPrinterName = vDataPrint.Rows[0].PrinterName;
+                    }
+
+
+                    //New set of text to print
+                    //NewPrintBuilder();
+
+                    //Get Header
+                    IsShowSalesRep = false;
+                    var mDate = '';
+
+                    if (InAndroid) {
+                        mDate = vDataInvHeader.Rows[0].InvoiceDate;
+                    }
+                    else {
+                        mDate = vDataInvHeader.Rows[0].InvoiceDate.replace(/-/g, '/');
+                    }
+
+                    if (vDataHeader.Rows.length > 0) {
+
+                        IsShowSalesRep = (vDataHeader.Rows[0].IsShowSalesRep == 1 ? true : false);
+
+                        if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                            WindowsPrinter($.trim((vDataHeader.Rows[0].BusinessTradeName || '')), [0, 0, 0, 1, 0, 36]);
+
+                            WindowsPrinter($.trim(('NOT FOR ITEM RELEASING' || '')), [0, 0, 0, 1, 0, 36]);
+
+                            WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+
+                            WindowsPrinter($.trim((vDataHeader.Rows[0].CorporateName || '')), [0, 0, 0, 1, 0, 36]);
+
+                            WindowsPrinter('VAT TIN ' + $.trim((vDataHeader.Rows[0].TIN || '')), [0, 0, 0, 1, 0, 36]);
+
+                            WindowsPrinter($.trim((vDataHeader.Rows[0].CompleteAddress || '')), [1, 0, 0, 1, 0, 36]);
+
+                            WindowsPrinter('Tel. No.' + $.trim((vDataHeader.Rows[0].TelNo || '')), [1, 0, 0, 1, 0, 36]);
+
+                            WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                            
+                        }
+                        //Get Items
+                        if (vDataInvHeader.Rows.length > 0) {
+                            strPrint = '';
+                            WindowsPrinter('Customer : ' + $.trim((vDataInvHeader.Rows[0].CustomerName || '')), [0, 0, 0, 0, 0, 36]);
+
+                            WindowsPrinter('Address : ' + $.trim((vDataInvHeader.Rows[0].CustomerAddress || '')), [0, 0, 0, 0, 0, 36]);
+
+                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                WindowsPrinter('TIN : ' + $.trim((vDataInvHeader.Rows[0].CustomerTIN || '')), [0, 0, 0, 0, 0, 36]);
+                            }
+
+                            if (CStr2(vDataInvHeader.Rows[0].CustomerTableNo) != '') {
+                                var prefix = (vDataInvHeader.Rows[0].CustomerTableNo).substring((vDataInvHeader.Rows[0].CustomerTableNo).lastIndexOf('-'));
+
+                                if ($.trim((vDataInvHeader.Rows[0].CustomerTableNo || '')) != '') {
+                                    WindowsPrinter('Table # : ' + CDec2(Math.abs(prefix)), [0, 0, 0, 0, 0, 36]);
+                                }
+                            }
+
+                            if (CBool(vDataHeader.Rows[0].IsAuthorizedForPOS) || CBool(vDataHeader.Rows[0].ShowCompanyDetailsInHeader)) {
+                                WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                            }
+
+                            WindowsPrinter('Delivery Receipt ' , [0, 0, 0, 1, 0, 36]);
+
+                            WindowsPrinter(($.format.date(new Date(mDate), 'MMM dd, yyyy HH:mm') || ''), [0, 0, 0, 1, 0, 36]);
+
+                            WindowsPrinter('Cashier : ' + $.trim((vDataInvHeader.Rows[0].CashierName || '')), [0, 0, 0, 0, 0, 36]);
+
+                            if (IsShowSalesRep) {
+                                var SalesRepList = [];
+                                var SalesRepConcatenated;
+                                var IsSalesRepExist = false;
+
+                                for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+                                    IsSalesRepExist = false;
+                                    for (var i = 0; i <= SalesRepList.length - 1; i++) {
+
+                                        if (SalesRepList[i] == vDataItem.Rows[p].SalesPerson) {
+                                            IsSalesRepExist = true;
+                                        }
+
+                                    }
+
+                                    if (!IsSalesRepExist) {
+                                        SalesRepList[SalesRepList.length] = vDataItem.Rows[p].SalesPerson;
+                                        if (p == 0) {
+                                            SalesRepConcatenated = vDataItem.Rows[p].SalesPerson;
+                                        } else {
+                                            SalesRepConcatenated += ', ' + vDataItem.Rows[p].SalesPerson;
+                                        }
+                                    }
+
+                                }
+
+                                WindowsPrinter('Sales Person: ' + $.trim((SalesRepConcatenated || '')), [1, 0, 0, 0, 0, 36]);
+                            }
+
+                            WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+
+                            WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+
+                            WindowsPrinter($.trim('Product Description'), [0, 0, 0, 0, 0, 36], 'Qty', [0, 0, 0, 0, 1, 36]);
+                            WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+
+                            WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+
+                            //Get Items
+                            var strProductID = "";
+                            if (vDataItem.Rows.length > 0) {
+                                strStockID = '';
+                                strPrint = '';
+                                var intLimitPerBatchPrint = 0;
+                                for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+
+                                    var strStockDescription = $.trim((vDataItem.Rows[p].StockDescription || ''));
+                                    var strUnitPrice = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].UnitPrice || '0'), intFAFCTotalLenght - 30, ' ', 0);
+                                    var strQty = SetPrefixPostfix(AccountingFormat((vDataItem.Rows[p].Quantity || '0'), 0), 8, ' ', 0);
+                                    strQty = strQty.replace(/\s/g, '');
+                                    var strUnitMeasure = SetPrefixPostfix((vDataItem.Rows[p].UnitMeasure || ''), 10, ' ', 0);
+                                    strUnitMeasure = strUnitMeasure.replace(/\s/g, '');
+                                    var strSubTotal = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].SubTotal || '0'), intFAFCTotalLenght - 26, ' ', 0);
+
+                                    strPrint = '';
+                                    if (strProductID == "") {
+                                        strProductID = vDataItem.Rows[p].StockID;
+                                    }
+
+                                    if (vDataItemSerial.Rows.length > 0) {
+                                        if (strProductID != vDataItem.Rows[p].StockID) { //Print Serials
+
+                                            for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                    var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                    WindowsPrinter('Serials(s) : ' + strSerial, [1, 0, 0, 0, 0, 36]);
+
+                                                }
+                                            }
+
+                                            WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+
+                                            strProductID = vDataItem.Rows[p].StockID;
+                                        }
+                                    }
+
+
+                                    if (vDataPrint.Rows[0].ProductDescriptionInReceipt != undefined) {
+                                        if (vDataPrint.Rows[0].ProductDescriptionInReceipt == 'ProductShortDescription') {
+
+                                            strStockDescription = $.trim((vDataItem.Rows[p].ReceiptName || vDataItem.Rows[p].StockDescription));
+
+                                            WindowsPrinter(strQty + ' ' + strUnitMeasure + ' ' + strStockDescription, [0, 0, 0, 0, 0, 36], strSubTotal, [0, 0, 0, 0, 1, 36]);
+
+                                        } else {
+                                            WindowsPrinter($.trim(strStockDescription), [0, 0, 0, 0, 0, 36], (CInt2($.trim(strQty)) || '0'), [0, 0, 0, 0, 1, 36]);
+                                        }
+                                    } else {
+                                        WindowsPrinter($.trim(strStockDescription), [0, 0, 0, 0, 0, 36], (CInt2($.trim(strQty)) || '0'), [0, 0, 0, 0, 1, 36]);
+                                    }
+
+                                    if (vDataItemSerial.Rows.length > 0) {
+                                        if (p == vDataItem.Rows.length - 1) {
+
+                                            WindowsPrinter('Serial(s) : ', [1, 16, 0, 0, 0, 36], ': ' + $.trim((vDataItem.Rows[p].SalesPerson || '')));
+
+                                            for (var intSerial = 0; intSerial <= vDataItemSerial.Rows.length - 1; intSerial++) {
+
+                                                if (strProductID == vDataItemSerial.Rows[intSerial].ProductID && vDataItemSerial.Rows[intSerial].InvoiceID == pInvoiceID) {
+
+                                                    var strSerial = $.trim((vDataItemSerial.Rows[intSerial].SerialNumber || ''));
+
+                                                    WindowsPrinter(strSerial, [1, 16, 0, 0, 0, 36]);
+
+                                                }
+                                            }
+                                            strProductID = vDataItem.Rows[p].StockID;
+                                        }
+                                    } else {
+                                        
+                                    }
+
+                                    if (vDataItem.Rows[p].ItemModifier != undefined) {
+                                        if (vDataItem.Rows[p].ItemModifier.length > 0) {
+                                            for (var im = 0; im < vDataItem.Rows[p].ItemModifier.length; im++) {
+                                                var mod = vDataItem.Rows[p].ItemModifier[im];
+                                                WindowsPrinter('* ' + mod.Description, [0, 0, 0, 0, 0, 36]);
+
+                                                if (CStr2(mod.OrderedQty) != '') {
+                                                    var itemmodifiertotal = AccountingFormat(CDec2(mod.OrderedQty) * CDec2(mod.ModifierPrice) * CDec2(strQty));
+                                                    WindowsPrinter(' ' + mod.OrderedQty + ' @ ' + AccountingFormat($.trim(mod.ModifierPrice)) + ' @ ' + strQty + ' ' + strUnitMeasure, [0, 0, 0, 0, 0, 36], AccountingFormat((itemmodifiertotal || '0')), [0, 0, 0, 0, 1, 36]);
+                                                }
+                                            }
+                                            WindowsPrinter('   Item Total:  ---->', [0, 0, 0, 0, 0, 36], AccountingFormat((strSubTotal || '0')), [0, 0, 0, 0, 1, 36]);
+                                            WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                        }
+                                    } else {
+                                        WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                    }
+                                };
+
+                                //Get Footer Amounts
+                                if (vDataPayment.Rows.length > 0) {
+
+                                    //Get Footer Amounts
+                                    if (vDataFooter.Rows.length > 0) {
+
+                                        var strSKUCount = SetPrefixPostfix(AccountingFormat((vDataFooter.Rows[0].SKUCount || '0'), 0), intFAFCTotalLenght - 14, ' ', 0);
+                                        var strTotalAmountDue = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].SubTotal || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                        var strTotalDiscount = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].DiscountAmount || '0'), intFAFCTotalLenght - 22, ' ', 0);
+                                        var strNetAmountDue = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].NetAmountDue) + (isSeniorCitizenDiscount ? 0 : CDec2(vDataFooter.Rows[0].ChargeAmount)) + CDec2(vDataFooter.Rows[0].TipAmount) + CDec2(vDataFooter.Rows[0].LocalTaxAmount)), intFAFCTotalLenght - 22, ' ', 0);
+
+                                        var strTotalCharges = SetPrefixPostfix(vDataFooter.Rows[0].ChargeAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+                                        var strTip = SetPrefixPostfix(vDataFooter.Rows[0].TipAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+
+                                        var strVatSale = SetPrefixPostfix(AccountingFormat(vDataFooter.Rows[0].TotalAmountDue), intFAFCTotalLenght - 22, ' ', 0);
+                                        var strVatAmount = SetPrefixPostfix(AccountingFormat(CDec2(vDataFooter.Rows[0].SubTotal) - CDec2(vDataFooter.Rows[0].TotalAmountDue)), intFAFCTotalLenght - 22, ' ', 0);
+
+                                        var strOtherTax = SetPrefixPostfix(vDataFooter.Rows[0].LocalTaxAmount || '0', intFAFCTotalLenght - 22, ' ', 0);
+
+                                        WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+                                        
+                                        WindowsPrinter('SKU Count: ', [0, 0, 0, 0, 0, 36], CDec2((vDataFooter.Rows[0].SKUCount || '0')), [0, 0, 0, 0, 1, 36]);
+                                        
+                                        WindowsPrinter("newLine", [0, 0, 0, 0, 0, 0]);
+
+
+                                        if (vDataMsg.Rows.length > 0) {
+                                                WindowsPrinter('____________________________________', [0, 0, 0, 0, 0, 36]);
+                                                WindowsPrinter('This business is made more efficient by Mobiz. Visit us at www.mobiz-apps.com', [1, 0, 0, 1, 0, 36]);
+
+                                            WindowsPrinter("address", [0, 0, 0, 0, 0, 0], strPrinterIP, [0, 0, 0, 0, 0, 0], "", [0, 0, 0, 0, 0, 0]);
+
+                                            if (strPrinterName.length == 0) {
+                                                WindowsPrinter("printerName", [0, 0, 0, 0, 0, 0], strPrinterName, [0, 0, 0, 0, 0, 0], "", [0, 0, 0, 0, 0, 0]);
+                                            }
+
+                                            WindowsPrinter("startPrint", [0, 0, 0, 0, 0, 0], "", [0, 0, 0, 0, 0, 0], "", [0, 0, 0, 0, 0, 0]);
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    MessageBox("No printer assigned to this device. Please contact your system administrator for assistance.",
+                        "Printer",
+                        [
+                            {
+                                Text: 'Ok',
+                                Click: function () {
+
+                                    $.mobile.changePage('');
+
+                                    if (window.location.pathname.toLowerCase() == '/salesmenu/posviewall')
+                                        window.pageHeader.ShowPaymentsPage(false);
+
+                                }
+                            }
+                        ]
+                );
+                }
+
+            }
+        }); // require SalesPayments_offline
+    });

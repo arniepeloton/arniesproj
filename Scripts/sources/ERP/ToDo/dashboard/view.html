@@ -1,0 +1,166 @@
+﻿<div class="row mb-3">
+    <div class="col-md">
+        <label class="form-label">Created By:</label>
+        <input data-role="none" class="form-control" name="selTodoDashboardCreatedBy" readonly />
+    </div>
+    <div class="col-md">
+        <label class="form-label">Assigned To:</label>
+        <input data-role="none" class="form-control" name="selTodoDashboardAssignedTo" readonly />
+    </div>
+    <div class="col-md">
+        <label class="form-label">Category:</label>
+        <select data-role="none" class="form-select" name="selTodoDashboardCategory"></select>
+    </div>
+    <div class="col-md">
+        <label class="form-label">Due Date:</label>
+        <div class="input-group">
+            <input data-role="none" class="form-control" name="txtTodoDashboardDueDate" placeholder="Click to set date" readonly />
+            <button data-role="none" class="btn btn-secondary" name="btnTodoDashboardDueDateClear"><span class="bi-x-lg"></span></button>
+        </div>        
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md">
+        <label class="form-label">Status:</label>
+        <select data-role="none" class="form-select" name="selTodoDashboardStatus">
+            <option value="0">Open</option>
+            <option value="1">Done</option>
+        </select>
+    </div>
+    <div class="col-md">
+        <label class="form-label">Urgency:</label>
+        <select data-role="none" name="selTodoDashboardUrgency" class="form-select">
+            <option value="">All</option>
+            <option value="Very Urgent">Very Urgent</option>
+            <option value="Urgent">Urgent</option>
+            <option value="NA">NA</option>
+            <option value="Not Urgent">Not Urgent</option>
+            <option value="Very Not Urgent">Very Not Urgent</option>
+        </select>
+    </div>
+    <div class="col-md">
+        <label class="form-label">Importance:</label>
+        <select data-role="none" name="selTodoDashboardImportance" class="form-select">
+            <option value="">All</option>
+            <option value="Very Important">Very Important</option>
+            <option value="Important">Important</option>
+            <option value="NA">NA</option>
+            <option value="Not Important">Not Important</option>
+            <option value="Very Not Important">Very Not Important</option>
+        </select>
+    </div>
+    <div class="col-md">
+        <label class="form-label">&nbsp;</label>
+        <input data-role="none" type="search" class="form-control" name="txtSearchTodoDashboard" placeholder="Search here" />
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table data-role="none" name="tblTodoDashboard" class="table table-light table-striped table-hover">
+        <thead>
+            <tr class="align-top text-center" style="font-size:14px;">
+                <th style="width:50px;">#</th>
+                <th style="width:115px;">Reference No.</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th style="width:200px;">Created By</th>
+                <th style="width:200px;">Assigned Person(s)</th>
+                <th style="width:150px;">Status</th>
+                <th><!--Urgency / Importance--></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div>
+    <div name="popupTodoDashoardDetails" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">To-Do Details</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-md-3">Reference No:</label>
+                        <div class="col-md">
+                            <input data-role="none" type="text" name="txtTodoDashoardRefNo" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-md-3">Category:</label>
+                        <div class="col-md">
+                            <input data-role="none" type="text" name="txtTodoDashoardCategory" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-md-3">Title:</label>
+                        <div class="col-md">
+                            <input data-role="none" type="text" name="txtTodoDashoardTitle" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-md-3">Description:</label>
+                        <div class="col-md">
+                            <textarea data-role="none" name="txtTodoDashoardDescription" class="form-control" readonly style="height:200px; resize:none"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-md-3">Organization:</label>
+                        <div class="col-md">
+                            <input data-role="none" type="text" name="txtTodoDashoardOrganization" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-md-3">Due Date:</label>
+                        <div class="col-md">
+                            <input data-role="none" type="text" name="txtTodoDashoardDueDate" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-md-3">Urgency:</label>
+                        <div class="col-md">
+                            <input data-role="none" type="text" name="txtTodoDashoardUrgency" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-md-3">Importance:</label>
+                        <div class="col-md">
+                            <input data-role="none" type="text" name="txtTodoDashoardImportance" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-md-3">Assigned Person(s):</label>
+                        <div class="col-md">
+                            <input data-role="none" type="text" name="txtTodoDashoardAssignedPersons" class="form-control" readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" class="btn btn-light border btn-block btn-lg" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" class="btn btn-secondary btn-block btn-lg" name="btnTodoDashboardMarkAsUndone">Mark as Undone</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" class="btn btn-success btn-block btn-lg" name="btnTodoDashboardMarkAsDone">Mark as Done</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

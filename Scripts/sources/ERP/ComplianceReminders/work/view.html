@@ -1,0 +1,195 @@
+﻿<div class="row mb-3">
+    <div class="col-md-6">
+        <input data-role="none" type="search" class="form-control" id="txtCRSearch" placeholder="Search here" />
+    </div>
+    <div class="col-md text-right">
+        <button data-role="none" class="btn btn-success" id="btnCRAddAlert">Add Alert</button>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table id="tblCRLists" class="table table-light table-striped table-hover"></table>
+</div>
+
+<div id="popupCRAlert" class="modal fade" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reminder</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label" for="selCRComplianceOrg">Compliance Organization: <span class="required">*</span></label>
+                    <select data-role="none" class="form-select" id="selCRComplianceOrg">
+                        <option value="">Please Select</option>
+                        <option value="BIR">BIR</option>
+                        <option value="SSS">SSS</option>
+                        <option value="Pag-IBIG">Pag-IBIG</option>
+                        <option value="HDMF">HDMF</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+
+                <div class="mb-3" id="divCROrgOther" style="display:none;">
+                    <label class="form-label" for="txtCROrgOthers">Other: <span class="required">*</span></label>
+                    <input data-role="none" type="text" class="form-control" id="txtCROrgOthers" />
+                </div>
+
+                <div id="divCRForBIR" style="display:none;">
+                    <div class="mb-3">
+                        <label class="form-label" for="txtCRTaxType">Tax Type: <span class="required">*</span></label>
+                        <input data-role="none" type="text" class="form-control" id="txtCRTaxType" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="txtCRFormType">Form Type: <span class="required">*</span></label>
+                        <input data-role="none" type="text" class="form-control" id="txtCRFormType" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="txtCRFilingStartDate">Filing Start Date: <span class="required">*</span></label>
+                        <input data-role="none" type="date" class="form-control" id="txtCRFilingStartDate" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="txtCRFilingDueDateDescription">Filing Due Date Description: <span class="required">*</span></label>
+                        <textarea data-role="none" class="form-control" id="txtCRFilingDueDateDescription" style="resize:none; height:150px;"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="selCRFilingFrequency">Filing Frequency: <span class="required">*</span></label>
+                        <select data-role="none" class="form-select" id="selCRFilingFrequency">
+                            <option value="">Please Select</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Quarterly">Quarterly</option>
+                            <option value="Annually">Annually</option>
+                        </select>
+                    </div>                    
+
+                    <div class="mb-3" id="divFilingFrequencyOpts">
+                        <label class="form-label" for="selCRFilingDueDateMonth">Remind every: <span class="required">*</span></label>
+                        <div class="input-group" style="display:none;">
+                            <select data-role="none" class="form-select" id="selCRFilingDueDateMonth">
+                                <option value="">Month</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                            <select data-role="none" class="form-select CRday" id="selCRFilingDueDateDay"></select>
+                        </div>
+                        <div style="display:none;">
+                            <select data-role="none" class="form-select CRweekday" id="selCRFilingWeekly"></select>
+                        </div>
+                        <div style="display:none;">
+                            <select data-role="none" class="form-select CRdayofmonth" id="selCRFilingMonthly"></select>
+                        </div>
+                        <div class="row align-items-center" style="display:none;">
+                            <div class="col">
+                                <select data-role="none" class="form-select" id="selCRFilingQuarterlyDay">
+                                    <optgroup label="Day"></optgroup>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                of the
+                            </div>
+                            <div class="col">
+                                <select data-role="none" class="form-select" id="selCRFilingQuarter">
+                                    <optgroup label="Quarter">
+                                        <option value="1">1st Month</option>
+                                        <option value="2">2nd Month</option>
+                                        <option value="3">3rd Month</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                of every quarter
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="divCRForOthers" style="display:none;">
+                    <div class="mb-3">
+                        <label class="form-label" for="txtCRComplianceTaskTitle">Title of Compliance Task: <span class="required">*</span></label>
+                        <input data-role="none" type="text" class="form-control" id="txtCRComplianceTaskTitle" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="txtCRComplianceDescription">Description of Compliance: <span class="required">*</span></label>
+                        <textarea data-role="none" class="form-control" id="txtCRComplianceDescription" style="resize:none; height:150px;"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="txtCRComplianceDueDateDescription">Compliance Due Date Description: <span class="required">*</span></label>
+                        <textarea data-role="none" class="form-control" id="txtCRComplianceDueDateDescription" style="resize:none; height:150px;"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="selCRComplianceFrequency">Compliance Frequency: <span class="required">*</span></label>
+                        <select data-role="none" class="form-select" id="selCRComplianceFrequency">
+                            <option value="">Please Select</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Quarterly">Quarterly</option>
+                            <option value="Annually">Annually</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3" id="divComplianceFrequencyOpts">
+                        <label class="form-label" for="selCRComplianceDueDateMonth">Remind every: <span class="required">*</span></label>
+                        <div class="input-group" style="display:none;">
+                            <select data-role="none" class="form-select" id="selCRComplianceDueDateMonth">
+                                <option value="">Please Select</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                            <select data-role="none" class="form-select CRday" id="selCRComplianceDueDateDay"></select>
+                        </div>
+                        <div style="display:none;">
+                            <select data-role="none" class="form-select CRweekday" id="selCRComplianceWeekly"></select>
+                        </div>
+                        <div style="display:none;">
+                            <select data-role="none" class="form-select CRdayofmonth" id="selCRComplianceMonthly"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="mb-3">
+                    <label class="form-label" for="btnIIVendor">Reminder Alerts: <span class="required">*</span></label>
+                    <input data-role="none" type="date" id="txtCRFilingDueDate" />
+                </div>-->
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnCRSaveAlert" class="btn btn-success btn-lg btn-block">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

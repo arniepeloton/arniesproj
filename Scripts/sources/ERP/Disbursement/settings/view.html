@@ -1,0 +1,41 @@
+﻿<script type="text/javascript">
+    require([GetPathFormat('/Scripts/sources/ERP/Disbursement/settings/controller.js?v=' + assetversion)])
+</script>
+
+<div class="row wrapper min-vh-100 flex-column flex-md-row">
+    <div class="col-12 col-md-2 p-0 bg-light flex-shrink-1 mb-3">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light align-items-start flex-md-column flex-row p-2">
+            <a data-role="none" class="navbar-brand" href="#">Menu</a>
+            <a data-role="none" href="#" class="navbar-toggler" data-toggle="collapse" data-target=".sidebarDS">
+                <span class="navbar-toggler-icon"></span>
+            </a>
+            <div class="collapse navbar-collapse sidebarDS mt-2">
+                <ul class="flex-column w-100 justify-content-between nav nav-pills">
+                    <li><a class="nav-link active" role="button" data-role="none" data-toggle="tab" href="#tabDSFundAdjustments">Fund Adjustments</a></li>
+                    <li><a class="nav-link" role="button" id="btnDSRemarksMessages" data-role="none" data-toggle="tab" href="#tabDSRemarksMessages">Quick Remarks</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="col bg-faded">
+        <div class="tab-content p-3">
+            <div class="tab-pane fade active show" id="tabDSFundAdjustments">
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md">
+                        List of users who are allowed to approve fund adjustments in the web app:
+                    </div>
+                    <div class="col-md-auto text-right">
+                        <button data-role="none" id="btnFAAddEmployee" class="btn btn-success">Add Employee</button>
+                    </div>
+                </div>
+
+                <ul id="listFundAdjustmentsToApprove" class="custom-list list-group rounded-border"></ul>
+            </div>
+
+            <div class="tab-pane fade" id="tabDSRemarksMessages">
+
+            </div>
+        </div>
+    </div>
+</div>

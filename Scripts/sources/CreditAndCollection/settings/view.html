@@ -1,0 +1,91 @@
+﻿<div>
+    <div class="row wrapper min-vh-100 flex-column flex-md-row">
+        <div class="col-12 col-md-2 p-0 bg-light flex-shrink-1 mb-3">
+            <nav class="navbar navbar-expand-sm navbar-light bg-light align-items-start flex-md-column flex-row p-2">
+                <a data-role="none" class="navbar-brand" href="#">Menu</a>
+                <a data-role="none" href="#" class="navbar-toggler" data-toggle="collapse" data-target=".sidebarCnC">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <div class="collapse navbar-collapse sidebarCnC mt-2">
+                    <ul class="flex-column w-100 justify-content-between nav nav-pills">
+                        <li><a class="nav-link active" role="button" id="btnCnCCustomerPayment" data-role="none" data-toggle="tab" href="#tabCnCCustomerPayment">Customer Payment</a></li>
+                        <li><a class="nav-link" role="button" id="btnCnCGrantCredit" data-role="none" data-toggle="tab" href="#tabCnCGrantCredit">Grand Credit When POS Is Offline</a></li>
+                        <li><a class="nav-link" role="button" id="btnCnCSOA" data-role="none" data-toggle="tab" href="#tabCnCSOA">SOA</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col bg-faded">
+            <div class="tab-content p-3">
+                <div class="tab-pane fade show active" id="tabCnCCustomerPayment">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-3 col-form-label">Acknowledgment Receipt Template for Customer’s DIY Payment Entry via e-SOA:</div>
+                            <div class="col">
+                                <input data-role="none" class="form-control" name="fileTemplate" type="file" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-3 col-form-label">Number of days before the SOA Link expires:</div>
+                            <div class="col">
+                                <input data-role="none" class="form-control" name="expirationdaysforsoalink" type="number" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 col-form-label">SOA Link Domain Name: <br /> (Please include port number if applicable)</div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Domain Name:
+                                        <input data-role="none" class="form-control" name="soalinkdomain" type="text" />
+                                        Note: If this field is blank, the default value is "konstruksyon.com".
+                                    </div>
+                                    <div class="col-md-4">
+                                        External IP Address:
+                                        <input data-role="none" class="form-control" name="soalinkexternalipaddress" type="text" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        Internal IP Address:
+                                        <input data-role="none" class="form-control" name="soalinkinternalipaddress" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="tabCnCGrantCredit" name="divGrantCredit"></div>
+
+                <div class="tab-pane fade" id="tabCnCSOA">
+                    <div class="row mb-3">
+                        <div class="col-md-3 col-form-label">Earliest Invoice Date to Show:<br />(On SOA, show only open invoices after this date)</div>
+                        <div class="col-md">
+                            <button data-role="none" class="btn btn-secondary" name="butSoaEarliestDate">Select a date</button>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3 col-form-label">Earliest Invoice Date to Show:<br />(On e-SOA, show only open invoices after this date)</div>
+                        <div class="col-md">
+                            <button data-role="none" class="btn btn-secondary" name="butEsoaEarliestDate">Select a date</button>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3 col-form-label">Footnote Message:</div>
+                        <div class="col-md">
+                            <textarea data-role="none" class="form-control" name="txtSOAFootnote" style="resize:none; height:200px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 mb-4 text-center">
+                    <button data-role="none" name="butSave" class="btn btn-success btn-lg">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+﻿<style>
+    .hotbutton button {
+        min-height: 80px !important;
+    }
+
+    .hbcontainer {
+        height: 100%;
+        vertical-align: top;
+        position: relative;
+    }
+
+    .hbcart {
+        width: 400px;
+    }
+</style>
+<div name="divHotButtons" class="w-100">
+    <div name="nohb" class="d-flex align-items-center justify-content-center w-100 h-100">
+        <div class="text-center text-secondary">
+            <span style="font-size:30px;">No Hot Button Templates found</span>
+            <br /><br />
+            <span>Please go to System Settings > Hot Buttons or you may ask assistance from Mobiz representative.</span>
+        </div>
+    </div>
+    <div name="transhotbuttons" class="d-flex flex-column overflow-hidden w-100 h-100" style="display:none">
+        <div class="flex-fill d-flex flex-row overflow-auto">
+            <div class="sidebar d-flex flex-column" style="flex: 0 0 45%;">
+                <div name="divCartItem" class="mb-auto bd-highlight overflow-auto w-100 h-100">
+                    <!--d-flex align-items-center justify-content-center <div class="text-center text-secondary">
+                        <span class="bi bi-cart4" style="font-size:80px;"></span>
+                        <br />
+                        <span style="font-size:20px;">Cart is empty</span>
+                    </div>-->
+                    <div class="table-fixed h-100">
+                        <table data-role="none" id="tblSideCartItems" class="table table-light table-borderless table-sm">
+                            <thead style="background-color:#ccc;">
+                                <tr class="text-center">
+                                    <th class="fixed-col border-bottom border-secondary" style="width:30px">Qty</th>
+                                    <th class="fixed-col border-bottom border-secondary">Description</th>
+                                    <th class="fixed-col border-bottom border-secondary" style="width:30px">Price</th>
+                                    <th class="fixed-col border-bottom border-secondary" style="width:30px">Total</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="p-2 w-100 bg-light border-top bd-highlight d-none" style="height:50px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-auto">
+                            <h3>TOTAL:</h3>
+                        </div>
+                        <div class="col text-right">
+                            <h3 name="lblHBCartTotal">0.00</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main flex-fill overflow-auto bg-dark">
+                <div class="mb-auto bd-highlight overflow-auto w-100 h-100">
+                    <div class="input-group d-none">
+                        <input data-role="none" type="text" class="form-control form-control-lg rounded-0" placeholder="Search here" />
+                        <button data-role="none" name="btnHBSettings" class="btn btn-secondary btn-lg rounded-0"><span class="bi bi-gear"></span></button>
+                    </div>
+                    <div class="row g-0 bg-success darker hotbutton" name="navHeadHB">
+                        <div class="col-3">
+                            <button data-role="none" class="btn btn-success btn-block darker border-dark rounded-0 h-100">MAIN</button>
+                        </div>
+                        <!--<div class="col-3">
+                            <button data-role="none" class="btn btn-success btn-block darker border-dark rounded-0 h-100">MAIN</button>
+                        </div>
+                        <div class="col-3">
+                            <button data-role="none" class="btn btn-success btn-block darker border-dark rounded-0 h-100">MAIN</button>
+                        </div>
+                        <div class="col-3">
+                            <button data-role="none" class="btn btn-success btn-block darker border-dark rounded-0 h-100">MAIN</button>
+                        </div>-->
+                    </div>
+                    <div class="row g-0 hotbutton row-cols-3 row-cols-lg-4" name="navBodyHB">
+                        <!--<div class="col-3">
+                            <button data-role="none" class="btn btn-dark btn-block darker border-dark rounded-0 h-100">HB 1</button>
+                        </div>
+                        <div class="col-3">
+                            <button data-role="none" class="btn btn-dark btn-block darker border-dark rounded-0 h-100">HB 2</button>
+                        </div>
+                        <div class="col-3">
+                            <button data-role="none" class="btn btn-dark btn-block darker border-dark rounded-0 h-100">HB 3</button>
+                        </div>
+                        <div class="col-3">
+                            <button data-role="none" class="btn btn-dark btn-block darker border-dark rounded-0 h-100">HB 4</button>
+                        </div>
+                        <div class="col-3">
+                            <button data-role="none" class="btn btn-dark btn-block darker border-dark rounded-0 h-100">HB 5</button>
+                        </div>-->
+                    </div>
+                </div>
+                <div class="bg-light w-100 d-none" style="height:50px;">
+                    <div class="row g-0 h-100">
+                        <div class="col">
+                            <button data-role="none" class="btn btn-secondary btn-lg btn-block h-100 rounded-0" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" name="btnHBOk" class="btn btn-warning btn-lg btn-block h-100 rounded-0">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

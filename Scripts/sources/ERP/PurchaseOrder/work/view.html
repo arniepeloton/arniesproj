@@ -1,0 +1,341 @@
+﻿<div id="tabPurchasingWork" custom-tab-role="content" style="display:none;" class="tab-pane fade">
+    <div class="row gx-1 mb-4">
+        <div class="col-md-7 col-lg-8 mb-3">
+            <div name="divToolbar" class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+                <button data-role="none" name="butNew" class="btn btn-light border h-100 w-100 align-self-auto">
+                    <span class="bi-file-earmark-plus" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">New</div>
+                </button>
+                <button data-role="none" name="butLookup" class="btn btn-light border h-100 w-100">
+                    <span class="bi-search" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Look <br />Up</div>
+                </button>
+                <button data-role="none" name="butSaveAndFinalize" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save & <br /> Finalize</div>
+                </button>
+                <button data-role="none" name="butSaveACopy" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size: 25px;"></span>
+                    <div class="menu-description mt-1">Save a <br/> Copy
+                    </div>
+                </button>
+                <button data-role="none" name="butCopyToSo" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size: 25px;"></span>
+                    <div class="menu-description mt-1">
+                        Copy to <br /> SO
+                    </div>
+                </button>
+                <button data-role="none" name="butSaveAsDraft" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save as <br /> Draft</div>
+                </button>
+                <button data-role="none" name="butOutput" class="btn btn-light border h-100 w-100">
+                    <span class="bi-file-earmark-arrow-down" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Output</div>
+                </button>
+                <button data-role="none" name="butPay" class="btn btn-light border h-100 w-100">
+                    <span class="bi-cash" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Pay</div>
+                </button>
+                <button data-role="none" name="butCancel" class="btn btn-light border h-100 w-100">
+                    <span class="bi-x-square" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Cancel</div>
+                </button>
+                <button data-role="none" name="butInteractionHistory" class="btn btn-light border h-100 w-100">
+                    <span class="bi-journal-text" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Notes</div>
+                </button>
+                <button data-role="none" name="butMarkAsFollowedUp" class="btn btn-light border h-100 w-100" style="display:none;">
+                    <span class="bi-check" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Mark as Followed Up</div>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-4 text-right" style="font-size:30px;">
+            <div name="divTransNum" style="font-size:30px; text-align:right"></div>
+            <div name="divDraftOrFinalized"></div>
+        </div>
+    </div>
+
+    <div id="accRevOrderHeader" class="accordion mb-3">
+        <div class="card">
+            <div class="card-header p-0">
+                <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransHeader" data-role="none" data-toggle="collapse">
+                    <b>Order Header</b>
+                </button>
+            </div>
+            <div class="collapse show" id="colTransHeader">
+                <div class="card-body">
+                    <div id="divPurchasingWorkTab" style="white-space:nowrap; overflow:auto;">
+                        <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                            <li class="nav-item" role="presentation">
+                                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabPurchasingWorkInfo">Basic Info</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content p-3">
+                        <div id="tabPurchasingWorkInfo" class="tab-pane fade show active">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Vendor: <span class="required">*</span></label>
+                                                <input name="txtCustomer" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Sales Rep:</label>
+                                                <div class="input-group">
+                                                    <input name="txtSalesRepText" data-role="none" type="text" class="form-control" />
+                                                    <button name="butAddSalesRep" data-role="none" class="btn btn-secondary" style="float:right;"><span class="bi-plus"></span></button>
+                                                    <button name="butSearchSalesRep" data-role="none" class="btn btn-secondary" style="float:right;"><span class="bi-search"></span></button>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Canvass Number:</label>
+                                                <div class="input-group">
+                                                    <input name="txtCanvass" data-role="none" type="text" class="form-control" />
+                                                    <button name="butPoCanvass" data-role="none" class="btn btn-secondary" style="float:right;"><span class="bi-search"></span></button>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>PO Number:</label>
+                                                <input name="txtPoNumber" readonly data-role="none" placeholder="To be generated after saving as final" type="text" class="form-control" />
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Payment Terms:</label>
+                                                <input name=txtPaymentTerms data-role="none" type="text" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Delivery Method:</label>
+                                                <select name="cbDeliveryMethod" data-role="none" type="text" class="form-select"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row mb-3">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Quote Number:</label>
+                                                        <input name=txtQuotationNumText data-role="none" type="text" class="form-control"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Quote Date:</label>
+                                                        <input name="txtQuoteDate" data-role="none" type="text" id="btnPurchasingQuoteDate" class="form-control" readonly/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Invoice Ref.:</label>
+                                                        <div class="input-group">
+                                                            <input name="txtRefInvoiceNumber" data-role="none" type="text" class="form-control" />
+                                                            <button data-role="none" name="butInvoiceImageReference" class="btn btn-secondary" title="Show Invoice Images"><span class="bi bi-image"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Billing Address: <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <input name="txtBillingAddress" data-role="none" type="text" class="form-control" />
+                                            <button name="butAddBillingAddress" data-role="none" class="btn btn-secondary"><span class="bi-plus"></span></button>
+                                            <button name="butSearchBillingAddress" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Delivery Address: <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <input name="txtDeliveryAddress" data-role="none" type="text" class="form-control" />
+                                            <button name="butAddDeliveryAddress" data-role="none" class="btn btn-secondary"><span class="bi-plus"></span></button>
+                                            <button name="butSearchDeliveryAddress" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Date Needed: <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <input name="txtDateNeeded" data-role="none" readonly type="text" idx="btnPurchasingDateNeeded" class="form-control" />
+                                            <button name="butDateNeeded" data-role="none" class="btn btn-secondary" style="float:right;"><span class="bi-calendar-week"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="accRevOrderLine" class="accordion mb-3">
+        <div class="card">
+            <div class="card-header p-0">
+                <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransBody" data-role="none" data-toggle="collapse">
+                    <b>Transaction Line Items</b>
+                </button>
+            </div>
+            <div class="collapse show" id="colTransBody">
+                <div class="card-body">
+                    <div name="divAddproducts" class="text-right mb-3">
+                        <!--<button name="butAddProductsFromPIM" data-role="none" class="btn btn-secondary">Load Products Using PIM Template</button>-->
+                        <button name="butCopyProducts" data-role="none" class="btn btn-secondary">Load products from another transaction</button>
+                        <button name="butAddProduct" data-role="none" class="btn btn-secondary">Add product</button>
+                        <button name="butAddProductFromSupplier" data-role="none" class="btn btn-secondary">Add product from this vendor</button>
+                    </div>
+
+                    <div style="overflow:auto;">
+                        <select name="cbProductAction" data-role="none" class="form-select fixed"></select>
+                        <br />
+                        <table name="tableProducts" data-role="none" style="margin-right: 5px; display: table;" class="table table-light table-striped table-hover">
+                            <thead>
+                                <tr class="align-top text-center" style="font-size:12px;">
+                                    <th class="txt-center"> Line # </th>
+                                    <th class="txt-center"> Image </th>
+                                    <th class="txt-center"> SKU # </th>
+                                    <th class="txt-center"> Product Description </th>
+                                    <th class="txt-center"> PO Qty </th>
+                                    <th name="VendorServedQty" class="txt-center"> Served Quantity </th>
+                                    <th name="ServedDate" class="txt-center"> Served Date </th>
+                                    <th name="ShippingRef" class="txt-center" style="text-align:center"> Shipping Ref </th>
+                                    <th name="thServedQty" class="txt-center"> Received Qty in Good Condition </th>
+                                    <th name="thServedBadQty" class="txt-center"> Received Qty in Bad Condition </th>
+                                    <th class="txt-center"> Packing Size </th>
+                                    <th name="thPoPrice" class="txt-center"> PO Price </th>
+                                    <th name="PoPriceOrig" class="txt-center">PO Price </th>
+                                    <th class="txt-center"> Line Total </th>
+                                    <th name="Srp" class="txt-center"> SRP/ List Price </th>
+                                    <th class="txt-center"> Payment Terms! </th>
+                                    <th name="ApPoPrice" class="txt-center">Latest PO/Canvass Price/Date </th>
+                                    <!--<th name="ApPoDate" class="txt-center">Latest PO/Canvass Date </th>-->
+                                    <th name="LastApPrice" class="txt-center"> Last AP Price/Date </th>
+                                    <!--<th name="LastApDate" class="txt-center"> Last AP Date </th>-->
+                                    <th name="Cancelled" class="txt-center" style="text-align:center"> Cancelled </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr name="data" class="fixed-cell-width">
+                                    <td name="LineNumber" class="txt-left"></td>
+                                    <td name="ProductImage" class="txt-center" style="width:70px;"> </td>
+                                    <td name="ProductNumber" class="txt-left"> SKU # </td>
+                                    <td name="ProductDescription" class="txt-left"> Product Description </td>
+                                    <td name="OrderQty" class="txt-center"> PO Qty </td>
+                                    <td name="VendorServedQty" class="txt-center"> Served Qty </td>
+                                    <td name="ServedDate" class="txt-center"> <a href=""></a> </td>
+                                    <td name="ShippingRef" class="txt-center" style="text-align:center;"> <input class="form-control" /> </td>
+                                    <td name="ServedQty" class="txt-center"> Received Qty </td>
+                                    <td name="ServedBadQty" class="txt-center"> Received Qty </td>
+                                    <td name="PackingSize" class="txt-center"> Packing Size </td>
+                                    <td name="UnitPrice" style="font-weight:bold" class="txt-center"> Unit Price </td>
+                                    <td name="PoPriceOrig" class="txt-center">PO Price </td>
+                                    <td name="LineTotal" class="txt-center"> Line Total </td>
+                                    <td name="Srp" class="txt-right"></td>
+                                    <td name="PaymentTerms" class="txt-center"> Payment Terms </td>
+                                    <td name="ApPoPrice" class="txt-center"> </td>
+                                    <!--<td name="ApPoDate" class="txt-center"> </td>-->
+                                    <td name="LastApPrice" class="txt-center"> </td>
+                                    <!--<td name="LastApDate" class="txt-center"> </td>-->
+                                    <td name="Cancelled" class="txt-center" style="text-align:center"> <input type="checkbox" class="form-check-input" /> </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr name="data" class="fixed-cell-width">
+                                    <td name="LineNumber" class="txt-left"></td>
+                                    <td name="ProductImage" class="txt-center" style="width:70px;"> </td>
+                                    <td name="ProductNumber" class="txt-center"></td>
+                                    <td name="ProductDescription" class="txt-center"></td>
+                                    <td name="OrderQty" class="txt-center"></td>
+                                    <td name="VendorServedQty" class="txt-center"></td>
+                                    <td name="ServedDate" class="txt-center">  </td>
+                                    <th name="ShippingRef" class="txt-center"></th>
+                                    <td name="ServedQty" class="txt-center"></td>
+                                    <td name="ServedBadQty" class="txt-center"></td>
+                                    <td name="PackingSize" class="txt-center"></td>
+                                    <td name="UnitPrice" class="txt-center"></td>
+                                    <td name="PoPriceOrig" class="txt-center"></td>
+                                    <td name="LineTotal" class="txt-center"></td>
+                                    <th name="Srp"></th>
+                                    <td name="PaymentTerms" class="txt-center"></td>
+                                    <td name="ApPoPrice" class="txt-center"></td>
+                                    <td name="ApPoDate" class="txt-center"></td>
+                                    <td name="LastApPrice" class="txt-center"></td>
+                                    <td name="LastApDate" class="txt-center"></td>
+                                    <td name="Cancelled" class="txt-center">  </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="accRevOrderFooter" class="accordion mb-3">
+        <div class="card">
+            <div class="card-header p-0">
+                <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransFooter" data-role="none" data-toggle="collapse">
+                    <b>Order Footer</b>
+                </button>
+            </div>
+            <div class="collapse show" id="colTransFooter">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="row mb-3 align-items-center">
+                            <div class="col">
+                                Remarks:
+                            </div>
+                            <div class="col text-right">
+                                <button data-role="none" class="btn btn-secondary" name="btnChooseQuickRemarks">Add Remarks from Library</button>
+                            </div>
+                        </div>
+                        <textarea name=txtRemarks data-role="none" class="form-control" style="height:150px; resize:none"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="row mb-3 align-items-center">
+                            <div class="col">
+                                Internal Remarks:
+                            </div>
+                            <div class="col text-right">
+                                <button data-role="none" class="btn btn-secondary" name="btnChooseQuickInternalRemarks">Add Internal Remarks from Library</button>
+                            </div>
+                        </div>
+                        <textarea name=txtInternalRemarks data-role="none" class="form-control" style="height:150px; resize:none"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="accRevOrderPayments" class="accordion mb-3">
+        <div class="card">
+            <div class="card-header p-0">
+                <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransFooter" data-role="none" data-toggle="collapse">
+                    <b>Payments</b>
+                </button>
+            </div>
+            <div class="collapse show" id="colTransPayments">
+                <div class="card-body">
+                    <div id="divPayments"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

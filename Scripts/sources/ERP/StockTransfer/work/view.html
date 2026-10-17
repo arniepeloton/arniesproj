@@ -1,0 +1,254 @@
+﻿<div id="tabStockTransferWork" class="tab-pane fade">
+    <div class="row gx-1 mb-4">
+        <div class="col-md-7 col-lg-8 mb-3">
+            <div name="divToolbar" class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+                <button data-role="none" name="butNew" class="btn btn-light border h-100 w-100 align-self-auto">
+                    <span class="bi-file-earmark-plus" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">New</div>
+                </button>
+                <button data-role="none" name="butLookup" class="btn btn-light border h-100 w-100">
+                    <span class="bi-search" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Lookup</div>
+                </button>
+                <button data-role="none" name="butSalesOrderNumber" class="btn btn-light border h-100 w-100">
+                    <span class="bi-search" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Lookup <br /> Sales Order</div>
+                </button>
+                <button data-role="none" name="butSaveAsDraft" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save as <br /> Draft</div>
+                </button>
+                <button data-role="none" name="butSaveAndFinalize" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save & <br /> Finalize</div>
+                </button>
+                <button data-role="none" name="butOutput" class="btn btn-light border h-100 w-100">
+                    <span class="bi-printer" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Print</div>
+                </button>
+                <button data-role="none" name="butCancel" class="btn btn-light border h-100 w-100">
+                    <span class="bi-x-square" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Cancel</div>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-4 text-right" style="font-size:30px;">
+            <div name="divTransNum" style="font-size:30px"></div>
+            <div name="divDraftOrFinalized" style="font-size:14px; font-weight:bold; text-align:right"></div>
+            <div name="divLastUpdated" style="font-size:10px; text-align:right"></div>
+            <div name="divTransDate" style="font-size:10px; text-align:right"></div>
+            <div name="divParentOrder" style="font-size: 10px; text-align: right"></div>
+            <div name="divChildSos" style="font-size: 10px; text-align: right"><a name="lnkChildSos" href="#">Show Child SO's</a></div>
+        </div>
+    </div>
+
+    <div id="divStockTransferWorkTab">
+        <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabStockTransferWorkBasicInfo">Basic Info</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content p-3">
+        <div id="tabStockTransferWorkBasicInfo" class="tab-pane fade show active">
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransHeader" data-role="none" data-toggle="collapse">
+                            <b>Transaction Header</b>
+                        </button>
+                    </div>
+                    <div class="collapse show" id="colTransHeader">
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-sm">
+                                    <div class="form-group mb-3">
+                                        <label>Transfer From Organization: <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <input name="txtTransferFromOrg" readonly data-role="none" type="text" class="form-control" />
+                                            <button name="butTransferFromOrg" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group mb-3">
+                                        <label>Transfer From Outlet: <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <input name="txtTransferFromOutlet" readonly data-role="none" type="text" class="form-control" />
+                                            <button name="butTransferFromOutlet" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group mb-3">
+                                        <label>Transfer From Department: <!--<span class="required">*</span>--></label>
+                                        <div class="input-group">
+                                            <input name="txtTransferFromDepartment" readonly data-role="none" type="text" class="form-control" />
+                                            <button name="butTransferFromDepartment" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm">
+                                    <div class="form-group mb-3">
+                                        <label>Transfer To Organization: <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <input name="txtTransferToOrg" readonly data-role="none" type="text" class="form-control" />
+                                            <button name="butTransferToOrg" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group mb-3">
+                                        <label>Transfer To Outlet: <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <input name="txtTransferToOutlet" readonly data-role="none" type="text" class="form-control" />
+                                            <button name="butTransferToOutlet" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group mb-3">
+                                        <label>Transfer To Department: <!--<span class="required">*</span>--></label>
+                                        <div class="input-group">
+                                            <input name="txtTransferToDepartment" readonly data-role="none" type="text" class="form-control" />
+                                            <button name="butTransferToDepartment" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Transported by: <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <input name="txtTransportedBy" readonly data-role="none" type="text" class="form-control" />
+                                            <button name="butTransportedBy" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colShippingDetails" data-role="none" data-toggle="collapse">
+                            <b>Shipping Details (3PL)</b>
+                        </button>
+                    </div>
+                    <div class="collapse" id="colShippingDetails">
+                        <div class="card-body"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransBody" data-role="none" data-toggle="collapse">
+                            <b>Transaction Line Items</b>
+                        </button>
+                    </div>
+                    <div class="collapse show" id="colTransBody">
+                        <div class="card-body">
+                            <div class="text-right mb-3">
+                                <button name="butAddProduct" data-role="none" class="btn btn-secondary">Add product</button>
+                            </div>
+
+                            <div class="row">
+                                <div style="overflow:auto;">
+                                    <table name="tableProducts" data-role="none" style="margin-right: 5px; display: table;" class="table table-light table-striped table-hover">
+                                        <thead>
+                                            <tr class="custom-theme-f fixed-cell-width">
+                                                <th class="txt-center"> SKU # </th>
+                                                <th class="txt-center"> Product Description </th>
+                                                <th class="txt-center"> UoM </th>
+                                                <th class="txt-center"> Qty Good </th>
+                                                <th class="txt-center"> Qty Bad </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr name="data" class="fixed-cell-width">
+                                                <td name="ProductNumber" class="txt-left"> SKU # </td>
+                                                <td name="ProductDescription" class="txt-left"> Product Description </td>
+                                                <td name="PackingSize" class="txt-center"> UoM </td>
+                                                <td name="QtyGood" class="txt-center"> Qty Good </td>
+                                                <td name="QtyBad" class="txt-center"> Qty Bad </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr name="data" class="fixed-cell-width">
+                                                <td name="ProductNumber" class="txt-center"></td>
+                                                <td name="ProductDescription" class="txt-center"></td>
+                                                <td name="OrderQty" class="txt-center"></td>
+                                                <td name="ServedQty" class="txt-center"> </td>
+                                                <td name="PackingSize" class="txt-center"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <!--<button name="butAddProduct">Add Product</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransFooter" data-role="none" data-toggle="collapse">
+                            <b>Transaction Footer</b>
+                        </button>
+                    </div>
+                    <div class="collapse show" id="colTransFooter">
+                        <div class="card-body">
+                            <div class="row mb-3 align-items-center">
+                                <div class="col">
+                                    Remarks:
+                                </div>
+                                <div class="col text-right">
+                                    <button data-role="none" class="btn btn-secondary" name="btnChooseQuickRemarks">Quick Remarks</button>
+                                </div>
+                            </div>
+                            <textarea name=txtRemarks data-role="none" class="form-control" style="height:150px; resize:none"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group mb-3">
+                                <label>Customer Outlet:</label>
+                                <div class="input-group">
+                                    <input name="txtCustomerFowst" readonly data-role="none" type="text" class="form-control" />
+                                    <button name="butCustomerFowst" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group mb-3">
+                                <label>Customer Department:</label>
+                                <div class="input-group">
+                                    <input name="txtCustomerBin" readonly data-role="none" type="text" class="form-control" />
+                                    <button name="butCustomerBin" data-role="none" class="btn btn-secondary"><span class="bi-search"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

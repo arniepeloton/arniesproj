@@ -1,0 +1,90 @@
+﻿<div id="popupProfitReport" custom-data-role="popup">
+    <div class="popup">
+        <div class="popup-header">
+            Item Details
+            <a class="popup-close">x</a>
+        </div>
+
+        <div class="popup-content">
+            <div custom-data-role="accordion">
+                <!--<div class="accordion-header active">
+                    Report Parameters
+                </div>-->
+                <div class="accordion-content">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="custom-ui-label">
+                                <div style="padding-top:0px">SKU:</div>
+                                <div>
+                                    <span name="spanProductName">product description</span>
+                                </div>
+                            </div>
+                            <div class="custom-ui-label">
+                                <div style="padding-top:0px">UoM:</div>
+                                <div>
+                                    <span name="spanUnit">unit</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div>Packing Size Information</div>
+                            <table name="tableUnits" class="ui-body-d ui-shadow table-stripe ui-responsive custom-tbl-responsive" data-column-btn-theme="b">
+                                <thead class="custom-theme-f"></thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="custom-ui-label">
+                                <div>Manual Requested Qty:</div>
+                                <div>
+                                    <input name="txtRequestedQty" type="number" data-role="none" class="form-control" style="width:400px" />
+                                </div>
+                            </div>
+                            <div class="custom-ui-label">
+                                <div style="padding-top:0px">Total Back Order Qty:</div>
+                                <div>
+                                    <span name="spanBackOrderQty">tboq</span>
+                                </div>
+                            </div>
+                            <div class="custom-ui-label">
+                                <div style="padding-top:0px">Total Back Order Qty and Requested Qty:</div>
+                                <div>
+                                    <span name="spanTotalQty">trq</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="custom-ui-label">
+                                <div style="padding-top:0px">Date Coverage for Back Order Qty</div>
+                                <div>
+                                    <select name="cbDateCoverage" data-role="none" class="form-control" style="height:34px">
+                                        <option value="0">Week to Date</option>
+                                        <option value="1">1 Cumulative Week Ago</option>
+                                        <option value="2">2 Cumulative Weeks Ago</option>
+                                        <option value="4">4 Cumulative Weeks Ago</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div></div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <table name="table" class="ui-body-d ui-shadow table-stripe ui-responsive custom-tbl-responsive" data-column-btn-theme="b">
+                <thead class="custom-theme-f"></thead>
+            </table>
+            <div class="row" style="margin-top:30px">
+                <div class="col-sm-6">
+                    <a data-role="none" name="butBack" href="#" data-dismiss="modal" class="btn custom-btn-theme-c btn-secondary btn-lg btn-block">Back</a>
+                </div>
+                <div class="col-sm-6">
+                    <button data-role="none" name="butSave" class="btn custom-btn-theme-b btn-success btn-lg btn-block">Save and Convert Back Order + Request Qty to Item Requisition</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

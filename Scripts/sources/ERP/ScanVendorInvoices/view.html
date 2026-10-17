@@ -1,0 +1,43 @@
+﻿<div id="popupScanVendorInvoices" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Scanned / Attached Vendor Invoices and Documents</h5>
+                <!--<button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md mb-3">
+                        <input data-role="none" name="txtSearchScanVendorInvoices" class="form-control" placeholder="Search here" />
+                    </div>
+                    <div class="col-md text-right">
+                        <button data-role="none" name="btnAddVendorInvoice" class="btn btn-success">Add Vendor Invoice</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="tblScanVendorInvoices" data-role="none" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="align-top text-center" style="font-size:14px;">
+                                <!--<th style="width:50px;">#</th>
+                                <th>Vendor Name</th>
+                                <th>Invoice Ref. No.</th>
+                                <th>Invoice Date</th>
+                                <th>No. of Line Items</th>
+                                <th>Amount</th>
+                                <th>Remarks</th>
+                                <th></th>-->
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyScanVendorInvoices"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div name="divScanVendorInvoicesViewer" class="bxslider" style="display:none;"></div>

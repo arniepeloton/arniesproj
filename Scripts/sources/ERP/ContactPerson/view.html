@@ -1,0 +1,68 @@
+﻿<div name="divMainPopup" custom-data-role="popup">
+    <div class="popup-md">
+        <div class="popup-header">
+            Person Profile
+            <a class="popup-close">x</a>
+        </div>
+
+        <div class="popup-content">
+            <div class="custom-ui-label">
+                <div>Full Name:</div>
+                <div>
+                    <input type="text" name="txtFirstName" placeholder="Firstname" />
+                    <span id="spanerrorContactFname" style="color:#F00; display:none;">This field is required<br /><br /></span>
+                    <input type="text" name="txtMiddleName" placeholder="Middlename" />
+                    <input type="text" name="txtLastName" placeholder="Lastname" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Generational Suffix:</div>
+                <div>
+                    <select name="selContactGenSuffix">
+                        <option value="">None</option>
+                        <option value="Jr.">Jr.</option>
+                        <option value="Sr.">Sr.</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                        <option value="IV">IV</option>
+                        <option value="V">V</option>
+                        <option value="VI">VI</option>
+                        <option value="VII">VII</option>
+                        <option value="VIII">VIII</option>
+                        <option value="IX">IX</option>
+                        <option value="X">X</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Position/Title: </div>
+                <div>
+                    <input type="text" name="txtContactPersonPosition" />
+                </div>
+            </div>
+
+            <div class="custom-ui-label">
+                <div>Position/Title Description: </div>
+                <div>
+                    <input type="text" name="txtContactPersonPositionDescription" />
+                </div>
+            </div>
+            <br />
+        </div>
+
+        <div class="popup-footer align-right">
+            <div style="text-align:right;">
+                <button name="butClose" data-role="none" class="btn custom-btn-theme-c btnCircle">
+                    <img alt="Options" src="/Content/images/close-black.png" />
+                </button>
+                <button name="butSave" data-role="none" class="btn custom-btn-theme-b btnCircle">
+                    <img alt="Options" src="/Content/images/check.png" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>

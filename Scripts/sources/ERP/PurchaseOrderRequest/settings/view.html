@@ -1,0 +1,105 @@
+﻿<div>
+    <div name="butSave" title="Save" class="btn-trail">
+        <span class="erp-invoice finalsave s48"></span><br />
+        <span>Save</span>
+    </div>
+</div>
+
+<br/><br/>
+
+    <div custom-data-role="accordion">
+        <div class="accordion-header active">
+            Settings
+        </div>
+        <div class="accordion-content">
+            <div class="custom-tab">
+                <ul>
+                    <li class="active" custom-tab-content="#tabOPWorkBasicInfo">Basic</li>
+                </ul>
+            </div>
+
+            <div custom-tab-role="content" style="display: block;">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <!--<div class="custom-checkbox">
+                                <label for="radDayMon" class="checkbox-only">
+                                    <input type="checkbox" name="radTicketDays" value="Monday" id="radDayMon" data-iconpos="notext"/>
+                                </label>
+                                <div>Monday</div>
+                            </div>-->
+
+                            <!--<div class="custom-checkbox">
+                                <input type="checkbox" name="AllowEncodingOfOrdersInInvoice" data-iconpos="notext"/>
+                                <div>Allow direct encoding of ADDITIONAL LINE ITEMS in Invoicing module?</div>
+                            </div>-->
+
+                            <div class="custom-checkbox">
+                                <input type="checkbox" name="AllowEncodingOfQuantitiesInInvoice" data-iconpos="notext"/>
+                                <div>Allow direct invocing? (If this is disabled, all orders need to be initiated by a sales order transaction first.)</div>
+                            </div>
+
+                            <div>Free Type A Price Minimum GPM (Gross Profit Margin): <span class="required">*</span>&nbsp;<input id="txtFreeTypeAPriceMinimumGpm" name="txtFreeTypeAPriceMinimumGpm" data-role="none" type="text" class="form-control" style="width: 70px; display: inline"/><span>&nbsp;%</span></div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div id="divUnlimitedCredit" data-role="fieldcontain">
+                            <label for="selUnlimitedCredit">Set all customers to have unlimited credit limit</label>
+                            <select data-role="slider" data-theme="c" id="selUnlimitedCredit">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div name="divCategoryGpmPlaceholder"></div>
+                <br />
+                <br />
+                <br/>
+                <div custom-data-role="accordion">
+                    <div class="accordion-header active">
+                        Document Types
+                        <span class="txt-right">
+                            <a name="butAddDocumentType" data-role="none" class="custom-link">Add document type</a>
+                        </span>
+                    </div>
+                    <div class="accordion-content">
+                        <table name="tableDocumentControl" data-role="table" data-role="reflow" style="margin-right: 5px; display: table;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                            <thead>
+                                <tr class="custom-theme-f fixed-cell-width">
+                                    <th class="txt-center"> Document Name </th>
+                                    <th class="txt-center"> Module Source </th>
+                                    <th class="txt-center"> Print Limit </th>
+                                    <th class="txt-center"> No. of Copies per Print </th>
+                                    <th class="txt-center"> Label of Copies </th>
+                                    <th class="txt-center"> Active </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr name="data" class="fixed-cell-width">
+                                    <td name="DocumentName" class="txt-center"></td>
+                                    <td name="ModuleSource" class="txt-center"></td>
+                                    <td name="PrintLimit" class="txt-center"></td>
+                                    <td name="CopiesPerPrint" class="txt-center"></td>
+                                    <td name="LabelOfCopies" class="txt-center"></td>
+                                    <td name="Active" class="txt-center"></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr name="data" class="fixed-cell-width"></tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <br /><br />

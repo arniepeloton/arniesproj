@@ -1,0 +1,253 @@
+﻿<div id="popNewOutlet" class="modal fade" tabindex="-1" idx="popOrderInput">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <form>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" name="title">Document Control</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="txtDocumentName">Document Name: <span style="color:#F00">*</span></label>
+                        <div class="col-sm-9">
+                            <input name="txtDocumentName" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="fileTemplate">MRT file:</label>
+                        <div class="col-sm-9">
+                            <input data-role="none" name="fileTemplate" type="file" class="form-control" accept=".mrt" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="cbModuleSource">Module Source: <span style="color:#F00">*</span></label>
+                        <div class="col-sm-9">
+                            <select name="cbModuleSource" data-role="none" class="form-select">
+                                <option value="">Please Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="cbSeriesType">Series Type: <span style="color:#F00">*</span></label>
+                        <div class="col-sm-9">
+                            <select name="cbSeriesType" data-role="none" class="form-select">
+                                <option value="0">Unique per FOWST-Device</option>
+                                <option value="1">Unique per FOWST</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="txtSeriesStartingNum">Series Starting Number: <span style="color:#F00"></span></label>
+                        <div class="col-sm-9">
+                            <input name="txtSeriesStartingNum" type="number" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="txtPermitNum">Permit Number: <span style="color:#F00"></span></label>
+                        <div class="col-sm-9">
+                            <input name="txtPermitNum" type="number" maxlength="90" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="txtPrinterName">Printer Name and Path: <span style="color:#F00"></span></label>
+                        <div class="col-sm-9">
+                            <input name="txtPrinterName" type="text" data-role="none" class="form-control mb-3" />
+
+                            <a data-role="none" name="btnPrinterNameInstructions" class="link-primary">Click here to view instructions on how to determine printer name and printer path</a>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="cbPrintLimit">Print Limit: <span style="color:#F00">*</span></label>
+                        <div class="col-sm-9">
+                            <select name="cbPrintLimit" data-role="none" class="form-select">
+                                <option value="">Please Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="chkPreprinted">Preprinted:</label>
+                        <div class="col-sm-9">
+                            <div class="form-check form-switch mb-3" style="font-size:20px;">
+                                <input class="form-check-input" data-role="none" type="checkbox" name="chkPreprinted">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="txtCopiesPerPrint">No. of Copies per Print: <span style="color:#F00"></span></label>
+                        <div class="col-sm-9">
+                            <input name="txtCopiesPerPrint" type="number" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <label class="col-sm-3 mb-3" for="txtLabelOfCopy01">Label of Copies: <span style="color:#F00"></span></label>
+                        <div class="col-sm-9">
+                            <input name="txtLabelOfCopy01" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <div class="offset-3 col-sm-9">
+                            <input name="txtLabelOfCopy02" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <div class="offset-3 col-sm-9">
+                            <input name="txtLabelOfCopy03" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <div class="offset-3 col-sm-9">
+                            <input name="txtLabelOfCopy04" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <div class="offset-3 col-sm-9">
+                            <input name="txtLabelOfCopy05" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <div class="offset-3 col-sm-9">
+                            <input name="txtLabelOfCopy06" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <div class="offset-3 col-sm-9">
+                            <input name="txtLabelOfCopy07" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <div class="offset-3 col-sm-9">
+                            <input name="txtLabelOfCopy08" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <div class="offset-3 col-sm-9">
+                            <input name="txtLabelOfCopy09" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 custom-ui-label">
+                        <div class="offset-3 col-sm-9">
+                            <input name="txtLabelOfCopy10" type="text" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="cbPrintLimit">Footnote:</label>
+                        <div class="col-sm-9">
+                            <textarea name="txtFootnote" data-role="none" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="chkActive">Active?</label>
+                        <div class="col-sm-9">
+                            <div class="form-check form-switch mb-3" style="font-size:20px;">
+                                <input class="form-check-input" data-role="none" type="checkbox" name="chkActive">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="chkAutoPrint">Print Automatically:</label>
+                        <div class="col-sm-9">
+                            <div class="form-check form-switch mb-3" style="font-size: 20px;">
+                                <input class="form-check-input" data-role="none" type="checkbox" name="chkAutoPrint">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="txtMaxLineItemsPerPage">Maximum line items per page: <i>(Leave blank to auto determine)</i></label>
+                        <div class="col-sm-9">
+                            <input name="txtMaxLineItemsPerPage" type="number" data-role="none" class="form-control mb-1" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="txtMaxLineItemsPerPage">Max Number of Supplemental Blind Copies:</label>
+                        <div class="col-sm-9">
+                            <input name="txtMaxNoOfSupplementalBlindCopies" type="number" data-role="none" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 mb-3" for="txtUnitPriceSurchargePercent">Unit Price Surcharge (%):</label>
+                        <div class="col-sm-9">
+                            <input name="txtUnitPriceSurchargePercent" type="number" step=".01" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-6">
+                            <button data-role="none" type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col-6">
+                            <button data-role="none" type="submit" class="btn btn-success btn-lg btn-block">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="popupInstructionDeterminePrinter" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" name="title">How to determine printer name and printer path</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <b>If you are using a non-network printer being shared via host PC:</b>
+                <br>
+                <ol class="list-padding" style="list-style-type:decimal">
+                    <li>On the Printer Host PC (The PC where the printer is directly attached to), press “Windows + R” keys for run command line</li>
+                    <li>Type "cmd" on the run command line to bring out the command prompt.</li>
+                    <li>Type "ipconfig" to view the printer host PC’s IPV4 address. Take note of this IPV4 address.</li>
+                    <li>Close the command prompt (cmd) window.</li>
+                    <li>Press “Windows + R” keys for run command line</li>
+                    <li>Type the IPV4 address on step #3. </li>
+                    <li>You should see a list of shared folders and printers. Take note of the printer you wish to use for auto-printing document(s) on.</li>
+                    <li>
+                        On the data field labeled “Printer Name and Path” type the printer’s network location address and name.  It should look something like this:
+                        <br>\[IPV4 address of Printer Host PC, see Step #3][Printer Name shown in Step#7]
+                        <br><b>i.e.</b>\192.168.1.195EpsonLX300+
+                    </li>
+                </ol>
+                <b>If you are using a network printer:</b>
+                <br>
+                <ol class="list-padding" style="list-style-type:decimal">
+                    <li>Follow your printer brand’s procedure for determining your printer’s IP Address and printer name.</li>
+                    <li>
+                        On the data field labeled “Printer Name and Path” type the printer’s network location address and name. It should look something like this:
+                        <br>\[IPV4 address of Printer][Printer Name]
+                        <br><b>i.e.</b> \192.168.1.190EpsonL360
+                    </li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" name="btnClosePrinterInstruction" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

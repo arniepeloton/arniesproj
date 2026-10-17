@@ -1,0 +1,369 @@
+﻿<div id="divDeliveryTracking" subpage="divErpRevenue" style="display: none;">
+    <div id="divDeliveryTrackingMain" subpage="divDeliveryTracking" style="display: block;">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <div name="divToolbar" class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+                    <button data-role="none" name="btnMarkAsDelivered" class="btn btn-light border align-self-auto">
+                        <span class="bi-check-circle" style="font-size:25px;"></span>
+                        <div class="menu-description mt-1">Mark as <br /> Delivered</div>
+                    </button>
+                    <button data-role="none" name="btnRoutingSheet" class="btn btn-light border align-self-auto">
+                        <span class="bi-file-earmark-check" style="font-size:25px;"></span>
+                        <div class="menu-description mt-1">Search <br /> Routing Sheet</div>
+                    </button>
+                    <!--<button data-role="none" name="btnOutput" class="btn btn-light border">
+                        <span class="bi-file-arrow-down" style="font-size:25px;"></span>
+                        <div class="menu-description mt-1">Output <br /> Report</div>
+                    </button>-->
+                </div>
+            </div>
+            <div class="col-md-3" style="font-size:18px">
+                <div>Value Of Selected Invoices: <span id="spanValueOfSelectedInvoices" style="font-weight:bold"></span></div>
+                <div>Number Of Selected Invoices: <span id="spanNumberOfSelectedInvoices" style="font-weight:bold"></span></div>
+            </div>
+        </div>
+        <div class="row gy-2 align-items-center mb-3">
+            <div class="col-md-3">
+                Invoice Date: <br />
+                <button data-role="none" class="btn btn-secondary btn-block" name="butInvoiceDate"></button>
+            </div>
+            <div class="col-md-3">
+                City / Town: <br />
+                <button data-role="none" class="btn btn-secondary btn-block" name="butCity">All Cities</button>
+            </div>
+            <div class="col-md-3">
+                Delivered/Undelivered: <br />
+                <select name="cbDelivered" data-role="none" type="text" class="form-select">
+                    <option value="Undelivered">Undelivered</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="For Delivery">For Delivery</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <br class="d-none d-md-block" />
+                <input data-role="none" type="text" class="form-control" name="txtSearch" placeholder="Search here" />
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <div class="col-auto">
+                Show Invoices:
+            </div>
+            <div class="col">
+                <div class="form-check form-check-inline">
+                    <input id="chkShowInvoicesAll" name="chkShowInvoices" class="form-check-input" type="radio" checked />
+                    <label for="chkShowInvoicesAll" class="form-check-label">
+                        All
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input id="chkShowInvoicesMarked" name="chkShowInvoices" class="form-check-input" type="radio" />
+                    <label for="chkShowInvoicesMarked" class="form-check-label">
+                        Marked
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input id="chkShowInvoicesUnmarked" name="chkShowInvoices" class="form-check-input" type="radio" />
+                    <label for="chkShowInvoicesUnmarked" class="form-check-label">
+                        Unmarked
+                    </label>
+                </div>
+            </div>
+            <div class="col text-right">
+                <div class="form-check form-check-inline">
+                    <input id="chkExcludeCashPaymentCustomer" name="chkExcludeCashPaymentCustomer" class="form-check-input" type="checkbox" />
+                    <label for="chkExcludeCashPaymentCustomer" class="form-check-label">
+                        Exclude "Cash Payment" Customer from Retail Sales
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div name="divLoading" style="visibility:collapse">Loading data. Please wait.</div>
+        <div class="table-responsive mb-5">
+            <table name="myTable" data-role="none" class="table table-light table-striped table-hover">
+                <thead class="custom-theme-f">
+                    <tr class="custom-theme-f txt-center"></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div data-backdrop="static" name="popupOuput" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" name="title">Route Sheet</h5>
+                        <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Delivery Method:</label>
+                            <select name="cbOutputDeliveryMode" data-role="none" type="text" class="form-select">
+                                <option>Please select</option>
+                                <option value="Inhouse Delivery">Inhouse Delivery</option>
+                                <option value="3rd Party Delivery">3rd Party Delivery</option>
+                                <option value="Customer Pickup">Customer Pickup</option>
+                            </select>
+                        </div>
+                        <div name="divOutputInhouseDelivery" style="display:none;">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Truck: <span class="required">*</span></label>
+                                <div class="input-group">
+                                    <input name="txtOutputTruck" data-role="none" type="text" class="form-control" readonly />
+                                    <button name="butOutputSearchTruck" data-role="none" class="btn btn-secondary">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="divOutput3rdPartyDelivery" style="display:none;">
+                            <div class="form-group mb-3">
+                                <label class="form-label">3PL Company Name:</label>
+                                <div class="input-group">
+                                    <input name="txtOutput3plCompanyName" data-role="none" type="text" class="form-control" readonly />
+                                    <button name="butOutputSearch3plCompanyName" data-role="none" class="btn btn-secondary">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="divOutputCustomerPickup" style="display:none;">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Customer Representative:</label>
+                                <input name="txtOutputCustomerRepresentative" data-role="none" type="text" class="form-control" maxlength="500" />
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label">Delivery Encoding Date:</label>
+                            <input name="txtOutputEncodingDate" data-role="none" type="text" class="form-control" maxlength="500" readonly />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Routing Sheet No.: <span class="required">*</span></label>
+                            <div class="input-group">
+                                <input name="txtRoutingSheetNumber" data-role="none" type="text" class="form-control" readonly />
+                                <button name="butRoutingSheetNumber" data-role="none" class="btn btn-secondary">Search</button>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <button data-role="none" class="btn btn-secondary btn-block" name="btnRetrieve2">Retrieve Data</button>
+                        </div>
+                        <div class="mb-3">
+                            <h5>List of Delivered Invoices</h5>
+                            <ul class="list-group" name="listDeliveredInvoices"></ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-md order-1 order-md-0">
+                                <button data-role="none" name="butCopy" class="btn btn-secondary btn-block btn-lg">Copy As Plain Text</button>
+                            </div>
+                            <div class="col-md order-0 order-md-1 mb-3 mb-md-0">
+                                <button data-role="none" name="butPrint" class="btn btn-success btn-block btn-lg">Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-backdrop="static" name="popupRoutingSheet" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" name="title">Route Sheet</h5>
+                        <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-3">
+                            <div class="col-md">
+                                <div class="row align-items-center mb-3">
+                                    <label class="col-md-3 mb-3 mb-md-0">Routing Sheet No.: <span class="required">*</span></label>
+                                    <div class="col-md">
+                                        <div class="input-group">
+                                            <input name="txtRoutingSheetNumber" data-role="none" type="text" class="form-control" placeholder="Click to search" readonly />
+                                            <!--<button name="butRoutingSheetNumber" data-role="none" class="btn btn-secondary">Search</button>-->
+                                            <button data-role="none" class="btn btn-secondary" name="btnRetrieve">Retrieve Data</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div name="divRSInfo">
+                            <div class="mb-3">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <h5>Routing Sheet Info</h5>
+                                    </div>
+                                    <div class="col text-right">
+                                        <h5 name="lblRSStatus"></h5>
+                                    </div>
+                                </div>                                
+                                <div class="row align-items-center mb-3">
+                                    <label class="col-md-3 mb-3 mb-md-0">Delivery Method:</label>
+                                    <div class="col-md">
+                                        <select name="cbInfoDeliveryMode" data-role="none" type="text" class="form-select">
+                                            <!--<option>Please select</option>-->
+                                            <option value="Inhouse Delivery">Inhouse Delivery</option>
+                                            <option value="3rd Party Delivery">3rd Party Delivery</option>
+                                            <option value="Customer Pickup">Customer Pickup</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div name="divInfoInhouseDelivery" style="display:none;">
+                                        <div class="row align-items-center mb-3">
+                                            <label class="col-md-3 mb-3 mb-md-0">Truck: <span class="required">*</span></label>
+                                            <div class="col-md">
+                                                <div class="input-group">
+                                                    <input name="txtInfoTruck" data-role="none" type="text" class="form-control" readonly />
+                                                    <button name="butInfoSearchTruck" data-role="none" class="btn btn-secondary">Search</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div name="divInfo3rdPartyDelivery" style="display:none;">
+                                        <div class="row align-items-center mb-3">
+                                            <label class="col-md-3 mb-3 mb-md-0">3PL Company Name:</label>
+                                            <div class="col-md">
+                                                <div class="input-group">
+                                                    <input name="txtInfo3plCompanyName" data-role="none" type="text" class="form-control" readonly />
+                                                    <button name="butInfoSearch3plCompanyName" data-role="none" class="btn btn-secondary">Search</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <label class="col-md-3 mb-3 mb-md-0">3PL Contact Person:</label>
+                                            <div class="col-md">
+                                                <input name="txtInfo3plContactPerson" data-role="none" type="text" class="form-control" maxlength="500" />
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <label class="col-md-3 mb-3 mb-md-0">Waybill No.:</label>
+                                            <div class="col-md">
+                                                <input name="txtInfoWaybillNumber" data-role="none" type="text" class="form-control" maxlength="500" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div name="divInfoCustomerPickup" style="display:none;">
+                                        <div class="row align-items-center mb-3">
+                                            <label class="col-md-3 mb-3 mb-md-0">Customer Representative:</label>
+                                            <div class="col-md">
+                                                <input name="txtInfoCustomerRepresentative" data-role="none" type="text" class="form-control" maxlength="500" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center mb-3">
+                                    <label class="col-md-3 mb-3 mb-md-0">Delivery Encoding Date:</label>
+                                    <div class="col-md">
+                                        <input name="txtInfoEncodingDate" data-role="none" type="text" class="form-control" maxlength="500" readonly />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-md-3 mb-3 mb-md-0">Delivery Remarks:</label>
+                                    <div class="col-md">
+                                        <textarea data-role="none" name="txtInfoDeliveryRemarks" class="form-control" style="resize:none; height:100px;"></textarea>
+                                    </div>
+                                </div>
+                                <div name="divInfoInhouseDelivery" style="display:none;">
+                                    <div>
+                                        <div class="row mb-3">
+                                            <div class="col">Checked By: <span class="required">*</span></div>
+                                            <div class="col text-right">
+                                                <button name="butInfoSearchCheckedBy" data-role="none" class="btn btn-secondary">Add Checker</button>
+                                            </div>
+                                        </div>
+                                        <ul class="list-group mb-3" name="listInfoDeliveryChecker"></ul>
+                                    </div>
+                                    <div>
+                                        <div class="row mb-3">
+                                            <div class="col">Driver: <span class="required">*</span></div>
+                                            <div class="col text-right">
+                                                <button name="butInfoSearchDriver" data-role="none" class="btn btn-secondary">Add Driver</button>
+                                            </div>
+                                        </div>
+                                        <ul class="list-group mb-3" name="listInfoDeliveryDriver"></ul>
+                                    </div>
+                                    <div>
+                                        <div class="row mb-3">
+                                            <div class="col">Helper: <span class="required">*</span></div>
+                                            <div class="col text-right">
+                                                <button name="butInfoSearchHelper" data-role="none" class="btn btn-secondary">Add Helper</button>
+                                            </div>
+                                        </div>
+                                        <ul class="list-group mb-3" name="listInfoDeliveryHelper"></ul>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                            <div class="row mb-3 align-items-center">
+                                <div class="col mb-3 mb-md-0">
+                                    Mark Invoice(s) as:
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="chbMarkForDelivery">For Delivery</label>
+                                        <input data-role="none" type="radio" name="chbMark" class="form-check-input" id="chbMarkForDelivery" value="For Delivery" />
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="chbMarkAsDelivered">Delivered</label>
+                                        <input data-role="none" type="radio" name="chbMark" class="form-check-input" id="chbMarkAsDelivered" value="Delivered" />
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="chbMarkAsUndelivered">Undelivered</label>
+                                        <input data-role="none" type="radio" name="chbMark" class="form-check-input" id="chbMarkAsUndelivered" value="Undelivered" />
+                                    </div>
+                                </div>
+                                <div class="col-auto text-right">
+                                    <button data-role="none" class="btn btn-success" name="btnAddInvoice">Add Invoice</button>
+                                </div>                                
+                            </div>
+
+                            <div class="table-responsive">
+                                <table data-role="none" class="table table-light table-hover table-striped">
+                                    <thead>
+                                        <tr class="align-middle text-center" style="font-size:14px;">
+                                            <th>#</th>
+                                            <th>Invoice No.</th>
+                                            <th>Customer</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                            <th style="width:50px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody name="tbodyInfoInvoices"></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4" name="lblInvoiceTotal" class="text-right font-weight-bold"></td>
+                                            <td colspan="2"></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <div name="divUndeliveredReason">
+                                <div class="form-group">
+                                    <label class="form-label">Enter the reason why it was not delivered:</label>
+                                    <textarea data-role="none" name="txtInfoUndeliveredReason" class="form-control" style="resize:none; height:150px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-md mb-3 mb-md-0">
+                                <button data-role="none" name="butSaveAsDraft" class="btn btn-secondary btn-block btn-lg">Save As Draft</button>
+                            </div>
+                            <div class="col-md mb-3 mb-md-0">
+                                <button data-role="none" name="butSaveAsFinalized" class="btn btn-success btn-block btn-lg">Save As Finalized</button>
+                            </div>
+                            <div class="col-md mb-3 mb-md-0">
+                                <button data-role="none" name="butPrint" class="btn btn-warning btn-block btn-lg">Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

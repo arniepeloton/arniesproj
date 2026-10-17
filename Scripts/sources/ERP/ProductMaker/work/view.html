@@ -1,0 +1,195 @@
+﻿<div id="tabOPWork" custom-tab-role="content" >
+    <div class="row gx-1 mb-4">
+        <div class="col-md-7 col-lg-8 mb-3">
+            <div name="divToolbar" class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+                <button data-role="none" name="butNew" class="btn btn-light border h-100 w-100 align-self-auto">
+                    <span class="bi-file-earmark-plus" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">New</div>
+                </button>
+                <button data-role="none" name="butLookup" class="btn btn-light border h-100 w-100">
+                    <span class="bi-search" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Lookup</div>
+                </button>
+                <button data-role="none" name="butSaveAsDraft" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save as <br /> Draft</div>
+                </button>
+                <button data-role="none" name="butSaveAndFinalize" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save & <br /> Finalize</div>
+                </button>
+                <button data-role="none" name="butOutput" class="btn btn-light border h-100 w-100">
+                    <span class="bi-printer" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Print</div>
+                </button>
+                <button data-role="none" name="butCancel" class="btn btn-light border h-100 w-100">
+                    <span class="bi-x-square" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Cancel</div>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-4 text-right" style="font-size:30px;">
+            <div name="divTransNum" style="font-size:30px"></div>
+            <div name="divDraftOrFinalized" style="font-size:14px; font-weight:bold; text-align:right"></div>
+            <div name="divLastUpdated" style="font-size:10px; text-align:right"></div>
+            <div name="divTransDate" style="font-size:10px; text-align:right"></div>
+            <div name="divParentOrder" style="font-size: 10px; text-align: right"></div>
+            <div name="divChildSos" style="font-size: 10px; text-align: right"><a name="lnkChildSos" href="#">Show Child SO's</a></div>
+        </div>
+    </div>
+
+    <div class="custom-tab">
+        <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabProductMakerWorkBasicInfo">Basic Info</button>
+            </li>
+            <!--<li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabOPWorkAdditionalInfoTrading">Additional Info</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabOPWorkAccountDetails">Account Details</button>
+            </li>-->
+        </ul>
+    </div>
+
+    <div class="tab-content p-3">
+        <div id="tabProductMakerWorkBasicInfo" class="tab-pane fade show active">
+            <div id="accRevOrderHeader" class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransHeader" data-role="none" data-toggle="collapse">
+                            <b>Transaction Header</b>
+                        </button>
+                    </div>
+                    <div class="collapse show" id="colTransHeader">
+                        <div class="card-body">
+                            <div class="row" style="padding-top:10px">
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Product Maker Ticket (PMT) Assigned to: <span class="required">*</span></label>
+                                                <div class="input-group">
+                                                    <input name="txtAssignedTo" readonly data-role="none" type="text" class="form-control" />
+                                                    <button name="butAssignedTo" data-role="none" class="btn btn-secondary" style="float:right;"><span class="bi-search"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Date Needed:</label>
+                                                <div class="input-group">
+                                                    <input name="txtDateNeeded" readonly data-role="none" id="btnOFDateNeeded" type="text" class="form-control" />
+                                                    <button name="butDateNeeded" data-role="none" class="btn btn-secondary"><span class="bi-calendar-week"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="accRevOrderLine" class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransBody" data-role="none" data-toggle="collapse">
+                            <b>Transaction Line Items</b>
+                        </button>
+                    </div>
+                    <div class="collapse show" id="colTransBody">
+                        <div class="card-body">
+                            <div name="divAddproducts" class="text-right mb-3">
+                                <button name="butAddProduct" data-role="none" class="btn btn-secondary">Add product</button>
+                            </div>
+
+                            <div style="overflow:auto;">
+                                <table name="tableProducts" data-role="none" style="margin-right: 5px; display: table;" class="table table-light table-striped table-hover">
+                                    <thead>
+                                        <tr class="custom-theme-f fixed-cell-width" style="font-size:12px;">
+                                            <th class="txt-center"> SKU # </th>
+                                            <th class="txt-center"> Product Description </th>
+                                            <th class="txt-center"> Qty </th>
+                                            <th class="txt-center"> UoM </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr name="data" class="fixed-cell-width">
+                                            <td name="ProductNumber" class="txt-center"> SKU # </td>
+                                            <td name="ProductDescription" class="txt-center"> Product Description </td>
+                                            <td name="Qty" class="txt-center"> Order Qty </td>
+                                            <td name="UnitMeasure" class="txt-center"> Packing Size </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr name="data" class="fixed-cell-width">
+                                            <td name="ProductNumber" class="txt-center"></td>
+                                            <td name="ProductDescription" class="txt-center"></td>
+                                            <td name="OrderQty" class="txt-center"></td>
+                                            <td name="PackingSize" class="txt-center"></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="accRevOrderFooter" class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransFooter" data-role="none" data-toggle="collapse">
+                            <b>Transaction Footer</b>
+                        </button>
+                    </div>
+                    <div class="collapse show" id="colTransFooter">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Remarks:</label>
+                                        <textarea name=txtRemarks data-role="none" class="form-control" style="max-height:55px; resize:none"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabOPWorkAdditionalInfoTrading" class="tab-pane fade">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Customer Outlet:</label>
+                                <div style="margin-top: -5px; display: inline-block; float: right;">
+                                    <button name="butCustomerFowst" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+                                </div>
+                                <input name="txtCustomerFowst" readonly data-role="none" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Customer Department:</label>
+                                <div style="margin-top: -5px; display: inline-block; float: right;">
+                                    <button name="butCustomerBin" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+                                </div>
+                                <input name="txtCustomerBin" readonly data-role="none" type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabOPWorkAccountDetails" class="tab-pane fade">
+
+        </div>
+    </div>    
+</div>

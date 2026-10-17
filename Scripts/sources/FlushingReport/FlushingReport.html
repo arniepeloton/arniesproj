@@ -1,0 +1,32 @@
+﻿<script>
+    require([GetPathFormat('/Scripts/sources/FlushingReport/FlushingReport.js?v=' + assetversion)]);
+</script>
+<div class="container-fluid">
+    <h1 class="display-6 mb-4">Flushing Report</h1>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 mb-3 col-form-label" for="butFlushingReportOrganization">
+            Organization:
+        </label>
+        <div class="col-sm-9">
+            <button id="butFlushingReportOrganization" data-role="none" class="btn btn-secondary btn-block">[All Organizations]</button>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 mb-3 col-form-label" for="txtFlushingReportMinimumDuration">
+            Minimum Duration (In Minutes):
+        </label>
+        <div class="col-sm-9">
+            <input data-role="none" id="txtFlushingReportMinimumDuration" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-9">
+            <button data-role="none" id="butFlushingReportFilter" class="btn btn-success btn-block">Search</button>
+        </div>
+    </div>
+
+    <table id="tableFlushingReport" class="table table-striped table-hover"></table>
+</div>

@@ -1,0 +1,435 @@
+﻿<style type="text/css">
+    /*.ui-page-active, body {
+        outline: none;
+        background-color: #f8f9fa !important;
+    }*/
+</style>
+<div id="divHeaderGPS" data-role="header" data-position="fixed" style="background: none white; border: none">
+    <nav class="navbar navbar-dark bg-primary sticky-top text-light pl-3 pr-3 mb-3">
+        <div>
+            <a href="javascript:history.back()" data-role="none" class="btn btn-primary">
+                <span class="bi-chevron-left"></span>
+            </a>
+            Gate Pass
+        </div>
+    </nav>
+</div>
+
+<div id="divGPMainDiv" class="container-fluid" subpage="divGatePass" style="display:block;">
+    <ul class="nav nav-tabs" id="divGatePassTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabGPDashboard" type="button" role="tab" aria-controls="home" aria-selected="true">Dashboard</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button data-role="none" class="nav-link" id="btnGPWork" data-toggle="tab" data-target="#tabGPWork" type="button" role="tab" aria-controls="profile" aria-selected="false">Gate Pass</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button data-role="none" class="nav-link" id="btnGPSettings" data-toggle="tab" data-target="#tabGPSettings" type="button" role="tab" aria-controls="profile" aria-selected="false">Settings</button>
+        </li>
+    </ul>
+
+    <div class="tab-content p-3">
+        <div id="tabGPDashboard" class="tab-pane fade show active">
+            <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+                <div class="col">
+                    <div class="dashboardGrid bg-light border p-3 rounded" id="btnGatePassReport">
+                        <div class="gHeader">
+                            Gate Pass
+                        </div>
+                        <div class="gBody" style="font-size:18px;">
+                            <table data-role="none" style="width:100%;">
+                                <tr>
+                                    <td style="width:50%; text-align:right;">Unapproved:</td>
+                                    <td style="width:50%; text-align:left;"><span id="lblCountUnapprovedGP"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50%; text-align:right;">Approved:</td>
+                                    <td style="width:50%; text-align:left;"><span id="lblCountApprovedGP"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50%; text-align:right;">Cancelled:</td>
+                                    <td style="width:50%; text-align:left;"><span id="lblCountCancelledGP"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50%; text-align:right;">Returned:</td>
+                                    <td style="width:50%; text-align:left;"><span id="lblCountReturnedGP"></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="gFooter">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabGPWork" class="tab-pane fade">
+            <div class="row gx-1 mb-4">
+                <div class="col-1">
+                    <button data-role="none" id="btnGPNew" class="btn btn-light border h-100 w-100 align-self-auto">
+                        <span class="bi-file-earmark-plus" style="font-size:25px;"></span>
+                        <div class="menu-description mt-1">New</div>
+                    </button>
+                </div>
+                <div class="col-1">
+                    <button data-role="none" id="btnGPLookup" class="btn btn-light border h-100 w-100">
+                        <span class="bi-search" style="font-size:25px;"></span>
+                        <div class="menu-description mt-1">Look <br />Up</div>
+                    </button>
+                </div>
+                <div class="col-1">
+                    <button data-role="none" id="btnGPSave" class="btn btn-light border h-100 w-100">
+                        <span class="bi-save" style="font-size:25px;"></span>
+                        <div class="menu-description mt-1">Save As <br /> Draft</div>
+                    </button>
+                </div>
+                <div class="col-1">
+                    <button data-role="none" id="btnGPPrint" class="btn btn-light border h-100 w-100">
+                        <span class="bi-file-earmark-arrow-down" style="font-size:25px;"></span>
+                        <div class="menu-description mt-1">Download Report</div>
+                    </button>
+                </div>
+                <div class="col-1">
+                    <button data-role="none" id="btnGPActions" class="btn btn-light border h-100 w-100">
+                        <span class="bi-gear" style="font-size:25px;"></span>
+                        <div class="menu-description mt-1">Actions</div>
+                    </button>
+                </div>
+                <div class="col text-right">
+                    <span id="lblGPReferenceNo" style="font-size:30px;"></span>
+                    <br />
+                    <b id="lblGPStatus"></b>
+                    <br />
+                    <span id="lblGPEncodedBy"></span>
+                    <br />
+                    <span id="lblGPOtherInfo"></span>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse">
+                            <b>Transaction Header</b>
+                        </button>
+                    </div>
+                    <div class="collapse show">
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Employee Name (Bearer of Gate Pass): <span class="required">*</span></label>
+                                        <input id="txtGPEmpName" readonly data-role="none" type="text" placeholder="Click to select Employee" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Associated To:</label>
+                                        <input id="txtGPAssociatedTo" readonly data-role="none" type="text" placeholder="Please select" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Requested By: <span class="required">*</span></label>
+                                        <input data-role="none" type="text" readonly id="selGPRequestedBy" class="form-control" placeholder="Click to select Requested By" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>From Location: <span class="required">*</span></label>
+                                        <select data-role="none" class="form-select" id="txtGPFromLocation"></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>To Location: <span class="required">*</span></label>
+                                        <select data-role="none" class="form-select" id="txtGPToLocation"></select>
+                                        <input data-role="none" type="text" class="form-control mt-3" id="txtGPOtherToLocation" placeholder="Enter Other Location here" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div style="font-weight:bold;">
+                                            Return Date: <span class="required">*</span>
+                                            <div class="form-check" style="font-size:12px; float:right;">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" id="chbReturnDateNA" class="form-check-input" />
+                                                    Return date not applicable
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <input id="txtGPReturnDate" data-role="none" type="date" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse">
+                            <b>Transaction Body</b>
+                        </button>
+                    </div>
+                    <div class="collapse show">
+                        <div class="card-body">
+                            Please enter the description of Gate Pass <span class="required">*</span>
+                            <br /><br />
+                            <textarea id="txtGPParticulars" data-role="none" placeholder="Type here ..." class="form-control" style="min-height: 300px; resize: none"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse">
+                            <b>Transaction Footer</b>
+                        </button>
+                    </div>
+                    <div class="collapse show">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Remarks:</label>
+                                <textarea id="txtGPRemarks" data-role="none" placeholder="Type here ..." class="form-control" style="min-height: 150px; resize: none; width: 100%;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabGPSettings" class="tab-pane fade">
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse">
+                            <b>Gate Pass Approver</b>
+                        </button>
+                    </div>
+                    <div class="collapse show">
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-sm-6">
+                                    List of Gate Pass Approvers
+                                </div>
+                                <div class="col-sm-6" style="text-align:right">
+                                    <button data-role="none" id="btnGPAddAuthorizer" class="btn btn-success">Add Approver</button>
+                                </div>
+                            </div>
+
+                            <table id="tblGPApprover" style="margin-right:5px; display:table; width:100%" class="table table-light table-hover table-striped">
+                                <thead>
+                                    <tr class="custom-theme-f txt-center">
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Date Added</th>
+                                        <th>Added By</th>
+                                        <th style="width:100px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyGPApprover"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupGatePass" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Gate Pass Report</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-auto align-self-center">
+                        Show:
+                    </div>
+                    <div class="col-auto">
+                        <select data-role="none" id="selGPStatus" class="form-select">
+                            <option value="unapproved">Unapproved Gate Pass</option>
+                            <option value="approved">Approved Gate Pass</option>
+                            <option value="cancelled">Cancelled Gate Pass</option>
+                            <option value="returned">Returned Gate Pass</option>
+                        </select>
+                    </div>
+                    <div class="offset-sm-3 col">
+                        <input data-role="none" type="text" class="form-control" placeholder="Search here" id="txtROGPSearchReport" />
+                    </div>
+                </div>
+                <br /><br />
+                <table id="tblGatePassReport"  style="width:100%;" class="table table-light table-striped table-hover">
+                    <thead>
+                        <tr class="custom-theme-f txt-center">
+                            <th>#</th>
+                            <th>Reference No</th>
+                            <th>Bearer of Gate Pass</th>
+                            <th>Particulars</th>
+                            <th>Remarks</th>
+                            <th>Requested By</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyGatePass"></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popGatePassMoreDetails" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Gate Pass Details</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="divContentGPMoreDetails">
+                <div class="row">
+                    <div class="col-sm-4">
+                        Status:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblROGPStatus"></span>
+                        <br />
+                        <span id="lblROGPOtherInfo"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Encoded By:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblROGPEncodedBy"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Reference No:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblROGPReferenceNo"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row divROGPEmployee">
+                    <div class="col-sm-4">
+                        Employee Name (Bearer of Gate Page):
+                    </div>
+                    <div class="col-sm-8">
+                        <select data-role="none" class="form-control" id="selROGPEmployeeName"></select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        From Location:
+                    </div>
+                    <div class="col-sm-8">
+                        <!--<span id="lblROGPFromLocation" style="font-weight:bold;"></span>-->
+                        <select data-role="none" class="form-control" id="selROGPFromLocation"></select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        To Location:
+                    </div>
+                    <div class="col-sm-8">
+                        <!--<span id="lblROGPToLocation" style="font-weight:bold;"></span>-->
+                        <select data-role="none" class="form-control" id="selROGPToLocation"></select>
+                        <br />
+                        <input data-role="none" type="text" class="form-control" id="txtROGPOtherToLocation" placeholder="Enter Other Location here" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Associate to:
+                    </div>
+                    <div class="col-sm-8">
+                        <span id="lblROGPAssociatedTo" style="font-weight:bold;"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Requested By:
+                    </div>
+                    <div class="col-sm-8">
+                        <select data-role="none" class="form-control" id="selROGPRequestedBy"></select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Return Date:
+                    </div>
+                    <div class="col-sm-8">
+                        <input data-role="none" type="date" class="form-control" id="txtROGPReturnDate" />
+                        <div class="custom-checkbox">
+                            <label class="checkbox-only">
+                                <input type="checkbox" id="chbROGPReturnDateNA" data-iconpos="notext" />
+                            </label>
+                            <div>Return date not applicable</div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Gate Pass Particulars:
+                    </div>
+                    <div class="col-sm-8">
+                        <!--<span id="lblROGPRemarks" style="font-weight:bold;"></span>-->
+                        <textarea data-role="none" id="lblROGPParticulars" class="form-control"></textarea>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-4">
+                        Remarks: <span class="required">*</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <!--<span id="lblROGPRemarks" style="font-weight:bold;"></span>-->
+                        <textarea data-role="none" id="lblROGPRemarks" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Close</button>
+                    </div>
+                    <div class="col forROGPUnapproved" subpage="divROGP" style="display:none;">
+                        <button data-role="none" id="btnROGPCancel" data-dismiss="modal" class="btn btn-danger btn-block btn-lg">Cancel Gate Pass</button>
+                    </div>
+                    <div class="col forROGPUnapproved" subpage="divROGP" style="display:none;">
+                        <button data-role="none" id="btnROGPApprove" data-dismiss="modal" class="btn btn-success btn-block btn-lg">Approve Gate Pass</button>
+                    </div>
+                    <div class="col" id="forROGPTagAsReturned" subpage="divROGP" style="display:none;">
+                        <button data-role="none" id="btnROGPTagAsReturned" data-dismiss="modal" class="btn btn-success btn-block btn-lg">Tag as Returned</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

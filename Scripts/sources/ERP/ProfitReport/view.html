@@ -1,0 +1,40 @@
+﻿<div id="popupProfitReport" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Top Sellers and Grossers</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-auto">
+                        Group Gross Profit Data by:
+                    </div>
+                    <div class="col-md-auto">
+                        <div class="form-check form-check-inline">
+                            <input data-role="none" class="form-check-input" name="radGroup" type="checkbox" id="radGroupByCustomer" value="Customer" checked>
+                            <label class="form-check-label" for="radGroupByCustomer">Customer</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input data-role="none" class="form-check-input" name="radGroup" type="checkbox" id="radGroupBySku" value="Sku">
+                            <label class="form-check-label" for="radGroupBySku">SKU</label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <input data-role="none" type="search" id="txtProfitReportFilter" style="margin-top:10px" class="form-control" placeholder="Filter here" />
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table name="table" class="table table-light table-striped table-hover" data-column-btn-theme="b" style="width:100%;">
+                        <thead class="custom-theme-f"></thead>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

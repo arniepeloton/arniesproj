@@ -1,0 +1,153 @@
+﻿<div>
+    <div class="row wrapper min-vh-100 flex-column flex-md-row">
+        <div class="col-12 col-md-2 p-0 bg-light flex-shrink-1 mb-3">
+            <nav class="navbar navbar-expand-sm navbar-light bg-light align-items-start flex-md-column flex-row p-2">
+                <a data-role="none" class="navbar-brand" href="#">Menu</a>
+                <a data-role="none" href="#" class="navbar-toggler" data-toggle="collapse" data-target=".sidebarDS">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <div class="collapse navbar-collapse sidebarDS mt-2">
+                    <ul class="flex-column w-100 justify-content-between nav nav-pills">
+                        <li><a class="nav-link active" role="button" data-role="none" data-toggle="tab" href="#tabPOSettingsDocumentTypes">Document Types</a></li>
+                        <li class="d-none"><a class="nav-link" role="button" data-role="none" data-toggle="tab" href="#tabPOSettingsPOLink">PO Link</a></li>
+                        <li><a class="nav-link" role="button" data-role="none" data-toggle="tab" href="#tabPOSettingsPOLimits">Purchasing Limits</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col bg-faded">
+            <div class="tab-content p-3">
+                <div class="tab-pane fade active show" id="tabPOSettingsDocumentTypes">
+                    <table name="tableDocumentControl" data-role="none" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="align-top text-center" style="font-size:14px;">
+                                <th class="txt-center"> Document Name </th>
+                                <th class="txt-center"> Module Source </th>
+                                <th class="txt-center"> Print Limit </th>
+                                <th class="txt-center"> No. of Copies per Print </th>
+                                <th class="txt-center"> Label of Copies </th>
+                                <th class="txt-center"> Active </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr name="data" class="fixed-cell-width">
+                                <td name="DocumentName" class="txt-center"></td>
+                                <td name="ModuleSource" class="txt-center"></td>
+                                <td name="PrintLimit" class="txt-center"></td>
+                                <td name="CopiesPerPrint" class="txt-center"></td>
+                                <td name="LabelOfCopies" class="txt-center"></td>
+                                <td name="Active" class="txt-center"></td>
+                            </tr>
+                        </tbody>
+                        <!--<tfoot>
+                            <tr name="data" class="fixed-cell-width"></tr>
+                        </tfoot>-->
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="tabPOSettingsPOLink">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-3 col-form-label">Number of days before the PO Link expires:</div>
+                            <div class="col">
+                                <input data-role="none" class="form-control" name="expirationdaysforpolink" type="number" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 col-form-label">PO Link Domain Name: <br /> (Please include port number if applicable)</div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Domain Name:
+                                        <input data-role="none" class="form-control" name="polinkdomain" type="text" />
+                                        Note: If this field is blank, the default value is "konstruksyon.com".
+                                    </div>
+                                    <div class="col-md-4">
+                                        External IP Address:
+                                        <input data-role="none" class="form-control" name="polinkexternalipaddress" type="text" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        Internal IP Address:
+                                        <input data-role="none" class="form-control" name="polinkinternalipaddress" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <button data-role="none" name="btnSavePOSettings" class="btn btn-success btn-lg">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="tabPOSettingsPOLimits">
+                    <div class="mb-3 row text-right">
+                        <div class="col">
+                            <input data-role="none" class="form-control" name="txtSearch" placeholder="Search here" />
+                        </div>
+                        <div class="col-auto">
+                            <button data-role="none" name="btnAddEmployee" class="btn btn-success">Add Employee</button>
+                        </div>                        
+                    </div>
+
+                    <div class="table-responsive">
+                        <table name="tblPOSettingsPOLimits" data-role="none" class="table table-light table-striped table-hover">
+                            <thead>
+                                <tr class="align-top text-center" style="font-size:14px;">
+                                    <th style="width:50px;">#</th>
+                                    <th>Employee Name</th>
+                                    <th>Purchasing Limit per PO</th>
+                                    <th>Purchasing Limit per Month</th>
+                                    <th>Last Updated</th>
+                                    <th style="width:100px"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div name="popupPurchaseLimits" class="modal fade" tabindex="-1" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Purchasing Limits</h5>
+                        <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label" for="">Employee Name:</label>
+                            <input data-role="none" type="text" class="form-control" name="txtEmployeeName" placeholder="Search Employee" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="">Purchasing Limit per PO:</label>
+                            <input data-role="none" type="number" class="form-control" name="txtPurchasingLimitsPerPO" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="">Purchasing Limit per Month:</label>
+                            <input data-role="none" type="number" class="form-control" name="txtPurchasingLimitsPerMonth" required />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col">
+                                <button data-role="none" type="button" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Close</button>
+                            </div>
+                            <div class="col">
+                                <button data-role="none" type="submit" name="btnSave" class="btn btn-success btn-block btn-lg">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>                
+            </div>
+        </div>
+    </div>
+</div>

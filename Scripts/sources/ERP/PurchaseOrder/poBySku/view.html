@@ -1,0 +1,76 @@
+﻿<div style="display:grid;">
+    <div class="mb-3">
+        <div name="butNew" title="New" class="btn-trail btn btn-light">
+            <span class="erp-po new s48 bi-file-earmark-plus" style="font-size:25px;"></span><br />
+            <span class="menu-description mt-1">New</span>
+        </div>
+        <div name="butSaveAsDraft" title="Save as Draft" class="btn-trail btn btn-light">
+            <span class="erp-po saveasdraft s48 bi-save" style="font-size:25px;"></span><br />
+            <span class="menu-description mt-1">Save as <br /> Draft</span>
+        </div>
+    </div>
+
+    <div class="row mb-3" style="margin-bottom:1rem;">
+        <div class="col-12 col-sm-6 col-md-auto mb-3">
+            List Content:<br />
+            <select name="selActive" data-role="none" class="form-control form-select">
+                <option>Active Requested SKU's</option>
+                <option value="1">Deactivated Requested SKU's</option>
+            </select>
+        </div>
+        <div class="col-12 col-sm-6 col-md-auto mb-3">
+            List Content:<br />
+            <select name="selPoFilter" data-role="none" class="form-control form-select" style="">
+                <option value="all">Show All Item Requests</option>
+                <option value="po">Show Item Requests That Have Been PO'ed To Vendor</option>
+                <option>Show Item Requests That Have Not Been PO'ed To Vendor</option>
+            </select>
+        </div>
+        <div class="col-12 col-sm-6 col-md-auto mb-3">
+            Selected FOWST <span class="required">*</span>:
+            <input data-role="none" type="text" id="butPoBySkuFowst" class="form-control" placeholder="Select FOWST" readonly />
+        </div>
+        <div class="col-12 col-sm-6 col-md-auto mb-3">
+            <!--Date requested <span class="required">*</span>:
+        <button data-role="none" class="btn custom-btn-theme-c btn-secondary btn-block" id="butPoBySkuFowstDateRequested"></button>-->
+            Date Requested:<br />
+            <select name="selPoBySkuFowstDateRequested" data-role="none" class="form-control form-select" style="">
+                <option value="0">Week to Date</option>
+                <option value="1">1 Cumulative Week Ago</option>
+                <option value="2">2 Cumulative Weeks Ago</option>
+                <option value="4">4 Cumulative Weeks Ago</option>
+                <option value="6">6 Cumulative Weeks Ago</option>
+                <option value="8">8 Cumulative Weeks Ago</option>
+                <option value="10">10 Cumulative Weeks Ago</option>
+                <option value="12">12 Cumulative Weeks Ago</option>
+            </select>
+        </div>
+        <div class="col-12 col-sm-6 col-md-auto mb-3">
+            Filter by keywords:<br />
+            <input data-role="none" type="search" id="txtPoBySkuFilter" class="form-control" placeholder="Filter by keywords" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-auto mb-3">
+            Display Records:<br />
+            <select name="selMaxRecord" data-role="none" class="form-control form-select" style="">
+                <option>50</option>
+                <option>100</option>
+                <option>250</option>
+                <option>500</option>
+                <option value="all">Show All Item Requests</option>
+            </select>
+        </div>
+        <div class="col-12 col-sm-6 col-md mb-3 text-right">
+            <span class="d-none d-md-block">&nbsp;</span>
+            <button data-role="none" class="btn custom-btn-theme-b btn-success btn-less-width mb-3" id="butPoBySkuExpand">Expand to show backorders in separate rows</button>
+            <button data-role="none" class="btn custom-btn-theme-b btn-success btn-less-width mb-3" id="butPoBySkuAddProduct">Add product</button>
+        </div>
+    </div>
+
+    <div name="divLoading">Loading data. Please wait</div>
+    <table name="myTable" data-role="table" data-mode="reflow" style="margin-right: 5px; display: table" class="ui-table ui-shadow ui-responsive table-stroke table-stripe table table-li table-striped table-hover">
+        <thead class="custom-theme-f" style="font-size: 14px">
+            <tr class="custom-theme-f txt-center"></tr>
+        </thead>
+        <tbody style="font-size: 14px"></tbody>
+    </table>
+</div>

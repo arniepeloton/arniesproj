@@ -1,0 +1,273 @@
+﻿<div id="tabPurchaseOrderRequestWork" custom-tab-role="content" style="display: none;">
+    <div class="clearfix">
+        <div style="float: left">
+            <div name="divToolbar" style="float: left">
+                <div name="butNew" title="New" class="btn-trail">
+                    <span class="erp-invoice new s48"></span><br />
+                    <span>New</span>
+                </div>
+                <div name="butLookup" title="Lookup" class="btn-trail">
+                    <span class="erp-invoice search s48"></span><br />
+                    <span>Lookup</span>
+                </div>
+                <div name="butSalesOrderNumber" title="Lookup" class="btn-trail">
+                    <span class="erp-op-lookup"></span><br />
+                    <span>Lookup SO/STR</span>
+                </div>
+                <div name="butSaveAndFinalize" title="Save & Finalize" class="btn-trail">
+                    <span class="erp-op finalsave s48"></span><br />
+                    <span>Save & Finalize</span>
+                </div>
+                <div name="butSaveAsDraft" title="Save as Draft" class="btn-trail">
+                    <span class="erp-op saveasdraft s48"></span><br />
+                    <span>Save as Draft</span>
+                </div>
+                <div name="butCancel" title="Cancel" class="btn-trail">
+                    <span class="erp-invoice-cancel"></span><br />
+                    <span>Cancel</span>
+                </div>
+            </div>
+            <div name="butOutput" title="Output" style="float: left" class="btn-trail">
+                <span class="erp-invoice print s48"></span><br />
+                <span>Output</span>
+            </div>
+            <div name="butActivityTracker" title="Activity Tracker" class="btn-trail">
+                <span class="erp-op-activity-tracker"></span><br />
+                <span>Activity Tracker</span>
+            </div>
+        </div>
+        <div style="float:right; font-size:50px">
+            <div name="divTransNum" style="font-size:30px"></div>
+            <div name="divDraftOrFinalized" style="font-size:14px; font-weight:bold; text-align:right"></div>
+            <div name="divLastUpdated" style="font-size:10px; text-align:right"></div>
+            <div name="divTransDate" style="font-size:10px; text-align:right"></div>
+            <div name="divParentOrder" style="font-size: 10px; text-align: right"></div>
+            <div name="divChildSos" style="font-size: 10px; text-align: right"><a name="lnkChildSos" href="#">Show Child SO's</a></div>
+        </div>
+    </div>
+    <br /><br />
+
+    <div id="divOPWorkTab" class="custom-tab">
+        <ul>
+            <li class="active" custom-tab-content="#tabOPWorkBasicInfo">Basic Info</li>
+        </ul>
+    </div>
+
+    <div id="tabOPWorkBasicInfo" custom-tab-role="content" style="display: block;padding-top:20px">
+        <div id="accRevOrderHeader" custom-data-role="accordion">
+            <div class="accordion-header active">
+                Transaction Header
+            </div>
+            <div class="accordion-content">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Customer: <span class="required">*</span></label>
+                                    <button name="butCustomer" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+                                    <input name="txtCustomer" readonly data-role="none" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Invoice Type:</label>
+                                    <select name="cbInvoiceType" data-role="none" type="text" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Invoice Number:</label>
+                                    <input name="txtInvoiceNumber" readonly data-role="none" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>SO Number: <span class="required">*</span></label>
+                                            <button name="butSalesOrderNumber" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+                                            <input name="txtSalesOrderNumber" readonly data-role="none" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>SO Date:</label>
+                                            <button name="butSalesOrderDate" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+                                            <input name="txtSalesOrderDate" readonly data-role="none" type="text" id="btnInvoicingSODate" class="form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Manual Invoice Ref. Number:</label>
+                                    <input name="txtRefInvoiceNumber" data-role="none" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Quote Number:</label>
+                                            <input name="txtQuoteNumber" readonly data-role="none" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Quote Date:</label>
+                                            <input name="txtQuoteDate" readonly data-role="none" type="text" id="btnInvoicingQuoteDate" class="form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Payment Terms:</label>
+                                    <input name="txtPaymentTerms" data-role="none" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>PO Number: <span class="required">**</span></label>
+                                            <input name="txtPoNumber" data-role="none" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>PO Date: <span class="required">**</span></label>
+                                            <input name="txtPoDate" readonly data-role="none" type="text" id="btnInvoicingPODate" class="form-control" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Sales Partner</label>
+                                    <input name="txtSalesPartner" readonly data-role="none" type="text" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Sales Rep:</label>
+                                    <button name="butAddSalesRep" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-plus-white" /></button>
+                                    <button name="butSearchSalesRep" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+
+                                    <input name="txtSalesRepText" data-role="none" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+
+                        <div class="form-group">
+                            <label>Date Needed: <span class="required">*</span></label>
+                            <div style="margin-top:-5px; display:inline-block; float:right;">
+                                <button name="butDateNeeded" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float:right;"><img class="img-search-white" /></button>
+                            </div>
+                            <input name="txtDateNeeded" data-role="none" type="text" id="btnInvoicingDateNeeded" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Billing Address<span class="required">*</span>:</label>
+                            <div style="margin-top:-5px; display:inline-block; float:right;">
+                                <button name="butAddBillingAddress" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float:right;"><img class="img-plus-white" /></button>
+                                <button name="butSearchBillingAddress" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float:right;"><img class="img-search-white" /></button>
+                            </div>
+                            <textarea name="txtBillingAddress" data-role="none" class="form-control" style="height:90px; max-height:90px; resize:none"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Address<span class="required">*</span>:</label>
+                            <div style="margin-top:-5px; display:inline-block; float:right;">
+                                <button name="butAddDeliveryAddress" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float:right;"><img class="img-plus-white" /></button>
+                                <button name="butSearchDeliveryAddress" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float:right;"><img class="img-search-white" /></button>
+                            </div>
+                            <textarea name="txtDeliveryAddress" data-role="none" class="form-control" style="height:90px; max-height:90px; resize:none"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <br /><br />
+
+        <div id="accRevOrderLine" custom-data-role="accordion">
+            <div class="accordion-header active">
+                Transaction Line Items
+                <span class="txt-right">
+                    <a name="butAddProduct" data-role="none" class="custom-link">Add product</a>
+                </span>
+            </div>
+            <div class="accordion-content">
+                <div style="overflow:auto;">
+                    <table name="tableProducts" data-role="table" data-role="reflow" style="margin-right: 5px; display: table;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                        <thead>
+                            <tr class="custom-theme-f fixed-cell-width">
+                                <th class="txt-center"> SKU # </th>
+                                <th class="txt-center"> Product Description </th>
+                                <th class="txt-center"> Order Qty </th>
+                                <th name="thServedQty" class="txt-center"> Served Qty </th>
+                                <th class="txt-center"> UoM </th>
+                                <th class="txt-center"> Unit Price </th>
+                                <th class="txt-center"> Line Total </th>
+                                <th class="txt-center"> Payment Terms </th>
+                                <th name="Supplier" class="txt-center"> Supplier </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr name="data" class="fixed-cell-width">
+                                <td name="ProductNumber" class="txt-center"> SKU # </td>
+                                <td name="ProductDescription" class="txt-center"> Product Description </td>
+                                <td name="OrderQty" class="txt-center"> Order Qty </td>
+                                <td name="ServedQty" class="txt-center"> </td>
+                                <td name="PackingSize" class="txt-center"> Packing Size </td>
+                                <td name="UnitPrice" class="txt-center"> Unit Price </td>
+                                <td name="LineTotal" class="txt-center"> Line Total </td>
+                                <td name="PaymentTerms" class="txt-center"> Payment Terms </td>
+                                <td name="Supplier" class="txt-center">  </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr name="data" class="fixed-cell-width">
+                                <td name="ProductNumber" class="txt-center"></td>
+                                <td name="ProductDescription" class="txt-center"></td>
+                                <td name="OrderQty" class="txt-center"></td>
+                                <td name="ServedQty" class="txt-center"> </td>
+                                <td name="PackingSize" class="txt-center"></td>
+                                <td name="UnitPrice" class="txt-center"></td>
+                                <td name="LineTotal" class="txt-center"></td>
+                                <td name="PaymentTerms" class="txt-center"></td>
+                                <td name="Supplier" class="txt-center"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <!--<button name="butAddProduct">Add Product</button>-->
+                </div>
+            </div>
+        </div>
+
+        <br /><br />
+
+        <div id="accRevOrderLine" custom-data-role="accordion">
+            <div class="accordion-header active">
+                Transaction Footer
+            </div>
+            <div class="accordion-content">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Remarks:</label>
+                            <textarea name="txtRemarks" data-role="none" class="form-control" style="max-height:55px; resize:none"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

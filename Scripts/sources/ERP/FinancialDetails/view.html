@@ -1,0 +1,55 @@
+﻿<div id="popFinancialDetails-bs" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Financial Details</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="popFinancialDetailscontent-bs">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="popup" id="popFinancialDetails" data-dismissible="true" data-overlay-theme="a" data-theme="a" data-corners="false" style="display:none">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center><h3 style="margin-left:10px; margin-right:10px;">Financial Details</h3></center>
+    <div data-role="content" id="popFinancialDetailscontent" class="ui-content ui-body-d jPopupContent">
+        <span name="spanRequired" style="color: #ff0000; display: none;">Fields with (<span style="color: #F00">*</span>) are required.</span>
+        <span name="spanMessage" style="color: #ff0000; display: none;"></span>
+
+        <div>
+            <div>Bank / Issuing Organization: <span class="required">*</span></div>
+            <div>
+                <button data-role="none" name="butBank" class="btn custom-btn-theme-c btn-secondary btn-block">Search</button>
+            </div>
+        </div>
+        <br />
+        <div>
+            <div>Branch:</div>
+            <div><input type="text" name="txtBranch" data-role="none" class="form-control" /></div>
+        </div>
+        <br />
+        <div>
+            <div>Acc. Name: (Issued To)</div>
+            <div><input type="text" name="txtAccountName" data-role="none" class="form-control" /></div>
+        </div>
+        <br />
+        <div>
+            <div>Acc. No: <span class="required">*</span></div>
+            <div><input type="text" name="txtAccountNumber" data-role="none" class="form-control" /></div>
+        </div>
+        <br /><br />
+        <div class="divTable">
+            <div class="divTableRow">
+                <div class="divTableCell">
+                    <button name="butCancel" class="btn custom-btn-theme-c btn-secondary btn-block btn-lg">Cancel</button>
+                </div>
+                <div class="divTableCell">
+                    <button data-role="none" name="butSave" class="btn custom-btn-theme-b btn-success btn-lg btn-block">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

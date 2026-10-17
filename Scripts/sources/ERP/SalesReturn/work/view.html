@@ -1,0 +1,301 @@
+﻿<div id="tabSalesReturnWork" custom-tab-role="content" style="display: none;">
+    <div class="row gx-1 mb-4">
+        <div class="col-md-7 col-lg-5 mb-3">
+            <div class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+                <button data-role="none" name="butNew" class="btn btn-light border h-100 w-100 align-self-auto">
+                    <span class="bi-file-earmark-plus" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">New</div>
+                </button>
+                <button data-role="none" name="butLookup" class="btn btn-light border h-100 w-100">
+                    <span class="bi-search" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Look <br />Up</div>
+                </button>
+                <button data-role="none" name="butSaveAndFinalize" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save And <br /> Finalize</div>
+                </button>
+                <button data-role="none" name="butSaveAsDraft" class="btn btn-light border h-100 w-100">
+                    <span class="bi-save" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Save As <br /> Draft</div>
+                </button>
+                <button data-role="none" name="butOutput" class="btn btn-light border h-100 w-100">
+                    <span class="bi-printer" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Output</div>
+                </button>
+                <button data-role="none" name="butCancel" class="btn btn-light border h-100 w-100">
+                    <span class="bi-x-circle" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Cancel</div>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-7 text-right">
+            <div name="divDraftOrFinalized" style="font-size:30px;"></div>
+        </div>
+    </div>
+
+    <div style="white-space:nowrap; overflow:auto;">
+        <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabSalesReturnWorkBasicInfo" type="button" role="tab" aria-controls="basicinfo" aria-selected="true">Basic Info</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabSalesReturnWorkAdditionalInfoTrading" type="button" role="tab" aria-controls="addlinfo" aria-selected="false">Additional Info</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content p-3">
+        <div id="tabSalesReturnWorkBasicInfo" class="tab-pane fade show active">
+            <div id="accRevOrderHeader" class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse">
+                            <b>Transaction Header</b>
+                        </button>
+                    </div>
+                    <div class="collapse show">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Customer: <span class="required">*</span></label>
+                                                <input name="txtCustomer" readonly data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Invoice Type:</label>
+                                                <select name="cbInvoiceType" data-role="none" type="text" class="form-control"></select>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Invoice Number:</label>
+                                                <!--<div style="margin-top:-5px; display:inline-block; float:right;">
+                <button name="butInvoiceNumber" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float:right;"><img class="img-search-white" /></button>
+            </div>-->
+                                                <input name="txtInvoiceNumber" readonly data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Manual Invoice Ref. Number:</label>
+                                                <input name="txtRefInvoiceNumber" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group mb-3">
+                                                        <label>SO Number: <span class="required">*</span></label>
+                                                        <input name="txtSalesOrderNumber" readonly data-role="none" type="text" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group mb-3">
+                                                        <label>SO Date:</label>
+                                                        <input name="txtSalesOrderDate" readonly data-role="none" type="text" id="btnInvoicingSODate" class="form-control" readonly />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Payment Terms:</label>
+                                                <input name="txtPaymentTerms" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group mb-3">
+                                                        <label>Quote Number:</label>
+                                                        <input name="txtQuoteNumber" readonly data-role="none" type="text" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group mb-3">
+                                                        <label>Quote Date:</label>
+                                                        <input name="txtQuoteDate" readonly data-role="none" type="text" id="btnInvoicingQuoteDate" class="form-control" readonly />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group mb-3">
+                                                <label>Sales Partner</label>
+                                                <input name="txtSalesPartner" readonly data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group mb-3">
+                                                        <label>PO Number: <span class="required">**</span></label>
+                                                        <input name="txtPoNumber" readonly data-role="none" type="text" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group mb-3">
+                                                        <label>PO Date: <span class="required">**</span></label>
+                                                        <input name="txtPoDate" readonly data-role="none" type="text" id="btnInvoicingPODate" class="form-control" readonly />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">                                            
+                                            <div class="form-group mb-3">
+                                                <label>Sales Rep:</label>
+                                                <input name="txtSalesRep" data-role="none" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+
+                                    <div class="form-group mb-3">
+                                        <label>Date Needed: <span class="required">*</span></label>
+                                        <input name="txtDateNeeded" data-role="none" type="text" id="btnInvoicingDateNeeded" class="form-control" />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Billing Address<span class="required">*</span>:</label>
+                                        <textarea name="txtBillingAddress" data-role="none" class="form-control" style="height:90px; max-height:90px; resize:none"></textarea>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Delivery Address<span class="required">*</span>:</label>
+                                        <textarea name="txtDeliveryAddress" data-role="none" class="form-control" style="height:90px; max-height:90px; resize:none"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse">
+                            <b>Transaction Line Items</b>
+                        </button>
+                    </div>
+                    <div class="collapse show">
+                        <div class="card-body">
+                            <div class="text-right mb-3">
+                                <button name="butAddProduct" data-role="none" class="btn btn-success">Add product</button>
+                            </div>
+
+                            <div style="overflow:auto;">
+                                <table name="tableProducts" data-role="none" style="margin-right: 5px; display: table;" class="table table-light table-striped table-hover">
+                                    <thead>
+                                        <tr class="custom-theme-f fixed-cell-width">
+                                            <th class="txt-center"> SKU # </th>
+                                            <th class="txt-center"> Product Description </th>
+                                            <th name="thServedQty" class="txt-center"> Served Qty </th>
+                                            <th class="txt-center"> Accumulated<br /> Returned Quantitiy </th>
+                                            <th class="txt-center"> Qty Returned By<br /> This Transaction <br />(fit for resale) </th>
+                                            <th class="txt-center"> Qty Returned By<br /> This Transaction <br />(not fit for resale) </th>
+                                            <th class="txt-center"> Packing Size </th>
+                                            <th class="txt-center"> Invoiced Price </th>
+                                            <th class="txt-center"> Line Total </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr name="data" class="fixed-cell-width">
+                                            <td name="ProductNumber" class="txt-center"> SKU # </td>
+                                            <td name="ProductDescription" class="txt-center"> Product Description </td>
+                                            <td name="ServedQty" class="txt-center" style="text-align:center"> </td>
+                                            <td name="QtyReturnedOthers" class="txt-center" style="text-align:center"> </td>
+                                            <td name="QtyReturnedOwn" class="txt-center" style="text-align:center"> </td>
+                                            <td name="QtyReturnedOwnBad" class="txt-center" style="text-align:center"> </td>
+                                            <td name="PackingSize" class="txt-center" style="text-align:center"> Packing Size </td>
+                                            <td name="UnitPrice" class="txt-center" style="text-align:center"> Invoiced Price </td>
+                                            <td name="LineTotal" class="txt-center" style="text-align:center"> Line Total </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr name="data" class="fixed-cell-width">
+                                            <td name="ProductNumber" class="txt-center"></td>
+                                            <td name="ProductDescription" class="txt-center"></td>
+                                            <td name="ServedQty" class="txt-center"></td>
+                                            <td name="QtyReturnedOthers" class="txt-center"> </td>
+                                            <td name="QtyReturnedOwn" class="txt-center"> </td>
+                                            <td name="QtyReturnedOwnBad" class="txt-center"> </td>
+                                            <td name="PackingSize" class="txt-center"></td>
+                                            <td name="UnitPrice" class="txt-center"></td>
+                                            <td name="LineTotal" class="txt-center"></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <!--<button name="butAddProduct">Add Product</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse">
+                            <b>Transaction Footer</b>
+                        </button>
+                    </div>
+                    <div class="collapse show">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Remarks:</label>
+                                        <textarea name="txtRemarks" data-role="none" class="form-control" style="max-height:55px; resize:none"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabSalesReturnWorkAdditionalInfoTrading" class="tab-pane fade">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group mb-3">
+                                <label>Customer Outlet:</label>
+                                <div style="margin-top: -5px; display: inline-block; float: right;">
+                                    <button name="butCustomerFowst" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+                                </div>
+                                <input name="txtCustomerFowst" readonly data-role="none" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group mb-3">
+                                <label>Customer Department:</label>
+                                <div style="margin-top: -5px; display: inline-block; float: right;">
+                                    <button name="butCustomerBin" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+                                </div>
+                                <input name="txtCustomerBin" readonly data-role="none" type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabSalesReturnWorkAccountDetails" class="tab-pane fade">
+
+        </div>
+    </div>
+</div>

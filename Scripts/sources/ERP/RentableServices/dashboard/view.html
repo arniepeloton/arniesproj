@@ -1,0 +1,46 @@
+﻿<style type="text/css">
+    .players {
+        border: 2px solid #28a745;
+        background-color: #c1ffd0;
+        border-radius: 3px;
+    }
+
+    .players-warning {
+        border: 2px solid #ffc107 !important;
+        background-color: #ffefc0  !important;
+    }
+
+    .players-done {
+        border: 2px solid #dc3545 !important;
+        background-color: #ffc6cb  !important;
+    }
+</style>
+
+<div class="row align-items-center mb-3">
+    <div class="col-sm-6">
+        Date:
+        <button data-role="none" name="btnDateReport" class="btn btn-secondary ml-3">Today</button>
+        <button data-role="none" name="btnRefreshList" class="btn btn-secondary ml-3">Refresh List</button>
+    </div>
+    <div class="col-sm-6">
+        <input data-role="none" type="search" name="txtSearch" class="form-control" placeholder="Search" />
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-light table-striped table-hover">
+        <thead>
+            <tr class="align-top text-center" style="font-size:14px;">
+                <th style="min-width:50px;">#</th>
+                <th style="min-width:180px;">Child Name</th>
+                <th style="min-width:180px;">Representative Name</th>
+                <th style="min-width:150px;">Play Date</th>
+                <th style="min-width:150px;">Entry Time</th>
+                <th style="min-width:150px;">Intended Exit Time</th>
+                <th style="min-width:150px;">Intended Duration</th>
+                <th style="min-width:150px;">Actual Duration</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyPlayRoomReport"></tbody>
+    </table>
+</div>

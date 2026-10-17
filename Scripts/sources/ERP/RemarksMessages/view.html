@@ -1,0 +1,89 @@
+﻿<div id="divRemarksMessage">
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-auto">Show:</div>
+        <div class="col-md-auto">
+            <select data-role="none" name="selFilterQuickRemarks" class="form-select fixed">
+                <option value="">All Tags</option>
+                <option value="Quotation">Quotation</option>
+                <option value="Sales Order">Sales Order</option>
+                <option value="Stock Transfer">Stock Transfer</option>
+                <option value="Invoicing">Invoicing</option>
+                <option value="Purchasing">Purchasing</option>
+                <option value="Stock Receiving">Stock Receiving</option>
+            </select>
+        </div>
+        <div class="col-md-auto">Show Internal Remarks:</div>
+        <div class="col-md-auto">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="chbShowInternalRemarks">
+            </div>
+        </div>
+        <div class="col-md text-right">
+            <button data-role="none" name="btnAddRemarks" class="btn btn-success">Add Remarks</button>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table id="tblQuickRemarks" data-role="none" class="table table-light table-striped table-hover">
+            <thead>
+                <!--<tr class="align-top text-center" style="font-size:14px;">
+                    <th style="width:50px;">#</th>
+                    <th>Message</th>
+                    <th style="width:150px;">Tag</th>
+                    <th style="width:150px;">Updated By</th>
+                    <th style="width:150px;">Last Updated</th>
+                </tr>-->
+            </thead>
+            <tbody id="tbodyRemarksMessages"></tbody>
+        </table>
+    </div>
+
+    <div name="popQuickRemarks" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Remarks</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Message:</label>
+                        <textarea data-role="none" name="txtRemarksMessage" class="form-control" style="height:200px; resize:none"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Tag:</label>
+                        <select data-role="none" name="selRemarksTag" class="form-select">
+                            <option value="">Please select tag</option>
+                            <option value="Quotation">Quotation</option>
+                            <option value="Sales Order">Sales Order</option>
+                            <option value="Stock Transfer">Stock Transfer</option>
+                            <option value="Invoicing">Invoicing</option>
+                            <option value="Purchasing">Purchasing</option>
+                            <option value="Stock Receiving">Stock Receiving</option>
+                        </select>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-md-auto">For internal use only:</label>
+                        <div class="col-md">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="chbIsInternalRemarks">
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" name="btnQuickRemarksSave" class="btn btn-success btn-lg btn-block">Save</button>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

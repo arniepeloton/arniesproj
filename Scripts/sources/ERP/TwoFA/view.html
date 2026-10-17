@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    require(['/Scripts/sources/SignIn/TwoFA.js?v=' + assetversion])
+</script>
+
+<div id="pop2FAEmailAdd" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <span class="bi-envelope-check text-success" style="font-size:100px;"></span>
+                    </div>
+                    <div class="col-md text-secondary">
+                        <h2 class="text-dark">Two Factor Authentication</h2>
+
+                        <div class="mb-3">
+                            A verification code has been sent to your email<i id="lblUserEmail"></i>. This code will be valid for 5 minutes.
+                        </div>                                              
+
+                        <form id="form2FA" method="post" class="needs-validation" novalidate>
+                            <div class="input-group mb-3">
+                                <input data-role="none" type="text" id="txt2FACode" class="form-control form-control-lg" maxlength="6" placeholder="Enter the 6 digit code here" />
+                                <button data-role="none" type="submit" class="btn btn-success btn-lg">Verify</button>
+                            </div>
+                        </form>
+                        
+                        <div class="row mb-3">
+                            <div class="col-auto">
+                                Didn't received a code? <a class="text-secondary" id="linkResend2FACode" href="#">Click here to resend</a>
+                                <div id="lblResending"></div>
+                            </div>
+                            <div class="col text-right">
+                                <a class="text-secondary" href="#" data-dismiss="modal">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,531 @@
+﻿<style type="text/css">
+    .btn.active {
+        border: 3px solid #000 !important;
+    }
+</style>
+<div id="divETMainDiv" subpage="pageExpenseTracker" style="display:block;">
+    <div id="divExpenseTrackerTab" style="white-space:nowrap; overflow:auto;">
+        <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabETDashboard">Dashboard</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" id="btnETWork" data-target="#tabETWork">Expense Ticket</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" id="btnETSettings" data-target="#tabETSettings">Settings</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content p-3">
+        <div id="tabETDashboard" class="tab-pane fade show active">
+            <div class="row" style="margin-top: 20px; margin-bottom: 20px">
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="dashboardGrid bg-light border p-3 rounded h-100 btnLogExpenseReport">
+                        <div class="gHeader">
+                            Funds Report
+                        </div>
+                        <div class="gBody">
+                            <span style="font-size:12px;">Total Expenses:</span>
+                            <br />
+                            <span class="lblTotalExpense"></span>
+                            <br />
+                            <span style="font-size:12px;">Total Funds:</span>
+                            <br />
+                            <span class="lblTotalFunds"></span>
+                        </div>
+                        <div class="gFooter lblExpenseMonthCovered">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="dashboardGrid bg-light border p-3 rounded h-100" id="btnExpenseCheckInOutReport">
+                        <div class="gHeader">
+                            Check-ins Report
+                        </div>
+                        <div class="gBody">
+
+                        </div>
+                        <div class="gFooter lblExpenseCheckInOutMonthCovered">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="dashboardGrid bg-light border p-3 rounded h-100" id="btnExpenseUnfinishedReport">
+                        <div class="gHeader">
+                            Expense Tickets without Amounts
+                        </div>
+                        <div class="gBody lblCountUnfinishedExpenseReport">
+                            
+                        </div>
+                        <div class="gFooter" id="lblSopaFooter">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="dashboardGrid bg-light border p-3 rounded h-100" id="btnExpenseUnapprovedTicket">
+                        <div class="gHeader">
+                            Unapproved Expense Ticket
+                        </div>
+                        <div class="gBody lblCountUnapprovedExpenseTicket">
+                        </div>
+                        <div class="gFooter">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabETWork" class="tab-pane fade">
+            <div class="row gx-1 mb-4">
+                <div class="col-md-7 col-lg-8 mb-3">
+                    <div name="divToolbar" class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+                        <button data-role="none" id="btnWebLogExpenseNew" class="btn btn-light border h-100 w-100 align-self-auto">
+                            <span class="bi-file-earmark-plus" style="font-size:25px;"></span>
+                            <div class="menu-description mt-1">New</div>
+                        </button>
+                        <button data-role="none" id="btnWebLogExpenseLookup" class="btn btn-light border h-100 w-100">
+                            <span class="bi-search" style="font-size:25px;"></span>
+                            <div class="menu-description mt-1">Lookup</div>
+                        </button>
+                        <button data-role="none" id="btnWebLogExpenseSave" class="btn btn-light border h-100 w-100">
+                            <span class="bi-save" style="font-size:25px;"></span>
+                            <div class="menu-description mt-1">Save as <br /> Draft</div>
+                        </button>
+                        <button data-role="none" id="btnWebLogExpensePrint" class="btn btn-light border h-100 w-100">
+                            <span class="bi-file-earmark-arrow-down" style="font-size:25px;"></span>
+                            <div class="menu-description mt-1">Download <br /> Report</div>
+                        </button>
+                        <button data-role="none" id="btnWebLogExpenseActions" class="btn btn-light border h-100 w-100">
+                            <span class="bi-gear" style="font-size:25px;"></span>
+                            <div class="menu-description mt-1">Actions</div>
+                        </button>
+                        <button data-role="none" id="btnWebLogExpenseHistory" class="btn btn-light border h-100 w-100">
+                            <span class="bi-clock-history" style="font-size:25px;"></span>
+                            <div class="menu-description mt-1">History</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-4 text-right">
+                    <span id="lblETReferenceNo" style="font-size:30px;"></span>
+                    <br />
+                    <b id="lblETStatus"></b>
+                    <br />
+                    <span id="lblETEncodedBy"></span>
+                    <br />
+                    <span id="lblETOtherInfo"></span>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransFooter" data-role="none" data-toggle="collapse">
+                            <b>Transaction Header</b>
+                        </button>
+                    </div>
+                    <div class="collapse show" id="colTransFooter">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Employee Name (Expense Is Attributed To):</label>
+                                        <input id="txtWebLogExpenseEmpName" readonly data-role="none" type="text" placeholder="Select Employee here" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Expense Type: <span class="required">*</span></label>
+                                        <select data-role="none" id="selWebLogExpenseType" class="form-select">
+                                            <option value="">Please select</option>
+                                            <option value="Store">Store</option>
+                                            <option value="Representation">Representation</option>
+                                            <option value="Jeepney Fare">Jeepney Fare</option>
+                                            <option value="Bus Fare">Bus Fare</option>
+                                            <option value="Taxi Fare">Taxi Fare</option>
+                                            <option value="Van Fare">Van Fare</option>
+                                            <option value="Fuel">Fuel</option>
+                                            <option value="Tricycle Fare">Tricycle Fare</option>
+                                            <option value="Air Fare">Air Fare</option>
+                                            <option value="Sea Fare">Sea Fare</option>
+                                            <option value="Train Fare">Train Fare</option>
+                                            <option value="Telco">Telco</option>
+                                            <option value="Internet">Internet</option>
+                                            <option value="Meal">Meal</option>
+                                            <option value="Lodging">Lodging</option>
+                                            <option value="Other Expense">Other Expense</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Expense Date: <span class="required">*</span></label>
+                                        <input id="txtWebLogExpenseDate" data-role="none" type="date" placeholder="Select date here" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Cost Center: <span class="required">*</span></label>
+                                        <!--<select data-role="none" id="selWebLogExpenseCostCenter" class="form-control"></select>-->
+                                        <input id="txtWebLogExpenseCostCenter" readonly data-role="none" type="text" placeholder="Select Cost Center here" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>From Location: <span class="required lblExpenseTypeTranspo" style="display:none;">*</span></label>
+                                        <input id="txtWebLogExpenseFromLocation" data-role="none" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Associated To:</label>
+                                        <input id="txtWebLogExpenseAssociatedTo" data-role="none" type="text" placeholder="Please select" class="form-control" readonly />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Cost Center Location: <span class="required">*</span></label>
+                                        <select data-role="none" id="selWebLogExpenseCostCenterLocation" class="form-select"></select>  <!--aka FOWST-->
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>To Location: <span class="required lblExpenseTypeTranspo" style="display:none;">*</span></label>
+                                        <input id="txtWebLogExpenseToLocation" data-role="none" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <div style="font-weight:bold;">
+                                            Amount: <span class="required">*</span>
+                                            <div class="form-check" style="margin-top:-1px; font-size:12px; float:right;">
+                                                <label class="form-check-label">
+                                                    Exact amount to be encoded at a later time
+                                                    <input type="checkbox" id="chbExpenseAmountToBeFollow" class="form-check-input" />
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <input id="txtWebLogExpenseAmount" data-role="none" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Invoice Reference:</label>
+                                        <div class="input-group">
+                                            <input name="txtInvoiceNumber" data-role="none" type="text" class="form-control" readonly>
+                                            <button data-role="none" name="butInvoiceImageReference" class="btn btn-secondary" title="Show Invoice Images"><span class="bi bi-image"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <b>Payment Method: <span class="required">*</span></b>
+                            </div>
+
+                            <div class="row equal mb-3">
+                                <div class="col-sm-3">
+                                    <div data-role="none" id="divETPMOnCreditFromVendor" class="btn btn-light border w-100" style="height:100%; white-space:normal;">
+                                        On Credit From Vendor
+                                        <br /><br />
+                                        <span id="spanETOCFromVendorName" style="font-size:14px;"></span>
+                                    </div>
+                                    <input data-role="none" type="radio" value="On Credit From Vendor" name="expensepaymentmethod" id="radETOnCreditFromVendor" style="display:none;">
+                                </div>
+                                <div class="col-sm-3">
+                                    <div data-role="none" id="divETPMForPaymentDisbursement" class="btn btn-light border w-100" style="height:100%; white-space:normal;">
+                                        For Payment Disbursement
+                                        <br /><br />
+                                        <span id="spanETPDVendorName" style="font-size:14px;"></span>
+                                    </div>
+                                    <input data-role="none" type="radio" value="For Payment Disbursement" name="expensepaymentmethod" id="radETForPaymentDisbursement" style="display:none;">
+                                </div>
+                                <div class="col-sm-3">
+                                    <div data-role="none" id="divETPMForReimbursement" class="btn btn-light border w-100" style="height:100%; white-space:normal;">
+                                        For Reimbursement
+                                        <br /><br />
+                                        <span id="spanETReimburseTo" style="font-size:14px;"></span>
+                                    </div>
+                                    <input data-role="none" type="radio" value="For Reimbursement" name="expensepaymentmethod" id="radETForReimbursement" style="display:none;">
+                                </div>
+                                <div class="col-sm-3">
+                                    <div data-role="none" id="divETPMForExpenseRecordingOnly" class="btn btn-light border w-100" style="height:100%; white-space:normal;">
+                                        For Expense Recording Only
+                                        <br /><br />
+                                        <span style="font-size:14px;">To be deducted from Petty Cash Fund of expense assignee</span>
+                                    </div>
+                                    <input data-role="none" type="radio" value="For Expense Recording Only" name="expensepaymentmethod" id="radETForExpenseRecordingOnly" style="display:none;">
+                                    <!--<div class="bs-radio">
+
+                                <label data-role="none" for="radETForReimbursement">For Reimbursement</label>
+                                <div>
+                                    Reimburse to:
+                                    <select data-role="none" id="selETReimburseTo" class="form-control fixed">
+                                        <option>Please Select</option>
+                                    </select>
+                                </div>
+                            </div>-->
+                                </div>
+                            </div>
+
+                            <!--<div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-3">
+                                        <label>Requested By: <span class="required">*</span></label>
+                                        <select data-role="none" id="selWebLogExpenseRequestedBy" class="form-select"></select>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransBody" data-role="none" data-toggle="collapse">
+                            <b>Transaction Body</b>
+                        </button>
+                    </div>
+                    <div class="collapse show" id="colTransBody">
+                        <div class="card-body">
+                            <div class="form-group mb-3">
+                                <label>Please enter the description of your Expense <span class="required">*</span></label>
+                                <textarea id="txtWebLogExpenseParticulars" data-role="none" class="form-control" style="min-height: 300px; resize: none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion mb-3">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-target="#colTransBody" data-role="none" data-toggle="collapse">
+                            <b>Transaction Footer</b>
+                        </button>
+                    </div>
+                    <div class="collapse show" id="colTransBody">
+                        <div class="card-body">
+                            <div id="divCurrentRemarks">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Remarks:</label>
+                                <textarea id="txtWebLogExpenseRemarks" data-role="none" class="form-control" style="min-height: 150px; resize: none; width: 100%;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabETSettings" class="tab-pane fade">
+            <div class="row wrapper min-vh-100 flex-column flex-sm-row">
+                <div class="col-12 col-md-2 p-0 bg-light flex-shrink-1 mb-3">
+                    <div class="navbar navbar-expand-sm navbar-light bg-light align-items-start flex-sm-column flex-row p-2">
+                        <a data-role="none" class="navbar-brand" href="#">Menu</a>
+                        <a data-role="none" href="#" class="navbar-toggler" data-toggle="collapse" data-target=".sidebarAM">
+                            <span class="navbar-toggler-icon"></span>
+                        </a>
+                        <div class="collapse navbar-collapse sidebarAM mt-2">
+                            <ul class="flex-column w-100 justify-content-between nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tabETGeneralSettings">General Settings</a></li>
+                                <li><a class="nav-link" data-role="none" data-toggle="tab" href="#tabETMakers">Expense Ticket Makers</a></li>
+                                <li><a class="nav-link" data-role="none" data-toggle="tab" href="#tabETAuthorizers">Expense Ticket Authorizers</a></li>
+                                <li><a class="nav-link" data-role="none" data-toggle="tab" href="#tabETCostCenters">Cost Centers</a></li>
+                                <li><a class="nav-link" data-role="none" data-toggle="tab" href="#tabETRevenueCenters">Revenue Centers</a></li>
+                                <li><a class="nav-link" data-role="none" data-toggle="tab" href="#tabETRouteSchedules">Route Schedules</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col bg-faded">
+                    <div class="tab-content">
+                        <div id="tabETGeneralSettings" class="tab-pane fade show active">
+                            <div class="row mb-3">
+                                <div class="col-auto">Make the "Remarks" field required in Log Expense? (application side)</div>
+                                <div class="col">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="selLogExpenseRemarksField">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-auto">Allow the user to enter a custom location name??</div>
+                                <div class="col">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="chbAllowCustomLocationName">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabETMakers" class="tab-pane fade">
+                            <div class="row mb-3 align-items-center">
+                                <div class="col-sm-6">
+                                    List of Expense Ticket Makers
+                                </div>
+                                <div class="col-sm-6" style="text-align:right">
+                                    <button data-role="none" id="btnETAddMakers" class="btn btn-success">Add Makers</button>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="tblETMakers" data-role="none" style="display:table;" class="table table-light table-striped table-hover">
+                                    <thead>
+                                        <tr class="align-top text-center" style="font-size:14px;">
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Date Added</th>
+                                            <th>Added By</th>
+                                            <th style="width:100px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyETMakers"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="tabETAuthorizers" class="tab-pane fade">
+                            <div class="row mb-3 align-items-center">
+                                <div class="col-sm-6">
+                                    List of Expense Ticket Authorizers
+                                </div>
+                                <div class="col-sm-6" style="text-align:right">
+                                    <button data-role="none" id="btnETAddAuthorizer" class="btn btn-success">Add Authorizer</button>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="tblETAuthorizer" data-role="none" style="display:table;" class="table table-light table-striped table-hover">
+                                    <thead>
+                                        <tr class="align-top text-center" style="font-size:14px;">
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Date Added</th>
+                                            <th>Added By</th>
+                                            <th style="width:100px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyETAuthorizer"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="tabETCostCenters" class="tab-pane fade">
+                            <div class="row mb-3 align-items-center">
+                                <div class="col-auto">
+                                    Show:
+                                </div>
+                                <div class="col-auto">
+                                    <select data-role="none" id="selETCostCenterStatus" class="form-select fixed">
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col" style="text-align:right">
+                                    <button data-role="none" id="btnETAddCostCenters" class="btn btn-success">Add Cost Center</button>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="tblETCostCenters" data-role="none" style="display:table;" class="table table-light table-striped table-hover">
+                                    <thead>
+                                        <tr class="align-top text-center" style="font-size:14px;">
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Date Created</th>
+                                            <th>Modified Date</th>
+                                            <th>Last Modified By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyETCostCenters"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="tabETRevenueCenters" class="tab-pane fade">
+                            <div class="row mb-3 align-items-center">
+                                <div class="col-auto">
+                                    Show:
+                                </div>
+                                <div class="col-auto">
+                                    <select data-role="none" id="selETRevenueCenterStatus" class="form-select fixed">
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="col" style="text-align:right">
+                                    <button data-role="none" id="btnETAddRevenueCenters" class="btn btn-success">Add Revenue Center</button>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="tblETRevenueCenters" data-role="none" style="display:table;" class="table table-light table-striped table-hover">
+                                    <thead>
+                                        <tr class="align-top text-center" style="font-size:14px;">
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Date Created</th>
+                                            <th>Modified Date</th>
+                                            <th>Last Modified By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyETRevenueCenters"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="tabETRouteSchedules" class="tab-pane fade">
+                            <div class="row mb-3 align-items-center">
+                                <div class="col-sm-6">
+                                    <input data-role="none" class="form-control" id="txtETRouteScheduleSearch" placeholder="Search here" />
+                                </div>
+                                <div class="col-sm-6" style="text-align:right">
+                                    <button data-role="none" id="btnETAddRouteSchedule" class="btn btn-success">Add Employee Route Schedule</button>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="tblETRouteSchedule" data-role="none" style="display:table;" class="table table-light table-striped table-hover">
+                                    <thead>
+                                        <tr class="align-top text-center" style="font-size:14px;">
+                                            <th>#</th>
+                                            <th>Employee Name</th>
+                                            <th>Frequency</th>
+                                            <th>Work Schedule Type</th>
+                                            <th>Last Updated</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div id="divETCentersPage" subpage="pageExpenseTracker" style="display:none;">
+
+</div>

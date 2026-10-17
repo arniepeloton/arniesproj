@@ -1,0 +1,262 @@
+﻿<!--<link rel="stylesheet" href="/Content/bootstrap.css" />-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" />
+
+<style type="text/css">
+    /* Remove Bootstrap's default dropdown arrows from the editor */
+    .note-editor .dropdown-toggle::after {
+        all: unset;
+    }
+
+    /* Fix sizing conflicts between Summernote and Bootstrap 5 */
+    .note-editor .note-dropdown-menu,
+    .note-editor .note-modal-footer {
+        box-sizing: content-box;
+    }
+</style>
+
+<nav class="navbar navbar-dark bg-primary sticky-top text-light mb-3 pb-0">
+    <div class="pl-3 pr-3 pb-2" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+        <a href="javascript:history.back()" data-role="none" class="btn btn-primary">
+            <span class="bi-chevron-left"></span>
+        </a>
+        Contract And Letter Designer
+    </div>
+    <div class="row" style="margin:0px; padding:0.5em; width:100%; color:#FFF; background-color:#1969de; font-weight:bold;">
+        <div class="BreadCrumbs">
+            <div class="ItemsBreadCrumbs"></div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid mb-5">
+    <div id="divDesignerTab" style="white-space:nowrap; overflow:auto;">
+        <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabCDDashboard">Dashboard</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" id="btnCDWork" data-toggle="tab" data-target="#tabCDWork">Contract Designer</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" id="btnCDSettings" data-toggle="tab" data-target="#tabCDSettings">Settings</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content p-3">
+        <div id="tabCDDashboard" class="tab-pane fade show active">
+            
+        </div>
+        <div id="tabCDWork" class="tab-pane fade">
+            <div id="divContractDesignerList" subpage="divErpContractDesigner" style="display:block;">
+                <div class="mb-3" style="text-align:right; width:100%">
+                    <button data-role="none" id="btnAddContract" class="btn btn-success">Add Contract</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table cellspacing="0" cellpadding="2" style="width:100%;" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="custom-theme-f txt-center" style="max-width:20px;">#</th>
+                                <th class="custom-theme-f txt-center"> Template Name</th>
+                                <th class="custom-theme-f txt-center"> Module </th>
+                                <th class="custom-theme-f txt-center" style="min-width:85px;"> Last Modified By </th>
+                                <th class="custom-theme-f txt-center" style="min-width:85px;"> Last Updated </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyContract">
+                            <tr>
+                                <td colspan="5" style="text-align:center;">No result(s) found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="divNewContractDesigner" subpage="divErpContractDesigner" style="display:none;">
+                <div class="row mb-3">
+                    <div class="col-sm-4">
+                        Template Name: <span class="required">*</span>
+                        <input type="text" id="txtContractTemplateName" data-role="none" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        Select module or data source:
+                        <select data-role="none" id="selContractModule" class="form-select"></select>
+                    </div>
+                </div>
+                <!--<iframe type="application/pdf" style="width:100%;"></iframe>
+        <br />-->
+                <div id="divContractEditor" class="mb-5" style="display:none;"></div>
+                <div style="margin-bottom:5rem;"></div>
+                <div style="position:fixed; bottom:20px; width:100%; text-align:center;">
+                    <button data-role="none" title="Based on selected module" class="btn btn-secondary btn-lg" id="btnCancelContract" style="margin-right:10px;">Cancel</button>
+                    <button data-role="none" title="Based on selected module" class="btn btn-success btn-lg" id="btnAddFields" style="margin-right:10px;">Add Fields</button>
+                    <button data-role="none" id="btnExport" class="btn btn-primary btn-lg" style="margin-right:10px;">Show Preview</button>
+                    <button data-role="none" id="btnSaveContract" class="btn btn-danger btn-lg" style="margin-right:10px;">
+                        Save Template
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="tabCDSettings" class="tab-pane fade">
+
+        </div>
+    </div>
+</div>
+
+<div id="popContractDesignerFreeType" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Free Type</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="txtContractDesignerFreeType" class="form-control form-control-lg" placeholder="Enter custom label" />
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-dismiss="modal" data-role="none" class="btn btn-secondary btn-lg btn-block">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button id="btnOkContractDesignerFreeType" data-role="none" class="btn btn-success btn-lg btn-block">
+                            Ok
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popContractByModule" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3 align-items-center">
+                    <div class="col"><input data-role="none" type="search" placeholder="Search here" class="form-control" /></div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="tblContractByModule" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="text-center align-top">
+                                <th style="width:50px;">#</th>
+                                <th>Template</th>
+                                <th>Last Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>                
+            </div>
+            <!--<div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-dismiss="modal" data-role="none" class="btn btn-secondary btn-lg btn-block">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button id="btnOkContractDesignerFreeType" data-role="none" class="btn btn-success btn-lg btn-block">
+                            Ok
+                        </button>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<div id="popGeneratedContractByModule" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3 align-items-center">
+                    <div class="col"><input data-role="none" type="search" placeholder="Search here" class="form-control" /></div>
+                    <div class="col-auto"><button data-role="none" id="btnCreateContract" class="btn btn-success">Create New Contract</button></div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="tblGeneratedContractByModule" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="text-center align-top">
+                                <th style="width:50px;">#</th>
+                                <th>Contract</th>
+                                <th>Last Updated</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-dismiss="modal" data-role="none" class="btn btn-secondary btn-lg btn-block">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button id="btnOkContractDesignerFreeType" data-role="none" class="btn btn-success btn-lg btn-block">
+                            Ok
+                        </button>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<div id="popDataField" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Date Fields</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Please provide details for these labels.</p>
+
+                <div class="row gy-2 gx-3 mb-3 align-items-center">
+                    <div class="col-md">This contract belong to:</div>
+                    <div class="col-md"><input data-role="none" class="form-control" id="txtContractOwnerTemplate" /></div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="tblDataFields" class="table table-hover table-borderless">
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-dismiss="modal" data-role="none" class="btn btn-secondary btn-lg btn-block">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button id="btnSaveContractFields" data-role="none" class="btn btn-success btn-lg btn-block">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="editor" style="display:none;"></div>

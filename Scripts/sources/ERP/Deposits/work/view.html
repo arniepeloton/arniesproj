@@ -1,0 +1,351 @@
+﻿<div class="mb-3">
+    <div class="row mb-3">
+        <div class="col-sm-5">
+            <div name="divToolbar" class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+                <button data-role="none" name="butLookup" class="btn btn-light border align-self-auto">
+                    <span class="bi-search" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Lookup<br />Deposits</div>
+                </button>
+                <button data-role="none" name="butTagAsDeposited" class="btn btn-light border align-self-auto">
+                    <span class="bi-check-circle" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Mark as <br /> Deposited</div>
+                </button>
+                <button data-role="none" name="butTagAsReturned" class="btn btn-light border">
+                    <span class="bi-box-arrow-in-down-left" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Mark as <br /> Returned</div>
+                </button>
+                <button data-role="none" name="butDepositDownload" class="btn btn-light border">
+                    <span class="bi-file-arrow-down" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Output <br /> Report</div>
+                </button>
+                <button data-role="none" name="butDepositsRefresh" class="btn btn-light border">
+                    <span class="bi-arrow-repeat" style="font-size:25px;"></span>
+                    <div class="menu-description mt-1">Refresh <br /> List</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 mb-3" style="display:none">
+            Customer:
+            <button data-role="none" id="butDepositsCustomer" class="btn btn-secondary btn-block">Choose a customer</button>
+            <div class="form-check">
+                <input data-role="none" class="form-check-input" id="chkDepositsCustomerDoNotFilter" type="checkbox" />
+                <label class="form-check-label" for="chkDepositsCustomerDoNotFilter">
+                    Do not apply this filter
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-3 mb-3">
+            Payment Types:
+            <button data-role="none" name="butPaymentTypes" style="color:black; background:white;" class="btn btn-secondary btn-block">All</button>
+        </div>
+        <div name="divDepositsEncodingDate" class="col-sm-3 mb-3">
+            Payment Encoding:
+            <button data-role="none" id="butDepositsEncodingDate" style="color:black; background:white;" class="btn btn-secondary btn-block"></button>
+            <!--<div class="form-check">
+            <input data-role="none" class="form-check-input" id="chkDepositsEncodingDateDoNotFilter" type="checkbox" />
+            <label class="form-check-label" for="chkDepositsEncodingDateDoNotFilter">
+                Do not apply this filter
+            </label>
+        </div>-->
+        </div>
+        <div class="col-sm-3 mb-3">
+            Deposit Status:
+            <button data-role="none" name="butDepositStatus" style="color:black; background:white;" class="btn btn-secondary btn-block">All</button>
+        </div>
+        <div class="col-sm-3 mb-3">
+            Payment FOWST:
+            <button data-role="none" name="butPaymentFowst" style="color:black; background:white;" class="btn btn-secondary btn-block">[All FOWSTs]</button>
+        </div>
+        <div class="col-sm-3 mb-3" style="display:none">
+            Matured:
+            <button data-role="none" id="butDepositsPaymentMaturityDate" class="btn btn-secondary btn-block"></button>
+            <div class="form-check">
+                <input data-role="none" class="form-check-input" id="chkDepositsPaymentMaturityDateDoNotFilter" type="checkbox" checked />
+                <label class="form-check-label" for="chkDepositsPaymentMaturityDateDoNotFilter">
+                    Do not apply this filter
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-3 mb-3" style="display:none">
+            Date Deposited:
+            <button data-role="none" id="butDepositsDepositDate" class="btn btn-secondary btn-block"></button>
+            <div class="form-check">
+                <input data-role="none" class="form-check-input" id="chkDepositsDepositDateDoNotFilter" type="checkbox" checked />
+                <label class="form-check-label" for="chkDepositsDepositDateDoNotFilter">
+                    Do not apply this filter
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3 align-items-center">
+    <div class="col-auto">
+        Show Deposits:
+    </div>
+    <div class="col">
+        <div class="form-check form-check-inline">
+            <input id="chkShowDepositsAll" name="chkShowDeposits" class="form-check-input" type="radio" checked />
+            <label for="chkShowDepositsAll" class="form-check-label">
+                All
+            </label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input id="chkShowDepositsMarked" name="chkShowDeposits" class="form-check-input" type="radio" />
+            <label for="chkShowDepositsMarked" class="form-check-label">
+                Marked
+            </label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input id="chkShowDepositsUnmarked" name="chkShowDeposits" class="form-check-input" type="radio" />
+            <label for="chkShowDepositsUnmarked" class="form-check-label">
+                Unmarked
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive mb-3">
+    <table id="tableDeposits" data-role="none" style="width: 100%;" class="table table-light table-striped table-hover">
+        <thead>
+            <tr class="custom-theme-f txt-center">
+                <th><input name="select_all" value="1" class="form-check-input" type="checkbox"></th>
+                <th style="width: 100px;">Status</th>
+                <th style="width: 200px;">Deposited By</th>
+                <th style="width: 200px;">Date Deposited/Returned</th>
+                <th style="width: 200px;">Depository Bank</th>
+                <th style="width: 200px;">Customer</th>
+                <th style="width: 100px;">Encoding Date</th>
+                <th style="width: 50px;">Payment Type</th>
+                <th style="width: 110px;">Ref Number</th>
+                <th style="width: 50px;">Bank</th>
+                <th style="width: 50px;">Maturity Date</th>
+                <th style="width: 50px; text-align: right">Amount Paid</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<hr class="mb-3" />
+
+<div class="table-responsive">
+    <table name="tableTotals" data-role="none" style="width: 100%;" class="table table-light table-striped table-hover">
+        <thead>
+            <tr class="custom-theme-f txt-center">
+                <th style="text-align:center">Payment type</th>
+                <th style="text-align:center">Count of marked items</th>
+                <th style="text-align:center">Amount of marked items</th>
+                <th style="text-align:center">Count of all items</th>
+                <th style="text-align:center">Amount of all items</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cash</td>
+                <td name="CashCountMark" style="text-align:right">Cash</td>
+                <td name="CashAmountMark" style="text-align:right">Cash</td>
+                <td name="CashCountAll" style="text-align:right">Cash</td>
+                <td name="CashAmountAll" style="text-align:right">Cash</td>
+            </tr>
+            <tr>
+                <td>Checks</td>
+                <td name="CheckCountMark" style="text-align:right">Cash</td>
+                <td name="CheckAmountMark" style="text-align:right">Cash</td>
+                <td name="CheckCountAll" style="text-align:right">Cash</td>
+                <td name="CheckAmountAll" style="text-align:right">Cash</td>
+            </tr>
+            <tr>
+                <td>Credit Cards</td>
+                <td name="CreditCardCountMark" style="text-align:right">Cash</td>
+                <td name="CreditCardAmountMark" style="text-align:right">Cash</td>
+                <td name="CreditCardCountAll" style="text-align:right">Cash</td>
+                <td name="CreditCardAmountAll" style="text-align:right">Cash</td>
+            </tr>
+            <tr>
+                <td>Debit Cards</td>
+                <td name="DebitCardCountMark" style="text-align:right">Cash</td>
+                <td name="DebitCardAmountMark" style="text-align:right">Cash</td>
+                <td name="DebitCardCountAll" style="text-align:right">Cash</td>
+                <td name="DebitCardAmountAll" style="text-align:right">Cash</td>
+            </tr>
+            <tr style="border-top: 3px solid black;">
+                <td>Grand Total</td>
+                <td name="GrandTotalCountMark" style="text-align:right">Cash</td>
+                <td name="GrandTotalAmountMark" style="text-align:right">Cash</td>
+                <td name="GrandTotalCountAll" style="text-align:right">Cash</td>
+                <td name="GrandTotalAmountAll" style="text-align:right">Cash</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div data-role="popup" id="popupDepositsAction" data-overlay-theme="a" data-theme="a" data-corners="false" style="display: none">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center>
+        <h3>Action</h3>
+    </center>
+    <div data-role="content" class="ui-content ui-body-d jPopupContent">
+        What do you want to do with the checked items?
+        <br />
+        <br />
+        <button name="butTagAsDeposited" data-role="none" class="btn custom-btn-theme-b" style="margin-bottom: 10px">Tag as Deposited</button>
+        <button name="butTagAsReturned" data-role="none" class="btn custom-btn-theme-b" style="margin-bottom: 10px">Tag as Returned</button>
+        <button name="butUntag" data-role="none" class="btn custom-btn-theme-b">Untag</button>
+        <br /><br />
+        <a data-rel="back" data-role="none" class="btn custom-btn-theme-c">Back</a>
+    </div>
+</div>
+
+<div id="popupDepositsPaymentTypes" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Payment Types</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-check mb-3">
+                    <input id="chkDepositsCash" class="form-check-input" type="checkbox" />
+                    <label for="chkDepositsCash" class="form-check-label">
+                        Cash
+                    </label>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input id="chkDepositsCheck" class="form-check-input" type="checkbox" checked />
+                    <label for="chkDepositsCheck" class="form-check-label">
+                        Cheque
+                    </label>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input id="chkDepositsCreditCard" class="form-check-input" type="checkbox" />
+                    <label for="chkDepositsCreditCard" class="form-check-label">
+                        Credit Card
+                    </label>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input id="chkDepositsDebitCard" class="form-check-input" type="checkbox" />
+                    <label for="chkDepositsDebitCard" class="form-check-label">
+                        Debit Card
+                    </label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input id="chkDepositsSrv" class="form-check-input" type="checkbox" />
+                    <label for="chkDepositsSrv" class="form-check-label">
+                        SRV
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" name="butPaymentTypesOk" class="btn btn-success btn-block btn-lg">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupDepositsStatus" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Deposit Status</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-check mb-3">
+                    <input id="chkDepositsStatusDeposited" class="form-check-input" type="checkbox" checked />
+                    <label for="chkDepositsStatusDeposited" class="form-check-label">
+                        Deposited
+                    </label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input id="chkDepositsStatusReturned" class="form-check-input" type="checkbox" checked />
+                    <label for="chkDepositsStatusReturned" class="form-check-label">
+                        Returned
+                    </label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input id="chkDepositsStatusUndeposited" class="form-check-input" type="checkbox" checked />
+                    <label for="chkDepositsStatusUndeposited" class="form-check-label">
+                        Undeposited
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" name="butDepositsStatusOk" class="btn btn-success btn-block btn-lg">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popDepositsSubmit" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" name="title">Deposit</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div name="message" class="mb-3"></div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="lnkBank">Depository Bank: <span class="required">*</span></label>
+                    <button data-role="none" name="lnkBank" class="btn btn-secondary btn-block">Select a bank</button>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtBankBranch">Depository Bank Branch: <span class="required">*</span></label>
+                    <input type="text" name="txtBankBranch" data-role="none" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtAccountName">Account Name:</label>
+                    <div class="input-group">
+                        <input data-role="none" type="text" class="form-control" name="txtAccountName">
+                        <button name="butSearchAccountName" data-role="none" class="btn btn-secondary" type="button">Search</button>
+                        <button name="butAddAccountName" data-role="none" class="btn btn-secondary" type="button">Add</button>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtAccountNumber">Acc. No: <span class="required">*</span></label>
+                    <input type="text" name="txtAccountNumber" data-role="none" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="butDateDeposited">Date Deposited: <span class="required">*</span></label>
+                    <button data-role="none" name="butDateDeposited" class="btn btn-secondary btn-block">Set Date</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" name="butSaveAndPrint" class="btn btn-warning btn-block btn-lg">Save and Print</button>
+                <button data-role="none" name="butSave" class="btn btn-success btn-block btn-lg">Save</button>
+                <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,201 @@
+﻿<div id="panCompanyWideInventoryBalance" class="modal fade" tabindex="-1" data-backdrop="static">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" name="title">Information</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="divTabInventory">
+                    <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" id="btnFOWSTInventoryBalance" class="nav-link active" data-toggle="tab" data-target="#divFOWSTInventoryBalance">Inventory Balance For This Location</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" id="btnCompanyWideInventoryBalance" class="nav-link" data-toggle="tab" data-target="#divCompayWideInventoryBalance">Company Wide Inventory Balance</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button data-role="none" id="btnProductInformationLedger" class="nav-link" data-toggle="tab" data-target="#divProductInformationLedger">Ledger</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content p-3">
+                    <div id="divFOWSTInventoryBalance" class="tab-pane fade show active">
+                        <div class="row">
+                            <div class="ui-grid-solo" style="display: block;">
+
+                                <table align="center" width="100%">
+                                    <tr>
+                                        <td colspan="6">
+                                            <h1 style="text-align: center"><span id="lblCompanyWideProduct">This is the item</span></h1>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left; width:120px;"> Product No. : </td>
+                                        <td style="text-align: left; margin: 20px; font-size: medium; font-weight: bold;" id="lblProductNo"> </td>
+                                        <td style="width: 10px"> </td>
+                                        <td style="text-align: left; margin: 20px;"> On-Hand : </td>
+                                        <td style="width: 20px"> </td>
+                                        <td style="text-align: left; margin: 20px; font-size: medium; font-weight: bold"><span id="lblOnHand">0</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: left;"> FOWST : </td>
+                                        <td style="text-align: left; margin: 20px; font-size: medium; font-weight: bold" id="lblFOWSTName"> </td>
+                                        <td style="width: 10px"> </td>
+                                        <td style="text-align: left; margin: 20px;"> Commited Qty : </td>
+                                        <td style="width: 20px"> </td>
+                                        <td style="text-align: left; margin: 20px; font-size: medium; font-weight: bold"><span id="lblCommited">0</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="margin: 20px"></td>
+                                        <td style="width: 10px"> </td>
+                                        <td><h4>Availabel to Commit</h4></td>
+                                        <td style="width: 20px"> </td>
+                                        <td><span id="lblAvailableToCommit">0</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <h2>Price Levels</h2><br />
+
+                        <div style="width:100%;">
+                            <table data-role="table" data-mode="reflow" style="width:100%; display:table;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="custom-theme-f">
+                                        <th>#</th>
+                                        <th>Price Level</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblBodyProductPrice"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="divCompayWideInventoryBalance" class="tab-pane">
+                        <div class="row mb-3">
+                            <div class="ui-grid-solo" style="display:block;">
+                                <div class="ui-block-a" style="overflow:auto;">
+                                    <table data-role="table" id="tblCompayWideInventoryBalance" style="width:100%; display:table;" class="table table-light table-striped table-hover custom-tbl-responsive">
+                                        <thead>
+                                            <tr class="custom-theme-f align-top text-center">
+                                                <th> FOWST </th>
+                                                <th style="width:180px;"> Assigned Order Qty </th>
+                                                <th> Delivery Method </th>
+                                                <th style="width:100px;"> On-Hand </th>
+                                                <th style="width:140px;"> Commited Qty </th>
+                                                <th style="width:180px;"> Available to Commit </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblBodyCompayWideInventoryBalance"></tbody>
+                                    </table>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fixed-bottom mb-3 text-center">
+                            <button name="butSaveOrderQty" data-role="none" class="btn btn-success btn-lg">
+                                Save
+                            </button>
+                        </div>                        
+                    </div>
+
+                    <div id="divProductInformationLedger" class="tab-pane fade">
+                        <div class="row mb-3 align-items-center">
+                            <div class="col-md-auto">
+                                <button id="btnInventoryLedgerFowst" style="margin-right:10px;" data-role="none" class="btn btn-secondary">
+                                    <span class="lblSelectedFowstGroup">FOWST Location</span>
+                                </button>
+                            </div>
+                            <div class="col-md-auto">
+                                <button id="btnInventoryLedgerDateRange" style="margin-right:10px;" data-role="none" class="btn btn-secondary"><span id="ILDateRangeFrom">Date</span> <span id="ILDateRangeSeparator" style="display:none;">to</span> <span id="ILDateRangeTo">Range</span><span class="ui-icon ui-icon-arrow-d" style="display:inline-block; margin-left:10px;"></span></button>
+                            </div>
+                            <div class="col-md">
+                                <input data-role="none" class="form-control w-50" type="text" id="txtILSearch" placeholder="Search Product here" />
+                            </div>
+                        </div>
+
+                        <div id="dvSummaryIL" style="width: 100%; overflow: auto; display: none">
+                            <table data-role="table" data-mode="reflow" style="margin-right: 5px; display: table;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr id="tblHeader" class="custom-theme-f">
+                                        <th colspan="4"> Ledger Summary (Click on a transaction type below to view its detailed ledger)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3"> Beg. Balance for the Period(Last Ending Balance Before <span id="LastBalance"></span>) </td>
+                                        <td> <span id="spBeginningBalance"> </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"> Ending Balance for the Period </td>
+                                        <td> <span id="spEndingBalance"> </span></td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2">Deductions</th>
+                                        <th colspan="2">Additions</th>
+                                    </tr>
+                                    <tr>
+                                        <td id="lnkGrossSales" name="mFilter" style="text-decoration: underline; cursor: pointer;"> Gross Sales </td>
+                                        <td> <span id="spGrossSales"> </span></td>
+                                        <td id="lnkSalesReturns" name="mFilter" style="text-decoration: underline; cursor: pointer;"> Sales Returns </td>
+                                        <td> <span id="spSalesReturns"> </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="lnkStockWidrawal" name="mFilter" style="text-decoration: underline; cursor: pointer;"> Stock Transfers (Withdrawals) </td>
+                                        <td> <span id="spStockTransfers"> </span></td>
+                                        <td id="lnkStockReceiving" name="mFilter" style="text-decoration: underline; cursor: pointer;"> Stock Receiving </td>
+                                        <td> <span id="spStockReceiving"> </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="lnkUsage" name="mFilter" style="text-decoration: underline; cursor: pointer;"> Usage </td>
+                                        <td> <span id="spUsage"> </span></td>
+                                        <td id="lnkProduction" name="mFilter" style="text-decoration: underline; cursor: pointer;"> Production </td>
+                                        <td> <span id="spProduction"> </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="lnkInventoryCountVariances" name="mFilter" style="text-decoration: underline; cursor: pointer;"> Total Inventory Count Variances </td>
+                                        <td> <span id="spInventoryCountVariancesNegative"> </span></td>
+
+                                        <td id="lnkInventoryCountVariances2" name="mFilter" style="text-decoration: underline; cursor: pointer;"> Total Inventory Count Variances </td>
+                                        <td> <span id="spInventoryCountVariancesPositive"> </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td> Net Sales </td>
+                                        <td> <span id="spNetSales"> </span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br /><br />
+                        </div>
+
+                        <div id="dvDetailsIL" style="width: 100%; overflow: auto; display: none">
+                            <table data-role="table" data-mode="reflow" style="margin-right: 5px; display: table;" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr id="tblHeader" class="custom-theme-f">
+                                        <th data-sort="string" style="cursor: pointer;">Bin</th>
+                                        <th data-sort="string" style="cursor: pointer;">Transaction Reference</th>
+                                        <th data-sort="string" style="cursor: pointer;">Customer/Vendor</th>
+                                        <th data-sort="string" style="cursor: pointer;">Transaction Type</th>
+                                        <th data-sort="float" style="cursor: pointer;">Movement</th>
+                                        <th data-sort="float" style="cursor: pointer;">Price</th>
+                                        <th data-sort="float" style="cursor: pointer;">Balance</th>
+                                        <th data-sort="date" style="cursor: pointer;">Posting Date on Server</th>
+                                        <th data-sort="date" style="cursor: pointer;">Updated By</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblBodyIL"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <!--<div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>-->
+        </div>
+    </div>
+</div>

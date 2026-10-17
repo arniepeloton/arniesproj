@@ -1,0 +1,774 @@
+﻿<!--<link rel="stylesheet" href="/Content/bootstrap.css" />-->
+<style type="text/css">
+    .tableCanvassProductList,
+    .tableVendorPriceComparison {
+        position: relative;
+        /*min-width: 980px;*/ /* just for testing fixed left column*/
+        z-index: 1;
+        margin: auto;
+        overflow: scroll;
+        max-height: 800px;
+    }
+    .tableCanvassProductList table,
+    .tableVendorPriceComparison table {
+        /*width: 100%;
+        min-width: 1280px;*/
+        margin: auto;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+    .tableCanvassProductList thead th,
+    .tableVendorPriceComparison thead th {
+        /*color: #fff;*/
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index:3;
+    }
+    /* safari and ios need the tfoot itself to be position:sticky also */
+    .tableCanvassProductList tfoot,
+    .tableCanvassProductList tfoot th,
+    .tableCanvassProductList tfoot td {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0;
+        color: #fff;
+        z-index:4;
+    }/* testing links*/
+
+    .tableCanvassProductList th:nth-child(1),
+    .tableCanvassProductList td:nth-child(1) {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+    }
+
+    .tableCanvassProductList th:nth-child(2),
+    .tableCanvassProductList td:nth-child(2) {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 36px;
+        z-index: 2;
+    }
+
+    .tableCanvassProductList th:nth-child(3),
+    .tableCanvassProductList td:nth-child(3) {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 137px;
+        z-index: 2;
+    }
+
+    .tableCanvassProductList thead th:nth-child(1),
+    .tableCanvassProductList thead th:nth-child(2),
+    .tableCanvassProductList thead th:nth-child(3),
+    .tableCanvassProductList tfoot th:nth-child(1),
+    .tableCanvassProductList tfoot th:nth-child(2),
+    .tableCanvassProductList tfoot th:nth-child(3),
+    .tableVendorPriceComparison thead th:nth-child(1),
+    .tableVendorPriceComparison thead th:nth-child(2) {
+        z-index: 5;
+    }
+
+    .tableVendorPriceComparison th:nth-child(2),
+    .tableVendorPriceComparison td:nth-child(2) {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0px;
+        z-index: 2;
+    }
+
+    .activeCell {
+        border: 2px solid #335F8E !important;
+    }
+
+    input.inputTextInExcel {
+        border: none;
+        box-sizing: border-box;
+        -webkit-box-sizing:border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        outline: none;
+    }
+
+    .tableCellDisable {
+        background-color: #EAEAEA !important;
+    }
+
+    .context-menu {
+        z-index: 1000;
+        position: absolute;
+        background-color: #FAFAFA;
+        border: 1px solid #CCC;
+        box-shadow: 1px 2px 3px #ccc;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .hasAssociatedSKU {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA/0lEQVQ4T2NkoBAwUqifYRAb4NXDMP3fP4aMf/8ZGJiA7mRiYpixrYQhE93LWL0A0iwpLJARYp3CwMbCxvDrzy+GNUfnMDx/+wHDEKwGeHYx/M8OSGO49WYHw6+/PxjYmDkY1EQ8GKZumMWwvQw13LAa4NHJ8D/QTZXh2cfbDP//MTAwMjEwSPGrMqzfdZthRzkRBngBXWBvC9QINB5mwH9gWBw8zMCwjRgXOFczrJFUYAg2MWZgYGFmYPjzl4HhzFkGhucPGNbubWUIQQ5IXOlADmhIHzs/QzDIZpBLfn4Eay4Can5EjAEgNXJALIqk+DW6ZpDcIE6JxGYyir0AAAoGShE1BKf6AAAAAElFTkSuQmCC) !important;
+        background-repeat: no-repeat;
+        margin-top: -20px;
+        background-position: right;
+    }
+</style>
+<div>
+    <div id="popCanvassItem" custom-data-role="popup">
+        <div class="popup-md">
+            <div class="popup-header">
+                Canvass Item
+                <a class="popup-close">x</a>
+            </div>
+
+            <div class="popup-content">
+                <div class="custom-ui-label">
+                    <div>Item Description: <span class="required">*</span></div>
+                    <div><input type="text" class="form-control" name="txtCanvassItemDescription" /></div>
+                </div>
+
+                <div class="custom-ui-label">
+                    <div>Quantity:</div>
+                    <div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="txtCanvassItemQty" />
+                            </div>
+                            <div class="col-sm-6">
+                                <select data-role="none" class="form-select" name="selCanvassMeasurement"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="panel">
+                    <div class="panel-title custom-theme-h">
+                        Link this item to SKU
+                    </div>
+
+                    <div class="panel-content txt-left">
+                        <div data-role="fieldcontain" style="text-align:right;">
+                            <button name="btnLinkToSku" data-role="none" class="btn custom-btn-theme-b btnCircle-sm">
+                                <img alt="Add" class="img-plus-white" />
+                            </button>
+                        </div>
+                        <br />
+                        <table cellspacing="0" cellpadding="2" style="margin-right: 5px; display: table; width:100%;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                            <thead>
+                                <tr class="custom-theme-f fixed-cell-width">
+                                    <th class="txt-center"> SKU Name </th>
+                                    <!--<th class="txt-center" style="width:100px"> Price </th>-->
+                                    <th class="txt-center" style="width:30px"> </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyLinkSku"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-footer align-right">
+                <div style="text-align:right;">
+                    <button name="btnOkCanvassItem" data-role="none" class="btn custom-btn-theme-b btnCircle popup-close">
+                        <img alt="Ok" class="img-check-white" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popVendorListEdit" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><span class="lblPCType"></span> List</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="listVendorEdit" data-role="none" class="list-group"></ul>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" class="btn btn-success btn-lg btn-block">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popCanvassFrequency" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Frequency</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="selCanvassFrequency">Please select frequency for <span id="lblFrequencyProductDesc"></span></label>
+                        <select id="selCanvassFrequency" data-role="none" class="form-select">
+                            <option value="">Please select</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Bi-Weekly">Bi-Weekly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Bi-Monthly">Bi-Monthly</option>
+                            <option value="Quarterly">Quarterly</option>
+                            <option value="Semi-Anually">Semi-Anually</option>
+                            <option value="Anually">Anually</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <input type="text" data-role="none" class="form-control mt-3" style="display:none;" placeholder="Enter here" id="txtCanvassFreqOthers" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" id="btnOkCanvassFrequency" class="btn btn-success btn-lg btn-block">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popCanvassTradeDiscount" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Trade Discount</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <i class="mb-3">
+                        Please enter the trade discounts (excluding volume and cash discounts for this SKU). Separate trade discounts with commas. <br />
+                        Example: Less 5,2,3
+                    </i>                    
+                    <div class="mb-3">
+                        <label class="form-label">Less: <span class="required">*</span></label>
+                        <div class="input-group">
+                            <input type="text" data-role="none" class="form-control" id="txtTradeDiscountLess" />
+                            <button data-role="none" class="btn btn-light border">%</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        Net Discount Factor: <span id="lblTradeDiscountFactor"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        Net Discount Rate: <span id="lblTradeDiscountRate"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Remarks:</label>
+                        <textarea data-role="none" id="txtTradeDiscountRemarks" class="form-control" style="height:100px; resize:none"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" id="btnOkCanvassTradeDiscount" class="btn btn-success btn-lg btn-block">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popCanvassCashDiscount" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cash Discount</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Cash Discount Rate (%): <span class="required">*</span></label>
+                        <input type="text" id="txtCanvassCDRate" data-role="none" class="form-control number-only" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">If paid in: (days) <span class="required">*</span></label>
+                        <input type="text" id="txtCanvassCDIfPaidIn" data-role="none" class="form-control number-only" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Net amount to be paid in: (days) <span class="required">*</span></label>
+                        <input type="text" id="txtCanvassCDNetAmount" data-role="none" class="form-control number-only" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" id="btnOkCanvassCashDiscount" class="btn btn-success btn-lg btn-block">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popListOfCanvass" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">List of Canvass</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-sm-auto">
+                            Show:
+                        </div>
+                        <div class="col-sm-auto">
+                            <select data-role="none" name="selCanvassListStatus" class="form-select fixed">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" id="txtSearchPriceCanvass" data-role="none" class="form-control" placeholder="Search here" />
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table id="tblDataTablePriceCanvass" data-role="none" style="margin-right:5px; display:table; width:100%;" class="table table-light table-striped table-hover">
+                            <thead>
+                                <tr class="custom-theme-f">
+                                    <!--<th style="width:80px !important;"> Canvass # </th>
+                                    <th style="cursor:pointer;"> Name </th>
+                                    <th style="cursor:pointer; width:200px;"> Date </th>
+                                    <th style="cursor:pointer; width:200px;"> No. of Vendors Invited </th>
+                                    <th style="width:50px;"></th>-->
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyPriceCanvass"></tbody>
+                        </table>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popCanvassUpload" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Upload Template</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <b>NOTE: <span class="required">*</span></b><br /><br />
+                    1. Columns Product Number, Mobiz <span class="lblPCType"></span> Code or 3rd Party ID Code must exist in your records.
+                    <br /><br />
+                    2. Separate trade discounts with commas. <i>Example: 5,2,3</i>
+                    <br /><br />
+                    <form id="formUploadCanvass" method="post">
+                        <input type="file" class="form-control" placeholder="Select Canvass Template" data-role="none" accept=".xlsx, .xls" id="fileCanvass" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" id="btnCanvassUpload" class="btn btn-success btn-block">Upload Canvass Template</button>
+                    <button data-role="none" id="btnPriceCanvassUploadPIM" class="btn btn-success btn-block">Upload PIM (SKU) Template to database</button>
+                    <button data-role="none" id="btnDownloadCanvassTemplate" class="btn btn-secondary btn-block">Download canvass form in Excel template file</button>
+                    <button data-role="none" id="butPriceCanvassDownloadPIM" class="btn btn-secondary btn-block">Download existing SKUs from database in Excel file</button>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popCanvassAdjustPrices" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adjust Prices</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Filters:</h4>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">Supplier: <span class="required">*</span></div>
+                        <div class="col-sm-9">
+                            <select data-role="none" id="selAdjustPricesVendor" class="form-select"></select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">Product Category:</div>
+                        <div class="col-sm-9">
+                            <select data-role="none" id="selAdjustPricesCategory" class="form-select"></select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">Brand</div>
+                        <div class="col-sm-9">
+                            <select data-role="none" id="selAdjustPricesBrand" class="form-select"></select>
+                        </div>
+                    </div>
+                    <h4>Discount Rates to be Applied:</h4>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">Trade Discounts:</div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input data-role="none" type="text" id="txtAdjustPricesTradeDiscounts" class="form-control">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">Cash Discounts:</div>
+                        <div class="col-sm-9">
+                            <input data-role="none" type="text" id="txtAdjustPricesCashDiscounts" readonly class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">Per PO Volume Discount:</div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input data-role="none" type="text" id="txtAdjustPricesVolumeDiscount" disabled placeholder="To be implemented" class="form-control">
+                                <span class="input-group-text"> %</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" id="btnAdjustPricesOk" class="btn btn-success btn-lg btn-block">Apply Discount Rates to Filtered SKU List</button>
+                    <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popCanvassComment" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Comment</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <textarea data-role="none" id="txtCanvassComment" class="form-control" style="height:200px; resize:none;"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" id="btnCanvassCommentOk" class="btn btn-success btn-lg btn-block">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popCanvassShare" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Share</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="txtCanvassShareLink" class="form-label">Shareable Link to anyone:</label>
+                        <div class="input-group">
+                            <input data-role="none" type="text" readonly id="txtCanvassShareLink" class="form-control">
+                            <button data-role="none" id="btnCopyCanvassLink" class="btn btn-secondary">Copy Link</button>
+                        </div>
+                    </div>
+
+                    <h4 data-role="none">Shareable Link to specific <span class="lblPCType" style="text-transform:lowercase;"></span>:</h4>
+                    
+                    <div class="row mb-3">
+                        <div class="col-sm-5">
+                            <div class="form-check">
+                                <label for="chbNeverExpireLink" class="form-check-label">
+                                    Never Expire Link
+                                    <input type="checkbox" data-role="none" class="form-check-input" id="chbNeverExpireLink" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-7" id="divExpirationDate" style="display:none;">
+                            Link will expire on:
+                            <input type="date" id="txtLinkExpirationDate" data-role="none" onkeydown="return false" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div id="divCanvassVendorLink" class="mb-3"></div>
+
+                    <div class="mb-3">
+                        <label class="form-label">More Options</label>
+                        <button data-role="none" id="btnDownloadCanvassVendor" class="btn btn-secondary">Download canvass form in Excel file for printing or electronic sharing</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popCanvassSecurityAccess" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Security Access</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        You don't have access to link item to SKU that has been saved as final.
+                    </p>
+                    
+                    <p>
+                        Please enter a valid username and password to gain access to this module or feature.
+                    </p>
+                    
+                    <div class="mb-3">
+                        <label class="form-label" for="txtLinkSKUUsername">Username:</label>
+                        <input data-role="none" type="text" id="txtLinkSKUUsername" class="form-control" />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label" for="txtLinkSKUPassword">Password:</label>
+                        <input data-role="none" type="password" id="txtLinkSKUPassword" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" id="btnOkCanvassSecurityAccess" class="btn btn-success btn-lg btn-block">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row gx-1 mb-4">
+    <div class="col-md-7 col-lg-8 mb-3">
+        <div name="divToolbar" class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+            <button data-role="none" name="butPriceCanvassNew" class="btn btn-light border h-100 w-100 align-self-auto">
+                <span class="bi-file-earmark-plus" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">New</div>
+            </button>
+            <button data-role="none" name="butPriceCanvassLookUp" class="btn btn-light border h-100 w-100">
+                <span class="bi-search" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Lookup</div>
+            </button>
+            <button data-role="none" name="butPriceCanvassUpload" class="btn btn-light border h-100 w-100">
+                <span class="bi-upload" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Upload <br /> Template</div>
+            </button>
+            <button data-role="none" name="butPriceCanvassAdjustPrices" class="btn btn-light border h-100 w-100">
+                <span class="bi-gear" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Adjust <br /> Prices</div>
+            </button>
+            <button data-role="none" name="butPriceCanvassSaveAsDraft" class="btn btn-light border h-100 w-100">
+                <span class="bi-save" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Save as <br /> Draft</div>
+            </button>
+            <button data-role="none" name="butPriceCanvassSaveACopy" class="btn btn-light border h-100 w-100">
+                <span class="bi-save" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Save a <br /> Copy</div>
+            </button>
+            <button data-role="none" name="butPriceCanvassSaveAsFinal" class="btn btn-light border h-100 w-100">
+                <span class="bi-save" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Save as <br /> Final</div>
+            </button>
+            <button data-role="none" name="butPriceCanvassShare" class="btn btn-light border h-100 w-100">
+                <span class="bi-share" style="font-size:25px;"></span>
+                <div class="menu-description mt-1">Share <br /> Canvass</div>
+            </button>
+        </div>
+    </div>
+    <div class="col-md-5 col-lg-4 text-right" style="font-size:30px;">
+        <h1 id="lblCanvassSaveAs">DRAFT</h1>
+    </div>
+</div>
+
+<div>
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="form-group mb-3">
+                <label class="form-label">Canvass Name: <span class="required">*</span></label>
+                <input name="txtCanvassName" data-role="none" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group mb-3">
+                <label class="form-label">Canvass No:</label>
+                <input name="txtCanvassNo" data-role="none" readonly placeholder="To be generated after saving" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+        <div class="col-sm-6 form-group mb-3">
+            <div class="row align-items-center">
+                <div class="col-sm-2">
+                    Filter by:
+                </div>
+                <div class="col-sm-5">
+                    <select data-role="none" name="selFilterCanvassCategory" class="form-select">
+                        <option>Category</option>
+                    </select>
+                </div>
+                <div class="col-sm-5">
+                    <select data-role="none" name="selFilterCanvassBrand" class="form-select">
+                        <option>Brand</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 txt-right form-group mb-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="input-group">
+                        <input data-role="none" type="text" id="txtCanvassSearch" class="form-control" placeholder="Search item here">
+                        <button data-role="none" id="btnCanvassSearchClear" class="btn btn-secondary" type="button"><span class="bi-x"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="row align-items-center">
+                <div class="col-sm-2">
+                    Status:
+                </div>
+                <div class="col-sm-5">
+                    <select data-role="none" name="selCanvassStatus" class="form-select">
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" style="text-align:right;">
+            <button name="butAddCanvassItem" data-role="none" class="btn btn-success">
+                Add SKU
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="divPCWorkTab" class="mt-3" style="white-space:nowrap; overflow:auto;">
+    <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+        <li class="nav-item" role="presentation">
+            <button data-role="none" class="nav-link active" id="btnTabWorkCanvassProductList" data-toggle="tab" data-target="#tabPCWorkBasicInfo">Product List</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button data-role="none" class="nav-link" id="btnTabWorkVendor" data-toggle="tab" data-target="#tabPCWorkVendor">Input <span class="lblPCType"></span> Prices</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button data-role="none" class="nav-link" id="btnTabWorkVendorPriceComparison" data-toggle="tab" data-target="#tabPCWorkVendorPriceComparison"><span class="lblPCType"></span> Price Comparison</button>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content p-3">
+    <div id="tabPCWorkBasicInfo" class="tab-pane show fade active">
+
+    </div>
+
+    <div id="tabPCWorkVendor" class="tab-pane show">
+        <div class="row align-items-center">
+            <div class="col-sm-auto">
+                <span class="lblPCType"></span>:
+                <div id="divInputPrices">
+                    <!--<br /><br />
+                    <table cellspacing="0" cellpadding="2" style="margin-right: 5px; display: table; width:100%;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                        <thead>
+                            <tr class="custom-theme-f fixed-cell-width">
+                                <th class="txt-center"> Item Description </th>
+                                <th class="txt-center" style="width:200px;" id="lblVendorName">  </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyInputPrices"></tbody>
+                    </table>
+                    <ul data-role="listview" id="lstCanvassVendor" class="li-theme-c noBorderList custom-list custom-list-sm"></ul>-->
+                </div>
+            </div>
+            <div class="col-sm-auto">
+                <select name="selCanvassVendor" data-role="none" class="form-select fixed"></select>
+            </div>
+            <div class="col-sm text-right">
+                <button data-role="none" name="btnVendorOfItem" class="btn btn-success">Add <span class="lblPCType"></span> to List</button>
+                <button data-role="none" id="btnVendorListEdit" class="btn btn-danger">Remove <span class="lblPCType"></span> from List</button>
+            </div>
+            <!--<div class="col-sm-2 txt-right">
+                <button name="btnVendorOfItem" data-role="none" class="btn custom-btn-theme-b btn-sm btn-less-width">
+                    Add <span class="lblPCType"></span>
+                </button>
+            </div>-->
+        </div>
+    </div>
+
+    <form id="formMobileDescriptionField" style="display:none;">
+        <br />
+        <div class="form-group mb-3">
+            <label for="txtMobileDescriptionField" id="lblMobileField" class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input data-role="none" id="txtMobileDescriptionField" type="text" class="form-control" placeholder="Enter here" />
+                    <span class="input-group-btn"><button data-role="none" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button></span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br />
+    <div class="tableCanvassProductList" id="divCanvassSku" style="display:block;">
+        <table cellspacing="0" cellpadding="2" style="margin-right: 5px; display: table; width:100%;" class="table">
+            <thead class="table-light">
+                <tr>
+                    <th class="custom-theme-f txt-center" style="min-width:36px;"></th>
+                    <th class="custom-theme-f txt-center" style="min-width:101px;"> Item No.</th>
+                    <th class="custom-theme-f txt-center" style="min-width:300px;"> Description </th>
+                    <th class="custom-theme-f txt-center thProductInfo"> Qty </th>
+                    <th class="custom-theme-f txt-center" style="min-width:100px;"> UoM </th>
+                    <th class="custom-theme-f txt-center thProductInfo" style="min-width:150px;"> Buying Frequency</th>
+                    <th class="custom-theme-f txt-center thVendor" style="display:none; min-width:150px;"> Comment </th>
+                    <th class="custom-theme-f txt-center" style="min-width:150px;"> Category </th>
+                    <th class="custom-theme-f txt-center" style="min-width:150px;"> Brand </th>
+                    <th class="custom-theme-f txt-center thVendor" style="display:none; min-width:150px;"> SRP / List Price </th>
+                    <th class="custom-theme-f txt-center thVendor" style="display:none; min-width:150px;"> Trade Discount </th>
+                    <th class="custom-theme-f txt-center thVendor" style="display:none; min-width:150px;"> Price Net of Trade Discount </th>
+                    <th class="custom-theme-f txt-center thVendor" style="display:none; min-width:150px;"> Volume Discount </th>
+                    <th class="custom-theme-f txt-center thVendor" style="display:none; min-width:150px;"> Cash Discount </th>
+                    <th class="custom-theme-f txt-center thVendor" style="display:none; min-width:150px;"> Lowest Price </th>
+                </tr>
+            </thead>
+            <tbody id="tbodyCanvass"></tbody>
+        </table>
+    </div>
+
+    <div id="tabPCWorkVendorPriceComparison" class="tab-pane show">
+        <div class="tableVendorPriceComparison">
+            <table cellspacing="0" cellpadding="2" style="margin-right: 5px; display: table; width:100%;" class="table table-light">
+                <thead>
+                    <tr id="trowVendorPriceComparison">
+                        <th class="custom-theme-f txt-center" style="width: 200px;"> Description </th>
+                        <th class="custom-theme-f txt-center" style="width: 140px;">  </th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyCanvassVendorPriceComparison"></tbody>
+            </table>
+        </div>
+    </div>
+</div>

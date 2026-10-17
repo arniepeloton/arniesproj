@@ -1,0 +1,63 @@
+﻿<div name="divCompanyNotes">
+    <div name="divListOfNotes">
+        <div class="mb-3 row">
+            <div class="col">
+                <input data-role="none" type="search" name="txtCRMNoteSearch" class="form-control" placeholder="Search here" />
+            </div>
+            <div class="col-auto text-right">
+                <button data-role="none" name="btnCRMAddNote" class="btn btn-success">Add Note</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table data-role="none" class="table table-light table-striped table-hover">
+                <thead>
+                    <tr class="align-top text-center" style="font-size:14px;">
+                        <th style="width:50px;">#</th>
+                        <th>Note</th>
+                        <th style="width:200px;">Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyCRMNotes"></tbody>
+            </table>
+        </div>
+    </div>    
+
+    <div id="popupCRMAddANote" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Make A Note</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="txtCRMNote" contenteditable="" oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''" style="min-height:250px;" placeholder="Type the note here ..."></div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" name="btnSaveCRMNote" class="btn btn-success btn-lg btn-block">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupCRMNote" data-backdrop="static" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Notes</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

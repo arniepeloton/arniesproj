@@ -1,0 +1,122 @@
+﻿<script>
+    require([GetPathFormat('/Scripts/sources/DashBoardsAndReports/SalesDashboardIndex.js?crc=' + assetversion)]);
+    require([GetPathFormat('/Scripts/sources/DashBoardsAndReports/DashboardsAndReportsCharts.js?crc=' + assetversion)]);
+</script>
+
+<div id="divFinacialStatementMain" subpage="divErpAssetsManagement" style="display: block;">
+    <div id="divFinacialStatementTab">
+        <ul class="nav nav-tabs" role="tablist" style="flex-wrap:nowrap;">
+            <li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabFinacialStatementWorkDashboards">Dashboard</button>
+            </li>
+            <!--<li class="nav-item" role="presentation">
+                <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabDisbursementWork">Disbursement Modules</button>
+            </li>-->
+            <li class="nav-item" role="presentation">
+                <button data-role="none" id="btnTabFinacialStatementSettings" class="nav-link" data-target="#tabFinacialStatementSettings">Settings</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content p-3">
+        <div id="tabFinacialStatementWorkDashboards" class="tab-pane fade show active">
+            <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 text-center">
+                <div class="col mb-3">
+                    <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid">
+                        <div class="bi bi-table rounded mb-3 module-buttons"></div>
+                        Balance Sheet
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid" id="btnIncomeStatement">
+                        <div class="bi bi-graph-up-arrow rounded mb-3 module-buttons"></div>
+                        Income Statement
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid">
+                        <div class="bi bi-journal rounded mb-3 module-buttons"></div>
+                        Statement of Cash Flows
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid" id="butESalesReport">
+                        <div class="bi bi-journal rounded mb-3 module-buttons"></div>
+                        E-Sales Report
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid" id="divTopSellingAndTopProfitableSkus">
+                        <div class="bi bi-arrow-down-up rounded mb-3 module-buttons"></div>
+                        Top Selling And Top Profitable SKUs Report
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid" id="divBir">
+                        <div class="bi bi-journal-text rounded mb-3 module-buttons"></div>
+                        Customer Invoice List
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid" id="divBirPurchases">
+                        <div class="bi bi-journal-text rounded mb-3 module-buttons"></div>
+                        Vendor Invoice List
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="tabFinacialStatementWork" class="tab-pane fade">
+
+        </div>
+
+        <div id="tabFinacialStatementSettings" class="tab-pane fade">
+
+        </div>
+    </div>
+
+    <div id="panIncomeStatement" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" name="TitlePrefix">Income Statement</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label class="col-md-auto col-form-label">For the Period Covering:</label>
+                        <div class="col-md">
+                            <button data-role="none" class="btn btn-secondary" id="lnkPeriod"></button>
+                        </div>                        
+                    </div>
+
+                    <div class="row align-items-center mb-3">
+                        <div class="col-md-auto">
+                            <h4>Gross Sales</h4>
+                        </div>
+                        <div class="col-md text-right">
+                            <a href="#"> <span id="lblIncomeStatementGrossSales" style="font-size:large; font-weight:bold;"></span></a>
+                        </div>
+                    </div>
+                    
+                    <div id="accBodyIncomeStatementGrossSales">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="popup" id="panMoreDetails" data-overlay-theme="a" data-theme="a" data-corners="false">
+        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <center><h3>See more details for (Sales)</h3></center>
+        <div data-role="content">
+            <label>Drill down [AutoText=Parent Variable Name] by:</label>
+            <br />
+            1st: <select></select>
+            2nd: <select></select>
+
+        </div>
+    </div>
+</div>

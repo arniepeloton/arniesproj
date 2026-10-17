@@ -1,0 +1,270 @@
+﻿<link rel="stylesheet" href="/Content/Ecommerce/css/lightbox.css">
+
+<div>
+    <div id="popupAccountDetails-bs" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Account Details</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body" id="popupAccountDetailsContent-bs">
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="popupAccountDetails" custom-data-role="popup">
+        <div class="popup">
+            <div class="popup-header">
+                Account Details
+                <a class="popup-close">x</a>
+            </div>
+
+            <div id="popupAccountDetailsContent" class="popup-content">
+                <input data-role="none" type="file" id="fileAttach" accept="image/*" multiple style="margin-left:-1000px; visibility:hidden; display:none;" />
+                <div>
+                    <div style="float:left;">
+                        <div class="divTableRow">
+                            <div class="divTableCell txt-middle">Filter:</div>
+                            <div class="divTableCell">
+                                <select id="cbInvoiceFilter" data-role="none" class="select custom-theme-c form-select">
+                                    <option value="has payable">Show Invoices With Outstanding Balances</option>
+                                    <option value="fully paid">Show Fully Paid Invoices</option>
+                                    <option value="fully paid without or">Show Fully Paid Invoices Without Official Receipt</option>
+                                    <option value="all">Show All Invoices</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:right;">
+                        <button id="butPayments" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-success">Enter Payments</button>
+                        <button id="butGenerateBilling" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-success">Generate Billing Statement</button>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="divTableRow">
+                            <div name="divCustomerName" class="divTableCell">Customer Name:</div>
+                            <div class="divTableCell"><span style="font-size:20px; font-weight:normal;" class="lblCustomerName"></span></div>
+                        </div>
+
+                        <div class="divTableRow">
+                            <div class="divTableCell">Beginning Balance:</div>
+                            <div id="lblBeginningBalance" class="divTableCell"><span style="font-size:20px; font-weight:normal;"></span></div>
+                        </div>
+
+                        <div class="divTableRow">
+                            <div class="divTableCell">Beginning Balance As Of:</div>
+                            <div id="lblBeginningBalanceAsOf" class="divTableCell">
+                                <span style="font-size: 20px; font-weight: normal;"></span>
+                            </div>
+                        </div>
+
+                        <div class="divTableRow">
+                            <div class="divTableCell">Unapplied Payments:</div>
+                            <div id="lblUnappliedPayments" class="divTableCell"><span style="font-size:20px; font-weight:normal;"></span></div>
+                        </div>
+
+                        <div class="divTableRow" style="display:none">
+                            <div class="divTableCell">Excess Payments:</div>
+                            <div id="lblExcessPayments" class="divTableCell"><span style="font-size:20px; font-weight:normal;"></span></div>
+                        </div>
+
+                        <div class="divTableRow" style="display:none">
+                            <div class="divTableCell">Total of Unapplied Credit and Excess Payments:</div>
+                            <div id="lblTotalOfUnappliedCreditAndExcessPayments" class="divTableCell"><span style="font-size:20px; font-weight:normal;"></span></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="divTableRow">
+                            <div class="divTableCell">Credit Limit:</div>
+                            <div class="divTableCell"><span style="font-size:20px; font-weight:normal;" name="spanCustomerCreditLimit"></span></div>
+                        </div>
+
+                        <div class="divTableRow">
+                            <div class="divTableCell">Credit Terms:</div>
+                            <div class="divTableCell"><span style="font-size:20px; font-weight:normal;" name="spanCustomerCreditTerms"></span></div>
+                        </div>
+
+                        <div class="divTableRow">
+                            <div class="divTableCell">Available Credit:</div>
+                            <div class="divTableCell"><span style="font-size:20px; font-weight:normal;" name="spanCustomerAvailableCredit"></span></div>
+                        </div>
+
+                        <div class="divTableRow">
+                            <div class="divTableCell">Aging of Mature AR:</div>
+                            <div class="divTableCell"><span style="font-size:20px; font-weight:normal;" name="spanCustomerAgingOfAr"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <div style="overflow:auto; margin-bottom:50px;">
+                    <table id="tbodyInvoices" data-role="none" style="margin-right:5px; display:table; width:100%;" class="table table-light table-striped table-hover">
+                        <thead class="custom-theme-f fixed-cell-width">
+                            <!--<tr>
+                                <th style="cursor:pointer;"> Invoice<br /> Date </th>
+                                <th style="cursor: pointer;"> Invoice<br /> No. </th>
+                                <th name="thStockReceivingNum" data-sort="" style="cursor:pointer;"> Stock <br /> Receiving <br /> No. </th>
+                                <th style="cursor:pointer; text-align:center;"> Gross Invoice<br /> Amount </th>
+                                <th style="cursor:pointer; text-align:center;"> Net<br /> Adjustments </th>
+                                <th style="cursor:pointer; text-align:center;"> Net<br /> Invoice <br /> Amount </th>
+                                <th name="thAPPPendingApproval" style="cursor:pointer; text-align:center; display:none;"> APP Pending Approval </th>
+                                <th style="cursor:pointer; text-align:center;"> Accum.<br /> Prev. <br /> Payments (APP) </th>
+                                <th style="cursor:pointer; text-align:center;"> Net<br /> Invoice <br /> Balance </th>
+                                <th style="cursor:pointer;"> Invoice<br /> Terms </th>
+                                <th style="cursor:pointer;"> Invoice<br /> Due Date </th>
+                                <th style="cursor:pointer;"> AR Age </th>
+                                <th style="cursor:pointer;"> Weight of Transaction Relative to Total AR of Customer </th>
+                                <th style="cursor:pointer;"> Weighted Days Overdue </th>
+                                <th style="cursor:pointer;"> Last<br /> Modified </th>
+                                <th style="cursor:pointer;"> Remarks </th>
+                                <th style="cursor:pointer;"> PO No. </th>
+                                <th style="cursor:pointer;"> PO Date </th>
+                                <th style="cursor:pointer;"> Attachment </th>
+                            </tr>-->
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot style="border-top: 2px solid #CCC; font-weight: bold;">
+                            <tr>
+                                <td>Sub Total</td>
+                                <td id="tfootRecordCount" style="padding:10px"></td>
+                                <td name="tfootStockReceivingNum" style="padding:10px"></td>
+                                <td id="tfootTotalAmount" style="text-align:right;padding:10px"></td>
+                                <td id="tfootTotalNetAdjustments" style="text-align:right;padding:10px"></td>
+                                <td id="tfootTotalNetInvoiceAmount" style="text-align:right;padding:10px"></td>
+                                <td id="tfootTotalAccumPrevPaymentsPendingApproval" style="text-align:right;padding:10px"></td>
+                                <td id="tfootTotalAccumPrevPayments" style="text-align:right;padding:10px"></td>
+                                <td id="tfootNetInvoiceBalance" style="text-align:right;padding:10px"></td>
+                                <td colspan="8"></td>
+                            </tr>
+                            <tr style="border-top: solid 1px black">
+                                <td colspan="6">Net Invoice Total with Beginning Balance:</td>
+                                <td id="tfootNetInvoiceBalanceWithBeginningBalance" style="text-align:right;"></td>
+                                <td colspan="8"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="popup-footer align-right">
+                <button id="" data-role="none" class="btn custom-btn-theme-c btnCircle popup-close">
+                    <img alt="Options" src="/Content/images/close-black.png" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="divInvoiceImagePreview" class="bxslider" style="display:none;"></div>
+
+    <div id="popupInvoiceViewAttachments" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">View Attachments</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body" id="popupContentInvoiceAttachments">
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupInvoiceImageWebCam" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Take Invoice Image</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    If you don't see anything, please allow this website to access your camera.<br /><br />
+                    <video id="campreview" subpage="webcam" style="width:100%" autoplay></video>
+                    <canvas id="camcaptured" subpage="webcam" width="500" style="display:none;"></canvas>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" id="btnTakePhoto" class="btn btn-success btn-lg btn-block">Take Photo</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" id="btnUploadPhoto" disabled class="btn btn-primary btn-lg btn-block">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupViewNotes" class="modal fade" tabindex="-1" style="display:none;">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Notes of <b class="lblCustomerName"></b></h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <input data-role="none" type="search" name="txtCustomerNoteSearch" class="form-control" placeholder="Search here" />
+                        </div>
+                        <div class="col-auto text-right">
+                            <button data-role="none" name="btnCustomerAddNote" class="btn btn-success">Add Note</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table data-role="none" class="table table-light table-striped table-hover">
+                            <thead>
+                                <tr class="align-top text-center" style="font-size:14px;">
+                                    <th style="width:50px;">#</th>
+                                    <th>Note</th>
+                                    <th style="width:170px;">Last Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyCustomerNotes"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupAddANote" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Make A Note</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="txtCustomerNote" contenteditable="" oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''" style="min-height:250px; max-height:250px;" placeholder="Type the note here ..."></div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" data-dismiss="modal" name="btnSaveCustomerNote" class="btn btn-success btn-lg btn-block">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

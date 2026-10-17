@@ -1,0 +1,142 @@
+﻿<div data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" name="title">Delivery Tracker</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <!--<div data-role="content" style="padding: 0px 5px 0px 5px;">
+        <div class="row">
+            <div class="col-sm-5">
+                <label>Delivery Method:</label>
+                <select name="cbDeliveryMode" data-role="none" type="text" class="form-control">
+                    <option>Please select</option>
+                    <option value="Inhouse Delivery">Inhouse Delivery</option>
+                    <option value="3rd Party Delivery">3rd Party Delivery</option>
+                    <option value="Customer Pickup">Customer Pickup</option>
+                </select>
+            </div>
+            <div class="col-sm-5">
+                <label>Truck:</label>
+                <button name="butSearchTruck" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+                <input name="txtTruck" data-role="none" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-5" style="margin: 10px 0">
+                Delivered/Undelivered:
+                <select name="cbDelivered" data-role="none" type="text" class="form-control fixed">
+                    <option value="Undelivered">Undelivered</option>
+                    <option value="Delivered">Delivered</option>
+                </select>
+            </div>
+        </div>
+    </div>-->
+
+                <div name="divInvoiceDetails">
+                    <div class="row mb-3">
+                        <div class="col-3">Customer:</div>
+                        <div class="col font-weight-bold" name="lblCustomerName"></div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-3">Invoice Date:</div>
+                        <div class="col font-weight-bold" name="lblInvoiceDate"></div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-3">Invoice No.:</div>
+                        <div class="col font-weight-bold" name="lblInvoiceNo"></div>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label">Delivery Method:</label>
+                    <select name="cbDeliveryMode" data-role="none" type="text" class="form-select">
+                        <option>Please select</option>
+                        <option value="Inhouse Delivery">Inhouse Delivery</option>
+                        <option value="3rd Party Delivery">3rd Party Delivery</option>
+                        <option value="Customer Pickup">Customer Pickup</option>
+                    </select>
+                </div>
+                <div name="divInhouseDelivery">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Truck: <span class="required">*</span></label>
+                        <div class="input-group">
+                            <input name="txtTruck" data-role="none" type="text" class="form-control" readonly />
+                            <button name="butSearchTruck" data-role="none" class="btn btn-secondary">Search</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col">Checked By: <span class="required">*</span></div>
+                            <div class="col text-right">
+                                <button name="butSearchCheckedBy" data-role="none" class="btn btn-secondary">Add Checker</button>
+                            </div>
+                        </div>
+                        <ul class="list-group mb-3" name="listDeliveryChecker"></ul>
+                    </div>
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col">Driver: <span class="required">*</span></div>
+                            <div class="col text-right">
+                                <button name="butSearchDriver" data-role="none" class="btn btn-secondary">Add Driver</button>
+                            </div>
+                        </div>
+                        <ul class="list-group mb-3" name="listDeliveryDriver"></ul>
+                    </div>
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col">Helper: <span class="required">*</span></div>
+                            <div class="col text-right">
+                                <button name="butSearchHelper" data-role="none" class="btn btn-secondary">Add Helper</button>
+                            </div>
+                        </div>
+                        <ul class="list-group mb-3" name="listDeliveryHelper"></ul>
+                    </div>
+                </div>
+                <div name="div3rdPartyDelivery">
+                    <div class="form-group mb-3">
+                        <label class="form-label">3PL Company Name:</label>
+                        <div class="input-group">
+                            <input name="txt3plCompanyName" data-role="none" type="text" class="form-control" readonly />
+                            <button name="butSearch3plCompanyName" data-role="none" class="btn btn-secondary">Search</button>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">3PL Contact Person:</label>
+                        <button name="butSearch3plContactPerson" data-role="none" class="btn custom-btn-theme-b btn-less-width btn-xs" style="float: right;"><img class="img-search-white" /></button>
+                        <input name="txt3plContactPerson" data-role="none" type="text" class="form-control" maxlength="500" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Waybill No.:</label>
+                        <input name="txtWaybillNumber" data-role="none" type="text" class="form-control" maxlength="500" />
+                    </div>
+                </div>
+                <div name="divCustomerPickup">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Customer Representative:</label>
+                        <input name="txtCustomerRepresentative" data-role="none" type="text" class="form-control" maxlength="500" />
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label">Delivery Encoding Date:</label>
+                    <input name="txtEncodingDate" data-role="none" type="text" class="form-control" maxlength="500" disabled="disabled" placeholder="System Generated" />
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label">Remarks:</label>
+                    <textarea data-role="none" name="txtRemarks" class="form-control" style="resize:none; height:150px;"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-block btn-lg">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" name="butSave" class="btn btn-success btn-block btn-lg">Save As Draft</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

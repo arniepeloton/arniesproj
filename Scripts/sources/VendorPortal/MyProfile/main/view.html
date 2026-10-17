@@ -1,0 +1,542 @@
+﻿<div class="modal fade" data-backdrop="static" id="confirmviapassword" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 data-role="none" class="modal-title">Enter your password</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label id="lblConfirmPw"></label>
+                    <input data-role="none" placeholder="Your password" autocomplete="off" autofocus type="password" class="form-control unicase-form-control text-input" id="txtMACurrentPassword">
+                </div>
+                <div id="divMAErrMsg" style="color:#ff3737; text-align:center; font-size:14px; margin-bottom:25px; display:none;">Invalid password</div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" id="btnMACancelSave" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                <button data-role="none" id="btnMAContinueSave" type="button" class="btn btn-primary btn-less-width">CONTINUE</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupEditEmailAddress" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="formPopupCompanyEmailAdd">
+                <div class="modal-header">
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 data-role="none" id="lblModalEmailAddress" class="modal-title">Email Address</h4>
+                </div>
+                <div class="modal-body">
+                    <input data-role="none" autocomplete="off" type="text" class="form-control unicase-form-control text-input" id="txtMACompanyEditEmailAdd">
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                    <button data-role="none" id="btnMACompanyEditEmailAddSave" type="submit" class="btn btn-primary btn-less-width">Ok</button>
+                </div>
+            </form>            
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupEditMobileNumber" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <form id="formPopupCompanyMobileNumber">
+                <div class="modal-header">
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 data-role="none" id="lblModalMobileNumber" class="modal-title">Mobile Number</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-inline">
+                        <input data-role="none" type="text" value="+63" maxlength="3" class="form-control unicase-form-control text-input" disabled style="width:50px;">
+                        <input data-role="none" type="text" placeholder="9**********" maxlength="10" class="form-control unicase-form-control text-input" id="txtMACompanyEditMobileNo" style="width:110px;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                    <button data-role="none" id="btnMACompanyEditMobileNoOk" type="submit" class="btn btn-primary btn-less-width">Ok</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupEditTelephoneNumber" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="formPopupCompanyTelephoneNumber" autocomplete="off">
+                <div class="modal-header">
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 data-role="none" id="lblModalTelephoneNumber" class="modal-title">Telephone Number</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="info-title col-sm-3">Country Code <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input data-role="none" type="text" value="+63" maxlength="3" class="form-control unicase-form-control text-input" disabled style="width:50px;">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="info-title col-sm-3" for="txtMACompanyTelEditAreaCode">Area Code <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input data-role="none" id="txtMACompanyTelEditAreaCode" placeholder="Click to search" type="text" class="form-control unicase-form-control text-input" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="info-title col-sm-3" for="txtMACompanyTelEditTelephoneNo">Telephone Number <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input data-role="none" id="txtMACompanyTelEditTelephoneNo" type="text" class="form-control unicase-form-control text-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="info-title col-sm-3" for="txtMACompanyTelEditExtensionNo">Extension Number</label>
+                        <div class="col-sm-9">
+                            <input data-role="none" id="txtMACompanyTelEditExtensionNo" type="text" class="form-control unicase-form-control text-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                    <button data-role="none" id="btnMACompanyEditTelephoneNoOk" type="submit" class="btn btn-primary btn-less-width">Ok</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupSelling" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="formSelling" autocomplete="off">
+                <div class="modal-header">
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    &nbsp;
+                </div>
+                <div class="modal-body">
+                    <div style="position:relative;">
+                        <b class="lblSelling"></b> <span class="required">*</span>:
+                        <br />
+                        <input type="text" id="txtSelling" data-role="none" class="form-control unicase-form-control" placeholder="Search here" />
+                        <div id="divListSelling" style="display:none; z-index: 1; position: absolute; width: 100%; box-shadow: 0px 5px 28px #CCC;">
+                            <div id="listSelling" class="list-group" style="overflow-y:auto; max-height:300px; margin:0px;">
+
+                            </div>
+                            <div id="divNewSelling">
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div style="display: flex;">
+                        <b>Status:</b>
+                        &nbsp;
+                        <div class="bs-radio">
+                            <input data-role="none" type="radio" name="radSellingStatus" id="radSellingActive" value="1" checked />
+                            <label for="radSellingActive">Active</label>
+                        </div>
+                        &nbsp;
+                        <div class="bs-radio">
+                            <input data-role="none" type="radio" name="radSellingStatus" id="radSellingInactive" value="0" />
+                            <label for="radSellingInactive">Inactive</label>
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        Please check the applicable business activity that you provide related to this <span class="lblSelling"></span>.
+                    </div>
+                    <br />
+                    <div id="divBusinessActivities" class="row equal">
+
+                    </div>                 
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                    <button data-role="none" id="btnMASellingSave" type="submit" class="btn btn-primary btn-less-width">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupNewSelling" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="formNewSelling">
+                <div class="modal-header">
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 data-role="none" id="lblTitleSellingType" class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <input data-role="none" autocomplete="off" type="text" placeholder="Enter name here" class="form-control unicase-form-control text-input" id="txtNewSelling">
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" id="btnCancelNewSelling" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                    <button data-role="none" id="btnSaveNewSelling" type="submit" class="btn btn-primary btn-less-width">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popupUserInfo" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 data-role="none" class="modal-title">User Info</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #CCC; text-align: center; vertical-align: middle; display: table-cell; color: #FFF; font-size: 30px;">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div id="divActualName" subpage="divMAName" style="display:block;">
+                            <a data-role="none" id="btnMAEditName" href="#">Edit Name</a>
+                            <h3 id="txtMAFullName"></h3>
+                        </div>
+                        <div id="divEditName" subpage="divMAName" style="display:none;">
+                            <a data-role="none" id="btnMACancelName" href="#">Cancel</a><br />
+                            <input data-role="none" type="text" placeholder="First Name *" class="form-control unicase-form-control text-input" id="txtMAFirstName">
+                            <input data-role="none" type="text" placeholder="Middle Name" class="form-control unicase-form-control text-input" id="txtMAMiddleName">
+                            <input data-role="none" type="text" placeholder="Last Name *" class="form-control unicase-form-control text-input" id="txtMALastName">
+                            <select data-role="none" id="selMAPersonGenSuffix" class="form-control unicase-form-control text-input">
+                                <optgroup label="Select your suffix name">
+                                    <option value="">No Suffix Name</option>
+                                    <option value="Sr.">Sr.</option>
+                                    <option value="Jr.">Jr.</option>
+                                    <option value="I">I</option>
+                                    <option value="II">II</option>
+                                    <option value="III">III</option>
+                                    <option value="IV">IV</option>
+                                    <option value="V">V</option>
+                                    <option value="VI">VI</option>
+                                    <option value="VII">VII</option>
+                                    <option value="VIII">VIII</option>
+                                    <option value="IX">IX</option>
+                                    <option value="X">X</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label class="info-title">Date of Birth <span class="required">*</span></label>
+                        <select data-role="none" id="selMABirthMonth" class="form-control unicase-form-control text-input fixed">
+                            <option value="">Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                        <select data-role="none" id="selMABirthDay" class="form-control unicase-form-control text-input fixed"></select>
+                        <input data-role="none" type="text" placeholder="Year" maxlength="4" class="form-control unicase-form-control text-input" id="txtMABirthYear" style="width:70px;">
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label class="info-title" for="txtMAEmailAddress">Email Address <span class="required">*</span></label>
+                    <input data-role="none" type="text" class="form-control unicase-form-control text-input" id="txtMAEmailAddress">
+                </div>
+                <hr />
+                <h4>Login Credentials</h4>
+                <br />
+                <div class="form-group">
+                    <div id="divActualPassword" subpage="divPassword" style="display:block;">
+                        <a data-role="none" id="btnMAChangePassword" href="#">Update Login Credentials</a>
+                    </div>
+                    <div id="divEditPassword" subpage="divPassword" style="display:none;">
+                        <div class="form-group">
+                            <label class="info-title" for="txtMAUsername">New Username <span class="required">*</span></label>
+                            <input data-role="none" type="text" class="form-control unicase-form-control text-input" id="txtMAUsername">
+                        </div>
+                        <div class="form-group">
+                            <label class="info-title" for="txtMANewPassword">New Password <span class="required">*</span></label>
+                            <input data-role="none" type="password" class="form-control unicase-form-control text-input" id="txtMANewPassword">
+                        </div>
+                        <button data-role="none" id="btnMACancelNewPassword" class="btn btn-default btn-less-width" style="float:right;">
+                            Cancel Update Login Credentials
+                        </button>
+                    </div>
+                </div>
+                <hr />
+                <h4>Security Questions</h4>
+                <p class="text title-tag-line"><b>NOTE</b>: You must remember the answers to the security questions you selected. This will be used to reset your account in case you forget your password.</p>
+                <br />
+                <div class="form-group">
+                    <label class="info-title" for="selMASecQuestion1">Question No. 1</label>
+                    <span>
+                        <select id="selMASecQuestion1" data-role="none" class="form-control unicase-form-control text-input">
+                            <option value="">Please Select</option>
+                            <option value="Where is your mother's birthplace?">Where is your mother's birthplace?</option>
+                            <option value="Who is your best childhood friend?">Who is your best childhood friend?</option>
+                            <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                            <option value="Who is your favorite teacher?">Who is your favorite teacher?</option>
+                            <option value="Who is your favorite historical person?">Who is your favorite historical person?</option>
+                            <option value="What is your grandfather's occupation?">What is your grandfather's occupation?</option>
+                        </select>
+                    </span>
+                    <br />
+                    <div id="divStaticSecQ1" subpage="divSecQ1" style="display:block;">
+                        <a data-role="none" id="btnMAEditSecQ1Ans" href="#">Edit answer security question no. 1 </a>
+                    </div>
+                    <div id="divEditSecQ1" subpage="divSecQ1" style="display:none;">
+                        <input data-role="none" type="text" placeholder="Answer of Question No. 1" class="form-control unicase-form-control text-input" id="txtMASecQuestion1Answer">
+                        <br />
+                        <a data-role="none" id="btnMACancelEditSecQ1Ans" href="#">Cancel Edit</a>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="info-title" for="selMASecQuestion2">Question No. 2</label>
+                    <span>
+                        <select id="selMASecQuestion2" data-role="none" class="form-control unicase-form-control text-input">
+                            <option value="">Please Select</option>
+                            <option value="Where is your mother's birthplace?">Where is your mother's birthplace?</option>
+                            <option value="Who is your best childhood friend?">Who is your best childhood friend?</option>
+                            <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                            <option value="Who is your favorite teacher?">Who is your favorite teacher?</option>
+                            <option value="Who is your favorite historical person?">Who is your favorite historical person?</option>
+                            <option value="What is your grandfather's occupation?">What is your grandfather's occupation?</option>
+                        </select>
+                    </span>
+                    <br />
+                    <div id="divStaticSecQ2" subpage="divSecQ2" style="display:block;">
+                        <a data-role="none" id="btnMAEditSecQ2Ans" href="#">Edit answer security question no. 2 </a>
+                    </div>
+                    <div id="divEditSecQ2" subpage="divSecQ2" style="display:none;">
+                        <input data-role="none" type="text" placeholder="Answer of Question No. 2" class="form-control unicase-form-control text-input" id="txtMASecQuestion2Answer">
+                        <br />
+                        <a data-role="none" id="btnMACancelEditSecQ2Ans" href="#">Cancel Edit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                <button data-role="none" id="btnSavePersonDetails" data-toggle="modal" data-target="#confirmviapassword" class="btn btn-primary btn-less-width">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divMainMyProfile" subpage="pageMyProfile" style="display:block;">
+    <div id="divTabMyAccount">
+        <ul class="nav nav-tabs">
+            <li class="active" custom-tab-content="#tabCompanyProfile"><a data-role="none">Company Profile</a></li>
+            <li custom-tab-content="#tabCompanyPictures"><a data-role="none">Company Pictures</a></li>
+            <li custom-tab-content="#tabCompanySellProducts"><a data-role="none">What do we sell?</a></li>
+            <li custom-tab-content="#tabAdminInfo"><a data-role="none">Users</a></li>
+        </ul>
+    </div>
+    <div id="tabCompanyProfile" custom-tab-role="content" style="display:block;">
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="txtMACompanyName">Company Name <span class="required">*</span></label>
+            <div class="col-sm-10">
+                <input data-role="none" type="text" class="form-control unicase-form-control text-input" id="txtMACompanyName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="txtMACompanyTIN">TIN</label>
+            <div class="col-sm-10">
+                <input data-role="none" type="text" class="form-control unicase-form-control text-input" id="txtMACompanyTIN">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="txtMABusInd">Business Industry <span class="required">*</span></label>
+            <div class="col-sm-10">
+                <input data-role="none" type="text" class="form-control unicase-form-control text-input" id="txtMABusInd" readonly>
+                <div id="listBusinessIndustry" class="list-group" style="display:none; position: absolute; max-width: 100%; box-shadow: 0px 5px 28px #CCC; overflow-y:auto; max-height:300px;"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="txtMACompanyEmailAdd">Company Background</label>
+            <div class="col-sm-10">
+                <textarea data-role="none" type="text" class="form-control unicase-form-control text-input" id="txtMACompanyBackground"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="divCompanyEmailList">Company Email Address <span class="required">*</span></label>
+            <div class="col-sm-8">
+                <!--<input data-role="none" type="text" class="form-control unicase-form-control text-input" id="txtMACompanyEmailAdd">-->
+                <ul id="divCompanyEmailList" class="list-group"></ul>
+            </div>
+            <div class="col-sm-2 txt-right">
+                <button id="btnMAAddCompanyEmailAddress" data-toggle="modal" data-target="#popupEditEmailAddress" data-role="none" class="btn btn-primary">
+                    + Add Email Address
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="divCompanyMobileList">Company Mobile Number <span class="required">*</span></label>
+            <div class="col-sm-8">
+                <!--<div class="form-inline">
+                    <input data-role="none" type="text" value="+63" maxlength="3" class="form-control unicase-form-control text-input" disabled style="width:50px;">
+                    <input data-role="none" type="text" placeholder="9**********" maxlength="10" class="form-control unicase-form-control text-input" id="txtMACompanyMobileNo" style="width:110px;">
+                </div>-->
+                <ul id="divCompanyMobileList" class="list-group"></ul>
+            </div>
+            <div class="col-sm-2 txt-right">
+                <button id="btnMAAddCompanyMobile" data-toggle="modal" data-target="#popupEditMobileNumber" data-role="none" class="btn btn-primary">
+                    + Add Mobile No.
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="divCompanyTelephoneList">Company Telephone Number</label>
+            <div class="col-sm-8">
+                <!--<div class="form-inline">
+                    <input data-role="none" type="text" value="+63" maxlength="3" class="form-control unicase-form-control text-input" disabled style="width:50px;">
+                    <input data-role="none" type="text" placeholder="9**********" maxlength="10" class="form-control unicase-form-control text-input" id="txtMACompanyMobileNo" style="width:110px;">
+                </div>-->
+                <ul id="divCompanyTelephoneList" class="list-group"></ul>
+            </div>
+            <div class="col-sm-2 txt-right">
+                <button id="btnMAAddCompanyTelephone" data-toggle="modal" data-target="#popupEditTelephoneNumber" data-role="none" class="btn btn-primary">
+                    + Add Telephone No.
+                </button>
+            </div>
+        </div>
+        <br />
+        <h3>Company's Main Address</h3>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="txtMACompanyAddressBldgNo">House/Building Number <span class="required">*</span></label>
+            <div class="col-sm-10">
+                <input data-role="none" type="text" class="form-control unicase-form-control text-input" id="txtMACompanyAddressBldgNo">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="txtMACompanyAddressStreetName">Street Name <span class="required">*</span></label>
+            <div class="col-sm-10">
+                <input data-role="none" type="text" class="form-control unicase-form-control text-input" id="txtMACompanyAddressStreetName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="selMACompanyAddressCity">City <span class="required">*</span></label>
+            <div class="col-sm-10">
+                <select data-role="none" id="selMACompanyAddressCity" class="form-control unicase-form-control text-input"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="info-title col-sm-2" for="selMACompanyAddressCountry">Country <span class="required">*</span></label>
+            <div class="col-sm-10">
+                <select data-role="none" id="selMACompanyAddressCountry" class="form-control unicase-form-control text-input"></select>
+            </div>
+        </div>
+
+        <div id="divErrMsg" style="color:#ff3737; text-align:center; font-size:14px; margin-bottom:25px; display:none;"></div>
+        <br />
+        <div style="text-align:center;">
+            <button data-role="none" id="btnMABackToDashboard" class="btn btn-default btn-less-width">
+                Back To Dashboard
+            </button>
+            &nbsp;
+            <button id="btnMASaveChanges" data-toggle="modal" data-target="#confirmviapassword" data-role="none" class="btn btn-primary btn-less-width">
+                Save Changes
+            </button>
+        </div>
+    </div>
+    <div id="tabAdminInfo" custom-tab-role="content" style="display:none;">
+        <table id="tblCompanyUsers" data-role="table" data-mode="reflow" style="margin-right:5px; display:table;" class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+            <thead>
+                <tr class="custom-theme-c">
+                    <th style="width:50px;">#</th>
+                    <th>Full Name</th>
+                    <th style="width:150px;">Modified By</th>
+                    <th style="width:150px;">Last Updated</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyCompanyUsers"></tbody>
+        </table>
+    </div>
+    <div id="tabCompanyPictures" custom-tab-role="content" style="display:none;">
+        <div class="txt-left">
+            <button id="btnUploadCompanyPictures" data-role="none" class="btn btn-primary btn-less-width">
+                Upload Pictures
+            </button>
+            <form id="formUploadCompanyPictures" method="post">
+                <input data-role="none" id="fileUploadCanvassFormTemplate" multiple type="file" accept="image/*" style="display:none;" />
+            </form>
+        </div>
+        <br />
+        <div id="divCompanyPicturesList" class="row equal">
+        </div>
+    </div>
+    <div id="tabCompanySellProducts" custom-tab-role="content" style="display:none;">
+        <div>
+            <span style="font-size:20px;">Categories of products or services that we offer</span>
+            <br /><br />
+            Please list down the categories of products or services that your company offers. E.g: bicycles, computer hardware,
+            computer software, grocery items, food items, construction supplies, school and office supplies, etc.
+        </div>
+        <br />
+        <div class="txt-right">
+            <button id="btnMACompanySellingCategory" data-role="none" class="btn btn-primary btn-less-width">
+                Add Category
+            </button>
+        </div>
+        <br />
+        <table id="tblSellingByCategories" data-role="table" data-mode="reflow" style="margin-right:5px; display:table;" class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+            <thead>
+                <tr class="custom-theme-c">
+                    <th style="width:50px;">#</th>
+                    <th>Category</th>
+                    <th>Business Activity</th>
+                    <th style="width:50px;">Status</th>
+                    <th style="width:150px;">Created By</th>
+                    <th style="width:150px;">Modified By</th>
+                </tr>
+            </thead>
+            <tbody id="tbodySellingByCategories"></tbody>
+        </table>
+        <br /><br />
+        <div>
+            <span style="font-size:20px;">Brands that we offer</span>
+            <br /><br />
+            Please list down the categories of brands that your company offers.
+        </div>
+        <br />
+        <div class="txt-right">
+            <button id="btnMACompanySellingBrand" data-role="none" class="btn btn-primary btn-less-width">
+                Add Brand
+            </button>
+        </div>
+        <br />
+        <table id="tblSellingByBrands" data-role="table" data-mode="reflow" style="margin-right:5px; display:table;" class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+            <thead>
+                <tr class="custom-theme-c">
+                    <th style="width:50px;">#</th>
+                    <th>Brand</th>
+                    <th>Business Activity</th>
+                    <th style="width:50px;">Status</th>
+                    <th style="width:150px;">Created By</th>
+                    <th style="width:150px;">Modified By</th>
+                </tr>
+            </thead>
+            <tbody id="tbodySellingByBrands"></tbody>
+        </table>
+    </div>
+</div>

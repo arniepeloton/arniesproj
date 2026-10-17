@@ -1,0 +1,1141 @@
+﻿<style type="text/css">
+    .dataTables_processing {
+        /*Overwrite the Process Loading in datatables*/
+        top: 0 !important;
+        line-height: 50vh !important;
+        height: 100% !important;
+        margin-top: -20px !important;
+    }
+
+    .right {
+        float: right;
+        width: 240px;
+    }
+
+    .left {
+        overflow: hidden;
+        float: none;
+    }
+
+    .fixed-header-width > th {
+        white-space: nowrap;
+    }
+
+    /* copied from \Views\CreditAndCollection\Index.vbhtml */
+    .divLeft {
+        float: none;
+        width: auto;
+        overflow: auto;
+        padding: 3px;
+    }
+
+    /* copied from \Views\CreditAndCollection\Index.vbhtml */
+    .divRight {
+        width: 250px;
+        float: right;
+        padding: 3px;
+    }
+</style>
+
+<div>
+    <div id="popupCustomerPayment-bs" data-backdrop="static" class="modal fade" tabindex="-1" style="display:none;">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><span name="TitlePrefix">Customer Payment</span> for <span class="lblCustomerName"></span></h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body p-0" id="popupCustomerPaymentcontent-bs">
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div id="popupCustomerPayment" custom-data-role="popup">
+        <div class="popup">
+            <div class="popup-header">
+                <span name="TitlePrefix">Customer Payment</span> for <span class="lblCustomerName"></span>
+                <a class="popup-close">x</a>
+            </div>
+
+            <div class="popup-content" id="popupCustomerPaymentcontent" style="padding:0px;">
+                <table style="width: 100%; height: 100%;">
+                    <tr>
+                        <td style="position:relative;">
+                            <div style="overflow: auto; position: absolute; bottom: 0; top: 0; width: 100%; right: 0px; padding:1rem;">
+                                <div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="btn-group w-100 overflow-scroll" role="group" aria-label="Basic example">
+                                                <button data-role="none" id="butCustomerPaymentLookup" class="btn btn-light border h-100 w-100">
+                                                    <span class="bi-search" style="font-size:25px;"></span>
+                                                    <div class="menu-description mt-1">Lookup <br /> Previous Payments</div>
+                                                </button>
+                                                <button data-role="none" id="butPaymentSave" class="btn btn-light border h-100 w-100 align-self-auto">
+                                                    <span class="bi-save" style="font-size:25px;"></span>
+                                                    <div class="menu-description mt-1">Save <br /> Payment</div>
+                                                </button>
+                                                <button data-role="none" id="divCustomerPaymentAdjustment" class="btn btn-light border h-100 w-100">
+                                                    <span class="bi-pencil-square" style="font-size:25px;"></span>
+                                                    <div class="menu-description mt-1">Apply <br /> Adjustment</div>
+                                                </button>
+                                                <button data-role="none" id="butCustomerPaymentApplyFifo" class="btn btn-light border h-100 w-100">
+                                                    <span class="bi-arrows-collapse" style="font-size:25px;"></span>
+                                                    <div class="menu-description mt-1">Apply <br /> FIFO</div>
+                                                </button>
+                                                <button data-role="none" id="butCustomerPaymentApplyModifiedFifo" class="btn btn-light border h-100 w-100">
+                                                    <span class="bi-file-earmark-arrow-down" style="font-size:25px;"></span>
+                                                    <div class="menu-description mt-1">Apply<br /> Modified FIFO</div>
+                                                </button>
+                                                <button data-role="none" id="butCustomerPaymentLookupDraft" class="btn btn-light border h-100 w-100">
+                                                    <span class="bi-search" style="font-size:25px;"></span>
+                                                    <div class="menu-description mt-1">Lookup <br /> Draft Payments</div>
+                                                </button>
+                                                <!--<div id="butCustomerPaymentFilterInvoices" title="Filter Invoices" class="custom-btn-theme-c" style="padding:3px; display:inline-block; margin-right:5px;">
+        <img src="/Content/images/filterinvoices.png" width="40px" />
+    </div>
+    <div id="butCustomerPaymentRemoveFilter" title="Remove Filter" class="custom-btn-theme-c" style="padding: 3px; display: inline-block; margin-right: 5px;">
+        <img src="/Content/images/removefilter.png" width="40px"/>
+    </div>-->
+
+                                                <button data-role="none" id="butCustomerPaymentPrint" class="btn btn-light border h-100 w-100">
+                                                    <span class="bi-printer" style="font-size: 25px;"></span>
+                                                    <div class="menu-description mt-1">
+                                                        Reprint <br /> Previous Payment
+                                                    </div>
+                                                </button>
+                                                <button data-role="none" id="butPaymentsRefresh" class="btn btn-light border h-100 w-100">
+                                                    <span class="bi-arrow-repeat" style="font-size:25px;"></span>
+                                                    <div class="menu-description mt-1">Refresh List</div>
+                                                </button>
+                                                <button data-role="none" name="butInteractionHistory" class="btn btn-light border h-100 w-100">
+                                                    <span class="bi-journal-text" style="font-size:25px;"></span>
+                                                    <div class="menu-description mt-1">Notes</div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <select name="cbPaymentInvoiceFilter" data-role="none" class="select custom-theme-c form-select">
+                                                <option value="has payable">Show Invoices With Outstanding Balances</option>
+                                                <option value="fully paid">Show Fully Paid Invoices</option>
+                                                <option value="fully paid without or">Show Fully Paid Invoices Without Official Receipt</option>
+                                                <option value="cancelled">Show Show Cancelled APs</option>
+                                                <option value="all">Show All Invoices</option>
+                                            </select>
+                                            <input data-role="none" class="form-control form-control-lg" placeholder="Search Invoice here" style="
+                                                /* height: 10px !important; */
+                                                padding: 2px 10px;
+                                                min-height: 10px;
+                                                margin-top: 10px;
+                                            " />
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div style="overflow:auto;">
+                                    <table id="tableInvoices" data-role="table" data-mode="reflow" style="margin-right:5px; display:table; width:100%;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive table table-light table-striped table-hover">
+                                        <thead>
+                                            <tr class="custom-theme-f fixed-cell-width" style="font-size:12px; vertical-align:top; text-align:center;">
+                                                <th data-sort="" style="cursor:pointer; text-align:center; max-width:40px;"> </th>
+                                                <th data-sort="" style="cursor:pointer; text-align:center;"> Invoice <br /> Date </th>
+                                                <th data-sort="" style="cursor:pointer; text-align:center;"> Invoice <br /> Due Date </th>
+                                                <th data-sort="" style="cursor:pointer; text-align:center;"> Invoice<br /> No. </th>
+                                                <th data-sort="" style="cursor:pointer; text-align:center;"> Gross Invoice<br /> Amount </th>
+                                                <th data-sort="" style="cursor:pointer; text-align:center;"> Net<br /> Adjustments </th>
+                                                <th data-sort="" style="cursor:pointer; text-align:center;"> Net<br /> Invoice <br /> Amount </th>
+                                                <th data-sort="" id="thAPPPendingApproval" style="cursor:pointer; text-align:center; width:100px; display:Xnone;"> Accum.<br />Customer<br />Payments<br />Pending<br />Approval </th>
+                                                <th data-sort="" style="cursor:pointer; text-align:center;"> Accum.<br /> Prev. <br /> Payments </th>
+                                                <th data-sort="" style="cursor:pointer; text-align:center;"> Net<br /> Invoice <br /> Balance </th>
+                                                <th data-sort="" style="cursor:pointer; text-align:center;"> Amount<br /> Paid </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr name="InvoiceRow">
+                                                <td name="InvoiceImage" style="max-width:40px;"></td>
+                                                <td name="InvoiceDate">1</td>
+                                                <td name="InvoiceDueDate">1</td>
+                                                <td name="InvoiceNum">SI-1</td>
+                                                <td name="GrossInvoiceAmount" style="text-align:right;">300</td>
+                                                <td name="NetAdjustments" style="text-align:right;">0</td>
+                                                <td name="NetInvoiceAmount" style="text-align:right;">300</td>
+                                                <td name="AccumPrevPaymentsPendingApproval" style="text-align:right;width:100px; display:Xnone;">0</td>
+                                                <td name="AccumPrevPayments" style="text-align:right;">0</td>
+                                                <td name="NetInvoiceBalance" style="text-align:right;">300</td>
+                                                <td>
+                                                    <div style="border:1px solid #000; display:inline-block;position:relative;width:100%">
+                                                        <input name="AmountPaid" type="text" data-role="none" style="background-color: transparent; border: 0;padding-right:30px;text-align:right" class="form-control fieldnumber" />
+                                                        <button name="butPasteNetInvoiceBalance" style="background-color: transparent; border: 0;position:absolute;right:0;top:6px;">&#10004;</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>2</td>
+                                                <td>SI-2</td>
+                                                <td style="text-align:right;">300</td>
+                                                <td style="text-align:right;">0</td>
+                                                <td style="text-align:right;">300</td>
+                                                <td style="text-align:right;">0</td>
+                                                <td style="text-align:right;">0</td>
+                                                <td style="text-align:right;">300</td>
+                                                <td><input type="text" data-role="none" class="form-control fieldnumber" /></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot style="border-top: 2px solid #CCC; font-weight: bold;">
+                                            <tr>
+                                                <td></td>
+                                                <td id="lblCustomerPaymentFootRecordCount"></td>
+                                                <td></td>
+                                                <td style="text-align:right;">TOTALS</td>
+                                                <td id="lblCustomerPaymentFootGrossInvoiceAmount" style="text-align:right;"></td>
+                                                <td id="lblCustomerPaymentFootNetAdjustments" style="text-align:right;"></td>
+                                                <td id="lblCustomerPaymentFootNetInvoiceAmount" style="text-align:right;"></td>
+                                                <td id="lblCustomerPaymentFootAccumPrevPaymentsPendingApproval" style="text-align:right;"></td>
+                                                <td id="lblCustomerPaymentFootAccumPrevPayments" style="text-align:right;"></td>
+                                                <td id="lblCustomerPaymentFootNetInvoiceBalance" style="text-align:right;"></td>
+                                                <td id="lblCustomerPaymentFootPayments" style="text-align:right;"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="width:300px; position:relative;">
+                            <div style="overflow: auto; position: absolute; bottom: 0; top: 0; width: 100%; right: 0px;">
+                                <table class="table table-bordered" cellpadding="5" cellspacing="0" style="width:100%;height:100%;">
+                                    <tbody class="cell-border">
+                                        <tr>
+                                            <td colspan="2">
+                                                <label>Manual Receipt Number:</label><br />
+                                                <input id="txtPaymentManualReceiptNumber" class="form-control" maxlength="30" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td id="btnPaymentCash">
+                                                <label>Cash</label><br />
+                                                <div class="text-right font-weight-bold" id="lblPaidCash">0.00</div>
+                                            </td>
+                                            <td id="btnPaymentDCCard">
+                                                <label>D/C Card</label><br />
+                                                <div class="text-right font-weight-bold" id="lblPaidDCCard">0.00</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td id="btnPaymentCheque">
+                                                <label>Cheque/Online<br />Payment</label><br />
+                                                <div class="text-right font-weight-bold" id="lblPaidCheque">0.00</div>
+                                            </td>
+                                            <td id="btnPaymentSrv">
+                                                <label>SRV</label><br />
+                                                <div class="text-right font-weight-bold" id="lblPaidSrv">0.00</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td id="btnPaymentOther" colspan="2">
+                                                <label>Other Payment</label><br />
+                                                <div class="text-right font-weight-bold" id="lblPaidOther">0.00</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <label>Current Payment(s) Received</label><br />
+                                                <div class="text-right font-weight-bold" id="lblTotalPaymentRcv">0.00</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <label>Current Payment(s) Applied To Invoice(s)</label><br />
+                                                <div id="lblCurrentPaymentsAppliedToInvoices" class="text-right font-weight-bold">0.00</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <label>Current Payment(s) Not Applied To Invoice(s)</label><br />
+                                                <div id="lblCurrentPaymentsNotAppliedToInvoices" class="text-right font-weight-bold">0.00</div>
+                                            </td>
+                                        </tr>
+                                        <tr id="trUnappliedPayments">
+                                            <td colspan="2">
+                                                <label>Accumulated Unapplied Payment(s) And Credit(s)</label><br />
+                                                <div id="divUnappliedPayments" class="text-right font-weight-bold">0.00</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="display:none;">
+                                    <span style="padding-left: 15px; font-size:20px; font-weight:bold;"> Payment Details</span>
+                                    <div style="display: none;"><input type="text" readonly id="txtSalesPayCustomerID" /></div>
+
+                                    <div class="ui-body">
+                                        <div data-role="fieldcontain">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Sub Total:
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblSalesPaySubTotal" style="float: right; text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain" id="rowVATPercent" style="display:none">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    Less : <label id="lblVATPercentValue"></label>% VAT
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblVATPercent" style="float: right; text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain" id="rowAmountLessVAT" style="display:none">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Total Amount:
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblTotalAmount" style="float: right; text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Less : Discount Amount
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblSalesPayTotalDiscount" style="float: right; text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Add : Charges
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblSalesPayCharges" style="float: right; text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain" id="divPaymentsTip" style="display:none">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Add : Tip
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblSalesPayTip" style="float: right; text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain" id="divPaymentsOtherTax" style="display:none">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Add : Other Tax
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblSalesPayOtherTax" style="float: right; text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <div>
+                                                <label>
+                                                    Amount Due:
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <br />
+                                                <label id="lblSalesPayAmountDue" style="float: right; text-align: right; font-size: xx-large;">
+                                                    0.00
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Amount Tendered:
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblSalesPayTotalAmountTendered" style="float: right; text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Amount Lacking:
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblSalesPayAmountLacking" style="float: right;text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Change Amount:
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="lblSalesPayTotalChangeAmount" style="float: right;text-align: right;">
+                                                        0.00
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div data-role="fieldcontain">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        SKU Count:
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="pSkuCount" style="float: right; text-align: right;">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div data-role="fieldcontain">
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <label>
+                                                        Total Quantity:
+                                                    </label>
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <label id="pTotalQuantity" style="float: right; text-align: right;">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>SKU Count:</legend>
+                    <div data-role="controlgroup">
+                        <span id="pSkuCount" />
+                    </div>
+                </fieldset>
+            </div>
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>Total Quantity:</legend>
+                    <div data-role="controlgroup">
+                        <span id="pTotalQuantity" />
+                    </div>
+                </fieldset>
+            </div>
+
+            -->
+
+                                    </div>
+                                    <div data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>
+                                                Cash
+                                            </label>
+                                            <label id="lblSalesPayTotalCash" style="float: right; margin-right: -10px; text-align: right;">
+                                                0.00
+                                            </label>
+                                        </h2>
+
+                                        <input type="number" step="any" id="txtSalesPaymentCash" placeholder="Cash Amount" style="text-align: right; font-size: xx-large;" />
+
+                                    </div>
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>
+                                                Check/ Gift Certificate
+                                            </label>
+                                            <label id="lblSalesPayTotalCheck" style="float: right; margin-right: -10px; text-align: right;">
+                                                0.00
+                                            </label>
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <a id="btnSalesPayAddCheck" data-role="button" data-icon="plus" data-inline="true">Add Check/ Gift Certificate</a>
+                                        </div>
+                                        <div data-role="fieldcontain" id="divSalesPayRecordCountCheck">
+                                        </div>
+                                        <div>
+                                            <ul data-role="listview" id="lstSalesPayCheck" data-inset="true"></ul>
+                                        </div>
+                                    </div>
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>
+                                                Debit Card
+                                            </label>
+                                            <label id="lblSalesPayTotalDebitCard" style="float: right; margin-right: -10px; text-align: right;">
+                                                0.00
+                                            </label>
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <a id="btnSalesPayAddDebitCard" data-role="button" data-icon="plus" data-inline="true">Add Debit Card</a>
+                                        </div>
+                                        <div data-role="fieldcontain" id="divSalesPayRecordCountDebitCard">
+                                        </div>
+                                        <div>
+                                            <ul data-role="listview" id="lstSalesPayDebitCard" data-inset="true"></ul>
+                                        </div>
+                                    </div>
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>
+                                                Credit Card
+                                            </label>
+                                            <label id="lblSalesPayTotalCreditCard" style="float: right; margin-right: -10px; text-align: right;">
+                                                0.00
+                                            </label>
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <a id="btnSalesPayAddCreditCard" data-role="button" data-icon="plus" data-inline="true">Add Credit Card</a>
+                                        </div>
+                                        <div data-role="fieldcontain" id="divSalesPayRecordCountCreditCard">
+                                        </div>
+                                        <div>
+                                            <ul data-role="listview" id="lstSalesPayCreditCard" data-inset="true"></ul>
+                                        </div>
+                                    </div>
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>
+                                                SRV
+                                            </label>
+                                            <label id="lblSalesPayTotalSRV" style="float: right; margin-right: -10px; text-align: right;">
+                                                0.00
+                                            </label>
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <a id="btnSalesPayAddSRV" data-role="button" data-icon="plus" data-inline="true">Add SRV</a>
+                                        </div>
+                                        <div data-role="fieldcontain" id="divSalesPayRecordCountCreditCard">
+                                        </div>
+                                        <div>
+                                            <ul data-role="listview" id="lstSalesPaySRV" data-inset="true"></ul>
+                                        </div>
+                                    </div>
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true" style="display: none;">
+                                        <h2>
+                                            <label>
+                                                Gift Certificate
+                                            </label>
+                                            <label id="lblSalesPayTotalGiftCert" style="float: right; margin-right: -10px; text-align: right;">
+                                                0.00
+                                            </label>
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <a id="btnSalesPayAddGC" data-role="button" data-icon="plus" data-inline="true">Add Gift Certificate</a>
+                                        </div>
+                                        <div data-role="fieldcontain" id="divSalesPayRecordCountGC">
+                                        </div>
+                                        <div>
+                                            <ul data-role="listview" id="lstSalesPayGiftCertificate" data-inset="true"></ul>
+                                        </div>
+                                    </div>
+                                    <div id="divOnCredit" style="display:none" data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>
+                                                On Credit
+                                            </label>
+                                            <!--<label id="lblSalesPayTotalOtherType" style="float: right; margin-right: -10px; text-align: right;">
+                    0.00
+                </label>-->
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <label for="txtOnCredit" style="font-weight:normal">
+                                                On Credit:
+                                            </label>
+                                            <input id="txtOnCredit" type="number" step="any">
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <label for="txtOnCreditRemarks" style="font-weight:normal">
+                                                Remarks:
+                                            </label>
+                                            <textarea id="txtOnCreditRemarks"> </textarea>
+                                        </div>
+                                    </div>
+
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>
+                                                Other Payment Type
+                                            </label>
+                                            <label id="lblSalesPayTotalOtherType" style="float: right; margin-right: -10px; text-align: right;">
+                                                0.00
+                                            </label>
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <a id="btnSalesPayAddOtherType" data-role="button" data-icon="plus" data-inline="true">Add Other Payment Type</a>
+                                        </div>
+                                        <div data-role="fieldcontain" id="divSalesPayRecordCountOther">
+                                        </div>
+                                        <div>
+                                            <ul data-role="listview" id="lstSalesPayOtherType" data-inset="true"></ul>
+                                        </div>
+                                    </div>
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true" style="display: none;">
+                                        <h2>
+                                            <label>
+                                                Credit Terms
+                                            </label>
+                                            <label id="lblSalesPayTotalCreditTerms" style="float: right; margin-right: -10px; text-align: right;">0.00</label>
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <input type="text" readonly style="display: none;" id="txtSalesPayCreditID" />
+                                        </div>
+
+                                        <div style="display: none;"><input type="text" readonly id="txtSalesPayCreditTermCustomerID" /></div>
+                                        <div data-role="fieldcontain">
+                                            <label for="btnSalesPayCreditTermCustomer">Customer: <span style="color: #FF0000;">*</span></label>
+                                            <button id="btnSalesPayCreditTermCustomer" data-role="button">Please Select</button>
+
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <label for="txtSalesPayCreditTermRemainingCredit">Remaining Credit:</label>
+                                            <input type="number" readonly id="txtSalesPayCreditTermRemainingCredit" />
+
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <label for="txtSalesPayCreditTermTenderedAmount">Tendered Amount: <span style="color: #FF0000;">*</span></label>
+                                            <input type="number" id="txtSalesPayCreditTermTenderedAmount" />
+                                        </div>
+                                    </div>
+                                    <div data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>Billing Info</label>
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <input type="checkbox" id="chkForGovReport">
+                                            <label for="chkForGovReport" style="font-weight:normal">
+                                                <h3>Print a Named Receipt</h3>
+                                                <p style="font-weight: normal; margin-top: -15px;">
+                                                    Include customer's a.) Name, b.) TIN c.) Billing Address in sales invoice for government reporting.
+                                                </p>
+                                            </label>
+
+
+                                        </div>
+                                    </div>
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>Delivery Info</label>
+                                        </h2>
+
+                                        <div data-role="fieldcontain">
+                                            <label for="txtOrgCustomer">Customer Account:</label>
+                                            <input type="text" readonly id="txtOrgCustomer" />
+                                        </div>
+
+                                        <div style="display:none;"><input type="text" readonly id="txtOrderedByID" /></div>
+                                        <div id="divDeliveryInfoOrderedBy" data-role="fieldcontain">
+                                            <label for="btnOrderBy">Ordered By: <span style="color: #FF0000;">*</span></label>
+                                            <button id="btnOrderBy" data-role="button">Please Select</button>
+                                        </div>
+
+                                        <div style="display:none;"><input type="text" readonly id="txtBillToID" /></div>
+                                        <div data-role="fieldcontain">
+                                            <label for="btnBillTo">Bill To: <span style="color: #FF0000;">*</span></label>
+                                            <button id="btnBillTo" data-role="button">Please Select</button>
+                                        </div>
+
+                                        <div style="display:none;"><input type="text" readonly id="txtShipToID" /></div>
+                                        <div data-role="fieldcontain">
+                                            <label for="btnShipTo">Ship To: <span style="color: #FF0000;">*</span></label>
+                                            <button id="btnShipTo" data-role="button">Please Select</button>
+                                        </div>
+
+                                        <div data-role="fieldcontain">
+                                            <label for="txtDeliveryInfoTelNo">Tel. No.: </label>
+                                            <input type="text" readonly id="txtDeliveryInfoTelNo" />
+                                        </div>
+
+                                        <div data-role="fieldcontain">
+                                            <label for="txtDeliveryInfoFaxNo">Fax No.: </label>
+                                            <input type="text" readonly id="txtDeliveryInfoFaxNo" />
+
+                                        </div>
+
+                                        <div data-role="fieldcontain">
+                                            <label for="txtDeliveryInfoMobileNo">Mobile No.: </label>
+                                            <input type="text" readonly id="txtDeliveryInfoMobileNo" />
+
+                                        </div>
+
+                                        <div data-role="fieldcontain">
+                                            <label for="txtDeliveryInfoEmail">Email : </label>
+                                            <input type="text" readonly id="txtDeliveryInfoEmail" />
+
+                                        </div>
+
+                                        <div id="divDeliveryInfoDelMode" data-role="fieldcontain">
+                                            <label for="selDeliveryMode" class="select">Delivery Mode:</label>
+                                            <select id="selDeliveryMode">
+                                                <option value="">Please Select</option>
+                                                <option value="Deliver (Downtown)">Deliver (Downtown)</option>
+                                                <option value="Deliver (Out Of Town)">Deliver (Out Of Town)</option>
+                                                <option value="PickUp">Pick Up</option>
+                                                <option value="Dine In">Dine In</option>
+                                                <option value="Take Out">Take Out</option>
+                                            </select>
+                                        </div>
+
+                                        <div id="divDeliverDownTown" style="display:none;">
+
+                                            <fieldset data-role="controlgroup" data-type="horizontal">
+                                                <input type="radio" id="rdoRush" name="DownTownOption" value="1" />
+                                                <label for="rdoRush">Rush</label>
+                                                <input type="radio" id="rdoNotRush" name="DownTownOption" value="0" />
+                                                <label for="rdoNotRush">Not Rush</label>
+                                            </fieldset>
+
+                                            <div id="divRush" data-role="fieldcontain" style="display:none;">
+                                                <div data-role="fieldcontain">
+                                                    <label for="txtDeliverWithIn">Deliver within </label>
+                                                    <input type="number" id="txtDeliverWithIn" />
+
+                                                </div>
+
+                                                <div data-role="fieldcontain">
+                                                    <fieldset data-role="controlgroup">
+                                                        <div>
+                                                            <select id="selHourMinute">
+                                                                <option value="">Hour or Minute</option>
+                                                                <option value="Working Hours">Working Hours</option>
+                                                                <option value="Working Minutes">Working Minutes</option>
+                                                            </select>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <div id="divNotRush" data-role="fieldcontain" style="display:none;">
+                                                <fieldset data-role="controlgroup">
+                                                    <div data-role="fieldcontain">
+                                                        <label>Maximum service time : 8 working hour(s)</label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+
+                                        </div>
+
+                                        <div id="divDeliverOutOfTown" style="display:none;">
+
+                                            <fieldset data-role="controlgroup" data-type="horizontal">
+                                                <input type="radio" id="rdoNormalRoute" name="OutOfTownOption" value="1" />
+                                                <label for="rdoNormalRoute">Normal Route</label>
+                                                <input type="radio" id="rdoBus" name="OutOfTownOption" value="0" />
+                                                <label for="rdoBus">Bus</label>
+                                            </fieldset>
+
+                                            <div id="divBus" data-role="fieldcontain" style="display:none;">
+                                                <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+                                                    <div data-role="fieldcontain">
+                                                        <label id="lblOutOfTownBus">Maximum service time : 2 hour(s)</label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+
+                                        </div>
+
+                                        <div id="divPickup" style="display:none;">
+
+                                            <div id="divPickUpType">
+                                                <fieldset data-role="controlgroup" data-type="horizontal">
+                                                    <input type="radio" id="rdoCustomerIsWaiting" name="PickUpOption" value="1" />
+                                                    <label for="rdoCustomerIsWaiting">Customer is waiting</label>
+                                                    <input type="radio" id="rdoDateAndTime" name="PickUpOption" value="0" />
+                                                    <label for="rdoDateAndTime">Pick Up</label>
+                                                </fieldset>
+                                            </div>
+
+                                            <div style="display:none;"><input type="text" readonly id="txtPickUpLocationID" /></div>
+                                            <div id="divPickupLocation" data-role="fieldcontain">
+                                                <label for="btnPickLocation">Pick Up Location: <span style="color: #FF0000;">*</span></label>
+                                                <button id="btnPickLocation" data-role="button">Please Select</button>
+
+                                            </div>
+
+                                            <div id="divCustomerIsWaiting" data-role="fieldcontain" style="display:none;">
+                                                <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+                                                    <div data-role="fieldcontain">
+                                                        <label id="lblPickUpCustomerIsWaiting">Maximum service time : 30 Minute(s)</label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+
+                                            <div id="divDateAndTime" data-role="fieldcontain" style="display:none;">
+                                                <div data-role="fieldcontain">
+                                                    <label>Pick Up Date and Time: <span style="color: #FF0000;">*</span></label>
+                                                    <fieldset data-role="controlgroup" data-type="horizontal">
+                                                        <select id="selPickUpMonth">
+                                                            <option value="">MMM</option>
+                                                        </select>
+                                                        <select id="selPickUpDay">
+                                                            <option value="">DD</option>
+                                                        </select>
+                                                        <select id="selPickUpYear">
+                                                            <option value="">YYYY</option>
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                                <div data-role="fieldcontain">
+                                                    <fieldset data-role="controlgroup" data-type="horizontal">
+                                                        <select id="selPickUpHour">
+                                                            <option value="">HR </option>
+                                                        </select>
+                                                        <select id="selPickUpMin">
+                                                            <option value="">MN</option>
+                                                        </select>
+                                                        <select id="selPickUpAMPM">
+                                                            <option value="">AM/PM</option>
+                                                            <option value="AM">AM</option>
+                                                            <option value="PM">PM</option>
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>Discounts</label>
+                                        </h2>
+                                        <div data-role="fieldcontain">
+                                            <label for="selDiscountType" class="select">Discount Type:</label>
+                                            <select id="selDiscountType">
+                                                <option value="">Please Select</option>
+                                            </select>
+                                        </div>
+
+                                        <div style="display:none;"><input type="number" id="txtDiscountPercentCeiling" readonly style="text-align: right;" /></div>
+                                        <div data-role="fieldcontain">
+                                            <label for="txtDiscountPercent">Percent Discount (%): </label>
+                                            <input type="text" id="txtDiscountPercent" style="text-align: right;" />
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <label for="txtDiscountAmount">Discount Amount: </label>
+                                            <input type="text" id="txtDiscountAmount" style="text-align: right;" />
+                                        </div>
+                                        <div data-role="fieldcontain">
+                                            <label for="txtDiscountRemarks">Remarks: </label>
+                                            <input type="text" id="txtDiscountRemarks" />
+                                        </div>
+
+
+                                        <div id="divAddCustomerDetails" style="display:none;">
+                                            <div id="divSCPWDDiscount" style="display:none;">
+                                                <div data-role="fieldcontain">
+                                                    <label for="txtSalesPayNoOfSC">Number of Senior Citizens: <span style="color: #FF0000;">*</span></label>
+                                                    <input type="number" id="txtSalesPayNoOfSC" value="1" style="text-align: right;" />
+                                                </div>
+                                                <div data-role="fieldcontain">
+                                                    <label for="txtSalesPayNoOfDiners">Number of People (including the Senior Citizen): <span style="color: #FF0000;">*</span></label>
+                                                    <input type="number" id="txtSalesPayNoOfDiners" value="1" style="text-align: right;" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <ul data-role="listview" id="lstCustomerContainer" data-inset="true">
+                                                    <li data-role="list-divider">List of Senior Citizens / PWD Availing the Discount</li>
+                                                    <li>
+                                                        <div data-role="fieldcontain"><a id="btnAddNewCustomer" data-role="button" data-icon="plus" data-inline="true">Add New Senior Citizen / PWD Customer</a></div>
+
+                                                        <form id="frmCustomerSearch">
+                                                            <div><input id="txtCustomerSearch" type="search" value="" placeholder="Type Customer Name or Identification Number" /></div>
+                                                        </form>
+
+                                                        <div>
+                                                            <ul data-role="listview" id="lstSalesPayCustomerName" data-inset="true"></ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div data-role="collapsible" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+                                        <h2>
+                                            <label>Charges and Other Tax</label>
+                                        </h2>
+                                        <div data-role="content">
+                                            <label for="selChargeType">Charge Type: </label>
+                                            <select id="selChargeType">
+                                                <option value="Service Charge">Service Charge</option>
+                                                <option value="Delivery Charge">Delivery Charge</option>
+                                                <option value="Other Charges">Other Charges</option>
+                                                <option value="Local Tax">Local Tax</option>
+                                            </select>
+
+                                            <label for="txtAddChargePercent">Percentage (%): </label>
+                                            <input type="number" id="txtAddChargePercent" style="text-align: right;" />
+
+                                            <label for="txtAddCharge">Amount: </label>
+                                            <input type="number" id="txtAddCharge" style="text-align: right;" />
+
+                                            <label for="txtChargeRemarks">Remarks: </label>
+                                            <textarea rows="3" id="txtChargeRemarks"></textarea>
+                                            <br />
+                                            <button id="btnAddCharge">Add</button>
+                                            <br />
+                                            <hr />
+                                            <br />
+                                            <table style="width:100%">
+                                                <thead>
+                                                    <tr style="background-color:ButtonFace;">
+                                                        <th style="text-align: center">Type</th>
+                                                        <th style="text-align: center">Amount</th>
+                                                        <th style="text-align: center">Remarks</th>
+                                                        <th></th>
+                                                    </tr>
+
+                                                </thead>
+
+                                                <tbody id='tblChargesList'></tbody>
+
+                                            </table>
+
+                                            <br />
+                                            <hr />
+                                            <div class="ui-grid-a">
+                                                <div class="ui-block-a">
+                                                    <div>
+                                                        <h3>
+                                                            Total Charges
+                                                        </h3>
+                                                    </div>
+
+                                                </div>
+                                                <div class="ui-block-b">
+                                                    <h3 id="lblBillTotalCharges" style="text-align: right">
+                                                        0.00
+                                                    </h3>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div id="divSalesPaymentSalesRep">
+                                        <div style="text-align: center">
+                                            <a id="butAddSalesRepresentatives" data-role="button">
+                                                <h3>Assign Sales Representatives</h3>
+                                                <p style="font-weight: normal; margin-top: -15px;">
+                                                    Assign sales representatives for this transaction
+                                                </p>
+                                            </a>
+                                        </div>
+                                        <div id="divSalesPaymentSalesRepList">
+
+                                        </div>
+                                        <ul id="lstSalesRep" data-role="listview" data-inset="true"></ul>
+                                    </div>
+                                    <div style="display:none;">
+                                        <br />
+                                        <br />
+                                        <div style="text-align: center">
+                                            <a id="btnSalesPaymentDone" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Print Receipt
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div id="divPrintReceiptOrderSlip" style="text-align: center; display:none">
+                                            <a id="butPrintReceiptOrderSlip" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Print Receipt / Order Slip
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div style="text-align: center">
+                                            <a id="btnSalesPaymentEmail" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Email Receipt
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div style="text-align: center">
+                                            <a id="btnSalesPaymentPrintEmail" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Print and Email Receipt
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div id="divSaveReceipt" style="text-align: center; display:none">
+                                            <a id="butSaveReceipt" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Save Receipt
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div id="divPrintBilling" style="text-align: center; display:none">
+                                            <a id="butPrintBilling" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Print Billing
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div id="divPrintOrderSlip" style="text-align: center; display: none">
+                                            <a id="butPrintOrderSlip" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Print Order Slip
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div id="divPrintOrderSlipAndBilling" style="text-align: center; display: none">
+                                            <a id="butPrintOrderSlipAndBilling" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Print Invoice and Billing
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div id="divPrintOrderSlipAndBilling" style="text-align: center; display:none">
+                                            <a id="butPrintOrderSlipAndBilling" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Print Invoice and Order Slip
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div id="divPrintOrderSlipAndBilling" style="text-align: center; display:none">
+                                            <a id="butPrintOrderSlipAndBilling" data-role="button" data-theme="e">
+                                                <h3>
+                                                    Print Billing and Order Slip
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div style="text-align:center;">
+                                            <a id="btnDeliveryInfoPriceQoute" data-role="button" data-theme="e">
+                                                <h3>Quote Prices</h3>
+                                                <p style="font-weight:normal; margin-top:-15px;">Save Items for Checkout Later</p>
+                                            </a>
+                                        </div>
+                                        <div style="text-align: center">
+                                            <a id="btnNewCart" name="btnNewCart" data-role="button">
+                                                <h3>
+                                                    New Cart
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div style="text-align: center">
+                                            <a id="btnSalesPaymentBack" data-role="button">
+                                                <h3>
+                                                    Back
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="popup-footer">
+                <button id="" data-role="none" class="btn custom-btn-theme-c btnCircle popup-close">
+                    <img alt="Options" src="/Content/images/close-black.png" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="popup" id="divPopUnappliedCreditAmount_old" data-overlay-theme="a" data-theme="a" data-corners="false" style="display:none">
+        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <center><h3 style="margin-left:10px; margin-right:10px;">Unapplied credit amount</h3></center>
+        <div data-role="content">
+            Please enter the unapplied credit amount to consume
+            <input />
+            <button name="ok">Ok</button>
+            <button name="close">Close</button>
+        </div>
+
+    </div>
+
+    
+
+    <div id="popupPaymentDistribution" custom-data-role="popup">
+        <div class="popup">
+            <div class="popup-header">
+                Payment Distribution
+                <a class="popup-close">x</a>
+            </div>
+
+            <div class="popup-content">
+                <div style="overflow:auto;">
+                    <table id="tablePaymentDistribution">
+                        <tr>
+                            <th>Check No.</th>
+                            <th>Check Date</th>
+                            <th>Check Amount</th>
+                        </tr>
+                        <tr></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="popup-footer">
+                <button id="" data-role="none" class="btn custom-btn-theme-c btnCircle popup-close">
+                    <img alt="Options" src="/Content/images/close-black.png" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupSalesReturn" class="modal fade" tabindex="-1" style="display:none">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sales Return</h5>
+                    <!--<button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal" name="btnCloseSalesReturn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

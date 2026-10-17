@@ -1,0 +1,92 @@
+﻿<div id="popupInvoiceRefImage" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Invoice Reference Images</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3 text-right">
+                    <button data-role="none" class="btn btn-success" id="btnIIUploadInvRef">Upload New Invoice Ref. Image</button>
+                    <button data-role="none" class="btn btn-success" id="btnIIBrowseVendorInv">Browse Vendor's Invoices</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table data-role="none" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="align-top text-center">
+                                <th style="width:50px;">#</th>
+                                <th>Invoice Ref. No.</th>
+                                <th>Invoice Date</th>
+                                <th>No. of Line Items</th>
+                                <th>Amount</th>
+                                <th>Remarks</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyInvoiceImage"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupUploadInvoiceRefImage" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Upload Invoice Ref. Image</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label" for="btnIIVendor">Vendor Name:</label>
+                    <button data-role="none" id="btnIIVendor" class="btn btn-secondary btn-block">Search Vendor</button>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtIIVendorInvoiceRefNo">Invoice Reference No.: <span class="required">*</span></label>
+                    <input data-role="none" type="text" id="txtIIVendorInvoiceRefNo" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtIIVendorInvoiceRefDate">Invoice Date: <span class="required">*</span></label>
+                    <input data-role="none" type="date" id="txtIIVendorInvoiceRefDate" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtIIVendorNoOfLineItems">No. of Line Items: <span class="required">*</span></label>
+                    <input data-role="none" type="number" id="txtIIVendorNoOfLineItems" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtIIVendorInvoiceRefAmount">Invoice Amount: <span class="required">*</span></label>
+                    <input data-role="none" type="number" id="txtIIVendorInvoiceRefAmount" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtIIVendorInvoiceRefRemarks">Remarks:</label>
+                    <textarea data-role="none" id="txtIIVendorInvoiceRefRemarks" class="form-control" style="resize:none; height:150px;"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="txtIIVendorfileAttach">Select Invoice Image:</label>
+                    <input data-role="none" type="file" id="txtIIVendorfileAttach" accept="image/*" class="form-control" />
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" id="btnIIUpload" class="btn btn-success btn-lg btn-block">Upload</button>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div name="divInvoiceRefImage" class="bxslider" style="display:none;"></div>

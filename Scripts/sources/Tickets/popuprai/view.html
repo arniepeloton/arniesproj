@@ -1,0 +1,107 @@
+﻿<div>
+    <div id="popupRAIMain" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-fullwidth modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mobiz Users' Reports</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            Status:
+                        </div>
+                        <div class="col-auto">
+                            <select data-role="none" class="form-select fixed" id="selRAIStatus">
+                                <option value="Unresolved">Unresolved</option>
+                                <option value="Resolved">Resolved</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="col-md">
+                            <input data-role="none" type="search" class="form-control" id="txtSearchRAI" placeholder="Search here" />
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table data-role="none" class="table table-light table-striped table-hover">
+                            <tbody id="tbodyRAI"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupRAIDetails" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Details</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Date Reported:</label>
+                        <input data-role="none" type="text" class="form-control" id="lblRAIDate" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Customer:</label>
+                        <input data-role="none" type="text" class="form-control" id="lblRAICustomerName" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">FOWST:</label>
+                        <input data-role="none" type="text" class="form-control" id="lblRAIFowstName" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Product:</label>
+                        <input data-role="none" type="text" class="form-control" id="lblRAIProduct" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Subject:</label>
+                        <input data-role="none" type="text" class="form-control" id="lblRAISubject" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Urgency:</label>
+                        <input data-role="none" type="text" class="form-control" id="lblRAIUrgency" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Importance:</label>
+                        <input data-role="none" type="text" class="form-control" id="lblRAIImportance" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description:</label>
+                        <textarea data-role="none" type="text" class="form-control" id="lblRAIDescription" style="resize:none;" readonly></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Status:</label>
+                        <select data-role="none" class="form-select" id="selRAIDetailsStatus">
+                            <option value="Unresolved">Unresolved</option>
+                            <option value="Resolved">Resolved</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <label id="lblStatus"></label>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button data-role="none" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col">
+                            <button data-role="none" class="btn btn-success btn-lg btn-block" id="btnRAIUpdate">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,202 @@
+﻿<style type="text/css">
+    .players {
+        border: 2px solid #28a745;
+        background-color: #c1ffd0;
+        border-radius: 3px;
+    }
+
+    .players-warning {
+        border: 2px solid #ffc107 !important;
+        background-color: #ffefc0  !important;
+    }
+
+    .players-done {
+        border: 2px solid #dc3545 !important;
+        background-color: #ffc6cb  !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-6 mb-3">
+        <input data-role="none" type="search" id="txtSearchPlayers" class="form-control" placeholder="Search here" />
+    </div>
+    <div class="col mb-3 text-right">
+        <button data-role="none" id="btnPRRegister" class="btn btn-success">Register</button>
+    </div>
+</div>
+
+<div class="row" id="divListOfPlayers">
+    
+</div>
+
+<div id="popupPRRegister" class="modal fade" tabindex="-1" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registration</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body text-dark">
+                <input data-role="none" type="file" id="fileTakePic" accept="image/*" class="form-control d-none" />
+                <div class="alert alert-info mb-3" role="alert">
+                    Please fill out all fields marked with an <span class="required">*</span>.
+                </div>
+
+                <h5 class="mb-3">Customer Information</h5>
+
+                <div class="row mb-3">
+                    <div class="col-auto">
+                        <img class="img-thumbnail" id="imgRepresentativePic" src="/Content/images/NoPhoto.jpg" style="width:150px; height:150px; object-fit:cover;" />
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Name of Representative: <span class="required">*</span></label>
+                            <input data-role="none" type="text" id="txtPRRepresentativeName" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Contact Number: <span class="required">*</span></label>
+                            <input data-role="none" type="text" id="txtPRReprensentativeContactNo" class="form-control" placeholder="09**********" maxlength="11"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3 mt-5">
+                    <div class="col">
+                        <h5>Children Information</h5>
+                    </div>
+                    <div class="col text-right">
+                        <button data-role="none" class="btn btn-success" id="btnPRAddChildren">Add Children</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive mb-3">
+                    <table class="table table-light table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <th style="min-width:125px; max-width:125px;"></th>
+                                <th style="min-width:150px;">Full Name <span class="required">*</span></th>
+                                <th style="min-width:100px; max-width:100px;">Age <span class="required">*</span></th>
+                                <th style="min-width:150px; max-width:150px;">Gender <span class="required">*</span></th>
+                                <th style="min-width:50px; max-width:50px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyChildren"></tbody>
+                    </table>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">Total No. of Children: <span class="required">*</span></div>
+                    <div class="col-md">
+                        <input data-role="none" type="number" class="form-control" id="txtPRNoOfChildren" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">Total No. of Adult: <span class="required">*</span></div>
+                    <div class="col-md">
+                        <input data-role="none" type="number" class="form-control" id="txtPRNoOfAdults" />
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">Enter Time: <span class="required">*</span></div>
+                    <div class="col-md">
+                        <input data-role="none" type="time" class="form-control" id="txtPREnterTime" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">Exit Time: <span class="required">*</span></div>
+                    <div class="col-md">
+                        <input data-role="none" type="time" class="form-control" id="txtPRExitTime" />
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">Total Duration Time:</div>
+                    <div class="col-md">
+                        <input data-role="none" type="text" class="form-control" id="txtPRDurationTime" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">Bag Locker: <span class="required">*</span></div>
+                    <div class="col-md">
+                        <input data-role="none" type="text" class="form-control" id="txtPRBagLocker" />
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">Shoe Locker: <span class="required">*</span></div>
+                    <div class="col-md">
+                        <input data-role="none" type="text" class="form-control" id="txtPRShoeLocker" />
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">Receptionist: <span class="required">*</span></div>
+                    <div class="col-md">
+                        <input data-role="none" type="text" class="form-control" id="txtPRReceptionist" />
+                    </div>
+                </div>
+
+                <!--<div class="row mb-3 align-items-center">
+                    <div class="col-md-3">Total Amount: <span class="required">*</span></div>
+                    <div class="col-md">
+                        <input data-role="none" type="number" class="form-control" id="txtPRTotalAmount" />
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <div class="col-md-3">OR No.: <span class="required">*</span></div>
+                    <div class="col-md">
+                        <input data-role="none" type="number" class="form-control" id="txtPRORNo" />
+                    </div>
+                </div>-->
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" type="button" class="btn btn-success btn-lg btn-block" id="btnPRSave">Save</button>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupPRExtendTime" class="modal fade" tabindex="-1" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Player: <b name="lblPlayerName"></b></h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body text-dark">
+                <div class="mb-3">
+                    <label class="form-label">Extend:</label>
+                    <select data-role="none" id="txtExtendExitTime" class="form-select">
+                        <option value="60">1 hr</option>
+                        <option value="45">45 mins</option>
+                        <option value="30">30 mins</option>
+                        <option value="15">15 mins</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col">
+                        <button data-role="none" type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col">
+                        <button data-role="none" type="button" class="btn btn-success btn-lg btn-block" id="btnPRExtendSave">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

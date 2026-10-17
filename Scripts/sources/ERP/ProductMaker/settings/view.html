@@ -1,0 +1,560 @@
+﻿<div>
+    <div custom-data-role="accordion">
+        <div class="accordion-header">
+            Optional Settings
+        </div>
+        <div class="accordion-content">
+            <div>
+                Check In / Rent Out Time:
+                <select class="form-control fixed" name="selCheckInTimeHour" data-role="none">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12" selected>12</option>
+                </select> :
+                <select class="form-control fixed" name="selCheckInTimeMinute" data-role="none">
+                    <option value="00" selected>00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                </select>
+                <select class="form-control fixed" name="selCheckInTimeMeridian" data-role="none">
+                    <option value="AM">AM</option>
+                    <option value="PM" selected>PM</option>
+                </select>
+            </div>
+            <br />
+            <div>
+                <input data-role="none" type="text" id="txtCheckOutTimeID" style="display:none; visibility:hidden;" />
+                Check Out / Return Time:
+                <select class="form-control fixed" id="selCOhour" data-role="none">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12" selected>12</option>
+                </select> :
+                <select class="form-control fixed" id="selCOminute" data-role="none">
+                    <option value="00" selected>00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                </select>
+                <select class="form-control fixed" id="selCOmeredian" data-role="none">
+                    <option value="AM">AM</option>
+                    <option value="PM" selected>PM</option>
+                </select>
+            </div>
+            <br/>
+            <div>
+                Earliest Check In Time:
+                <select class="form-control fixed" name="selEarlyCheckInTimeHour" data-role="none">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12" selected>12</option>
+                </select> :
+                <select class="form-control fixed" name="selEarlyCheckInTimeMinute" data-role="none">
+                    <option value="00" selected>00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                </select>
+                <select class="form-control fixed" name="selEarlyCheckInTimeMeridian" data-role="none">
+                    <option value="AM">AM</option>
+                    <option value="PM" selected>PM</option>
+                </select>
+            </div>
+
+            <br />
+            <div>
+                Latest Check Out Time:
+                <select class="form-control fixed" name="selLateCheckOutTimeHour" data-role="none">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12" selected>12</option>
+                </select> :
+                <select class="form-control fixed" name="selLateCheckOutTimeMinute" data-role="none">
+                    <option value="00" selected>00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                </select>
+                <select class="form-control fixed" name="selLateCheckOutTimeMeridian" data-role="none">
+                    <option value="AM">AM</option>
+                    <option value="PM" selected>PM</option>
+                </select>
+            </div>
+
+            <br/>
+            <div>
+                Early Check In / Rent Out Time SKU
+                <input data-role="none" class="form-control fixed" name="txtEarlyCheckInChargeSku" />
+            </div>
+            <br />
+
+            <div>
+                Late Check Out / Return Time SKU
+                <input data-role="none" class="form-control fixed" name="txtLateCheckOutChargeSku" />
+            </div>
+            <!--<br />
+            <div>
+                <input data-role="none" type="text" id="txtNoOfGuestCardsID" style="display:none; visibility:hidden;" />
+                Maximum number of guest cards allowed to be created.
+                <input type="number" data-role="none" class="form-control fixed" id="txtMaxNumberOfGuestCards" min="1" value="1" />
+            </div>-->
+            <br />
+            <div>
+                <input data-role="none" type="text" id="txtOutdatedResID" style="display:none; visibility:hidden;" />
+                Allow ante-dated reservations, check-ins? (Check-outs can not be ante-dated due to the fraud opportunities it can present)
+                <div style="display:flex;">
+                    <div class="custom-radio">
+                        <label class="radio-only">
+                            <input type="radio" name="radOutdatedRes" value="1" data-iconpos="notext" />
+                        </label>
+                        <div>Yes</div>
+                    </div>
+                    <div class="custom-radio">
+                        <label class="radio-only">
+                            <input type="radio" name="radOutdatedRes" value="0" data-iconpos="notext" />
+                        </label>
+                        <div>No</div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div>
+                <input data-role="none" type="text" id="txtFutureDatedCheckInsID" style="display:none; visibility:hidden;" />
+                Allow Future-Dated check-ins?
+                <div style="display:flex;">
+                    <div class="custom-radio">
+                        <label class="radio-only">
+                            <input type="radio" name="radFutureDated" value="1" data-iconpos="notext" />
+                        </label>
+                        <div>Yes</div>
+                    </div>
+                    <div class="custom-radio">
+                        <label class="radio-only">
+                            <input type="radio" name="radFutureDated" value="0" data-iconpos="notext" />
+                        </label>
+                        <div>No</div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div>
+                <input data-role="none" type="text" id="txtCreateKeyCardAfterCheckInID" style="display:none; visibility:hidden;" />
+                Create Key Card After Check-In?
+                <div style="display:flex;">
+                    <div class="custom-radio" id="chkCreateKeyCardAfterCheckInYes">
+                        <label class="radio-only">
+                            <input type="radio" name="radCreateKeyCardAfterCheckIn" value="1" data-iconpos="notext" />
+                        </label>
+                        <div>Yes</div>
+                    </div>
+                    <div class="custom-radio" id="chkCreateKeyCardAfterCheckInNo">
+                        <label class="radio-only">
+                            <input type="radio" name="radCreateKeyCardAfterCheckIn" value="0" data-iconpos="notext" />
+                        </label>
+                        <div>No</div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div>
+                <input data-role="none" type="text" id="txtDisplayProductNoInAssetsID" style="display:none; visibility:hidden;" />
+                Display Product Number in Assets?
+                <div style="display:flex;">
+                    <div class="custom-radio" id="chkCreateKeyCardAfterCheckInYes">
+                        <label class="radio-only">
+                            <input type="radio" name="radDisplayProductNoInAssets" value="1" data-iconpos="notext" />
+                        </label>
+                        <div>Yes</div>
+                    </div>
+                    <div class="custom-radio" id="chkCreateKeyCardAfterCheckInNo">
+                        <label class="radio-only">
+                            <input type="radio" name="radDisplayProductNoInAssets" value="0" data-iconpos="notext" />
+                        </label>
+                        <div>No</div>
+                    </div>
+                </div>
+            </div>
+
+            <br />           
+
+            <div>
+                <input data-role="none" type="text" id="txtNoOfGuestCardsID" style="display:none; visibility:hidden;" />
+                Maximum number of guest cards allowed to be created.
+                <input type="number" data-role="none" class="form-control fixed" id="txtMaxNumberOfGuestCards" min="1" value="1" />
+            </div>           
+
+            <br />
+
+            <div>
+                <input data-role="none" type="text" id="txtAllowLostCardCreationID" style="display:none; visibility:hidden;" />
+                Allow creation of lost card?
+                <div style="display:flex;">
+                    <div class="custom-radio" id="chkLostCardYes">
+                        <label class="radio-only">
+                            <input type="radio" name="radLostCard" value="1" data-iconpos="notext" />
+                        </label>
+                        <div>Yes</div>
+                    </div>
+                    <div class="custom-radio" id="chkLostCardNo">
+                        <label class="radio-only">
+                            <input type="radio" name="radLostCard" value="0" data-iconpos="notext" />
+                        </label>
+                        <div>No</div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div id="dvCreateLostCardOptions" style="visibility:hidden; display:none">
+                <input data-role="none" type="text" id="txtMaxNumberOfLostCardsID" style="display:none; visibility:hidden;" />
+                Maximum number of lost card allowed to be created.
+                <input type="number" data-role="none" class="form-control fixed" id="txtMaxNumberOfLostCards" />
+                <br />
+                <input data-role="none" type="text" id="txtChargeforLostCardsID" style="display:none; visibility:hidden;" />
+                Charge for every lost card
+                <select id="selChargeforLostCards">
+                    <option>
+                        Select Charge Type
+                    </option>
+                </select>
+            </div>
+            <br />
+            <div style="text-align:center">
+                <button data-role="none" id="btnSaveAssetSettings" class="btn custom-btn-theme-b btn-less-width">
+                    Save Optional Settings
+                </button>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div custom-data-role="accordion">
+        <div class="accordion-header">
+            Invoice Method
+        </div>
+        <div class="accordion-content">
+            <div style="text-align:right;">
+                <button data-role="none" id="btnAddInvoicingMethod" class="btn custom-btn-theme-b btn-less-width btn-sm">Add Invoice Method</button>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-6">
+                    Show:
+                    <select id="selIMStatus" data-role="none" class="form-control fixed">
+                        <option value="All">All</option>
+                        <option value="1" selected>Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <input id="txtSearchInvoicingMethod" data-role="none" type="text" class="form-control" placeholder="Search here" />
+                </div>
+            </div>
+            <br />
+            <table id="tblDataTableInvoicingMethod" data-role="table" style="margin-right:5px; display:table; width:100%;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                <thead>
+                    <tr class="custom-theme-f">
+                        <th style="width:200px"> Invoicing Method </th>
+                        <th> Assets Applicable To </th>
+                        <th style="width:150px;"> Modified By </th>
+                        <th style="width:150px"> Last Updated </th>
+                        <th style="width:100px"> Status </th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyTickets"></tbody>
+            </table>
+        </div>
+    </div>
+    <br />
+    <div custom-data-role="accordion">
+        <div class="accordion-header">
+            Other Charges
+        </div>
+        <div class="accordion-content">
+            <div style="text-align:right;">
+                <button data-role="none" id="btnAddOtherCharges" class="btn custom-btn-theme-b btn-less-width btn-sm">Add Other Charges</button>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-6">
+                    Show:
+                    <select id="selOCStatus" data-role="none" class="form-control fixed">
+                        <option value="all">All</option>
+                        <option value="1" selected>Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <input id="txtSearchOtherCharges" data-role="none" type="text" class="form-control" placeholder="Search here" />
+                </div>
+            </div>
+            <br />
+            <table data-role="table" style="margin-right:5px; display:table;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                <thead>
+                    <tr class="custom-theme-f">
+                        <th style="width:70px !important;"> # </th>
+                        <th> SKU Name </th>
+                        <!--<th style="width:50px;"> Qty </th>-->
+                        <th style="width:100px;"> Unit Measure </th>
+                        <th style="width:100px;">Invoicing Type</th>
+                        <th style="width:50px;">Required</th>
+                        <th style="width:100px;">Price</th>
+                        <th style="width:100px;">Modified By</th>
+                        <th style="width:50px;">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyAMOtherCharges"></tbody>
+            </table>
+        </div>
+    </div>
+    <br />
+    <div custom-data-role="accordion">
+        <div class="accordion-header">
+            Document Settings
+        </div>
+        <div class="accordion-content">
+            <div style="text-align:right">
+                <button data-role="none" id="btnAMAddDocument" class="btn custom-btn-theme-b btn-less-width btn-sm">Add Document</button>
+                <br /><br />
+                <div id="divTableAMContract"></div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div custom-data-role="accordion">
+        <div class="accordion-header">
+            Door Lock System to Use
+        </div>
+        <div class="accordion-content">
+            <div style="text-align:right">       
+                <input data-role="none" type="text" id="txtDoorLockSystemID" style="display:none; visibility:hidden;" />
+                <div id="divDoorLockBody">
+                    <div class="custom-radio">
+                        <label class="radio-only">
+                            <input type="radio" name="radDoorLock" value="YGLock" data-iconpos="notext" />
+                        </label>
+                        <div>YG Lock Card Reader &nbsp; &nbsp;<a data-role="none" class="btnInfoDailyPrice"></a></div>
+                    </div>
+                    <br />
+                    <div class="custom-radio">
+                        <label class="radio-only">
+                            <input type="radio" name="radDoorLock" value="BQLock" data-iconpos="notext" />
+                        </label>
+                        <div>BQ Lock Card Reader &nbsp; &nbsp;<a data-role="none" class="btnInfoDailyPrice"></a></div>
+                    </div>
+
+                    <br />
+                    <div style="text-align:center">
+                        <button data-role="none" id="btnSaveDoorLockSettings" class="btn custom-btn-theme-b btn-less-width">
+                            Save Door Lock Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="popup" id="popInvoicingMethod" data-overlay-theme="a" data-theme="a" data-corners="false">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center><h3>Invoicing Method</h3></center>
+    <div data-role="content" class="jPopupContent">
+        <div class="custom-radio">
+            <label class="radio-only">
+                <input type="radio" name="radInvoiceMethod" value="uponcheckin" data-iconpos="notext" />
+            </label>
+            <div>Invoice upon check-in &nbsp; &nbsp;<a data-role="none" class="btnInfoDailyPrice"><span class="glyphicon glyphicon-info-sign"></span></a></div>
+        </div>
+        <div class="custom-radio">
+            <label class="radio-only">
+                <input type="radio" name="radInvoiceMethod" value="uponcheckout" data-iconpos="notext" />
+            </label>
+            <div>Invoice upon checkout &nbsp; &nbsp;<a data-role="none" class="btnInfoDailyPrice"><span class="glyphicon glyphicon-info-sign"></span></a></div>
+        </div>
+        <div class="custom-radio">
+            <label class="radio-only">
+                <input type="radio" name="radInvoiceMethod" value="bydaysinterval" data-iconpos="notext" />
+            </label>
+            <div>Invoice every <input data-role="none" type="text" class="form-control txtinvmethoddays" style="width:50px; display: inline-block;" /> days &nbsp; &nbsp;<a data-role="none" class="btnInfoDailyPrice"><span class="glyphicon glyphicon-info-sign"></span></a></div>
+        </div>
+        <div class="custom-radio">
+            <label class="radio-only">
+                <input type="radio" name="radInvoiceMethod" value="bynthday" data-iconpos="notext" />
+            </label>
+            <div>Invoice every <input data-role="none" type="text" class="form-control txtinvmethoddays" style="width:50px; display: inline-block;" />th day of the month &nbsp; &nbsp;<a data-role="none" class="btnInfoMonthlyPrice"><span class="glyphicon glyphicon-info-sign"></span></a>
+                <br />
+                <div id="divMonthlyBillType" style="display:none">
+                    <div class="custom-radio">
+                        <label class="radio-only">
+                            <input type="radio" name="radMonthlyBillType" value="prepaid" data-iconpos="notext" />
+                        </label>
+                        <div>Prepraid (Bill the incoming month)</div>
+                    </div>
+                    <div class="custom-radio">
+                        <label class="radio-only">
+                            <input type="radio" name="radMonthlyBillType" value="postpaid" data-iconpos="notext" />
+                        </label>
+                        <div>Postpaid (Bill the previous month)</div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <br />
+        Apply settings to these categeories of rentable assets:
+        <br />
+        <span id="divAssetCategories">
+
+        </span>
+        <br />
+        <div data-role="fieldcontain">
+            <label for="selInvMethodStatus">Active?</label>
+            <select data-role="slider" data-theme="c" id="selInvMethodStatus">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </div>
+        <br />
+
+        <button data-role="none" id="btnInvMethodSave" class="btn custom-btn-theme-b">Save</button>
+        <br /><br />
+        <a href="#" data-rel="back" data-role="none" id="" class="btn custom-btn-theme-c">Cancel</a>
+    </div>
+</div>
+
+<div data-role="popup" id="popInvoicingMethodCategoryExisting" data-overlay-theme="a" data-theme="a" data-corners="false">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center><h3>Validation</h3></center>
+    <div data-role="content" class="jPopupContent">
+        The following categories are already being invoiced with the other method. Please click the 'X' button to transfer the category to <b id="lblInvoiceMethodType"></b>.
+        <br /><br /><br />
+        <table data-role="table" data-mode="reflow" style="margin-right: 5px; display: table;"
+               class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+            <thead>
+                <tr class="custom-theme-h txt-center">
+                    <th style="width: 150px;">
+                        Category Name
+                    </th>
+                    <th>
+                        Invoice Method
+                    </th>
+                    <th style="width: 50px;"></th>
+                </tr>
+            </thead>
+            <tbody id="tbodyExistingIMCategory"></tbody>
+        </table>
+
+        <br /><br /><br />
+
+        <button data-role="none" id="btnInvMethodContinueSave" class="btn custom-btn-theme-b">Continue Saving</button>
+        <br /><br />
+        <button data-role="none" id="btnInvMethodBack" class="btn custom-btn-theme-b">Back</button>
+        <br /><br />
+        <a href="#" data-rel="back" data-role="none" id="" class="btn custom-btn-theme-c">Cancel</a>
+    </div>
+</div>
+
+<div data-role="popup" id="popAMOtherCharges" data-overlay-theme="a" data-theme="a" data-corners="false">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center><h3>Other Charges</h3></center>
+    <div data-role="content" class="jPopupContent">
+        <input data-role="none" type="text" id="txtAMOtherChargesID" style="display:none" />
+        <input data-role="none" type="text" id="txtAMOtherChargesSkuID" style="display:none" />
+        <input data-role="none" type="text" id="txtAMOtherChargesUomID" style="display:none" />
+        SKU Name: <span class="required">*</span>
+        <input data-role="none" type="text" id="txtAMOtherChargesSku" class="form-control" placeholder="Search SKU" readonly />
+        <!--<br />
+        Qty: <span class="required">*</span>
+        <input data-role="none" type="text" id="txtAMOtherChargesQty" class="form-control" />-->
+        <br />        
+        Invoicing Type: <span class="required">*</span>
+        <select data-role="none" class="form-control" id="selAMOtherChargesInvoicingType">
+            <option value="Recurring">Recurring</option>
+            <option value="Non-Recurring">Non-Recurring</option>
+        </select>
+        <br />
+        <div class="divTable" style="font-size: inherit !important; width: auto !important;">
+            <div class="divTableRow">
+                <div class="divTableCell txt-middle">
+                    Is this required?
+                </div>
+                <div class="divTableCell txt-middle">
+                    <select data-role="slider" id="selAMOtherChargesIsRequired">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="divTable" style="font-size: inherit !important; width: auto !important;">
+            <div class="divTableRow">
+                <div class="divTableCell txt-middle">
+                    Is this active?
+                </div>
+                <div class="divTableCell txt-middle">
+                    <select data-role="slider" id="selAMOtherChargesIsActive">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <h4>Price per <span id="lblOtherChargesSkuUom"></span></h4>
+        <table data-role="table" data-mode="reflow" style="margin-right:5px; display:table; width:100%;" class="ui-table ui-responsive table-stroke">
+            <thead>
+                <tr class="custom-theme-c txt-center">
+                    <th style="width:50px;"></th>
+                    <th>Description</th>
+                    <th>Unit</th>
+                    <th style="width:100px;">Price</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyOtherChargesRates"></tbody>
+        </table>
+        <br /><br />
+        <button data-role="none" id="btnAMOtherChargesSave" class="btn custom-btn-theme-b">Save</button>
+        <br /><br />
+        <a href="#" data-rel="back" data-role="none" id="" class="btn custom-btn-theme-c">Cancel</a>
+    </div>
+</div>

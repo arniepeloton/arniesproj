@@ -1,0 +1,139 @@
+﻿<div>
+    <div class="row wrapper min-vh-100 flex-column flex-md-row">
+        <div class="col-12 col-md-2 p-0 bg-light flex-shrink-1 mb-3">
+            <nav class="navbar navbar-expand-sm navbar-light bg-light align-items-start flex-md-column flex-row p-2">
+                <a data-role="none" class="navbar-brand" href="#">Menu</a>
+                <a data-role="none" href="#" class="navbar-toggler" data-toggle="collapse" data-target=".sidebarPBSettings">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <div class="collapse navbar-collapse sidebarPBSettings mt-2">
+                    <ul class="flex-column w-100 justify-content-between nav nav-pills">
+                        <li><a class="nav-link active" role="button" data-role="none" data-toggle="tab" href="#tabPBGeneralSettings">General Settings</a></li>
+                        <li><a class="nav-link" role="button" data-role="none" data-toggle="tab" href="#tabPBLists">Price Bulletin Lists</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col bg-faded">
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="tabPBGeneralSettings">
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2 mb-3 mb-sm-0">
+                            No. of items per page:
+                        </div>
+                        <div class="col-md">
+                            <select data-role="none" class="form-select" name="selPBItemsPerPage">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5" selected>5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2 mb-3 mb-sm-0">
+                            Page change delay:
+                        </div>
+                        <div class="col-md">
+                            <select data-role="none" class="form-select" name="selPBItemsPageChangeDelay">
+                                <option value="5">5 seconds</option>
+                                <option value="10">10 seconds</option>
+                                <option value="15">15 seconds</option>
+                                <option value="20">20 seconds</option>
+                                <option value="25">25 seconds</option>
+                                <option value="30">30 seconds</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 text-center">
+                        <button name="btnPBSaveGeneralSettings" data-role="none" class="btn btn-success btn-lg">Save</button>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="tabPBLists">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <input data-role="none" type="search" class="form-control" name="txtSearchPriceBulletin" placeholder="Search here" />
+                        </div>
+                        <div class="col-auto">
+                            <button data-role="none" class="btn btn-success" name="btnPBAddPriceBulletin" data-toggle="modal" data-target="#popupBulletin">Add Price Bulletin</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="tblPriceBulletin" data-role="none" class="table table-light table-striped table-hover" style="table-layout:fixed;">
+                            <thead>
+                                <tr class="text-center align-items-center" style="font-size:14px;">
+                                    <th style="width:50px;">#</th>
+                                    <th>Bulletin Name</th>
+                                    <th>Last Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupBulletin" class="modal fade" data-backdrop="static" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Price Bulletin</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <label class="col-md-2 col-form-label" for="txtBulletinName">Bulletin Name: <span class="required">*</span></label>
+                        <div class="col-md">
+                            <input data-role="none" class="form-control" type="text" name="txtBulletinName" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col">
+                            <h5>Product Lists</h5>
+                        </div>
+                        <div class="col-auto">
+                            <button data-role="none" class="btn btn-success" name="btnPBAddProduct">Add Product</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table data-role="none" class="table table-light table-striped table-hover" style="table-layout:fixed;">
+                            <thead>
+                                <tr class="text-center align-items-center" style="font-size:14px;">
+                                    <th style="width:50px;">#</th>
+                                    <th style="width:150px;">Product No.</th>
+                                    <th style="width:150px;">Brand</th>
+                                    <th>Product Name</th>
+                                    <th>Display Name</th>
+                                    <th>Retail Price</th>
+                                    <th>Wholesale Price</th>
+                                    <th style="width:60px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md order-1 order-md-0">
+                            <button data-role="none" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col-md order-1 order-md-0">
+                            <button data-role="none" name="btnPBSave" class="btn btn-success btn-block btn-lg">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

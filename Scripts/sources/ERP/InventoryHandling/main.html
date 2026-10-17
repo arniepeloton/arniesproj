@@ -1,0 +1,192 @@
+﻿<script>
+    require(['bootstrapjs', 'promise!/Scripts3/NewMessageBox.js?crc=' + assetversion], function () {
+        require(['/Content/bootstrap/js/bootstrap_modal.js?v=' + assetversion], function () {
+            require([GetPathFormat('/Scripts/sources/ERP/InventoryHandling/InventoryHandling.js?crc=' + assetversion)]);
+        })
+    })
+</script>
+
+<nav class="navbar navbar-dark bg-primary sticky-top text-light mb-3 pb-0">
+    <div class="pl-3 pr-3 pb-2" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+        <a href="javascript:history.back()" data-role="none" class="btn btn-primary">
+            <span class="bi-chevron-left"></span>
+        </a>
+        Inventory Handling
+    </div>
+    <div class="row" style="margin:0px; padding:0.5em; width:100%; color:#FFF; background-color:#1969de; font-weight:bold;">
+        <div class="BreadCrumbs">
+            <div class="ItemsBreadCrumbs"></div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid mb-5">
+    <div id="divIHMain" subpage="inventoryhandling" style="display:block;">
+        <div style="white-space:nowrap; overflow:auto;">
+            <ul class="nav nav-tabs" id="divTabInventoryHandling" role="tablist" style="flex-wrap:nowrap;">
+                <li class="nav-item" role="presentation">
+                    <button data-role="none" class="nav-link active" data-toggle="tab" data-target="#tabInventoryHandlingDashboard" type="button" role="tab" aria-controls="home" aria-selected="true">Dashboard</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button data-role="none" class="nav-link" id="btnInventoryHandlingAndControl" data-toggle="tab" data-target="#tabInventoryHandlingWork" type="button" role="tab" aria-controls="profile" aria-selected="false">Inventory H & C</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button data-role="none" class="nav-link" data-toggle="tab" data-target="#tabInventoryHandlingSettings" type="button" role="tab" aria-controls="profile" aria-selected="false">Settings</button>
+                </li>
+            </ul>
+        </div>        
+
+        <div class="tab-content p-3">
+            <div id="tabInventoryHandlingDashboard" class="tab-pane fade show active">
+                <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+                    <div class="col">
+                        <div class="dashboardGrid bg-light border p-3 rounded h-100" id="btnInventoryHandlingAndControls">
+                            <div class="gHeader">
+
+                            </div>
+                            <div class="gBody" style="font-size:25px;">
+                                <span class="">Inventory Balances</span>
+                            </div>
+                            <div class="gFooter">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="dashboardGrid bg-light border p-3 rounded h-100" id="btnDormantSkusReport">
+                            <div class="gHeader">
+                                Company-Wide List of Dormant SKUs for Deactivation
+                            </div>
+                            <div class="gBody" style="font-size:25px;">
+                                <span id="lblCountDormantSkus">0</span>
+                            </div>
+                            <div class="gFooter">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tabInventoryHandlingWork" class="tab-pane fade">
+                <div id="divEASIHModules" class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 text-center">
+                    <div class="col mb-3">
+                        <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid" id="">
+                            <div class="bi bi-arrow-up-square rounded mb-3 module-buttons"></div>
+                            Stock Transfers
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid" id="">
+                            <div class="bi bi-box-arrow-up-right rounded mb-3 module-buttons"></div>
+                            Put Away
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <div class="dashboardGrid bg-light border p-3 h-100 rounded erp-main-grid" id="">
+                            <div class="bi bi-hand-index rounded mb-3 module-buttons"></div>
+                            Stock Picking
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tabInventoryHandlingSettings" class="tab-pane fade">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="divIHReports" subpage="inventoryhandling" style="display:none;">
+        <div class="row align-items-center">
+            <div class="col-auto mb-3">
+                Show:
+            </div>
+            <div class="col-auto">
+                <select id="selInventoryDashboard" data-role="none" class="form-select fixed">
+                    <option value="Inventory Balance">Inventory Balance</option>
+                    <option value="Inventory Ledger">Inventory Ledger</option>
+                    <option value="Stock Receveing/Transfers">Stock Receveing/Transfers</option>
+                    <option value="Variance Report">Variance Report</option>
+                </select>
+            </div>
+        </div>
+        
+        <br />
+        <div id="tabInventoryBalance" subpage="tabInventoryHandlingDashboard" style="display:block;">
+
+        </div>
+        <div id="tabInventoryLedger" subpage="tabInventoryHandlingDashboard" style="display:none;">
+
+        </div>
+        <div id="tabStockRT" subpage="tabInventoryHandlingDashboard" style="display:none;">
+
+        </div>
+        <div id="tabPhysicalInventory" subpage="tabInventoryHandlingDashboard" style="display:none;">
+
+        </div>
+    </div>
+</div>
+
+<div id="popupDormantSkus" data-backdrop="static" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Company-Wide List of Dormant SKUs for Deactivation</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button data-role="none" id="btnUndoDormantDeactivation" class="btn btn-secondary">Undo Deactivation</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <input data-role="none" class="form-control" id="txtSearchDormantSkus" placeholder="Search Product here" />
+                    </div>
+                </div>
+                <br />
+                <div>
+                    List of dormant SKUs without any movement for at least <b id="lblDormantPeriod"></b> days.
+                </div>
+                <br />
+                <div class="table-responsive">
+                    <table id="tblDormantSkus" style="width:100%;" class="table table-light table-hover table-striped">
+                        <thead>
+                            <tr class="custom-theme-f text-center">
+                                <th>#</th>
+                                <th>Product Name</th>
+                                <th>Product No.</th>
+                                <th>Brand</th>
+                                <th>Last Transaction Date</th>
+                                <th>Last Transaction Reference</th>
+                                <th><button data-role="none" id="btnSelectAllDormantSkus" class="btn custom-btn-theme-c btn-sm" value="1">Select All</button></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyUnfinishedReport"></tbody>
+                    </table>
+                </div>                
+            </div>
+            <div class="modal-footer text-center">
+                <button data-role="none" data-dismiss="modal" class="btn btn-secondary btn-lg">Cancel</button>
+                <button data-role="none" class="btn btn-success btn-lg" id="btnDeactivateAllDormantSkus">Deactivate All Selected SKUs</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="popup" id="popUndoDeactivatedSkus" data-overlay-theme="a" data-theme="a" data-corners="false">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center><h3>Undo Deactivation</h3></center>
+    <div data-role="content" class="jPopupContent">
+        <div>
+            Please select the date of deactivation that you wish to undo.
+        </div>
+        <br />
+        <input data-role="none" type="date" id="txtUndoDeactivatedDate" class="form-control" />
+        <br /><br />
+        <a data-role="none" data-rel="back" id="btnReactivateDeactivatedSkus" class="btn custom-btn-theme-b">Reactivate Now</a>
+        <br /><br />
+        <a data-role="none" data-rel="back" class="btn custom-btn-theme-c">Close</a>
+    </div>
+</div>

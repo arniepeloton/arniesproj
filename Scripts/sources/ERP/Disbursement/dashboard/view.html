@@ -1,0 +1,225 @@
+﻿<script type="text/javascript">
+    require([GetPathFormat('/Scripts/sources/ERP/Disbursement/dashboard/controller.js?crc=' + assetversion),
+        (location.pathname.toLowerCase() == '/purchaseorder/trans' ? 'datatables.net' : GetPathFormat('/Scripts/sources/ERP/ExpenseTracking/main/popup.js?crc=' + assetversion))], function () {
+            $(document).ready(function () {
+                if (proj.IsBootstrapDesign()) {
+                    //$('#popDisbursementOpenPurchaseOrders .popup-content > *').appendTo('#popDisbursementOpenPurchaseOrders-bs .modal-body');
+                    //$('#popDisbursementOpenPurchaseOrders').removeAttr('id');
+                    //$('#popDisbursementOpenPurchaseOrders-bs').attr('id', 'popDisbursementOpenPurchaseOrders');
+
+                    require([
+                    'promise!/Scripts/sources/ERP/OrderProcessing/main/controller.js?v=' + assetversion
+                    ], function () {
+                        //HideModules();
+                        //$('#divPurchasing, #divPurchasingMain').pageshow();
+                        var mPurchaseOrderPageController = new ERP.OrderProcessing.work.controller({
+                            TransType: 'PurchaseOrder',
+                            AccountsPayable: false //vParams.AccountsPayable
+                        });
+                        //require(['promise!/Scripts/sources/ERP/PurchaseOrder/settings/controller.js?v=' + assetversion]);
+                        require(['promise!/Scripts/sources/ERP/PurchaseOrder/poBySku/controller.js?v=' + assetversion], function () {
+                            var pInstance = ERP.PurchaseOrder.poBySku.controller();
+                            $('#tabPurchasingPoBySku').html('').append(pInstance.element);
+                            pInstance.Initialize();
+                        });
+
+                        require(['promise!/Scripts/sources/ERP/OrderProcessing/backorders/controller.js?v=' + assetversion], function () {
+                            var pInstance = new ERP.OrderProcessing.backorders.controller();
+                            $('#tabPurchasingPoByBackorder').html('').append(pInstance.element);
+                        });
+
+                        //if (vParams.ID)
+                        //    mPurchaseOrderPageController.LoadTrans({
+                        //        ID: vParams.ID,
+                        //        IncludeZeroQty: true
+                        //    });
+                        //if (vParams.ReadOnly)
+                        //    mPurchaseOrderPageController.ReadOnly();
+                    });
+                }
+            })
+        })
+</script>
+
+<div id="popupVendorAdminApproval" class="modal fade" tabindex="-1" data-backdrop="static">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Unapproved Request For Access To Vendor Portal</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="offset-md-6 col-md-6">
+                        <input data-role="none" type="text" class="form-control" id="txtSearchVendorAdmin" placeholder="Search here" />
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="tableVendorContactPersonAdmin" data-role="none" style="width:100%; display:table;" class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr class="custom-theme-f">
+                                <th style="width:30px; text-align:center;">#</th>
+                                <th style="text-align:center;">Organization Name</th>
+                                <th style="text-align:center;">Person Name</th>
+                                <th style="width:200px; text-align:center;">Requested Date</th>
+                                <th style="width:50px; text-align:center;"></th>
+                                <th style="width:50px; text-align:center;"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyVendorContactPersonAdmin"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3 mb-3">
+        <div class="dashboardGrid bg-light border p-3 rounded h-100 btnLogExpenseReport">
+            <div class="gHeader">
+                Funds Report
+            </div>
+            <div class="gBody">
+                <span style="font-size:12px;">Total Expenses:</span>
+                <br />
+                <span class="lblTotalExpense"></span>
+                <br />
+                <span style="font-size:12px;">Total Funds:</span>
+                <br />
+                <span class="lblTotalFunds"></span>
+            </div>
+            <div class="gFooter lblExpenseMonthCovered">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 mb-3">
+        <div class="dashboardGrid bg-light border p-3 rounded h-100" id="btnExpenseCheckInOutReport">
+            <div class="gHeader">
+                Check-ins Report
+            </div>
+            <div class="gBody">
+                &nbsp;
+            </div>
+            <div class="gFooter lblExpenseCheckInOutMonthCovered">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 mb-3">
+        <div class="dashboardGrid bg-light border p-3 rounded h-100" name="butDisbursementOpenPurchaseOrders">
+            <div class="gHeader">
+                Open Purchase Orders
+            </div>
+            <div class="gBody">
+                &nbsp;
+            </div>
+            <div class="gFooter" name="lblDisbursementOpenPurchaseOrders">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 mb-3">
+        <div class="dashboardGrid bg-light border p-3 rounded h-100" id="btnReportVendorAdmin">
+            <div class="gHeader">
+                Unapproved Request for Access
+            </div>
+            <div class="gBody" id="lblVendorAdminBody">
+                &nbsp;
+            </div>
+            <div class="gFooter">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 mb-3">
+        <div class="dashboardGrid bg-light border p-3 rounded h-100" name="butDisbursementVendorPriceHistory">
+            <div class="gHeader">
+                Vendor Price History
+            </div>
+            <div class="gBody">
+                &nbsp;
+            </div>
+            <div class="gFooter">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 mb-3">
+        <div class="dashboardGrid bg-light border p-3 rounded h-100" id="butDisbursementVendorPaymentsHistory">
+            <div class="gHeader">
+                Vendor Payments History
+            </div>
+            <div class="gBody">
+                &nbsp;
+            </div>
+            <div class="gFooter">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-bottom text-right pb-3 pr-3" style="display:block;">
+    <button data-role="none" id="btnRefreshDisbursementDashboard" data-toggle="tooltip" data-placement="left" title="" class="btn btn-danger btn-lg rounded-circle" data-original-title="Refresh">
+        <span class="bi bi-arrow-clockwise"></span>
+    </button>
+</div>
+
+<div id="popDisbursementOpenPurchaseOrders" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Open Purchase Orders</h5>
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div style="overflow: auto;">
+                    <div name="divLoading" style="visibility: collapse">Loading data. Please wait.</div>
+                    <table style="">
+                        <tr>
+                            <td>
+                                <button name="butPoDate" style="margin-right: 10px;" data-role="none" class="btn btn-less-width btn-transparent btnRequired btn-secondary">
+                                    <span class=""> Original Transaction Last Modified </span>
+                                    <span class="ui-icon ui-icon-arrow-d" style="display: inline-block; margin-left: 10px;"></span>
+                                </button>
+                            </td>
+                            <td class="pr-3">
+                                <div class="custom-radio form-check"> <label class="radio-only form-check-label"> <input data-role="none" type="radio" class="form-check-input" value="1" name="rbServedByVendor" />Served By Vendor </label> </div>
+                            </td>
+                            <td class="pr-3">
+                                <div class="custom-radio form-check"> <label class="radio-only form-check-label"> <input data-role="none" type="radio" class="form-check-input" value="0" name="rbServedByVendor" checked /> Not Served By Vendor </label> </div>
+                            </td>
+                            <td class="pr-3">
+                                <div class="custom-radio form-check"> <label class="radio-only form-check-label"> <input data-role="none" type="radio" class="form-check-input" value="1" name="rbReceivedByCompany" /> Received By Company </label> </div>
+                            </td>
+                            <td class="pr-3">
+                                <div class="custom-radio form-check"> <label class="radio-only form-check-label"> <input data-role="none" type="radio" class="form-check-input" value="0" name="rbReceivedByCompany" checked /> Not Received By Company </label> </div>
+                            </td>
+                            <td class="pr-3">
+                                <div class="custom-checkbox form-check"> <label class="radio-only form-check-label"> <input data-role="none" type="checkbox" class="form-check-input" name="chbPQFollowUp" /> Price Quotes for Follow Up </label> </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <div style="width:100%; overflow:auto;">
+                        <table id="tableOpenPurchaseOrders" data-role="table" data-mode="reflow" style="margin-right:5px; display:table;" class="table table-light table-striped table-hover table table-light table-striped table-hover">
+                            <thead class="custom-theme-f">
+                                <tr class="custom-theme-f txt-center"></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

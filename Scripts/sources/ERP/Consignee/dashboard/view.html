@@ -1,0 +1,216 @@
+﻿<!--<div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div style="padding:0px;">
+                <div style="height:200px; background-color:#ededed; padding:10px;">
+                    <div style="text-align:center; font-size: 20px; padding-bottom: 5px; border-bottom: 1px solid #CCC;">Collection Report</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+    </div>
+</div>
+<br /><br />-->
+
+<div id="divMainDashboardOP">
+    <div class="row" style="margin-top: 20px; margin-bottom: 20px">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="dashboardGrid" id="btnReportNetSales">
+                <div class="gHeader">
+                    NET SALES
+                </div>
+                <div class="gBody" id="lblNetSalesBodyCac">
+                    0
+                </div>
+                <div class="gFooter" id="lblNetSalesFooterCac">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="dashboardGrid" id="btnReportCac">
+                <div class="gHeader">
+                    Credit & Collection
+                </div>
+                <div class="gBody" id="lblCacSummaryBody">
+                    0
+                </div>
+                <div class="gFooter" id="lblCacSummaryFooter">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="dashboardGrid" id="btnReportSopa">
+                <div class="gHeader">
+                    S.O.P.A
+                </div>
+                <div class="gBody" id="lblSopaBody">
+                    0
+                </div>
+                <div class="gFooter" id="lblSopaFooter">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="dashboardGrid" id="btnUnapprovedOrders">
+                <div class="gHeader">
+                    Unapproved Sales Orders
+                </div>
+                <div class="gBody" id="lblUnapprovedOrdersBody">
+                    Count: 0
+                </div>
+                <div class="gFooter" id="lblUnapprovedOrdersFooter">
+                    Amount: 0
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div custom-data-role="accordion">
+        <div class="accordion-header active">
+            Collection Report
+        </div>
+
+        <div class="accordion-content">
+            Customer Payment Date: <a data-role="none" class="custom-link" id="btnCRPaymentDate"></a>
+            <br /><br />
+            <div style="overflow: auto;">
+                <table id="tblCollectionReport" data-role="table" data-role="reflow" style="margin-right: 5px; display: table;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                    <thead>
+                        <tr class="custom-theme-f fixed-cell-width">
+                            <th class="txt-center"> Customer Name </th>
+                            <th class="txt-center"> Manual-Encoded Receipt Number </th>
+                            <th class="txt-center"> System-Generated Receipt Number </th>
+                            <th class="txt-center"> Collecting Fowst </th>
+                            <th class="txt-center"> Inv. No. </th>
+                            <th class="txt-center"> Manual Inv. Ref. No. </th>
+                            <th class="txt-center"> Bank Name </th>
+                            <th class="txt-center"> Bank Branch </th>
+                            <th class="txt-center"> Chck No. </th>
+                            <th class="txt-center"> Chck Date </th>
+                            <th class="txt-center"> Chck Amt </th>
+                            <th class="txt-center"> Chck Total </th>
+                            <th class="txt-center"> Cash Amt </th>
+                            <th class="txt-center"> Total </th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div custom-data-role="accordion">
+        <div class="accordion-header active">
+            Customer Payments Report
+        </div>
+
+        <div class="accordion-content">
+            <div style="margin: 10px">
+                Customer: <a data-role="none" class="custom-link" id="butPaymentsReportCustomer">Choose a customer</a>
+                <input id="chkPaymentsReportCustomerDoNotFilter" type="checkbox" />
+                <label for="chkPaymentsReportCustomerDoNotFilter">
+                    Do not apply this filter
+                </label>
+            </div>
+
+            <div style="margin: 10px">
+                Encoding Date: <a data-role="none" class="custom-link" id="butPaymentsReportEncodingDate"></a>
+                <input id="chkPaymentsReportEncodingDateDoNotFilter" type="checkbox" />
+                <label for="chkPaymentsReportEncodingDateDoNotFilter">
+                    Do not apply this filter
+                </label>
+            </div>
+            <div style="margin: 10px">
+                Payment Maturity: <a data-role=" none" class="custom-link" id="butPaymentsReportPaymentMaturityDate">
+                </a>
+                <input id="chkPaymentsReportPaymentMaturityDateDoNotFilter" type="checkbox" />
+                <label for="chkPaymentsReportPaymentMaturityDateDoNotFilter">
+                    Do not apply this filter
+                </label>
+            </div>
+            <div style="margin: 10px">
+                Payment Types:<br />
+                <input id="chkPaymentsReportCash" type="checkbox" checked />
+                <label for="chkPaymentsReportCash">
+                    Cash
+                </label><br />
+
+                <input id="chkPaymentsReportCheck" type="checkbox" checked />
+                <label for="chkPaymentsReportCheck">
+                    Check
+                </label><br />
+
+                <input id="chkPaymentsReportCreditCard" type="checkbox" checked />
+                <label for="chkPaymentsReportCreditCard">
+                    Credit Card
+                </label><br />
+
+                <input id="chkPaymentsReportDebitCard" type="checkbox" checked />
+                <label for="chkPaymentsReportDebitCard">
+                    Debit Card
+                </label><br />
+            </div>
+            <div style="margin: 10px">
+                <a data-role="none" class="custom-link" id="butPaymentsReportDownload">Download PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!--<div id="popupCollectionReport" custom-data-role="popup">
+        <div class="popup">
+            <div class="popup-header">
+                Collection Report
+                <a class="popup-close">x</a>
+            </div>
+
+            <div class="popup-content">
+                <div style="text-align:center; width:100%;">
+                    <label style="font-weight:bold; font-size:20px;">DAVAO SOUTHERN METAL ENTERPRISES</label>
+                    <br />
+                    <label style="font-size:18px;">JP Cabaguio Avenue, Agdao</label>
+                    <br />
+                    <label style="font-size:18px;">Contact Nos. 082-3003688/221-2779/226-4415</label>
+                    <br />
+                    <label style="font-size:18px;">TIN 100-077-926-000 VAT</label>
+                    <br /><br /><br />
+                    <label style="font-size:18px; font-weight:bold;">COLLECTION REPORT</label>
+                    <br /><br />
+                    <label style="font-size:12px;">Payment Date From: 4/7/2017 To: 4/7/2017</label>
+                </div>
+                <div style="overflow:auto;">
+                    <table data-role="table" data-role="reflow" style="margin-right: 5px; display: table;" class="ui-table ui-responsive table-stroke table-stripe custom-tbl-responsive">
+                        <thead>
+                            <tr class="custom-theme-f fixed-cell-width">
+                                <th class="txt-center"> Customer Name </th>
+                                <th class="txt-center"> Collection Receipt. </th>
+                                <th class="txt-center"> Inv. No. </th>
+                                <th class="txt-center"> Bank Name </th>
+                                <th class="txt-center"> Bank Branch </th>
+                                <th class="txt-center"> Chck No. </th>
+                                <th class="txt-center"> Chck Date </th>
+                                <th class="txt-center"> Chck Amt </th>
+                                <th class="txt-center"> Chck Total </th>
+                                <th class="txt-center"> Cash Amt </th>
+                                <th class="txt-center"> Total </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="popup-footer align-right">
+                <button id="" data-role="none" class="btn custom-btn-theme-c btnCircle popup-close">
+                    <img alt="Options" src="/Content/images/close-black.png" />
+                </button>
+            </div>
+        </div>
+    </div>-->
+</div>

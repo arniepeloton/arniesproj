@@ -1,0 +1,347 @@
+﻿<link rel="stylesheet" type="text/css" href="/Content/css/imgareaselect-default.css" />
+<link rel="Stylesheet" type="text/css" href="/Content/css/jquery.bxslider.css" />
+<script type="text/javascript" src="/Scripts/jquery.imgareaselect.min.js"></script>
+
+<div id="divVendorCanvassList" subpage="divVendorCanvass" style="display:none;">
+    <div class="row">
+        <div class="col-sm-offset-6 col-sm-6">
+            <form method="post" id="formVendorCanvassSearch" autocomplete="off">
+                <input type="text" id="txtVendorCanvassSearch" data-role="none" class="form-control unicase-form-control" placeholder="Search here" />
+            </form>            
+        </div>
+    </div>
+    <br />
+    <table id="tblVendorCanvass" data-role="table" data-mode="reflow" style="margin-right:5px; display:table;" class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+        <thead>
+            <tr class="custom-theme-c">
+                <th style="width:50px;">#</th>
+                <th>Canvass Form</th>
+                <th style="width:200px;">Last Updated</th>
+            </tr>
+        </thead>
+        <tbody id="tblBodyVendorCanvass"></tbody>
+    </table>
+</div>
+
+<div id="divVendorCanvassDetails" subpage="divVendorCanvass" style="display:none;">
+    <div id="lblWelcomeForCanvassLink" style="font-size:24px; display:none;">Welcome <b class="lblVendorName"></b> to Mobiz Online Bid Form.<br /><br /></div>
+    
+    <div id="divTabCanvass">
+        <ul class="nav nav-tabs">
+            <li class="active" custom-tab-content="#tabCanvassForm"><a data-role="none">Canvass Form</a></li>
+            <li custom-tab-content="#tabAttachments"><a data-role="none">Attachments</a></li>
+        </ul>
+    </div>
+    <div id="tabCanvassForm" custom-tab-role="content" style="display:block;">
+        <div class="row">
+            <div class="col-sm-8">
+                <div style="display:block; white-space:nowrap; overflow:auto;">
+                    <button data-role="none" id="btnAdjustPrice" class="btn btn-primary btn-less-width">Apply Discounts by Grouping</button>
+                    &nbsp;
+                    <button data-role="none" id="btnDownloadCanvassForm" class="btn btn-primary btn-less-width">Download Canvass Form</button>
+                    &nbsp;
+                    <button data-role="none" id="btnUploadCanvassForm" class="btn btn-primary btn-less-width">Upload Canvass Form</button>
+                    <form id="formUploadCanvassFormTemplate" method="post">
+                        <input data-role="none" id="fileUploadCanvassFormTemplate" type="file" accept=".xls,.xlsx" style="display:none;" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4 txt-right">
+                <button data-role="none" data-toggle="tooltip" data-placement="left" title="Read Me" id="btnCanvassInfoNotes" class="btn custom-btn-theme-d btn-less-width">
+                    Important Note
+                </button>
+            </div>
+        </div>        
+        <br />
+        <table id="tblVendorCanvassSku" data-role="table" data-mode="reflow" style="margin-right:5px; display:table;" class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+            <thead>
+                <tr class="custom-theme-c">
+                    <th style="width:30px;">#</th>
+                    <th style="width:30px;"></th>
+                    <th>Item Description</th>
+                    <th style="width:100px;">Unit Measure</th>
+                    <th style="width:100px;">SRP</th>
+                    <th style="width:145px;">Trade Discount (%)</th>
+                    <th style="width:145px;">Price Net Of Trade Discount</th>
+                    <th style="width:120px;">Cash Discount</th>
+                    <th style="width:100px;">Comment</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyVendorCanvassSku"></tbody>
+        </table>
+        <br />
+        <div style="text-align:center;">
+            <button data-role="none" id="btnCanvassLinkCancel" class="btn btn-default btn-less-width">Cancel</button>
+            &nbsp;
+            <button data-role="none" id="btnCanvassLinkSave" class="btn btn-primary btn-less-width">Done</button>
+        </div>
+    </div>
+    <div id="tabAttachments" custom-tab-role="content" style="display:none;">
+        <div class="row">
+            <div class="col-sm-6">
+                <button data-role="none" id="btnUploadAttachments" class="btn btn-primary btn-less-width btn-sm">Upload Files</button>
+                <form id="formUploadAttachments" method="post">
+                    <input data-role="none" id="fileUploadAttachments" multiple="multiple" type="file" accept=".xls,.xlsx,.doc,.docx,.pdf,image/*" style="display:none;" />
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" id="txtCanvassAttachmentsSearch" data-role="none" class="form-control unicase-form-control" placeholder="Search files here" />
+            </div>
+        </div>        
+        <br />
+        <table id="tableAttachments" data-role="table" data-mode="reflow" style="margin-right:5px; display:table;" class="ui-table ui-shadow ui-responsive table-stroke table-stripe">
+            <thead>
+                <tr class="custom-theme-c">
+                    <th style="width:30px;">#</th>
+                    <th>File Name</th>
+                    <th style="width:200px;">Date Uploaded</th>
+                    <th style="width:100px;"></th>
+                </tr>
+            </thead>
+            <tbody id="tbodyAttachments"></tbody>
+        </table>
+    </div>    
+</div>
+
+<div id="divVendorCanvassSkuPic" subpage="divVendorCanvass" style="display:none;">
+    <div class="row">
+        <div class="col-sm-6">
+            <span style="font-size:20px;">
+                Picture Gallery of <span id="lblCanvassSkuName"></span>
+            </span>
+        </div>
+        <div class="col-sm-6 txt-right">
+            <button data-role="none" id="btnSkuPicAttachments" class="btn btn-primary btn-less-width btn-sm">Attach Picture</button>
+            <form id="formSkuPicAttachments" method="post">
+                <input data-role="none" id="fileSkuPicAttachments" type="file" accept="image/*" style="display:none;" />
+            </form>
+        </div>
+    </div>
+    <br /><br />
+    <div class="row" id="imgSelection">
+
+    </div>
+    <br />
+    <div style="text-align:center;">
+        <button data-role="none" id="btnCanvassSkuPicCancel" class="btn btn-primary btn-less-width">Back</button>
+    </div>
+</div>
+
+<div id="divVendorCanvassSkuCropPic" subpage="divVendorCanvass" style="display:none;">
+    <span style="font-size: 20px; font-weight: bold;">Please crop the picture. Click Crop button when you're done.</span>
+    <br /><br />
+    <div style="text-align:center;">
+        <img id="compressImage" style="visibility:hidden; display:none;" />
+        <img id="thumbnail" style="visibility:hidden; display:none;" />
+        <img id="resizedImage" style="display:none;" />
+        <img id="canvasImage" style="max-width:50%; margin-left: auto; margin-right: auto;" />
+    </div>
+    <br />
+    <div style="text-align:center;">
+        <button data-role="none" id="btnCancelCrop" class="btn btn-default btn-less-width">Cancel</button>
+        &nbsp;
+        <button data-role="none" id="btnDoneCrop" class="btn btn-primary btn-less-width">Crop</button>
+    </div>
+</div>
+
+<div class="modal fade" id="popCanvassTradeDiscount" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 data-role="none" class="modal-title">Trade Discount</h4>
+            </div>
+            <div class="modal-body">
+                <i>
+                    Please enter the trade discounts (excluding volume and cash discounts for this SKU). Separate trade discounts with commas. <br />
+                    Example: Less 5,2,3
+                </i>
+                <br /><br />
+                <div class="divTable" style="font-size: inherit !important;">
+                    <div class="divTableCell" style="width:60px;">Less: <span class="required">*</span></div>
+                    <div class="divTableCell"><input type="text" data-role="none" class="form-control unicase-form-control" id="txtTradeDiscountLess" /></div>
+                    <div class="divTableCell" style="width:50px;">%</div>
+                </div>
+                <br />
+                <div>
+                    Net Discount Factor: <span id="lblTradeDiscountFactor"></span>
+                </div>
+                <br />
+                <div>
+                    Net Discount Rate: <span id="lblTradeDiscountRate"></span>
+                </div>
+                <br />
+                <h4>Remarks:</h4>
+                <br />
+                <textarea data-role="none" id="txtTradeDiscountRemarks" class="form-control unicase-form-control" style="height:100px; resize:none"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                <button data-role="none" id="btnOkCanvassTradeDiscount" type="button" class="btn btn-primary btn-less-width">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popCanvassCashDiscount" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 data-role="none" class="modal-title">Cash Discount</h4>
+            </div>
+            <div class="modal-body">
+                <form id="formCanvassCashDiscount" method="post" autocomplete="off">
+                    Fill the required fields with <span class="required">*</span>
+                    <br /><br />
+                    <div class="row">
+                        <div class="col-sm-4">Cash Discount Rate (%): <span class="required">*</span></div>
+                        <div class="col-sm-8"><input type="number" id="txtCanvassCDRate" data-role="none" class="form-control unicase-form-control number-only" /></div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-4">If paid in: (days) <span class="required">*</span></div>
+                        <div class="col-sm-8"><input type="number" id="txtCanvassCDIfPaidIn" data-role="none" class="form-control unicase-form-control number-only" /></div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-4">Net amount to be paid in: (days) <span class="required">*</span></div>
+                        <div class="col-sm-8"><input type="number" id="txtCanvassCDNetAmount" data-role="none" class="form-control unicase-form-control number-only" /></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" id="btnCloseCashDiscount" type="button" class="btn btn-default btn-less-width">Cancel</button>
+                <button data-role="none" id="btnOkCanvassPriceTradeDiscount" type="button" class="btn btn-primary btn-less-width">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popCanvassComment" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 data-role="none" class="modal-title">Cash Discount</h4>
+            </div>
+            <div class="modal-body">
+                <form id="formCanvassComment" method="post" autocomplete="off">
+                    <textarea data-role="none" id="txtCanvassComment" placeholder="Enter your comment here" class="form-control unicase-form-control" style="height:100px; resize:none;"></textarea>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                <button data-role="none" id="btnOkCanvassComment" type="button" class="btn btn-primary btn-less-width">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popCanvassAdjustPrices" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 data-role="none" class="modal-title">Apply Discounts by Grouping</h4>
+            </div>
+            <div class="modal-body">
+                <div><span class="required">*</span> Note: Use this tool if the discounts are repetitive.</div>
+                <br />
+                <h4>Where do you want to apply the discounts?</h4>
+                <div class="row">
+                    <div class="col-sm-3">Product Category:</div>
+                    <div class="col-sm-9">
+                        <select data-role="none" id="selAdjustPricesCategory" class="form-control unicase-form-control">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">Brand</div>
+                    <div class="col-sm-9">
+                        <select data-role="none" id="selAdjustPricesBrand" class="form-control unicase-form-control">
+                            <option value="">All Brands</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <h4>Discount Rates to be Applied:</h4>
+                <div class="row">
+                    <div class="col-sm-3">Trade Discount:</div>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input data-role="none" type="text" id="txtAdjustPricesTradeDiscounts" class="form-control unicase-form-control">
+                            <span class="input-group-addon"> %</span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">Cash Discount:</div>
+                    <div class="col-sm-9">
+                        <input data-role="none" type="text" id="txtAdjustPricesCashDiscounts" placeholder="Click here to edit" readonly class="form-control unicase-form-control" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">Per PO Volume Discount:</div>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input data-role="none" type="text" id="txtAdjustPricesVolumeDiscount" disabled placeholder="To be implemented" class="form-control unicase-form-control">
+                            <span class="input-group-addon"> %</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                <button data-role="none" id="btnAdjustPricesOk" type="button" class="btn btn-primary btn-less-width">Apply Discount Rates To This Grouping</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popUserLogin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="formCanvassLogin" method="post" autocomplete="off">
+                <div class="modal-header">
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 data-role="none" class="modal-title">Security Validation</h4>
+                </div>
+                <div class="modal-body">
+                    We want to make sure if you are really the administrator. Please enter your username and password.
+                    <br /><br />
+                    <input type="text" data-role="none" autocomplete="off" class="form-control unicase-form-control" id="txtUsername" placeholder="Username" />
+                    <br />
+                    <input type="password" data-role="none" autocomplete="off" class="form-control unicase-form-control" id="txtPassword" placeholder="Password" />
+                    <br />
+                    <span style="display:none;" id="errLogin" class="required">Invalid username and password</span>
+                </div>
+                <div class="modal-footer">                    
+                    <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Cancel</button>
+                    <button data-role="none" type="submit" id="btnCanvassUserLoginSubmit" class="btn btn-primary btn-less-width">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="popCanvassSkuPic" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="divPIMPicPreview" class="bxslider">
+
+                </div>
+                <div id="divPIMPicPreviewThumbnails" style="overflow:auto; display:block; white-space:nowrap;">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-role="none" type="button" class="btn btn-default btn-less-width" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
