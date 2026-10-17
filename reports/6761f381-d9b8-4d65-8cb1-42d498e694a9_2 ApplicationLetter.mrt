@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiXmlDatabase" isKey="true">
+        <Alias>Connection</Alias>
+        <Name>Connection</Name>
+        <PathData>C:\Users\Mobiz IBMWorkstation\Desktop\Dump\BuildingPermitXML.xml</PathData>
+        <PathSchema />
+      </Connection>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <Info Ref="3" type="DataTableSource" isKey="true">
+        <Alias>Info</Alias>
+        <Columns isList="true" count="321">
+          <value>The_project_is_owned_by:__Natural_Person__x0028_Individual_x0029_,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Company_Name,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Main_Business_Activity,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__House_x002F__Building_No.,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Street_Name,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Barangay,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__City_x002F__Municipality,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__State_x002F__Region,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Country,System.String</value>
+          <value>Type_of_Company_Ownership:__Sole_Proprietorship,System.String</value>
+          <value>Type_of_Company_Ownership:__Partnership,System.String</value>
+          <value>Type_of_Company_Ownership:__Corporation,System.String</value>
+          <value>Type_of_Company_Ownership:__Cooperative,System.String</value>
+          <value>Type_of_Company_Ownership:__LGU,System.String</value>
+          <value>Type_of_Company_Ownership:__NGU,System.String</value>
+          <value>Type_of_Company_Ownership:__GOCC,System.String</value>
+          <value>Others__Type_of_Company_Ownership:,System.String</value>
+          <value>The_project_is_owned_by:__Company__x0028_Juridical_Person_x0029_,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__House_Name_or_Number.,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__Street_Name,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__Barangay,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__City_x002F__Municipality,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__State,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__First_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Middle_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Last_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__House_Number,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Street_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Barangay,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__City_x002F__Municipality,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__State_or_Province,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Country,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Mobile_Number,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Telephone_Number,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Fax_Number,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Government_ID_Reference,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Title,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__First_Naame,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Middle_Name,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Concrete,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Glass,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Steel,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Wood,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Mixed,System.String</value>
+          <value>Authorized_Project_Representative_Details:__First_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Middle_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Last_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__House_or_Building_Name_x002F__Number,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Street_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Barangay,System.String</value>
+          <value>Authorized_Project_Representative_Details:__City_or_Municipality,System.String</value>
+          <value>Authorized_Project_Representative_Details:__State_x002F__Region,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Tel_x002F__Mobile_Number,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__New_Construction,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Addition,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Repair,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Renovation,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Alteration,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Moving,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Demolition,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Residential,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Commercial,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Industrial,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Institutional,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Agricultural,System.String</value>
+          <value>Others__Please_indicate_use_or_occupancy_of_building_x002F__structure,System.String</value>
+          <value>Number_of_Storeys__1,System.String</value>
+          <value>Number_of_Storeys__2,System.String</value>
+          <value>Number_of_Storeys__3,System.String</value>
+          <value>Number_of_Storeys__4,System.String</value>
+          <value>Number_of_Storeys__5,System.String</value>
+          <value>Number_of_Storeys__6,System.String</value>
+          <value>Number_of_Storeys__7,System.String</value>
+          <value>Number_of_Storeys__8,System.String</value>
+          <value>Number_of_Storeys__9,System.String</value>
+          <value>Number_of_Storeys__10,System.String</value>
+          <value>Number_of_Storeys__11,System.String</value>
+          <value>Number_of_Storeys__12,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Lot_Area,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Proposed_Date_of_Construction,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Expected_Date_of_Completion,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Last_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Complete_Address,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Title,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__First_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Middle_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Last_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Complete_Address,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Tax_Receipt__x0028_PTR_x0029__Number,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Date_Issued,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Place_Issued,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_TCT_x002F__OCT_No.,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Name,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Address,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Community_Tax_Certificate,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Parks_x002F__Plazas_x002F__Monuments,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Recreational,System.String</value>
+          <value>Scope_of_Electrical_Work__New_Installation,System.String</value>
+          <value>Scope_of_Electrical_Work__Annual_Inspection,System.String</value>
+          <value>Scope_of_Electrical_Work__Addition_of:,System.String</value>
+          <value>Scope_of_Electrical_Work__Repair_of:,System.String</value>
+          <value>Scope_of_Electrical_Work__Removal_of:,System.String</value>
+          <value>Scope_of_Electrical_Work__Others__x0028_please_specify_x0029_:,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Dwelling,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Hotel_x002F__Apartment_x002F__Condo,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Education_and_Recreation,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Institutional,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Business_and_Mercantile,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Industrial,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Storage__x0026__Hazardous_Materials,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Other_than_Group_I_x0029_,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Occupant_Load_of_100_Amps_or_More_x0029_,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Accessory,System.String</value>
+          <value>Others__Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029_,System.String</value>
+          <value>Number_of_Outlets__Light,System.String</value>
+          <value>Number_of_Outlets__Convenience_Receptacle,System.String</value>
+          <value>Number_of_Outlets__SPO._Aircon,System.String</value>
+          <value>Number_of_Outlets__SPO.Cooking_Unit,System.String</value>
+          <value>Number_of_Outlets__SPO._Cooking_Heater,System.String</value>
+          <value>Number_of_Outlets__SPO._Water_Pump,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Toggle_Switch,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Bells_Buzzer,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Push_Button,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Fire_Alarm_x002F__Smoke_Detectors,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Others__x0028_please_specify_x0029_,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Title,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__First_Name,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Middle_Name,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Last_Name,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Complete_Address,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__PTR_Date_Issued,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__PTR_Place_Issued,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__PRC_Registration_Validity,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Telephone_x002F__Mobile,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___First_Name,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Middle_Name,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Last_Name,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Complete_Address,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Telephone_x002F__Mobile_Number,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Philippine_Contractors_Accreditation_Board__x0028_PCAB_x0029__Number,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___PCAB_Validity,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Title,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__First_Name,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Middle_Name,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Last_Name,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__PTR_Date_Issued,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__PTR_Place_Issued,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__PRC_Reg._Validity,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__New_Installation,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__Addition_of:,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__Repair_of:,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__Removal_of:,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Residential,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Commercial,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Industrial,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Institutional,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Agricultural,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Parks_x002F__Plazas_x002F__Monuments,System.String</value>
+          <value>Others__Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029_,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__First_Name,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Middle_Name,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Last_Name,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Complete_Address,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Date_Issued,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Place_Issued,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PRC_Reg._Validity,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tel_x002F_Fax_x002F_Mobile,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__First_Name,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Middle_Name,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Last_Name,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Complete_Address,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Date_Issued,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Place_Issued,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PRC_Reg._Validity,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tel_x002F_Fax_x002F_Mobile,System.String</value>
+          <value>Please_indicate_water_supply_x002F__source:__Shallow_Well,System.String</value>
+          <value>Please_indicate_water_supply_x002F__source:__Deep_Well_and_Pump_Set,System.String</value>
+          <value>Please_indicate_water_supply_x002F__source:__City_x002F__Municipality_Water_System,System.String</value>
+          <value>Others__Please_indicate_water_supply_x002F__source:,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Waste_Water_Treatment_Plant,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Septic_Vault_x002F__Imhoff_Tank,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Sanitary_Sewer_Connection,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Sub-Surface_Sand_Filter,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Surface_Drainage,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Street_Canal,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Water_Course,System.String</value>
+          <value>Others__Please_indicate_type_of_System_Disposal,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Recreational,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Complete_Address,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Complete_Address,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__Complete_Address,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Complete_Address,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Email_Address,System.String</value>
+          <value>Authorized_Project_Representative_Details:__TIN,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Telephone_x002F__Mobile_Number,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Building_Area,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Erection,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Conversion,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Raising,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Accessories_Building_Structure,System.String</value>
+          <value>Project_Name,System.String</value>
+          <value>ProjectDurationInDays,System.String</value>
+          <value>DateToday,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>TotalProjectCost,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Name>Info</Name>
+        <NameInSource>Connection.Info</NameInSource>
+      </Info>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="47">
+        <Text1 Ref="5" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.3,0.1,1.8,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>APPLICATION LETTER</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text1>
+        <Text2 Ref="6" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.8,1,1.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Date: __________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text2>
+        <Text3 Ref="7" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.8,2.8,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <Guid>eac11f2d22e9442f8524988fb83c7ad8</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text3</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>ENGR. CIRINIA GRACE CATUBIG</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text3>
+        <Text4 Ref="8" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2,1.9,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>ce5a3406d32c4f14acf1a850d9a6990d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text4</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Acting Building Official</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text4>
+        <Text5 Ref="9" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3,0.4,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>95fc4195b2f54590bdd38f18b311e550</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text5</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Sir:</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text5>
+        <Text6 Ref="10" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.6,3.4,5.9,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>ea5c85d531904f119031e60fae114b2d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text6</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>I ______________________________________________________________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text6>
+        <Text10 Ref="11" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.8,3.6,0.9,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Italic</Font>
+          <Guid>c2ac662ed0974b65b1692b83dd92bb31</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text10</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>(First Name)</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text10>
+        <Text11 Ref="12" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3,3.6,1.1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Italic</Font>
+          <Guid>beabcfdc702f4714bce908f6fede0c4c</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text11</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>(Middle Name)</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text11>
+        <Text12 Ref="13" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.9,3.6,1.1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Italic</Font>
+          <Guid>2f10eed7003042edaef9990685dd01b3</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text12</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>(Family Name)</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text12>
+        <Text13 Ref="14" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.9,6.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>28a86f5231534b74a1fb1f8a11b7c07d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text13</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Would like to apply for ______________________________ for my _______________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text13>
+        <Text14 Ref="15" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.2,6.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>cf6fc8d2a5b341158ac8f5cfd729535d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text14</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>located at ______________________________________________________________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text14>
+        <Text15 Ref="16" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1,4.4,1.3,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Italic</Font>
+          <Guid>db353fe231254c65b1f58cbd51785f41</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text15</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>(Complete Address)</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text15>
+        <Text16 Ref="17" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.6,4.9,6,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>07f7edff4b3f4ba491d29833e5c0fc92</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text16</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>I also authorize ________________________________________________________________ to</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text16>
+        <Text17 Ref="18" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2,5.1,2.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Italic</Font>
+          <Guid>82e95e39de1849399dd626b006bc5dd0</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text17</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>(Authorized Representative of the Company)</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text17>
+        <Text18 Ref="19" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,5.4,3.6,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>e47a80f3d3554d8a8aed83e3105da776</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text18</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>transact the application with your Office in my behalf.</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text18>
+        <Text19 Ref="20" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.6,5.9,5.9,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>80e8b9afddc249a4b294ea4f89524dd4</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text19</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>I/We hereby certify that the documents submitted herein are all true and correct, therefore</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text19>
+        <Text20 Ref="21" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.1,6.9,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>c84917b57c854cfba845328f8e5f3cc5</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text20</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>falsification on the supporting document in any way will cause disapproval of the permit application without</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text20>
+        <Text21 Ref="22" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.3,6.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>b7b6a69f729f4a148a3b199f7c7ebac9</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text21</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>prejudice to further action that may be undertaken pursuant to Article 171 &amp; 172 of R.A. 3815, otherwise</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text21>
+        <Text22 Ref="23" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.5,6.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>3eb7b45eab4b4113b4a9e43b037f151d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text22</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>known as the Revised Penal Code of the Philippines.</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text22>
+        <Text23 Ref="24" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.4,7.8,2.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>bfe1830a4e354ee89963d065ecf38ee6</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text23</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>__________________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text23>
+        <Text24 Ref="25" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.8,7.8,2.3,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>841070bae2904ea58af16fe4f0f6aa9d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text24</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>_______________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text24>
+        <Text25 Ref="26" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.4,8,2.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,10,Italic</Font>
+          <Guid>f49ee5356a4f4e58bb56f2b117a8336a</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text25</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>(Signature over Printed name of the Owner)</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text25>
+        <Text26 Ref="27" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.1,8,3.4,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,10,Italic</Font>
+          <Guid>fa8a57f03f5d4738945363b219cf64fa</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text26</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>(Signature over Printed name of Authorized Representative)</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text26>
+        <Text27 Ref="28" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.5,2.8,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>52000068bb4a44c19dc853a0fa3a14b8</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text27</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Address: ______________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text27>
+        <Text28 Ref="29" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.8,2.8,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>7e94d3075dd24bdc86ca2db720d5544d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text28</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Contact Number: _________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text28>
+        <Text29 Ref="30" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.5,8.5,2.8,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>6e73d1a204324067aa2d1dfcff3f4b7f</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text29</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Address: ______________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text29>
+        <Text30 Ref="31" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.5,8.8,2.8,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>d9ad3df651144f4192f79fab9de846c8</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text30</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Contact Number: _________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text30>
+        <Text8 Ref="32" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.2,3,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text8</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Applicant'__First_Name</Text>
+          <TextBrush>Black</TextBrush>
+        </Text8>
+        <Text31 Ref="33" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.7,3.3,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text31</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Applicant'__Middle_Nam</Text>
+          <TextBrush>Black</TextBrush>
+        </Text31>
+        <Text33 Ref="34" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.7,3.3,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text33</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Applicant'__Last_Name</Text>
+          <TextBrush>Black</TextBrush>
+        </Text33>
+        <Text35 Ref="35" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.5,3.9,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text35</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>What_would_you_like_</Text>
+          <TextBrush>Black</TextBrush>
+        </Text35>
+        <Text37 Ref="36" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.2,3.8,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text37</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Purpose_for_applying</Text>
+          <TextBrush>Black</TextBrush>
+        </Text37>
+        <Text39 Ref="37" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.7,4.1,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text39</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Complete_Address</Text>
+          <TextBrush>Black</TextBrush>
+        </Text39>
+        <Text41 Ref="38" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.6,4.8,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text41</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Authorized_represent</Text>
+          <TextBrush>Black</TextBrush>
+        </Text41>
+        <Text34 Ref="39" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.7,4,5.8,0.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text34</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Project__Construction_Site_Address___Complete_Address}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <VertAlignment>Center</VertAlignment>
+        </Text34>
+        <Text7 Ref="40" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.4,7.6,2.5,0.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text7</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__First_Name} {Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Middle_Name} {Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Last_Name}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text7>
+        <Text9 Ref="41" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.7,3.3,5.8,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>e053394559924542ba6f12a783628e8c</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text9</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Project_Owner__Juridical_Person__Details__Please_fill_in_infor__Company_Name != "" ? Info.Authorized_Project_Representative_Details___First_Name + ' ' +  Info.Authorized_Project_Representative_Details___Middle_Name + ' ' + Info.Authorized_Project_Representative_Details___Last_Name : Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__First_Name + ' ' + Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Middle_Name + ' ' + Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Last_Name}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text9>
+        <Text32 Ref="42" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.8,7.6,2.3,0.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>94bee738651f4854b2dfa407e8bb2727</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text32</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Authorized_Project_Representative_Details___First_Name} {Info.Authorized_Project_Representative_Details___Middle_Name} {Info.Authorized_Project_Representative_Details___Last_Name}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text32>
+        <Text36 Ref="43" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.6,4.8,4.8,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>d15fac8d1b054be085ee14923131fe6e</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text36</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Authorized_Project_Representative_Details___First_Name} {Info.Authorized_Project_Representative_Details___Middle_Name} {Info.Authorized_Project_Representative_Details___Last_Name}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text36>
+        <Text38 Ref="44" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.6,8.2,2.9,0.5</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <Guid>b677273daab84f87b8b18501fc3b7645</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text38</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Complete_Address}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+          <VertAlignment>Bottom</VertAlignment>
+        </Text38>
+        <Text40 Ref="45" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.1,8.2,2.4,0.5</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <Guid>3ce7efb33e20479198301be754af698f</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text40</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Authorized_Project_Representative_Details___House_or_Building_Name__Number} {Info.Authorized_Project_Representative_Details___Street_Name} {Info.Authorized_Project_Representative_Details___Barangay} {Info.Authorized_Project_Representative_Details___City_or_Municipality}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+          <VertAlignment>Bottom</VertAlignment>
+        </Text40>
+        <Text42 Ref="46" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.1,8.7,2.3,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <Guid>bc77f6abafe1402c878ccf581c214f97</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text42</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Telephone_Number != "" ? Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Telephone_Number + " /" : ""} {Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Mobile_Number}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+          <VertAlignment>Bottom</VertAlignment>
+        </Text42>
+        <Text43 Ref="47" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.6,8.7,2.3,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <Guid>5d0ab90deaa7446b8cc0b069873bc1c7</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text43</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Authorized_Project_Representative_Details___Tel__Mobile_Number}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+          <VertAlignment>Bottom</VertAlignment>
+        </Text43>
+        <Image1 Ref="48" type="Image" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.2,7.7,0.2,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvgAADr4B6kKxwAAAAKxJREFUOE/VzyEKAkEUh/EJikFEMNjFaDKZDGbrVsEDeAarp9BoEk9hs5k2WFQw7AUEEfT7jz7YsIqv6Qe/MMO+t0z4uyZIMYgnZx1ccMdeF55K2ELDMoKrKWx4rQtPXVyh4QxNFFbDGOV4elbBDvb3BIXpjRvooxVsyQw2vNTFu6o4wT7Wkj5ur/MZDXysjfwSe7cM8VVacoQNyhyu8ksOqMNdCwv04umHC+EBsLss2SwFx7AAAAAASUVORK5CYII=</Image>
+          <Name>Image1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </Image1>
+        <Image2 Ref="49" type="Image" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.6,7.7,0.2,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Guid>7eedd68a75ee41758b9d3538a7b4d4b7</Guid>
+          <Image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvQAADr0BR/uQrQAAAKxJREFUOE/VzyEKAkEUh/EJikFEMNjFaDKZDGbrVsEDeAarp9BoEk9hs5k2WFQw7AUEEfT7jz7YsIqv6Qe/MMO+t0z4uyZIMYgnZx1ccMdeF55K2ELDMoKrKWx4rQtPXVyh4QxNFFbDGOV4elbBDvb3BIXpjRvooxVsyQw2vNTFu6o4wT7Wkj5ur/MZDXysjfwSe7cM8VVacoQNyhyu8ksOqMNdCwv04umHC+EBsLss2SwFx7AAAAAASUVORK5CYII=</Image>
+          <Name>Image2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </Image2>
+        <Text44 Ref="50" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.2,1.9,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11</Font>
+          <Guid>47b9821361bf433282b9506e99119c99</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text44</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Davao City</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text44>
+        <Text45 Ref="51" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>5.2,1,1.3,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,11,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text45</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.DateToday}</Text>
+          <TextBrush>Black</TextBrush>
+        </Text45>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>7e3e5fcc9faa4f2f817cda2b9e5d07c9</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>11</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="52" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="53" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>6/15/2019 1:18:29 PM</ReportChanged>
+  <ReportCreated>11/27/2017 11:05:55 AM</ReportCreated>
+  <ReportFile>C:\Mobiz\WebERP\SurveyRequirements\2 ApplicationLetter.mrt</ReportFile>
+  <ReportGuid>e175c1bb2a6d416e9f645d6a83d3c37a</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2011.1.910</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

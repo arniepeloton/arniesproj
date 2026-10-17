@@ -1,0 +1,134 @@
+<div id="pageOrgPrinter">
+    <div class="row wrapper min-vh-100 flex-column flex-md-row">
+        <div class="col-12 col-md-2 p-0 bg-light flex-shrink-1 mb-3">
+            <nav class="navbar navbar-expand-md navbar-light bg-light align-items-start flex-md-column flex-row p-2">
+                <a data-role="none" class="navbar-brand" href="#">Menu</a>
+                <a data-role="none" href="#" class="navbar-toggler" data-toggle="collapse" data-target=".sidebarSystemAdminPrinters">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <div class="collapse navbar-collapse sidebarSystemAdminPrinters mt-2">
+                    <ul class="flex-column w-100 justify-content-between nav nav-pills">
+                        <li><a class="nav-link active" role="button" data-role="none" data-toggle="tab" href="#tabPrinterInfo">Printer Info</a></li>
+                        <li><a class="nav-link" role="button" data-role="none" data-toggle="tab" href="#tabPrinterAssignedFowst">Assigned FOWSTs</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col col-md bg-faded mb-5">
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="tabPrinterInfo">
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label" for="cbPrinterBrand">Printer Brand:</label>
+                        <div class="col-md-10">
+                            <select id="cbPrinterBrand" data-role="none" class="form-select">
+                                <option value="primary">Epson</option>
+                                <option value="primary">Sunmi</option>
+                                <option value="primary">IMin</option>
+                                <option value="primary">Windows</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label" for="cbPrinterModel">Printer Model:</label>
+                        <div class="col-md-10">
+                            <select id="cbPrinterModel" data-role="none" class="form-select">
+                                <option value="Epson TM-T88V Printer">Epson TM-T88V Printer</option>
+                                <option value="Epson TM-U220B Printer">Epson TM-U220B Printer</option>
+                                <option value="80MM Mini Thermal Printer">80MM Mini Thermal Printer</option>
+                                <option value="G Printer">G Printer</option>
+                                <option value="Sunmi">Sunmi 58MM Printer</option>
+                                <option value="IMin">IMin 58MM Printer</option>
+                                <option value="Windows Print Server">Print Server</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label" for="txtPrinterName">Printer Name:</label>
+                        <div class="col-md-10">
+                            <input type="text" id="txtPrinterName" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label" for="txtPrinterSerialNumber">Serial Number:</label>
+                        <div class="col-md-10">
+                            <input type="text" id="txtPrinterSerialNumber" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label" for="cbPrinterInterfaceType">Interface Type:</label>
+                        <div class="col-md-10">
+                            <select id="cbPrinterInterfaceType" data-role="none" class="form-select">
+                                <option value="primary">Ethernet</option>
+                                <option value="primary">USB</option>
+                                <option value="primary">Bluetooth</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label" for="txtPrinterAddress">IP Address:</label>
+                        <div class="col-md-10">
+                            <input type="text" id="txtPrinterAddress" data-role="none" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label" for="cbPrinterRole">Role:</label>
+                        <div class="col-md-10">
+                            <select id="cbPrinterRole" data-role="none" class="form-select mb-3">
+                                <option value="primary">POS/ General Purpose Printer</option>
+                                <option value="primary">Category Printer</option>
+                            </select>
+
+                            <div id="divPrinterCategories" class="mb-3 border rounded p-2" style="max-height:300px; overflow:auto; display:none">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="tabPrinterAssignedFowst">
+                    <div id="divOldSetup" class="row mb-3">
+                        <label class="col-md-2 col-form-label" for="txtPrinterAddress">Assigned FOWST:</label>
+                        <div class="col-md-10">
+                            <select id="cbPrinterFowst" data-role="none" class="form-select"></select>
+                        </div>
+                    </div>
+
+                    <div id="divNewSetup">
+                        <div class="row gy-2 align-items-center mb-3">
+                            <div class="col col-md-auto order-0 order-md-0 font-weight-bold">List of Assigned FOWSTs</div>
+                            <div class="col-md offset-md-2 order-2 order-md-1">
+                                <input data-role="none" type="text" id="txtPrinterFowstSearch" class="form-control" placeholder="Search FOWST name here" />
+                            </div>
+                            <div class="col-auto col-md-auto text-right order-1 order-md-2">
+                                <button data-role="none" id="btnPrinterAssignFowst" class="btn btn-success">Add FOWST</button>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table id="tblPrinterAssignedFowst" class="table table-light table-striped table-hover">
+                                <thead>
+                                    <tr class="align-top" style="font-size:14px;">
+                                        <th>FOWST Name</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-bottom text-center pb-4">
+        <button data-role="none" id="butPrinterCancel" class="btn btn-secondary btn-lg">Cancel</button>
+        <button data-role="none" id="butPrinterSave" class="btn btn-success btn-lg">Save</button>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+﻿<div name="idOrderTakerSetup" id="idOrderTakerSetup" custom-data-role="page" data-url="divOrderTakerSetup">
+    <nav class="bg-primary text-white mb-3 sticky-top">
+        <div class="container-fluid">
+            <table style="width:100%;">
+                <tr>
+                    <td style="width:50px;">
+                        <button data-role="none" id="btnOrderTakerBack" class="btn btn-primary btn-lg btn-block text-white">
+                            <span class="bi-chevron-left"></span>
+                        </button>
+                    </td>
+                    <td><div><h5 class="m-0">Order Taker Setup</h5></div></td>
+                </tr>
+            </table>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="mb-3">The IP of this device is: <span name="spanDeviceIP"></span></div>
+        <div>
+            <div class="form-check mb-3">
+                <label for="chkOrderTakerSetupIsOrderTaker" class="form-check-label">
+                    This is an order taker device
+                </label>
+                <input id="chkOrderTakerSetupIsOrderTaker" type="checkbox" class="form-check-input" />
+            </div>
+        </div>
+        <div name="divOrderTakerYes" style="display: none">
+            To connect order taker to this POS, please do the following:<br />
+            <br />
+            <b>On the Customer Display Unit</b><br />
+            <ol>
+                <li>Open the "Customer Display" application and then go to Settings > Connect to POS unit.</li>
+                <li>You will see the IP address of your customer display unit on the screen. Do not close this screen while setting up your connection to the main POS unit.</li>
+            </ol>
+
+            <b>On the POS Unit</b><br />
+            <ol>
+                <li>Open Mobiz Complete Retail or Store Keeper</li>
+                <li>Go to Troubleshooting and Maintenance Tools > Customer Display</li>
+                <li>Enter the IP address displayed on on the Customer Display Unit.</li>
+                <li>Click on "Save" button.</li>
+            </ol>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="txtOrderTakerSetupPosIp">
+                    POS IP address:
+                </label>
+                <div class="col-sm-10">
+                    <input id="txtOrderTakerSetupPosIp" data-role="none" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div name="divOrderTakerNo" style="display: none">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="txtOrderTakerSetupOrderTakerIps">
+                    Order takers IP addresses (1 line for each IP):
+                </label>
+                <div class="col-sm-10">
+                    <textarea id="txtOrderTakerSetupOrderTakerIps" data-role="none" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="txtOrderTakerSetupServerIp">
+                Server IP address:
+            </label>
+            <div class="col-sm-10">
+                <input id="txtOrderTakerSetupServerIp" data-role="none" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="txtOrderTakerSetupOverrideSourceIp">
+                Override Source IP address:
+            </label>
+            <div class="col-sm-10">
+                <input id="txtOrderTakerSetupOverrideSourceIp" placeholder="Optional. Use if app cannot properly detect this device's IP address" data-role="none" class="form-control mb-3" />                
+            </div>
+        </div>
+
+        <!--<div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <legend>Data transmission method:</legend>
+                <input name="radioOrderTakerSetupDataTransmissionMethod" id="radioOrderTakerSetupDataTransmissionMethodDevice" value="peerToPeer" checked="checked" type="radio">
+                <label for="radioOrderTakerSetupDataTransmissionMethodDevice">
+                    Use local server
+                    <div>Peer to peer. Android device to Android device</div>
+                </label>
+                <input name="radioOrderTakerSetupDataTransmissionMethod" id="radioOrderTakerSetupDataTransmissionMethodAmiDuos" value="clientServer" type="radio">
+                <label for="radioOrderTakerSetupDataTransmissionMethodAmiDuos">
+                    Use cloud server
+                    <div>Client-server. Android device / AmiDuos to Android device / AmiDuos </div>
+                </label>
+            </fieldset>
+        </div>-->
+        <div class="mt-4 mb-4 text-center">
+            <button name="butOrderTakerSetupSave" data-role="none" class="btn btn-success btn-lg">Save settings</button>
+        </div>        
+    </div>
+</div>

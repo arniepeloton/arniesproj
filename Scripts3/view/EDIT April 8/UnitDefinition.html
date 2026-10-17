@@ -1,0 +1,40 @@
+﻿<div name="divUnitDefinition" data-role="page" data-url="divUnitDefinition">
+    <style>
+        .UnitDefinitionLabel
+        {
+            font-weight: bold;
+        }
+    </style>
+    <div data-role="header">
+        <a href="#" data-icon="arrow-l" data-rel="back">Back</a>
+        <h1>Unit Definition</h1>
+    </div>
+    <div data-role="content">
+        Each <span name="spanParentUnit" class="UnitDefinitionLabel"></span> of <span name="spanParentProduct" class="UnitDefinitionLabel"></span> contains:<br />
+    </div>
+    <div class="ui-grid-a">
+        <div class="ui-block-a">
+            <input name="txtQty" placeholder="Qty" />
+        </div>
+        <div class="ui-block-b">
+            <select name="cbUnit">
+                <option value="pula">Red</option>
+                <option value="berde">Green</option>
+                <option value="Asul">Blue</option>
+            </select>
+        </div>
+    </div>
+    <!-- /grid-a -->
+    <div style="text-align: center">
+        <a name="butSave" data-role="button" data-theme="e">
+            <h3>
+                Save</h3>
+        </a>
+    </div>
+    <div style="text-align: center">
+        <a name="butCancel" data-rel="back" data-role="button" data-theme="e">
+            <h3>
+                Cancel</h3>
+        </a>
+    </div>
+</div>

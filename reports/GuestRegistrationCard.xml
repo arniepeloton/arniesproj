@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Info">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CheckedInUsedOn" type="xs:string" minOccurs="0" />
+                <xs:element name="CheckedOutReturnedOn" type="xs:string" minOccurs="0" />
+                <xs:element name="RoomNo" type="xs:string" minOccurs="0" />
+                <xs:element name="GuestName" type="xs:string" minOccurs="0" />
+                <xs:element name="DateOfBirth" type="xs:string" minOccurs="0" />
+                <xs:element name="ContactNo" type="xs:string" minOccurs="0" />
+                <xs:element name="EmailAddress" type="xs:string" minOccurs="0" />
+                <xs:element name="RoomType" type="xs:string" minOccurs="0" />
+                <xs:element name="NoOfGuest" type="xs:string" minOccurs="0" />
+                <xs:element name="CompanyName" type="xs:string" minOccurs="0" />
+                <xs:element name="Rate" type="xs:string" minOccurs="0" />
+                <xs:element name="ConfirmationNumber" type="xs:string" minOccurs="0" />
+                <xs:element name="PermanentAddress" type="xs:string" minOccurs="0" />
+                <xs:element name="NoOfNights" type="xs:string" minOccurs="0" />
+                <xs:element name="BusinessTradeName" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Info>
+    <CheckedInUsedOn>2019-07-31</CheckedInUsedOn>
+    <CheckedOutReturnedOn>2019-08-08</CheckedOutReturnedOn>
+    <RoomNo>Room 3</RoomNo>
+    <GuestName>Gloria Macapagal Arroyo</GuestName>
+    <DateOfBirth>1970-01-01</DateOfBirth>
+    <ContactNo>09840354654</ContactNo>
+    <EmailAddress>gloriamacapagalarroyo2002@gmail.com</EmailAddress>
+    <RoomType>Room</RoomType>
+    <NoOfGuest>4 / 2</NoOfGuest>
+    <Rate>1,600.00</Rate>
+    <ConfirmationNumber>31072019-667</ConfirmationNumber>
+    <PermanentAddress>Sasa 32 Davao City, Philippines</PermanentAddress>
+    <NoOfNights>8</NoOfNights>
+    <BusinessTradeName>ABC Restaurant</BusinessTradeName>
+  </Info>
+</NewDataSet>

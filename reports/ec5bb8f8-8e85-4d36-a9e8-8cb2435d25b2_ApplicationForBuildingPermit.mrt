@@ -1,0 +1,672 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiXmlDatabase" isKey="true">
+        <Alias>Connection</Alias>
+        <Name>Connection</Name>
+        <PathData>C:\Users\Mobiz IBMWorkstation\Desktop\Dump\Backup\CRM Backup\021018\Stimulsoft XML Data.xml</PathData>
+        <PathSchema />
+      </Connection>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <Info Ref="3" type="DataTableSource" isKey="true">
+        <Alias>Info</Alias>
+        <Columns isList="true" count="307">
+          <value>The_project_is_owned_by:__Natural_Person__x0028_Individual_x0029_,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Company_Name,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Main_Business_Activity,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__House_x002F__Building_No.,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Street_Name,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Barangay,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__City_x002F__Municipality,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__State_x002F__Region,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Country,System.String</value>
+          <value>Type_of_Company_Ownership:__Sole_Proprietorship,System.String</value>
+          <value>Type_of_Company_Ownership:__Partnership,System.String</value>
+          <value>Type_of_Company_Ownership:__Corporation,System.String</value>
+          <value>Type_of_Company_Ownership:__Cooperative,System.String</value>
+          <value>Type_of_Company_Ownership:__LGU,System.String</value>
+          <value>Type_of_Company_Ownership:__NGU,System.String</value>
+          <value>Type_of_Company_Ownership:__GOCC,System.String</value>
+          <value>Others__Type_of_Company_Ownership:,System.String</value>
+          <value>The_project_is_owned_by:__Company__x0028_Juridical_Person_x0029_,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__House_Name_or_Number.,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__Street_Name,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__Barangay,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__City_x002F__Municipality,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__State,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__First_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Middle_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Last_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__House_Number,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Street_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Barangay,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__City_x002F__Municipality,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__State_or_Province,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Country,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Mobile_Number,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Telephone_Number,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Fax_Number,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Government_ID_Reference,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Title,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__First_Naame,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Middle_Name,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Concrete,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Glass,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Steel,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Wood,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Mixed,System.String</value>
+          <value>Authorized_Project_Representative_Details:__First_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Middle_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Last_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__House_or_Building_Name_x002F__Number,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Street_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Barangay,System.String</value>
+          <value>Authorized_Project_Representative_Details:__City_or_Municipality,System.String</value>
+          <value>Authorized_Project_Representative_Details:__State_x002F__Region,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Tel_x002F__Mobile_Number,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__New_Construction,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Addition,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Repair,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Renovation,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Alteration,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Moving,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Demolition,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Residential,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Commercial,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Industrial,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Institutional,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Agricultural,System.String</value>
+          <value>Others__Please_indicate_use_or_occupancy_of_building_x002F__structure,System.String</value>
+          <value>Number_of_Storeys__1,System.String</value>
+          <value>Number_of_Storeys__2,System.String</value>
+          <value>Number_of_Storeys__3,System.String</value>
+          <value>Number_of_Storeys__4,System.String</value>
+          <value>Number_of_Storeys__5,System.String</value>
+          <value>Number_of_Storeys__6,System.String</value>
+          <value>Number_of_Storeys__7,System.String</value>
+          <value>Number_of_Storeys__8,System.String</value>
+          <value>Number_of_Storeys__9,System.String</value>
+          <value>Number_of_Storeys__10,System.String</value>
+          <value>Number_of_Storeys__11,System.String</value>
+          <value>Number_of_Storeys__12,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Lot_Area,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Proposed_Date_of_Construction,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Expected_Date_of_Completion,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Last_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Complete_Address,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Title,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__First_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Middle_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Last_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Complete_Address,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Tax_Receipt__x0028_PTR_x0029__Number,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Date_Issued,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Place_Issued,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_TCT_x002F__OCT_No.,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Name,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Address,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Community_Tax_Certificate,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Parks_x002F__Plazas_x002F__Monuments,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Recreational,System.String</value>
+          <value>Scope_of_Electrical_Work__New_Installation,System.String</value>
+          <value>Scope_of_Electrical_Work__Annual_Inspection,System.String</value>
+          <value>Scope_of_Electrical_Work__Addition_of:,System.String</value>
+          <value>Scope_of_Electrical_Work__Repair_of:,System.String</value>
+          <value>Scope_of_Electrical_Work__Removal_of:,System.String</value>
+          <value>Scope_of_Electrical_Work__Others__x0028_please_specify_x0029_:,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Dwelling,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Hotel_x002F__Apartment_x002F__Condo,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Education_and_Recreation,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Institutional,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Business_and_Mercantile,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Industrial,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Storage__x0026__Hazardous_Materials,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Other_than_Group_I_x0029_,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Occupant_Load_of_100_Amps_or_More_x0029_,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Accessory,System.String</value>
+          <value>Others__Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029_,System.String</value>
+          <value>Number_of_Outlets__Light,System.String</value>
+          <value>Number_of_Outlets__Convenience_Receptacle,System.String</value>
+          <value>Number_of_Outlets__SPO._Aircon,System.String</value>
+          <value>Number_of_Outlets__SPO.Cooking_Unit,System.String</value>
+          <value>Number_of_Outlets__SPO._Cooking_Heater,System.String</value>
+          <value>Number_of_Outlets__SPO._Water_Pump,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Toggle_Switch,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Bells_Buzzer,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Push_Button,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Fire_Alarm_x002F__Smoke_Detectors,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Others__x0028_please_specify_x0029_,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Title,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__First_Name,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Middle_Name,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Last_Name,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Complete_Address,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__PTR_Date_Issued,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__PTR_Place_Issued,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__PRC_Registration_Validity,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Telephone_x002F__Mobile,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___First_Name,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Middle_Name,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Last_Name,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Complete_Address,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Telephone_x002F__Mobile_Number,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Philippine_Contractors_Accreditation_Board__x0028_PCAB_x0029__Number,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___PCAB_Validity,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Title,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__First_Name,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Middle_Name,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Last_Name,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__PTR_Date_Issued,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__PTR_Place_Issued,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__PRC_Reg._Validity,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__New_Installation,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__Addition_of:,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__Repair_of:,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__Removal_of:,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Residential,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Commercial,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Industrial,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Institutional,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Agricultural,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Parks_x002F__Plazas_x002F__Monuments,System.String</value>
+          <value>Others__Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029_,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__First_Name,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Middle_Name,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Last_Name,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Complete_Address,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Date_Issued,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Place_Issued,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PRC_Reg._Validity,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tel_x002F_Fax_x002F_Mobile,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__First_Name,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Middle_Name,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Last_Name,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Complete_Address,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Date_Issued,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Place_Issued,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PRC_Reg._Validity,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tel_x002F_Fax_x002F_Mobile,System.String</value>
+          <value>Please_indicate_water_supply_x002F__source:__Shallow_Well,System.String</value>
+          <value>Please_indicate_water_supply_x002F__source:__Deep_Well_and_Pump_Set,System.String</value>
+          <value>Please_indicate_water_supply_x002F__source:__City_x002F__Municipality_Water_System,System.String</value>
+          <value>Others__Please_indicate_water_supply_x002F__source:,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Waste_Water_Treatment_Plant,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Septic_Vault_x002F__Imhoff_Tank,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Sanitary_Sewer_Connection,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Sub-Surface_Sand_Filter,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Surface_Drainage,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Street_Canal,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Water_Course,System.String</value>
+          <value>Others__Please_indicate_type_of_System_Disposal,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Recreational,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Complete_Address,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Complete_Address,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__Complete_Address,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Complete_Address,System.String</value>
+          <value>Project_Name,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Name>Info</Name>
+        <NameInSource>Connection.Info</NameInSource>
+      </Info>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="19">
+        <Text1 Ref="5" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0,1.3,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10,Bold| Italic</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>NBC Form No. B-17</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text1>
+        <Text2 Ref="6" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.5,6.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10</Font>
+          <Guid>8b53a0e4a2a846ba8507720faab7304a</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Republic of the Philippines</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text2>
+        <Text3 Ref="7" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.7,6.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10</Font>
+          <Guid>8d52bfde4efb44239e6800040e3e943c</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text3</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>City Municipality ______________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text3>
+        <Text4 Ref="8" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.9,6.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10</Font>
+          <Guid>1588bf2c3f394333985e35814ea5c550</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text4</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Province of ______________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text4>
+        <Text5 Ref="9" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.2,6.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,11,Bold</Font>
+          <Guid>8ae0e86b228649dda11fb3f757ce25a0</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text5</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>OFFICE OF THE BUILDING OFFICIAL</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text5>
+        <Text6 Ref="10" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.2,1.5,1.1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,11</Font>
+          <Guid>0885939e282248c999265fd12a388ccb</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text6</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>TO				:</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text6>
+        <Text7 Ref="11" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.2,2.1,1.1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,11</Font>
+          <Guid>a889cf171edd46bea8689c5e114134d1</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text7</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>SUBJECT		:</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text7>
+        <Text8 Ref="12" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.3,1.5,2.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,11,Bold</Font>
+          <Guid>02996d006b0e4a3b98c6acea5b3d7ee7</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text8</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>CITY/MUNICIPAL FIRE MARSHALL</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text8>
+        <Text9 Ref="13" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.4,1.7,2.4,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,11</Font>
+          <Guid>3d077c2963184421805c593934e03d21</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text9</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Bureau of Fire Protection, DILG</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text9>
+        <Text10 Ref="14" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.3,2.1,2.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,11,Bold</Font>
+          <Guid>e7bfd13ea88345c1b913042ce0fc7606</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text10</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>APPLICATION FOR BUILDING PERMIT</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text10>
+        <Text13 Ref="15" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.6,4.3,5.4,1.9</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,11,Italic</Font>
+          <Guid>623923acea0c4a69a27a6c9d9a733af0</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text13</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>	"The Building Official shall refer one (1) set of plans and specifications to the City/Municipal Fire Marshall (C/MFM), Bureau of Fire Protection (BFP), for his review and recommendations with respect to fire safety and control requirements. The C/MFM shall submit his report and recommendations to the Building Official within five (5) working days from date of referral. Failure of the C/MFM to act within said period shall mean that the plans and specifications conform to all the requirements of the Fire Code of the Philippines (FCP). In case of non-issuance, suspension or revocation of the said requirements by the C/MFM, he shall so state in writing the reasons or grounds therefor".</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+        </Text13>
+        <Text14 Ref="16" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.8,6.6,2.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10,Bold</Font>
+          <Guid>3b5a2cf844be4c2c8a532340953e48cf</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text14</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>ENGR. CIRINIA GRACE L. CATUBIG</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text14>
+        <Text15 Ref="17" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.8,6.8,2.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10</Font>
+          <Guid>783454452e7e4cf18cc46dd807806011</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text15</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Acting Building Official</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text15>
+        <Text16 Ref="18" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.2,3.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10</Font>
+          <Guid>b21e78c7c95343b5ab956f12831c56d4</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text16</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Date referred to C/MFM: ____________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text16>
+        <Text17 Ref="19" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.4,3.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10</Font>
+          <Guid>0d46f9352e4240e182c94d89cdf63268</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text17</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Date referred by C/MFM: ____________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text17>
+        <Text18 Ref="20" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.6,3.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10</Font>
+          <Guid>69bd10e71e1e4bdf953a5cfb4a68e627</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text18</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Date returned to Building Official: ___________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text18>
+        <Text19 Ref="21" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.8,3.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Century Gothic,10</Font>
+          <Guid>8c23b640a42a4e518059bd5bc132025d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text19</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Date received by Building Official: ___________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text19>
+        <Text20 Ref="22" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,9.1,1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,7,Italic</Font>
+          <Guid>5f3edb9a3e6c4da3aa0d6df84294083e</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text20</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>CEO_BO/tinessa</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text20>
+        <RichText1 Ref="23" type="Stimulsoft.Report.Components.StiRichText" isKey="true">
+          <BackColor>Transparent</BackColor>
+          <ClientRectangle>0,2.5,6.5,1.5</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <DataColumn />
+          <FullConvertExpression>True</FullConvertExpression>
+          <Margins>0,0,0,0</Margins>
+          <Name>RichText1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>__LP___x005C_rtf1_x005C_ansi_x005C_ansicpg1252_x005C_deff0_x005C_deflang1033__LP___x005C_fonttbl__LP___x005C_f0_x005C_fnil_x005C_fcharset0_x0020_Century_x0020_Gothic_x003B___RP____RP___x000D__x000A__x005C_viewkind4_x005C_uc1_x005C_pard_x005C_f0_x005C_fs22_x005C_tab_x0020_Pursuant_x0020_to_x0020_the_x0020_provision_x0020_of_x0020_Section_x0020_303.10_x0020_of_x0020_the_x0020_Revised_x0020_Implementing_x0020_Rules_x0020_and_x0020_Regulations_x0020_of_x0020_PD_x0020_1096_x002C__x0020_I_x0020_have_x0020_the_x0020_honor_x0020_to_x0020_endorse_x0020_to_x0020_you_x0020_one_x0020__x0028_1_x0029__x0020_set_x0020_of_x0020_plans_x0020_and_x0020_specification_x0020_for_x0020_the_x0020__x005C_b_x007B_Info.Project__Construction_Site_Address___Complete_Address_x007D__x005C_b0_x0020__x0020_building_x0020_to_x0020_be_x0020_constructed_x0020_at_x0020__x005C_b_x007B_Info.Project_Name_x007D__x005C_b0_x0020__x0020_for_x0020_your_x0020_evaluation_x002C__x0020_review_x0020_and_x002F_or_x0020_recommendations_x0020_with_x0020_respect_x0020_to_x0020_fire_x0020_safety_x0020_and_x0020_control_x0020_requirements._x005C_par_x000D__x000A__x005C_par_x000D__x000A__x005C_tab_x0020_Quoted_x0020_hereunder_x0020_is_x0020_the_x0020_pertinent_x0020_provision_x0020_of_x0020_Section_x0020_303.10_x0020_of_x0020_the_x0020_Revised_x0020_Implementing_x0020_Rules_x0020_and_x0020_Regulations_x0020_of_x0020_PD_x0020_1096:_x005C_par_x000D__x000A___RP___x000D__x000A_</Text>
+          <Wysiwyg>True</Wysiwyg>
+        </RichText1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8129f371866043d0a523da2a20beb1cf</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>11</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="24" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="25" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>5/27/2019 9:30:42 AM</ReportChanged>
+  <ReportCreated>11/27/2017 1:23:16 PM</ReportCreated>
+  <ReportFile>C:\Mobiz\WebERP\SurveyRequirements\ApplicationForBuildingPermit.mrt</ReportFile>
+  <ReportGuid>d6104fe46fd44acfa468c6d4d1772223</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2011.1.910</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

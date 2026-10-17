@@ -1,0 +1,1643 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiXmlDatabase" isKey="true">
+        <Alias>Connection</Alias>
+        <Name>Connection</Name>
+        <PathData>C:\Users\Mobiz IBMWorkstation\Desktop\Dump\Stimulsoft XML Data.xml</PathData>
+        <PathSchema />
+      </Connection>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <Info Ref="3" type="DataTableSource" isKey="true">
+        <Alias>Info</Alias>
+        <Columns isList="true" count="307">
+          <value>The_project_is_owned_by:__Natural_Person__x0028_Individual_x0029_,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Company_Name,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Main_Business_Activity,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__House_x002F__Building_No.,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Street_Name,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Barangay,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__City_x002F__Municipality,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__State_x002F__Region,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Country,System.String</value>
+          <value>Type_of_Company_Ownership:__Sole_Proprietorship,System.String</value>
+          <value>Type_of_Company_Ownership:__Partnership,System.String</value>
+          <value>Type_of_Company_Ownership:__Corporation,System.String</value>
+          <value>Type_of_Company_Ownership:__Cooperative,System.String</value>
+          <value>Type_of_Company_Ownership:__LGU,System.String</value>
+          <value>Type_of_Company_Ownership:__NGU,System.String</value>
+          <value>Type_of_Company_Ownership:__GOCC,System.String</value>
+          <value>Others__Type_of_Company_Ownership:,System.String</value>
+          <value>The_project_is_owned_by:__Company__x0028_Juridical_Person_x0029_,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__House_Name_or_Number.,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__Street_Name,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__Barangay,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__City_x002F__Municipality,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__State,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__First_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Middle_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Last_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__House_Number,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Street_Name,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Barangay,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__City_x002F__Municipality,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__State_or_Province,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Country,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Mobile_Number,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Telephone_Number,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Fax_Number,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Government_ID_Reference,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Title,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__First_Naame,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Middle_Name,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Concrete,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Glass,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Steel,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Wood,System.String</value>
+          <value>Please_indicate_construction_materials_to_be_used__Mixed,System.String</value>
+          <value>Authorized_Project_Representative_Details:__First_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Middle_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Last_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__House_or_Building_Name_x002F__Number,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Street_Name,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Barangay,System.String</value>
+          <value>Authorized_Project_Representative_Details:__City_or_Municipality,System.String</value>
+          <value>Authorized_Project_Representative_Details:__State_x002F__Region,System.String</value>
+          <value>Authorized_Project_Representative_Details:__Tel_x002F__Mobile_Number,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__New_Construction,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Addition,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Repair,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Renovation,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Alteration,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Moving,System.String</value>
+          <value>Please_indicate_scope_of_construction_work__Demolition,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Residential,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Commercial,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Industrial,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Institutional,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Agricultural,System.String</value>
+          <value>Others__Please_indicate_use_or_occupancy_of_building_x002F__structure,System.String</value>
+          <value>Number_of_Storeys__1,System.String</value>
+          <value>Number_of_Storeys__2,System.String</value>
+          <value>Number_of_Storeys__3,System.String</value>
+          <value>Number_of_Storeys__4,System.String</value>
+          <value>Number_of_Storeys__5,System.String</value>
+          <value>Number_of_Storeys__6,System.String</value>
+          <value>Number_of_Storeys__7,System.String</value>
+          <value>Number_of_Storeys__8,System.String</value>
+          <value>Number_of_Storeys__9,System.String</value>
+          <value>Number_of_Storeys__10,System.String</value>
+          <value>Number_of_Storeys__11,System.String</value>
+          <value>Number_of_Storeys__12,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Lot_Area,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Proposed_Date_of_Construction,System.String</value>
+          <value>Please_indicate_area_and_timelines:__Expected_Date_of_Completion,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Last_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Complete_Address,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Title,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__First_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Middle_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Last_Name,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Complete_Address,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Tax_Receipt__x0028_PTR_x0029__Number,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Date_Issued,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Place_Issued,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_TCT_x002F__OCT_No.,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Name,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Address,System.String</value>
+          <value>Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Community_Tax_Certificate,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Parks_x002F__Plazas_x002F__Monuments,System.String</value>
+          <value>Please_indicate_use_or_occupancy_of_building_x002F__structure__Recreational,System.String</value>
+          <value>Scope_of_Electrical_Work__New_Installation,System.String</value>
+          <value>Scope_of_Electrical_Work__Annual_Inspection,System.String</value>
+          <value>Scope_of_Electrical_Work__Addition_of:,System.String</value>
+          <value>Scope_of_Electrical_Work__Repair_of:,System.String</value>
+          <value>Scope_of_Electrical_Work__Removal_of:,System.String</value>
+          <value>Scope_of_Electrical_Work__Others__x0028_please_specify_x0029_:,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Dwelling,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Hotel_x002F__Apartment_x002F__Condo,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Education_and_Recreation,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Institutional,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Business_and_Mercantile,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Industrial,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Storage__x0026__Hazardous_Materials,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Other_than_Group_I_x0029_,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Occupant_Load_of_100_Amps_or_More_x0029_,System.String</value>
+          <value>Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Accessory,System.String</value>
+          <value>Others__Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029_,System.String</value>
+          <value>Number_of_Outlets__Light,System.String</value>
+          <value>Number_of_Outlets__Convenience_Receptacle,System.String</value>
+          <value>Number_of_Outlets__SPO._Aircon,System.String</value>
+          <value>Number_of_Outlets__SPO.Cooking_Unit,System.String</value>
+          <value>Number_of_Outlets__SPO._Cooking_Heater,System.String</value>
+          <value>Number_of_Outlets__SPO._Water_Pump,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Toggle_Switch,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Bells_Buzzer,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Push_Button,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Fire_Alarm_x002F__Smoke_Detectors,System.String</value>
+          <value>Number_of_Equipment_x002F__Wiring_Devices__Others__x0028_please_specify_x0029_,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Title,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__First_Name,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Middle_Name,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Last_Name,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Complete_Address,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__PTR_Date_Issued,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__PTR_Place_Issued,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__PRC_Registration_Validity,System.String</value>
+          <value>Please_Indicate_details_about_the_professional_electrical_engi__Telephone_x002F__Mobile,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___First_Name,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Middle_Name,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Last_Name,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Complete_Address,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Telephone_x002F__Mobile_Number,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Philippine_Contractors_Accreditation_Board__x0028_PCAB_x0029__Number,System.String</value>
+          <value>Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___PCAB_Validity,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Title,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__First_Name,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Middle_Name,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Last_Name,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__PTR_Date_Issued,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__PTR_Place_Issued,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__PRC_Reg._Validity,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__New_Installation,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__Addition_of:,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__Repair_of:,System.String</value>
+          <value>Please_indicate_scope_of_work_for_plumbing:__Removal_of:,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Residential,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Commercial,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Industrial,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Institutional,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Agricultural,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Parks_x002F__Plazas_x002F__Monuments,System.String</value>
+          <value>Others__Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029_,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__First_Name,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Middle_Name,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Last_Name,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Complete_Address,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Date_Issued,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Place_Issued,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PRC_Reg._Validity,System.String</value>
+          <value>Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tel_x002F_Fax_x002F_Mobile,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__First_Name,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Middle_Name,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Last_Name,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Complete_Address,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Tax_Receipt__x0028_PTR_x0029__No.,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Date_Issued,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Place_Issued,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tax_Identification_Number__x0028_TIN_x0029_,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PRC_Reg._Validity,System.String</value>
+          <value>Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tel_x002F_Fax_x002F_Mobile,System.String</value>
+          <value>Please_indicate_water_supply_x002F__source:__Shallow_Well,System.String</value>
+          <value>Please_indicate_water_supply_x002F__source:__Deep_Well_and_Pump_Set,System.String</value>
+          <value>Please_indicate_water_supply_x002F__source:__City_x002F__Municipality_Water_System,System.String</value>
+          <value>Others__Please_indicate_water_supply_x002F__source:,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Waste_Water_Treatment_Plant,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Septic_Vault_x002F__Imhoff_Tank,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Sanitary_Sewer_Connection,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Sub-Surface_Sand_Filter,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Surface_Drainage,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Street_Canal,System.String</value>
+          <value>Please_indicate_type_of_System_Disposal__Water_Course,System.String</value>
+          <value>Others__Please_indicate_type_of_System_Disposal,System.String</value>
+          <value>Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Recreational,System.String</value>
+          <value>Person_in_Charge_of_Electrical_Installation__Complete_Address,System.String</value>
+          <value>Project_Owner__x0028_Natural_Person_x0029__Details:_Please_fill_in_informa__Complete_Address,System.String</value>
+          <value>Project_x002F__Construction_Site_Address:__Complete_Address,System.String</value>
+          <value>Project_Owner__x0028_Juridical_Person_x0029__Details:_Please_fill_in_infor__Complete_Address,System.String</value>
+          <value>Project_Name,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost,System.String</value>
+          <value>Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Quantity,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__New_Fixture,System.String</value>
+          <value>Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Name>Info</Name>
+        <NameInSource>Connection.Info</NameInSource>
+      </Info>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="116">
+        <Text1 Ref="5" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.1,0,5.4,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Republic of the Philippines</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text1>
+        <Text2 Ref="6" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.1,0.2,5.4,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>87942ed3f7cf4be3870cccc98ba10942</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>DEPARTMENT OF JUSTICE</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text2>
+        <Text3 Ref="7" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.1,0.4,5.4,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>42585e4b913b4043b2873b3c2c0c4ef2</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text3</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Land Registration Authority</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text3>
+        <Text4 Ref="8" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.1,0.6,5.4,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>20cd60926e4045b9926dbc08af532ccd</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text4</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Office of the Register of Deeds, Davao City</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text4>
+        <Text5 Ref="9" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.1,0.8,5.4,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>215ea0886dac4b5b8b641de0c7bd2fe0</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text5</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>A. Pichon corner Bolton Sts., Davao City</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text5>
+        <Image1 Ref="10" type="Image" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.2,0.1,0.9,0.9</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Image>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</Image>
+          <MultipleFactor>0.4</MultipleFactor>
+          <Name>Image1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </Image1>
+        <Text6 Ref="11" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1,1.3,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>c891f16569e64ce88e7d9679aecf3341</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text6</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>REQUEST FORM</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text6>
+        <Text7 Ref="12" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.3,3,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>a4be21c5a6df4ffda6cd9a5520e038aa</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text7</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Date Requested: ________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text7>
+        <Text8 Ref="13" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.6,3,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>77cce83c753d4ac89ca9159af56f5e6e</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text8</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Due Date: ________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text8>
+        <Text9 Ref="14" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.9,5.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>8c29cec2e2564c52b2528e43bff427ec</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text9</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>NAME OF REQUESTING PARTY: ________________________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text9>
+        <Text10 Ref="15" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.2,2.1,1.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>81cd26b214d54cac91870d7db42aee11</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text10</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>(Please Print Your Name)</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text10>
+        <Text11 Ref="16" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.4,5.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>341cc39d9b7744e8b9a07711bc1265fe</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text11</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>ADDRESS OF REQUESTING PARTY: </Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text11>
+        <Text12 Ref="17" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.7,5.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>1efb2b82e6d14dfa9376af46b6497cb4</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text12</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>CONTACT NO.: ________________________   ID PRESENTED: ______________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text12>
+        <Text13 Ref="18" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3,5.7,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold| Underline</Font>
+          <Guid>786ab280fc0642c797c101ec18c7bc05</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text13</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>The undersigned hereby requests your good office for:</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text13>
+        <Text14 Ref="19" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.3,1.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>8e9b76c9a04947139464ce43b51c340d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text14</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>CERTIFIED COPY:</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text14>
+        <Text15 Ref="20" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.9,3.3,1.1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold| Italic</Font>
+          <Guid>f0bb1dce1e0c45b399a34354eb456847</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text15</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>LAND TITLE</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text15>
+        <Text16 Ref="21" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.6,2.2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>f92df512ab8046aba6239cba9bced43d</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text16</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>OCT/TCT Title No.</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text16>
+        <Text17 Ref="22" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.2,3.6,2.1,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>e946cc1b09d04cafbc7b2302d39c5c16</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text17</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Title Registered Owner</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text17>
+        <Text18 Ref="23" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.3,3.6,2.2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>7d2057150b014724b7209b1898b768c5</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text18</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Location of Lot</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text18>
+        <Text19 Ref="24" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.9,0.2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>0c07d6b6376a447cb353ee22b07274b4</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text19</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>1</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text19>
+        <Text26 Ref="25" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,5.9,2.3,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Italic</Font>
+          <Guid>4043d95c052345ab97ad1fcc62cc5f74</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text26</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>For (state purposes of the request)</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text26>
+        <Text27 Ref="26" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.2,3.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>c26be15bac094094ba2638dbb9039ae7</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text27</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Purpose: __________________________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text27>
+        <Text28 Ref="27" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.4,3.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>345942177c6749e5a0b2bbb0b1cce45f</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text28</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>No. of copies: ________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text28>
+        <Text29 Ref="28" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.7,6.8,2,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>2893ddcfb32d4f7f9c569634d7da5ce0</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text29</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Signature over Printed Name</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text29>
+        <Text30 Ref="29" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,7,2.1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>f1d48e35238247dbbf13a38b6c1f7eab</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text30</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Remarks: _________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text30>
+        <Text31 Ref="30" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,7.4,1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>e28244f97a774afdacc81f44f6244125</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text31</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>APPROVED:</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text31>
+        <Text32 Ref="31" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.8,7.9,1.5,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>6ca0bc1224734419bae42b3a85e2cfb7</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text32</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Records Officer</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text32>
+        <Text33 Ref="32" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.9,7.4,1.8,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>f758071b8f064f3d9b793542c8d1fbf3</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text33</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Date: _________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text33>
+        <Text34 Ref="33" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.9,7.6,1.8,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>19b58c6403d44a60aba7623a354ec788</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text34</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>EPEB #: _________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text34>
+        <Text35 Ref="34" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.5,2.1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>9fbf7a72876242bc8204f76a10dbebe0</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text35</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Received By: _________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text35>
+        <Text36 Ref="35" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.8,2.1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>feade927ed384082b7d6f6d80ccb10df</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text36</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Released By: _________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text36>
+        <Text37 Ref="36" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3,8.5,2.8,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>61acf8717f544b07b5febfab854b463d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text37</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>No. of copies requested: _________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text37>
+        <Text38 Ref="37" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3,8.8,2.8,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>ff744cb272da4efdbe07d8c061a3a6db</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text38</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Office Receipt No.: __________________</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text38>
+        <Text40 Ref="38" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.3,1.4,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text40</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Please_fil__Name_of_Re</Text>
+          <TextBrush>Black</TextBrush>
+        </Text40>
+        <Text42 Ref="39" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.7,2.3,0,0.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text42</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Please_fil__Address_of</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+        </Text42>
+        <Text44 Ref="40" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.2,2.6,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text44</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Please_fil__Contact_Nu</Text>
+          <TextBrush>Black</TextBrush>
+        </Text44>
+        <Text46 Ref="41" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.5,2.6,0,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text46</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Please_fil__ID_Present</Text>
+          <TextBrush>Black</TextBrush>
+        </Text46>
+        <Text39 Ref="42" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.2,2.7,2.1,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text39</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Telephone_Number != "" ? Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Telephone_Number + ", " : ""}{Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Mobile_Number}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text39>
+        <Text41 Ref="43" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.5,1.8,3.9,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold</Font>
+          <Guid>aef53a193a974e62af519cef935b43ac</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text41</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__First_Name} {Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Middle_Name} {Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Last_Name}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text41>
+        <Text43 Ref="44" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.8,2.3,3.7,0.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold</Font>
+          <Guid>da8d758d0f4c41a9b56f4036468c77bb</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text43</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Complete_Address}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text43>
+        <Text20 Ref="45" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.2,0.2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>6553a36ff3bf446eb61b30c88206e738</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text20</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>2</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text20>
+        <Text21 Ref="46" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.5,0.2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>2f9ac51160aa45898be1bef04ed84df7</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text21</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>3</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text21>
+        <Text22 Ref="47" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.8,0.2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>8c9c6f0fd7c7449096fae6d78a56ecca</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text22</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>4</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text22>
+        <Text23 Ref="48" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,5.1,0.2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>4053963c8c474fd6ae83002ab6c63cd6</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text23</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>5</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text23>
+        <Text24 Ref="49" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,5.4,0.2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12</Font>
+          <Guid>c87ab011c5134574b08b5f842e36649a</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text24</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>6</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text24>
+        <Text25 Ref="50" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.2,3.9,2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold</Font>
+          <Guid>0bfa608012ee492597caa9695ef3e349</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text25</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Please_indicate_lot_owner__39_s_information__Lot_Owner_s_TCT__OCT_No_}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text25>
+        <Text45 Ref="51" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.2,3.9,2.1,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold</Font>
+          <Guid>792f255b903546c98bc57a15a4958679</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text45</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Please_indicate_lot_owner__39_s_information__Lot_Owner_s_Complete_Name}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>DataColumn</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text45>
+        <Text47 Ref="52" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.3,3.9,2.2,0.3</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,9,Bold</Font>
+          <Guid>c7040b3af4c54083988f79848e272c34</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text47</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Please_indicate_lot_owner__39_s_information__Lot_Owner_s_Complete_Address}</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+          <Type>DataColumn</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text47>
+        <Text48 Ref="53" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.8,6.6,3.9,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Times New Roman,12,Bold</Font>
+          <Guid>f16797a556fe4c9291ec500110ee35a4</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text48</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__First_Name} {Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Middle_Name} {Info.Project_Owner__Natural_Person__Details__Please_fill_in_informa__Last_Name}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text48>
+        <Image2 Ref="54" type="Image" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>3.7,6.4,0.2,0.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwQAADsEBuJFr7QAAAKxJREFUOE/VzyEKAkEUh/EJikFEMNjFaDKZDGbrVsEDeAarp9BoEk9hs5k2WFQw7AUEEfT7jz7YsIqv6Qe/MMO+t0z4uyZIMYgnZx1ccMdeF55K2ELDMoKrKWx4rQtPXVyh4QxNFFbDGOV4elbBDvb3BIXpjRvooxVsyQw2vNTFu6o4wT7Wkj5ur/MZDXysjfwSe7cM8VVacoQNyhyu8ksOqMNdCwv04umHC+EBsLss2SwFx7AAAAAASUVORK5CYII=</Image>
+          <Name>Image2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </Image2>
+        <RectanglePrimitive1 Ref="55" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,3.6,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>58191dde32684840b4cda8e48f182b4d</Guid>
+          <Name>RectanglePrimitive1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive1>
+        <StartPointPrimitive1 Ref="56" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>0,3.6,0,0</ClientRectangle>
+          <Name>StartPointPrimitive1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>58191dde32684840b4cda8e48f182b4d</ReferenceToGuid>
+        </StartPointPrimitive1>
+        <EndPointPrimitive1 Ref="57" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,3.9,0,0</ClientRectangle>
+          <Name>EndPointPrimitive1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>58191dde32684840b4cda8e48f182b4d</ReferenceToGuid>
+        </EndPointPrimitive1>
+        <RectanglePrimitive2 Ref="58" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>2.2,3.6,2.1,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>a9152fbebed647408c41280e89ce1189</Guid>
+          <Name>RectanglePrimitive2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive2>
+        <StartPointPrimitive2 Ref="59" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,3.6,0,0</ClientRectangle>
+          <Name>StartPointPrimitive2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>a9152fbebed647408c41280e89ce1189</ReferenceToGuid>
+        </StartPointPrimitive2>
+        <EndPointPrimitive2 Ref="60" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,3.9,0,0</ClientRectangle>
+          <Name>EndPointPrimitive2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>a9152fbebed647408c41280e89ce1189</ReferenceToGuid>
+        </EndPointPrimitive2>
+        <RectanglePrimitive4 Ref="61" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,3.9,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>12db48dbe4ca4d0ebaf1c033efbe79a0</Guid>
+          <Name>RectanglePrimitive4</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive4>
+        <StartPointPrimitive3 Ref="62" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>0,3.9,0,0</ClientRectangle>
+          <Name>StartPointPrimitive3</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>12db48dbe4ca4d0ebaf1c033efbe79a0</ReferenceToGuid>
+        </StartPointPrimitive3>
+        <EndPointPrimitive3 Ref="63" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,4.2,0,0</ClientRectangle>
+          <Name>EndPointPrimitive3</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>12db48dbe4ca4d0ebaf1c033efbe79a0</ReferenceToGuid>
+        </EndPointPrimitive3>
+        <RectanglePrimitive5 Ref="64" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>2.2,3.9,2.1,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>6a24be16f30e4e448066cb072131ed80</Guid>
+          <Name>RectanglePrimitive5</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive5>
+        <StartPointPrimitive4 Ref="65" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,3.9,0,0</ClientRectangle>
+          <Name>StartPointPrimitive4</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>6a24be16f30e4e448066cb072131ed80</ReferenceToGuid>
+        </StartPointPrimitive4>
+        <EndPointPrimitive4 Ref="66" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,4.2,0,0</ClientRectangle>
+          <Name>EndPointPrimitive4</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>6a24be16f30e4e448066cb072131ed80</ReferenceToGuid>
+        </EndPointPrimitive4>
+        <RectanglePrimitive6 Ref="67" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>4.3,3.9,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>d8c62256f85344d5ae2155fc728cf34c</Guid>
+          <Name>RectanglePrimitive6</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive6>
+        <StartPointPrimitive5 Ref="68" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,3.9,0,0</ClientRectangle>
+          <Name>StartPointPrimitive5</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>d8c62256f85344d5ae2155fc728cf34c</ReferenceToGuid>
+        </StartPointPrimitive5>
+        <EndPointPrimitive5 Ref="69" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>6.5,4.2,0,0</ClientRectangle>
+          <Name>EndPointPrimitive5</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>d8c62256f85344d5ae2155fc728cf34c</ReferenceToGuid>
+        </EndPointPrimitive5>
+        <HorizontalLinePrimitive1 Ref="70" type="HorizontalLinePrimitive" isKey="true">
+          <ClientRectangle>3.7,6.8,2,0.01</ClientRectangle>
+          <Color>Black</Color>
+          <EndCap Ref="71" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </EndCap>
+          <Name>HorizontalLinePrimitive1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <StartCap Ref="72" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </StartCap>
+        </HorizontalLinePrimitive1>
+        <RectanglePrimitive3 Ref="73" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>4.3,3.6,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>1a828163b6664ee187037272a2baff7c</Guid>
+          <Name>RectanglePrimitive3</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive3>
+        <StartPointPrimitive24 Ref="74" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,3.6,0,0</ClientRectangle>
+          <Name>StartPointPrimitive24</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>1a828163b6664ee187037272a2baff7c</ReferenceToGuid>
+        </StartPointPrimitive24>
+        <EndPointPrimitive24 Ref="75" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>6.5,3.9,0,0</ClientRectangle>
+          <Name>EndPointPrimitive24</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>1a828163b6664ee187037272a2baff7c</ReferenceToGuid>
+        </EndPointPrimitive24>
+        <HorizontalLinePrimitive2 Ref="76" type="HorizontalLinePrimitive" isKey="true">
+          <ClientRectangle>0.8,7.9,1.5,0.01</ClientRectangle>
+          <Color>Black</Color>
+          <EndCap Ref="77" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </EndCap>
+          <Guid>92975019bf7140b68520c3aec08fa394</Guid>
+          <Name>HorizontalLinePrimitive2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <StartCap Ref="78" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </StartCap>
+        </HorizontalLinePrimitive2>
+        <HorizontalLinePrimitive3 Ref="79" type="HorizontalLinePrimitive" isKey="true">
+          <ClientRectangle>2.7,2.7,3,0.01</ClientRectangle>
+          <Color>Black</Color>
+          <EndCap Ref="80" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </EndCap>
+          <Name>HorizontalLinePrimitive3</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <StartCap Ref="81" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </StartCap>
+        </HorizontalLinePrimitive3>
+        <RectanglePrimitive7 Ref="82" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,4.2,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>44c62ac4f33f4029bca3ff81269c670b</Guid>
+          <Name>RectanglePrimitive7</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive7>
+        <RectanglePrimitive8 Ref="83" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>2.2,4.2,2.1,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>bd7fce64cb9f45bc8e73d11e4f3654fa</Guid>
+          <Name>RectanglePrimitive8</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive8>
+        <RectanglePrimitive9 Ref="84" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>4.3,4.2,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>2b44456f25da4a1aabf73ccf2fecfc97</Guid>
+          <Name>RectanglePrimitive9</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive9>
+        <StartPointPrimitive6 Ref="85" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>0,4.2,0,0</ClientRectangle>
+          <Name>StartPointPrimitive6</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>44c62ac4f33f4029bca3ff81269c670b</ReferenceToGuid>
+        </StartPointPrimitive6>
+        <EndPointPrimitive6 Ref="86" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,4.5,0,0</ClientRectangle>
+          <Name>EndPointPrimitive6</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>44c62ac4f33f4029bca3ff81269c670b</ReferenceToGuid>
+        </EndPointPrimitive6>
+        <StartPointPrimitive7 Ref="87" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,4.2,0,0</ClientRectangle>
+          <Name>StartPointPrimitive7</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>bd7fce64cb9f45bc8e73d11e4f3654fa</ReferenceToGuid>
+        </StartPointPrimitive7>
+        <EndPointPrimitive7 Ref="88" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,4.5,0,0</ClientRectangle>
+          <Name>EndPointPrimitive7</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>bd7fce64cb9f45bc8e73d11e4f3654fa</ReferenceToGuid>
+        </EndPointPrimitive7>
+        <StartPointPrimitive8 Ref="89" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,4.2,0,0</ClientRectangle>
+          <Name>StartPointPrimitive8</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>2b44456f25da4a1aabf73ccf2fecfc97</ReferenceToGuid>
+        </StartPointPrimitive8>
+        <EndPointPrimitive8 Ref="90" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>6.5,4.5,0,0</ClientRectangle>
+          <Name>EndPointPrimitive8</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>2b44456f25da4a1aabf73ccf2fecfc97</ReferenceToGuid>
+        </EndPointPrimitive8>
+        <RectanglePrimitive10 Ref="91" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,4.5,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>83135e49808c4bd9bd704089f9002df5</Guid>
+          <Name>RectanglePrimitive10</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive10>
+        <RectanglePrimitive11 Ref="92" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>2.2,4.5,2.1,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>ded16de5e6094de89c06dcdc68da378e</Guid>
+          <Name>RectanglePrimitive11</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive11>
+        <RectanglePrimitive12 Ref="93" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>4.3,4.5,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>b02775e9886747eabe5bf475f14cdcdd</Guid>
+          <Name>RectanglePrimitive12</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive12>
+        <StartPointPrimitive9 Ref="94" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>0,4.5,0,0</ClientRectangle>
+          <Name>StartPointPrimitive9</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>83135e49808c4bd9bd704089f9002df5</ReferenceToGuid>
+        </StartPointPrimitive9>
+        <EndPointPrimitive9 Ref="95" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,4.8,0,0</ClientRectangle>
+          <Name>EndPointPrimitive9</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>83135e49808c4bd9bd704089f9002df5</ReferenceToGuid>
+        </EndPointPrimitive9>
+        <StartPointPrimitive10 Ref="96" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,4.5,0,0</ClientRectangle>
+          <Name>StartPointPrimitive10</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>ded16de5e6094de89c06dcdc68da378e</ReferenceToGuid>
+        </StartPointPrimitive10>
+        <EndPointPrimitive10 Ref="97" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,4.8,0,0</ClientRectangle>
+          <Name>EndPointPrimitive10</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>ded16de5e6094de89c06dcdc68da378e</ReferenceToGuid>
+        </EndPointPrimitive10>
+        <StartPointPrimitive11 Ref="98" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,4.5,0,0</ClientRectangle>
+          <Name>StartPointPrimitive11</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>b02775e9886747eabe5bf475f14cdcdd</ReferenceToGuid>
+        </StartPointPrimitive11>
+        <EndPointPrimitive11 Ref="99" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>6.5,4.8,0,0</ClientRectangle>
+          <Name>EndPointPrimitive11</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>b02775e9886747eabe5bf475f14cdcdd</ReferenceToGuid>
+        </EndPointPrimitive11>
+        <RectanglePrimitive13 Ref="100" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,4.8,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>5a74042abc4e4f6cb2406f52d6f0a3e3</Guid>
+          <Name>RectanglePrimitive13</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive13>
+        <RectanglePrimitive14 Ref="101" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>2.2,4.8,2.1,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>3aa483201252406fbf383add18c54a48</Guid>
+          <Name>RectanglePrimitive14</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive14>
+        <RectanglePrimitive15 Ref="102" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>4.3,4.8,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>72a2b8c1b5e441f3b0b464ce763a4ddb</Guid>
+          <Name>RectanglePrimitive15</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive15>
+        <StartPointPrimitive12 Ref="103" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>0,4.8,0,0</ClientRectangle>
+          <Name>StartPointPrimitive12</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>5a74042abc4e4f6cb2406f52d6f0a3e3</ReferenceToGuid>
+        </StartPointPrimitive12>
+        <EndPointPrimitive12 Ref="104" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,5.1,0,0</ClientRectangle>
+          <Name>EndPointPrimitive12</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>5a74042abc4e4f6cb2406f52d6f0a3e3</ReferenceToGuid>
+        </EndPointPrimitive12>
+        <StartPointPrimitive13 Ref="105" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,4.8,0,0</ClientRectangle>
+          <Name>StartPointPrimitive13</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>3aa483201252406fbf383add18c54a48</ReferenceToGuid>
+        </StartPointPrimitive13>
+        <EndPointPrimitive13 Ref="106" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,5.1,0,0</ClientRectangle>
+          <Name>EndPointPrimitive13</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>3aa483201252406fbf383add18c54a48</ReferenceToGuid>
+        </EndPointPrimitive13>
+        <StartPointPrimitive14 Ref="107" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,4.8,0,0</ClientRectangle>
+          <Name>StartPointPrimitive14</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>72a2b8c1b5e441f3b0b464ce763a4ddb</ReferenceToGuid>
+        </StartPointPrimitive14>
+        <EndPointPrimitive14 Ref="108" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>6.5,5.1,0,0</ClientRectangle>
+          <Name>EndPointPrimitive14</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>72a2b8c1b5e441f3b0b464ce763a4ddb</ReferenceToGuid>
+        </EndPointPrimitive14>
+        <RectanglePrimitive16 Ref="109" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,5.1,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>27b885334fab46fda56ef7493f45a2cc</Guid>
+          <Name>RectanglePrimitive16</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive16>
+        <RectanglePrimitive17 Ref="110" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>2.2,5.1,2.1,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>35b1502147a34ccc9c3c9da3502b1cbb</Guid>
+          <Name>RectanglePrimitive17</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive17>
+        <RectanglePrimitive18 Ref="111" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>4.3,5.1,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>5f14923ba9b14c5d92b45d30072efe76</Guid>
+          <Name>RectanglePrimitive18</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive18>
+        <StartPointPrimitive15 Ref="112" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>0,5.1,0,0</ClientRectangle>
+          <Name>StartPointPrimitive15</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>27b885334fab46fda56ef7493f45a2cc</ReferenceToGuid>
+        </StartPointPrimitive15>
+        <EndPointPrimitive15 Ref="113" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,5.4,0,0</ClientRectangle>
+          <Name>EndPointPrimitive15</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>27b885334fab46fda56ef7493f45a2cc</ReferenceToGuid>
+        </EndPointPrimitive15>
+        <StartPointPrimitive16 Ref="114" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,5.1,0,0</ClientRectangle>
+          <Name>StartPointPrimitive16</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>35b1502147a34ccc9c3c9da3502b1cbb</ReferenceToGuid>
+        </StartPointPrimitive16>
+        <EndPointPrimitive16 Ref="115" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,5.4,0,0</ClientRectangle>
+          <Name>EndPointPrimitive16</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>35b1502147a34ccc9c3c9da3502b1cbb</ReferenceToGuid>
+        </EndPointPrimitive16>
+        <StartPointPrimitive17 Ref="116" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,5.1,0,0</ClientRectangle>
+          <Name>StartPointPrimitive17</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>5f14923ba9b14c5d92b45d30072efe76</ReferenceToGuid>
+        </StartPointPrimitive17>
+        <EndPointPrimitive17 Ref="117" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>6.5,5.4,0,0</ClientRectangle>
+          <Name>EndPointPrimitive17</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>5f14923ba9b14c5d92b45d30072efe76</ReferenceToGuid>
+        </EndPointPrimitive17>
+        <RectanglePrimitive19 Ref="118" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,5.4,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>989c08c3a39b4a9ca505548e4abc59f3</Guid>
+          <Name>RectanglePrimitive19</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive19>
+        <RectanglePrimitive20 Ref="119" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>2.2,5.4,2.1,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>39fca6dc8a3f415fa4df4d76dff8e1ca</Guid>
+          <Name>RectanglePrimitive20</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive20>
+        <RectanglePrimitive21 Ref="120" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>4.3,5.4,2.2,0.3</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>139d07af523f4be58ddbb802a62698f6</Guid>
+          <Name>RectanglePrimitive21</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </RectanglePrimitive21>
+        <StartPointPrimitive18 Ref="121" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>0,5.4,0,0</ClientRectangle>
+          <Name>StartPointPrimitive18</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>989c08c3a39b4a9ca505548e4abc59f3</ReferenceToGuid>
+        </StartPointPrimitive18>
+        <EndPointPrimitive18 Ref="122" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,5.7,0,0</ClientRectangle>
+          <Name>EndPointPrimitive18</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>989c08c3a39b4a9ca505548e4abc59f3</ReferenceToGuid>
+        </EndPointPrimitive18>
+        <StartPointPrimitive19 Ref="123" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>2.2,5.4,0,0</ClientRectangle>
+          <Name>StartPointPrimitive19</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>39fca6dc8a3f415fa4df4d76dff8e1ca</ReferenceToGuid>
+        </StartPointPrimitive19>
+        <EndPointPrimitive19 Ref="124" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,5.7,0,0</ClientRectangle>
+          <Name>EndPointPrimitive19</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>39fca6dc8a3f415fa4df4d76dff8e1ca</ReferenceToGuid>
+        </EndPointPrimitive19>
+        <StartPointPrimitive20 Ref="125" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>4.3,5.4,0,0</ClientRectangle>
+          <Name>StartPointPrimitive20</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>139d07af523f4be58ddbb802a62698f6</ReferenceToGuid>
+        </StartPointPrimitive20>
+        <EndPointPrimitive20 Ref="126" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>6.5,5.7,0,0</ClientRectangle>
+          <Name>EndPointPrimitive20</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ReferenceToGuid>139d07af523f4be58ddbb802a62698f6</ReferenceToGuid>
+        </EndPointPrimitive20>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>c691dfd8278e4c25ba34503c33d7c62d</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>11</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="127" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="128" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>2/19/2019 3:05:02 PM</ReportChanged>
+  <ReportCreated>12/4/2017 5:00:20 PM</ReportCreated>
+  <ReportFile>C:\Mobiz\WebERP\SurveyRequirements\LRA.mrt</ReportFile>
+  <ReportGuid>8aaf378e5e69448bb0d602d63edccb30</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2011.1.910</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,29 @@
+﻿<div name="idSecondaryDisplaySetup" data-role="page" data-url="divSecondaryDisplaySetup">
+    <div data-role="header">
+        <a href="#" data-icon="arrow-l" data-rel="back">Back</a>
+        <h1 >Customer Display</h1>
+    </div>
+
+    <div data-role="content">
+        <form id="formPeerConnect">
+            To Connect Customer Display to this POS, please do the following:<br/>
+            <br />
+            On the Customer Display Unit<br />
+            1. Open the "Customer Display" application and then go to Settings > Connect to POS unit.<br />
+            2. You will see the IP address of your customer display unit on the screen. Do not close this screen while setting up your connection to the main POS unit.<br />
+            <br />
+            On the POS Unit<br />
+            1. Open Mobiz Complete Retail or Store Keeper<br />
+            2. Go to Troubleshooting and Maintenance Tools > Customer Display<br />
+            3. Enter the IP address displayed on on the Customer Display Unit.<br />
+            4. Click on "Save" button.<br />
+            <div data-role="fieldcontain">
+                <label for="txtSecondaryDisplaySetupClient">
+                    IP of secondary device:
+                </label>
+                <input id="txtSecondaryDisplaySetupClient"/>
+            </div>
+            <button id="butSecondaryDisplaySetupSave">Save secondary device</button>
+        </form>
+    </div>
+</div>

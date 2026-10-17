@@ -1,0 +1,147 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Info">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Type_of_Application__New" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Application__Renewal" type="xs:string" minOccurs="0" />
+                <xs:element name="Mode_of_Payment__Annually" type="xs:string" minOccurs="0" />
+                <xs:element name="Mode_of_Payment__Semi-Annually" type="xs:string" minOccurs="0" />
+                <xs:element name="Mode_of_Payment__Quarterly" type="xs:string" minOccurs="0" />
+                <xs:element name="Basic_Information__Date_of_Application" type="xs:string" minOccurs="0" />
+                <xs:element name="Basic_Information__Application_No" type="xs:string" minOccurs="0" />
+                <xs:element name="Basic_Information__DTI_x002F_SEC_x002F_CDA_Registration_No" type="xs:string" minOccurs="0" />
+                <xs:element name="Basic_Information__DTI_x002F_SEC_x002F_CDA_Date_of_Registration" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Business__Single" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Business__Partnership" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Business__Corporation" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Business__Cooperative" type="xs:string" minOccurs="0" />
+                <xs:element name="Are_you_enjoying_tax_incentive_from_any_Government_Entity_x003F___Yes" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Are_you_enjoying_tax_incentive_from_any_Government_Entity_x003F_" type="xs:string" minOccurs="0" />
+                <xs:element name="Business_Information__Business_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Business_Information__Postal_Code" type="xs:string" minOccurs="0" />
+                <xs:element name="Business_Information__Telephone_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Business_Information__Mobile_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Business_Information__Email_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Business_Information__Business_Area__x0028_in_sq._m._x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Business_Information__Total_no._of_employee_in_establisment" type="xs:string" minOccurs="0" />
+                <xs:element name="Business_Information__No._of_employees_residing_within_LGU" type="xs:string" minOccurs="0" />
+                <xs:element name="Owner_x0027_s_Information__Owner_x0027_s_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Owner_x0027_s_Information__Postal_Code" type="xs:string" minOccurs="0" />
+                <xs:element name="Owner_x0027_s_Information__Telephone_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Owner_x0027_s_Information__Mobile_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Owner_x0027_s_Information__Email_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="In_case_of_emergency_x002C__provide_name_of_contact_person__Name" type="xs:string" minOccurs="0" />
+                <xs:element name="In_case_of_emergency_x002C__provide_name_of_contact_person__Telephone_x002F__Mobile_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="In_case_of_emergency_x002C__provide_name_of_contact_person__Email_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Taxpayer_x002F__Registrant_Information__First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Taxpayer_x002F__Registrant_Information__Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Taxpayer_x002F__Registrant_Information__Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Taxpayer_x002F__Registrant_Information__Date_of_Birth" type="xs:string" minOccurs="0" />
+                <xs:element name="Taxpayer_x002F__Registrant_Information__Civil_Status" type="xs:string" minOccurs="0" />
+                <xs:element name="Is_your_business_place_is_rented_x003F___Yes" type="xs:string" minOccurs="0" />
+                <xs:element name="Is_your_business_place_is_rented_x003F___No" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_Lessor_x0027_s_Information__Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_Lessor_x0027_s_Information__Address_2" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_Lessor_x0027_s_Information__Telephone_x002F__Mobile_No." type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_Lessor_x0027_s_Information__Email_Address_2" type="xs:string" minOccurs="0" />
+                <xs:element name="Taxpayer_x002F__Registrant_Information__TIN" type="xs:string" minOccurs="0" />
+                <xs:element name="Spouse_x0027_s_Information__First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Spouse_x0027_s_Information__Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Spouse_x0027_s_Information__Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="You_remarks" type="xs:string" minOccurs="0" />
+                <xs:element name="Name_of_Corp._x002F_Coop._x002F_Partnership" type="xs:string" minOccurs="0" />
+                <xs:element name="Business_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Name_of_President" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjectDurationInDays" type="xs:string" minOccurs="0" />
+                <xs:element name="DateToday" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_information__1.__Please_enter_information__Line_of_Business" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_information__1.__Please_enter_information__Capitalization" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_information__2.__Please_enter_information__Line_of_Business" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_information__2.__Please_enter_information__Capitalization" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_information__3.__Please_enter_information__Line_of_Business" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_enter_information__3.__Please_enter_information__Capitalization" type="xs:string" minOccurs="0" />
+                <xs:element name="Amendment__From__Amendment__Single" type="xs:string" minOccurs="0" />
+                <xs:element name="Amendment__From__Amendment__Partnership" type="xs:string" minOccurs="0" />
+                <xs:element name="Amendment__From__Amendment__Corporation" type="xs:string" minOccurs="0" />
+                <xs:element name="Amendment__To__Amendment__Single" type="xs:string" minOccurs="0" />
+                <xs:element name="Amendment__To__Amendment__Partnership" type="xs:string" minOccurs="0" />
+                <xs:element name="Amendment__To__Amendment__Corporation" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Info>
+    <Type_of_Application__New>New</Type_of_Application__New>
+    <Type_of_Application__Renewal />
+    <Mode_of_Payment__Annually>Annually</Mode_of_Payment__Annually>
+    <Mode_of_Payment__Semi-Annually />
+    <Mode_of_Payment__Quarterly />
+    <Basic_Information__Date_of_Application>2019-07-15</Basic_Information__Date_of_Application>
+    <Basic_Information__Application_No>1231232</Basic_Information__Application_No>
+    <Basic_Information__DTI_x002F_SEC_x002F_CDA_Registration_No>12312323</Basic_Information__DTI_x002F_SEC_x002F_CDA_Registration_No>
+    <Basic_Information__DTI_x002F_SEC_x002F_CDA_Date_of_Registration>2019-06-04</Basic_Information__DTI_x002F_SEC_x002F_CDA_Date_of_Registration>
+    <Type_of_Business__Single>Single</Type_of_Business__Single>
+    <Type_of_Business__Partnership />
+    <Type_of_Business__Corporation />
+    <Type_of_Business__Cooperative />
+    <Are_you_enjoying_tax_incentive_from_any_Government_Entity_x003F___Yes>Yes</Are_you_enjoying_tax_incentive_from_any_Government_Entity_x003F___Yes>
+    <Others__Are_you_enjoying_tax_incentive_from_any_Government_Entity_x003F_ />
+    <Business_Information__Business_Address>Business Address</Business_Information__Business_Address>
+    <Business_Information__Postal_Code>Postal Code</Business_Information__Postal_Code>
+    <Business_Information__Telephone_Number>2228525</Business_Information__Telephone_Number>
+    <Business_Information__Mobile_Number>09154215630</Business_Information__Mobile_Number>
+    <Business_Information__Email_Address>businessaddress@gmail.com</Business_Information__Email_Address>
+    <Business_Information__Business_Area__x0028_in_sq._m._x0029_>123</Business_Information__Business_Area__x0028_in_sq._m._x0029_>
+    <Business_Information__Total_no._of_employee_in_establisment>10</Business_Information__Total_no._of_employee_in_establisment>
+    <Business_Information__No._of_employees_residing_within_LGU>0</Business_Information__No._of_employees_residing_within_LGU>
+    <Owner_x0027_s_Information__Owner_x0027_s_Address>owners address</Owner_x0027_s_Information__Owner_x0027_s_Address>
+    <Owner_x0027_s_Information__Postal_Code>postal code</Owner_x0027_s_Information__Postal_Code>
+    <Owner_x0027_s_Information__Telephone_Number>2225210</Owner_x0027_s_Information__Telephone_Number>
+    <Owner_x0027_s_Information__Mobile_Number>09201524120</Owner_x0027_s_Information__Mobile_Number>
+    <Owner_x0027_s_Information__Email_Address>owners@gmail.com</Owner_x0027_s_Information__Email_Address>
+    <In_case_of_emergency_x002C__provide_name_of_contact_person__Name>Maria Teressa Leonora</In_case_of_emergency_x002C__provide_name_of_contact_person__Name>
+    <In_case_of_emergency_x002C__provide_name_of_contact_person__Telephone_x002F__Mobile_Number>09801203000</In_case_of_emergency_x002C__provide_name_of_contact_person__Telephone_x002F__Mobile_Number>
+    <In_case_of_emergency_x002C__provide_name_of_contact_person__Email_Address>contactperson@gmail.com</In_case_of_emergency_x002C__provide_name_of_contact_person__Email_Address>
+    <Taxpayer_x002F__Registrant_Information__First_Name>Arnie</Taxpayer_x002F__Registrant_Information__First_Name>
+    <Taxpayer_x002F__Registrant_Information__Middle_Name>Loste</Taxpayer_x002F__Registrant_Information__Middle_Name>
+    <Taxpayer_x002F__Registrant_Information__Last_Name>Peloton</Taxpayer_x002F__Registrant_Information__Last_Name>
+    <Taxpayer_x002F__Registrant_Information__Date_of_Birth>1993-07-29</Taxpayer_x002F__Registrant_Information__Date_of_Birth>
+    <Taxpayer_x002F__Registrant_Information__Civil_Status>Single</Taxpayer_x002F__Registrant_Information__Civil_Status>
+    <Is_your_business_place_is_rented_x003F___Yes>Yes</Is_your_business_place_is_rented_x003F___Yes>
+    <Is_your_business_place_is_rented_x003F___No />
+    <Please_enter_Lessor_x0027_s_Information__Name>John Diaz</Please_enter_Lessor_x0027_s_Information__Name>
+    <Please_enter_Lessor_x0027_s_Information__Address_2>Lessors address</Please_enter_Lessor_x0027_s_Information__Address_2>
+    <Please_enter_Lessor_x0027_s_Information__Telephone_x002F__Mobile_No.>Lessors telephone number</Please_enter_Lessor_x0027_s_Information__Telephone_x002F__Mobile_No.>
+    <Please_enter_Lessor_x0027_s_Information__Email_Address_2>lessor@gmail.com</Please_enter_Lessor_x0027_s_Information__Email_Address_2>
+    <Taxpayer_x002F__Registrant_Information__TIN>324342343</Taxpayer_x002F__Registrant_Information__TIN>
+    <Spouse_x0027_s_Information__First_Name>Spouse First Name</Spouse_x0027_s_Information__First_Name>
+    <Spouse_x0027_s_Information__Middle_Name>Spouse Middle Name</Spouse_x0027_s_Information__Middle_Name>
+    <Spouse_x0027_s_Information__Last_Name>Spouse Last Name</Spouse_x0027_s_Information__Last_Name>
+    <You_remarks>My remarks</You_remarks>
+    <Name_of_Corp._x002F_Coop._x002F_Partnership>Manokan Corporation</Name_of_Corp._x002F_Coop._x002F_Partnership>
+    <Business_Name>Mang Juan Inasal</Business_Name>
+    <Name_of_President>Arnie L. Peloton</Name_of_President>
+    <ProjectDurationInDays />
+    <DateToday>Jul 15, 2019</DateToday>
+    <Please_enter_information__1.__Please_enter_information__Line_of_Business>business 1</Please_enter_information__1.__Please_enter_information__Line_of_Business>
+    <Please_enter_information__1.__Please_enter_information__Capitalization>1</Please_enter_information__1.__Please_enter_information__Capitalization>
+    <Please_enter_information__2.__Please_enter_information__Line_of_Business>business 2</Please_enter_information__2.__Please_enter_information__Line_of_Business>
+    <Please_enter_information__2.__Please_enter_information__Capitalization>2</Please_enter_information__2.__Please_enter_information__Capitalization>
+    <Please_enter_information__3.__Please_enter_information__Line_of_Business>business 3</Please_enter_information__3.__Please_enter_information__Line_of_Business>
+    <Please_enter_information__3.__Please_enter_information__Capitalization>3</Please_enter_information__3.__Please_enter_information__Capitalization>
+    <Amendment__From__Amendment__Single>x</Amendment__From__Amendment__Single>
+    <Amendment__From__Amendment__Partnership />
+    <Amendment__From__Amendment__Corporation />
+    <Amendment__To__Amendment__Single>x</Amendment__To__Amendment__Single>
+    <Amendment__To__Amendment__Partnership />
+    <Amendment__To__Amendment__Corporation />
+  </Info>
+</NewDataSet>

@@ -1,0 +1,38 @@
+﻿<div name="divRequestPrice" class="ui-content" data-role="popup" data-dismissible="false">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <div data-role="content">
+        Requested Price:
+        <div name="divRequestPriceMessage">
+        </div>
+        <form name="formRequestedPrice">
+        <div data-role="fieldcontain">
+            <label for="txtRequestedPrice">
+                Discounted Price:</label>
+            <input name="txtRequestedPrice" type="number" step=".01" />
+            <br />
+            <a href="" name="lnkSecurityDiscountedPrice">Request for Access</a>
+        </div>
+        <div data-role="fieldcontain">
+            <label for="txtRequestedPriceDiscountPercent">
+                Discount Percentage:</label>
+            <input name="txtRequestedPriceDiscountPercent" type="number" step=".01" />
+             <br />
+            <a href="" name="lnkSecurityDiscountPercentage">Request for Access</a>
+        </div>
+        <div data-role="fieldcontain">
+            <label for="txtRequestedPriceDiscountAmount"> 
+                Discount Amount:</label>
+            <input name="txtRequestedPriceDiscountAmount" type="number" step=".01" />
+           <br />
+           <a href="" name="lnkSecurityDiscountAmount">Request for Access</a>
+        </div>
+        <div data-role="fieldcontain">
+            <label for="cbRequestedPriceBasePrice">
+                Base Price:</label>
+            <select name="cbRequestedPriceBasePrice">
+            </select>
+        </div>
+        <input type="submit" value="Ok" />
+        </form>
+    </div>
+</div>

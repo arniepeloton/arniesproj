@@ -1,0 +1,157 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="InvoiceHeader">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="OrganizationID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="OrganizationBranchID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DeviceFowstTransactionNumber" type="xs:int" minOccurs="0" />
+                <xs:element name="InvoiceNumber" type="xs:decimal" minOccurs="0" />
+                <xs:element name="InvoiceDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="SalesOrderNo" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SalesOrderDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="CustomerID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DeliveryMethod" type="xs:string" minOccurs="0" />
+                <xs:element name="CustomerName" type="xs:string" minOccurs="0" />
+                <xs:element name="CustomerAddress" type="xs:string" minOccurs="0" />
+                <xs:element name="CustomerTIN" type="xs:string" minOccurs="0" />
+                <xs:element name="BillingAddressID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="BillingAddress" type="xs:string" minOccurs="0" />
+                <xs:element name="DeliveryAddressID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DeliveryAddress" type="xs:string" minOccurs="0" />
+                <xs:element name="CashierName" type="xs:string" minOccurs="0" />
+                <xs:element name="ReceiptFooterMsg" type="xs:string" minOccurs="0" />
+                <xs:element name="CustomerTableNo" type="xs:string" minOccurs="0" />
+                <xs:element name="OfficeAddress" type="xs:string" minOccurs="0" />
+                <xs:element name="UuidDisplay" type="xs:string" minOccurs="0" />
+                <xs:element name="TaxSales" type="xs:decimal" minOccurs="0" />
+                <xs:element name="TaxAmount" type="xs:double" minOccurs="0" />
+                <xs:element name="VATExemptSale" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ZeroRatedSale" type="xs:int" minOccurs="0" />
+                <xs:element name="ForegoneVAT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PrintCount" type="xs:decimal" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ReceiptHeader">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="OrganizationID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="CorporateName" type="xs:string" minOccurs="0" />
+                <xs:element name="OrganizationBranchID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="BusinessTradeName" type="xs:string" minOccurs="0" />
+                <xs:element name="CompleteAddress" type="xs:string" minOccurs="0" />
+                <xs:element name="TelNo" type="xs:string" minOccurs="0" />
+                <xs:element name="TIN" type="xs:string" minOccurs="0" />
+                <xs:element name="POSPermitNo" type="xs:string" minOccurs="0" />
+                <xs:element name="POSAccreditationNo" type="xs:string" minOccurs="0" />
+                <xs:element name="MIN" type="xs:string" minOccurs="0" />
+                <xs:element name="IsShowSalesRep" type="xs:boolean" minOccurs="0" />
+                <xs:element name="IsAuthorizedForPOS" type="xs:boolean" minOccurs="0" />
+                <xs:element name="ShowCompanyDetailsInHeader" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="SRVData">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="CustomerID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="CustomerName" type="xs:string" minOccurs="0" />
+                <xs:element name="CustomerAddress" type="xs:string" minOccurs="0" />
+                <xs:element name="CustomerTIN" type="xs:string" minOccurs="0" />
+                <xs:element name="SourceMemoID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="CustomerPaymentID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="SRVNumber" type="xs:int" minOccurs="0" />
+                <xs:element name="PinCode" type="xs:string" minOccurs="0" />
+                <xs:element name="SRVDateTime" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="SubscriberOrganizationID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="BoughtToBranchID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="BoughtToBranchName" type="xs:string" minOccurs="0" />
+                <xs:element name="ReturnToBranchID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="ReturnToBranchName" type="xs:string" minOccurs="0" />
+                <xs:element name="CashierName" type="xs:string" minOccurs="0" />
+                <xs:element name="InvoiceNumber" type="xs:decimal" minOccurs="0" />
+                <xs:element name="InvoiceAmount" type="xs:decimal" minOccurs="0" />
+                <xs:element name="InvoicePayment" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SRVOrigAmount" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SRVNewAmount" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SRVRestockingFee" type="xs:decimal" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <InvoiceHeader>
+    <ID>dff98cba-cd8f-43a2-9789-e5b26336797b</ID>
+    <OrganizationID>cfe39df6-8809-4973-9515-810df75aed12</OrganizationID>
+    <OrganizationBranchID>274e3434-534b-43ec-8e41-714c5eaefe92</OrganizationBranchID>
+    <DeviceFowstTransactionNumber>3</DeviceFowstTransactionNumber>
+    <InvoiceNumber>2</InvoiceNumber>
+    <InvoiceDate>2026-01-28T13:06:56+08:00</InvoiceDate>
+    <CustomerID>cd71a0f7-08a9-4601-876e-5f13c064f873</CustomerID>
+    <DeliveryMethod>PickUp</DeliveryMethod>
+    <CustomerName>[CASH PAYMENT]</CustomerName>
+    <CustomerAddress />
+    <CustomerTIN />
+    <BillingAddressID>835c2038-6a44-4e9c-b432-fdedce6b49d7</BillingAddressID>
+    <BillingAddress />
+    <DeliveryAddressID>835c2038-6a44-4e9c-b432-fdedce6b49d7</DeliveryAddressID>
+    <DeliveryAddress />
+    <CashierName>Adan, Francis Tito </CashierName>
+    <ReceiptFooterMsg>This Serves as Your Official Receipt.</ReceiptFooterMsg>
+    <OfficeAddress />
+    <UuidDisplay>NM2XMAXF114400090</UuidDisplay>
+    <TaxSales>48.2143</TaxSales>
+    <TaxAmount>5.7857</TaxAmount>
+    <VATExemptSale>0.0000</VATExemptSale>
+    <ZeroRatedSale>0</ZeroRatedSale>
+    <ForegoneVAT>0.0000</ForegoneVAT>
+    <PrintCount>0</PrintCount>
+  </InvoiceHeader>
+  <ReceiptHeader>
+    <OrganizationID>cfe39df6-8809-4973-9515-810df75aed12</OrganizationID>
+    <CorporateName>ABC Company Inc.</CorporateName>
+    <OrganizationBranchID>274e3434-534b-43ec-8e41-714c5eaefe92</OrganizationBranchID>
+    <BusinessTradeName>ABC Restaurant</BusinessTradeName>
+    <CompleteAddress>944 Fucshia, Davao City, Philippines, </CompleteAddress>
+    <TelNo />
+    <TIN>00980-465-453-00121</TIN>
+    <POSPermitNo>FP042025-073-0511639-00015</POSPermitNo>
+    <POSAccreditationNo>132-005161114-000193</POSAccreditationNo>
+    <MIN>25021509235840589</MIN>
+    <IsShowSalesRep>false</IsShowSalesRep>
+    <IsAuthorizedForPOS>true</IsAuthorizedForPOS>
+    <ShowCompanyDetailsInHeader>true</ShowCompanyDetailsInHeader>
+  </ReceiptHeader>
+  <SRVData>
+    <ID>af0d925b-6dd0-4fe6-b0bf-748f31673f88</ID>
+    <CustomerID>cd71a0f7-08a9-4601-876e-5f13c064f873</CustomerID>
+    <CustomerName>[CASH PAYMENT]</CustomerName>
+    <CustomerAddress>Philippines, </CustomerAddress>
+    <CustomerTIN />
+    <SourceMemoID>b7ff3f60-bd60-42cb-a4e3-52903fe3b8de</SourceMemoID>
+    <SRVNumber>2</SRVNumber>
+    <PinCode>3WFP3Y</PinCode>
+    <SRVDateTime>2026-01-28T13:09:38+08:00</SRVDateTime>
+    <SubscriberOrganizationID>cfe39df6-8809-4973-9515-810df75aed12</SubscriberOrganizationID>
+    <BoughtToBranchID>274e3434-534b-43ec-8e41-714c5eaefe92</BoughtToBranchID>
+    <BoughtToBranchName>Indangan</BoughtToBranchName>
+    <ReturnToBranchID>274e3434-534b-43ec-8e41-714c5eaefe92</ReturnToBranchID>
+    <ReturnToBranchName>Indangan</ReturnToBranchName>
+    <CashierName>Adan, Francis Tito </CashierName>
+    <InvoiceNumber>2</InvoiceNumber>
+    <InvoiceAmount>54.0000</InvoiceAmount>
+    <InvoicePayment>54.0000</InvoicePayment>
+    <SRVOrigAmount>54.0000</SRVOrigAmount>
+    <SRVNewAmount>54.0000</SRVNewAmount>
+    <SRVRestockingFee>0.0000</SRVRestockingFee>
+  </SRVData>
+</NewDataSet>

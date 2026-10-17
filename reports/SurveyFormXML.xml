@@ -1,0 +1,789 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Info">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="The_project_is_owned_by_x003A___Natural_Person__x0028_Individual_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Company_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Main_Business_Activity" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__House_x002F__Building_No." type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Street_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Barangay" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__City_x002F__Municipality" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__State_x002F__Region" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Country" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Company_Ownership_x003A___Sole_Proprietorship" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Company_Ownership_x003A___Partnership" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Company_Ownership_x003A___Corporation" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Company_Ownership_x003A___Cooperative" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Company_Ownership_x003A___LGU" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Company_Ownership_x003A___NGU" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Company_Ownership_x003A___GOCC" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Type_of_Company_Ownership_x003A_" type="xs:string" minOccurs="0" />
+                <xs:element name="The_project_is_owned_by_x003A___Company__x0028_Juridical_Person_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_x002F__Construction_Site_Address_x003A___House_Name_or_Number." type="xs:string" minOccurs="0" />
+                <xs:element name="Project_x002F__Construction_Site_Address_x003A___Street_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_x002F__Construction_Site_Address_x003A___Barangay" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_x002F__Construction_Site_Address_x003A___City_x002F__Municipality" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_x002F__Construction_Site_Address_x003A___State" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Tax_Identification_Number__x0028_TIN_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__House_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Street_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Barangay" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__City_x002F__Municipality" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__State_or_Province" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Country" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Mobile_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Telephone_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Fax_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___Government_ID_Reference" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Title" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__First_Naame" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_construction_materials_to_be_used__Concrete" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_construction_materials_to_be_used__Glass" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_construction_materials_to_be_used__Steel" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_construction_materials_to_be_used__Wood" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_construction_materials_to_be_used__Mixed" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___House_or_Building_Name_x002F__Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___Street_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___Barangay" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___City_or_Municipality" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___State_x002F__Region" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___Tel_x002F__Mobile_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__New_Construction" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Addition" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Repair" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Renovation" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Alteration" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Moving" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Demolition" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_occupancy_of_building_x002F__structure__Residential" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_occupancy_of_building_x002F__structure__Commercial" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_occupancy_of_building_x002F__structure__Industrial" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_occupancy_of_building_x002F__structure__Institutional" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_occupancy_of_building_x002F__structure__Agricultural" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Please_indicate_use_or_occupancy_of_building_x002F__structure" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__1" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__2" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__3" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__4" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__5" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__6" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__7" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__8" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__9" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__10" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__11" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Storeys__12" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_area_and_timelines_x003A___Lot_Area" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_area_and_timelines_x003A___Proposed_Date_of_Construction" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_area_and_timelines_x003A___Expected_Date_of_Completion" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Tax_Receipt__x0028_PTR_x0029__No." type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Tax_Identification_Number__x0028_TIN_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Title" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Tax_Receipt__x0028_PTR_x0029__Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Tax_Identification_Number__x0028_TIN_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_TCT_x002F__OCT_No." type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Community_Tax_Certificate" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_occupancy_of_building_x002F__structure__Parks_x002F__Plazas_x002F__Monuments" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_occupancy_of_building_x002F__structure__Recreational" type="xs:string" minOccurs="0" />
+                <xs:element name="Scope_of_Electrical_Work__New_Installation" type="xs:string" minOccurs="0" />
+                <xs:element name="Scope_of_Electrical_Work__Annual_Inspection" type="xs:string" minOccurs="0" />
+                <xs:element name="Scope_of_Electrical_Work__Addition_of_x003A_" type="xs:string" minOccurs="0" />
+                <xs:element name="Scope_of_Electrical_Work__Repair_of_x003A_" type="xs:string" minOccurs="0" />
+                <xs:element name="Scope_of_Electrical_Work__Removal_of_x003A_" type="xs:string" minOccurs="0" />
+                <xs:element name="Scope_of_Electrical_Work__Others__x0028_please_specify_x0029__x003A_" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Dwelling" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Hotel_x002F__Apartment_x002F__Condo" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Education_and_Recreation" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Institutional" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Business_and_Mercantile" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Industrial" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Storage__x0026__Hazardous_Materials" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Other_than_Group_I_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Occupant_Load_of_100_Amps_or_More_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Accessory" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Outlets__Light" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Outlets__Convenience_Receptacle" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Outlets__SPO._Aircon" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Outlets__SPO.Cooking_Unit" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Outlets__SPO._Cooking_Heater" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Outlets__SPO._Water_Pump" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Equipment_x002F__Wiring_Devices__Toggle_Switch" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Equipment_x002F__Wiring_Devices__Bells_Buzzer" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Equipment_x002F__Wiring_Devices__Push_Button" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Equipment_x002F__Wiring_Devices__Fire_Alarm_x002F__Smoke_Detectors" type="xs:string" minOccurs="0" />
+                <xs:element name="Number_of_Equipment_x002F__Wiring_Devices__Others__x0028_please_specify_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__Title" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__Professional_Tax_Receipt__x0028_PTR_x0029__No." type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__PTR_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__PTR_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__Tax_Identification_Number__x0028_TIN_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__PRC_Registration_Validity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_Indicate_details_about_the_professional_electrical_engi__Telephone_x002F__Mobile" type="xs:string" minOccurs="0" />
+                <xs:element name="Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Telephone_x002F__Mobile_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Philippine_Contractors_Accreditation_Board__x0028_PCAB_x0029__Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___PCAB_Validity" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__Title" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__Professional_Tax_Receipt__x0028_PTR_x0029__No." type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__PTR_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__PTR_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__Tax_Identification_Number__x0028_TIN_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__PRC_Reg._Validity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_work_for_plumbing_x003A___New_Installation" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_work_for_plumbing_x003A___Addition_of_x003A_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_work_for_plumbing_x003A___Repair_of_x003A_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_work_for_plumbing_x003A___Removal_of_x003A_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Residential" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Commercial" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Industrial" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Institutional" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Agricultural" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Parks_x002F__Plazas_x002F__Monuments" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Tax_Receipt__x0028_PTR_x0029__No." type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tax_Identification_Number__x0028_TIN_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PRC_Reg._Validity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tel_x002F_Fax_x002F_Mobile" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__First_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Middle_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Last_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Tax_Receipt__x0028_PTR_x0029__No." type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tax_Identification_Number__x0028_TIN_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PRC_Reg._Validity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tel_x002F_Fax_x002F_Mobile" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_water_supply_x002F__source_x003A___Shallow_Well" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_water_supply_x002F__source_x003A___Deep_Well_and_Pump_Set" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_water_supply_x002F__source_x003A___City_x002F__Municipality_Water_System" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Please_indicate_water_supply_x002F__source_x003A_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_System_Disposal__Waste_Water_Treatment_Plant" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_System_Disposal__Septic_Vault_x002F__Imhoff_Tank" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_System_Disposal__Sanitary_Sewer_Connection" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_System_Disposal__Sub-Surface_Sand_Filter" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_System_Disposal__Surface_Drainage" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_System_Disposal__Street_Canal" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_System_Disposal__Water_Course" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Please_indicate_type_of_System_Disposal" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Recreational" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_x002F__Construction_Site_Address_x003A___Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Email_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___TIN" type="xs:string" minOccurs="0" />
+                <xs:element name="Person_in_Charge_of_Electrical_Installation__Telephone_x002F__Mobile_Number" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_area_and_timelines_x003A___Building_Area" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Erection" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Conversion" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Raising" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_scope_of_construction_work__Accessories_Building_Structure" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Please_indicate_scope_of_construction_work" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_A_Residential_Dwellings" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_B_Residential_Hotel_Apartment" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_C_Educational_Recreational" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_D_Institutional" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_E_Business_And_Mercantile" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_F_Industrial" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_G_Industrial_Storage_And_Hazardous" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_H_Recreational_Assembly_Occupant_Load_Less_Than_1000" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_I_Recreational_Assembly_Occupant_Load_1000_Or_More" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_use_or_character_of_occupancy__Group_J_Agricultural_Accessory" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Please_indicate_use_or_character_of_occupancy" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PRC_Registration_Validity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__CTC_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__CTC_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___Community_Tax_Certificate__x0028_CTC_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___CTC_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Authorized_Project_Representative_Details_x003A___CTC_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Nature_of_Application__New_Development" type="xs:string" minOccurs="0" />
+                <xs:element name="Nature_of_Application__Improvement" type="xs:string" minOccurs="0" />
+                <xs:element name="Others__Nature_of_Application" type="xs:string" minOccurs="0" />
+                <xs:element name="Right_over_land__Owner" type="xs:string" minOccurs="0" />
+                <xs:element name="Right_over_land__Lessee" type="xs:string" minOccurs="0" />
+                <xs:element name="Profession_of_Person-in-Charge_of_Electrical_Installation__Professional_Engineer" type="xs:string" minOccurs="0" />
+                <xs:element name="Profession_of_Person-in-Charge_of_Electrical_Installation__Registered_Electrical_Engineer" type="xs:string" minOccurs="0" />
+                <xs:element name="Profession_of_Person-in-Charge_of_Electrical_Installation__Registered_Master_Electrician" type="xs:string" minOccurs="0" />
+                <xs:element name="Form_of_Ownership__Sole_Proprietorship" type="xs:string" minOccurs="0" />
+                <xs:element name="Form_of_Ownership__Partnership" type="xs:string" minOccurs="0" />
+                <xs:element name="Form_of_Ownership__Corporation" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_area_and_timelines_x003A___Number_of_Unit_x0028_s_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_area_and_timelines_x003A___Occupancy_Classified" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Community_Tax_Certificate__x0028_CTC_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__CTC_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__CTC_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0032_.__Lot_Owner_x0027_s_TCT_x002F__OCT_No." type="xs:string" minOccurs="0" />
+                <xs:element name="_x0032_.__Lot_Owner_x0027_s_Complete_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0032_.__Lot_Owner_x0027_s_Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0032_.__Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0032_.__CTC_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0032_.__CTC_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0033_.__Lot_Owner_x0027_s_TCT_x002F__OCT_No." type="xs:string" minOccurs="0" />
+                <xs:element name="_x0033_.__Lot_Owner_x0027_s_Complete_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0033_.__Lot_Owner_x0027_s_Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0033_.__Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0033_.__CTC_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0033_.__CTC_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0034___Lot_Owner_x0027_s_TCT_x002F__OCT_No." type="xs:string" minOccurs="0" />
+                <xs:element name="_x0034___Lot_Owner_x0027_s_Complete_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0034___Lot_Owner_x0027_s_Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0034___Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0034___CTC_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0034___CTC_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0035_.__Lot_Owner_x0027_s_TCT_x002F__OCT_No." type="xs:string" minOccurs="0" />
+                <xs:element name="_x0035_.__Lot_Owner_x0027_s_Complete_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0035_.__Lot_Owner_x0027_s_Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0035_.__Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0035_.__CTC_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0035_.__CTC_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0036_.__Lot_Owner_x0027_s_TCT_x002F__OCT_No." type="xs:string" minOccurs="0" />
+                <xs:element name="_x0036_.__Lot_Owner_x0027_s_Complete_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0036_.__Lot_Owner_x0027_s_Complete_Address" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0036_.__Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0036_.__CTC_Date_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0036_.__CTC_Place_Issued" type="xs:string" minOccurs="0" />
+                <xs:element name="Project_Name" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjectDurationInDays" type="xs:string" minOccurs="0" />
+                <xs:element name="DateToday" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__Quantity" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__New_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__Existing_Fixture" type="xs:string" minOccurs="0" />
+                <xs:element name="TotalProjectCost" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Info>
+    <The_project_is_owned_by_x003A___Natural_Person__x0028_Individual_x0029_>Natural Person (Individual)</The_project_is_owned_by_x003A___Natural_Person__x0028_Individual_x0029_>
+    <Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Company_Name />
+    <Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Main_Business_Activity />
+    <Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__House_x002F__Building_No. />
+    <Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Street_Name />
+    <Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Barangay />
+    <Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__City_x002F__Municipality />
+    <Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__State_x002F__Region />
+    <Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Country />
+    <Type_of_Company_Ownership_x003A___Sole_Proprietorship />
+    <Type_of_Company_Ownership_x003A___Partnership />
+    <Type_of_Company_Ownership_x003A___Corporation />
+    <Type_of_Company_Ownership_x003A___Cooperative />
+    <Type_of_Company_Ownership_x003A___LGU />
+    <Type_of_Company_Ownership_x003A___NGU />
+    <Type_of_Company_Ownership_x003A___GOCC />
+    <Others__Type_of_Company_Ownership_x003A_ />
+    <The_project_is_owned_by_x003A___Company__x0028_Juridical_Person_x0029_ />
+    <Project_x002F__Construction_Site_Address_x003A___House_Name_or_Number. />
+    <Project_x002F__Construction_Site_Address_x003A___Street_Name />
+    <Project_x002F__Construction_Site_Address_x003A___Barangay />
+    <Project_x002F__Construction_Site_Address_x003A___City_x002F__Municipality />
+    <Project_x002F__Construction_Site_Address_x003A___State />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__First_Name>Robert</Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__First_Name>
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Middle_Name>Soriano</Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Middle_Name>
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Last_Name>Chong</Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Last_Name>
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Tax_Identification_Number__x0028_TIN_x0029_ />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__House_Number />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Street_Name />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Barangay />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__City_x002F__Municipality />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__State_or_Province />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Country />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Mobile_Number>0917-7011887</Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Mobile_Number>
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Telephone_Number>082-297-7337</Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Telephone_Number>
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Fax_Number />
+    <Authorized_Project_Representative_Details_x003A___Government_ID_Reference>SSS ID # 0033-8956855-8</Authorized_Project_Representative_Details_x003A___Government_ID_Reference>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Title>Mr.</Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Title>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__First_Naame>Noelvic</Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__First_Naame>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Middle_Name>D.</Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Middle_Name>
+    <Please_indicate_construction_materials_to_be_used__Concrete>Concrete</Please_indicate_construction_materials_to_be_used__Concrete>
+    <Please_indicate_construction_materials_to_be_used__Glass>Glass</Please_indicate_construction_materials_to_be_used__Glass>
+    <Please_indicate_construction_materials_to_be_used__Steel>Steel</Please_indicate_construction_materials_to_be_used__Steel>
+    <Please_indicate_construction_materials_to_be_used__Wood>Wood</Please_indicate_construction_materials_to_be_used__Wood>
+    <Please_indicate_construction_materials_to_be_used__Mixed>Mixed</Please_indicate_construction_materials_to_be_used__Mixed>
+    <Authorized_Project_Representative_Details_x003A___First_Name>Joan</Authorized_Project_Representative_Details_x003A___First_Name>
+    <Authorized_Project_Representative_Details_x003A___Middle_Name>Kho</Authorized_Project_Representative_Details_x003A___Middle_Name>
+    <Authorized_Project_Representative_Details_x003A___Last_Name>Chong</Authorized_Project_Representative_Details_x003A___Last_Name>
+    <Authorized_Project_Representative_Details_x003A___House_or_Building_Name_x002F__Number>The Paper Tree Building</Authorized_Project_Representative_Details_x003A___House_or_Building_Name_x002F__Number>
+    <Authorized_Project_Representative_Details_x003A___Street_Name>Bolton St.,</Authorized_Project_Representative_Details_x003A___Street_Name>
+    <Authorized_Project_Representative_Details_x003A___Barangay>Poblacion 35-D</Authorized_Project_Representative_Details_x003A___Barangay>
+    <Authorized_Project_Representative_Details_x003A___City_or_Municipality>Davao City</Authorized_Project_Representative_Details_x003A___City_or_Municipality>
+    <Authorized_Project_Representative_Details_x003A___State_x002F__Region>Davao Del Sur</Authorized_Project_Representative_Details_x003A___State_x002F__Region>
+    <Authorized_Project_Representative_Details_x003A___Tel_x002F__Mobile_Number>0917-7012828</Authorized_Project_Representative_Details_x003A___Tel_x002F__Mobile_Number>
+    <Please_indicate_scope_of_construction_work__New_Construction>New Construction</Please_indicate_scope_of_construction_work__New_Construction>
+    <Please_indicate_scope_of_construction_work__Addition />
+    <Please_indicate_scope_of_construction_work__Repair />
+    <Please_indicate_scope_of_construction_work__Renovation />
+    <Please_indicate_scope_of_construction_work__Alteration />
+    <Please_indicate_scope_of_construction_work__Moving />
+    <Please_indicate_scope_of_construction_work__Demolition />
+    <Please_indicate_use_or_occupancy_of_building_x002F__structure__Residential />
+    <Please_indicate_use_or_occupancy_of_building_x002F__structure__Commercial />
+    <Please_indicate_use_or_occupancy_of_building_x002F__structure__Industrial />
+    <Please_indicate_use_or_occupancy_of_building_x002F__structure__Institutional />
+    <Please_indicate_use_or_occupancy_of_building_x002F__structure__Agricultural />
+    <Others__Please_indicate_use_or_occupancy_of_building_x002F__structure />
+    <Number_of_Storeys__1 />
+    <Number_of_Storeys__2>2</Number_of_Storeys__2>
+    <Number_of_Storeys__3 />
+    <Number_of_Storeys__4 />
+    <Number_of_Storeys__5 />
+    <Number_of_Storeys__6 />
+    <Number_of_Storeys__7 />
+    <Number_of_Storeys__8 />
+    <Number_of_Storeys__9 />
+    <Number_of_Storeys__10 />
+    <Number_of_Storeys__11 />
+    <Number_of_Storeys__12 />
+    <Please_indicate_area_and_timelines_x003A___Lot_Area>650 sq. m</Please_indicate_area_and_timelines_x003A___Lot_Area>
+    <Please_indicate_area_and_timelines_x003A___Proposed_Date_of_Construction>2019-07-01</Please_indicate_area_and_timelines_x003A___Proposed_Date_of_Construction>
+    <Please_indicate_area_and_timelines_x003A___Expected_Date_of_Completion>2020-05-01</Please_indicate_area_and_timelines_x003A___Expected_Date_of_Completion>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Last_Name>Sinangote</Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Last_Name>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Complete_Address>none</Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Complete_Address>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Tax_Receipt__x0028_PTR_x0029__No.>980G131</Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Tax_Receipt__x0028_PTR_x0029__No.>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>111249CE</Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Tax_Identification_Number__x0028_TIN_x0029_>268-494-473-000</Please_indicate_details_about_the_architect_x002F__civil_engineer_wh__Tax_Identification_Number__x0028_TIN_x0029_>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Title>Mr.</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Title>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__First_Name>Noelvic</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__First_Name>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Middle_Name>D.</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Middle_Name>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Last_Name>Sinangote</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Last_Name>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Complete_Address>none</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Complete_Address>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Tax_Receipt__x0028_PTR_x0029__Number>980G131</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Tax_Receipt__x0028_PTR_x0029__Number>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Date_Issued>January 8, 2018</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Date_Issued>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Place_Issued>Davao City</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PTR_Place_Issued>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Tax_Identification_Number__x0028_TIN_x0029_>268-494-473-000</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Tax_Identification_Number__x0028_TIN_x0029_>
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>111249CE</Please_indicate_details_about_the_architect_x002F__civil_engineer_in__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>
+    <Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_TCT_x002F__OCT_No.>146-2019003488, 146-2019000077, 146-2019003488</Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_TCT_x002F__OCT_No.>
+    <Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Name>Robert Soriano Chong</Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Name>
+    <Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Address>3rd Floor The Paper Tree Building, Bolton St., Davao City 8000</Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Complete_Address>
+    <Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Community_Tax_Certificate>33759943</Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__Lot_Owner_x0027_s_Community_Tax_Certificate>
+    <Please_indicate_use_or_occupancy_of_building_x002F__structure__Parks_x002F__Plazas_x002F__Monuments>Parks/ Plazas/ Monuments</Please_indicate_use_or_occupancy_of_building_x002F__structure__Parks_x002F__Plazas_x002F__Monuments>
+    <Please_indicate_use_or_occupancy_of_building_x002F__structure__Recreational />
+    <Scope_of_Electrical_Work__New_Installation>New</Scope_of_Electrical_Work__New_Installation>
+    <Scope_of_Electrical_Work__Annual_Inspection />
+    <Scope_of_Electrical_Work__Addition_of_x003A_ />
+    <Scope_of_Electrical_Work__Repair_of_x003A_ />
+    <Scope_of_Electrical_Work__Removal_of_x003A_ />
+    <Scope_of_Electrical_Work__Others__x0028_please_specify_x0029__x003A_ />
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Dwelling>Residential Dwelling</Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Dwelling>
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Residential_Hotel_x002F__Apartment_x002F__Condo />
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Education_and_Recreation />
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Institutional />
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Business_and_Mercantile />
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Industrial />
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Storage__x0026__Hazardous_Materials />
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Other_than_Group_I_x0029_ />
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Assembly__x0028_Occupant_Load_of_100_Amps_or_More_x0029_ />
+    <Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029___Accessory />
+    <Others__Type_of_Occupancy_or_Use__x0028_For_Electrical_Permit_Purposes_x0029_ />
+    <Number_of_Outlets__Light>128</Number_of_Outlets__Light>
+    <Number_of_Outlets__Convenience_Receptacle>32</Number_of_Outlets__Convenience_Receptacle>
+    <Number_of_Outlets__SPO._Aircon>7</Number_of_Outlets__SPO._Aircon>
+    <Number_of_Outlets__SPO.Cooking_Unit>2</Number_of_Outlets__SPO.Cooking_Unit>
+    <Number_of_Outlets__SPO._Cooking_Heater>0</Number_of_Outlets__SPO._Cooking_Heater>
+    <Number_of_Outlets__SPO._Water_Pump>1</Number_of_Outlets__SPO._Water_Pump>
+    <Number_of_Equipment_x002F__Wiring_Devices__Toggle_Switch>0</Number_of_Equipment_x002F__Wiring_Devices__Toggle_Switch>
+    <Number_of_Equipment_x002F__Wiring_Devices__Bells_Buzzer>1</Number_of_Equipment_x002F__Wiring_Devices__Bells_Buzzer>
+    <Number_of_Equipment_x002F__Wiring_Devices__Push_Button>0</Number_of_Equipment_x002F__Wiring_Devices__Push_Button>
+    <Number_of_Equipment_x002F__Wiring_Devices__Fire_Alarm_x002F__Smoke_Detectors>10</Number_of_Equipment_x002F__Wiring_Devices__Fire_Alarm_x002F__Smoke_Detectors>
+    <Number_of_Equipment_x002F__Wiring_Devices__Others__x0028_please_specify_x0029_>Cameras 16</Number_of_Equipment_x002F__Wiring_Devices__Others__x0028_please_specify_x0029_>
+    <Please_Indicate_details_about_the_professional_electrical_engi__Title>Mr.</Please_Indicate_details_about_the_professional_electrical_engi__Title>
+    <Please_Indicate_details_about_the_professional_electrical_engi__First_Name>Floramante</Please_Indicate_details_about_the_professional_electrical_engi__First_Name>
+    <Please_Indicate_details_about_the_professional_electrical_engi__Middle_Name>B.</Please_Indicate_details_about_the_professional_electrical_engi__Middle_Name>
+    <Please_Indicate_details_about_the_professional_electrical_engi__Last_Name>Ramos</Please_Indicate_details_about_the_professional_electrical_engi__Last_Name>
+    <Please_Indicate_details_about_the_professional_electrical_engi__Complete_Address>54-D, Boulevard, Davao City</Please_Indicate_details_about_the_professional_electrical_engi__Complete_Address>
+    <Please_Indicate_details_about_the_professional_electrical_engi__Professional_Tax_Receipt__x0028_PTR_x0029__No.>1761393C</Please_Indicate_details_about_the_professional_electrical_engi__Professional_Tax_Receipt__x0028_PTR_x0029__No.>
+    <Please_Indicate_details_about_the_professional_electrical_engi__PTR_Date_Issued>January 8, 2019</Please_Indicate_details_about_the_professional_electrical_engi__PTR_Date_Issued>
+    <Please_Indicate_details_about_the_professional_electrical_engi__PTR_Place_Issued>Davao City</Please_Indicate_details_about_the_professional_electrical_engi__PTR_Place_Issued>
+    <Please_Indicate_details_about_the_professional_electrical_engi__Tax_Identification_Number__x0028_TIN_x0029_>141-745-483-000</Please_Indicate_details_about_the_professional_electrical_engi__Tax_Identification_Number__x0028_TIN_x0029_>
+    <Please_Indicate_details_about_the_professional_electrical_engi__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>1712</Please_Indicate_details_about_the_professional_electrical_engi__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>
+    <Please_Indicate_details_about_the_professional_electrical_engi__PRC_Registration_Validity>0</Please_Indicate_details_about_the_professional_electrical_engi__PRC_Registration_Validity>
+    <Please_Indicate_details_about_the_professional_electrical_engi__Telephone_x002F__Mobile>0</Please_Indicate_details_about_the_professional_electrical_engi__Telephone_x002F__Mobile>
+    <Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___First_Name>June</Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___First_Name>
+    <Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Middle_Name>Dima</Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Middle_Name>
+    <Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Last_Name>Giba</Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Last_Name>
+    <Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Complete_Address>54-D, Boulevard, Davao City</Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Complete_Address>
+    <Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Telephone_x002F__Mobile_Number>09201478520</Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Telephone_x002F__Mobile_Number>
+    <Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Philippine_Contractors_Accreditation_Board__x0028_PCAB_x0029__Number>234234</Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___Philippine_Contractors_Accreditation_Board__x0028_PCAB_x0029__Number>
+    <Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___PCAB_Validity>0</Electrical_Contractor__x0028_for_200_amps._Main_or_above_x0029___PCAB_Validity>
+    <Person_in_Charge_of_Electrical_Installation__Title>Mr.</Person_in_Charge_of_Electrical_Installation__Title>
+    <Person_in_Charge_of_Electrical_Installation__First_Name>Edward</Person_in_Charge_of_Electrical_Installation__First_Name>
+    <Person_in_Charge_of_Electrical_Installation__Middle_Name>C.</Person_in_Charge_of_Electrical_Installation__Middle_Name>
+    <Person_in_Charge_of_Electrical_Installation__Last_Name>Jadraque</Person_in_Charge_of_Electrical_Installation__Last_Name>
+    <Person_in_Charge_of_Electrical_Installation__Professional_Tax_Receipt__x0028_PTR_x0029__No.>176152</Person_in_Charge_of_Electrical_Installation__Professional_Tax_Receipt__x0028_PTR_x0029__No.>
+    <Person_in_Charge_of_Electrical_Installation__PTR_Date_Issued>January 8, 2019</Person_in_Charge_of_Electrical_Installation__PTR_Date_Issued>
+    <Person_in_Charge_of_Electrical_Installation__PTR_Place_Issued>Davao City</Person_in_Charge_of_Electrical_Installation__PTR_Place_Issued>
+    <Person_in_Charge_of_Electrical_Installation__Tax_Identification_Number__x0028_TIN_x0029_>182-349-091-000</Person_in_Charge_of_Electrical_Installation__Tax_Identification_Number__x0028_TIN_x0029_>
+    <Person_in_Charge_of_Electrical_Installation__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>12938</Person_in_Charge_of_Electrical_Installation__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>
+    <Person_in_Charge_of_Electrical_Installation__PRC_Reg._Validity>December 31, 2019</Person_in_Charge_of_Electrical_Installation__PRC_Reg._Validity>
+    <Please_indicate_scope_of_work_for_plumbing_x003A___New_Installation>New</Please_indicate_scope_of_work_for_plumbing_x003A___New_Installation>
+    <Please_indicate_scope_of_work_for_plumbing_x003A___Addition_of_x003A_ />
+    <Please_indicate_scope_of_work_for_plumbing_x003A___Repair_of_x003A_ />
+    <Please_indicate_scope_of_work_for_plumbing_x003A___Removal_of_x003A_ />
+    <Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Residential>Residential</Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Residential>
+    <Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Commercial />
+    <Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Industrial />
+    <Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Institutional />
+    <Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Agricultural />
+    <Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Parks_x002F__Plazas_x002F__Monuments />
+    <Others__Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029_ />
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__First_Name>Noelvic</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__First_Name>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Middle_Name>D.</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Middle_Name>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Last_Name>Singote</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Last_Name>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Complete_Address>none</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Complete_Address>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Tax_Receipt__x0028_PTR_x0029__No.>980G131</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Tax_Receipt__x0028_PTR_x0029__No.>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Date_Issued>January 8, 2018</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Date_Issued>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Place_Issued>Davao City</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PTR_Place_Issued>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tax_Identification_Number__x0028_TIN_x0029_>268-494-473-000</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tax_Identification_Number__x0028_TIN_x0029_>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>111249CE / 5276MP</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PRC_Reg._Validity>0</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__PRC_Reg._Validity>
+    <Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tel_x002F_Fax_x002F_Mobile>0</Please_indicate_details_of_the_sanitary_engineer_x002F__master_plumb__Tel_x002F_Fax_x002F_Mobile>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__First_Name>Noelvic</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__First_Name>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Middle_Name>D.</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Middle_Name>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Last_Name>Sinangote</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Last_Name>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Complete_Address>none</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Complete_Address>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Tax_Receipt__x0028_PTR_x0029__No.>980G131</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Tax_Receipt__x0028_PTR_x0029__No.>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Date_Issued>January 8, 2018</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Date_Issued>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Place_Issued>Davao City</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PTR_Place_Issued>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tax_Identification_Number__x0028_TIN_x0029_>268-494-473-000</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tax_Identification_Number__x0028_TIN_x0029_>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>111249CE / 5276MP</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Professional_Regulation_Commission__x0028_PRC_x0029__Reg._Number>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PRC_Reg._Validity>0</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__PRC_Reg._Validity>
+    <Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tel_x002F_Fax_x002F_Mobile>0</Please_indicate_the_details_of_the_sanitary_engineer_x002F__master_p__Tel_x002F_Fax_x002F_Mobile>
+    <Please_indicate_water_supply_x002F__source_x003A___Shallow_Well />
+    <Please_indicate_water_supply_x002F__source_x003A___Deep_Well_and_Pump_Set />
+    <Please_indicate_water_supply_x002F__source_x003A___City_x002F__Municipality_Water_System>City/ Municipality Water System</Please_indicate_water_supply_x002F__source_x003A___City_x002F__Municipality_Water_System>
+    <Others__Please_indicate_water_supply_x002F__source_x003A_ />
+    <Please_indicate_type_of_System_Disposal__Waste_Water_Treatment_Plant />
+    <Please_indicate_type_of_System_Disposal__Septic_Vault_x002F__Imhoff_Tank>Septic Vault/ Imhoff Tank</Please_indicate_type_of_System_Disposal__Septic_Vault_x002F__Imhoff_Tank>
+    <Please_indicate_type_of_System_Disposal__Sanitary_Sewer_Connection />
+    <Please_indicate_type_of_System_Disposal__Sub-Surface_Sand_Filter />
+    <Please_indicate_type_of_System_Disposal__Surface_Drainage />
+    <Please_indicate_type_of_System_Disposal__Street_Canal />
+    <Please_indicate_type_of_System_Disposal__Water_Course />
+    <Others__Please_indicate_type_of_System_Disposal />
+    <Please_indicate_type_of_occupancy__x0028_for_plumbing_permit_x0029___Recreational />
+    <Person_in_Charge_of_Electrical_Installation__Complete_Address>54-D, Boulevard, Davao City</Person_in_Charge_of_Electrical_Installation__Complete_Address>
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Complete_Address>3F The Paper Tree Building, Bolton St., Davao City 8000</Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Complete_Address>
+    <Project_x002F__Construction_Site_Address_x003A___Complete_Address>Lots 2, 3, 4A, Block 23, Ebony St., NorthCrest Subdivision, Cabantian, Davao City 8000</Project_x002F__Construction_Site_Address_x003A___Complete_Address>
+    <Project_Owner__x0028_Juridical_Person_x0029__Details_x003A__Please_fill_in_infor__Complete_Address />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Email_Address>robert.chong@mobiz-apps.com</Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Email_Address>
+    <Authorized_Project_Representative_Details_x003A___TIN>231-985-183-000</Authorized_Project_Representative_Details_x003A___TIN>
+    <Person_in_Charge_of_Electrical_Installation__Telephone_x002F__Mobile_Number>09102589630</Person_in_Charge_of_Electrical_Installation__Telephone_x002F__Mobile_Number>
+    <Please_indicate_area_and_timelines_x003A___Building_Area>475 sq. m</Please_indicate_area_and_timelines_x003A___Building_Area>
+    <Please_indicate_scope_of_construction_work__Erection />
+    <Please_indicate_scope_of_construction_work__Conversion />
+    <Please_indicate_scope_of_construction_work__Raising />
+    <Please_indicate_scope_of_construction_work__Accessories_Building_Structure />
+    <Others__Please_indicate_scope_of_construction_work />
+    <Please_indicate_use_or_character_of_occupancy__Group_A_Residential_Dwellings />
+    <Please_indicate_use_or_character_of_occupancy__Group_B_Residential_Hotel_Apartment />
+    <Please_indicate_use_or_character_of_occupancy__Group_C_Educational_Recreational />
+    <Please_indicate_use_or_character_of_occupancy__Group_D_Institutional />
+    <Please_indicate_use_or_character_of_occupancy__Group_E_Business_And_Mercantile />
+    <Please_indicate_use_or_character_of_occupancy__Group_F_Industrial />
+    <Please_indicate_use_or_character_of_occupancy__Group_G_Industrial_Storage_And_Hazardous />
+    <Please_indicate_use_or_character_of_occupancy__Group_H_Recreational_Assembly_Occupant_Load_Less_Than_1000 />
+    <Please_indicate_use_or_character_of_occupancy__Group_I_Recreational_Assembly_Occupant_Load_1000_Or_More />
+    <Please_indicate_use_or_character_of_occupancy__Group_J_Agricultural_Accessory />
+    <Others__Please_indicate_use_or_character_of_occupancy />
+    <Please_indicate_details_about_the_architect_x002F__civil_engineer_in__PRC_Registration_Validity />
+    <Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__CTC_Date_Issued />
+    <Please_indicate_lot_owner_x0026__x0023_39_x003B_s_information__CTC_Place_Issued />
+    <Authorized_Project_Representative_Details_x003A___Community_Tax_Certificate__x0028_CTC_x0029_ />
+    <Authorized_Project_Representative_Details_x003A___CTC_Date_Issued />
+    <Authorized_Project_Representative_Details_x003A___CTC_Place_Issued />
+    <Nature_of_Application__New_Development />
+    <Nature_of_Application__Improvement />
+    <Others__Nature_of_Application />
+    <Right_over_land__Owner />
+    <Right_over_land__Lessee />
+    <Profession_of_Person-in-Charge_of_Electrical_Installation__Professional_Engineer />
+    <Profession_of_Person-in-Charge_of_Electrical_Installation__Registered_Electrical_Engineer />
+    <Profession_of_Person-in-Charge_of_Electrical_Installation__Registered_Master_Electrician />
+    <Form_of_Ownership__Sole_Proprietorship />
+    <Form_of_Ownership__Partnership />
+    <Form_of_Ownership__Corporation />
+    <Please_indicate_area_and_timelines_x003A___Number_of_Unit_x0028_s_x0029_ />
+    <Please_indicate_area_and_timelines_x003A___Occupancy_Classified />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__Community_Tax_Certificate__x0028_CTC_x0029_ />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__CTC_Date_Issued />
+    <Project_Owner__x0028_Natural_Person_x0029__Details_x003A__Please_fill_in_informa__CTC_Place_Issued />
+    <_x0032_.__Lot_Owner_x0027_s_TCT_x002F__OCT_No. />
+    <_x0032_.__Lot_Owner_x0027_s_Complete_Name />
+    <_x0032_.__Lot_Owner_x0027_s_Complete_Address />
+    <_x0032_.__Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_ />
+    <_x0032_.__CTC_Date_Issued />
+    <_x0032_.__CTC_Place_Issued />
+    <_x0033_.__Lot_Owner_x0027_s_TCT_x002F__OCT_No. />
+    <_x0033_.__Lot_Owner_x0027_s_Complete_Name />
+    <_x0033_.__Lot_Owner_x0027_s_Complete_Address />
+    <_x0033_.__Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_ />
+    <_x0033_.__CTC_Date_Issued />
+    <_x0033_.__CTC_Place_Issued />
+    <_x0034___Lot_Owner_x0027_s_TCT_x002F__OCT_No. />
+    <_x0034___Lot_Owner_x0027_s_Complete_Name />
+    <_x0034___Lot_Owner_x0027_s_Complete_Address />
+    <_x0034___Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_ />
+    <_x0034___CTC_Date_Issued />
+    <_x0034___CTC_Place_Issued />
+    <_x0035_.__Lot_Owner_x0027_s_TCT_x002F__OCT_No. />
+    <_x0035_.__Lot_Owner_x0027_s_Complete_Name />
+    <_x0035_.__Lot_Owner_x0027_s_Complete_Address />
+    <_x0035_.__Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_ />
+    <_x0035_.__CTC_Date_Issued />
+    <_x0035_.__CTC_Place_Issued />
+    <_x0036_.__Lot_Owner_x0027_s_TCT_x002F__OCT_No. />
+    <_x0036_.__Lot_Owner_x0027_s_Complete_Name />
+    <_x0036_.__Lot_Owner_x0027_s_Complete_Address />
+    <_x0036_.__Lot_Owner_x0027_s_Community_Tax_Certificate__x0028_CTC_x0029_ />
+    <_x0036_.__CTC_Date_Issued />
+    <_x0036_.__CTC_Place_Issued />
+    <Project_Name>Robert and Joan's House</Project_Name>
+    <ProjectDurationInDays>305</ProjectDurationInDays>
+    <DateToday>Nov 28, 2019</DateToday>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>3000000</Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>0</Please_indicate_Estimated_Cost_x0028_s_x0029___Building__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>350000</Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>0</Please_indicate_Estimated_Cost_x0028_s_x0029___Electrical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>0</Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>0</Please_indicate_Estimated_Cost_x0028_s_x0029___Mechanical__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>180000</Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>0</Please_indicate_Estimated_Cost_x0028_s_x0029___Plumbing__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>0</Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>0</Please_indicate_Estimated_Cost_x0028_s_x0029___Others__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>4800000</Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Material_Cost>
+    <Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>0</Please_indicate_Estimated_Cost_x0028_s_x0029___Total_Cost__Please_indicate_Estimated_Cost_x0028_s_x0029___Cost_of_Equipment_Installed>
+    <Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Quantity>6</Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Water_Closet__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Quantity>8</Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Floor_Drain__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Quantity>6</Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Lavatories__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Quantity>3</Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Kitchen_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Quantity>10</Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Faucet__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Quantity>4</Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Shower_Head__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Quantity>1</Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Water_Meter__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Quantity>1</Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Grease_Trap__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Bath_Tub__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Slop_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Urinal__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Quantity>7</Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Airconditioning_Unit__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Quantity>1</Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Water_Tank_x002F__Reservoir__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Quantity>5</Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Bidette__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Laundry_Tray__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Dental_Cuspidor__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Gas_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Quantity>5</Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Electric_Heater__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Water_Boiler__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Drinking_FOuntain__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Bar_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Soda_Fountain_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Laboratory_Sink__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__Sterilizer__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Swimming_Pool__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Quantity>1</Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Water_Distribution__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Quantity>1</Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Sanitary_Sewer_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Quantity>0</Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__New_Fixture>x</Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__New_Fixture>
+    <Please_indicate_fixtures_to_be_installed__Storage_Drainage_System__Please_indicate_fixtures_to_be_installed__Existing_Fixture />
+    <Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__Quantity>1</Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__Quantity>
+    <Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__New_Fixture />
+    <Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__Existing_Fixture>x</Please_indicate_fixtures_to_be_installed__R.C.S_Volume__Please_indicate_fixtures_to_be_installed__Existing_Fixture>
+    <TotalProjectCost>3530000</TotalProjectCost>
+  </Info>
+</NewDataSet>

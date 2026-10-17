@@ -1,0 +1,56 @@
+﻿<link type="text/css" href="/Content/flatui-css-custom.css" rel="Stylesheet" />
+<style>
+    .CustomerScreenTable {
+        font-size: 15px;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .CustomerScreenTable th {
+         text-align: center;
+         vertical-align: top;
+         padding: 10px;
+         font-weight: normal;
+         border-bottom: 1px solid gray;
+     }
+
+    .CustomerScreenTable td {
+        padding: 10px;
+        border-bottom: 1px solid gray;
+        word-break: break-all;
+    }
+
+    .CustomerScreenTable td:last-child, td:nth-child(3) {
+        text-align: right;
+    }
+
+    .CustomerScreenTable tr:last-child td {
+        border-bottom: 3px solid black;
+    }
+    .CustomerScreenTable tr:last-child td:last-child {
+        font-weight: bold;
+    }
+</style>
+<div name="divCustomerScreen" data-role="page" data-url="divCustomerScreen">
+    <!--<div data-role="header">
+        <a href="#" data-icon="arrow-l" data-rel="back">Back</a>
+        <h1 name="lblPageHeader">Customer Screen</h1>
+    </div>-->
+    <div data-role="content">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+
+            </div>
+            <div class="ui-block-b">
+                <div id="divCustomerScreenTopBar" style="display:none">
+                </div>
+                <div id="divCustomerScreenLog"></div>
+            </div>
+        </div>
+    </div>
+    <!--<div data-role="footer_no_theme">
+        <div style="text-align: center; padding-bottom: 15px">
+
+        </div>
+    </div>-->
+</div>

@@ -1,0 +1,33 @@
+﻿<div class="container-fluid">
+    <h1 class="display-6 mb-4">ERP Settings</h1>
+
+    <div>
+        <h5 class="mb-4">General</h5>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 mb-3 col-form-label" for="butErpSettingsDefaultPriceLevel">Please choose the default price level:</label>
+            <div class="col-sm-9">
+                <button id="butErpSettingsDefaultPriceLevel" data-role="none" class="btn btn-secondary btn-block">Change Price Level</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h5 class="mb-4">Credit and Collection</h5>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 mb-3 col-form-label" for="cbErpSettingsAvailableCreditLimitComputation">Please choose formula for computing available credit for customers/clients:</label>
+            <div class="col-sm-9">
+                <select id="cbErpSettingsAvailableCreditLimitComputation" data-role="none" class="form-select">
+                    <option value="">A.) Available Credit = Credit Limit (CL) – Accounts Receivable (AR)</option>
+                    <option value="NoPdc">B.) Available Credit = Credit Limit (CL) – Accounts Receivable (AR) – Notes Receivable (NR) AKA Uncleared Cheques</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4" style="text-align: center">
+        <a data-role="none" data-rel="back" class="btn btn-secondary btn-lg mr-3">Cancel</a>
+        <a id="butSaveErpSettings" data-role="none" class="btn btn-success btn-lg">Save</a>
+    </div>
+</div>

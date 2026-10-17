@@ -1,0 +1,1191 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiXmlDatabase" isKey="true">
+        <Alias>Connection</Alias>
+        <Name>Connection</Name>
+        <PathData>C:\dev\debug\Mobiz\WebErp\temp\Stimulsoft XML Data.xml</PathData>
+        <PathSchema />
+      </Connection>
+    </Databases>
+    <DataSources isList="true" count="4">
+      <Invoices Ref="3" type="DataTableSource" isKey="true">
+        <Alias>Invoices</Alias>
+        <Columns isList="true" count="88">
+          <value>BillingAddress,System.String</value>
+          <value>BillingAddressID,System.Guid</value>
+          <value>BillingContactInfo,System.String</value>
+          <value>BusinessIndustryDisplay,System.String</value>
+          <value>CanvassID,System.Guid</value>
+          <value>CanvassNumber,System.Int32</value>
+          <value>CreditTerms,System.Int32</value>
+          <value>CustomerBin,System.String</value>
+          <value>CustomerBinID,System.Guid</value>
+          <value>CustomerFowst,System.String</value>
+          <value>CustomerFowstID,System.Guid</value>
+          <value>CustomerID,System.Guid</value>
+          <value>CustomerName,System.String</value>
+          <value>DateNeeded,System.DateTime</value>
+          <value>DeliveryAddress,System.String</value>
+          <value>DeliveryAddressID,System.Guid</value>
+          <value>DeliveryContactInfo,System.String</value>
+          <value>DeliveryDate,System.DateTime</value>
+          <value>DeliveryFowstName,System.String</value>
+          <value>DeviceID,System.Guid</value>
+          <value>DiscountAmount,System.Decimal</value>
+          <value>DocumentName,System.String</value>
+          <value>DocumentNameID,System.Guid</value>
+          <value>DucInvoiceNum,System.Int32</value>
+          <value>DUCNumericID,System.Decimal</value>
+          <value>DueDate,System.DateTime</value>
+          <value>EncodingFowstID,System.Guid</value>
+          <value>EncodingFowstName,System.String</value>
+          <value>FowstID,System.Guid</value>
+          <value>FowstWideInvoiceNumber,System.Int32</value>
+          <value>IndustryClass,System.String</value>
+          <value>InvoiceDate,System.DateTime</value>
+          <value>InvoiceID,System.Guid</value>
+          <value>InvoiceNumber,System.Decimal</value>
+          <value>InvoiceTypeCode,System.String</value>
+          <value>IsCancelled,System.Decimal</value>
+          <value>LastUpdated,System.DateTime</value>
+          <value>MIN,System.String</value>
+          <value>NetSuiteNum,System.String</value>
+          <value>OrderedAmount,System.Decimal</value>
+          <value>OrgFowst,System.String</value>
+          <value>OrgFowstName,System.String</value>
+          <value>PaymentTerm,System.Int32</value>
+          <value>PaymentTermsText,System.String</value>
+          <value>PermitNum,System.String</value>
+          <value>PrintedInvoiceNumber,System.String</value>
+          <value>PurchaseOrderDate,System.DateTime</value>
+          <value>PurchaseOrderNo,System.Int32</value>
+          <value>PurchaseOrderText,System.String</value>
+          <value>QuotationDate,System.DateTime</value>
+          <value>QuotationID,System.Guid</value>
+          <value>QuotationNo,System.Decimal</value>
+          <value>QuotationNumText,System.String</value>
+          <value>ReasonForReconstructingData,System.String</value>
+          <value>RefInvoiceNum,System.String</value>
+          <value>RefNum,System.String</value>
+          <value>RefPurchaseOrder,System.String</value>
+          <value>RefQuotationDate,System.DateTime</value>
+          <value>RefQuotationNo,System.Decimal</value>
+          <value>RefQuote,System.String</value>
+          <value>RefSalesOrder,System.String</value>
+          <value>RefSalesOrderDate,System.DateTime</value>
+          <value>RefSalesOrderNo,System.Decimal</value>
+          <value>Remarks,System.String</value>
+          <value>Representative,System.String</value>
+          <value>SalesOrderDate,System.DateTime</value>
+          <value>SalesOrderID,System.Guid</value>
+          <value>SalesOrderNo,System.Decimal</value>
+          <value>SalesOrderUserID,System.Guid</value>
+          <value>SalesPartner,System.String</value>
+          <value>SalesPartnerOrgID,System.Guid</value>
+          <value>SalesRep,System.String</value>
+          <value>SalesRepPeopleID,System.Guid</value>
+          <value>SalesRepText,System.String</value>
+          <value>SavedAsFinal,System.Boolean</value>
+          <value>ServedAmount,System.Decimal</value>
+          <value>SoMIN,System.String</value>
+          <value>SopaApprovedByID,System.Guid</value>
+          <value>SopaApproverName,System.String</value>
+          <value>Subtotal,System.Decimal</value>
+          <value>TinNumber,System.String</value>
+          <value>TotalAmount,System.Decimal</value>
+          <value>TotalVatable,System.Decimal</value>
+          <value>TotalVatAmount,System.Decimal</value>
+          <value>TransType,System.String</value>
+          <value>Updater,System.String</value>
+          <value>UserID,System.Guid</value>
+          <value>Vatable,System.Decimal</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Name>Invoices</Name>
+        <NameInSource>Connection.Invoices</NameInSource>
+      </Invoices>
+      <Master Ref="4" type="DataTableSource" isKey="true">
+        <Alias>Master</Alias>
+        <Columns isList="true" count="83">
+          <value>BillingAddress,System.String</value>
+          <value>BillingAddressID,System.Guid</value>
+          <value>BillingContactInfo,System.String</value>
+          <value>BusinessIndustryDisplay,System.String</value>
+          <value>CanvassID,System.Guid</value>
+          <value>CanvassNumber,System.Int32</value>
+          <value>CreditTerms,System.Int32</value>
+          <value>CustomerBin,System.String</value>
+          <value>CustomerBinID,System.Guid</value>
+          <value>CustomerFowst,System.String</value>
+          <value>CustomerFowstID,System.Guid</value>
+          <value>CustomerID,System.Guid</value>
+          <value>CustomerName,System.String</value>
+          <value>DateNeeded,System.DateTime</value>
+          <value>DeliveryAddress,System.String</value>
+          <value>DeliveryAddressID,System.Guid</value>
+          <value>DeliveryContactInfo,System.String</value>
+          <value>DeliveryDate,System.DateTime</value>
+          <value>DeliveryFowstName,System.String</value>
+          <value>DeviceID,System.Guid</value>
+          <value>DiscountAmount,System.Decimal</value>
+          <value>DocumentName,System.String</value>
+          <value>DocumentNameID,System.Guid</value>
+          <value>DucInvoiceNum,System.Int32</value>
+          <value>DUCNumericID,System.Decimal</value>
+          <value>DueDate,System.DateTime</value>
+          <value>EncodingFowstID,System.Guid</value>
+          <value>EncodingFowstName,System.String</value>
+          <value>FowstID,System.Guid</value>
+          <value>IndustryClass,System.String</value>
+          <value>InvoiceDate,System.DateTime</value>
+          <value>InvoiceID,System.Guid</value>
+          <value>InvoiceNumber,System.Decimal</value>
+          <value>InvoiceTypeCode,System.String</value>
+          <value>IsCancelled,System.Decimal</value>
+          <value>LastUpdated,System.DateTime</value>
+          <value>MIN,System.String</value>
+          <value>NetSuiteNum,System.String</value>
+          <value>OrderedAmount,System.Decimal</value>
+          <value>OrgFowst,System.String</value>
+          <value>OrgFowstName,System.String</value>
+          <value>PaymentTerm,System.Int32</value>
+          <value>PaymentTermsText,System.String</value>
+          <value>PurchaseOrderDate,System.DateTime</value>
+          <value>PurchaseOrderNo,System.Int32</value>
+          <value>PurchaseOrderText,System.String</value>
+          <value>QuotationDate,System.DateTime</value>
+          <value>QuotationID,System.Guid</value>
+          <value>QuotationNo,System.Decimal</value>
+          <value>QuotationNumText,System.String</value>
+          <value>ReasonForReconstructingData,System.String</value>
+          <value>RefInvoiceNum,System.String</value>
+          <value>RefNum,System.String</value>
+          <value>RefPurchaseOrder,System.String</value>
+          <value>RefQuotationDate,System.DateTime</value>
+          <value>RefQuotationNo,System.Decimal</value>
+          <value>RefQuote,System.String</value>
+          <value>RefSalesOrder,System.String</value>
+          <value>RefSalesOrderDate,System.DateTime</value>
+          <value>RefSalesOrderNo,System.Decimal</value>
+          <value>Remarks,System.String</value>
+          <value>Representative,System.String</value>
+          <value>SalesOrderDate,System.DateTime</value>
+          <value>SalesOrderID,System.Guid</value>
+          <value>SalesOrderNo,System.Decimal</value>
+          <value>SalesOrderUserID,System.Guid</value>
+          <value>SalesPartner,System.String</value>
+          <value>SalesPartnerOrgID,System.Guid</value>
+          <value>SalesRep,System.String</value>
+          <value>SalesRepPeopleID,System.Guid</value>
+          <value>SalesRepText,System.String</value>
+          <value>SavedAsFinal,System.Boolean</value>
+          <value>ServedAmount,System.Decimal</value>
+          <value>SoMIN,System.String</value>
+          <value>SopaApprovedByID,System.Guid</value>
+          <value>SopaApproverName,System.String</value>
+          <value>Subtotal,System.Decimal</value>
+          <value>TinNumber,System.String</value>
+          <value>TotalAmount,System.Decimal</value>
+          <value>TransType,System.String</value>
+          <value>Updater,System.String</value>
+          <value>UserID,System.Guid</value>
+          <value>Vatable,System.Decimal</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Name>Master</Name>
+        <NameInSource>Connection.Master</NameInSource>
+      </Master>
+      <Products Ref="5" type="DataTableSource" isKey="true">
+        <Alias>Products</Alias>
+        <Columns isList="true" count="33">
+          <value>ActualQuantity,System.Decimal</value>
+          <value>BaseUnit,System.String</value>
+          <value>BaseUnitQty,System.Decimal</value>
+          <value>DiscountIfPaidWithIn,System.Decimal</value>
+          <value>HiddenServedQuantity,System.Decimal</value>
+          <value>ID,System.Guid</value>
+          <value>InvoiceID,System.Guid</value>
+          <value>LineCost,System.Decimal</value>
+          <value>LineNumber,System.Int32</value>
+          <value>NetDue,System.String</value>
+          <value>NonVATSale,System.Decimal</value>
+          <value>OrderedAmount,System.Decimal</value>
+          <value>OrderedQuantity,System.Decimal</value>
+          <value>PriceLevelID,System.Guid</value>
+          <value>ProductID,System.Guid</value>
+          <value>ProductName,System.String</value>
+          <value>ProductNo,System.String</value>
+          <value>Quantity,System.Decimal</value>
+          <value>RequestedUnitPrice,System.Decimal</value>
+          <value>ServedAmount,System.Decimal</value>
+          <value>ServedQtyIsEdited,System.Boolean</value>
+          <value>SubTotal,System.Decimal</value>
+          <value>TaxAmount,System.Decimal</value>
+          <value>TaxPercent,System.Double</value>
+          <value>TaxSales,System.Decimal</value>
+          <value>TermDiscountNumeric,System.Double</value>
+          <value>TermNumericValue,System.Decimal</value>
+          <value>Terms,System.String</value>
+          <value>UnitMeasure,System.String</value>
+          <value>UnitMeasureID,System.Guid</value>
+          <value>UnitPrice,System.Decimal</value>
+          <value>VATExemptSale,System.Decimal</value>
+          <value>ZeroRatedSale,System.Decimal</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Name>Products</Name>
+        <NameInSource>Connection.Products</NameInSource>
+      </Products>
+      <Stocks Ref="6" type="DataTableSource" isKey="true">
+        <Alias>Stocks</Alias>
+        <Columns isList="true" count="33">
+          <value>ActualQuantity,System.Decimal</value>
+          <value>BaseUnit,System.String</value>
+          <value>BaseUnitQty,System.Decimal</value>
+          <value>DiscountIfPaidWithIn,System.Decimal</value>
+          <value>HiddenServedQuantity,System.Decimal</value>
+          <value>ID,System.Guid</value>
+          <value>InvoiceID,System.Guid</value>
+          <value>LineCost,System.Decimal</value>
+          <value>LineNumber,System.Int32</value>
+          <value>NetDue,System.String</value>
+          <value>NonVATSale,System.Decimal</value>
+          <value>OrderedAmount,System.Decimal</value>
+          <value>OrderedQuantity,System.Decimal</value>
+          <value>PriceLevelID,System.Guid</value>
+          <value>ProductID,System.Guid</value>
+          <value>ProductName,System.String</value>
+          <value>ProductNo,System.String</value>
+          <value>Quantity,System.Decimal</value>
+          <value>RequestedUnitPrice,System.Decimal</value>
+          <value>ServedAmount,System.Decimal</value>
+          <value>ServedQtyIsEdited,System.Boolean</value>
+          <value>SubTotal,System.Decimal</value>
+          <value>TaxAmount,System.Decimal</value>
+          <value>TaxPercent,System.Double</value>
+          <value>TaxSales,System.Decimal</value>
+          <value>TermDiscountNumeric,System.Double</value>
+          <value>TermNumericValue,System.Decimal</value>
+          <value>Terms,System.String</value>
+          <value>UnitMeasure,System.String</value>
+          <value>UnitMeasureID,System.Guid</value>
+          <value>UnitPrice,System.Decimal</value>
+          <value>VATExemptSale,System.Decimal</value>
+          <value>ZeroRatedSale,System.Decimal</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Name>Stocks</Name>
+        <NameInSource>Connection.Stocks</NameInSource>
+      </Stocks>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="13">
+      <value>,CompanyAddress,CompanyAddress,System.String,,False,False</value>
+      <value>,CompanyContactInfos,CompanyContactInfos,System.String,,False,False</value>
+      <value>,CompanyContactNumber,CompanyContactNumber,System.String,Manila_x0020_Line:_x0020_02-359-9036_x002F__x0020_Fax:082-222-8218_x002F_Trunk227-4313_x0020_to_x0020_15,False,False</value>
+      <value>,CompanyName,CompanyName,System.String,,False,False</value>
+      <value>,CompanyTin,CompanyTin,System.String,TIN:_x0020_005-161-114,False,False</value>
+      <value>,CopyType,CopyType,System.String,,False,False</value>
+      <value>,CustomerAddress,CustomerAddress,System.String,,False,False</value>
+      <value>,CustomerContactInfos,CustomerContactInfos,System.String,,False,False</value>
+      <value>,CustomerName,CustomerName,System.String,,False,False</value>
+      <value>,DocumentName,DocumentName,System.String,,False,False</value>
+      <value>,LabelOfCopy,LabelOfCopy,System.String,,False,False</value>
+      <value>,StatementDate,StatementDate,System.String,,False,False</value>
+      <value>,Footnote,Footnote,System.String,,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="7" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="8">
+        <HeaderInvoices Ref="8" type="HeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,7.9,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Name>HeaderInvoices</Name>
+          <Page isRef="7" />
+          <Parent isRef="7" />
+        </HeaderInvoices>
+        <ChildBand3 Ref="9" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.6,7.9,1.6</ClientRectangle>
+          <Components isList="true" count="16">
+            <Text11 Ref="10" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0,5.6,0.29</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,20</Font>
+              <Guid>a82465320bc84946a7710fb316097ed6</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>{CompanyName}</Text>
+              <TextBrush>[64:64:64]</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text11>
+            <Text12 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0.28,5.3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12</Font>
+              <Guid>f1d326eeb63049b19e60bb86a08fbcce</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>{CompanyAddress}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text12>
+            <Text14 Ref="12" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.67,0,2.23,0.33</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,20,Bold</Font>
+              <Guid>1ad7881b63c746ea80ac3ec3d1972f61</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>NO-PRICE {DocumentName}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text14>
+            <Text15 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.9,1.38,2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12,Bold</Font>
+              <Guid>98ad2687656045b2b9bcc06377f1fd31</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>{PageNofM}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text15>
+            <Text4 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5,0.6,2.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>{DocumentName} No.: {Invoices.PrintedInvoiceNumber} - {Format("{0:MM/dd/yyyy}", Invoices.InvoiceDate)}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text4>
+            <Text21 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,0.8,2.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12,Bold</Font>
+              <Guid>a4a113e291584638bfd5f675a0cdc0c6</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>SO No.: {Invoices.SoMIN}-{Invoices.RefSalesOrder}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text21>
+            <Text27 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,1,2.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12,Bold</Font>
+              <Guid>d5d4f19895a3453199eb8e8a10740d45</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>PO No.: {Invoices.RefPurchaseOrder}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text27>
+            <Text28 Ref="17" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,1.2,2.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12,Bold</Font>
+              <Guid>a986307cedbd42f0ba0f7ef2bdbbce04</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>Date Needed: {Format("{0:MM/dd/yyyy h:mm tt}", Invoices.DateNeeded)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="18" type="CustomFormat" isKey="true">
+                <StringFormat>MM/dd/yyyy</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+            </Text28>
+            <Text34 Ref="19" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.3,0.3,2.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,20,Bold</Font>
+              <Guid>9acedd200e924525a4b16cd0c3694d11</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text34</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>{LabelOfCopy}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text34>
+            <Text1 Ref="20" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.61,0.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>Customer:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text1>
+            <Text2 Ref="21" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.8,0.61,4.1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>{Invoices.CustomerName}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text2>
+            <Text3 Ref="22" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.8,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12</Font>
+              <Guid>89cf3861dda34b689c859a4cbc99abfd</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>Sales Partner:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text3>
+            <Text31 Ref="23" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1,0.8,4.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12</Font>
+              <Guid>cfa1e5cb6eef425884a994ed73769d52</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>{Invoices.SalesPartner}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text31>
+            <Text32 Ref="24" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12</Font>
+              <Guid>f87bf1102c5a4dad9000d97a89ee506b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>Sales Rep:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text32>
+            <Text33 Ref="25" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1,1,4.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12</Font>
+              <Guid>020282aff8e343e7a32ec868bc311fcb</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>{Invoices.SalesRep}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text33>
+            <Text26 Ref="26" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.2,5.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,12</Font>
+              <Guid>d07913976a24493b9f64e69f34283301</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="7" />
+              <Parent isRef="9" />
+              <Text>Payment Terms: {Invoices.PaymentTerm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text26>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>8249bc40d9fe42cea76efe634c328736</Guid>
+          <Name>ChildBand3</Name>
+          <Page isRef="7" />
+          <Parent isRef="7" />
+        </ChildBand3>
+        <DataInvoices Ref="27" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,2.6,7.9,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataSourceName>Invoices</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataInvoices</Name>
+          <Page isRef="7" />
+          <Parent isRef="7" />
+          <Sort isList="true" count="0" />
+        </DataInvoices>
+        <HeaderStocks Ref="28" type="HeaderBand" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3,7.9,0.2</ClientRectangle>
+          <Components isList="true" count="5">
+            <HeaderStocks_ProductNo Ref="29" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,0,0.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderStocks_ProductNo</Name>
+              <Page isRef="7" />
+              <Parent isRef="28" />
+              <Text>Item Code:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderStocks_ProductNo>
+            <HeaderStocks_ProductName Ref="30" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.3,0,5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderStocks_ProductName</Name>
+              <Page isRef="7" />
+              <Parent isRef="28" />
+              <Text>Item Description:</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderStocks_ProductName>
+            <HeaderStocks_OrderedQuantity Ref="31" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.3,0,0.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderStocks_OrderedQuantity</Name>
+              <Page isRef="7" />
+              <Parent isRef="28" />
+              <Text>Quantity</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderStocks_OrderedQuantity>
+            <HeaderStocks_UnitMeasure Ref="32" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.1,0,0.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderStocks_UnitMeasure</Name>
+              <Page isRef="7" />
+              <Parent isRef="28" />
+              <Text>UoM</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </HeaderStocks_UnitMeasure>
+            <Text29 Ref="33" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,0.4,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Guid>6e01ce88cde1449697aa86fa499f128b</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="7" />
+              <Parent isRef="28" />
+              <Text>Line #</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text29>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>HeaderStocks</Name>
+          <Page isRef="7" />
+          <Parent isRef="7" />
+        </HeaderStocks>
+        <DataStocks Ref="34" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,3.6,7.9,0.2</ClientRectangle>
+          <Components isList="true" count="5">
+            <DataStocks_ProductNo Ref="35" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.4,0,0.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataStocks_ProductNo</Name>
+              <Page isRef="7" />
+              <Parent isRef="34" />
+              <Text>{Stocks.ProductNo}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </DataStocks_ProductNo>
+            <DataStocks_ProductName Ref="36" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>1.3,0,5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataStocks_ProductName</Name>
+              <Page isRef="7" />
+              <Parent isRef="34" />
+              <Text>{Stocks.ProductName}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </DataStocks_ProductName>
+            <DataStocks_OrderedQuantity Ref="37" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>6.3,0,0.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataStocks_OrderedQuantity</Name>
+              <Page isRef="7" />
+              <Parent isRef="34" />
+              <Text>{Stocks.Quantity}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="38" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </DataStocks_OrderedQuantity>
+            <DataStocks_UnitMeasure Ref="39" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>7.1,0,0.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataStocks_UnitMeasure</Name>
+              <Page isRef="7" />
+              <Parent isRef="34" />
+              <Text>{Stocks.UnitMeasure}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </DataStocks_UnitMeasure>
+            <Text13 Ref="40" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,0.4,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="7" />
+              <Parent isRef="34" />
+              <Text>{Line}.)</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text13>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName>Stocks</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataStocks</Name>
+          <Page isRef="7" />
+          <Parent isRef="7" />
+          <Sort isList="true" count="0" />
+        </DataStocks>
+        <FooterStocks Ref="41" type="FooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.2,7.9,0.3</ClientRectangle>
+          <Components isList="true" count="3">
+            <FooterStocks_ProductNo Ref="42" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,1.32,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>FooterStocks_ProductNo</Name>
+              <Page isRef="7" />
+              <Parent isRef="41" />
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </FooterStocks_ProductNo>
+            <FooterStocks_ProductName Ref="43" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.32,0,1.32,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>FooterStocks_ProductName</Name>
+              <Page isRef="7" />
+              <Parent isRef="41" />
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </FooterStocks_ProductName>
+            <FooterStocks_OrderedQuantity Ref="44" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.63,0,1.32,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>FooterStocks_OrderedQuantity</Name>
+              <Page isRef="7" />
+              <Parent isRef="41" />
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </FooterStocks_OrderedQuantity>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>FooterStocks</Name>
+          <Page isRef="7" />
+          <Parent isRef="7" />
+          <PrintAtBottom>True</PrintAtBottom>
+        </FooterStocks>
+        <ChildBand1 Ref="45" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.9,7.9,2.2</ClientRectangle>
+          <Components isList="true" count="19">
+            <Text5 Ref="46" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>BILLING DETAILS</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text5>
+            <Text6 Ref="47" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,0,1.1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10,Bold</Font>
+              <Guid>a0014a3ec8b742d8a8d66d97d578a71a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>DELIVERY DETAILS</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text6>
+            <Text8 Ref="48" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,2.5,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>{Invoices.BillingAddress}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text8>
+            <Text9 Ref="49" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1,1.3,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10,Bold</Font>
+              <Guid>9e62fd42266d4ab992dff55990df6ae9</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>Billing Contact No.:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text9>
+            <Text10 Ref="50" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.2,2.5,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>{Invoices.BillingContactInfo}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text10>
+            <Text17 Ref="51" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,0.2,2.5,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Guid>981018b8fb314cde9a2e0bea62f41c29</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>{Invoices.DeliveryAddress}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>DataColumn</Type>
+            </Text17>
+            <Text18 Ref="52" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,1,1.3,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10,Bold</Font>
+              <Guid>ecdab105021443889b9251711ed1653d</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>Delivery Contact No.:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text18>
+            <Text19 Ref="53" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,1.2,2.5,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Guid>fbfcb905e9c74770a4d23f0ca0d73f87</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>{Invoices.DeliveryContactInfo}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>DataColumn</Type>
+            </Text19>
+            <Text20 Ref="54" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,0,1.1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10,Bold</Font>
+              <Guid>007da4f9954f4c93b015d841226451ef</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>REMARKS</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text20>
+            <Text22 Ref="55" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,0.2,2.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10,Bold</Font>
+              <Guid>e80f054fef1148f5a4c72d96dff65262</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>{Invoices.Remarks}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+            <Text23 Ref="56" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,1.1,0.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Guid>2839f0e5f9f1428ab7cad61700c7278f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>Inv. Created By:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text23>
+            <Text24 Ref="57" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.1,1.1,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>{Invoices.Updater}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text24>
+            <Text25 Ref="58" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,1.3,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Guid>dca1fb549ae84a20b8e9721352bf2ee6</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>Inv. Checked By:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text25>
+            <Text30 Ref="59" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,1.5,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Guid>47b50800b7a3454fb5531eb28690df28</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>Inv. Received By:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text30>
+            <Text35 Ref="60" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,1.7,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,10</Font>
+              <Guid>4c02cab252ca4a59a98c901ed4a31707</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text35</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>Date Received:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text35>
+            <Text38 Ref="61" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,1.9,7.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text38</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <Text>{Footnote}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text38>
+            <HorizontalLinePrimitive1 Ref="62" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>6.2,1.66,1.6,0.01</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="63" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>HorizontalLinePrimitive1</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <StartCap Ref="64" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive1>
+            <HorizontalLinePrimitive2 Ref="65" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>6.2,1.47,1.6,0.01</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="66" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>HorizontalLinePrimitive2</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <StartCap Ref="67" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive2>
+            <HorizontalLinePrimitive3 Ref="68" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>6.2,1.9,1.6,0.01</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="69" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Guid>7030dfd0a80549c3a9c03aa73671caa5</Guid>
+              <Name>HorizontalLinePrimitive3</Name>
+              <Page isRef="7" />
+              <Parent isRef="45" />
+              <StartCap Ref="70" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ChildBand1</Name>
+          <Page isRef="7" />
+          <Parent isRef="7" />
+          <PrintAtBottom>True</PrintAtBottom>
+        </ChildBand1>
+        <BandPermit Ref="71" type="ChildBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,7.5,7.9,0.2</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text36 Ref="72" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,2.3,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="7" />
+              <Parent isRef="71" />
+              <Text>BIR Computerized Account System Permit No.:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text36>
+            <Text37 Ref="73" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.3,0,3.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text37</Name>
+              <Page isRef="7" />
+              <Parent isRef="71" />
+              <Text>{Invoices.PermitNum}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text37>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Enabled>False</Enabled>
+          <Name>BandPermit</Name>
+          <Page isRef="7" />
+          <Parent isRef="7" />
+          <PrintAtBottom>True</PrintAtBottom>
+        </BandPermit>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8d9f7f0f7c444e088a4e3186cab059ac</Guid>
+      <Margins>0.3,0.3,0.3,0.3</Margins>
+      <Name>Page1</Name>
+      <PageHeight>11</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="74" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="75" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>2/22/2022 2:28:28 PM</ReportChanged>
+  <ReportCreated>11/17/2016 4:53:45 PM</ReportCreated>
+  <ReportFile>C:\Mobiz\WebERP\reports\Invoice - BlindCopy.mrt</ReportFile>
+  <ReportGuid>a6b3872b3ee94e0eae31cc3c821f68c5</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2011.1.910</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

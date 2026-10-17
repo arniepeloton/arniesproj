@@ -1,0 +1,141 @@
+﻿<div class="container-fluid">
+    <h1 class="display-6 mb-4">PO Behavior Settings</h1>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 mb-3" for="rdChoiceInventoryCountEffect">On dashboard, hide Delivery Address, Delivery Date, Approved By, and Billing Address</label>
+        <div class="col-sm-9">
+            <div class="form-check form-switch mb-3" style="font-size:20px;">
+                <input class="form-check-input" data-role="none" type="checkbox" id="selHideSomeSopaFields">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 mb-3 col-form-label" for="rdChoiceInventoryCountEffect">Default Delivery Method by Vendors when system creates an automatic PO:</label>
+        <div class="col-sm-9">
+            <select id="selDeliveryMethodWhenAutoPO" data-role="none" class="form-select">
+                <option value="">No Default</option>
+                <option value="Delivery by Vendor">Delivery by Vendor</option>
+                <option value="Pick up by PO maker">Pick up by PO maker</option>
+                <option value="Pick Up by Consumer">Pick Up by Consumer</option>
+            </select>
+        </div>
+    </div>
+
+    <div>
+        <h5 class="mb-4">Supplier Button Behavior</h5>
+
+        <div class="mb-3">Please define the default behavior whenever a user clicks on the "Supplier" button in the Purchase Order (PO) module.</div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 mb-3 col-form-label" for="rdChoiceInventoryCountEffect">Default "Supplier" when supplier button is clicked:</label>
+            <div class="col-sm-9">
+                <div class="form-check mb-3" style="font-size:20px;">
+                    <input class="form-check-input" data-role="none" type="radio" name="radioPurchaseOrderSettings" value="no default" id="radioPurchaseOrderSettingsNoDefault">
+                    <label class="form-check-label" for="radioPurchaseOrderSettingsNoDefault">
+                        No default supplier
+                        <br />
+                        <span style="font-size:16px;">User can choose any supplier that he/she wants.</span>
+                    </label>
+                </div>
+
+                <div class="form-check mb-3" style="font-size:20px;">
+                    <input class="form-check-input" data-role="none" type="radio" name="radioPurchaseOrderSettings" checked value="default to" id="radioPurchaseOrderSettingsDefaultTo">
+                    <label class="form-check-label" for="radioPurchaseOrderSettingsDefaultTo">
+                        Pre-select a default supplier
+                        <br />
+                        <span style="font-size:16px;">User can still change the supplier to another one</span>
+                    </label>
+                </div>
+
+                <div class="form-check mb-3" style="font-size:20px;">
+                    <input class="form-check-input" data-role="none" type="radio" name="radioPurchaseOrderSettings" value="locked to" id="radioPurchaseOrderSettingsLockedTo">
+                    <label class="form-check-label" for="radioPurchaseOrderSettingsLockedTo">
+                        Lock-in a supplier
+                        <br />
+                        <span style="font-size:16px;">User cannot change this supplier to another one</span>
+                    </label>
+                </div>
+            </div>
+        </div>        
+
+        <div id="divPurchaseOrderSettingsSupplierButtonsContainer">
+            <h6 class="mb-3" id="divPurchaseOrderSettingsSupplierText">Please choose the [pre-selected/ locked-in] supplier</h6>
+
+            <div class="row mb-3">
+                <label class="col-sm-3 mb-3 col-form-label" for="butPurchaseOrderSettingsSupplier">Organization Name: *</label>
+                <div class="col-sm-9">
+                    <button id="butPurchaseOrderSettingsSupplier" data-role="none" class="btn btn-secondary btn-block">Change Supplier</button>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-3 mb-3 col-form-label" for="butPurchaseOrderSettingsSupplierFowst">FOWST or Location Name: (Optional)</label>
+                <div class="col-sm-9">
+                    <button id="butPurchaseOrderSettingsSupplierFowst" data-role="none" class="btn btn-secondary btn-block">Change Supplier FOWST</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <h5 class="mb-4">Customer Button Behavior</h5>
+
+        <div class="mb-3">Please define the default behavior whenever a user clicks on the "Customer" button in the Purchase Order (PO) module.</div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 mb-3 col-form-label" for="rdChoiceInventoryCountEffect">Default "Customer" when customer button is clicked:</label>
+            <div class="col-sm-9">
+                <div class="form-check mb-3" style="font-size:20px;">
+                    <input class="form-check-input" data-role="none" type="radio" name="radioPurchaseOrderCustomerSettings" value="no default" id="radioPurchaseOrderSettingsCustomerNoDefault">
+                    <label class="form-check-label" for="radioPurchaseOrderSettingsCustomerNoDefault">
+                        No default customer
+                        <br />
+                        <span style="font-size:16px;">User can choose any customer that he/she wants.</span>
+                    </label>
+                </div>
+
+                <div class="form-check mb-3" style="font-size:20px;">
+                    <input class="form-check-input" data-role="none" type="radio" name="radioPurchaseOrderCustomerSettings" checked value="default to" id="radioPurchaseOrderSettingsCustomerDefaultTo">
+                    <label class="form-check-label" for="radioPurchaseOrderSettingsCustomerDefaultTo">
+                        Pre-select a default customer
+                        <br />
+                        <span style="font-size:16px;">User can still change the customer to another one.</span>
+                    </label>
+                </div>
+
+                <div class="form-check mb-3" style="font-size:20px;">
+                    <input class="form-check-input" data-role="none" type="radio" name="radioPurchaseOrderCustomerSettings" value="locked to" id="radioPurchaseOrderSettingsCustomerLockedTo">
+                    <label class="form-check-label" for="radioPurchaseOrderSettingsCustomerLockedTo">
+                        Lock-in a customer
+                        <br />
+                        <span style="font-size:16px;">User cannot change this customer to another one</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div id="divPurchaseOrderSettingsCustomerButtonsContainer">
+            <h6 class="mb-3" id="divPurchaseOrderSettingsCustomerText">Please choose the [pre-selected/ locked-in] customer</h6>
+
+            <div class="row mb-3">
+                <label class="col-sm-3 mb-3 col-form-label" for="butPurchaseOrderSettingsCustomer">Organization Name: *</label>
+                <div class="col-sm-9">
+                    <button id="butPurchaseOrderSettingsCustomer" data-role="none" class="btn btn-secondary btn-block">Change Customer</button>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-3 mb-3 col-form-label" for="butPurchaseOrderSettingsCustomerFowst">FOWST or Location Name: (Optional)</label>
+                <div class="col-sm-9">
+                    <button id="butPurchaseOrderSettingsCustomerFowst" data-role="none" class="btn btn-secondary btn-block">Change Customer FOWST</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4" style="text-align: center">
+        <a id="btnDone" data-role="none" class="btn btn-secondary btn-lg">Cancel</a>
+        <a id="butSavePurchaseOrderSettings" data-role="none" class="btn btn-success btn-lg">Save</a>
+    </div>
+</div>

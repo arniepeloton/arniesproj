@@ -1,0 +1,31 @@
+﻿<div name="divBom" style="margin-top:20px">
+    <div>Please indicate the material(s) used for every 1 <span name="spanUnit" style="font-weight:bold"></span> of <span name="spanProduct" style="font-weight:bold"></span></div>
+    <button name="butAddContents">Add contents (raw materials)</button>
+    <div name="divList"></div>
+    <fieldset data-role="controlgroup">
+        <label>
+            Last Possible Minute (LPM)
+            <div style="font-size: smaller; font-weight: normal">
+                <br />
+                This product is assembled or produced only immediately after a Point-of-Sale (POS) entry has been made.
+                <br /><br />
+                Examples of products done in <b>LPM</b> fashion are short order food items such as spaghetti, noodle soup, soft drinks dispensed via soda fountain, and other products made at the last possible minute.
+            </div>
+            <input name="optJit" id="optJitLpm" type="radio" value="1" />
+        </label>
+        <label>
+            Advance Production (AP)
+            <div style="font-size: smaller; font-weight: normal">
+                <br />
+                This product is produced even before being recorded in the Point-of-Sale (POS) due to lengthy preparation times.  Production of this product is done in advance of a sale. Also, production activity of this product is recorded through the Mobiz Product Maker module.
+                <br /><br />
+                Examples of this product include cakes, pastries, breads, sauces, and other products that need to be prepared in anticipation of being sold at a later time.
+            </div>
+            <input name="optJit" id="optJitAp" type="radio" value="0" />
+        </label>
+    </fieldset>
+
+    <h3>Instruction:</h3>
+    <textarea name="txtInstruction" maxlength="1000"></textarea>
+    <button name="butSaveInstruction">Save BOM definition</button>
+</div>

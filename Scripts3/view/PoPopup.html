@@ -1,0 +1,35 @@
+﻿<div data-role="popup" id="popPoOrg" data-overlay-theme="a" data-theme="a" data-corners="false">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center><h3 style="margin-left:10px; margin-right:10px;" id="txtTitlePopup">&nbsp;</h3></center>
+    <div data-role="content" class="ui-content ui-body-d jPopupContent" data-theme="a">
+        <div subpage="pageError" id="msgOrganization" style="display:none; color:#FF0000">Please select organization</div>
+        <div subpage="pageError" id="msgOutlet" style="display:none; color:#FF0000">Please select outlet</div>
+        <div class="custom-ui-label">
+            <div>Organization:</div>
+            <div>
+                <select id="selOrganization"></select>
+            </div>
+        </div>
+        <div class="custom-ui-label">
+            <div>Outlet:</div>
+            <div>
+                <select id="selOutlet">
+                    <option> Please Select </option>
+                </select>
+            </div>
+        </div>
+        <div class="custom-ui-label">
+            <div>Department:</div>
+            <div>
+                <select id="selDepartment">
+                    <option> Please Select </option>
+                </select>
+            </div>
+        </div>
+
+        <br />
+
+        <button id="butPurchaseOrderOk">Ok</button>
+        <a href="#" data-rel="back" data-role="button">Cancel</a>
+    </div>
+</div>

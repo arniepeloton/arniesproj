@@ -1,0 +1,983 @@
+﻿<style type="text/css">
+    .ui-btn-up-green {
+        border: 1px solid #3A7214;
+        background: #5BAB25;
+        color: #fff;
+        text-shadow: 0 -1px 1px #000;
+        background-image: -moz-linear-gradient(top, #7EC54E, #41AB25);
+        background-image: -webkit-gradient(linear,left top,left bottom,
+            color-stop(0, #7EC54E),
+            color-stop(1, #41AB25));
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#7EC54E', EndColorStr='#41AB25')";
+    }
+    .ui-btn-up-green a.ui-link-inherit {
+        color: #fff;
+    }
+    .ui-btn-hover-green {
+        border: 1px solid #176E00;
+        background: #6EB64B;
+        color: #fff;
+        text-shadow: 0 -1px 1px #000;
+        background-image: -moz-linear-gradient(top, 
+            #99D472, 
+            #6EB64B);
+        background-image: -webkit-gradient(linear,left top,left bottom,
+            color-stop(0, #99D472),
+            color-stop(1, #6EB64B));
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#99D472', EndColorStr='#6EB64B')";
+    }
+    .ui-btn-hover-green a.ui-link-inherit {
+        color: #fff;
+    }
+    .ui-btn-down-green {
+        border: 1px solid #347722;
+        background: #7EC54E;
+        color: #fff;
+        text-shadow: 0 -1px 1px #000;
+        background-image: -moz-linear-gradient(top, #569E39, #7EC54E);
+        background-image: -webkit-gradient(linear,left top,left bottom,
+            color-stop(0, #569E39),
+            color-stop(1, #7EC54E));
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#569E39', EndColorStr='#7EC54E')";
+    }
+    .ui-btn-down-green a.ui-link-inherit {
+        color: #fff;
+    }
+    .ui-btn-up-green,
+    .ui-btn-hover-green,
+    .ui-btn-down-green {
+        font-family: Helvetica, Arial, sans-serif;
+        text-decoration: none;
+    }
+    .left-col {
+        height: 100%;
+        position: absolute;
+        /* top: 0; */
+        bottom: 0;
+        right: 0;
+        overflow-y: scroll;
+    }
+</style>
+<!--<div data-role="popup" id="popupMoreOptions" data-theme="b" class="ui-corner-all" style="width: auto;">
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <center>
+        <h3>More Options</h3></center>
+    <div data-role="content">
+        <div style="text-align: center">
+            <a id="butNewSalesOrder" data-role="button" data-theme="e">
+                <h3>Print Receipt / Order Slip</h3>
+                <p style="font-weight: normal; margin-top: -15px;">
+                </p>
+            </a>
+        </div>
+        <div style="text-align: center">
+            <a id="lnkSalesOrder" data-role="button" data-theme="e">
+                <h3>Save Receipt</h3>
+                <p style="font-weight: normal; margin-top: -15px;">
+                </p>
+            </a>
+        </div>
+        <div style="text-align: center">
+            <a id="butRecentlyBought" data-role="button" data-theme="e">
+                <h3>Print Billing</h3>
+                <p style="font-weight: normal; margin-top: -15px;">
+                  
+                </p>
+            </a>
+        </div>
+        <div style="text-align: center">
+            <a id="butReprintReceipt" data-role="button" data-theme="e">
+                <h3>Print Order Slip</h3>
+                <p style="font-weight: normal; margin-top: -15px;">
+                </p>
+            </a>
+        </div>
+        <div id="salesRepOption" style="text-align: center">
+            <a id="butSalesRepresentatives" data-role="button" data-theme="e">
+                <h3>Print Order Slip and Billing</h3>
+                <p style="font-weight: normal; margin-top: -15px;">
+                </p>
+            </a>
+        </div>
+    </div>
+
+</div>-->
+
+<div class="mb-5">
+    <nav class="navbar navbar-dark bg-primary sticky-md-top" style="padding:0px !important;">
+        <div class="bg-warning text-dark text-center font-weight-bold p-2 w-100" name="hRsd" style="display:none;">
+            Reconstruct Sales Data
+        </div>
+        <div class="row" style="margin:0px;">
+            <div class="col-3 col-md-2" style="padding:0px !important;">
+                <button data-role="none" id="butEditCart" style="height:100%;" class="btn btn-primary btn-block btn-lg rounded-0">
+                    <span class="bi-cart-check"></span>
+                    <div class="menu-description mt-1">Edit Cart</div>
+                </button>
+            </div>
+            <div class="col-3 col-md-2" style="padding:0px !important;">
+                <button data-role="none" name="btnNewCart" style="height:100%;" class="btn btn-primary btn-block btn-lg rounded-0">
+                    <span class="bi-cart4"></span>
+                    <div class="menu-description mt-1" id="lblCustomerNameX">New Cart</div>
+                </button>
+            </div>
+            <!--<div class="col-2" style="padding:0px !important;">
+            <button data-role="none" id="butAssignRep" style="height:100%;" class="btn btn-primary btn-block btn-lg">
+                <span class="bi-person-fill"></span>
+                <div class="menu-description mt-1" id="lblRep">Assign Representative</div>
+            </button>
+        </div>-->
+            <div class="col-3 col-md-2" style="padding:0px !important;">
+                <!--<button data-role="none" id="btnPaymentMoreOptions" style="height:100%;" class="btn btn-primary btn-block btn-lg rounded-0">
+                    <span class="bi-gear-fill"></span>
+                    <div class="menu-description mt-1">Print Options</div>
+                </button>-->
+            </div>
+            <div class="col-3 offset-md-4 col-md-2" style="padding:0px !important;">
+                <button data-role="none" id="butPrintReceipt" style="height:100%;" class="btn btn-success btn-block btn-lg rounded-0">
+                    <span class="bi-printer-fill"></span>
+                    <div class="menu-description mt-1" id="spanPaymentMoreOptions">Print Receipt</div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-3">
+        <div name="divReconstructSalesData" style="display: none">
+            <div class="row mb-3 align-items-center">
+                <label class="col-md-2" for="txtRSDDate">Date of Original Sales Transaction: <span class="required">*</span></label>
+                <div class="col-md">
+                    <input data-role="none" type="date" class="form-control" id="txtRSDDate" />
+                </div>
+            </div>
+            <div class="row mb-3 align-items-center">
+                <label class="col-md-2" for="txtRSDTime">Time of Original Sales Transaction: <span class="required">*</span></label>
+                <div class="col-md">
+                    <input data-role="none" type="time" class="form-control" id="txtRSDTime" />
+                </div>
+            </div>
+            <div class="row mb-3 align-items-center">
+                <label class="col-md-2" for="txtRSDRefNum">Reference (Invoice) Number of Original Sales Transaction:</label>
+                <div class="col-md">
+                    <input data-role="none" type="number" class="form-control" id="txtRSDRefNum" />
+                </div>
+            </div>
+            <div class="row mb-3 align-items-center">
+                <label class="col-md-2" for="cbReasonForReconstructingData">Reason for Reconstructing Data: <span class="required">*</span></label>
+                <div class="col-md">
+                    <select data-role="none" class="form-select" id="cbReasonForReconstructingData"></select>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Payment Details</h2>
+        <div style="display: none;"><input type="text" readonly id="txtSalesPayCustomerID" /></div>
+
+        <div id="divPaymentInfoLoading" style="width:100%; text-align:center; display:block;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+            <br /> Computing... please wait
+        </div>
+
+        <table style="width:100%;" cellpadding="5">
+            <tr>
+                <td>Sub Total:</td>
+                <td id="lblSalesPaySubTotal" style="text-align: right;">0.00</td>
+            </tr>
+            <tr id="rowVATPercent" style="display: none">
+                <td>Less <label id="lblVATPercentValue"></label>% VAT:</td>
+                <td id="lblVATPercent" style="text-align: right;">0.00</td>
+            </tr>
+            <tr id="rowAmountLessVAT" style="display: none">
+                <td>Total VAT-Ex Amount:</td>
+                <td id="lblTotalAmount" style="text-align: right;">0.00</td>
+            </tr>
+            <tr>
+                <td>Less <label id="lblDiscountValue"></label> Discount Amount:</td>
+                <td id="lblSalesPayTotalDiscount" style="text-align: right;">0.00</td>
+            </tr>
+            <tr id="rowVATBackPercent" style="display:none">
+                <td style="text-align:left; font-weight:bold">
+                    Add : VAT
+                </td>
+                <td style="text-align:right; font-weight:bold">
+                    <label id="lblVATBackPercent"> - </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Add Charges:</td>
+                <td id="lblSalesPayCharges" style="text-align: right;">0.00</td>
+            </tr>
+            <tr id="divPaymentsTip" style="display: none">
+                <td>Add Tip:</td>
+                <td id="lblSalesPayTip" style="text-align: right;">0.00</td>
+            </tr>
+            <tr id="divPaymentsOtherTax" style="display: none">
+                <td>Add Other Tax:</td>
+                <td id="lblSalesPayOtherTax" style="text-align: right;">0.00</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">Amount Due:</td>
+                <td id="lblSalesPayAmountDue" style="text-align: right; font-size: xx-large; font-weight:bold;">0.00</td>
+            </tr>
+            <tr>
+                <td>Amount Tendered:</td>
+                <td id="lblSalesPayTotalAmountTendered" style="text-align: right;">0.00</td>
+            </tr>
+            <tr>
+                <td>Amount Lacking:</td>
+                <td id="lblSalesPayAmountLacking" style="text-align: right;">0.00</td>
+            </tr>
+            <tr>
+                <td>Change Amount:</td>
+                <td id="lblSalesPayTotalChangeAmount" style="text-align: right;">0.00</td>
+            </tr>
+            <tr>
+                <td>SKU Count:</td>
+                <td id="pSkuCount" style="text-align: right;">0.00</td>
+            </tr>
+            <tr>
+                <td>Total Quantity:</td>
+                <td id="pTotalQuantity" style="text-align: right;">0.00</td>
+            </tr>
+        </table>
+        <div class="accordion mt-3">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseCash">
+                        Cash
+                        <b id="lblSalesPayTotalCash" style="position:absolute; right:45px;">
+                            0.00
+                        </b>
+                    </button>
+                </div>
+                <div id="collapseCash" class="collapse show">
+                    <div class="card-body">
+                        <input data-role="none" class="form-control" type="number" step="any" id="txtSalesPaymentCash" placeholder="Cash Amount" style="text-align: right; font-size: xx-large;" />
+                        <div class="text-nowrap overflow-auto mt-3 p-2">
+                            <button data-role="none" class="btn btn-outline-dark shadow-sm rounded-pill cash" amount="exact">Exact Amount</button>
+                            <button data-role="none" class="btn btn-outline-dark shadow-sm rounded-pill cash" amount="1000" style="width:120px;">P 1000</button>
+                            <button data-role="none" class="btn btn-outline-dark shadow-sm rounded-pill cash" amount="500" style="width:120px;">P 500</button>
+                            <button data-role="none" class="btn btn-outline-dark shadow-sm rounded-pill cash" amount="100" style="width:120px;">P 100</button>
+                            <button data-role="none" class="btn btn-outline-dark shadow-sm rounded-pill cash" amount="50" style="width:120px;">P 50</button>
+                            <button data-role="none" class="btn btn-outline-dark shadow-sm rounded-pill cash" amount="10" style="width:120px;">P 10</button>
+                            <button data-role="none" class="btn btn-outline-dark shadow-sm rounded-pill cash" amount="5" style="width:120px;">P 5</button>
+                            <button data-role="none" class="btn btn-outline-dark shadow-sm rounded-pill cash" amount="1" style="width:120px;">P 1</button>
+                            <button data-role="none" class="btn btn-outline-dark shadow-sm rounded-pill cash" amount="0.25" style="width:120px;">P 0.25</button>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="accordion mt-3" id="dvCheckGC">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseCheckGC">
+                        Check/ Gift Certificate
+                        <b id="lblSalesPayTotalCheck" style="position:absolute; right:45px;">
+                            0.00
+                        </b>
+                    </button>
+                </div>
+                <div id="collapseCheckGC" class="collapse">
+                    <div class="card-body">
+                        <div class="text-right mb-3">
+                            <button data-role="none" id="btnSalesPayAddCheck" class="btn btn-success"><span class="bi-plus"></span> Add</button>
+                        </div>
+                        <div id="lstSalesPayCheck" class="list-group"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="dvDebitCard">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseDebitCard">
+                        Debit Card
+                        <b id="lblSalesPayTotalDebitCard" style="position:absolute; right:45px;">
+                            0.00
+                        </b>
+                    </button>
+                </div>
+                <div id="collapseDebitCard" class="collapse">
+                    <div class="card-body">
+                        <div class="text-right mb-3">
+                            <button data-role="none" id="btnSalesPayAddDebitCard" class="btn btn-success"><span class="bi-plus"></span> Add</button>
+                        </div>
+                        <div id="lstSalesPayDebitCard" class="list-group"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="dvCreditCard">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseCreditCard">
+                        Credit Card
+                        <b id="lblSalesPayTotalCreditCard" style="position:absolute; right:45px;">
+                            0.00
+                        </b>
+                    </button>
+                </div>
+                <div id="collapseCreditCard" class="collapse">
+                    <div class="card-body">
+                        <div class="text-right mb-3">
+                            <button data-role="none" id="btnSalesPayAddCreditCard" class="btn btn-success"><span class="bi-plus"></span> Add</button>
+                        </div>
+                        <div id="lstSalesPayCreditCard" class="list-group"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="dvSRV">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseSRV">
+                        SRV
+                        <b id="lblSalesPayTotalSRV" style="position:absolute; right:45px;">
+                            0.00
+                        </b>
+                    </button>
+                </div>
+                <div id="collapseSRV" class="collapse">
+                    <div class="card-body">
+                        <div class="text-right mb-3">
+                            <button data-role="none" id="btnSalesPayAddSRV" class="btn btn-success"><span class="bi-plus"></span> Add</button>
+                        </div>
+                        <div id="lstSalesPaySRV" class="list-group"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" style="display: none;" id="dvGC">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseGC">
+                        Gift Certificate
+                        <b id="lblSalesPayTotalGiftCert" style="position:absolute; right:45px;">
+                            0.00
+                        </b>
+                    </button>
+                </div>
+                <div id="collapseGC" class="collapse">
+                    <div class="card-body">
+                        <div class="text-right mb-3">
+                            <button data-role="none" id="btnSalesPayAddGC" class="btn btn-success"><span class="bi-plus"></span> Add</button>
+                        </div>
+                        <div id="lstSalesPayGiftCertificate" class="list-group"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseOtherPayment">
+                        Other Payment Type
+                        <b id="lblSalesPayTotalOtherType" style="position:absolute; right:45px;">
+                            0.00
+                        </b>
+                    </button>
+                </div>
+                <div id="collapseOtherPayment" class="collapse">
+                    <div class="card-body">
+                        <div class="text-right mb-3">
+                            <button data-role="none" id="btnSalesPayAddOtherType" class="btn btn-success"><span class="bi-plus"></span> Add</button>
+                        </div>
+                        <div id="lstSalesPayOtherType" class="list-group"></div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <div class="accordion mt-3" style="display:none;" id="dvCreditTerms">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseCreditTerms">
+                        Credit Terms
+                        <b id="lblSalesPayTotalCreditTerms" style="position:absolute; right:45px;">
+                            0.00
+                        </b>
+                    </button>
+                </div>
+                <div id="collapseCreditTerms" class="collapse">
+                    <div class="card-body">
+                        <div style="display: none;">
+                            <input data-role="none" class="form-control" type="text" readonly id="txtSalesPayCreditTermCustomerID" />
+                            <input data-role="none" class="form-control" type="text" readonly id="txtSalesPayCreditID" />
+                        </div>
+                        <div class="row mb-3">
+                            <label for="btnSalesPayCreditTermCustomer" class="col-md-2">Customer: <span style="color: #FF0000;">*</span></label>
+                            <div class="col-md-10">
+                                <button data-role="none" id="btnSalesPayCreditTermCustomer" class="btn btn-secondary btn-block">Please Select</button>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtSalesPayCreditTermRemainingCredit" class="col-md-2">Remaining Credit:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" type="number" id="txtSalesPayCreditTermRemainingCredit" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtSalesPayCreditTermTenderedAmount" class="col-md-2">Tendered Amount: <span style="color: #FF0000;">*</span></label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" type="number" id="txtSalesPayCreditTermTenderedAmount" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="dvOnCredit">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseOnCredit">
+                        On Credit
+                    </button>
+                </div>
+                <div id="collapseOnCredit" class="collapse">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <label for="txtOnCredit" class="col-md-2">On Credit:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" id="txtOnCredit" type="number" step="any">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtOnCreditRemarks" class="col-md-2">Remarks:</label>
+                            <div class="col-md-10">
+                                <textarea data-role="none" class="form-control" id="txtOnCreditRemarks" style="height:100px; resize:none;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="dvBillingInfo">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseBillingInfo">
+                        Billing Info
+                    </button>
+                </div>
+                <div id="collapseBillingInfo" class="collapse show">
+                    <div class="card-body">
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="width:10px;"><input data-role="none" class="form-check-input" type="checkbox" id="chkForGovReport"></td>
+                                <td>
+                                    <label data-role="none" class="form-check-label col-11" for="chkForGovReport">
+                                        <span style="font-size:25px;">Print a Named Receipt</span>
+                                        <br />
+                                        Include customer's a.) Name, b.) TIN c.) Billing Address in sales invoice for government reporting.
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="dvDeliveryInfo">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseDeliveryInfo">
+                        Delivery Info
+                    </button>
+                </div>
+                <div id="collapseDeliveryInfo" class="collapse">
+                    <div class="card-body">
+                        <div style="display: none;">
+                            <input data-role="none" class="form-control" type="text" readonly id="txtOrderedByID" />
+                            <input data-role="none" class="form-control" type="text" readonly id="txtBillToID" />
+                            <input data-role="none" class="form-control" type="text" readonly id="txtShipToID" />
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="chkPrintDeliveryReceipt">
+                            <label class="form-check-label" for="chkPrintDeliveryReceipt">
+                                Print Delivery Receipt
+                            </label>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="btnSalesPayCreditTermCustomer" class="col-md-2">Customer Account:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" readonly type="text" id="txtOrgCustomer" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="btnOrderBy" class="col-md-2">Ordered By: <span style="color: #FF0000;">*</span></label>
+                            <div class="col-md-10">
+                                <button id="btnOrderBy" data-role="none" class="btn btn-secondary btn-block">Please Select</button>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="btnBillTo" class="col-md-2">Bill To: <span style="color: #FF0000;">*</span></label>
+                            <div class="col-md-10">
+                                <button id="btnBillTo" data-role="none" class="btn btn-secondary btn-block">Please Select</button>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="btnShipTo" class="col-md-2">Ship By: <span style="color: #FF0000;">*</span></label>
+                            <div class="col-md-10">
+                                <button id="btnShipTo" data-role="none" class="btn btn-secondary btn-block">Please Select</button>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtDeliveryInfoTelNo" class="col-md-2">Telephone No.:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" type="text" readonly id="txtDeliveryInfoTelNo" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtDeliveryInfoFaxNo" class="col-md-2">Fax No.:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" type="text" readonly id="txtDeliveryInfoFaxNo" />
+                            </div>
+                        </div>                        
+                        <div class="row mb-3">
+                            <label for="txtDeliveryInfoMobileNo" class="col-md-2">Mobile No.:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" type="text" readonly id="txtDeliveryInfoMobileNo" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtDeliveryInfoEmail" class="col-md-2">Email Address:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" type="text" readonly id="txtDeliveryInfoEmail" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="selDeliveryMode" class="col-md-2">Delivery Mode:</label>
+                            <div class="col-md-10">
+                                <select id="selDeliveryMode" data-role="none" class="form-select">
+                                    <option value="">Please Select</option>
+                                    <option value="Deliver (Downtown)">Deliver (Downtown)</option>
+                                    <option value="Deliver (Out Of Town)">Deliver (Out Of Town)</option>
+                                    <option value="PickUp">Pick Up</option>
+                                    <option value="Dine In">Dine In</option>
+                                    <option value="Take Out">Take Out</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="divDeliverDownTown" style="display:none;">
+                            <div class="row mb-3">
+                                <div class="offset-md-2 col-md-10">
+                                    <input data-role="none" type="radio" class="btn-check" name="DownTownOption" id="rdoRush" value="1">
+                                    <label data-role="none" class="btn btn-outline-success" for="rdoRush">Rush</label>
+
+                                    <input data-role="none" type="radio" class="btn-check" name="DownTownOption" id="rdoNotRush" value="0">
+                                    <label class="btn btn-outline-success" for="rdoNotRush">Not Rush</label>
+                                </div>
+                            </div>
+                            <div id="divRush" style="display:none;">
+                                <div class="row mb-3">
+                                    <label for="txtDeliverWithIn" class="col-md-2">Deliver within:</label>
+                                    <div class="col-md-8">
+                                        <input data-role="none" class="form-control" type="number" readonly id="txtDeliverWithIn" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select id="selHourMinute" class="form-select">
+                                            <option value="">Please select Hour or Minute</option>
+                                            <option value="Working Hours">Working Hours</option>
+                                            <option value="Working Minutes">Working Minutes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="divNotRush" style="display:none;">
+                                <div class="row mb-3">
+                                    <label class="col-md-2">Maximum service time:</label>
+                                    <div class="col-md-10">
+                                        8 working hour(s)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                        <div id="divDeliverOutOfTown" style="display:none;">
+                            <div class="row mb-3">
+                                <div class="offset-md-2 col-md-10">
+                                    <input data-role="none" type="radio" class="btn-check" name="OutOfTownOption" id="rdoNormalRoute" value="1">
+                                    <label class="btn btn-outline-success" for="rdoNormalRoute">Normal Route</label>
+
+                                    <input data-role="none" type="radio" class="btn-check" name="OutOfTownOption" id="rdoBus" value="0">
+                                    <label class="btn btn-outline-success" for="rdoBus">Bus</label>
+                                </div>
+                            </div>
+                            <div id="divBus" style="display:none;">
+                                <div class="row mb-3">
+                                    <label class="col-md-2">Maximum service time:</label>
+                                    <div class="col-md-10">
+                                        2 hour(s)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                        <div id="divPickup" style="display:none;">
+                            <div style="display:none;"><input type="text" data-role="none" class="form-control" readonly id="txtPickUpLocationID" /></div>
+                            <div id="divPickUpType" class="row mb-3">
+                                <div class="offset-md-2 col-md-10">
+                                    <input data-role="none" type="radio" class="btn-check" name="PickUpOption" id="rdoCustomerIsWaiting" value="1">
+                                    <label class="btn btn-outline-success" for="rdoCustomerIsWaiting">Customer is waiting</label>
+
+                                    <input data-role="none" type="radio" class="btn-check" name="PickUpOption" id="rdoDateAndTime" value="0">
+                                    <label class="btn btn-outline-success" for="rdoDateAndTime">Pick Up</label>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-md-2">Pick Up Location: <span style="color: #FF0000;">*</span></label>
+                                <div class="col-md-10">
+                                    <button id="btnPickLocation" data-role="none" class="btn btn-secondary btn-block">Please Select</button>
+                                </div>
+                            </div>
+                            <div id="divCustomerIsWaiting" class="row mb-3" style="display:none;">
+                                <label class="col-md-2">Maximum service time:</label>
+                                <div class="col-md-10">
+                                    30 Minute(s)
+                                </div>
+                            </div>
+                            <div class="row mb-3 divDateAndTime" style="display:none;">
+                                <label class="col-md-2">Pick Up Date: <span style="color: #FF0000;">*</span></label>
+                                <div class="col-md-10">
+                                    <input data-role="none" type="date" class="form-control" placeholder="Tap to set date" id="selPickupDate" />
+                                </div>
+                            </div>
+                            <div class="row mb-3 divDateAndTime" style="display:none;">
+                                <label class="col-md-2">Pick Up Time: <span style="color: #FF0000;">*</span></label>
+                                <div class="col-md-10">
+                                    <input data-role="none" type="time" class="form-control" placeholder="Tap to set time" id="selPickupTime" />
+                                </div>
+                            </div>
+                        </div>                                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseDiscounts">
+                        Discounts
+                    </button>
+                </div>
+                <div id="collapseDiscounts" class="collapse">
+                    <div class="card-body">
+                        <div style="display:none;"><input type="number" id="txtDiscountPercentCeiling" data-role="none" class="form-control" readonly style="text-align: right;" /></div>
+                        <div class="row mb-3">
+                            <label for="selDiscountType" class="col-md-2 col-form-label">Discount Type:</label>
+                            <div class="col-md-10">
+                                <select id="selDiscountType" data-role="none" class="form-select">
+                                    <option value="">Please Select</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtDiscountPercent" class="col-md-2 col-form-label">Percent Discount (%):</label>
+                            <div class="col-md-10">
+                                <input data-role="none" type="text" class="form-control" id="txtDiscountPercent" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtDiscountAmount" class="col-md-2 col-form-label">Discount Amount:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" type="text" class="form-control" id="txtDiscountAmount" />
+                            </div>
+                        </div>
+
+                        <div id="divAddCustomerDetails" style="display:none;">
+                            <div id="divSCPWDDiscount" style="display:none;">
+                                <div class="row mb-3">
+                                    <label for="txtSalesPayNoOfSC" class="col-md-2">Number of Senior Citizens/PWD: <span style="color: #FF0000;">*</span></label>
+                                    <div class="col-md-10">
+                                        <div class="input-group">
+                                            <select id="txtSalesPayNoOfSC" disabled data-role="none" class="form-select"></select>
+                                            <button data-role="none" id="btnEditNoOfSC" class="btn btn-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="txtSalesPayNoOfDiners" class="col-md-2">Number of People (including the Senior Citizen/PWD): <span style="color: #FF0000;">*</span></label>
+                                    <div class="col-md-10">
+                                        <div class="input-group">
+                                            <select id="txtSalesPayNoOfDiners" disabled data-role="none" class="form-select"></select>
+                                            <button data-role="none" id="btnEditNoOfPeople" class="btn btn-secondary">Edit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="oneprofile" style="display:none">
+                                <fieldset id="fieldCustomerInfo" class="mb-3">
+                                    <legend id="legCustomerTitle" class="d-none">Customer Information</legend>
+                                    <div class="row g-3 align-items-center">
+                                        <input data-role="none" type="hidden" id="txtDiscountCustomerID" />
+                                        <div class="col-6">
+                                            <label for="txtCustomerFullName" class="form-label">Full Name: <span class="required">*</span></label>
+                                            <input type="text" class="form-control fieldCustomerInfo" id="txtCustomerFullName" required>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="txtCustomerIDNo" class="form-label">ID No.: <span class="required">*</span></label>
+                                            <input type="text" class="form-control fieldCustomerInfo" id="txtCustomerIDNo" required>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="txtCustomerBirthDate" class="form-label">Date of Birth:</label>
+                                            <input type="date" class="form-control fieldCustomerInfo" id="txtCustomerBirthDate">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="txtCustomerTIN" class="form-label">TIN:</label>
+                                            <input type="text" class="form-control fieldCustomerInfo" id="txtCustomerTIN">
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset id="fieldChilInfo" class="mb-3 d-none">
+                                    <legend>Child Information</legend>
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-6">
+                                            <label for="txtSPChildName" class="form-label">Full Name: <span class="required">*</span></label>
+                                            <input type="text" class="form-control fieldCustomerInfo" id="txtSPChildName">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="txtSPChildBirthDate" class="form-label">Date of Birth: <span class="required">*</span></label>
+                                            <input type="date" class="form-control fieldCustomerInfo" id="txtSPChildBirthDate">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="txtSPChildAge" class="form-label">Age:</label>
+                                            <input type="text" class="form-control" id="txtSPChildAge" readonly>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div id="multipleprofile" style="display:none;">
+                                <div class="row mb-3">
+                                    <div class="col-md-8 mb-3">
+                                        <form id="frmCustomerSearch">
+                                            <div><input id="txtCustomerSearch" type="search" data-role="none" class="form-control" value="" placeholder="Type Customer Name or Identification Number" /></div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <button id="btnAddNewCustomer" data-role="none" class="btn btn-success btn-block">Add New Customer</button>
+                                    </div>
+                                </div>
+                                <div id="lstSalesPayCustomerName" class="list-group"></div>
+                            </div>                            
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="txtDiscountAmount" class="col-md-2 col-form-label">Remarks:</label>
+                            <div class="col-md-10">
+                                <textarea data-role="none" class="form-control" id="txtDiscountRemarks" style="height:100px; resize:none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="dvChargesOT">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseChargesOT">
+                        Charges <!--and Other Tax-->
+                    </button>
+                </div>
+                <div id="collapseChargesOT" class="collapse">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <label for="selChargeType" class="col-md-2">Charge Type:</label>
+                            <div class="col-md-10">
+                                <select id="selChargeType" data-role="none" class="form-select">
+                                    <option value="Service Charge">Service Charge</option>
+                                    <option value="Delivery Charge">Delivery Charge</option>
+                                    <option value="Other Charges">Other Charges</option>
+                                    <!--<option value="Local Tax">Local Tax</option>-->
+                                </select>
+                            </div>
+                            <div id="divServiceChargeHelp" class="mt-3"></div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtAddChargePercent" class="col-md-2">Percentage (%):</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" type="number" id="txtAddChargePercent" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtAddCharge" class="col-md-2">Amount:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" type="number" id="txtAddCharge" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtChargeRemarks" class="col-md-2">Remarks:</label>
+                            <div class="col-md-10">
+                                <textarea data-role="none" class="form-control" id="txtChargeRemarks" style="height:100px; resize:none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="offset-md-2 col-md-10">
+                                <button data-role="none" class="btn btn-success btn-block" id="btnAddCharge">Add</button>
+                            </div>
+                        </div>
+                        <table class="mb-3 table" style="width: 100%">
+                            <thead>
+                                <tr style="background-color: ButtonFace;">
+                                    <th style="text-align: center">Type</th>
+                                    <th style="text-align: center">Amount</th>
+                                    <th style="text-align: center">Remarks</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblChargesList"></tbody>                            
+                        </table>
+                        <table style="width: 100%">
+                            <tr>
+                                <td><h4>Total Charges</h4></td>
+                                <td><h4 id="lblBillTotalCharges" style="text-align: right">0.00</h4></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="dvRewardsProgram">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseRewardsProgram">
+                        Rewards Program
+                    </button>
+                </div>
+                <div id="collapseRewardsProgram" class="collapse">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <label for="txtPaymentRewardsCardNum" class="col-md-2">Rewards Card No.:</label>
+                            <div class="col-md-10">
+                                <input data-role="none" class="form-control" id="txtPaymentRewardsCardNum" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="dvRepresentatives">
+            <div class="card">
+                <div class="card-header p-0">
+                    <button class="btn btn-light btn-block text-left p-3 rounded-0" data-role="none" data-toggle="collapse" data-target="#collapseRepresentatives">
+                        Assign sales representatives for this transaction
+                    </button>
+                </div>
+                <div id="collapseRepresentatives" class="collapse show">
+                    <div class="card-body">
+                        <div class="text-right mb-3">
+                            <button data-role="none" id="butAddSalesRepresentatives" class="btn btn-success"><span class="bi-plus"></span> Add</button>
+                        </div>
+                        <div id="lstSalesPaymentSalesRep" class="list-group"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none;">
+            <br />
+            <br />
+            <div style="text-align: center">
+                <a id="btnSalesPaymentDone" data-role="button" data-theme="e">
+                    <h3>
+                        Print Receipt
+                    </h3>
+                </a>
+            </div>
+            <div id="divPrintReceiptOrderSlip" style="text-align: center; display:none">
+                <a id="butPrintReceiptOrderSlip" data-role="button" data-theme="e">
+                    <h3>
+                        Print Receipt / Order Slip
+                    </h3>
+                </a>
+            </div>
+            <div style="text-align: center">
+                <a id="btnSalesPaymentEmail" data-role="button" data-theme="e">
+                    <h3>
+                        Email Receipt
+                    </h3>
+                </a>
+            </div>
+            <div style="text-align: center">
+                <a id="btnSalesPaymentPrintEmail" data-role="button" data-theme="e">
+                    <h3>
+                        Print and Email Receipt
+                    </h3>
+                </a>
+            </div>
+            <div id="divSaveReceipt" style="text-align: center; display:none">
+                <a id="butSaveReceipt" data-role="button" data-theme="e">
+                    <h3>
+                        Save Receipt
+                    </h3>
+                </a>
+            </div>
+            <div id="divPrintBilling" style="text-align: center; display:none">
+                <a id="butPrintBilling" data-role="button" data-theme="e">
+                    <h3>
+                        Print Billing
+                    </h3>
+                </a>
+            </div>
+            <div id="divPrintOrderSlip" style="text-align: center; display: none">
+                <a id="butPrintOrderSlip" data-role="button" data-theme="e">
+                    <h3>
+                        Print Order Slip
+                    </h3>
+                </a>
+            </div>
+            <div id="divPrintOrderSlipAndBilling" style="text-align: center; display: none">
+                <a id="butPrintOrderSlipAndBilling" data-role="button" data-theme="e">
+                    <h3>
+                        Print Invoice and Billing
+                    </h3>
+                </a>
+            </div>
+            <div id="divPrintOrderSlipAndBilling" style="text-align: center; display:none">
+                <a id="butPrintOrderSlipAndBilling" data-role="button" data-theme="e">
+                    <h3>
+                        Print Invoice and Order Slip
+                    </h3>
+                </a>
+            </div>
+            <div id="divPrintOrderSlipAndBilling" style="text-align: center; display:none">
+                <a id="butPrintOrderSlipAndBilling" data-role="button" data-theme="e">
+                    <h3>
+                        Print Billing and Order Slip
+                    </h3>
+                </a>
+            </div>
+            <div style="text-align:center;">
+                <a id="btnDeliveryInfoPriceQoute" data-role="button" data-theme="e">
+                    <h3>Quote Prices</h3>
+                    <p style="font-weight:normal; margin-top:-15px;">Save Items for Checkout Later</p>
+                </a>
+            </div>
+            <div style="text-align: center">
+                <a id="btnNewCart" name="btnNewCart" data-role="button">
+                    <h3>
+                        New Cart
+                    </h3>
+                </a>
+            </div>
+            <div style="text-align: center">
+                <a id="btnSalesPaymentBack" data-role="button">
+                    <h3>
+                        Back
+                    </h3>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--<div data-role="popup" name="popSrvConsume" id="requiredDummy_PEP7PFHFY6" data-overlay-theme="a" data-theme="a" data-corners="false" style="display:none">
+        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <center><h3 name="title">Saving SRV Data to Database</h3></center>
+        <div data-role="content" class="ui-content ui-body-d">
+            <p>Please wait while we save your SRV usage data in our database.</p>
+            <p>This is to ensure that SRVs are used only up to their face value amount and nothing more.</p>
+            <p>This process might take about a minute to complete. Thank you.</p>
+        </div>
+    </div>-->
+
+</div>

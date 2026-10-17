@@ -1,0 +1,35 @@
+﻿<div data-role="page">
+      <center>
+        <h1>Signature</h1>
+     </center>
+        <!--
+            "overflow-x: visible" = workaround to duplicate android canvas 
+            https://code.google.com/p/android/issues/detail?id=35474#c8
+        -->
+       <div data-role="content" style="position:fixed;overflow-x: visible;">
+          
+                <canvas width="330" height="130" style="border:1px solid #000">
+                </canvas>
+       
+           
+            <div >
+             <hr />
+               Please sign above<br />
+                Signatory: <span style="color: #FF0000;" >* &nbsp;</span>
+                <input type="text" name="txtSalesOrderSignatory" maxlength="255" required/>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                    
+                        <button name="butClearCanvas" >Clear</button>
+                    </div>
+                    <div class="ui-block-b">
+                            <button name="butSave">Save</button>
+                    </div>
+                </div>
+                 <img id="getimage" style="display:none;" alt="canvas"/>
+ 
+            </div>
+           
+        </div>
+
+</div>

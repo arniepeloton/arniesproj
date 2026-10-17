@@ -1,0 +1,71 @@
+﻿<div name="divPriceChecker" id="divPriceChecker" custom-data-role="page" data-url="PriceChecker">
+    <!--<div data-role="header">
+        <a href="#" data-icon="arrow-l" data-rel="back">Back</a>
+        <h1 name="lblPageHeader">Price Checker</h1>
+    </div>-->
+    <div class="container" style="margin-top:60px;text-align:center">
+        <!--<div data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-inset="true">
+            <h3>Instructions</h3>
+            This will page will enable you to connect to your primary device. In your primary device, run Mobiz Complete Retail. Go to menu, and then click About.
+            Note the "IP Address" displayed therein. Input the IP address on the textbox below. Then click "Save settings".
+        </div>-->
+        <form>
+            <div data-role="fieldcontain" style="text-align:center">
+                <div style="font-size:30pt;padding-bottom:20px">
+                    Search products to view prices
+                </div>
+                <div class="input-group">
+                    <input id="txtPriceCheckerSearch" data-role="none" class="form-control form-control-lg" />
+                    <button data-role="none" name="butBarCode" class="btn btn-secondary btn-lg"><span class="bi-upc-scan" style="font-size:40px;"></span></button>
+                </div>
+            </div>
+            <br /><br />
+            <div data-role="fieldcontain" style="text-align:center">
+                <label for="lblPriceCheckProductDescription" style="font-size:30pt">
+                    Product Description:
+                </label>
+                <div id="lblPriceCheckProductDescription" style="font-size:50pt"></div>
+            </div>
+            <br /><br />
+            <div data-role="fieldcontain" style="text-align:center">
+                <label for="lblPriceCheckerRetailPrice" style="font-size:30pt">
+                    Retail Price:
+                </label>
+                <div id="lblPriceCheckerRetailPrice" style="font-size:98pt; font-weight:bold"></div>
+            </div>            
+        </form>
+        <br /><br />
+        <div class="text-center">
+            <button data-role="none" name="imgHome" class="btn btn-default btn-lg"><span class="bi-house-fill" style="font-size:40px;"></span><br />Back to Home</button>
+        </div>
+    </div>
+    <div data-role="footer_no_theme">
+        <div style="text-align: center; padding-bottom: 15px">
+
+        </div>
+    </div>
+    <div id="div96HNHNFBWB" name="divPopPassword" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Go to home</h5>
+                    <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">Please enter your username and password</div>
+
+                    <div class="alert alert-danger mb-3 mt-3" role="alert" name="divMessage" style="display:none;text-align:center">
+                        Invalid username and password
+                    </div>
+                    <input name="txtUsername" data-role="none" type="text" class="form-control form-control-lg" placeholder="Username" />
+                    <br />
+                    <input name="txtPassword" data-role="none" type="password" class="form-control form-control-lg" placeholder="Password" />
+                </div>
+                <div class="modal-footer">
+                    <button data-role="none" type="button" name="ok" class="btn btn-success btn-block btn-lg">Ok</button>
+                    <button data-role="none" type="button" name="close" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cancel</button>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
