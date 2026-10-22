@@ -66,13 +66,15 @@ Public Class CincoCorporation
                 "               WHERE InvoiceID = inv.ID " & vbCrLf &
                 "               FOR XML PATH('')" & vbCrLf &
                 "               ), 1, 1,''))" & vbCrLf &
-                "       ELSE (SELECT ISNULL(PersonFullName, CompanyName) FROM MobizLibraryOrganization WHERE ID = inv.CustomerID) END as CustomerName, " & vbCrLf &
-                "       (SELECT DISTINCT STUFF((SELECT DISTINCT ', ' + ISNULL(PersonSeniorCitizensIDNo, '') + ISNULL(PersonPWDIDNo, '') + ISNULL(PersonOtherIDNo, '') + ISNULL(PersonPassportNo, '') + ISNULL(PersonDriversLicenseNo, '') + ISNULL(PersonSSSNo, '') + ISNULL(PersonGSISIDNo, '') + ISNULL(PersonPRCIDNo, '') + ISNULL(PersonPostalIDNo, '') + ISNULL(PersonVotersIDNo, '')  " & vbCrLf &
+                "       ELSE (SELECT CASE WHEN IsOrganization = 0 THEN CASE WHEN PersonFullName IS NOT NULL THEN PersonFullName + ' ' ELSE '' END + CASE WHEN PersonFirstName IS NOT NULL THEN PersonFirstName + ' ' ELSE '' END + CASE WHEN PersonMiddleName IS NOT NULL THEN PersonMiddleName + ' ' ELSE '' END + CASE WHEN PersonSurname IS NOT NULL THEN PersonSurname + ' ' ELSE '' END ELSE CompanyName END FROM MobizLibraryOrganization WHERE ID = inv.CustomerID) END as CustomerName, " & vbCrLf &
+                "       ISNULL((SELECT DISTINCT STUFF((SELECT DISTINCT ', ' + ISNULL(PersonSeniorCitizensIDNo, '') + ISNULL(PersonPWDIDNo, '') + ISNULL(PersonOtherIDNo, '') + ISNULL(PersonPassportNo, '') + ISNULL(PersonDriversLicenseNo, '') + ISNULL(PersonSSSNo, '') + ISNULL(PersonGSISIDNo, '') + ISNULL(PersonPRCIDNo, '') + ISNULL(PersonPostalIDNo, '') + ISNULL(PersonVotersIDNo, '')  " & vbCrLf &
                 "           FROM TransInvoiceSeniorCitizenPWDCustomer " & vbCrLf &
                 "           INNER JOIN MobizLibraryOrganization as org ON org.ID = CustomerID " & vbCrLf &
                 "           WHERE InvoiceID = inv.ID " & vbCrLf &
                 "           FOR XML PATH('')" & vbCrLf &
-                "       ), 1, 1,'')) as CustomerIDNo, " & vbCrLf &
+                "       ), 1, 1,'')), (SELECT TinNumber FROM MobizLibraryOrganization WHERE ID = inv.CustomerID)) as CustomerIDNo, " & vbCrLf &
+                "       (SELECT OfficeAddressBuildingNo + ', ' + OfficeAddressStreet + ', ' + MobizLibraryCities.Name FROM MobizLibraryOrganization INNER JOIN MobizLibraryCities ON MobizLibraryOrganization.OfficeAddressCityID = MobizLibraryCities.ID WHERE MobizLibraryOrganization.ID = inv.CustomerID) as CustomerAddress, " & vbCrLf &
+                "       (SELECT BusinessIndustryText FROM MobizLibraryOrganization WHERE MobizLibraryOrganization.ID = inv.CustomerID) as CustomerBusinessStyle, " & vbCrLf &
                 "       CASE WHEN ISNULL(SCDiscount, 0) = 0 AND ISNULL(PhNatTeamDiscount, 0) = 0 AND ISNULL(SoloParentDiscount, 0) = 0 THEN (SELECT pay.DiscountAmount FROM TransCustomerPaymentInvoices as payinv INNER JOIN TransCustomerPayment as pay ON pay.ID = payinv.CustomerPaymentID WHERE InvoiceID = inv.ID) ELSE 0 END as OtherDiscount " & vbCrLf &
                 "       , ISNULL(CONVERT(varchar(MAX), discount.DiscountTypeID), '') as DiscountTypeID, ISNULL(discount.DiscountPercentage, '') as DiscountPercentage, ISNULL(discount.DiscountType, '') as DiscountType " & vbCrLf &
                 "       , cashier.FirstName + ' ' + cashier.Surname as CashierName " & vbCrLf &

@@ -2451,6 +2451,17 @@
         $('#selFOWST, #lblWorkFowstName').empty();
         //$('#selFOWST').append(new Option('Select', '', false));
 
+        if (vData.Rows.length == 0) {
+            NewMessageBox('The logged-in user is not assigned to this store. Please contact a Mobiz representative for assistance. Thank you!', '', [
+                {
+                    Text: 'Got it', Click: function () {
+                        history.back()
+                    }
+                }
+            ]);
+            return false;
+        }
+
         for (var i = 0; i <= vData.Rows.length - 1; i++) {
             if (vData.Rows[i].ID == undefined) {//server side getting fowst
                 $('#selFOWST, #lblWorkFowstName').append(new Option(vData.Rows[i].FowstName, vData.Rows[i].FowstID, false));
