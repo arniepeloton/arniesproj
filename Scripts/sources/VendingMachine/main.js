@@ -230,7 +230,14 @@
 
     function ModifyProduct(data) {
         $('#lblProductName').text(data.ProductName);
-        $('#imgProductImage').attr('src', imgpath + data.FileName + '_big.jpg');
+
+        if (CStr2(data.FileName) == '') {
+            $('#imgNoPhotoAvailable').removeClass('d-none').addClass('d-flex');
+            $('#imgProductImage').hide();
+        } else {
+            $('#imgNoPhotoAvailable').removeClass('d-flex').addClass('d-none');
+            $('#imgProductImage').attr('src', imgpath + data.FileName + '_big.jpg').show();;
+        }        
 
         if (CBool(data.IsUseUOM)) {
             var listUom = $('#listUom').empty();
@@ -390,7 +397,7 @@
     }
     
     function ScreenTimeout(callback) {
-        return
+        //return
         VendingMachine.Timer('#page_screentimeout', 10, {
             Done: function () {
                 if (isCancelDuringPayment) {
@@ -499,7 +506,9 @@
         isTransitioning = false;
         slides = document.querySelector('.slidesLandscape');
         slideItems = $('.slidesLandscape > li'); // document.querySelectorAll('.ads_Landscape');
-        goToSlide(0);
+        PauseAllVideos(function () {
+            goToSlide(0);
+        })
         $('#page_idle, #listEmptyField').pageshow();
         $('#page_cashchangecompleted').find('h3').text('Your change is ready! Please take it from the change slot!');
 
@@ -571,7 +580,7 @@
         for (var i = 0; i < sku.length; i++) {
             var skudata = sku[i], largestuom, vdmmotors = CStr2(skudata.VDMMotorNo).split(',');
 
-            if (CDec2(skudata.RemainingQty) == 0) continue;
+            //if (CDec2(skudata.RemainingQty) == 0) continue;
 
             if (CBool(skudata.IsUseUOM) && skudata.LargestUom == undefined) {
                 var uom = skudata.ListOfUom;
@@ -612,9 +621,10 @@
             skudata.VDMMotorNo = Math.min(...vdmmotors.map(Number)); //get least number - kay pwede multiple motors for 1 SKU, bale kwaon lang ang pinaka least motor number
             row.append($('<div class="col" id="' + skudata.ProductID + '" motorno="' + ctrSKUNo + '">')
                 .append($('<div class="border bordervm-secondary shadow-sm h-100 rounded-2 bg-white text-dark product_container position-relative ' + (skudata.OrderQty > 0 ? 'selectedSku' : '') + '">')
+                    .append('<div class="' + (CDec2(skudata.RemainingQty) == 0 ? 'soldout' : 'd-none')+'"><div><span>Sold out</span></div></div>')
                     .append('<div class="position-absolute rounded-circle sku_badge_qty shadow ' + (skudata.OrderQty > 0 ? '' : 'd-none') + '" style="top: -20px;right: 0px; z-index: 2;"><button data-role="none" class="btn bgvm-secondary rounded-2 bordervm-primary font-weight-bold"><span class="bi-cart-check mr-2"></span><span class="lblMenuItemQty">' + skudata.OrderQty + '</span></button></div>')
                     .append($('<div class="p-3 position-relative">')
-                        .append('<img src="' + imgpath + skudata.FileName + '_big.jpg" id="skuimg_' + skudata.ProductID + '" style="width:100%;" class="rounded-2 " />')
+                        .append(CStr2(skudata.FileName) == '' ? '<div style="height:163px; width:100%;" class="fs-2 rounded-2 bg-light d-flex flex-column justify-content-center align-items-center text-center text-secondary"><span class="bi-image-alt"></span><div class="mt-3" style="font-size:12px;">No photo available</div></div>' : $('<img src="' + imgpath + skudata.FileName + '_big.jpg" id="skuimg_' + skudata.ProductID + '" style="width:100%;" class="rounded-2 " />'))
                         .data('data', skudata)
                         .click(function () {
                             var dis = $(this), data = dis.data('data');
@@ -888,13 +898,13 @@
                 }
 
                 if (vOpt.Media == 'image') {
-                    adsContainer.append($('<li class="slide ads_' + vOpt.Orientation +'">')
+                    adsContainer.append($('<li class="slide ads_' + vOpt.Orientation + '">')
                         .append($('<img class="h-100" style="margin: auto; max-width: 100vw">')
                             .attr('src', '/Content/VendingMachine/' + sessionStorage.OrgID + '/' + vOpt.FileName)
                         )
                     )
                 } else {
-                    adsContainer.append($('<li class="slide ads_' + vOpt.Orientation +'">')
+                    adsContainer.append($('<li class="slide ads_' + vOpt.Orientation + '">')
                         .append($('<video muted class="h-100" style="margin: auto; max-width: 100vw">')
                             .append($('<source>')
                                 .attr('path', '/Content/VendingMachine/' + sessionStorage.OrgID + '/' + vOpt.FileName + '?v=' + new Date().getTime())
@@ -909,7 +919,42 @@
             //goToSlide(0);
         }
 
-        if (PSGuides.length > 0) {
+        listIdleAds.append($('<li style="display:list-item; width:100%; height:100%">')
+            .append($('<div class="d-flex flex-column justify-content-center align-items-center h-100 textvm-primary text-center">')
+                .append($('<div style="border-style:dashed !important; border-width: medium !important;" class="w-50 bg-white rounded-2 border bordervm-secondary p-5">')
+                    .append($('<div class="row g-0 align-items-center justify-content-center">')
+                        .append($('<div class="col-3">')
+                            .append('<i class="bi bi-megaphone bgvm-secondary p-4 textvm-primary rounded-2" style="font-size:50px"></i>')
+                        )
+                        .append($('<div class="col-6">')
+                            .append('<h3 class="mb-3">Place your ads here</h3>')
+                            .append('<span class="text-secondary">Reach every shopper at this machine with your brand, offer, or promo.</span>')
+                        )
+                    )
+                )
+            )
+        )
+
+        listAds.append($('<li style="display:list-item; width:100%; height:100%">')
+            .append($('<div class="d-flex flex-column justify-content-center align-items-center h-100 textvm-primary text-center">')
+                .append($('<div style="border-style:dashed !important; border-width: medium !important;" class="w-75 bg-white rounded-2 border bordervm-secondary p-5">')
+                    .append($('<div class="row g-0 align-items-center justify-content-center">')
+                        .append($('<div class="col-12 mb-5">')
+                            .append('<i class="bi bi-megaphone bgvm-secondary p-4 textvm-primary rounded-2" style="font-size:50px"></i>')
+                        )
+                        .append($('<div class="col-12">')
+                            .append('<h3 class="mb-3">Place your ads here</h3>')
+                            .append('<span class="text-secondary">Reach every shopper at this machine with your brand, offer, or promo.</span>')
+                        )
+                    )
+                )
+            )
+        )
+
+        listIdleAds.find('li:eq(0)').addClass('playing');
+        listAds.find('li:eq(0)').addClass('playing');
+
+        if (PSGuides.length > 100) {
             for (var i in PSGuides) {
                 var vOpt = PSGuides[i];
                 var PSGContainer = $('.productselection').find('.pgs_' + vOpt.Page);
@@ -952,8 +997,7 @@
                 }
             });
         });
-        $('.btnInitDone').click();
-        //$('#page_idle').pageshow();
+        $('#page_init_done').pageshow();
     }
 
     function SaveCart(tempData, callback) {
@@ -999,6 +1043,8 @@
 
         if (totalSlides == currentSlide) currentSlide = 0;
 
+        currentSlide = Array.from(slides.children).indexOf(slides.querySelector('.playing'))
+
         var currentElement = slideItems[currentSlide];        
 
         $(slideItems[currentSlide]).fadeIn();
@@ -1012,8 +1058,8 @@
         if (currentElement.querySelector('video')) {
             var video = currentElement.querySelector('video');
             currentVideoElement = video;
-            video.muted = true;
-            video.controls = true;
+            video.muted = false;
+            video.controls = false;
             //video.playbackRate = 0.10;
             //video.preservesPitch = false;
             video.className = "h-100";
@@ -1029,19 +1075,33 @@
             }, { once: true });
 
             // Force the browser to evaluate the newly added src attribute
-            video.load();         
+            video.load();
             video.onended = () => {
                 //Android.AddLog('Playback: ' + video.playbackRate + ' Current Time: ' + video.currentTime);
                 isTransitioning = false;
+                NextAdsTagging();
                 goToSlide(currentSlide + 1);
             };
         } else {
             setTimeout(() => {
                 isTransitioning = false;
+                NextAdsTagging();
                 goToSlide(currentSlide + 1);
-            }, 5000); // Pause for 5 seconds for images
+            }, 7000); // Pause for 7 seconds for images
         }
     }
+
+    function NextAdsTagging() {
+        var isLast = $(slideItems[currentSlide]).is(':last-child');
+        $(slideItems[currentSlide]).removeClass('playing');
+
+        if (isLast) {
+            $(slideItems[0]).addClass('playing');
+        } else {
+            $(slideItems[currentSlide]).next().addClass('playing');
+        }
+    }
+
     window.GuidesOnScreenTime = GuidesOnScreenTime
 
     function GuidesOnScreenTime(DispensingType) {
@@ -1326,6 +1386,7 @@
     }
 
     function ShowPageGuides(page) {
+        return
         PauseAllVideos(function () {
             $('.pgs_' + page).pageshow();
             isTransitioning = false;
@@ -1336,8 +1397,8 @@
     }
 
     function PauseAllVideos(callback) {
-        callback();
-        return
+        //callback();
+        //return
         var vids = $("video"), noofvid = vids.length, ctrVid = 0;
 
         if (0 == noofvid && typeof callback == 'function') {
@@ -1364,6 +1425,7 @@
 
             ctrVid += 1;
             if (ctrVid == noofvid && typeof callback == 'function') {
+                isTransitioning = false;
                 callback();
             }
         });
@@ -1372,6 +1434,8 @@
     function throwImage(imageId) {
         const originalImg = document.getElementById(imageId);
         const cartIcon = document.getElementById('btnMenuViewOrder');
+
+        if (originalImg == null) return;
 
         // 1. Get positions
         const originalRect = originalImg.getBoundingClientRect();
@@ -1416,265 +1480,26 @@
             clearTimeout(optionpress)
         }).on('touchstart click', function () {
             optionpress = setTimeout(function () {
-                VendingMachine.Passcode('MACHINE_SETTINGS', function () {
-                    if (htmlInAppSettings == "") {
-                        AjaxSend({
-                            ExactUrl: '/VendingMachine/InAppSettings?cache=1&OrgID=' + sessionStorage.OrgID + '&IsMobile=' + IsMobile + '&v=' + assetversion,
-                            type: 'GET',
-                            dataType: 'text',
-                            success: function (vData) {
-                                htmlInAppSettings = vData;
-                                $('#page_inappsettings').append(vData);
-                                $('#page_inappsettings').pageshow();
-                            }
-                        });
-                    } else {
-                        $('#page_inappsettings').pageshow();
-                        VendingMachine.RefreshSalesDashboard();
-                    }
-                })                
-            }, 1000)
-            
-            return
-            optionpress = setTimeout(function () {
-                PopupButtonList('', 'Options', [
-                    {
-                        Text: 'Open Product Door',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "CONTROL_DOOR",
-                                "uuid": "000078EE35E81F84",
-                                "state": true,
-                                "door": 1
-                            })
+                PauseAllVideos(function () {
+                    VendingMachine.Passcode('MACHINE_SETTINGS', function () {
+                        if (htmlInAppSettings == "") {
+                            AjaxSend({
+                                ExactUrl: '/VendingMachine/InAppSettings?cache=1&OrgID=' + sessionStorage.OrgID + '&IsMobile=' + IsMobile + '&v=' + assetversion,
+                                type: 'GET',
+                                dataType: 'text',
+                                success: function (vData) {
+                                    htmlInAppSettings = vData;
+                                    $('#page_inappsettings').append(vData);
+                                    $('#page_inappsettings').pageshow();
+                                }
+                            });
+                        } else {
+                            $('#page_inappsettings').pageshow();
+                            VendingMachine.RefreshSalesDashboard();
                         }
-                    },
-                    {
-                        Text: 'Close Product Door',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "CONTROL_DOOR",
-                                "uuid": "000078EE35E81F84",
-                                "state": false,
-                                "door": 1
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Open Liquid Door',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "CONTROL_DOOR",
-                                "uuid": "000078EE35E81F84",
-                                "state": true,
-                                "door": 0
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Close Liquid Door',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "CONTROL_DOOR",
-                                "uuid": "000078EE35E81F84",
-                                "state": false,
-                                "door": 0
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Go to Liquid Vids',
-                        Click: function () {
-                            DispenseLiquidStepNo = 1;
-                            $('#page_guides').pageshow();
-                            $('.divStep.Liquid_Products').hide();
-                            $('.divStep.Liquid_Products:eq(0)').show();
-                            $('#btnNextStep').parent().removeClass('d-flex').addClass('d-none');
-                            //var dv = $('.divStep:visible');
-                            //Android.AddLog(JSON.stringify(arrGrain[itemIndex]));
-                            //dv.pageshow();
-                            GuidesOnScreenTime('Liquid_Products');
-                        }
-                    },
-                    {
-                        Text: 'Dispense Liquid No. 1',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "DISPENSE_VOLUME",
-                                "motor": 1,
-                                "uuid": '000078EE35E81F84' /*arrLiquid[0].BoardUUID*/,
-                                "volume": 5, //CDec2(arrLiquid[0].Quantity)
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Dispense Liquid No. 2',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "DISPENSE_VOLUME",
-                                "motor": 2,
-                                "uuid": '000078EE35E81F84' /*arrLiquid[0].BoardUUID*/,
-                                "volume": 5, //CDec2(arrLiquid[0].Quantity)
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Dispense Liquid No. 23',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "DISPENSE_VOLUME",
-                                "motor": 3,
-                                "uuid": '000078EE35E81F84' /*arrLiquid[0].BoardUUID*/,
-                                "volume": 5, //CDec2(arrLiquid[0].Quantity)
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Dispense all coins',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "CASH_CHANGE",
-                                "uuid": "000078EE35E81F84",
-                                "coin1": 5,
-                                "coin2": 5,
-                                "coin3": 5,
-                                "coin4": 5
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Status Bottle',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "STATUS_BOTTLE",
-                                "uuid": "000078EE35E81F84"
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Open Merchandise Cabinet Lock',
-                        Click: function () {
-                            Passcode('Lock 1: Merchandise Cabinet Lock', function () {
-                                UsbSerial_Send({
-                                    "action": "UNLOCK_LOCK",
-                                    "lock": 1
-                                })
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Open Compute Node Cabinet Lock',
-                        Click: function () {
-                            Passcode('Lock 2: Compute Node Cabinet Lock', function () {
-                                UsbSerial_Send({
-                                    "action": "UNLOCK_LOCK",
-                                    "lock": 2
-                                })
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Open Bills and Coins Cabinet Lock',
-                        Click: function () {
-                            //Passcode('Lock 3: Bills and Coins Cabinet Lock', function () {
-                                UsbSerial_Send({
-                                    "action": "CONTROL_LOCK",
-                                    "uuid": "000078EE35E81F84",
-                                    "num": 2
-                                })
-                            //})
-                        }
-                    },
-                    {
-                        Text: 'Dispense Coins',
-                        Click: function () {
-                            Passcode('Dispense Coins', function () {
-                                PopupButtonList('', 'Select coin to dispense', [
-                                    {
-                                        Text: 'P 1',
-                                        Click: function () {
-                                            coin = 1;
-                                            UsbSerial_Send({
-                                                "action": "FLUSH_COINS",
-                                                "coinHopper": 1
-                                            })
-                                        }
-                                    },
-                                    {
-                                        Text: 'P 5',
-                                        Click: function () {
-                                            coin = 5;
-                                            UsbSerial_Send({
-                                                "action": "FLUSH_COINS",
-                                                "coinHopper": 2
-                                            })
-                                        }
-                                    },
-                                    {
-                                        Text: 'P 10',
-                                        Click: function () {
-                                            coin = 10;
-                                            UsbSerial_Send({
-                                                "action": "FLUSH_COINS",
-                                                "coinHopper": 3
-                                            })
-                                        }
-                                    }
-                                ])
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Test Machine Commands',
-                        Click: function () {
-                            Passcode('Test Machine Commands', function () {
-                                
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Enable fullscreen',
-                        Click: function () {
-                            setTimeout(function () {
-                                //Passcode('Pin/Unpin App', function () {
-                                Android.PinApp();
-                                //})
-                            }, 3000)                            
-                        }
-                    },
-                    {
-                        Text: 'Disable fullscreen',
-                        Click: function () {
-                            //Passcode('Pin/Unpin App', function () {
-                                Android.UnpinApp();
-                            //})
-                        }
-                    },
-                    {
-                        Text: 'Open Serial',
-                        Click: function () {
-                            Js.Execute({ command: 'UsbSerial.Start' })
-                        }
-                    },
-                    {
-                        Text: 'Peer List',
-                        Click: function () {
-                            UsbSerial_Send({
-                                "action": "PEER_LIST"
-                            })
-                        }
-                    },
-                    {
-                        Text: 'Exit to Main Menu',
-                        Click: function () {
-                            //Passcode('Exit to Main Menu', function () {
-                                Android.UnpinApp();
-                                location.href = '/People/PeopleMenu?IsMobile=1';
-                            //})
-                        }
-                    }
-                ])
-            }, 1000)
+                    })
+                })                                
+            }, 10000)
         })
 
         $('#btnPasscodeClear').click(function () {
@@ -1779,68 +1604,68 @@
             SaveCart({ SaveAsDraft: 1 }, function (data) {
                 invoiceid = data.InvoiceID;
                 Android.AddLog('INVOICE ID: ' + invoiceid)
-                arrCashInsertedBreakdown = [{
-                    Denom: 50,
-                    Count: 1
-                }]
-                totalCashInserted = 50;
-                VendingMachine.SaveCash({ CashInsertedBreakdown: arrCashInsertedBreakdown }, invoiceid, function () {
-                    var tbodyDispenseItems = $('#tbodyDispenseItems').empty();
-                    $('#page_paid').pageshow();
-                    invoiceid = data.InvoiceID;
-                    for (var i in arrOrderItems) {
-                        if (CBool(arrOrderItems[i].IsUseUOM)) {
-                            if (arrOrderItems[i].SellingPreference == 'Weight') {
-                                arrGrain.push(arrOrderItems[i])
-                            } else arrLiquid.push(arrOrderItems[i])
-                        } else {
-                            for (var b = 0; b < CDec2(arrOrderItems[i].OrderQty); b++) {
-                                var copyItem = JSON.parse(JSON.stringify(arrOrderItems[i]));
-                                copyItem.OrderQty = 1;
-                                arrGoods.push(copyItem)
-                            }
-                        }
-                    }
+                //arrCashInsertedBreakdown = [{
+                //    Denom: 50,
+                //    Count: 1
+                //}]
+                //totalCashInserted = 50;
+                //VendingMachine.SaveCash({ CashInsertedBreakdown: arrCashInsertedBreakdown }, invoiceid, function () {
+                //    var tbodyDispenseItems = $('#tbodyDispenseItems').empty();
+                //    $('#page_paid').pageshow();
+                //    invoiceid = data.InvoiceID;
+                //    for (var i in arrOrderItems) {
+                //        if (CBool(arrOrderItems[i].IsUseUOM)) {
+                //            if (arrOrderItems[i].SellingPreference == 'Weight') {
+                //                arrGrain.push(arrOrderItems[i])
+                //            } else arrLiquid.push(arrOrderItems[i])
+                //        } else {
+                //            for (var b = 0; b < CDec2(arrOrderItems[i].OrderQty); b++) {
+                //                var copyItem = JSON.parse(JSON.stringify(arrOrderItems[i]));
+                //                copyItem.OrderQty = 1;
+                //                arrGoods.push(copyItem)
+                //            }
+                //        }
+                //    }
 
-                    if (arrGoods.length > 0) {
-                        setTimeout(function () {
-                            $('.page_dispense').pageshow();
-                            for (var i in arrOrderItems) {
-                                if (!CBool(arrOrderItems[i].IsUseUOM)) {
-                                    tbodyDispenseItems.append($('<tr class="text-secondary align-middle">')
-                                        .data('data', arrOrderItems[i])
-                                        .attr('productid', arrOrderItems[i].ProductID)
-                                        .append($('<td class="text-center">').html('<img class="rounded-2" src="' + imgpath + arrOrderItems[i].FileName + '_big.jpg" style="width:70px;">'))
-                                        .append($('<td class="text-center">').text(arrOrderItems[i].ProductName))
-                                        .append($('<td class="text-center">').text(arrOrderItems[i].OrderQty))
-                                        .append($('<td class="text-center tdDispensedQty">').text(''))
-                                        .append($('<td class="text-center">'))
-                                    )
-                                }
-                            }
-                            var otherItems = $.merge(JSON.parse(JSON.stringify(arrGrain)), JSON.parse(JSON.stringify(arrLiquid))); //create copy for grain and liquid
-                            for (var i in otherItems) {
-                                tbodyDispenseItems.append($('<tr class="text-secondary align-middle">')
-                                    .data('data', otherItems[i])
-                                    .attr('productid', otherItems[i].ProductID)
-                                    .append($('<td class="text-center">').text(otherItems[i].ProductName))
-                                    .append($('<td class="text-center">').text(otherItems[i].OrderQty))
-                                    .append($('<td class="text-center">').text(''))
-                                    .append($('<td class="text-center">'))
-                                )
-                            }
-                            tbodyDispenseItems.find('tr:eq(0)').removeClass('text-secondary').addClass('textvm-primary');
-                            tbodyDispenseItems.find('tr:eq(0)').find('td:last-child').html('<div class="spinner-border" role="status"></div>');
-                            DispenseItems(ctrDispenseItem);
-                        }, 2000)
-                    } else if (arrGrain.length > 0) {
-                        DispenseGrains(ctrDispenseGrain);
-                    } else if (arrLiquid.length > 0) {
-                        console.log(arrLiquid[ctrDispenseLiquid])                        
-                        DispenseLiquid(ctrDispenseLiquid);
-                    }
-                })
-                return
+                //    if (arrGoods.length > 0) {
+                //        setTimeout(function () {
+                //            $('.page_dispense').pageshow();
+                //            for (var i in arrOrderItems) {
+                //                if (!CBool(arrOrderItems[i].IsUseUOM)) {
+                //                    tbodyDispenseItems.append($('<tr class="text-secondary align-middle">')
+                //                        .data('data', arrOrderItems[i])
+                //                        .attr('productid', arrOrderItems[i].ProductID)
+                //                        .append($('<td class="text-center">').html('<img class="rounded-2" src="' + imgpath + arrOrderItems[i].FileName + '_big.jpg" style="width:70px;">'))
+                //                        .append($('<td class="text-center">').text(arrOrderItems[i].ProductName))
+                //                        .append($('<td class="text-center">').text(arrOrderItems[i].OrderQty))
+                //                        .append($('<td class="text-center tdDispensedQty">').text(''))
+                //                        .append($('<td class="text-center">'))
+                //                    )
+                //                }
+                //            }
+                //            var otherItems = $.merge(JSON.parse(JSON.stringify(arrGrain)), JSON.parse(JSON.stringify(arrLiquid))); //create copy for grain and liquid
+                //            for (var i in otherItems) {
+                //                tbodyDispenseItems.append($('<tr class="text-secondary align-middle">')
+                //                    .data('data', otherItems[i])
+                //                    .attr('productid', otherItems[i].ProductID)
+                //                    .append($('<td class="text-center">').text(otherItems[i].ProductName))
+                //                    .append($('<td class="text-center">').text(otherItems[i].OrderQty))
+                //                    .append($('<td class="text-center">').text(''))
+                //                    .append($('<td class="text-center">'))
+                //                )
+                //            }
+                //            tbodyDispenseItems.find('tr:eq(0)').removeClass('text-secondary').addClass('textvm-primary');
+                //            tbodyDispenseItems.find('tr:eq(0)').find('td:last-child').html('<div class="spinner-border" role="status"></div>');
+                //            DispenseItems(ctrDispenseItem);
+                //        }, 2000)
+                //    } else if (arrGrain.length > 0) {
+                //        DispenseGrains(ctrDispenseGrain);
+                //    } else if (arrLiquid.length > 0) {
+                //        console.log(arrLiquid[ctrDispenseLiquid])                        
+                //        DispenseLiquid(ctrDispenseLiquid);
+                //    }
+                //})
+                //return
                 UsbSerial_Send({
                     "action": "CASH_COLLECT",
                     "uuid": "000078EE35E81F84",
@@ -1930,7 +1755,12 @@
         $('#btnPressToStart').click(function () {
             DetectInactivity(30);
             $('#page_trans, .page_menu').pageshow();
-            ShowPageGuides('menu');
+            slides = document.querySelector('.slidesPortrait');
+            slideItems = $('.slidesPortrait > li') //document.querySelectorAll('.ads_Landscape');
+            PauseAllVideos(function () {
+                goToSlide(0);
+            })            
+            //ShowPageGuides('menu');
         })
 
         //$('form input').blur(function (e) {
@@ -1956,48 +1786,48 @@
                     arrGoods[ctrDispenseItem] = e;
                     ctrDispenseItem += 1;
                     VendingMachine.AddLog('Machine', 'Attempting to drop the item');
-                    setTimeout(function () {
-                        var currentDroppedItem = JSON.parse(JSON.stringify(arrGoods[ctrDispenseItem - 1]));
-                        var tbodyDispenseItems = $('#tbodyDispenseItems tr[productid="' + currentDroppedItem.ProductID + '"]');
-                        var isDroppedItemExist = false, indexDroppedItem = null, qty = CDec2(tbodyDispenseItems.find('td.tdDispensedQty').text());
+                    //setTimeout(function () {
+                    //    var currentDroppedItem = JSON.parse(JSON.stringify(arrGoods[ctrDispenseItem - 1]));
+                    //    var tbodyDispenseItems = $('#tbodyDispenseItems tr[productid="' + currentDroppedItem.ProductID + '"]');
+                    //    var isDroppedItemExist = false, indexDroppedItem = null, qty = CDec2(tbodyDispenseItems.find('td.tdDispensedQty').text());
 
-                        //arrFailedDropItem.push(currentDroppedItem);
-                        //OrdersComplete();
-                        //return;
-                        $.grep(arrDroppedItem, function (pData, index) {
-                            if (pData.ProductID == currentDroppedItem.ProductID && pData.BinProductID == currentDroppedItem.BinProductID) {
-                                isDroppedItemExist = true;
-                                indexDroppedItem = index;
-                            }
-                        })
+                    //    //arrFailedDropItem.push(currentDroppedItem);
+                    //    //OrdersComplete();
+                    //    //return;
+                    //    $.grep(arrDroppedItem, function (pData, index) {
+                    //        if (pData.ProductID == currentDroppedItem.ProductID && pData.BinProductID == currentDroppedItem.BinProductID) {
+                    //            isDroppedItemExist = true;
+                    //            indexDroppedItem = index;
+                    //        }
+                    //    })
 
-                        if (isDroppedItemExist) {
-                            arrDroppedItem[indexDroppedItem].OrderQty += currentDroppedItem.OrderQty;
-                            qty += currentDroppedItem.OrderQty;
-                        } else {
-                            arrDroppedItem.push(currentDroppedItem);
-                            qty += currentDroppedItem.OrderQty;
-                        }
+                    //    if (isDroppedItemExist) {
+                    //        arrDroppedItem[indexDroppedItem].OrderQty += currentDroppedItem.OrderQty;
+                    //        qty += currentDroppedItem.OrderQty;
+                    //    } else {
+                    //        arrDroppedItem.push(currentDroppedItem);
+                    //        qty += currentDroppedItem.OrderQty;
+                    //    }
 
-                        tbodyDispenseItems.removeClass('text-secondary').addClass('textvm-primary');
-                        tbodyDispenseItems.find('td.tdDispensedQty').text(qty);
-                        var tdstatus = tbodyDispenseItems.find('td:last-child').empty();
-                        tdstatus.html((tdstatus.hasClass('dropfailed') ? '<span class="bi-exclamation-circle-fill text-danger"></span>' : '<span class="bi-check-circle-fill"></span>'));
+                    //    tbodyDispenseItems.removeClass('text-secondary').addClass('textvm-primary');
+                    //    tbodyDispenseItems.find('td.tdDispensedQty').text(qty);
+                    //    var tdstatus = tbodyDispenseItems.find('td:last-child').empty();
+                    //    tdstatus.html((tdstatus.hasClass('dropfailed') ? '<span class="bi-exclamation-circle-fill text-danger"></span>' : '<span class="bi-check-circle-fill"></span>'));
 
-                        VendingMachine.ComputeBinProduct(currentDroppedItem);
+                    //    VendingMachine.ComputeBinProduct(currentDroppedItem);
 
-                        if ((ctrDispenseItem - 1) == arrGoods.length - 1) {
-                            if (arrGrain.length > 0 || arrLiquid.length > 0) {
-                                //do nothing
-                            } else {
-                                $('#page_ordercomplete').find('h3').html('Your order is now complete.<br><br>Your goods are ready for pick-up from the basket below.<br />Thank you for your purchase!')
-                                OrdersComplete();
-                            }
-                        } else {                            
-                            DispenseItems(ctrDispenseItem);
-                        }                        
-                    }, 2000)
-                    return
+                    //    if ((ctrDispenseItem - 1) == arrGoods.length - 1) {
+                    //        if (arrGrain.length > 0 || arrLiquid.length > 0) {
+                    //            //do nothing
+                    //        } else {
+                    //            $('#page_ordercomplete').find('h3').html('Your order is now complete.<br><br>Your goods are ready for pick-up from the basket below.<br />Thank you for your purchase!')
+                    //            OrdersComplete();
+                    //        }
+                    //    } else {                            
+                    //        DispenseItems(ctrDispenseItem);
+                    //    }                        
+                    //}, 2000)
+                    //return
                     UsbSerial_Send({
                         "action": "DISPENSE_ITEM",
                         "motor": CDec2(e.VDMMotorNo),
@@ -2160,7 +1990,7 @@
                     //    .append('<button data-role="none" class="btn light-beam navbtn-light bgvm-primary rounded-circle text-white" style="height:60px; width:60px; font-size:1.50em;"><label>' + sku.CartLineNo + '</label></button>')
                     //)
                     .append($('<div class="col-auto">')
-                        .append('<img class="rounded" src="' + sourceimg + '/Medium/' + sku.FileName + '_medium.jpg" style="object-fit:cover; width:80px;" />')
+                        .append(CStr2(sku.FileName) == '' ? '<div style="height:80px; width:80px;" class="fs-2 rounded-2 bg-light d-flex flex-column justify-content-center align-items-center text-center text-secondary"><span class="bi-image-alt"></span></div>' : '<img class="rounded" src="' + sourceimg + '/Medium/' + sku.FileName + '_medium.jpg" style="object-fit:cover; width:80px;" />')
                     )
                     .append($('<div class="col">')
                         .append($('<div class="row mb-3">')
@@ -2309,7 +2139,7 @@
                     FowstID: sessionStorage.FowstID,
                     Folder: 'MobizImagePIM',
                     Success: function (msg) {
-                        $('#page_start h3').html('Downloading product images...<br>' + msg);
+                        $('#page_init h3').html('Downloading product images...<br>' + msg);
                     },
                     Complete: function () {
                         GetNewImageFiles({
@@ -2317,10 +2147,10 @@
                             FowstID: sessionStorage.FowstID,
                             Folder: 'VendingMachine',
                             Success: function (msg) {
-                                $('#page_start h3').html('Downloading video ads...<br>' + msg);
+                                $('#page_init h3').html('Downloading video ads...<br>' + msg);
                             },
                             Complete: function () {
-                                $('#page_start h3').html('Your media library is up to date.<br>Finishing setup...');
+                                $('#page_init h3').html('Your media library is up to date.<br>Finishing setup...');
                                 setTimeout(function () {
                                     complete();
                                 }, 2000)                                
@@ -2555,6 +2385,7 @@
                                                     tbodyDispenseItems.append($('<tr class="text-secondary">')
                                                         .data('data', arrOrderItems[i])
                                                         .attr('productid', arrOrderItems[i].ProductID)
+                                                        .append($('<td class="text-center">').html(CStr2(arrOrderItems[i].FileName) == '' ? '<div style="height:70px; width:70px;" class="fs-2 rounded-2 bg-light d-flex flex-column justify-content-center align-items-center text-center text-secondary"><span class="bi-image-alt"></span></div>' : '<img class="rounded-2" src="' + imgpath + arrOrderItems[i].FileName + '_big.jpg" style="width:70px;">'))
                                                         .append($('<td>').text(arrOrderItems[i].ProductName))
                                                         .append($('<td class="text-center">').text(arrOrderItems[i].OrderQty))
                                                         .append($('<td class="text-center tdDispensedQty">').text(''))
@@ -2567,6 +2398,7 @@
                                                 tbodyDispenseItems.append($('<tr class="text-secondary">')
                                                     .data('data', otherItems[i])
                                                     .attr('productid', otherItems[i].ProductID)
+                                                    .append($('<td class="text-center">').text(''))
                                                     .append($('<td class="text-center">').text(otherItems[i].ProductName))
                                                     .append($('<td class="text-center">').text(otherItems[i].OrderQty))
                                                     .append($('<td class="text-center">').text(''))

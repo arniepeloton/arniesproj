@@ -786,6 +786,19 @@ Public Class SystemDefaults
         End Set
     End Property
 
+    Public Property ReturnEntireInvoice As Boolean
+        Get
+
+            Return CBool2(GetSystemDefault("ReturnEntireInvoice"))
+
+        End Get
+        Set(value As Boolean)
+
+            SetSystemDefault("ReturnEntireInvoice", If(value, 1, 0))
+
+        End Set
+    End Property
+
     Public Property AllowedReturnDuration As Decimal
         Get
 

@@ -808,7 +808,7 @@
                                     VatExemptSales = GrossSalesToSC - ForeGoneVat;
                                 }                               
 
-                                var seniorCitizenDiscountRate = isSeniorCitizenDiscount && hasPromoItems ? 0 : parseFloat($('#txtDiscountPercentCeiling').val()) * 0.01;
+                                var seniorCitizenDiscountRate = hasPromoItems ? 0.000001 : parseFloat($('#txtDiscountPercentCeiling').val()) * 0.01;
 
                                 if (IsVAT != undefined) {
                                     if (!CBool(IsVAT)) {
@@ -897,11 +897,11 @@
                                 //    AmountDueNetofCharges = Math.floor(AmountDueNetofCharges - 1);
                                 //}
 
-                                $('#lblDiscountValue').text(AccountingFormat(weightedSCDiscountRate * 100) + '%');
+                                $('#lblDiscountValue').text(CDec2(weightedSCDiscountRate * 100).toFixed(2) + '%');
 
                                 $('#lblTotalAmount').text(AccountingFormat(CDec2(AmountDueNetofCharges)));
 
-                                $("#txtDiscountPercent").val(weightedSCDiscountRate * 100);
+                                $("#txtDiscountPercent").val(CDec2(weightedSCDiscountRate * 100).toFixed(2));
 
                                 $("#txtDiscountAmount").val(CDec2(seniorCitizenDiscount).toFixed(2));
 
@@ -13357,6 +13357,7 @@
                                     strPrint = '';
                                     var intLimitPerBatchPrint = 0;
                                     for (var p = 0; p <= vDataItem.Rows.length - 1; p++) {
+                                        if (CBool(vDataItem.Rows[p].IsPromoItem)) hasPromoItems = true;
 
                                         var strStockDescription = $.trim((vDataItem.Rows[p].StockDescription || '')) + (isSeniorCitizenPWDDiscount ? (CBool(vDataItem.Rows[p].IsVatExempt) ? '' : ' (E)') : '');
                                         var strUnitPrice = SetPrefixPostfix(AccountingFormat(vDataItem.Rows[p].UnitPrice || '0'), intFAFCTotalLenght - 30, ' ', 0);
@@ -13533,13 +13534,18 @@
                                                     IminPrintInColumns(strTemp, "", AccountingFormat(MaxSCDiscountableAmount || '0'), 6, 1, 3, 0, 0, 2, 24, 24, 24);
                                                 }
 
-                                                strTemp = (isSeniorCitizenDiscount ? 'SC' : 'PWD') + ' Disc. Rate: ';
+                                                if (!hasPromoItems) {
+                                                    // no need ipakita since mas dako ang promo discounted amount compare to SC/PWD discount
+                                                    // base sa Potato corner, separate transaction ang mga promo items
+                                                    
+                                                    strTemp = (isSeniorCitizenDiscount ? 'SC' : 'PWD') + ' Disc. Rate: ';
 
-                                                IminPrintInColumns(strTemp, "", CInt2($('#txtDiscountPercentCeiling').val()) + '%', 7, 1, 4, 0, 0, 2, 24, 24, 24);
+                                                    IminPrintInColumns(strTemp, "", CInt2($('#txtDiscountPercentCeiling').val()) + '%', 7, 1, 4, 0, 0, 2, 24, 24, 24);
 
-                                                strTemp = (isSeniorCitizenDiscount ? 'SC' : 'PWD') + ' Disc. Amount: ';
+                                                    strTemp = (isSeniorCitizenDiscount ? 'SC' : 'PWD') + ' Disc. Amount: ';
 
-                                                IminPrintInColumns(strTemp, "", AccountingFormat(seniorCitizenDiscount || '0'), 7, 1, 3, 0, 0, 2, 24, 24, 24);
+                                                    IminPrintInColumns(strTemp, "", AccountingFormat(seniorCitizenDiscount || '0'), 7, 1, 3, 0, 0, 2, 24, 24, 24);
+                                                }                                                
 
                                                 strTemp = 'Net Amount: ';
 
@@ -18387,6 +18393,7 @@ window.PrintUsingTelpoPOSReceipt = function (pInvoiceID, vDataPrint, vDataHeader
                 printAttempt = 1;
                 pPrintBillingArguments = undefined;
                 theInvoiceID = undefined;
+                hasPromoItems = false;
             } // end function ClearSalesPaymentVariables
 
             window.PrintDeliveryReceiptThermalPrinter = function (pInvoiceID, vDataPrint, vDataHeader, vDataInvHeader, vDataItem, vDataItemSerial, vDataPayment, vDataFooter, vDataMsg) {

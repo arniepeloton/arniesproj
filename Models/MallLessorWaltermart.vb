@@ -56,6 +56,8 @@ Public Class MallLessorWaltermart
         Dim pSql As String
         Dim LastTransactionDate As String
         Dim CurTransactionDate As String
+        Dim dtTenantMonitoring As DataTable
+        Dim dtchannelsales As DataTable
 
 #If DEBUG Then
         FOWSTID = "fe639d1f-cd83-4b3e-8b0a-586731f479cb"
@@ -73,7 +75,7 @@ Public Class MallLessorWaltermart
         WMDeviceSerialID = "358679590362249" ' WALTERMART MUNOZ     
 #End If
 
-        pSql = "Select top 1 InvoiceDate from CacheInvoices where FOWSTID = 'a511473b-ec9a-45a2-9525-252a6df48808' ORDER BY invoicedate desc"
+        pSql = "Select top 1 InvoiceDate from CacheInvoices where FOWSTID = " & ReadyString(FOWSTID) & " ORDER BY invoicedate desc"
         CurTransactionDate = CStr2(mProData.ExecuteScalar(pSql))
 
         AppendToFile(Common.ServerPath & "temp\logs\Waltermart.txt", "CurTransactionDate " & CurTransactionDate)
@@ -90,7 +92,23 @@ Public Class MallLessorWaltermart
                 dtZRead = getDailySales(mProData, DateFrom, DateTo, FOWSTID, DeviceID)
                 dtPayment = getOtherPaymentTypes(mProData, DateFrom, DateTo, FOWSTID, DeviceID)
 
-                strFileName = GenerateZReadReport(DateFrom, dtZRead, dtPayment, FOWSTID, WMStoreID, WMDeviceSerialID)
+                'strFileName = GenerateZReadReport(DateFrom, dtZRead, dtPayment, FOWSTID, WMStoreID, WMDeviceSerialID)
+
+                'pFtpServer = "sftp.stage.kulay.io"
+                'pFtpUsername = "sftp-gnrtmm"
+                'pFtpPassword = ""
+                'pFullFilename = strFileName
+                'pFilename = strFileName.Split("\")(strFileName.Split("\").Length - 1)
+
+                'Return ""
+
+                'WaltermartSFtpUpload(vFtpServer:=pFtpServer,
+                '                  vFtpUsername:=pFtpUsername,
+                '                  vFtpPassword:=pFtpPassword,
+                '                  vSourceFilename:=pFullFilename,
+                '                  vDestinationFilename:=pFilename, "Z-Read")
+
+                strFileName = GenerateTransactionReport(DateFrom, dtZRead, dtPayment, FOWSTID, WMStoreID, WMDeviceSerialID)
 
                 pFtpServer = "sftp.stage.kulay.io"
                 pFtpUsername = "sftp-gnrtmm"
@@ -98,11 +116,14 @@ Public Class MallLessorWaltermart
                 pFullFilename = strFileName
                 pFilename = strFileName.Split("\")(strFileName.Split("\").Length - 1)
 
+                'Return ""
+
                 WaltermartSFtpUpload(vFtpServer:=pFtpServer,
                                   vFtpUsername:=pFtpUsername,
                                   vFtpPassword:=pFtpPassword,
                                   vSourceFilename:=pFullFilename,
-                                  vDestinationFilename:=pFilename)
+                                  vDestinationFilename:=pFilename, "Transactions")
+
 
                 mProData.Execute("Update SystemDefaults set DefaultValue = GETDATE() where [description] = 'LastSendOfWaltermartData'")
 
@@ -124,7 +145,7 @@ Public Class MallLessorWaltermart
     End Function
 
     Friend Shared Sub WaltermartSFtpUpload(vFtpServer As String, vFtpUsername As String, vFtpPassword As String,
-        vSourceFilename As String, vDestinationFilename As String)
+        vSourceFilename As String, vDestinationFilename As String, reportType As String)
 
         '===================Sample code from winscp===================
         '' Set up session options
@@ -164,8 +185,9 @@ Public Class MallLessorWaltermart
                 .HostName = "sftp.stage.kulay.io"
                 .PortNumber = 2222
                 .UserName = "sftp-gnrtmm"
-                .SshHostKeyFingerprint = "ssh-ed25519 255 xZnkcqs/VyrfpX7PUSdRjTymWk040ViB2BEt0KPates"
-                .SshPrivateKeyPath = "C:\DotNet\Mobiz\settings\kulay-sftp.ppk"
+                '.SshHostKeyFingerprint = "ssh-ed25519 255 xZnkcqs/VyrfpX7PUSdRjTymWk040ViB2BEt0KPates"
+                '.SshHostKeyFingerprint = "ssh-ed25519 255 xZnkcqs/VyrfpX7PUSdRjTymWk040ViB2BEt0KPates="
+                .SshPrivateKeyPath = "C:\DotNet\Mobiz\settings\kulay-new-sftp-2026-10-09.ppk"
             End With
 #Else
                     With sessionOptions
@@ -174,7 +196,7 @@ Public Class MallLessorWaltermart
                         .PortNumber = 2222
                         .UserName = "sftp-gnrtmm"
                         '.SshHostKeyFingerprint = "SHA256:I+dwwG/FFgAR2kNYYjtqOv5HogBW6ntbSUY0Ad/bWUA="
-                        .SshHostKeyFingerprint = "ssh-ed25519 255 xZnkcqs/VyrfpX7PUSdRjTymWk040ViB2BEt0KPates"
+                        .SshHostKeyFingerprint = "ssh-ed25519 255 xZnkcqs/VyrfpX7PUSdRjTymWk040ViB2BEt0KPates="
                         .SshPrivateKeyPath = Common.ServerPath & "settings\kulay-sftp.ppk"
                     End With
 #End If
@@ -196,11 +218,20 @@ Public Class MallLessorWaltermart
 
                 Dim folder As String = ""
 
+                If reportType = "Z-Read" Then
 #If DEBUG Then
-                folder = "/inbox/zreadings"
+                    folder = "/inbox/zreadings"
 #Else
                 folder = "/inbox/zreadings"
 #End If
+                Else
+#If DEBUG Then
+                    folder = "/inbox/transactions"
+#Else
+                folder = "/inbox/transactions"
+#End If
+                End If
+
 
                 If Not session.FileExists(folder) Then
                     session.CreateDirectory(folder)
@@ -1116,6 +1147,256 @@ Public Class MallLessorWaltermart
         Return mProdata.Execute(pSql)
     End Function
 
+    Function getOtherPaymentTypesPerTransaction(InvoiceID As String) As DataTable
+        Dim pSql As String
+
+        pSql = " SELECT " & vbCrLf &
+            " DISTINCT other.PaymentType " & vbCrLf &
+            " , SUM(other.Amount) " & vbCrLf &
+            " - ISNULL(" & vbCrLf &
+            "   (SELECT ISNULL(SUM(ROUND(ledger.Amount, 2)), 0) " & vbCrLf &
+            "   FROM TransSalesReturnLedger as ledger " & vbCrLf &
+            "   INNER JOIN TransMemo as memo ON memo.ID = ledger.SourceMemoID " & vbCrLf &
+            "   INNER JOIN TransCustomerPaymentInvoices as cuspayinv ON cuspayinv.InvoiceID = ledger.SourceInvoiceID " & vbCrLf &
+            "   INNER JOIN TransCustomerPayment custpay ON cuspayinv.CustomerPaymentID = custpay.ID " & vbCrLf &
+            "   INNER JOIN TransCustomerPaymentOther refundother ON (refundother.CustomerPaymentID = custpay.ID) " & vbCrLf &
+            "   INNER JOIN TransInvoice inv ON (cuspayinv.InvoiceID = inv.ID) " & vbCrLf &
+            "   WHERE inv.ID = " & ReadyString(InvoiceID) & vbCrLf
+
+        pSql += " ), 0) as Amount " & vbCrLf &
+            " FROM TransCustomerPaymentInvoices custpayinv " &
+            " INNER JOIN TransCustomerPayment custpay ON (custpayinv.CustomerPaymentID = custpay.ID) " &
+            " INNER JOIN TransCustomerPaymentOther other ON (other.CustomerPaymentID = custpay.ID) " &
+            " INNER JOIN TransInvoice inv ON (custpayinv.InvoiceID = inv.ID)  " &
+            " WHERE inv.ID = " & ReadyString(InvoiceID) & vbCrLf &
+            " AND other.PaymentType <> 'PotatoCornerGC' " & vbCrLf
+
+        pSql += " GROUP BY other.PaymentType " & vbCrLf &
+            " ORDER BY other.PaymentType ASC "
+
+        AppendToFile(Common.ServerPath & "temp\logs\Waltermart.txt", "Other Payment Query: " & pSql)
+
+        Return mProData.Execute(pSql)
+
+    End Function
+
+    Function GenerateTransactionReport(ZReadDate As String, dtZRead As DataTable, dtPayment As DataTable, FOWSTID As String, WMStoreID As String, WMDeviceSerialID As String) As String
+        Dim dtFinal As New DataTable
+        Dim pSql As String
+        Dim dtTransactions As DataTable
+        Dim dtProductInformation As DataTable
+        Dim dtItemModifiers As DataTable
+        Dim pFilename As String
+
+        Try
+
+            dtFinal.Columns.Add("orderId")
+            dtFinal.Columns.Add("transactionId")
+            dtFinal.Columns.Add("storeId")
+            dtFinal.Columns.Add("serialNumber")
+            dtFinal.Columns.Add("terminalNumber")
+            dtFinal.Columns.Add("salesInvoiceNumber")
+            dtFinal.Columns.Add("orderReferenceNumber")
+            dtFinal.Columns.Add("timestamp")
+            dtFinal.Columns.Add("businessDate")
+            dtFinal.Columns.Add("status")
+            dtFinal.Columns.Add("referencesOrderId")
+            dtFinal.Columns.Add("voidNumber")
+            dtFinal.Columns.Add("refundNumber")
+            dtFinal.Columns.Add("orderType")
+            dtFinal.Columns.Add("numberOfDiners")
+            dtFinal.Columns.Add("taxComputationMode")
+            dtFinal.Columns.Add("amountBeforeTax")
+            dtFinal.Columns.Add("discountTotal")
+            dtFinal.Columns.Add("vat")
+            dtFinal.Columns.Add("serviceCharge")
+            dtFinal.Columns.Add("grossAmount")
+            dtFinal.Columns.Add("netSales")
+            dtFinal.Columns.Add("paymentType")
+
+            dtFinal.Columns.Add("products")
+            dtFinal.Columns.Add("modifiers")
+            dtFinal.Columns.Add("productDiscounts")
+            dtFinal.Columns.Add("orderDiscounts")
+            dtFinal.Columns.Add("payments")
+
+            pSql = "Select ID as orderId " & vbCrLf &
+                    ", ID as transactionId " & vbCrLf &
+                    ", '3c60f1bb-4da2-4939-86b7-fe5147a51f9f' as storeId " & vbCrLf &
+                    ", '358679590362249' as serialNumber " & vbCrLf &
+                    ", 'POS001' as terminalNumber " & vbCrLf &
+                    ", InvoiceNumber as salesInvoiceNumber " & vbCrLf &
+                    ", '' as orderReferenceNumber " & vbCrLf &
+                    ", InvoiceDate as [timestamp] " & vbCrLf &
+                    ", InvoiceDate as businessDate " & vbCrLf &
+                    ", 'COMPLETED' as [status] " & vbCrLf &
+                    ", '' as referencesOrderId " & vbCrLf &
+                    ", '' as voidNumber " & vbCrLf &
+                    ", '' as refundNumber " & vbCrLf &
+                    ", DeliveryMethod as orderType " & vbCrLf &
+                    ", '' as numberOfDiners " & vbCrLf &
+                    ", 'VAT' as taxComputationMode " & vbCrLf &
+                    ", GrossSalesNetOfVATExemptions /1.12 as amountBeforeTax " & vbCrLf &
+                    ", SCDiscount as discountTotal " & vbCrLf &
+                    ", GrossSalesNetOfVATExemptions - (GrossSalesNetOfVATExemptions /1.12) as vat " & vbCrLf &
+                    ", 0 as serviceCharge " & vbCrLf &
+                    ", GrossSalesNetOfVATExemptions as grossAmount " & vbCrLf &
+                    ", GrossSalesNetOfVATExemptions - SCDiscount - ForegoneVAT as netSales " & vbCrLf &
+                    ", 'CASH' as paymentType " & vbCrLf &
+                    "From cacheinvoices " & vbCrLf &
+                    "where FOWSTID = " & ReadyString(FOWSTID) & vbCrLf &
+                    "And convert(date,InvoiceDate) = " & ReadyString(ZReadDate)
+
+            AppendToFile(Common.ServerPath & "temp\logs\Waltermart.txt", "Transaction Query: " & pSql)
+
+            dtTransactions = mProData.Execute(pSql)
+
+            Dim ProductCounter As Integer = 1
+            Dim ModifierCounter As Integer
+            Dim ProductString As String
+            Dim ModifierString As String
+
+            For i As Integer = 0 To dtTransactions.Rows.Count - 1
+
+                'Invoice Items
+
+                pSql = "Select Transinvoiceitems.ID InvoiceItemsID, MobizLibraryPIMProduct.ID productId, ProductNo skuCode, ProductName [name], '' variantName, Quantity quantity, UnitPrice price, 'VAT' taxCode " & vbCrLf &
+                    "From MobizLibraryPIMProduct  " & vbCrLf &
+                    "inner join Transinvoiceitems on Transinvoiceitems.ProductID = MobizLibraryPIMProduct.ID " & vbCrLf &
+                    "WHERE Transinvoiceitems.InvoiceID = " & ReadyString(CStr2(dtTransactions.Rows(i).Item("transactionId")))
+
+                AppendToFile(Common.ServerPath & "temp\logs\Waltermart.txt", "Invoice Items Query: " & pSql)
+
+                dtProductInformation = mProData.Execute(pSql)
+
+                If dtProductInformation.Rows.Count > 0 Then
+
+                    For j As Integer = 0 To dtProductInformation.Rows.Count - 1
+
+                        If ProductCounter = 1 Then
+                            ProductString = CStr2(ProductCounter) & ":" & CStr2(dtProductInformation.Rows(j).Item("skuCode")) & ":" & CStr2(dtProductInformation.Rows(j).Item("productId")) & ":" & CStr2(dtProductInformation.Rows(j).Item("name")) & ":" & ":" & CStr2(CInt2(dtProductInformation.Rows(j).Item("quantity"))) & ":" & CDec2(dtProductInformation.Rows(j).Item("price")).ToString("######0.00") & ":" & CStr2(dtProductInformation.Rows(j).Item("taxCode"))
+                        Else
+                            ProductString &= "|" & CStr2(ProductCounter) & " :  " & CStr2(dtProductInformation.Rows(j).Item("skuCode")) & ":" & CStr2(dtProductInformation.Rows(j).Item("productId")) & ":" & CStr2(dtProductInformation.Rows(j).Item("name")) & ":" & ":" & CStr2(CInt2(dtProductInformation.Rows(j).Item("quantity"))) & ":" & CDec2(dtProductInformation.Rows(j).Item("price")).ToString("######0.00") & ":" & CStr2(dtProductInformation.Rows(j).Item("taxCode"))
+                        End If
+
+                        'item modifier
+                        pSql = "select " & vbCrLf &
+                                "LibraryItemModifierInventoryAffecting.Description selectionName, ModifierPrice unitPrice, InputQty quantity, ModifierPrice unitPrice, inputQty quantity, ModifierPrice * inputQty totalPrice, Name modifierGroupName  " & vbCrLf &
+                                "From TransInvoiceItems  " & vbCrLf &
+                                "JOIN TransInvoiceItemsModifier ON TransInvoiceItemsModifier.InvoiceItemID = TransInvoiceItems.ID " & vbCrLf &
+                                "JOIN LibraryItemModifierInventoryAffecting On LibraryItemModifierInventoryAffecting.ID = TransInvoiceItemsModifier.ModifierID " & vbCrLf &
+                                "JOIN LibraryItemModifiers ON LibraryItemModifiers.ID = TransInvoiceItemsModifier.ItemModifierID " & vbCrLf &
+                                "where TransInvoiceitems.ID = " & ReadyString(CStr2(dtProductInformation.Rows(j).Item("InvoiceItemsID")))
+
+                        AppendToFile(Common.ServerPath & "temp\logs\Waltermart.txt", "Item Modifiers Query: " & pSql)
+
+                        dtItemModifiers = mProData.Execute(pSql)
+
+                        If dtItemModifiers.Rows.Count > 0 Then
+                            ModifierCounter = 0
+                            For k As Integer = 0 To dtItemModifiers.Rows.Count - 1
+                                If ModifierCounter = 0 Then
+                                    ModifierString = CStr2(ProductCounter) & ":" & CStr2(dtItemModifiers.Rows(k).Item("selectionName")) & ":" & CDec2(dtItemModifiers.Rows(k).Item("unitPrice")).ToString("######0.00") & ":" & CStr2(CInt2(dtItemModifiers.Rows(k).Item("quantity"))) & ":" & CDec2(dtItemModifiers.Rows(k).Item("totalPrice")).ToString("######0.00") & ":" & CStr2(dtItemModifiers.Rows(k).Item("modifierGroupName"))
+                                Else
+                                    ModifierString &= "|" & CStr2(ProductCounter) & ":" & CStr2(dtItemModifiers.Rows(k).Item("selectionName")) & ":" & CDec2(dtItemModifiers.Rows(k).Item("unitPrice")).ToString("######0.00") & ":" & CStr2(CInt2(dtItemModifiers.Rows(k).Item("quantity"))) & ":" & CDec2(dtItemModifiers.Rows(k).Item("totalPrice")).ToString("######0.00") & ":" & CStr2(dtItemModifiers.Rows(k).Item("modifierGroupName"))
+                                End If
+
+                                ModifierCounter += 1
+                            Next
+                        End If
+                    Next
+
+                    AppendToFile(Common.ServerPath & "temp\logs\Waltermart.txt", "ProductString: " & ProductString)
+                    AppendToFile(Common.ServerPath & "temp\logs\Waltermart.txt", "ModifierString: " & ModifierString)
+
+                    Dim dr As DataRow
+
+                    dr = dtFinal.NewRow
+
+                    dr("orderId") = CStr2(dtTransactions.Rows(i).Item("orderId"))
+                    dr("transactionId") = CStr2(dtTransactions.Rows(i).Item("orderId"))
+                    dr("storeId") = CStr2(WMStoreID)
+                    dr("serialNumber") = CStr2(WMDeviceSerialID)
+                    dr("terminalNumber") = 1
+                    dr("salesInvoiceNumber") = CStr2(dtTransactions.Rows(i).Item("salesInvoiceNumber"))
+                    dr("orderReferenceNumber") = CStr2(dtTransactions.Rows(i).Item("orderReferenceNumber"))
+                    dr("timestamp") = CDate(dtTransactions.Rows(i).Item("timestamp")).ToString("yyyy'-'MM'-'dd'T'HH':'mm':'sszzz") '.ToString("o", CultureInfo.InvariantCulture)
+                    dr("businessDate") = CDate(dtTransactions.Rows(i).Item("timestamp")).ToString("yyyy-MM-dd")
+                    dr("status") = CStr2(dtTransactions.Rows(i).Item("status"))
+                    dr("referencesOrderId") = CStr2(dtTransactions.Rows(i).Item("referencesOrderId"))
+                    dr("voidNumber") = CStr2(dtTransactions.Rows(i).Item("voidNumber"))
+                    dr("refundNumber") = CStr2(dtTransactions.Rows(i).Item("refundNumber"))
+                    dr("orderType") = CStr2(dtTransactions.Rows(i).Item("orderType"))
+                    dr("numberOfDiners") = 1 'CStr2(dtTransactions.Rows(i).Item("numberOfDiners"))
+                    dr("taxComputationMode") = CStr2(dtTransactions.Rows(i).Item("taxComputationMode"))
+                    dr("amountBeforeTax") = CDec2(dtTransactions.Rows(i).Item("amountBeforeTax")).ToString("######0.00")
+                    dr("discountTotal") = CDec2(dtTransactions.Rows(i).Item("discountTotal")).ToString("######0.00")
+                    dr("vat") = CDec2(dtTransactions.Rows(i).Item("vat")).ToString("######0.00")
+                    dr("serviceCharge") = CDec2(dtTransactions.Rows(i).Item("serviceCharge")).ToString("######0.00")
+                    dr("grossAmount") = CDec2(dtTransactions.Rows(i).Item("grossAmount")).ToString("######0.00")
+                    dr("netSales") = CDec2(dtTransactions.Rows(i).Item("netSales")).ToString("######0.00")
+                    dr("paymentType") = CStr2(dtTransactions.Rows(i).Item("paymentType"))
+                    dr("products") = ProductString
+                    dr("modifiers") = CStr2(ModifierString)
+                    dr("productDiscounts") = CDec2(0.00).ToString("######0.00")
+                    dr("orderDiscounts") = CDec2(0.00).ToString("######0.00")
+
+
+                    Dim PaymentString As String
+
+                    PaymentString = "CASH:" & CDec2(dtZRead.Rows(0).Item("CashAmount")).ToString("######0.00")
+
+                    For Each op As Object In dtPayment.Rows
+                        PaymentString &= "|" & op("PaymentType") & ":" & CDec2(op("Amount")).ToString("######0.00")
+                    Next
+
+                    dr("payments") = PaymentString
+
+                    'Commit
+
+                    dtFinal.Rows.Add(dr)
+
+                    ProductCounter += 1
+
+                End If
+            Next
+
+            'Create File
+            Dim storeID As String
+            Dim deviceserial As String
+            Dim sendingdate As String
+            Dim sequence As String = "002"
+            Dim sendingHour As String = "01"
+
+            sendingdate = CDate(ZReadDate).ToString("yyyyMMdd")
+
+            Dim pSourceURL As String = Common.ServerPath & "temp\Waltermart\" & FOWSTID
+            Dim strFileName = WMStoreID & "_" & WMDeviceSerialID & "_" & sendingdate & "_" & sendingHour & ".csv"
+
+            pFilename = pSourceURL & "\" & strFileName
+
+            If Not System.IO.Directory.Exists(pSourceURL) Then
+                IO.Directory.CreateDirectory(pSourceURL)
+            End If
+
+            'TableToExcelFile(dtFinal, "", "", pFilename)
+
+            Dim pCsvWriter = New CsvWriter()
+
+            pCsvWriter.Destination = pFilename
+            pCsvWriter.MaxLength = Integer.MaxValue
+            pCsvWriter.Source = dtFinal
+            Dim pText = pCsvWriter.EncodeBatch()
+
+            FileText(pFilename) = pText
+
+            Return pFilename
+
+        Catch ex As Exception
+            AppendToLog(ex.Message)
+        End Try
+    End Function
+
     Function GenerateZReadReport(ZReadDate As String, dtZRead As DataTable, dtPayment As DataTable, FOWSTID As String, WMStoreID As String, WMDeviceSerialID As String) As String
         Dim dtFinal As New DataTable
         Dim pSql As String
@@ -1127,6 +1408,7 @@ Public Class MallLessorWaltermart
             dtFinal.Columns.Add("serialNumber")
             dtFinal.Columns.Add("terminalNumber")
             dtFinal.Columns.Add("generatedBy")
+            dtFinal.Columns.Add("timestamp")
             dtFinal.Columns.Add("date")
             dtFinal.Columns.Add("time")
             dtFinal.Columns.Add("startTime")
@@ -1189,16 +1471,17 @@ Public Class MallLessorWaltermart
 
             dr = dtFinal.NewRow
 
-            'Identity & Timing (8 columns)
+            'Identity & Timing (9 columns)
 
             dr("serialNumber") = WMDeviceSerialID 'WM Munoz UUID, change to WMDeviceSerialID
             dr("terminalNumber") = 1
-            dr("generatedBy") = "Francis Hernandez"
-            dr("date") = CDate(ZReadDate).ToString("yyyyMMdd")
-            dr("time") = CDate(ZReadDate).ToString("hhmmss")
-            dr("startTime") = CDate(ZReadDate).ToString("hhmmss")
-            dr("endTime") = CDate(ZReadDate).ToString("hhmmss")
-            dr("reportGeneratedAt") = Today.Date.ToString("hhmmss")
+            dr("generatedBy") = "EMP-001"
+            dr("timestamp") = CDate(ZReadDate).TimeOfDay.TotalMilliseconds
+            dr("date") = CDate(ZReadDate).ToString("yyyy-MM-dd")
+            dr("time") = CDate(ZReadDate).ToString("hh:mm:ss")
+            dr("startTime") = CDate(ZReadDate).ToString("yyyy'-'MM'-'dd'T'HH':'mm':'sszzz")
+            dr("endTime") = CDate(ZReadDate).ToString("yyyy'-'MM'-'dd'T'HH':'mm':'sszzz")
+            dr("reportGeneratedAt") = Today.Date.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'sszzz")
 
             'Invoice Counters (6 columns)
 
@@ -1218,33 +1501,33 @@ Public Class MallLessorWaltermart
 
             dr("zResetCounterValue") = 0 'dtZRead.Rows(0).Item("")
             dr("zCounterValue") = dtZRead.Rows(0).Item("ZCount")
-            dr("presentAccumulatedSales") = CDec2(dtZRead.Rows(0).Item("PrevGrossSales")) + CDec2(dtZRead.Rows(0).Item("CurGrossSales"))
-            dr("previousAccumulatedSales") = dtZRead.Rows(0).Item("PrevGrossSales")
-            dr("totalSalesForTheDay") = dtZRead.Rows(0).Item("CurGrossSales")
-            dr("totalVatableSales") = CDec2(dtZRead.Rows(0).Item("CurTotalVatablePortionOfSCDTransaction")) + CDec2(dtZRead.Rows(0).Item("CurTotalVATSales")) - CDec2(dtZRead.Rows(0).Item("CurTotalVATSalesSalesReturn"))
-            dr("totalVat") = (CDec2(dtZRead.Rows(0).Item("CurTotalVAT")) + scdiscvatableamount) - CDec2(dtZRead.Rows(0).Item("CurTotalVATAmountSalesReturn"))
-            dr("totalVatExemptSales") = CDec2(dtZRead.Rows(0).Item("CurVATExemptSales"))
+            dr("presentAccumulatedSales") = (CDec2(dtZRead.Rows(0).Item("PrevGrossSales")) + CDec2(dtZRead.Rows(0).Item("CurGrossSales"))).ToString("######0.00")
+            dr("previousAccumulatedSales") = CDec2(dtZRead.Rows(0).Item("PrevGrossSales")).ToString("######0.00")
+            dr("totalSalesForTheDay") = CDec2(dtZRead.Rows(0).Item("CurGrossSales")).ToString("######0.00")
+            dr("totalVatableSales") = (CDec2(dtZRead.Rows(0).Item("CurTotalVatablePortionOfSCDTransaction")) + CDec2(dtZRead.Rows(0).Item("CurTotalVATSales")) - CDec2(dtZRead.Rows(0).Item("CurTotalVATSalesSalesReturn"))).ToString("######0.00")
+            dr("totalVat") = ((CDec2(dtZRead.Rows(0).Item("CurTotalVAT")) + scdiscvatableamount) - CDec2(dtZRead.Rows(0).Item("CurTotalVATAmountSalesReturn"))).ToString("######0.00")
+            dr("totalVatExemptSales") = CDec2(dtZRead.Rows(0).Item("CurVATExemptSales")).ToString("######0.00")
             dr("totalZeroRatedSales") = 0
-            dr("totalGrossAmount") = dtZRead.Rows(0).Item("CurGrossSales")
+            dr("totalGrossAmount") = CDec2(dtZRead.Rows(0).Item("CurGrossSales")).ToString("######0.00")
 
             'Discounts (8 columns)
 
-            dr("totalDiscount") = dtZRead.Rows(0).Item("CurTotalDiscount")
-            dr("totalSeniorCitizenDiscount") = dtZRead.Rows(0).Item("TotalSCDiscount")
+            dr("totalDiscount") = CDec2(dtZRead.Rows(0).Item("CurTotalDiscount")).ToString("######0.00")
+            dr("totalSeniorCitizenDiscount") = CDec2(dtZRead.Rows(0).Item("TotalSCDiscount")).ToString("######0.00")
             dr("totalPersonsWithDisabilitiesDiscount") = 0
-            dr("totalNationalAthletesAndCoachesDiscount") = dtZRead.Rows(0).Item("TotalPhNatTeamDiscount")
+            dr("totalNationalAthletesAndCoachesDiscount") = CDec2(dtZRead.Rows(0).Item("TotalPhNatTeamDiscount")).ToString("######0.00")
             dr("totalMedalOfValorDiscount") = 0
-            dr("totalSoloParentDiscount") = dtZRead.Rows(0).Item("TotalSoloParentDiscount")
-            dr("totalOtherDiscount") = dtZRead.Rows(0).Item("CurTotalDiscount")
+            dr("totalSoloParentDiscount") = CDec2(dtZRead.Rows(0).Item("TotalSoloParentDiscount")).ToString("######0.00")
+            dr("totalOtherDiscount") = CDec2(dtZRead.Rows(0).Item("CurTotalDiscount")).ToString("######0.00")
             dr("totalVoidedAmount") = 0
 
             'VAT Adjustments & Refunds (12 columns)
 
             dr("totalRefundedAmount") = 0
-            dr("totalVatAdjustment") = dtZRead.Rows(0).Item("CurSalesReturnRefund") / 1.12
+            dr("totalVatAdjustment") = CDec2(dtZRead.Rows(0).Item("CurSalesReturnRefund") / 1.12).ToString("######0.00")
             dr("salesAdjustmentByVoid") = 0
-            dr("salesAdjustmentByRefund") = dtZRead.Rows(0).Item("CurSalesReturnRefund")
-            dr("seniorCitizenTransactionVatAdjusted") = dtZRead.Rows(0).Item("CurVATExemptSales") ' foregone vat?
+            dr("salesAdjustmentByRefund") = CDec2(dtZRead.Rows(0).Item("CurSalesReturnRefund")).ToString("######0.00")
+            dr("seniorCitizenTransactionVatAdjusted") = CDec2(dtZRead.Rows(0).Item("CurVATExemptSales")).ToString("######0.00") ' foregone vat?
             dr("personsWithDisabilitiesTransactionVatAdjusted") = 0
             dr("nationalAthletesAndCoachesTransactionVatAdjusted") = 0
             dr("medalOfValorTransactionVatAdjusted") = 0
@@ -1252,25 +1535,27 @@ Public Class MallLessorWaltermart
             dr("regularDiscountTransactionVatAdjusted") = 0
             dr("zeroRatedTransactionVatAdjusted") = 0
             dr("otherTransactionVatAdjustment") = 0
-            dr("vatOnRefunds") = dtZRead.Rows(0).Item("CurSalesReturnRefund") / 1.12
+            dr("vatOnRefunds") = CDec2(dtZRead.Rows(0).Item("CurSalesReturnRefund") / 1.12).ToString("######0.00")
             dr("vatOnVoids") = 0
 
             ' Cash Drawer & Payments (9 columns)
 
-            dr("totalSale") = dtZRead.Rows(0).Item("CurGrossSales")
+            dr("totalSale") = CDec2(dtZRead.Rows(0).Item("CurGrossSales")).ToString("######0.00")
             dr("openingCash") = 0
-            dr("totalCashInDrawer") = dtZRead.Rows(0).Item("CurGrossSales")
+            dr("totalCashInDrawer") = CDec2(dtZRead.Rows(0).Item("CurGrossSales")).ToString("######0.00")
             dr("totalCashAdditions") = 0
             dr("totalCashWithdrawals") = 0
-            dr("totalCustomerPayments") = dtZRead.Rows(0).Item("CurGrossSales")
-            dr("totalPaymentsReceived") = dtZRead.Rows(0).Item("CurGrossSales")
-            dr("overallTotalSalesCount") = dtZRead.Rows(0).Item("CurTransCountInv")
+            dr("totalCustomerPayments") = CDec2(dtZRead.Rows(0).Item("CurGrossSales")).ToString("######0.00")
+            dr("totalPaymentsReceived") = CDec2(dtZRead.Rows(0).Item("CurGrossSales")).ToString("######0.00")
+            dr("overallTotalSalesCount") = CDec2(dtZRead.Rows(0).Item("CurTransCountInv")).ToString("######0.00")
             dr("taxComputationMode") = "VAT"
 
-            Dim PaymentString As String = ""
+            Dim PaymentString As String
+
+            PaymentString = "CASH:" & CDec2(dtZRead.Rows(0).Item("CashAmount")).ToString("######0.00")
 
             For Each op As Object In dtPayment.Rows
-                PaymentString &= op("PaymentType") & ":" & CDec2(op("Amount")) & "|"
+                PaymentString &= "|" & op("PaymentType") & ":" & CDec2(op("Amount")).ToString("######0.00")
             Next
 
             dr("paymentMethods") = PaymentString
@@ -1283,7 +1568,7 @@ Public Class MallLessorWaltermart
             Dim storeID As String
             Dim deviceserial As String
             Dim sendingdate As String
-            Dim sequence As String = "001"
+            Dim sequence As String = "002"
 
             sendingdate = CDate(ZReadDate).ToString("yyyyMMdd")
 
@@ -1296,7 +1581,7 @@ Public Class MallLessorWaltermart
                 IO.Directory.CreateDirectory(pSourceURL)
             End If
 
-            TableToExcelFile(dtFinal, "", "", pFilename)
+            'TableToExcelFile(dtFinal, "", "", pFilename)
 
             Dim pCsvWriter = New CsvWriter()
 
@@ -1304,6 +1589,8 @@ Public Class MallLessorWaltermart
             pCsvWriter.MaxLength = Integer.MaxValue
             pCsvWriter.Source = dtFinal
             Dim pText = pCsvWriter.EncodeBatch()
+
+            FileText(pFilename) = pText
 
             Return pFilename
 

@@ -12178,6 +12178,55 @@
         Return pDT
     End Function
 
+    Function GetSalesReturnReasons() As DataTable
+
+        Dim pFinder As Finder
+        Dim pDT As DataTable
+
+        pFinder = New Finder
+        With pFinder
+            .ProData = Common.WebRequest.ProData
+
+            With .Fields
+                With .Add("RowNum", SqlDbType.Int)
+                    .Expression = "ROW_NUMBER() OVER (ORDER BY Reason)"
+                    .Searchable = False
+                End With
+                With .Add("ID", SqlDbType.UniqueIdentifier)
+                    .Expression = "LibrarySalesReturnReasons.ID"
+                    .Searchable = False
+                End With
+                With .Add("Reason", SqlDbType.VarChar)
+                    .Expression = "LibrarySalesReturnReasons.Reason"
+                End With
+                With .Add("Resellable", SqlDbType.Bit)
+                    .Expression = "LibrarySalesReturnReasons.Resellable"
+                    .Searchable = False
+                End With
+                With .Add("IsActive", SqlDbType.Bit)
+                    .Expression = "LibrarySalesReturnReasons.IsActive"
+                    .Searchable = False
+                End With
+                With .Add("ModifiedBy", SqlDbType.VarChar)
+                    .Expression = BrowserController.ComposePeopleName()
+                End With
+                With .Add("LastUpdated", SqlDbType.UniqueIdentifier)
+                    .Expression = "LibrarySalesReturnReasons.LastUpdated"
+                    .Searchable = False
+                End With
+            End With
+
+            .SqlFrom = " FROM LibrarySalesReturnReasons" &
+                " JOIN MobizLibraryPeople ON MobizLibraryPeople.ID = LibrarySalesReturnReasons.UserID" & vbCrLf &
+                " LEFT JOIN MobizLibraryPeoplePreNominalSuffix ON MobizLibraryPeople.TitleID = MobizLibraryPeoplePreNominalSuffix.ID" & vbCrLf
+            .SqlWhere = " WHERE ISNULL(LibrarySalesReturnReasons.IsActive, 0) = " & If(CBool2(IsActive), 1, 0)
+            pDT = .Requery
+        End With
+
+        Return pDT
+
+    End Function
+
     Function GetPriceLevelCustom() As DataTable
         Dim pSql As String
         Dim pDT As DataTable

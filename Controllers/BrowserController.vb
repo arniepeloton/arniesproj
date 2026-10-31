@@ -5541,6 +5541,10 @@ Public Class BrowserController
                     .Expression = "TransInvoice.ID"
                     .Searchable = False
                 End With
+                With .Add("CustomerID", SqlDbType.UniqueIdentifier)
+                    .Expression = "TransInvoice.CustomerID"
+                    .Searchable = False
+                End With
                 With .Add("InvoiceNum", SqlDbType.VarChar)
                     ' 12 chars max kay 12 chars max pud sa POS print
                     .Expression = "RIGHT('000000000000' + CONVERT(varchar, TransInvoice.InvoiceNumber), 12)"
@@ -5682,6 +5686,7 @@ Public Class BrowserController
                 "         ISNULL(NULLIF(', ' + LTRIM(RTRIM(MobizLibraryOrganization.PersonSuffixName)),', '), '') " &
                 " END)" & vbCrLf &
                 " , TransInvoice.FowstID" & vbCrLf &
+                " , TransInvoice.CustomerID" & vbCrLf &
                 " , TransInvoice.DeviceID" & vbCrLf &
                 " , TransInvoice.InvoiceDate" & vbCrLf &
                 " , MobizLibraryOrganizationFOWST.Name" & vbCrLf &

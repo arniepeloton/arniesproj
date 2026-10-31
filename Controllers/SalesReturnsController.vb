@@ -1,4 +1,6 @@
-﻿Public Class SalesReturnsController
+﻿Imports Newtonsoft.Json
+
+Public Class SalesReturnsController
     Inherits System.Web.Mvc.Controller
 
 #Region " index "
@@ -1032,8 +1034,8 @@
             pMemoID = Guid.NewGuid.ToString
             pCustomerID = WebRequest.Instance.Data("CustomerID")
             If String.IsNullOrEmpty(pCustomerID) Then
-            pDrInvoice = WebRequest.Instance.Business.TransInvoice.ById(pInvoiceID)
-            pCustomerID = CStr2(pDrInvoice("CustomerID"))
+                pDrInvoice = WebRequest.Instance.Business.TransInvoice.ById(pInvoiceID)
+                pCustomerID = CStr2(pDrInvoice("CustomerID"))
             End If
         End If
         pDsHistory = GetByInvoiceID(pInvoiceID, pStockID, , , pMemoID, pAllowProductsNotInInvoice)
@@ -1214,6 +1216,7 @@
             pOut.Add("HideMerchandiseExchange", If(.HideMerchandiseExchange, 1, 0))
             pOut.Add("RestrictedTransactionLookupForSalesReturn", If(.RestrictedTransactionLookupForSalesReturn, 1, 0))
             pOut.Add("AllowedReturnDuration", .AllowedReturnDuration)
+            pOut.Add("ReturnEntireInvoice", .ReturnEntireInvoice)
         End With
 
         Return pOut.Serialize
@@ -1259,10 +1262,20 @@
             .SalesReturntPrintRefundSignUp = pPrintRefundSignUp
             .HideMerchandiseExchange = CBool2(WebRequest.Instance.Data("HideMerchandiseExchange"))
             .RestrictedTransactionLookupForSalesReturn = CBool2(WebRequest.Instance.Data("RestrictedTransactionLookupForSalesReturn"))
+            .ReturnEntireInvoice = CBool2(WebRequest.Instance.Data("ReturnEntireInvoice"))
             .AllowedReturnDuration = CDec2(WebRequest.Instance.Data("AllowedReturnDuration"))
         End With
-        Dim pSql = "Update TablesLastUpdated Set LastUpdated = GetDate() Where TableName = 'SystemDefaults'"
-        Common.WebRequest.ProData.ExecuteSQL(pSql)
+
+        Dim pIU = New InsertUpdate("TablesLastUpdated")
+        pIU("LastUpdated") = "GetDate()"
+        Const pTableName = "SystemDefaults"
+        Dim pSql = pIU.GetUpdate("TableName = " & ReadyString(pTableName))
+        If WebRequest.Instance.ProData.ExecuteSQL(pSql) = 0 Then
+            pIU("ID") = "NEWID()"
+            pIU("TableName") = ReadyString(pTableName)
+            pSql = pIU.GetInsert()
+            WebRequest.Instance.ProData.ExecuteSQL(pSql)
+        End If
 
         Return JsonDictionary.Serialize("Result", "ok")
 
@@ -1599,4 +1612,146 @@
 
         Return JsonDictionary.Serialize("Results", Common.WebRequest.ProData.Execute(pSql))
     End Function
+
+    Public Function ReasonView() As ActionResult
+
+        If CDec2(Common.WebRequest.QueryString("IsMobile")) = 0 Then
+            If WebRequest.Instance.HandleAccess = False Then Exit Function
+            If (Not SecurityRole.Instance.HandleRoleAccess("Sales Return")) Then Exit Function
+        End If
+
+        Return View()
+
+    End Function
+
+    Public Class ReasonClass
+
+        Public ID As String
+        Public Reason As String
+        Public Resellable As String ' Boolean
+        Public IsActive As String ' Boolean
+
+        ' output only
+        Public UserID As String
+        Public LastUpdatedBy As String
+
+    End Class
+
+    <HttpPost()>
+    Public Function SaveReason() As String
+
+        If WebRequest.Instance.HandleAjax = False Then Return JsonDictionary.Serialize("Error", "Access denied")
+        If WebRequest.Instance.HandleOrganization(True) = False Then Return WebRequest.InvalidOrganization
+
+        Dim pOut As New JsonDictionary()
+        Try
+            Dim pInput = JsonConvert.DeserializeObject(Of ReasonClass)(WebRequest.Instance.InputStreamText)
+            If String.IsNullOrWhiteSpace(pInput.Reason) Then
+                Return JsonDictionary.Serialize("Error", "Reason is required.")
+            End If
+            If pInput.Reason.Length > 50 Then
+                Return JsonDictionary.Serialize("Error", "Reason must be between 1 and 50 characters in length.")
+            End If
+            Dim pSql As String
+
+            If CBool2(pInput.IsActive) Then
+                pSql = "SELECT COUNT(*)" & vbCrLf &
+                    " FROM LibrarySalesReturnReasons" & vbCrLf &
+                    " WHERE Reason = " & ReadyString(pInput.Reason) & vbCrLf &
+                    " AND IsActive = 1" & vbCrLf
+                If String.IsNullOrWhiteSpace(pInput.ID) = False Then
+                    pSql &= " AND ID <> " & ReadyString(pInput.ID) & vbCrLf
+                End If
+                Dim pDuplicates = CInt2(WebRequest.Instance.ProData.ExecuteScalar(pSql))
+                If pDuplicates > 0 Then
+                    Return JsonDictionary.Serialize("Error", "An active reason with the same reason already exist. Please choose a unique reason.")
+                End If
+            End If
+
+            Dim pIU As New InsertUpdate("LibrarySalesReturnReasons")
+            pIU("Reason") = ReadyString(pInput.Reason)
+            pIU("Resellable") = If(CBool2(pInput.Resellable), 1, 0)
+            pIU("IsActive") = If(CBool2(pInput.IsActive), 1, 0)
+            pIU("UserID") = ReadyString(WebSession.Instance.PeopleUserID)
+            pIU("LastUpdated") = "GETDATE()"
+            If String.IsNullOrWhiteSpace(pInput.ID) Then
+                pIU("ID") = "NEWID()"
+                pSql = pIU.GetInsert()
+            Else
+                pSql = pIU.GetUpdate("ID = " & ReadyString(pInput.ID))
+            End If
+            WebRequest.Instance.ProData.ExecuteSQL(pSql)
+
+            pIU = New InsertUpdate("TablesLastUpdated")
+            pIU("LastUpdated") = "GetDate()"
+            Const pTableName = "LibrarySalesReturnReasons"
+            pSql = pIU.GetUpdate("TableName = " & ReadyString(pTableName))
+            If WebRequest.Instance.ProData.ExecuteSQL(pSql) = 0 Then
+                pIU("ID") = "NEWID()"
+                pIU("TableName") = ReadyString(pTableName)
+                pSql = pIU.GetInsert()
+                WebRequest.Instance.ProData.ExecuteSQL(pSql)
+            End If
+
+            pOut.Add("Result", "Success")
+        Catch ex As Exception
+            pOut.Add("Error", ex.Message)
+        End Try
+
+        Return pOut.Serialize()
+
+    End Function
+
+    Function GetSalesReturnReason() As String
+
+        If WebRequest.Instance.HandleAjax = False Then Return JsonDictionary.Serialize("Error", "Access denied")
+        If WebRequest.Instance.HandleOrganization(True) = False Then Return WebRequest.InvalidOrganization
+
+        Dim pFinder As Finder
+        Dim pDT As DataTable
+
+        pFinder = New Finder
+        With pFinder
+            .ProData = Common.WebRequest.ProData
+
+            With .Fields
+                With .Add("RowNum", SqlDbType.Int)
+                    .Expression = "ROW_NUMBER() OVER (ORDER BY Reason)"
+                    .Searchable = False
+                End With
+                With .Add("ID", SqlDbType.UniqueIdentifier)
+                    .Expression = "LibrarySalesReturnReasons.ID"
+                    .Searchable = False
+                End With
+                With .Add("Reason", SqlDbType.VarChar)
+                    .Expression = "LibrarySalesReturnReasons.Reason"
+                End With
+                With .Add("Resellable", SqlDbType.Bit)
+                    .Expression = "LibrarySalesReturnReasons.Resellable"
+                    .Searchable = False
+                End With
+                With .Add("IsActive", SqlDbType.Bit)
+                    .Expression = "LibrarySalesReturnReasons.IsActive"
+                    .Searchable = False
+                End With
+                With .Add("ModifiedBy", SqlDbType.VarChar)
+                    .Expression = BrowserController.ComposePeopleName()
+                End With
+                With .Add("LastUpdated", SqlDbType.UniqueIdentifier)
+                    .Expression = "LibrarySalesReturnReasons.LastUpdated"
+                    .Searchable = False
+                End With
+            End With
+
+            .SqlFrom = " FROM LibrarySalesReturnReasons" &
+                " JOIN MobizLibraryPeople ON MobizLibraryPeople.ID = LibrarySalesReturnReasons.UserID" & vbCrLf &
+                " LEFT JOIN MobizLibraryPeoplePreNominalSuffix ON MobizLibraryPeople.TitleID = MobizLibraryPeoplePreNominalSuffix.ID"
+            .SqlWhere = " WHERE LibrarySalesReturnReasons.ID = " & ReadyString(WebRequest.Instance.Data("ID"))
+            pDT = .Requery
+        End With
+
+        Return JsonDictionary.Serialize("Results", pDT)
+
+    End Function
+
 End Class

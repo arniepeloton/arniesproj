@@ -2944,6 +2944,7 @@ End_Sub:
             .Add("ModifierGroupID", False, SqlDbType.UniqueIdentifier)
             .Add("BinID", False, SqlDbType.UniqueIdentifier)
             .Add("ThirdPartyProductNumber", False, SqlDbType.VarChar)
+            .Add("IsPromoItem", False, SqlDbType.Bit)
         End With
 
         pDtOut = New DataTable
@@ -2988,6 +2989,7 @@ End_Sub:
             .Add("ModifierGroupID")
             .Add("BinID")
             .Add("ThirdPartyProductNumber")
+            .Add("IsPromoItem", GetType(Boolean))
         End With
 
         Do

@@ -12,6 +12,14 @@ require(['common'], function () {
         $('#btnCancelPasscode').unbind().click(function () {
             if (access == 'MACHINE_SETTINGS') {
                 $('#page_VMScreen').pageshow();
+
+                if ($('#page_idle').css('display') == 'block') {
+                    $('.btnInitDone').click();
+                }
+
+                if ($('#page_trans').css('display') == 'block') {
+                    $('#btnPressToStart').click();
+                }
             } else {
                 $('#page_inappsettings').pageshow();
             }            
@@ -136,10 +144,10 @@ require(['common'], function () {
             updateUI();
         }
 
-        //if (access == '') {
+        if (access == '') {
             callback();
-        //} else {
-        //    generateKeypad();
-        //}
+        } else {
+            generateKeypad();
+        }
     }    
 })

@@ -4513,6 +4513,9 @@ Namespace WebProj
                 pDt = clsOrganization.GetTableView()
             ElseIf mods = "terms" Then
                 pDt = clsOrganization.GetPaymentTerms()
+            ElseIf mods = "salesreturnreasons" Then
+                clsOrganization.IsActive = Request.Params("isactive")
+                pDt = clsOrganization.GetSalesReturnReasons() ' does not support IsCountPage 
             ElseIf mods = "pricelevel" Then
                 pDt = clsOrganization.GetPriceLevelCustom()
             ElseIf mods = "salesrep" Then

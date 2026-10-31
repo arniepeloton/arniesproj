@@ -414,9 +414,8 @@ Namespace WebProj
         Function GetBoardSensorAndDevice()
             If WebRequest.Instance.HandleOrganization(True) = False Then Return WebRequest.InvalidOrganization
 
-            Dim pSql As String = "SELECT * FROM LibraryVendingMachineBoardSensorAndDevice WHERE BoardID = " & ReadyString(Common.WebRequest.Data("BoardID")) & vbCrLf &
-                " ORDER BY Type, Description "
-
+            Dim pSql As String = "SELECT * FROM LibraryVendingMachineBoardSensorAndDevice WHERE BoardID = " & ReadyString(Common.WebRequest.Data("BoardID")) & vbCrLf
+            AppendToLog(pSql)
             Return JsonDictionary.Serialize("Result", Common.WebRequest.ProData.Execute(pSql))
         End Function
 
@@ -1095,7 +1094,7 @@ Namespace WebProj
                 p("IsActive") = 1
                 p("LastUpdated") = "getdate()"
                 p("UserID") = ReadyString(updatedby)
-                p("VDMModelID") = ReadyString(Common.WebRequest.ProData.ExecuteScalar("SELECT BoardID FROM LibraryVendingMachines WHERE ID = " & ReadyString(machineid)))
+                p("VDMModelID") = ReadyString(machineid)
                 p("IsDisplayAllProducts") = 1
 
                 If String.IsNullOrWhiteSpace(hbtempid) Then

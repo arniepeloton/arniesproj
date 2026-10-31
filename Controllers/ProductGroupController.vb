@@ -583,7 +583,7 @@ Public Class ProductGroupController
                 "       ISNULL(sku.VDMBinNo, '') as CurVDMBinNo, " & vbCrLf &
                 "       product.ProductName as Name, product.ProductNo, " & vbCrLf &
                 "       sku.ShortName, sku.IsActive, '' as DefaultOtherPaymentID, ISNULL(IsUseUOM, 0) as IsUseUOM, ISNULL(IsDoNotIncludeBaseUOM, 0) as IsDoNotIncludeBaseUOM, ISNULL(SellingPreference, '') as SellingPreference, ISNULL(RecommendedSKU, 'No Recommendation') as RecommendedSKU, " & vbCrLf &
-                "       CASE WHEN ISNULL(RecommendedSKU, 'No Recommendation') = 'No Recommendation' THEN '' ELSE (SELECT ProductNo + ' - ' + ProductName FROM MobizLibraryPimProduct WHERE ID = RecommendedSKU) END as RecommendedSKUName "
+                "       CASE WHEN ISNULL(RecommendedSKU, 'No Recommendation') = 'No Recommendation' THEN '' ELSE (SELECT ProductNo + ' - ' + ProductName FROM MobizLibraryPimProduct WHERE CONVERT(varchar(max), ID) = RecommendedSKU) END as RecommendedSKUName "
 
         If IncludeUnitPrice Then
             pSql &= ", prc.Price as RetailPrice, um.UnitQty, um.UnitMeasure" & vbCrLf

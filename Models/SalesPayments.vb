@@ -1527,6 +1527,9 @@
                             " , 1, 1, ''),'') " &
                             ")"
                 End With
+                With .Add("IsPromoItem", SqlDbType.Bit)
+                    .Expression = "invitem.IsPromoItem"
+                End With
             End With
 
             .SqlFrom = " FROM TransInvoiceItems invitem " &

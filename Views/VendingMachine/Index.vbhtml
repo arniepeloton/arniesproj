@@ -58,32 +58,50 @@ End Section
 
     <div id="page_VMScreen" subpage="main" class="vh-100 w-100" style="display:block;">
         <div id="page_start" subpage="page_VMScreen" class="vh-100 w-100" style="display:block;">
-            <div class="d-flex flex-column justify-content-center align-items-center h-100 text-center bgvm-primary text-white">
-                <div class="d-flex justify-content-center mb-5">
-                    <div class="spinner-border" style="width: 8rem; height: 8rem; border-width:10px;" role="status"></div>
+            <div class="d-flex flex-column justify-content-center align-items-center h-100 text-center bgvm-primary-base textvm-primary">
+                <div id="page_init" subpage="page_start" style="display:block;">
+                    <div class="d-flex justify-content-center mb-5">
+                        <div class="spinner-border" style="width: 8rem; height: 8rem; border-width:10px;" role="status"></div>
+                    </div>
+                    <h3>Checking media library...</h3>
                 </div>
-                @*<img src="/Content/MobizImagePIM/cfe39df6-8809-4973-9515-810df75aed12/Big/7434bae9-cc35-4cf2-b091-aaa05bf1d474_big.jpg" style="width:100px; height:100px;" class="rounded">
-                <img src="/Content/VendingMachine/cfe39df6-8809-4973-9515-810df75aed12/ads_01312025_015214pm_c0d07aa5-5ddb-4d77-8268-6af3f79319c7.jpg" style="width:100px; height:100px;" class="rounded">*@
-                @*<video style="margin: auto;width: 200px; height:100px;" controls muted autoplay>
-                    <source src="/Content/VendingMachine/cfe39df6-8809-4973-9515-810df75aed12/ads_01312025_015216pm_f43747ce-1f94-4cb9-98a1-dc46023fa3fc.mp4" type="video/mp4">
-                </video>
-                <video style="margin: auto;width: 200px; height:100px;" src="/Content/VendingMachine/cfe39df6-8809-4973-9515-810df75aed12/ads_01312025_015216pm_f43747ce-1f94-4cb9-98a1-dc46023fa3fc.mp4" muted autoplay>
-                </video>*@
-                <h3>Checking media library...</h3>
-                <button data-role="none" class="btn btn-secondary d-none btnInitDone">Done</button>
+                <div id="page_init_done" subpage="page_start" style="display:none;">
+                    <div class="d-flex justify-content-center mb-5">
+                        <span class="bi-check-circle" style="font-size:130px;"></span>
+                    </div>
+                    <h3>Machine is ready!</h3>
+                    <button data-role="none" class="btn btnvm-primary btnInitDone mt-5">Finish and Go Live</button>
+                </div>                
             </div>
         </div>
 
-        <div id="page_idle" subpage="page_VMScreen" class="vh-100 w-100 idle" style="display:none;">
+        <div id="page_idle" subpage="page_VMScreen" class="vh-100 w-100 idle bgvm-primary-base" style="display:none;">
             @*<video muted style="margin: auto; max-width: 300px" controls>
                 <source src="/Content/VendingMachine/cfe39df6-8809-4973-9515-810df75aed12/ads_03262025_080536am_f43747ce-1f94-4cb9-98a1-dc46023fa3fc.webm" />
             </video>*@
             <div class="slideshow-container">
-                <ul class="slides slidesLandscape" id="listIdleAds"></ul>
+                <ul class="slides slidesLandscape" id="listIdleAds">
+                    <li style="display:list-item; width:100%; height:100%">
+                        <div class="d-flex flex-column justify-content-center align-items-center h-100 textvm-primary text-center">
+                            <div style="border-style:dashed !important; border-width: medium !important;" class="w-50 bg-white rounded-2 border bordervm-secondary p-5">
+                                <div class="row g-0 align-items-center justify-content-center">
+                                    <div class="col-3">
+                                        <i class="bi bi-megaphone bgvm-secondary p-4 textvm-primary rounded-2" style="font-size:50px"></i>
+                                    </div>
+                                    <div class="col-6">
+                                        <h3 class="mb-3">Place your ads here</h3>
+
+                                        <span class="text-secondary">Reach every shopper at this machine with your brand, offer, or promo.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
                 <div class="scroll-indicator">
                     <div class="row g-0 justify-content-center">
                         <div class="col-auto">
-                            <button data-role="none" id="btnPressToStart" class="btn rounded-pill m-2 bgvm-primary bordervm-primary text-white light-beam navbtn-light font-weight-bold mb-4 pl-5 pr-5"><h3 class="m-0">Touch the screen to start shopping</h3></button>
+                            <button data-role="none" id="btnPressToStart" class="btn rounded-pill m-2 bgvm-primary bordervm-primary text-white light-beam navbtn-light font-weight-bold mb-4 pl-5 pr-5"><h3 class="m-0">Tap here to start shopping</h3></button>
                         </div>
                     </div>
                 </div>
@@ -96,7 +114,7 @@ End Section
 
         <div id="page_trans" subpage="page_VMScreen" class="h-100 w-100" style="display:none;">
             <div class="row g-0 h-100">
-                <div class="col-3 bg-secondary text-white">
+                <div class="col-3 bgvm-primary-base text-white">
                     @*<button data-role="none" id="btnUnmute" style="left:-1000px;">Unmute</button>*@
                     @*<div style="width:100%;">
                         <video class="w-100" controls muted loop style="object-fit:cover; height:100vh;">
@@ -105,16 +123,33 @@ End Section
                         </video>
                     </div>*@
                     <div class="slideshow-container productselection">
-                        <div class="random_ads" subpage="productselection" style="display:none;">
-                            <ul class="slides slidesPortrait" id="listAds"></ul>
+                        <div class="random_ads h-100" subpage="productselection">
+                            <ul class="slides slidesPortrait" id="listAds">
+                                <li style="display:list-item; width:100%; height:100%">
+                                    <div class="d-flex flex-column justify-content-center align-items-center h-100 textvm-primary text-center">
+                                        <div style="border-style:dashed !important; border-width: medium !important;" class="w-75 bg-white rounded-2 border bordervm-secondary p-5">
+                                            <div class="row g-0 align-items-center justify-content-center">
+                                                <div class="col-12 mb-5">
+                                                    <i class="bi bi-megaphone bgvm-secondary p-4 textvm-primary rounded-2" style="font-size:50px"></i>
+                                                </div>
+                                                <div class="col-12">
+                                                    <h3 class="mb-3">Place your ads here</h3>
+
+                                                    <span class="text-secondary">Reach every shopper at this machine with your brand, offer, or promo.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     @*<img src="../Content/images/chicken_adobo.jpg" style="width: 100%; height:100%; object-fit:cover;" />*@
                 </div>
-                <div class="col-9">
+                <div class="col-9 border-left">
                     <div id="" subpage="about_item" class="h-100 w-100 page_menu" style="display:none;">
                         <div class="vh-100 d-flex flex-column overflow-hidden">
-                            <div class="flex-shrink-1 bg-white border">
+                            <div class="flex-shrink-1 bg-white">
                                 <div class="row g-0 text-white m-2 rounded-2">
                                     <div class="col overflow-auto align-self-center" style="scrollbar-width: none;">
                                         <div class="nav-wrapper">
@@ -190,7 +225,7 @@ End Section
                                     </div>
                                 </div>
                             </div>
-                            <div id="containerSKUs" class="d-flex flex-fill align-items-start flex-column overflow-auto w-100 position-relative">
+                            <div id="containerSKUs" class="d-flex flex-fill align-items-start flex-column overflow-auto w-100 position-relative border">
                                 <div id="listofskus" class="p-4 w-100"></div>
                             </div>
                             <div class="flex-shrink-1 border">
@@ -229,7 +264,8 @@ End Section
 
                                 <div class="row align-items-center">
                                     <div class="col-4">
-                                        <img id="imgProductImage" class="img-thumbnail rounded-2" style="object-fit:cover;" />
+                                        <div id="imgNoPhotoAvailable" style="height:200px; width:200px;" class="fs-2 rounded-2 bg-light border d-flex flex-column justify-content-center align-items-center text-center text-secondary"><span class="bi-image-alt"></span><div class="mt-3" style="font-size:12px;">No photo available</div></div>
+                                        <img id="imgProductImage" class="img-thumbnail rounded-2" style="object-fit:cover;" alt="" />
                                     </div>
                                     <div class="col">
                                         <div id="divDefaultSelection" subpage="pageSelection" style="display:block;">
@@ -385,7 +421,7 @@ End Section
                     </div>
 
                     <div subpage="about_item" class="h-100 w-100 page_paynow" style="display:none;">
-                        <div class="d-flex flex-column justify-content-center align-items-center bgvm-primary h-100 text-center text-white">
+                        <div class="d-flex flex-column justify-content-center align-items-center bgvm-primary-base h-100 text-center textvm-primary">
                             <div class="pb-5 font-weight-bold" style="font-size:60px;">Insert your Cash</div>
 
                             <div>
@@ -398,7 +434,7 @@ End Section
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <div class="rounded-2 text-center textvm-primary shadow-lg" style="width:300px; padding:25px; border: 1px solid #FFF; background-color: #FFF;">
+                                        <div class="rounded-2 text-center bgvm-primary text-white shadow-lg" style="width:300px; padding:25px;">
                                             <div style="font-size: 20px; margin-bottom:25px;">Amount Inserted</div>
                                             <hr />
                                             <div id="lblAmountInserted" style="margin-top:25px; font-size:40px; font-weight:bold;">500.00</div>

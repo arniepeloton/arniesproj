@@ -84,4 +84,13 @@ End Code*@
         <a id="butCancel" data-role="none" class="btn btn-secondary btn-lg">Cancel</a>
         <a id="butSalesReturnSave" data-role="none" class="btn btn-success btn-lg">Save</a>
     </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 mb-3 col-form-label" for="chkReturnEntireInvoice">Return entire invoice:</label>
+        <div class="col-sm-9">
+            <div class="form-check form-switch mb-3" style="font-size:25px;">
+                <input class="form-check-input" data-role="none" type="checkbox" id="chkReturnEntireInvoice">
+            </div>
+        </div>
+    </div>
 </div>

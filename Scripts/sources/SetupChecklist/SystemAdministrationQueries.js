@@ -57,6 +57,7 @@
         var isTableViewPageLoaded = "";
         var isPaymentTermsPageLoaded = "";
         var isAccAdjustmentPageLoaded = "";
+        var isSalesReturnReasonPageLoaded = "";
         var isEcommerceGeneralSettingsPageLoaded = "";
         var isEcommerceBannerSettingsPageLoaded = "";
         var isEcommerceVendorPortalSettingsPageLoaded = "";
@@ -4182,6 +4183,72 @@
                 SysAdminDataTable(pData);
             },
 
+            SalesReturnReasons: function(s) {
+                if (s != undefined) {
+                    tblSysAdminDataTable.search($.trim(s)).draw();
+                    return;
+                }
+
+                var pData = {
+                    ajax: {
+                        url: "/Organization/GetDataTable?OrgID=" + sessionStorage.OrgID + "&mod=salesreturnreasons&isactive=" + $('#selOptionStatus option:selected').val(),
+                        type: 'POST'
+                    },
+                    columns: [
+                        {
+                            "data": function(data, type, full, meta) {
+                                return data.RowNum;
+                            },
+                            "width": "30px",
+                            header: 'header'
+                        },
+                        {
+                            "data": function(data, type, full, meta) {
+                                return data.Reason;
+                            },
+                            "width": "200px",
+                            text: 'text'
+                        },
+                        {
+                            "data": function(data, type, full, meta) {
+                                return (CBool(data.Resellable) ? 'Yes' : 'No');
+                            },
+                            "width": "50px",
+                            'label': 'label'
+                        },
+                        {
+                            "data": function(data, type, full, meta) {
+                                return (CBool(data.IsActive) ? 'Yes' : 'No');
+                            },
+                            "width": "50px"
+                        },
+                        {
+                            "data": function(data, type, full, meta) {
+                                return data.ModifiedBy;
+                            }
+                        },
+                        {
+                            "data": function(data, type, full, meta) {
+                                if (data.LastUpdated == null) {
+                                    return "";
+                                }
+                                var date = data.LastUpdated;
+                                return $.format.date(new Date(parseInt(date.substr(6))), 'MMM dd, yyyy hh:mm a');
+                            }
+                        }
+                    ],
+                    click: function(data) {
+                        sessionStorage["AddViewLibBCName"] = "Sales Return Reason";
+                        window.location.hash = 'UniversalPage';
+                        sessionStorage["ViewID"] = data.ID;
+                        LibraryTable.AddSalesReturnReason();
+                        InitVal();
+                    },
+                    disablecols: [0, 2, 3, 4] //if all '_all'
+                }
+
+                SysAdminDataTable(pData);
+            },
             //Display Payment Terms Page
             AddPaymentTerms: function() {
                 $('#UniversalDiv').html('<div class="divspinner text-center"><div class="spinner-border text-primary text-center" role="status"><span class="visually-hidden"></span></div><div>Please wait ...</div></div>');
@@ -4202,6 +4269,27 @@
                     $('#UniversalDiv').empty();
                     $('#UniversalDiv').append(isPaymentTermsPageLoaded); //.trigger('create');
                     PaymentTerms.Load();
+                }
+            },
+            AddSalesReturnReason: function() {
+                $('#UniversalDiv').html('<div class="divspinner text-center"><div class="spinner-border text-primary text-center" role="status"><span class="visually-hidden"></span></div><div>Please wait ...</div></div>');
+                if (isSalesReturnReasonPageLoaded == "") {
+                    AjaxSend({
+                        ExactUrl: '/SalesReturns/ReasonView?cache=1&OrgID=' + sessionStorage.OrgID + '&v=' + assetversion,
+                        type: 'GET',
+                        dataType: 'text',
+                        success: function(vData) {
+                            isSalesReturnReasonPageLoaded = vData;
+                            $('#UniversalDiv').empty();
+                            $('#UniversalDiv').append(vData); //.trigger('create');
+                            App.Deferred.fulfill('FQ26E5TP76');
+                            InitVal();
+                        }
+                    });
+                } else {
+                    $('#UniversalDiv').empty();
+                    $('#UniversalDiv').append(isSalesReturnReasonPageLoaded); //.trigger('create');
+                    SalesReturnReasons.Load();
                 }
             },
 

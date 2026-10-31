@@ -294,6 +294,14 @@
 
         $('#btnBacktoMainScreen').click(function () {
             $('#page_VMScreen').pageshow();
+
+            if ($('#page_idle').css('display') == 'block') {
+                $('.btnInitDone').click();
+            }
+
+            if ($('#page_trans').css('display') == 'block') {
+                $('#btnPressToStart').click();
+            }
         })
 
         $('#btnVMSyncDB').click(function () {

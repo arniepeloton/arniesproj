@@ -1576,6 +1576,11 @@ Public Class TransInvoice
                     pIU("ThirdPartyProductNumber") = ReadyString(pDR("ThirdPartyProductNumber"))
                 End If
             End If
+            If vDtStocks.Columns.Contains("IsPromoItem") Then
+                If CStr2(pDR("IsPromoItem")) <> "" Then
+                    pIU("IsPromoItem") = ReadyString(pDR("IsPromoItem"))
+                End If
+            End If
 
             pSql = pIU.GetInsert
             Try
@@ -6351,6 +6356,7 @@ Public Class TransInvoice
         pIU("ForegoneVAT") = "ForegoneVAT"
         pIU("FowstID") = "FowstID"
         pIU("FOWSTName") = "FOWSTName"
+        pIU("DeviceID") = "DeviceID"
         pIU("StoreType") = "StoreType"
         pIU("StoreLocation") = "StoreLocation"
         pIU("GroupName") = "GroupName"
@@ -6453,6 +6459,7 @@ Public Class TransInvoice
             "      ,TransInvoice.LastUpdated" & vbCrLf &
             "      ,TransInvoice.IsPrinted" & vbCrLf &
             "      ,TransInvoice.FowstID" & vbCrLf &
+            "      ,TransInvoice.DeviceID" & vbCrLf &
             "      ,TransInvoice.DeliveryMethod" & vbCrLf &
             "      ,TransInvoice.UserID" & vbCrLf &
             "      ,tblItems.GrossSalesNetOfVATExemptions" & vbCrLf &

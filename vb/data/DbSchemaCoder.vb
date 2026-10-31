@@ -617,6 +617,7 @@ Public Class DbSchemaCoder
         pChanged += If(vProData.AddColumn("CacheInvoices", "DeliveryMethod", "VARCHAR(100)"), 1, 0)
         pChanged += If(vProData.AddColumn("CacheInvoices", "UserID", "uniqueidentifier"), 1, 0)
         pChanged += If(vProData.AddColumn("CacheInvoices", "IsSentToLessor", "bit DEFAULT 0"), 1, 0)
+        pChanged += If(vProData.AddColumn("CacheInvoices", "DeviceID", "uniqueidentifier"), 1, 0)
 
         pChanged += If(ChangeCacheReceivings(vProData, vDatabase), 1, 0)
 
@@ -1217,7 +1218,10 @@ Public Class DbSchemaCoder
         pChanged += If(vProData.AddColumn("LibraryPimGroupPims", "PlanogramTempID", "uniqueidentifier"), 1, 0)
         pChanged += If(vProData.AddColumn("LibraryPimGroupPims", "IsUseUOM", "bit"), 1, 0)
         pChanged += If(vProData.AddColumn("LibraryPimGroupPims", "IsDoNotIncludeBaseUOM", "bit"), 1, 0)
+        pChanged += If(vProData.AddColumn("LibraryPimGroupPims", "SellingPreference", "varchar(MAX)"), 1, 0)
+        pChanged += If(vProData.AddColumn("LibraryPimGroupPims", "RecommendedSKU", "varchar(MAX)"), 1, 0)
         pChanged += If(vProData.AddColumn("LibraryPimCategories", "SortOrder", "int"), 1, 0)
+        pChanged += If(vProData.AddColumn("LibraryVDMGuidesTemplate", "DispensingType", "varchar(MAX)"), 1, 0)
 
         If vProData.TableExist("LibraryVendingMachineBoards") = False Then
             pSql = " CREATE TABLE dbo.LibraryVendingMachineBoards (" & vbCrLf &
@@ -1230,6 +1234,140 @@ Public Class DbSchemaCoder
                 "   ModifiedBy uniqueidentifier NULL," & vbCrLf &
                 "   DateModified datetime NULL," & vbCrLf &
                 "   IsActive bit NULL," & vbCrLf &
+                "   PRIMARY KEY CLUSTERED (ID)" & vbCrLf &
+                "     WITH (" & vbCrLf &
+                "       PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF," & vbCrLf &
+                "       ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)" & vbCrLf &
+                " )" & vbCrLf &
+                " ON [PRIMARY]"
+            vProData.ExecuteSQL(pSql)
+            pChanged += 1
+        End If
+
+        If vProData.TableExist("LibraryVendingMachines") = False Then
+            pSql = " CREATE TABLE dbo.LibraryVendingMachines (" & vbCrLf &
+                "   ID uniqueidentifier NOT NULL," & vbCrLf &
+                "   Name varchar(MAX) NULL," & vbCrLf &
+                "   BoardID uniqueidentifier NULL," & vbCrLf &
+                "   NoOfBoards int NULL," & vbCrLf &
+                "   LastUpdated datetime NULL," & vbCrLf &
+                "   ModifiedBy uniqueidentifier NULL," & vbCrLf &
+                "   PRIMARY KEY CLUSTERED (ID)" & vbCrLf &
+                "     WITH (" & vbCrLf &
+                "       PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF," & vbCrLf &
+                "       ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)" & vbCrLf &
+                " )" & vbCrLf &
+                " ON [PRIMARY]"
+            vProData.ExecuteSQL(pSql)
+            pChanged += 1
+        End If
+
+        If vProData.TableExist("LibraryVDMMedia") = False Then
+            pSql = " CREATE TABLE dbo.LibraryVDMMedia (" & vbCrLf &
+                "   ID uniqueidentifier NOT NULL," & vbCrLf &
+                "   Name varchar(MAX) NULL," & vbCrLf &
+                "   Description text NULL," & vbCrLf &
+                "   FileName varchar(MAX) NULL," & vbCrLf &
+                "   Media varchar(MAX) NULL," & vbCrLf &
+                "   UploadedOn datetime NULL," & vbCrLf &
+                "   UploadedBy uniqueidentifier NULL," & vbCrLf &
+                "   PRIMARY KEY CLUSTERED (ID)" & vbCrLf &
+                "     WITH (" & vbCrLf &
+                "       PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF," & vbCrLf &
+                "       ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)" & vbCrLf &
+                " )" & vbCrLf &
+                " ON [PRIMARY]"
+            vProData.ExecuteSQL(pSql)
+            pChanged += 1
+        End If
+
+        If vProData.TableExist("LibraryVendingMachineBoardSensorAndDevice") = False Then
+            pSql = " CREATE TABLE dbo.LibraryVendingMachineBoardSensorAndDevice (" & vbCrLf &
+                "   ID uniqueidentifier NOT NULL," & vbCrLf &
+                "   BoardID uniqueidentifier NULL," & vbCrLf &
+                "   Type varchar(MAX) NULL," & vbCrLf &
+                "   Description text NULL," & vbCrLf &
+                "   Qty int NULL," & vbCrLf &
+                "   PRIMARY KEY CLUSTERED (ID)" & vbCrLf &
+                "     WITH (" & vbCrLf &
+                "       PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF," & vbCrLf &
+                "       ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)" & vbCrLf &
+                " )" & vbCrLf &
+                " ON [PRIMARY]"
+            vProData.ExecuteSQL(pSql)
+            pChanged += 1
+        End If
+
+        If vProData.TableExist("LibraryVendingMachineBoardSensorAndDeviceLabelling") = False Then
+            pSql = " CREATE TABLE dbo.LibraryVendingMachineBoardSensorAndDeviceLabelling (" & vbCrLf &
+                "   ID uniqueidentifier NOT NULL," & vbCrLf &
+                "   MachineID uniqueidentifier NULL," & vbCrLf &
+                "   BoardID uniqueidentifier NULL," & vbCrLf &
+                "   SensorDeviceID uniqueidentifier NULL," & vbCrLf &
+                "   SensorDeviceName varchar(MAX) NULL," & vbCrLf &
+                "   Type varchar(MAX) NULL," & vbCrLf &
+                "   Label varchar(MAX) NULL," & vbCrLf &
+                "   SKUID uniqueidentifier NULL," & vbCrLf &
+                "   SKUName varchar(MAX) NULL," & vbCrLf &
+                "   Criticality varchar(MAX) NULL," & vbCrLf &
+                "   PRIMARY KEY CLUSTERED (ID)" & vbCrLf &
+                "     WITH (" & vbCrLf &
+                "       PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF," & vbCrLf &
+                "       ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)" & vbCrLf &
+                " )" & vbCrLf &
+                " ON [PRIMARY]"
+            vProData.ExecuteSQL(pSql)
+            pChanged += 1
+        End If
+
+        If vProData.TableExist("LibraryVendingMachinePlanogramTemplate") = False Then
+            pSql = " CREATE TABLE dbo.LibraryVendingMachinePlanogramTemplate (" & vbCrLf &
+                "   ID uniqueidentifier NOT NULL," & vbCrLf &
+                "   MachineModelID uniqueidentifier NULL," & vbCrLf &
+                "   Name varchar(MAX) NULL," & vbCrLf &
+                "   LastUpdated datetime NULL," & vbCrLf &
+                "   ModifiedBy uniqueidentifier NULL," & vbCrLf &
+                "   HotButtonTemplateID uniqueidentifier NULL," & vbCrLf &
+                "   PRIMARY KEY CLUSTERED (ID)" & vbCrLf &
+                "     WITH (" & vbCrLf &
+                "       PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF," & vbCrLf &
+                "       ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)" & vbCrLf &
+                " )" & vbCrLf &
+                " ON [PRIMARY]"
+            vProData.ExecuteSQL(pSql)
+            pChanged += 1
+        End If
+
+        If vProData.TableExist("LibraryVendingMachinePlanogramTemplateList") = False Then
+            pSql = " CREATE TABLE dbo.LibraryVendingMachinePlanogramTemplateList (" & vbCrLf &
+                "   ID uniqueidentifier NOT NULL," & vbCrLf &
+                "   PlanogramTemplateID uniqueidentifier NULL," & vbCrLf &
+                "   MotorNo int NULL," & vbCrLf &
+                "   BoardNo varchar(MAX) NULL," & vbCrLf &
+                "   BoardID uniqueidentifier NULL," & vbCrLf &
+                "   BoardUUID varchar(MAX) NULL," & vbCrLf &
+                "   DispenserMotorNo int NULL," & vbCrLf &
+                "   DispenserType varchar(MAX) NULL," & vbCrLf &
+                "   Capacity int NULL," & vbCrLf &
+                "   ProductID uniqueidentifier NULL," & vbCrLf &
+                "   ProductName varchar(MAX) NULL," & vbCrLf &
+                "   Category varchar(MAX) NULL," & vbCrLf &
+                "   PRIMARY KEY CLUSTERED (ID)" & vbCrLf &
+                "     WITH (" & vbCrLf &
+                "       PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF," & vbCrLf &
+                "       ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)" & vbCrLf &
+                " )" & vbCrLf &
+                " ON [PRIMARY]"
+            vProData.ExecuteSQL(pSql)
+            pChanged += 1
+        End If
+
+        If vProData.TableExist("LibraryVendingMachineSubBoard") = False Then
+            pSql = " CREATE TABLE dbo.LibraryVendingMachineSubBoard (" & vbCrLf &
+                "   ID uniqueidentifier NOT NULL," & vbCrLf &
+                "   MachineID uniqueidentifier NULL," & vbCrLf &
+                "   BoardID uniqueidentifier NULL," & vbCrLf &
+                "   BoardOrder varchar(50) NULL," & vbCrLf &
                 "   PRIMARY KEY CLUSTERED (ID)" & vbCrLf &
                 "     WITH (" & vbCrLf &
                 "       PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF," & vbCrLf &
@@ -1603,6 +1741,9 @@ Public Class DbSchemaCoder
         pChanged += If(vProData.AddColumn("LibraryVendingMachineBoards", "NoOfBins", "int"), 1, 0)
         pChanged += If(vProData.AddColumn("LibraryVendingMachineBoards", "Type", "varchar(50)"), 1, 0)
         pChanged += If(vProData.AddColumn("LibraryVendingMachineBoards", "NoOfDirectConnMotors", "int"), 1, 0)
+        pChanged += If(vProData.AddColumn("LibraryVendingMachineBoards", "BoardModelID", "int"), 1, 0)
+        pChanged += If(vProData.AddColumn("LibraryVendingMachineBoards", "UUID", "varchar(MAX)"), 1, 0)
+        pChanged += If(vProData.AddColumn("LibraryVendingMachineBoards", "VCMModelID", "int"), 1, 0)
         pChanged += If(vProData.AddColumn("LibraryVDMGuides", "Media", "varchar(50)"), 1, 0)
         pChanged += If(vProData.AddColumn("TransVDMLogs", "UserID", "uniqueidentifier"), 1, 0)
 
@@ -2250,6 +2391,19 @@ Public Class DbSchemaCoder
             pChanged += If(vProData.AddColumn("CacheDailySalesPerSKUReport", "CategoryName", "VARCHAR(MAX)"), 1, 0)
         End If
 
+        If vProData.TableExist("LibrarySalesReturnReasons") = False Then
+            pSql = " CREATE TABLE LibrarySalesReturnReasons (" & vbCrLf &
+                "   ID uniqueidentifier ROWGUIDCOL NOT NULL," & vbCrLf &
+                "   Reason varchar(50) NOT NULL," & vbCrLf &
+                "   Resellable bit NOT NULL," & vbCrLf &
+                "   LastUpdated datetime NOT NULL," & vbCrLf &
+                "   UserID uniqueidentifier NOT NULL," & vbCrLf &
+                "   IsActive bit NULL," & vbCrLf &
+                " )" & vbCrLf &
+                " ON [PRIMARY]"
+            vProData.ExecuteSQL(pSql)
+            pChanged += 1
+        End If
         If vPublicTablesAdded > 0 Then
             With New Synonyms()
                 .Prefix = "Mobiz"

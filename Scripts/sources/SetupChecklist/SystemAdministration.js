@@ -1658,6 +1658,21 @@
                 })
             })
 
+            $('#butSalesReturnReasons').click(function () {
+                NewMessageBoxClose();
+                NewPromptUserAccess('Sales Return Settings', {
+                    OnClickOKSuccess: function () {
+                        window.location.hash = '';
+                        window.location.hash = "LibraryPage";
+                        headerData = ['#', 'Reason', 'Resellable', 'Active', 'Modified By', 'Last Modified Date'];
+                        datasort = ['int', 'string', 'string', 'int', 'string', 'date'];
+                        sessionStorage["LibraryName"] = 'Sales Return Reasons';
+                        sessionStorage["LabelLibraryName"] = 'Sales Return Reason';
+                        DisplayTableLibrary(headerData, datasort);
+                    }
+                })
+                })
+
             $('#btnAccountAdjustments, #popupbtnAccountAdjustments').click(function () {
                 NewMessageBoxClose();
                 NewPromptUserAccess('Account Adjustments', {
@@ -2159,6 +2174,10 @@
                     LibraryTable.AddPaymentTerms();
                     window.location.hash = 'UniversalPage';
                     // InitVal();
+                } else if (sessionStorage.LibraryName == "Sales Return Reasons") {
+                    sessionStorage["AddViewLibBCName"] = "New Sales Return Reason";
+                    LibraryTable.AddSalesReturnReason();
+                    window.location.hash = 'UniversalPage';
                 } else if (sessionStorage.LibraryName == "Brands Library") {
                     $('.lblPIMLib').text('Brand');
                     $('#popupPIMLib').modal('show');
@@ -2817,6 +2836,8 @@
                     LibraryTable.Vouchers();
                 } else if (sessionStorage.LibraryName == 'Group Settings') {
                     LibraryTable.GroupSettings();
+                } else if (sessionStorage.LibraryName == 'Sales Return Reasons') {
+                    LibraryTable.SalesReturnReasons();
                 }
             })
 
@@ -3423,6 +3444,8 @@
                 LibraryTable.TableView(s);
             } else if (sessionStorage.LibraryName == 'Payment Terms') {
                 LibraryTable.PaymentTermsList(s);
+            } else if (sessionStorage.LibraryName == 'Sales Return Reasons') {
+                LibraryTable.SalesReturnReasons(s);
             } else if (sessionStorage.LibraryName == 'Price Levels') {
                 LibraryTable.PriceLevelCustom(s);
             } else if (sessionStorage.LibraryName == 'Sales Representatives') {
@@ -3618,6 +3641,10 @@
             }
             else if (sessionStorage.LibraryName == "Payment Terms") {
                 LibraryTable.PaymentTermsList();
+            }
+            else if (sessionStorage.LibraryName == "Sales Return Reasons") {
+                $('#divOptionStatus').show(); //, #divSecondTabs
+                LibraryTable.SalesReturnReasons();
             }
             else if (sessionStorage.LibraryName == "Price Levels") {
                 LibraryTable.PriceLevelCustom();

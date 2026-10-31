@@ -1519,6 +1519,7 @@
                 " ,invitem.SubTotal AS SubTotal\n" + //" ,SUM(invitem.SubTotal) AS SubTotal\n" + //-> orig code as of Apr11,2017 130pm
                 " ,(SELECT GROUP_CONCAT(ppl.Surname || ', ' || ppl.FirstName || ' ' || ppl.MiddleName,'; ') FROM private.TransInvoiceItemSalesReps srep INNER JOIN LibraryPeople ppl ON (srep.PeopleID = ppl.ID) WHERE srep.InvoiceID = invitem.InvoiceID AND srep.ProductID = invitem.ProductID ORDER BY (ppl.Surname || ', ' || ppl.FirstName || ' ' || ppl.MiddleName) ASC) as SalesPerson\n " +
                 " , lop.IsVatExempt" +
+                " , invitem.IsPromoItem" +
                 " , LibraryPIMProductVariableFeatures001.C0090 ReceiptName";
             if (vOptions.Category != null)
                 pSql += ',LibraryPIMProductVariableFeatures001.C0020 AS Category \n';

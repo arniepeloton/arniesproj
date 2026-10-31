@@ -1868,6 +1868,20 @@ End Section
 
                 <div class="row mb-3">
                     <div class="col-9 pr-0">
+                        <button id="butSalesReturnReasons" data-role="none" class="btn btn-light btn-block rounded-0 border text-left" style="height:100%;">
+                            <h5 class="mb-3"><b>Sales Return Reasons</b></h5>
+                        </button>
+                    </div>
+                    <div class="col-3 pl-0">
+                        <button data-role="none" class="btn btn-light btn-block rounded-0 border" style="height:100%;">
+                            <div><img src="/Content/images/tick.png" style="width: 30px; height: 30px;"></div>
+                            <div></div>
+                            <div></div>
+                        </button>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-9 pr-0">
                         <button id="btnDiscountSettings" data-role="none" class="btn btn-light btn-block rounded-0 border text-left" style="height:100%;">
                             <h5 class="mb-3"><b>Discount Settings</b></h5>
                         </button>
